@@ -21,12 +21,10 @@ CREATE TABLE pay(
  pay_content varchar(50) not null,
  pay_date date default sysdate not null,
  mem_num number not null,
- study_num number not null,
- lock_num number not null,
+ ticket_num number not null,
  constraint pay_pk primary key (pay_num),
  constraint pay_fk1 foreign key (mem_num) references  member (mem_num),
- constraint pay_fk2 foreign key (study_num) references study (study_num),
- constraint pay_fk3 foreign key (lock_num) references locker (lock_num)
+ constraint pay_fk2 foreign key (ticket_num) references ticket (ticket_num),
 );
 
 -- 결제 시퀀스
