@@ -5,10 +5,9 @@
        "http://tiles.apache.org/dtds/tiles-config_3_0.dtd">
 
 <tiles-definitions>
-    <definition name="" extends="main">
-    	<put-attribute name="title" value="채팅방 생성"/>
-    	<put-attribute name="body"
-    	  value="/WEB-INF/views/talk/talkRoomWrite.jsp"/>        
+    <definition name="memberRegister" extends="register">
+    	<put-attribute name="title" value="아워스터디 > 회원가입"/>
+    	<put-attribute name="body" value="/WEB-INF/views/member/memberRegister.jsp"/>
     </definition>
 </tiles-definitions>
 

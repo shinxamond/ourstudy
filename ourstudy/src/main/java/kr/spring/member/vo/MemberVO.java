@@ -12,7 +12,7 @@ import org.springframework.web.multipart.MultipartFile;
 public class MemberVO {
 	private int mem_num;
 	//'guest'로 시작할 수 없도록 나중에 설정 추가 예정
-	@Pattern(regexp="[a-z0-9]{4,12}$") //알파벳 소문자&숫자가능, 4~12자
+	@Pattern(regexp="^[a-z0-9]{4,12}$") //알파벳 소문자&숫자가능, 4~12자
 	private String mem_id;
 	private int mem_auth;
 	private String auto; //자동로그인 처리
@@ -24,13 +24,16 @@ public class MemberVO {
 	private String mem_phone;
 	@NotEmpty
 	private String mem_email;
-	@Size(min=5,max=5)
 	private String mem_zipcode;
 	private String mem_address1;
 	private String mem_address2;
 	private byte[] mem_photo;
 	private Date mem_regdate;
 	private Date mem_mdate;
+	
+	//회원가입시 비밀번호 체크
+	@Pattern(regexp="^[A-Za-z0-9]{8,16}$")
+	private String pw_confirm;
 	
 	//비밀번호 변경시 현재 비밀번호를 저장하는 용도로 사용
 	@Pattern(regexp="^[A-Za-z0-9]{8,16}$")
@@ -172,6 +175,14 @@ public class MemberVO {
 		this.mem_mdate = mem_mdate;
 	}
 
+	public String getPw_confirm() {
+		return pw_confirm;
+	}
+
+	public void setPw_confirm(String pw_confirm) {
+		this.pw_confirm = pw_confirm;
+	}
+	
 	public String getNow_passwd() {
 		return now_passwd;
 	}
@@ -182,11 +193,11 @@ public class MemberVO {
 
 	@Override
 	public String toString() {
-		return "가상vo [mem_num=" + mem_num + ", mem_id=" + mem_id + ", mem_auth=" + mem_auth + ", auto=" + auto
+		return "MemberVO [mem_num=" + mem_num + ", mem_id=" + mem_id + ", mem_auth=" + mem_auth + ", auto=" + auto
 				+ ", auto_id=" + auto_id + ", mem_name=" + mem_name + ", mem_pw=" + mem_pw + ", mem_phone=" + mem_phone
 				+ ", mem_email=" + mem_email + ", mem_zipcode=" + mem_zipcode + ", mem_address1=" + mem_address1
 				+ ", mem_address2=" + mem_address2 + ", mem_regdate=" + mem_regdate + ", mem_mdate=" + mem_mdate
-				+ ", now_passwd=" + now_passwd + "]";
+				+ ", pw_confirm=" + pw_confirm + ", now_passwd=" + now_passwd + "]";
 	}
-	
+		
 }
