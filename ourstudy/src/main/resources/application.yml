@@ -27,7 +27,17 @@ spring:
     restart: #컨트롤러, 모델단이 바뀌었을 때 프로젝트 재시작 설정 (정확히는 classpath에 있는 모든 파일)      enabled: true    
   
   servlet:    multipart:      max-file-size: 50MB #파일 한 개당 최대 사이즈
-      max-request-size: 200MB #요청당 최대 파일 크기(주의)max-request-size도 설정이 필요        mybatis: #mybatis 설정
+      max-request-size: 200MB #요청당 최대 파일 크기(주의)max-request-size도 설정이 필요
+      
+  mail:
+    host: smtp.gmail.com
+    port: 587
+    username: ourstudy777 @gmail.com
+    password: pxugayiqebevjtwm
+    properties:
+      mail.smtp.auth: true
+      mail.smtp.starttls.enable: true
+      mail.smtp.starttls.required: true        mybatis: #mybatis 설정
   type-aliases-package: kr.spring.**.vo
   mapper-locations: kr/spring/**/dao/*.xml   
     
