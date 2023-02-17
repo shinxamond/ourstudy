@@ -21,6 +21,7 @@ create table member_detail(
  mem_address1 varchar2(90),
  mem_address2 varchar2(90),
  mem_photo blob,
+ mem_photo_name varchar2(100),
  mem_regdate date default sysdate not null,
  mem_mdate date,
  constraint member_detail_pk primary key (mem_num),

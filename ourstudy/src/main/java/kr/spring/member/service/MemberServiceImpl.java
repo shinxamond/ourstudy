@@ -28,8 +28,7 @@ public class MemberServiceImpl implements MemberService {
 
 	@Override
 	public void updateAuto_id(String auto_id, String mem_id) {
-		// TODO Auto-generated method stub
-		
+		memberMapper.updateAuto_id(auto_id, mem_id);
 	}
 
 	@Override
