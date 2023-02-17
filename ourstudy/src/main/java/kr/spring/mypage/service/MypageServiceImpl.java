@@ -24,4 +24,9 @@ public class MypageServiceImpl implements MypageService{
 		mypageMapper.updateProfile(member);
 	}
 
+	@Override
+	public void updateMember_detail(MemberVO member) {
+		mypageMapper.updateMember_detail(member);
+	}
+
 }

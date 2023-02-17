@@ -5,14 +5,17 @@ import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
+import javax.validation.Valid;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
@@ -20,6 +23,7 @@ import org.springframework.web.servlet.ModelAndView;
 
 import kr.spring.util.FileUtil;
 import kr.spring.member.controller.MemberController;
+import kr.spring.member.service.MemberService;
 import kr.spring.member.vo.MemberVO;
 import kr.spring.mypage.service.MypageService;
 import kr.spring.point.vo.PointVO;
@@ -40,16 +44,52 @@ public class MypageController {
 	@Autowired
 	private MypageService mypageService;
 	
-	//회원등록 폼 호출
-	@GetMapping("/mypage/myPageMain.do")
-	public String form() {
+	private MemberService memberService;
+	
+	//마이페이지 메인 호출
+	@RequestMapping("/mypage/myPageMain.do")
+	public String form(HttpSession session, Model model) {
+		
+		//회원 기본 정보 세팅
+		MemberVO user = (MemberVO)session.getAttribute("user");
+		
+		MemberVO member = mypageService.selectMember(user.getMem_num());
+		
+		model.addAttribute("member", member);
+		
 		return "myPageMain"; //타일스 설정값
 	}
 	
 	//회원정보 수정 폼 호출
-	@GetMapping("/mypage/myPageModify.do")
-	public String myPageModifyForm() {
+	@RequestMapping("/mypage/myPageModify.do")
+	public String myPageModifyForm(HttpSession session, Model model) {
+		
+		MemberVO user = (MemberVO)session.getAttribute("user");
+		
+		MemberVO member = (MemberVO)mypageService.selectMember(user.getMem_num());
+		
+		model.addAttribute("member", member);
+		
 		return "myPageModify";
+	}
+	//수정폼에서 받은 데이터 처리
+	@PostMapping("/mypage/myPageModify.do")
+	public String submitMypageUpdate(@Valid MemberVO member, BindingResult result, HttpSession session) {
+		
+		
+		logger.debug("<<회원정보수정 처리>> : " + member);
+		if(result.hasErrors()) {
+			return "myPageModify";
+		}
+		
+		MemberVO user = (MemberVO)session.getAttribute("user");
+		
+		member.setMem_num(user.getMem_num());
+		
+		mypageService.updateMember_detail(member);
+		
+		return "redirect:/mypage/myPageMain.do";
+		
 	}
 	
 	//비밀번호 변경 폼 호출
@@ -117,9 +157,7 @@ public class MypageController {
 	public String getProfile(HttpSession session, HttpServletRequest request, Model model) {
 		
 		MemberVO user = (MemberVO)session.getAttribute("user");
-		
-		logger.debug("<<프로필사진출력시 member 정보>> : " + user);
-		
+				
 		if(user == null) {
 			byte[] readbyte = FileUtil.getBytes(
 					request.getServletContext().getRealPath("/image_bundle/face.png"));
@@ -140,18 +178,12 @@ public class MypageController {
 		Map<String, String> mapAjax = new HashMap<String, String>();
 		
 		MemberVO user = (MemberVO)session.getAttribute("user");
-		
-		logger.debug("<<프로필사진 업로드>> : " + user);
-		
+				
 		if(user == null) {
 			mapAjax.put("result", "logout");
-			System.out.println("ss");
 		}else {
-			System.out.println("dd");
 			member.setMem_num(user.getMem_num());
-			logger.debug("<멤버정보>" + member);
 			mypageService.updateProfile(member);
-			System.out.println("dddd");
 			mapAjax.put("result", "success");
 		}
 		

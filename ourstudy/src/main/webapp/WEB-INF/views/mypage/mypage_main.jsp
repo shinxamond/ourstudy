@@ -13,19 +13,19 @@
 			<table>
 				<tr>
 					<th>아이디</th>
-					<td>sky9999</td>
+					<td>${member.mem_id}</td>
 				</tr>
 				<tr>
 					<th>이메일</th>
-					<td>sky9999@test.com</td>
+					<td>${member.mem_email}</td>
 				</tr>
 				<tr>
 					<th>전화번호</th>
-					<td>010-1111-1111</td>
+					<td>${member.mem_phone}</td>
 				</tr>
 				<tr>
 					<th>주소</th>
-					<td>서울시 OO동 OO아파트</td>
+					<td>${member.mem_address1} ${member.mem_address2}</td>
 				</tr>
 				<tr>
 					<th>이용권<sub style = "font-size : 4pt;">(최근구매)</sub></th>

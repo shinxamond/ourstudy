@@ -1,7 +1,15 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>    
+<%@ taglib prefix = "fn" uri = "http://java.sun.com/jsp/jstl/functions" %>
 <link rel="stylesheet" href="${pageContext.request.contextPath}/css/mypage/mypage.css">
+<script type="text/javascript" src="${pageContext.request.contextPath}/js/makeEmail.js"></script>
+<script>
+  const hypenTel = (target) => {
+ target.value = target.value.replace(/[^0-9]/g, '')
+   							.replace(/^(\d{2,3})(\d{3,4})(\d{4})$/, `$1-$2-$3`);
+}
+</script>
 <!-- 마이페이지 회원정보 수정 시작 -->
 <div id = "mypage_mem_info">
 	<div class = "wrap-meminfo">
@@ -9,7 +17,7 @@
 			<h1>회원정보수정</h1>
 		</div>
 		<hr class = "horizontal-line">
-		<form:form action = "myPageModify.do" id = "myPageModify_form" modelAttribute="memberVO">
+		<form:form action = "myPageModify.do" id = "myPageModify_form" modelAttribute="member">
 		<form:errors element="div" cssClass="error-color"/>
 		<div class = "mem-info-content">
 			<table>
@@ -20,14 +28,14 @@
 				<tr>
 					<th>이름</th>
 					<td>
-						<%-- <form:input path="mem_name"/> --%>
-						<%-- <form:errors path="mem_name" cssClass="error-color"/> --%>
+						<form:input path="mem_name"/>
+						<form:errors path="mem_name" cssClass="error-color"/>
 					</td>
 				</tr>
 				<tr>
 					<th>이메일</th>
 					<td>
-						<input type="text" id="user_email" required>
+						<input type="text" id="user_email" required value = "${fn:substringBefore(member.mem_email, '@')}">
 						<span id="middle">@</span>
 						<select id="email_address" name="email_address" title="이메일 선택" class="email_address">
 							<option value="naver.com">naver.com</option>
@@ -37,35 +45,37 @@
 							<option value="nate.com">nate.com</option>
 							<option value="direct">직접입력</option>
 						</select>
+						<input type="text" id="email_direct" name="email_direct"/>
+						<form:hidden path="mem_email"/>
 					</td>
 				</tr>
 				<tr>
 					<th>전화번호</th>
 					<td>
-						<%-- <form:input path="mem_phone" placeholder=" -을 제외하고 입력하세요"/>
-						<form:errors path="mem_phone" cssClass="error-color"/> --%>
+						<form:input path="mem_phone" oninput="hypenTel(this)" maxlength="13" placeholder=" 숫자만 입력하세요"/>
+						<form:errors path="mem_phone" cssClass="error-color"/>
 					</td>
 				</tr>
 				<tr>
 					<th>우편번호</th>
 					<td>
-						<%-- <form:input path="mem_zipcode"/> --%>
+						<form:input path="mem_zipcode"/>
 						<input type="button" onclick="execDaumPostcode()" value="우편번호찾기">
-						<%-- <form:errors path="mem_zipcode" cssClass="error-color"/> --%>
+						<form:errors path="mem_zipcode" cssClass="error-color"/>
 					</td>
 				</tr>
 				<tr>
 					<th>주소</th>
 					<td>
-						<%-- <form:input path="mem_address1"/>
-						<form:errors path="mem_address1" cssClass="error-color"/> --%>
+						<form:input path="mem_address1"/>
+						<form:errors path="mem_address1" cssClass="error-color"/>
 					</td>
 				</tr>
 				<tr>
 					<th>상세주소</th>
 					<td>
-						<%-- <form:input path="mem_address2"/>
-						<form:errors path="mem_address2" cssClass="error-color"/> --%>
+						<form:input path="mem_address2"/>
+						<form:errors path="mem_address2" cssClass="error-color"/>
 					</td>
 				</tr>
 				<tr>
@@ -79,7 +89,7 @@
 			<span><a href = "${pageContext.request.contextPath}/mypage/myPagedeleteMember.do"  class = "link-font small">회원탈퇴 ></a></span>
 		</div>
 		<div style = "text-align : center;">
-			<%-- <form:button>수정</form:button> --%>
+			<form:button>수정</form:button>
 			<input type="button" value="홈으로" onclick="location.href='${pageContext.request.contextPath}/main/main.do'">
 		</div>
 		</form:form>

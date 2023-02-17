@@ -23,7 +23,7 @@ public interface MypageMapper {
 	
 	//============회원정보 수정=============//
 	//회원 상세 정보 수정
-	@Update("UPDATE member_detail SET mem_phone = #{mem_phone}, mem_email = #{mem_email}, mem_zipcode = #{mem_zipcode}, mem_address1 = #{mem_address1}, mem_address2 = #{mem_address2}, mem_mdate = SYSDATE WHERE mem_num = #{mem_num}")
+	@Update("UPDATE member_detail SET mem_name = #{mem_name}, mem_phone = #{mem_phone}, mem_email = #{mem_email}, mem_zipcode = #{mem_zipcode}, mem_address1 = #{mem_address1}, mem_address2 = #{mem_address2}, mem_mdate = SYSDATE WHERE mem_num = #{mem_num}")
 	public void updateMember_detail(MemberVO member);
 	//회원 비밀번호 수정
 	@Update("UPDATE member_detail SET mem_pw = #{mem_pw} WHERE mem_num = #{mem_num}")

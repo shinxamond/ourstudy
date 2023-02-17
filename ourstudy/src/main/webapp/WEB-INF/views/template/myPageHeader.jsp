@@ -9,7 +9,7 @@
 	<div class = "element-box">
 		<div class = "element">
 			<a href="#profile_modal" rel="modal:open"><img src = "${pageContext.request.contextPath}/mypage/photoView.do" class = "profile-photo"></a>
-				<span class = "span-align">안녕하세요, <strong><a href = "${pageContext.request.contextPath}/mypage/myPageMain.do">최영민</a></strong>님</span>
+				<span class = "span-align">안녕하세요, <strong><a href = "${pageContext.request.contextPath}/mypage/myPageMain.do">${member.mem_name}</a></strong>님</span>
 				<br>
 				<span style = "padding-left: 110px;">오늘도 아워스터디를 이용해주셔서 감사합니다.</span>
 				<p><a href = "${pageContext.request.contextPath}/mypage/myPageModify.do"  class = "link-font small">정보수정 ></a></p>
