@@ -55,6 +55,8 @@ public class MemberVO {
 
 		//MultipartFile -> byte[]
 		setMem_photo(upload.getBytes());
+		//파일 이름
+		setMem_photo_name(upload.getOriginalFilename());
 	}
 
 	public int getMem_num() {
