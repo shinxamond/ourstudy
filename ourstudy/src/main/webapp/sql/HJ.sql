@@ -22,9 +22,11 @@ CREATE TABLE pay(
  pay_date date default sysdate not null,
  mem_num number not null,
  ticket_num number not null,
+ point_num number not null,
  constraint pay_pk primary key (pay_num),
  constraint pay_fk1 foreign key (mem_num) references  member (mem_num),
  constraint pay_fk2 foreign key (ticket_num) references ticket (ticket_num),
+ constraint pay_fk3 foreign key (point_num) references point (point_num)
 );
 
 -- 결제 시퀀스
