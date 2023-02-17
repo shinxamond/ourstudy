@@ -10,7 +10,29 @@
     	<put-attribute name="body"
     	  value="/WEB-INF/views/talk/talkRoomWrite.jsp"/>        
     </definition>
+
+    <definition name="ticketList" extends="main">
+    	<put-attribute name="title" value="이용권 목록"/>
+    	<put-attribute name="body"
+    	  value="/WEB-INF/views/ticket/ticketList.jsp"/>        
+    </definition>
+    
+    <!-- 관리자 -->
+     <definition name="adminTicketList" extends="admin">
+    	<put-attribute name="title" value="관리자 이용권 목록"/>
+    	<put-attribute name="body"
+    	  value="/WEB-INF/views/ticket/admin_ticketList.jsp"/>        
+    </definition>
+    
+    <definition name="ticketAdminWrite" extends="admin">
+    	<put-attribute name="title" value="이용권 등록"/>
+    	<put-attribute name="body"
+    	  value="/WEB-INF/views/ticket/admin_writeForm.jsp"/>        
+    </definition>
+    
+
 </tiles-definitions>
+
 
 
 
