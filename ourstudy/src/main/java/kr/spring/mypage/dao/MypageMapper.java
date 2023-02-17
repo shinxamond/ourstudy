@@ -5,15 +5,21 @@ import java.util.Map;
 
 import org.apache.ibatis.annotations.Delete;
 import org.apache.ibatis.annotations.Insert;
+import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Select;
 import org.apache.ibatis.annotations.Update;
 
 import kr.spring.member.vo.MemberVO;
 
+@Mapper
 public interface MypageMapper {
 	//============프로필 이미지 등록 및 업데이트=============//
-	@Update("UPDATE member_detail SET mem_photo=#{mem_photo} WHERE mem_num=#{mem_num}")
+	@Update("UPDATE member_detail SET mem_photo=#{mem_photo}, mem_photo_name = #{mem_photo_name} WHERE mem_num=#{mem_num}")
 	public void updateProfile(MemberVO member);
+	
+	//회원정보 가져오기
+	@Select("SELECT * FROM member m JOIN member_detail d ON m.mem_num=d.mem_num WHERE m.mem_num=#{mem_num}")
+	public MemberVO selectMember(Integer mem_num);
 	
 	//============회원정보 수정=============//
 	//회원 상세 정보 수정
