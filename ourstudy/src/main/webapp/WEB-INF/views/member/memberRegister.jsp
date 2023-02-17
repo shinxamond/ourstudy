@@ -4,6 +4,12 @@
 <!-- 중앙 컨텐츠 시작 -->
 <script type="text/javascript" src="${pageContext.request.contextPath}/js/confirmId.js"></script>
 <script type="text/javascript" src="${pageContext.request.contextPath}/js/makeEmail.js"></script>
+<script>
+  const hypenTel = (target) => {
+ target.value = target.value.replace(/[^0-9]/g, '')
+   							.replace(/^(\d{2,3})(\d{3,4})(\d{4})$/, `$1-$2-$3`);
+}
+</script>
 <div class="page-main">
 	<h2>회원가입</h2>
 	<form:form action="registerUser.do" id="register_form" modelAttribute="memberVO">
@@ -61,7 +67,7 @@
 			
 			<li>
 				<label for="phone">전화번호</label>
-				<form:input path="mem_phone" placeholder=" -을 제외하고 입력하세요"/>
+				<form:input path="mem_phone" oninput="hypenTel(this)" maxlength="13" placeholder=" 숫자만 입력하세요"/>
 				<form:errors path="mem_phone" cssClass="error-color"/>
 			</li>
 
