@@ -7,7 +7,7 @@
 	<a href="${pageContext.request.contextPath}/board/list.do">게시판</a>
 	
 	<c:if test="${!empty user && (user.mem_auth == 1 || user.mem_auth == 2)}">
-	<a href="${pageContext.request.contextPath}/member/myPage.do">MY페이지</a>
+	<a href="${pageContext.request.contextPath}/mypage/myPageMain.do.do">MY페이지</a>
 	</c:if>
 	
 	<c:if test="${!empty user}">
