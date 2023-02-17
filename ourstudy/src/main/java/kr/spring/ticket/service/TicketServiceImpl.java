@@ -24,7 +24,7 @@ public class TicketServiceImpl implements TicketService{
 	
 	@Override
 	public void insertTicket(TicketVO ticket) {
-		// TODO Auto-generated method stub
+		ticketMapper.insertTicket(ticket);
 		
 	}
 

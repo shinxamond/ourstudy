@@ -3,6 +3,7 @@ package kr.spring.ticket.controller;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
@@ -10,6 +11,7 @@ import org.springframework.web.servlet.ModelAndView;
 import kr.spring.ticket.service.TicketService;
 import kr.spring.ticket.vo.TicketVO;
 
+@Controller
 public class TicketController {
 	private static final Logger logger = 
 			LoggerFactory.getLogger(TicketController.class);
@@ -23,7 +25,7 @@ public class TicketController {
 		return new TicketVO();
 	}
 	
-	//======= 이용권 목록 =========//
+	//이용권 목록
 	@RequestMapping("/ticket/ticketList.do")
 	public ModelAndView process() {
 		
@@ -33,6 +35,5 @@ public class TicketController {
 		
 		return mav;
 	}
-	
 	
 }
