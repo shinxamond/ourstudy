@@ -26,6 +26,10 @@ public interface MemberMapper {
 			+ "LEFT OUTER JOIN member_detail d ON m.mem_num=d.mem_num WHERE m.mem_id=#{mem_id}")
 	public MemberVO selectCheckMember(String mem_id);
 
+	@Select("SELECT * FROM member m JOIN member_detail d "
+		  + "ON m.mem_num=d.mem_num WHERE m.mem_num=#{mem_num}")
+	public MemberVO selectMember(Integer mem_num);
+	
 	//자동로그인
 	@Update("UPDATE member SET auto_id=#{auto_id} WHERE mem_id=#{mem_id}")
 	public void updateAuto_id(@Param("auto_id") String auto_id, @Param("mem_id") String mem_id);

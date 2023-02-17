@@ -8,9 +8,27 @@ import org.springframework.web.servlet.view.tiles3.TilesConfigurer;
 import org.springframework.web.servlet.view.tiles3.TilesView;
 import org.springframework.web.servlet.view.tiles3.TilesViewResolver;
 
+import kr.spring.interceptor.AutoLoginCheckInterceptor;
+import kr.spring.interceptor.LoginCheckInterceptor;
+
 //자바코드 기반 설정 클래스
 @Configuration
 public class AppConfig implements WebMvcConfigurer{
+	
+	private AutoLoginCheckInterceptor autoLogin;
+	private LoginCheckInterceptor loginCheck;
+	
+	@Bean
+	public AutoLoginCheckInterceptor interceptor() {
+		autoLogin = new AutoLoginCheckInterceptor();
+		return autoLogin;
+	}
+	
+	@Bean
+	public LoginCheckInterceptor interceptor2() {
+		loginCheck = new LoginCheckInterceptor();
+		return loginCheck;
+	}
 	
 	//타일스 설정
 	@Bean

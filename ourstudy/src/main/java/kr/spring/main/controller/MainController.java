@@ -9,6 +9,8 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 
+import kr.spring.member.vo.MemberVO;
+
 @Controller
 public class MainController {
 	
@@ -23,6 +25,12 @@ public class MainController {
 		return "main";//타일스 설정값
 	}
 	
+	@RequestMapping("/main/admin.do")
+	public String adminMain(Model model) {
+		
+		
+		return "admin";
+	}
 }
 
 

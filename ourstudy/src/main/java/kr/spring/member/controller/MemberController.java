@@ -137,7 +137,7 @@ public class MemberController {
 					//클라이언트에서 식별가능하도록 쿠키 만들기
 					Cookie auto_cookie = new Cookie("auto-log",auto_id);
 					//쿠키의 유효기간은 하루
-					auto_cookie.setMaxAge(60*60*24);
+					auto_cookie.setMaxAge(60*60*24*1);
 					auto_cookie.setPath("/");
 
 					//생성한 쿠키를 클라이언트에 전송
