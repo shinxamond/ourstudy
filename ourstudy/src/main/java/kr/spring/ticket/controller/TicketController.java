@@ -34,7 +34,5 @@ public class TicketController {
 		return mav;
 	}
 	
-	//======= 이용권 등록하기 =========//
-	//등록 폼 호출
 	
 }
