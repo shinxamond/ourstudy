@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="UTF-8" ?>  
+<!DOCTYPE mapper   
+    PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"   
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">  
+<mapper namespace="kr.spring.item.dao.ItemMapper">  
+	<select id="selectList" parameterType="map" resultType="itemVO">
+		SELECT * 
+		FROM (SELECT a.*,rownum rnum 
+			  FROM (SELECT * 
+			  		FROM item 
+			  		WHERE item_num IN(SELECT max(item_num )
+			  						  FROM item
+			  						  WHERE item_title IN(SELECT DISTINCT item_title 
+			  						  					  FROM item 
+			  						  					  WHERE item_p_status=1) 
+			  						  GROUP BY item_index)  
+			  		ORDER BY item_num DESC)a) 
+		<![CDATA[
+		WHERE rnum >= #{start} and rnum <= #{end}
+		]]>
+		
+	</select>
+	
+	<select id="selectAdminCount" parameterType="map" resultType="integer">
+		SELECT
+			COUNT(*)
+		FROM item
+		<where>
+			<if test="keyword != null and keyword != ''">
+				<if test="keyfield == 1">
+					item_title LIKE '%' || #{keyword} || '%'
+				</if>
+				<if test="keyfield == 2">
+					item_index LIKE '%' || #{keyword} || '%'
+				</if>
+				<if test="keyfield == 3">
+					item_p_status LIKE '%' || #{keyword} || '%'
+				</if>
+			</if>
+		</where>
+	</select>  	
+	
+	<select id="selectAdminList" parameterType="map" resultType="itemVO">
+	SELECT
+			*
+		FROM (SELECT
+				a.*,
+				rownum rnum
+			  FROM (SELECT
+			  			*
+			  		FROM item
+			  		<where>
+						<if test="keyword != null and keyword != ''">
+							<if test="keyfield == 1">
+								item_title LIKE '%' || #{keyword} || '%'
+							</if>
+							<if test="keyfield == 2">
+								item_index LIKE '%' || #{keyword} || '%'
+							</if>
+							<if test="keyfield == 3">
+								item_p_status LIKE '%' || #{keyword} || '%'
+							</if>
+						</if>
+					</where>
+			  		ORDER BY item_num DESC)a)
+		<![CDATA[
+		WHERE rnum >= #{start} and rnum <= #{end}
+		]]>
+	</select>
+</mapper>
+
+
+
+
+
+
+
