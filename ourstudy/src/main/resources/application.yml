@@ -35,9 +35,11 @@ spring:
     username: ourstudy777 @gmail.com
     password: pxugayiqebevjtwm
     properties:
-      mail.smtp.auth: true
-      mail.smtp.starttls.enable: true
-      mail.smtp.starttls.required: true        mybatis: #mybatis 설정
+      mail:
+        smtp:
+          auth: true
+          starttls: 
+            enable: true        mybatis: #mybatis 설정
   type-aliases-package: kr.spring.**.vo
   mapper-locations: kr/spring/**/dao/*.xml   
     
