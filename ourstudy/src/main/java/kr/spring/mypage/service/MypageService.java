@@ -9,4 +9,6 @@ public interface MypageService {
 	public void updateProfile(MemberVO member);
 	
 	public void updateMember_detail(MemberVO member);
+	
+	public void updatePassword(MemberVO member);
 }

@@ -21,6 +21,7 @@ public interface MypageMapper {
 	@Select("SELECT * FROM member m JOIN member_detail d ON m.mem_num=d.mem_num WHERE m.mem_num=#{mem_num}")
 	public MemberVO selectMember(Integer mem_num);
 	
+	
 	//============회원정보 수정=============//
 	//회원 상세 정보 수정
 	@Update("UPDATE member_detail SET mem_name = #{mem_name}, mem_phone = #{mem_phone}, mem_email = #{mem_email}, mem_zipcode = #{mem_zipcode}, mem_address1 = #{mem_address1}, mem_address2 = #{mem_address2}, mem_mdate = SYSDATE WHERE mem_num = #{mem_num}")

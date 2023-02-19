@@ -16,29 +16,28 @@
 				<tr>
 					<th>현재 비밀번호</th>
 					<td>
-						<input type = "password">
-						<%-- <form:password path="now_passwd"/>
-						<form:errors path="now_passwd" cssClass="error-color"/> --%>
+						<form:password path="now_passwd"/>
+						<form:errors path="now_passwd" cssClass="error-color"/>
 					</td>
 				</tr>
 				<tr>
 					<th>새비밀번호</th>
 					<td>
-						<input type = "password">
-						<%-- <form:password path="mem_pw"/>
-						<form:errors path="mem_pw" cssClass="error-color"/> --%>
+						<form:password path="mem_pw"/>
+						<form:errors path="mem_pw" cssClass="error-color"/>
 					</td>
 				</tr>
 				<tr>
 					<th>비밀번호 확인</th>
 					<td>
 						<input type="password" id="confirm_passwd"/>
+						<span id="message_id"></span>
 					</td>
 				</tr>
 			</table>
 		</div>
 		<div style = "text-align : center;">
-			<%-- <form:button>변경</form:button> --%>
+			<form:button>변경</form:button>
 			<input type="button" value="홈으로" onclick="location.href='${pageContext.request.contextPath}/main/main.do'">
 		</div>
 		</form:form>

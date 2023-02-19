@@ -94,8 +94,66 @@ public class MypageController {
 	
 	//비밀번호 변경 폼 호출
 	@GetMapping("/mypage/myPagechangePasswd.do")
-	public String myPageChangePasswdForm() {
+	public String myPageChangePasswdForm(HttpSession session, Model model) {
+		
+		MemberVO user = (MemberVO)session.getAttribute("user");
+		
+		MemberVO member = (MemberVO)mypageService.selectMember(user.getMem_num());
+		
+		logger.debug("<<변경폼에서 멤버 정보>> : " + member);
+		model.addAttribute("member", member);
+		
 		return "myPagechangePasswd";
+	}
+	
+	//비밀번호 변경 폼에서 받은 데이터 처리
+	@PostMapping("/mypage/myPagechangePasswd.do")
+	public String submitMypageChangePasswd(@Valid MemberVO member, BindingResult result, HttpSession session, Model model, HttpServletRequest request) {
+		
+		
+		
+		if(result.hasFieldErrors("now_passwd") || result.hasFieldErrors("mem_pw")) {
+			
+			return myPageChangePasswdForm(session, model);
+		}
+		
+		//세션에서 user 정보 불러오기
+		MemberVO user = (MemberVO)session.getAttribute("user");
+		
+		member.setMem_num(user.getMem_num());
+		
+		//user 번호로 db에 저장된 비밀번호 확인을 위해 member 정보 불러오기
+		MemberVO db_member = mypageService.selectMember(member.getMem_num());
+		
+		//비밀번호 변경 폼에서 받아 member에 저장된 mem_pw(새비밀번호), now_passwd(원래비밀번호) 따로 저장
+		String np = member.getMem_pw();
+		String op = member.getNow_passwd();
+		
+		//변경 후 마이페이지 메인에서 필요한 나머지 정보 member에 담아주기
+		member = (MemberVO)mypageService.selectMember(user.getMem_num());
+		
+		//user정보로 불러와서 mem_pw는 현재비밀번호, now_passwd는 null이 됐으므로 다시 세팅해주기
+		member.setMem_pw(np);
+		member.setNow_passwd(op);		
+		
+		if(!db_member.getMem_pw().equals(member.getNow_passwd())) {
+			result.rejectValue("now_passwd", "invalidPassword");
+			
+			return myPageChangePasswdForm(session, model);
+		}
+		
+		logger.debug("<<변경폼 이후 멤버 정보>> : " + member);
+		
+		mypageService.updatePassword(member);
+		
+		//============나중에 자동로그인 삭제 추가되면 하기=====================//
+		//memberService.deleteAuto_id(member.getMem_num());
+		
+		model.addAttribute("message", "비밀번호가 변경되었습니다(재접속 시 설정되어 있는 자동 로그인 기능이 해제됩니다).");
+		model.addAttribute("url", request.getContextPath() + "/mypage/myPageMain.do");
+		
+		return "common/resultView";
+		
 	}
 	
 	//회원탈퇴 폼 호출

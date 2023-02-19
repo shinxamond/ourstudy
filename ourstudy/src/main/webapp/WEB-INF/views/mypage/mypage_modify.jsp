@@ -5,9 +5,13 @@
 <link rel="stylesheet" href="${pageContext.request.contextPath}/css/mypage/mypage.css">
 <script type="text/javascript" src="${pageContext.request.contextPath}/js/makeEmail.js"></script>
 <script>
-  const hypenTel = (target) => {
- target.value = target.value.replace(/[^0-9]/g, '')
-   							.replace(/^(\d{2,3})(\d{3,4})(\d{4})$/, `$1-$2-$3`);
+$(document).on("keyup", ".mem_phone", function() {
+	$(this).val($(this).val().replace(/[^0-9]/g, "").replace(/(^02|^0505|^1[0-9]{3}|^0[0-9]{2})([0-9]+)?([0-9]{4})$/,"$1-$2-$3").replace("--", "-") ); 
+});
+function numberphone(e){
+	if(e.value.length>11){
+		e.value=e.value.slice(0,11);
+	}
 }
 </script>
 <!-- 마이페이지 회원정보 수정 시작 -->
@@ -52,7 +56,7 @@
 				<tr>
 					<th>전화번호</th>
 					<td>
-						<form:input path="mem_phone" oninput="hypenTel(this)" maxlength="13" placeholder=" 숫자만 입력하세요"/>
+						<form:input path="mem_phone" oninput="numberphone(this)" maxlength="13" placeholder=" 숫자만 입력하세요"/>
 						<form:errors path="mem_phone" cssClass="error-color"/>
 					</td>
 				</tr>
