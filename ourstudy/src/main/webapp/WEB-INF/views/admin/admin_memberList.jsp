@@ -16,13 +16,10 @@
 				</select>
 			</li>
 			<li>
-				<input type="search" name="keyword"
-				       id="keyword" value="${param.keyword}">
+				<input type="search" name="keyword" id="keyword" value="${param.keyword}">
 			</li>
 			<li>
 				<input type="submit" value="찾기">
-				<input type="button" value="목록"
-				      onclick="location.href='admin_list.do'">
 			</li>
 		</ul>                                   
 	</form>

@@ -30,6 +30,8 @@ public class PagingUtil {
 		
 		String sub_url = "";
 		if(keyword != null) sub_url = "&keyfield="+keyfield+"&keyword="+keyword;
+		else if(keyword == null) sub_url = "&keyfield="+keyfield;
+		
 		if(addKey != null) sub_url += addKey;
 		
 		// 전체 페이지 수
