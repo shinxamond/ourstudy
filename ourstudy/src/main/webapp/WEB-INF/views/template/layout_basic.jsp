@@ -10,6 +10,7 @@
 <script type="text/javascript" src="${pageContext.request.contextPath}/js/jquery-3.6.0.min.js"></script>
 </head>
 <body>
+<tiles:insertAttribute name="sidebar"/>
 <div id="main">
 	<div id="main_header">
 		<tiles:insertAttribute name="header"/>
