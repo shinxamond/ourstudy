@@ -2,6 +2,7 @@
 	pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <!-- 중앙 컨텐츠 시작 -->
 <script type="text/javascript">
 	
@@ -24,11 +25,7 @@
 					<div class="card-header">독서실 이용권(시간제)</div>
 					<div class="card-body">
 						${ticket.ticket_name}
-						<div style="float: right;">${ticket.ticket_price}</div>
-						<div style="margin-top: 5px;">
-							<button type="button" class="btn btn-primary"
-								style="float: right;">구매하기</button>
-						</div>
+						<div style="float: right;"><fmt:formatNumber value="${ticket.ticket_price}"/>원</div>
 					</div>
 				</div>
 			</c:forEach>

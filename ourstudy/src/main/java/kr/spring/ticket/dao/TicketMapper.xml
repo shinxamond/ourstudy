@@ -21,7 +21,7 @@
 		FROM (SELECT
 		*
 		FROM ticket
-		ORDER BY ticket_num ASC)a)
+		ORDER BY ticket_type ASC)a)
 		
 	</select>
 
