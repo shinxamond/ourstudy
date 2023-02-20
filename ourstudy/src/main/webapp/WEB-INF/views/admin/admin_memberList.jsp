@@ -10,7 +10,7 @@
 	                                   method="get">
 		<ul class="search">
 			<li>
-				<select id="keyfield" name="keyfield" onchange="location.href='admin_list.do?keyfield='+this.value">
+				<select name="keyfield" onchange="location.href='admin_list.do?keyfield='+this.value">
 					<option value="1" <c:if test="${param.keyfield == 1}">selected</c:if>>최근가입일순</option>
 					<option value="2" <c:if test="${param.keyfield == 2}">selected</c:if>>가나다순(이름)</option>
 				</select>
