@@ -3,7 +3,7 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!-- 상단 시작 -->
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css">
-<h2 class="align-center">SpringPage</h2>
+<h2 class="align-center">임시</h2>
 <div class="align-right">
 	<a href="${pageContext.request.contextPath}/board/list.do">게시판</a>
 	
