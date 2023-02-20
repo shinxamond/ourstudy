@@ -8,6 +8,7 @@ import javax.servlet.http.HttpSession;
 import javax.validation.Valid;
 
 import org.apache.ibatis.annotations.Select;
+import org.apache.tiles.autotag.core.runtime.annotation.Parameter;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -69,14 +70,14 @@ public class ItemController {
 	@RequestMapping("/item/rentalItemList.do")
 	public ModelAndView rentalItemList(@RequestParam(value="pageNum", defaultValue="1")int currentPage, HttpSession session) {
 		Map<String,Object> map = new HashMap<String, Object>();
-		
+
 		MemberVO user = (MemberVO)session.getAttribute("user");
-		
+
 		int rentalItemCount = itemService.rentalItemCount(2, user.getMem_num());//표시여부 값
 		logger.debug("<<대여목록count>> : " + rentalItemCount);
 
 		PagingUtil page = new PagingUtil(currentPage, rentalItemCount, rentalItemCount, 1, "/item/rentalItemList.do");
-		
+
 		List <ItemVO> list = null;
 		map.put("item_r_status", 2);
 		map.put("mem_num", user.getMem_num());
@@ -137,6 +138,32 @@ public class ItemController {
 		return "redirect:/item/userList.do";
 	}
 
+	//============물품 반납===========//
+	@GetMapping("/item/userItemReturn.do")
+	public String itemReturn(@RequestParam int item_num, Model model, HttpServletRequest request) {
+		logger.debug("<<물품 반납>> : " + item_num);
+
+		itemService.Rstatus(3, item_num);//대여상태 변경
+
+		model.addAttribute("message", "반납신청완료");
+		model.addAttribute("url", request.getContextPath()+"/item/rentalItemList.do");
+		return "common/resultView";
+	}
+	
+	//============관리자 물품 반납===========//
+	@GetMapping("/item/adminItemReturn.do")
+	public String itemAdminReturn(@RequestParam int item_num, Model model, HttpServletRequest request) {
+		logger.debug("<<물품 반납>> : " + item_num);
+
+		itemService.Rstatus(1, item_num);//대여상태 변경
+		itemService.Return(item_num);//반납
+		
+		model.addAttribute("message", "반납완료");
+		model.addAttribute("url", request.getContextPath()+"/item/adminList.do");
+		return "common/resultView";
+	}
+
+
 	//=======목록 생성(관리자)===========//
 	@RequestMapping("/item/adminList.do")
 	public ModelAndView adminList(@RequestParam(value="pageNum", defaultValue="1")int currentPage, String keyfield, String keyword ) {
@@ -174,15 +201,23 @@ public class ItemController {
 	public String submititem(@Valid ItemVO itemVO, BindingResult result, Model model, HttpServletRequest request) {
 		logger.debug("<<물품 생성>> : " + itemVO);
 
+		if(itemVO.getItem_ufile().length==0) {
+			//upload는 자바빈(VO)에 팔드가 없기 때문에 명시 할 수 없음
+			result.rejectValue("item_ufile", "required");
+		}
+		//이미지 용량 체크
+		if(itemVO.getItem_ufile().length > 5*1024*1024) {//5MB    {"5MB"} validation.properties에 limitUploadSize {0}을 의미 
+			result.rejectValue("item_ufile", "limitUploadSize",new Object[] {"5MB"},null);
+		}
 		if(result.hasErrors()) {
 			return itemWrite();
 		}
 		itemService.insertItem(itemVO);
-		
+
 		model.addAttribute("message", "물품 생성 완료");
 		model.addAttribute("url", request.getContextPath()+"/item/adminList.do");
 		return "common/resultView";
-		
+
 	}
 
 	//======물품 수정=======//
@@ -199,6 +234,14 @@ public class ItemController {
 	public String submitModify(@Valid ItemVO itemVO, BindingResult result, Model model, HttpServletRequest request) {
 
 		logger.debug("<<물품수정후>> : " + itemVO);
+		if(itemVO.getItem_ufile().length==0) {
+			//upload는 자바빈(VO)에 팔드가 없기 때문에 명시 할 수 없음
+			result.rejectValue("item_ufile", "required");
+		}
+		//이미지 용량 체크
+		if(itemVO.getItem_ufile().length > 5*1024*1024) {//5MB    {"5MB"} validation.properties에 limitUploadSize {0}을 의미 
+			result.rejectValue("item_ufile", "limitUploadSize",new Object[] {"5MB"},null);
+		}
 
 		if(result.hasErrors()) {
 
@@ -210,7 +253,7 @@ public class ItemController {
 			model.addAttribute("url", request.getContextPath()+"/item/adminList.do");
 			return "common/resultView";
 		}
-		
+
 		itemService.updateItem(itemVO);
 
 		return "redirect:/item/adminList.do";
@@ -238,7 +281,7 @@ public class ItemController {
 	@ResponseBody//json
 	public Map<String,String> deleteFile(int item_num){
 		Map<String,String> mapJson = new HashMap<String, String>();
-		
+
 		itemService.deleteFile(item_num);
 		mapJson.put("result", "success");
 		return mapJson;

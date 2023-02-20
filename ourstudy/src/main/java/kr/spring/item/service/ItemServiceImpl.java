@@ -54,8 +54,7 @@ public class ItemServiceImpl implements ItemService{
 
 	@Override
 	public void Return(Integer item_num) {
-		// TODO Auto-generated method stub
-		
+		itemMapper.Return(item_num);
 	}
 
 	@Override

@@ -48,6 +48,9 @@
 				<if test="keyfield == 3">
 					item_p_status LIKE '%' || #{keyword} || '%'
 				</if>
+				<if test="keyfield == 4">
+					item_r_status LIKE '%' || #{keyword} || '%'
+				</if>
 			</if>
 		</where>
 	</select>  	
@@ -71,6 +74,9 @@
 							</if>
 							<if test="keyfield == 3">
 								item_p_status LIKE '%' || #{keyword} || '%'
+							</if>
+							<if test="keyfield == 4">
+								item_r_status LIKE '%' || #{keyword} || '%'
 							</if>
 						</if>
 					</where>
