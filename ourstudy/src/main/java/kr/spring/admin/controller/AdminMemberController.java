@@ -49,7 +49,7 @@ public class AdminMemberController {
 		//페이지 처리
 		PagingUtil page = 
 				new PagingUtil(keyfield,keyword,
-						currentPage,count,20,10,
+						currentPage,count,5,10,
 						"admin_list.do");
 		
 		List<AdminMemberVO> list = null;
