@@ -6,7 +6,7 @@
 		<li>
 			<input type="button" class="menu-btn"
 			 value="회원관리" 
-			 onclick="location.href='#'">
+			 onclick="location.href='${pageContext.request.contextPath}/admin/admin_list.do'">
 		</li>
 		<li>
 			<input type="button" class="menu-btn"

@@ -50,7 +50,7 @@ public class AdminMemberController {
 		PagingUtil page = 
 				new PagingUtil(keyfield,keyword,
 						currentPage,count,20,10,
-						"/admin/admin_list.do");
+						"admin_list.do");
 		
 		List<AdminMemberVO> list = null;
 		if(count > 0) {
@@ -61,7 +61,7 @@ public class AdminMemberController {
 		}
 		
 		ModelAndView mav = new ModelAndView();
-		mav.setViewName("admin_memberList");
+		mav.setViewName("adminMemberList");
 		mav.addObject("count", count);
 		mav.addObject("adminMemberList", list);
 		mav.addObject("page", page.getPage());

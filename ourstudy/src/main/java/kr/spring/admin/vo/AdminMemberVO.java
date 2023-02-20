@@ -17,6 +17,7 @@ public class AdminMemberVO {
 	private Date mem_regdate;
 	private String mem_phone;
 	private String mem_email;
+	
 	public int getMem_num() {
 		return mem_num;
 	}

@@ -12,10 +12,10 @@
     </definition>
     
     <!-- 관리자 -->
-    <definition name="admin_memberList" extends="admin">
+    <definition name="adminMemberList" extends="admin">
     	<put-attribute name="title" value="회원목록(관리자전용)"/>
     	<put-attribute name="body"
-    	  value="/WEB-INF/views/member/admin_memberList.jsp"/>        
+    	  value="/WEB-INF/views/admin/admin_memberList.jsp"/>        
     </definition>
  
 </tiles-definitions>
