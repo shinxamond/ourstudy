@@ -16,6 +16,7 @@ public interface TicketService {
 	//이용권 삭제
 	public void deleteTicket(Integer ticket_num);
 	//이용권 목록
-	public List<TicketVO> selectList(Map<String, Object> map);
+	public List<TicketVO> selectTicketList(Map<String, Object> map);
+	public int selectTicketCount(Map<String, Object> map);
 
 }

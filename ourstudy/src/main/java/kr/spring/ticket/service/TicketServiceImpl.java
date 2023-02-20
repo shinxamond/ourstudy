@@ -40,7 +40,12 @@ public class TicketServiceImpl implements TicketService{
 	}
 
 	@Override
-	public List<TicketVO> selectList(Map<String, Object> map) {
-		return ticketMapper.selectList(map);
+	public List<TicketVO> selectTicketList(Map<String, Object> map) {
+		return ticketMapper.selectTicketList(map);
+	}
+
+	@Override
+	public int selectTicketCount(Map<String, Object> map) {
+		return ticketMapper.selectTicketCount(map);
 	}
 }

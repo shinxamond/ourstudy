@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8" ?>  
+<!DOCTYPE mapper   
+    PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"   
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="kr.spring.ticket.dao.TicketMapper">
+
+	<select id="selectTicketCount" parameterType="map"
+		resultType="integer">
+		SELECT
+		COUNT(*)
+		FROM ticket
+	</select>
+
+	<select id="selectTicketList" parameterType="map"
+		resultType="ticketVO">
+		SELECT
+		*
+		FROM (SELECT
+		a.*,
+		rownum rnum
+		FROM (SELECT
+		*
+		FROM ticket
+		ORDER BY ticket_num ASC)a)
+		
+	</select>
+
+
+</mapper>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
