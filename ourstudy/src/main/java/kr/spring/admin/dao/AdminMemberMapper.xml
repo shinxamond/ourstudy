@@ -9,18 +9,10 @@
   		  COUNT(*)
   		FROM member m LEFT OUTER JOIN member_detail d
   		ON m.mem_num = d.mem_num
-  		<where>
-  			<if test="keyword != null and keyword != ''">
-  				<if test="keyfield == 1">
-  					d.mem_name LIKE '%' || #{keyword} || '%' OR
-  					d.mem_num LIKE '%' || #{keyword} || '%' OR
-  				</if>
-  				<if test="keyfield == 2">
-  					d.mem_name LIKE '%' || #{keyword} || '%' OR
-  					d.mem_num LIKE '%' || #{keyword} || '%' OR
-  				</if>
-  			</if>
-  		</where>                           
+  		<if test="keyword != null and keyword != ''">
+  			WHERE d.mem_name LIKE '%' || #{keyword} || '%' OR
+  				  d.mem_num LIKE '%' || #{keyword} || '%'
+  		</if>                         
   	</select>
   	
   	<select id="selectList" parameterType="map"
@@ -34,20 +26,18 @@
   		              *
   		            FROM member m LEFT OUTER JOIN
   		                 member_detail d 
-  		            ON m.mem_num = d.mem_num
-  		            <where>
-			  			<if test="keyword != null and keyword != ''">
-			  				<if test="keyfield == 1">
-			  					d.mem_name LIKE '%' || #{keyword} || '%' OR
-			  					d.mem_num LIKE '%' || #{keyword} || '%' OR
-			  				</if>
-			  				<if test="keyfield == 2">
-			  					d.mem_name LIKE '%' || #{keyword} || '%' OR
-			  					d.mem_num LIKE '%' || #{keyword} || '%' OR
-			  				</if>
-			  			</if>
-			  		</where>
-  		            ORDER BY d.mem_regdate DESC NULLS LAST)a)
+  		            ON m.mem_num = d.mem_num             
+			  		<if test="keyword != null and keyword != ''">
+				  		WHERE d.mem_name LIKE '%' || #{keyword} || '%' OR
+				  			  d.mem_num LIKE '%' || #{keyword} || '%' 
+			  		</if>
+  		            <if test="keyfield == 1">
+  		            ORDER BY d.mem_regdate DESC NULLS LAST
+  		            </if>
+  		            <if test="keyfield == 2">
+  		            ORDER BY d.mem_name ASC NULLS LAST
+  		            </if>
+  		            )a) 				  		
   		<![CDATA[
   		WHERE rnum >= #{start} AND rnum <= #{end}
   		]]>                           
