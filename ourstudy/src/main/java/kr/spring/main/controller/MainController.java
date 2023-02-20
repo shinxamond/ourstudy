@@ -27,7 +27,7 @@ public class MainController {
 	@RequestMapping("/main/main.do")
 	public String main(Model model) {
 
-		return "memberHome";//타일스 설정값
+		return "main";//타일스 설정값
 	}
 	
 	@RequestMapping("/main/admin.do")
