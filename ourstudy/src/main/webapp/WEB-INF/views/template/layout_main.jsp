@@ -9,8 +9,8 @@
 <link rel="stylesheet" href="${pageContext.request.contextPath}/css/narimain.css">
 <script type="text/javascript" src="${pageContext.request.contextPath}/js/jquery-3.6.0.min.js"></script>
 </head>
-<tiles:insertAttribute name="sidebar"/>
 <body>
+<tiles:insertAttribute name="sidebar"/>
 <div id="main">
 	<div id="main_header">
 		<tiles:insertAttribute name="header"/>
