@@ -5,10 +5,35 @@
        "http://tiles.apache.org/dtds/tiles-config_3_0.dtd">
 
 <tiles-definitions>
-    <definition name="" extends="main">
-    	<put-attribute name="title" value="채팅방 생성"/>
+    <definition name="itemWrite" extends="main">
+    	<put-attribute name="title" value="물품생성(관리자)"/>
     	<put-attribute name="body"
-    	  value="/WEB-INF/views/talk/talkRoomWrite.jsp"/>        
+    	  value="/WEB-INF/views/item/itemWrite.jsp"/>        
+    </definition>
+    <definition name="userList" extends="main">
+    	<put-attribute name="title" value="회원리스트"/>
+    	<put-attribute name="body"
+    	  value="/WEB-INF/views/item/userList.jsp"/>        
+    </definition>
+     <definition name="rentalItemList" extends="main">
+    	<put-attribute name="title" value="대여목록"/>
+    	<put-attribute name="body"
+    	  value="/WEB-INF/views/item/rentalItemList.jsp"/>        
+    </definition>
+    <definition name="userRental" extends="main">
+    	<put-attribute name="title" value="물품대여"/>
+    	<put-attribute name="body"
+    	  value="/WEB-INF/views/item/userRental.jsp"/>        
+    </definition>
+    <definition name="adminList" extends="main">
+    	<put-attribute name="title" value="관리자리스트"/>
+    	<put-attribute name="body"
+    	  value="/WEB-INF/views/item/adminList.jsp"/>        
+    </definition>
+     <definition name="itemModify" extends="main">
+    	<put-attribute name="title" value="물품수정(관리자)"/>
+    	<put-attribute name="body"
+    	  value="/WEB-INF/views/item/itemModify.jsp"/>        
     </definition>
 </tiles-definitions>
 

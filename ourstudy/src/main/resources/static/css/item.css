@@ -1,0 +1,70 @@
+@charset "UTF-8";
+/*
+기본 폼---------*/
+#item_modify_form{
+	width:600px;
+}
+div#userList #userList-area{
+	margin:2px;
+	padding:3px;
+	width:300px;
+	height:300px;
+	float:left;
+	overflow:hidden;
+	text-align:center;
+	
+}
+div#userItemList #userItemList-area{
+	margin:2px;
+	padding:3px;
+	width:300px;
+	height:400px;
+	float:left;
+	overflow:hidden;
+	text-align:center;
+	
+}
+div.item-image{
+	width:450px;
+	margin:0 0 10px 0;
+	float:left;
+}
+div.item-detail{
+	padding:0 0 5px 0;
+}
+.item-detail form{
+	border:none;
+	width:400px;
+	float:left;
+	margin:0;
+}
+div.item-detail ul li{
+	margin-top:20px;
+	font-size:20px;
+}
+
+select#inum option{
+	width:200px;
+}
+div#clear{ 
+	clear:both;
+}
+
+form#item_search_form{
+	width:600px;
+	border:none;
+}
+ul.item_search{
+	width:400px;
+	list-style:none;
+	padding:0;
+	margin:0 auto;
+}
+ul.item_search li{
+	margin:0 0 9px 0;
+	padding:0;
+	display:inline;
+}
+ul.item_search li input[type="search"]{
+	width:150px;
+}
