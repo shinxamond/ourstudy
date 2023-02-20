@@ -9,10 +9,8 @@
 		<ul class="search">
 			<li>
 				<select name="keyfield">
-					<option value="1" <c:if test="${param.keyfield == 1}">selected</c:if>>ID</option>
-					<option value="2" <c:if test="${param.keyfield == 2}">selected</c:if>>이름</option>
-					<option value="3" <c:if test="${param.keyfield == 3}">selected</c:if>>이메일</option>
-					<option value="4" <c:if test="${param.keyfield == 4}">selected</c:if>>전체</option>
+					<option value="1" <c:if test="${param.keyfield == 1}">selected</c:if>>최근가입일순</option>
+					<option value="2" <c:if test="${param.keyfield == 2}">selected</c:if>>가나다순(이름)</option>
 				</select>
 			</li>
 			<li>
