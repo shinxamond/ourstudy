@@ -18,7 +18,6 @@
      <definition name="memberHome" 
         template="/WEB-INF/views/template/layout_main.jsp">
     	<put-attribute name="title" value="SpringPage"/>
-    	<put-attribute name="include" value="/WEB-INF/views/template/include.jsp"/>
     	<put-attribute name="header" value="/WEB-INF/views/template/home_header.jsp"/>
     	<put-attribute name="body" value="/WEB-INF/views/main/main.jsp"/>   
     </definition>

@@ -21,7 +21,7 @@ public interface TicketMapper {
 	//이용권 등록
 	@Insert("INSERT INTO ticket (ticket_num,ticket_kind,"
 		  + "ticket_name,ticket_type,ticket_price) VALUES "
-		  + "(#{ticket_num},#{ticket_kind},#{ticket_name},"
+		  + "(ticket_seq.nextval,#{ticket_kind},#{ticket_name},"
 		  + "#{ticket_type},#{ticket_price})")
 	public void insertTicket(TicketVO ticket);
 	//이용권 수정

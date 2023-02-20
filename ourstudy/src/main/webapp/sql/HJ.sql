@@ -6,8 +6,7 @@ CREATE TABLE Ticket(
  ticket_type number(1) not null,
  ticket_price number(8) not null,
  mem_num number not null,
- constraint ticket_pk primary key (ticket_num),
- constraint ticket_fk1 foreign key (mem_num) references  member (mem_num)
+ constraint ticket_pk primary key (ticket_num)
 );
 
 -- 이용권 시퀀스

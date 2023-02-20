@@ -8,8 +8,8 @@
 <title><tiles:getAsString name="title"/></title>
 <link rel="stylesheet" href="${pageContext.request.contextPath}/css/narimain.css">
 <script type="text/javascript" src="${pageContext.request.contextPath}/js/jquery-3.6.0.min.js"></script>
-<tiles:insertAttribute name="include"/>
 </head>
+<tiles:insertAttribute name="sidebar"/>
 <body>
 <div id="main">
 	<div id="main_header">

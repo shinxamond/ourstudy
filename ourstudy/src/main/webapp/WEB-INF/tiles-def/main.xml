@@ -7,9 +7,9 @@
 <tiles-definitions>
     <definition name="main" 
         template="/WEB-INF/views/template/layout_basic.jsp">
-    	<put-attribute name="title" value="SpringPage"/>
-    	<put-attribute name="include" 
-    	  value="/WEB-INF/views/template/include.jsp"/>
+        <put-attribute name="title" value="SpringPage"/>
+        <put-attribute name="sidebar"
+        value="/WEB-INF/views/template/sidebar.jsp"/>
     	<put-attribute name="header" 
     	  value="/WEB-INF/views/template/header.jsp"/>
     	<put-attribute name="body"
@@ -21,8 +21,6 @@
     <definition name="admin" 
         template="/WEB-INF/views/template/layout_admin.jsp">
     	<put-attribute name="title" value="관리자페이지"/>
-    	<put-attribute name="include" 
-    	  value="/WEB-INF/views/template/include.jsp"/>
     	<put-attribute name="header" 
     	  value="/WEB-INF/views/template/header.jsp"/>
     	<put-attribute name="nav" 

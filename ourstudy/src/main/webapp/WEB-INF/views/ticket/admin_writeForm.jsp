@@ -13,31 +13,13 @@
 					<legend class="col-form-label col-sm-2 pt-1.5"
 						style="margin-right: 10px; text-align: center;">이용권 종류</legend>
 					<div class="btn-group" role="group">
-						<input type="radio" class="btn-check" name="ticket_kind"
-							   id="ticket_kind1" autocomplete="off">
+						<form:radiobutton path="ticket_kind" class="btn-check" name="ticket_kind"
+							   id="ticket_kind1" autocomplete="off" value="1"/>
 						<label class="btn btn-outline-primary" for="ticket_kind1">독서실 이용권</label>
-						<input type="radio" class="btn-check" name="ticket_kind"
-							   id="ticket_kind2" autocomplete="off">
+						<form:radiobutton path="ticket_kind" class="btn-check" name="ticket_kind"
+							   id="ticket_kind2" autocomplete="off" value="2"/>
 						<label class="btn btn-outline-primary" for="ticket_kind2">사물함 이용권</label>
 					</div>
-					<!-- <input type="radio" class="btn-check" name="options-outlined"
-						id="ticket_kind1" autocomplete="off"> <label
-						class="btn btn-outline-primary" for="ticket_kind1">독서실 이용권</label>
-					<input type="radio" class="btn-check" name="options-outlined"
-						id="ticket_kind2" autocomplete="off"> <label
-						class="btn btn-outline-primary" for="ticket_kind2">사물함 이용권</label> -->
-					
-					<!-- <div class="form-check form-check-inline"
-						style="padding-left: 50px;">
-						<input class="form-check-input" type="radio" name="ticket_type"
-							id="ticket_type1" value="kind1"> <label
-							class="form-check-label" for="inlineRadio1">독서실 이용권</label>
-					</div>
-					<div class="form-check form-check-inline">
-						<input class="form-check-input" type="radio" name="ticket_type"
-							id="ticket_type2" value="kind2"> <label
-							class="form-check-label" for="inlineRadio2">사물함 이용권</label>
-					</div> -->
 				</fieldset>
 				<div class="row mb-3">
 					<label for="ticket_name" class="col-sm-2 col-form-label">이용권명</label>
@@ -60,52 +42,52 @@
 						<div style="margin-left: 5px;">
 							<div class="form-check form-check-inline">
 								<form:radiobutton path="ticket_type" class="form-check-input" name="ticket_type"
-									id="ticket_type1"/>
+									id="ticket_type1" value="1"/>
 								<label class="form-check-label" for="ticket_type1"> 2시간 </label>
 							</div>
 							<div class="form-check form-check-inline" style="margin-left:50px;">
 								<form:radiobutton path="ticket_type" class="form-check-input" name="ticket_type"
-									id="ticket_type7"/>
+									id="ticket_type7" value="7"/>
 								<label class="form-check-label" for="ticket_type7"> 1주 </label>
 							</div>
 
 							<div class="form-check">
 								<div class="form-check-inline">
 									<form:radiobutton path="ticket_type" class="form-check-input" name="ticket_type"
-										id="ticket_type2"/>
+										id="ticket_type2" value="2"/>
 									<label class="form-check-label" for="ticket_type2"> 4시간 </label>
 								</div>
 								<div class="form-check form-check-inline" style="margin-left:50px;">
 									<form:radiobutton path="ticket_type" class="form-check-input" name="ticket_type"
-										id="ticket_type8"/>
+										id="ticket_type8" value="8"/>
 									<label class="form-check-label" for="ticket_type8"> 2주 </label>
 								</div>
 							</div>
 							<div class="form-check">
 								<div class="form-check-inline">
 									<form:radiobutton path="ticket_type" class="form-check-input" name="ticket_type"
-										id="ticket_type3"/>
+										id="ticket_type3" value="3"/>
 									<label class="form-check-label" for="ticket_type3"> 8시간 </label>
 								</div>
 								<div class="form-check form-check-inline" style="margin-left:50px;">
 									<form:radiobutton path="ticket_type" class="form-check-input" name="ticket_type"
-										id="ticket_type9"/>
+										id="ticket_type9" value="9"/>
 									<label class="form-check-label" for="ticket_type9"> 4주 </label>
 								</div>
 							</div>
 							<div class="form-check">
 								<form:radiobutton path="ticket_type" class="form-check-input" name="ticket_type"
-									id="ticket_type4"/>
+									id="ticket_type4" value="4"/>
 								<label class="form-check-label" for="ticket_type4"> 12시간 </label>
 							</div>
 							<div class="form-check">
 								<form:radiobutton path="ticket_type" class="form-check-input" name="ticket_type"
-									id="ticket_type5"/>
+									id="ticket_type5" value="5"/>
 								<label class="form-check-label" for="ticket_type5"> 50시간 </label>
 							</div>
 							<div class="form-check">
 								<form:radiobutton path="ticket_type" class="form-check-input" name="ticket_type"
-									id="ticket_type6"/>
+									id="ticket_type6" value="6"/>
 								<label class="form-check-label" for="ticket_type6"> 100시간 </label>
 							</div>
 						</div>
