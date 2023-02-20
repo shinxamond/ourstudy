@@ -30,19 +30,17 @@ public class TicketServiceImpl implements TicketService{
 
 	@Override
 	public void updateTicket(TicketVO ticket) {
-		// TODO Auto-generated method stub
+		ticketMapper.updateTicket(ticket);
 		
 	}
 
 	@Override
 	public void deleteTicket(Integer ticket_num) {
-		// TODO Auto-generated method stub
-		
+		ticketMapper.deleteTicket(ticket_num);
 	}
 
 	@Override
 	public List<TicketVO> selectList(Map<String, Object> map) {
-		// TODO Auto-generated method stub
-		return null;
+		return ticketMapper.selectList(map);
 	}
 }

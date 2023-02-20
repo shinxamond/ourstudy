@@ -11,4 +11,6 @@ public interface MypageService {
 	public void updateMember_detail(MemberVO member);
 	
 	public void updatePassword(MemberVO member);
+	
+	public void deleteMember(Integer mem_num);
 }

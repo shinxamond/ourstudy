@@ -16,23 +16,21 @@
 				<tr>
 					<th>아이디</th>
 					<td>
-						<input type = "text">
-						<%-- <form:input path="mem_id"/>
-						<form:errors path="mem_id" cssClass="error-color"/> --%>
+						<form:input path="mem_id"/>
+						<form:errors path="mem_id" cssClass="error-color"/>
 					</td>
 				</tr>
 				<tr>
 					<th>비밀번호</th>
 					<td>
-						<input type = "password">
-						<%-- <form:password path="mem_pw"/>
-						<form:errors path="mem_pw" cssClass="error-color"/> --%>
+						<form:password path="mem_pw"/>
+						<form:errors path="mem_pw" cssClass="error-color"/>
 					</td>
 				</tr>
 			</table>
 		</div>
 		<div style = "text-align : center;">
-			<%-- <form:button>탈퇴</form:button> --%>
+			<form:button>탈퇴</form:button>
 			<input type="button" value="홈으로" onclick="location.href='${pageContext.request.contextPath}/main/main.do'">
 		</div>
 		</form:form>

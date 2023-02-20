@@ -21,6 +21,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
+import kr.spring.util.AuthCheckException;
 import kr.spring.util.FileUtil;
 import kr.spring.member.controller.MemberController;
 import kr.spring.member.service.MemberService;
@@ -158,8 +159,50 @@ public class MypageController {
 	
 	//회원탈퇴 폼 호출
 	@GetMapping("/mypage/myPagedeleteMember.do")
-	public String myPageDeleteMemberForm() {
+	public String myPageDeleteMemberForm(HttpSession session, Model model) {
+		MemberVO user = (MemberVO)session.getAttribute("user");
+		
+		MemberVO member = (MemberVO)mypageService.selectMember(user.getMem_num());
+		
+		model.addAttribute("member", member);
+		
 		return "myPagedeleteMember";
+	}
+	
+	//회원탈퇴 폼에서 전송받은 데이터 처리
+	@PostMapping("/mypage/myPagedeleteMember.do")
+	public String submitMypageDeleteMember(@Valid MemberVO member, BindingResult result, HttpSession session, Model model) {
+		
+		if(result.hasFieldErrors("mem_id") || result.hasFieldErrors("mem_pw")) {
+			return myPageDeleteMemberForm(session, model);
+		}
+		
+		MemberVO user = (MemberVO)session.getAttribute("user");
+		MemberVO db_member = mypageService.selectMember(user.getMem_num());
+		
+		boolean check = false;
+		
+		try {
+			if(db_member != null && db_member.getMem_id().equals(member.getMem_id())) {
+				check = db_member.isCheckedPassword(member.getMem_pw());
+			}
+			
+			if(check) {
+				mypageService.deleteMember(user.getMem_num());
+				
+				session.invalidate();
+				
+				model.addAttribute("accessMsg", "회원탈퇴가 완료되었습니다.");
+				
+				return "common/notice";
+			}
+			
+			throw new AuthCheckException();
+		}catch(AuthCheckException e) {
+			result.reject("invalidIdOrPassword");
+			
+			return myPageDeleteMemberForm(session, model);
+		}
 	}
 	
 	//포인트 목록

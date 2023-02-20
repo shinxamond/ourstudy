@@ -30,7 +30,7 @@ public interface MypageMapper {
 	@Update("UPDATE member_detail SET mem_pw = #{mem_pw} WHERE mem_num = #{mem_num}")
 	public void updatePassword(MemberVO member);
 	//회원 탈퇴
-	@Update("UPDATE member SET auth = 0 WHERE mem_num = #{mem_num}")
+	@Update("UPDATE member SET mem_auth = 0 WHERE mem_num = #{mem_num}")
 	public void deleteMember(Integer mem_num);
 	//회원 탈퇴
 	@Delete("DELETE FROM member_detail WHERE mem_num = #{mem_num}")
