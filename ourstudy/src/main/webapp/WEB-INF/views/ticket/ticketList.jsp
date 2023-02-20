@@ -7,12 +7,12 @@
 	
 </script>
 <div class="container">
-	<h3>이용권 선택</h3>
+	<h3>회원목록</h3>
 	<div class="container d-flex justify-content-center">
 	<c:if test="${count == 0}">
 		<table class="table table-group-divider align-center">
 			<tr>
-				<td>표시할 강의가 없습니다</td>
+				<td>표시할 회원목록이 없습니다</td>
 			</tr>
 		</table>
 	</c:if>
