@@ -36,7 +36,7 @@ $(function(){
 		<li>
 			<label for="upload">사진</label>
 			<input type="file" name="upload" id="upload">
-			
+			<form:errors path="item_ufile" cssClass="error-color"/>
 			<c:if test="${!empty itemVO.item_imgsrc}">
 				<div id="filedel">
 				[${itemVO.item_imgsrc}가 등록되어 있습니다.]

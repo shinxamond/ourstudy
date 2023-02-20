@@ -16,9 +16,10 @@
 	<div id="userList">
 		<c:forEach var="item" items="${list}">
 		<div id="userList-area">
-			<a href="userRental.do?item_index=${item.item_index}"><img src="imageView.do?item_num=${item.item_num}" width="250" height="250" class="my-photo"></a>
+			<a href="userRental.do?item_index=${item.item_index}"><img src="imageView.do?item_num=${item.item_num}" width="250" height="250" class="my-photo">
 			<br>
 			<h4> ${item.item_title}</h4>
+			</a>
 		</div>
 		</c:forEach>
 		<div id="clear"></div>

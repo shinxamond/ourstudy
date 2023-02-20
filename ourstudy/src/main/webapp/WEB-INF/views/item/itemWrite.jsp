@@ -1,17 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
-<script type="text/javascript">
-$(function(){
-	$('#item_form').submit(function(){
-		if($('#upload').val()==''){ 
-			alert('사진을 입력하세요');
-			$('#upload').focus();
-			return false;
-		}
-	});
-});
-</script>
 <h2>물품 생성</h2>
 <form:form action="itemWrite.do" id="item_write_form" modelAttribute="itemVO" enctype="multipart/form-data">
 	<ul>
@@ -33,6 +22,7 @@ $(function(){
 		<li>
 			<label for="upload">사진</label>
 			<input type="file" name="upload" id="upload" accept="image/gif, image/png, image/jpeg">
+			<form:errors path="item_ufile" cssClass="error-color"/>
 		</li>
 		<li>
 			<label for="item_time">대여 기간(일)</label>
@@ -40,6 +30,8 @@ $(function(){
 			<form:errors path="item_time" cssClass="error-color"/>
 		</li>
 	</ul>
+	<div class="align-center">
 	<form:button>전송</form:button>
 	<input type="button" value="목록" onclick="location.href='adminList.do'">
+	</div>
 </form:form>

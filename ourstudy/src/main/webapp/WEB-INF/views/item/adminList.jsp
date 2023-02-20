@@ -11,6 +11,7 @@
 					<option value="1" <c:if test="${param.keyfield == 1}">selected</c:if>>이름</option>
 					<option value="2" <c:if test="${param.keyfield == 2}">selected</c:if>>물품명 식별 번호</option>
 					<option value="3" <c:if test="${param.keyfield == 3}">selected</c:if>>상태(표시:1/미표시:2)</option>
+					<option value="4" <c:if test="${param.keyfield == 4}">selected</c:if>>대여(기본:1/대여:2/반납:3)</option>
 				</select>
 			</li>
 			<li>
@@ -31,7 +32,7 @@
 	</div>
 	</c:if>
 	<c:if test="${count > 0}">
-	<table class="striped-table">
+	<table class="striped-item-table">
 		<tr>
 			<th>물품번호</th>
 			<th>물품명번호</th>
@@ -53,7 +54,7 @@
 			<td>
 				<c:if test="${item.item_r_status == '1' }">기본</c:if>
 				<c:if test="${item.item_r_status == '2' }">대여</c:if>
-				<c:if test="${item.item_r_status == '3' }">반납</c:if>
+				<c:if test="${item.item_r_status == '3' }"><a href="adminItemReturn.do?item_num=${item.item_num}">반납</a></c:if>
 			</td>
 		</tr>
 		</c:forEach>
