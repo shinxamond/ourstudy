@@ -10,6 +10,7 @@ import org.apache.ibatis.annotations.Select;
 import org.apache.ibatis.annotations.Update;
 
 import kr.spring.member.vo.MemberVO;
+import kr.spring.point.vo.PointVO;
 
 @Mapper
 public interface MypageMapper {
@@ -38,12 +39,22 @@ public interface MypageMapper {
 	
 	//============포인트=============//
 	//포인트
-	//@Insert("INSERT INTO point (point_num, point_point, point_accrue, pay_num, mem_num) VALUES (#{point_num}, #{point_point}, #{point_accrue}, #{pay_num}, #{mem_num})")
-	//public void insertPoint(PointVO point);
+	@Select("SELECT point_seq.nextval FROM dual")
+	public int selectPoint_num();
+	
+	//포인트 합산하는 열 필요 없을 듯
+	@Insert("INSERT INTO point (point_num, point_point, pay_num, mem_num) VALUES (#{point_num}, #{point_point}, #{pay_num}, #{mem_num})")
+	public void insertPoint(PointVO point);
 	
 	//개인별 포인트 내역 확인
 	//@Select("SELECT s.in_time, s.out_time, s.total_time, p.point_point, p.point_accrue FROM seat_detail s JOIN point p WHERE mem_num = #{mem_num}")
 	//public List<PointVO> selectPointListByMemNum(Map<String, Object> map);
+	@Select("SELECT y.pay_price, y.pay_plan, y.pay_date, y.pay_content, p.point_point FROM pay y JOIN point p ON y.pay_num = p.pay_num WHERE mem_num = #{mem_num}")
+	public List<PointVO> selectPointListByMemNum(Map<String, Object> map);
+	
+	//합산 포인트 불러오기
+	@Select("SELECT sum(point) FROM point WHERE mem_num = #{mem_num}")
+	public int selectTotalPoint(int mem_num);
 	
 	//============공부시간=============//
 	//개인별 공부시간 불러오기(좌석쪽에서 데이터 불러오는 메소드 없을 시)
