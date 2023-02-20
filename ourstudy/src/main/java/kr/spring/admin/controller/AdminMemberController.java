@@ -32,9 +32,9 @@ public class AdminMemberController {
 	//=========회원목록관리========//
 	@RequestMapping("/admin/admin_list.do")
 	public ModelAndView process(
-			@RequestParam(value="pageNum",defaultValue="1") 
-			int currentPage,
-			String keyfield, String keyword) {
+			@RequestParam(value="pageNum",defaultValue="1") int currentPage,
+			@RequestParam(value="keyfield",defaultValue="1") String keyfield, 
+			String keyword) {
 		
 		Map<String,Object> map = 
 				new HashMap<String,Object>();

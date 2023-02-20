@@ -1,6 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+
+
 <!-- 중앙 컨텐츠 시작 -->
 <div class="page-main">
 	<h2>회원목록(관리자전용)</h2>
@@ -8,7 +10,7 @@
 	                                   method="get">
 		<ul class="search">
 			<li>
-				<select name="keyfield">
+				<select id="keyfield" name="keyfield" onchange="location.href='admin_list.do?keyfield='+this.value">
 					<option value="1" <c:if test="${param.keyfield == 1}">selected</c:if>>최근가입일순</option>
 					<option value="2" <c:if test="${param.keyfield == 2}">selected</c:if>>가나다순(이름)</option>
 				</select>
