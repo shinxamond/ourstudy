@@ -11,9 +11,21 @@
 			  		WHERE item_num IN(SELECT max(item_num )
 			  						  FROM item
 			  						  WHERE item_title IN(SELECT DISTINCT item_title 
-			  						  					  FROM item 
-			  						  					  WHERE item_p_status=1) 
+			  						  					  FROM item) 
 			  						  GROUP BY item_index)  
+			  		ORDER BY item_num DESC)a) 
+		<![CDATA[
+		WHERE rnum >= #{start} and rnum <= #{end}
+		]]>
+	</select>
+	
+	<select id="rentalItemList" parameterType="map" resultType="itemVO">
+		SELECT * 
+		FROM (SELECT a.*,rownum rnum 
+			  FROM (SELECT * 
+			  		FROM item i JOIN item_detail d
+			  		USING(item_num)
+			  		WHERE i.item_r_status>=#{item_r_status} AND d.mem_num=#{mem_num}
 			  		ORDER BY item_num DESC)a) 
 		<![CDATA[
 		WHERE rnum >= #{start} and rnum <= #{end}
@@ -67,6 +79,17 @@
 		WHERE rnum >= #{start} and rnum <= #{end}
 		]]>
 	</select>
+
+	<update id="updateItem" parameterType="itemVO">
+		UPDATE item SET
+			<if test="item_imgsrc != ''">
+			 item_ufile=#{item_ufile},
+			 item_imgsrc=#{item_imgsrc},
+			 </if>
+			item_index=#{item_index}, item_title=#{item_title}, 
+			item_p_status=#{item_p_status}, item_time=#{item_time}
+		WHERE item_num=#{item_num} 
+	</update>
 </mapper>
 
 
