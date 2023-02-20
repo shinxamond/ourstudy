@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="UTF-8" ?>  
+<!DOCTYPE mapper   
+    PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"   
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="kr.spring.ticket.dao.TicketMapper">
+	<!-- sql 태그와 include 태그를 이용해서 SQL문을 재사용 -->
+	<sql id="ticketSearch">
+		<where>
+			<if test="keyword!=null and keyword!=''">
+				<if test="keyfield == 1">
+					AND ticket_name LIKE '%' || #{keyword} || '%'
+				</if>
+				<if test="keyfield == 2">
+					AND ticket_price LIKE '%' || #{keyword} || '%'
+				</if>
+				<if test="keyfield == 3">
+					AND (ticket_name LIKE '%' || #{keyword} || '%'
+					OR ticket_price LIKE '%' || #{keyword} || '%')
+				</if>
+			</if>
+		</where>
+	</sql>
+
+	<select id="selectTicketCount" parameterType="map"
+		resultType="integer">
+		SELECT
+		COUNT(*)
+		FROM ticket
+		<include refid="ticketSearch"></include>
+	</select>
+
+	<select id="selectTicketList" parameterType="map"
+		resultType="ticketVO">
+		SELECT
+		*
+		FROM (SELECT
+		a.*,
+		rownum rnum
+		FROM (SELECT
+		*
+		FROM ticket
+		<include refid="ticketSearch"></include>
+		ORDER BY ticket_num ASC)a)
+		<![CDATA[
+		WHERE rnum >= #{start} AND rnum <= #{end}
+		]]>
+	</select>
+
+
+</mapper>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

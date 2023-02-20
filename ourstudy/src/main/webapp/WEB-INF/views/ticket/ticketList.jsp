@@ -7,26 +7,30 @@
 	
 </script>
 <div class="container">
-	<h3>회원목록</h3>
+	<h3>이용권 목록</h3>
 	<div class="container d-flex justify-content-center">
-	<c:if test="${count == 0}">
-		<table class="table table-group-divider align-center">
-			<tr>
-				<td>표시할 회원목록이 없습니다</td>
-			</tr>
-		</table>
-	</c:if>
-		<div class="card" style="width: 40rem;">
-			<div class="card-header">독서실 이용권(시간제)</div>
-			<div class="card-body">
-				${ticket.ticket_num}22
-				<div style="float: right;">${ticket.ticket_price}22</div>
-				<div style="margin-top:5px;">
-					<button type="button" class="btn btn-primary" style="float: right;">
-						구매하기</button>
+		<c:if test="${count == 0}">
+			<table class="table table-group-divider align-center">
+				<tr>
+					<td>표시할 이용권이 없습니다</td>
+				</tr>
+			</table>
+		</c:if>
+		<c:if test="${count > 0}">
+			<c:forEach var="ticket" items="${list}">
+				<div class="card" style="width: 40rem;">
+					<div class="card-header">독서실 이용권(시간제)</div>
+					<div class="card-body">
+						${ticket.ticket_name}
+						<div style="float: right;">${ticket.ticket_price}</div>
+						<div style="margin-top: 5px;">
+							<button type="button" class="btn btn-primary"
+								style="float: right;">구매하기</button>
+						</div>
+					</div>
 				</div>
-			</div>
-		</div>
+			</c:forEach>
+		</c:if>
 	</div>
 </div>
 <!-- 중앙 컨텐츠 끝 -->
