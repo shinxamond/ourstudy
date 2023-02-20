@@ -42,52 +42,52 @@
 						<div style="margin-left: 5px;">
 							<div class="form-check form-check-inline">
 								<form:radiobutton path="ticket_type" class="form-check-input" name="ticket_type"
-									id="ticket_type1"/>
+									id="ticket_type1" value="1"/>
 								<label class="form-check-label" for="ticket_type1"> 2시간 </label>
 							</div>
 							<div class="form-check form-check-inline" style="margin-left:50px;">
 								<form:radiobutton path="ticket_type" class="form-check-input" name="ticket_type"
-									id="ticket_type7"/>
+									id="ticket_type7" value="7"/>
 								<label class="form-check-label" for="ticket_type7"> 1주 </label>
 							</div>
 
 							<div class="form-check">
 								<div class="form-check-inline">
 									<form:radiobutton path="ticket_type" class="form-check-input" name="ticket_type"
-										id="ticket_type2"/>
+										id="ticket_type2" value="2"/>
 									<label class="form-check-label" for="ticket_type2"> 4시간 </label>
 								</div>
 								<div class="form-check form-check-inline" style="margin-left:50px;">
 									<form:radiobutton path="ticket_type" class="form-check-input" name="ticket_type"
-										id="ticket_type8"/>
+										id="ticket_type8" value="8"/>
 									<label class="form-check-label" for="ticket_type8"> 2주 </label>
 								</div>
 							</div>
 							<div class="form-check">
 								<div class="form-check-inline">
 									<form:radiobutton path="ticket_type" class="form-check-input" name="ticket_type"
-										id="ticket_type3"/>
+										id="ticket_type3" value="3"/>
 									<label class="form-check-label" for="ticket_type3"> 8시간 </label>
 								</div>
 								<div class="form-check form-check-inline" style="margin-left:50px;">
 									<form:radiobutton path="ticket_type" class="form-check-input" name="ticket_type"
-										id="ticket_type9"/>
+										id="ticket_type9" value="9"/>
 									<label class="form-check-label" for="ticket_type9"> 4주 </label>
 								</div>
 							</div>
 							<div class="form-check">
 								<form:radiobutton path="ticket_type" class="form-check-input" name="ticket_type"
-									id="ticket_type4"/>
+									id="ticket_type4" value="4"/>
 								<label class="form-check-label" for="ticket_type4"> 12시간 </label>
 							</div>
 							<div class="form-check">
 								<form:radiobutton path="ticket_type" class="form-check-input" name="ticket_type"
-									id="ticket_type5"/>
+									id="ticket_type5" value="5"/>
 								<label class="form-check-label" for="ticket_type5"> 50시간 </label>
 							</div>
 							<div class="form-check">
 								<form:radiobutton path="ticket_type" class="form-check-input" name="ticket_type"
-									id="ticket_type6"/>
+									id="ticket_type6" value="6"/>
 								<label class="form-check-label" for="ticket_type6"> 100시간 </label>
 							</div>
 						</div>

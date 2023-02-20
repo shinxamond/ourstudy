@@ -6,8 +6,6 @@ public class TicketVO {
 	private String ticket_name;
 	private int ticket_type;
 	private int ticket_price;
-	
-	private int mem_num;
 
 	public int getTicket_num() {
 		return ticket_num;
@@ -49,17 +47,11 @@ public class TicketVO {
 		this.ticket_price = ticket_price;
 	}
 
-	public int getMem_num() {
-		return mem_num;
-	}
-
-	public void setMem_num(int mem_num) {
-		this.mem_num = mem_num;
-	}
-
 	@Override
 	public String toString() {
 		return "TicketVO [ticket_num=" + ticket_num + ", ticket_kind=" + ticket_kind + ", ticket_name=" + ticket_name
-				+ ", ticket_type=" + ticket_type + ", ticket_price=" + ticket_price + ", mem_num=" + mem_num + "]";
+				+ ", ticket_type=" + ticket_type + ", ticket_price=" + ticket_price + "]";
 	}
+	
+	
 }
