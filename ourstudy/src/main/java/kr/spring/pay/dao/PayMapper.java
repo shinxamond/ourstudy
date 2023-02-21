@@ -12,6 +12,7 @@ public interface PayMapper {
 	public int selectPay_num();
 	@Insert("INSERT INTO pay pay_price VALUES #{pay_price}")
 	public int insertPay_price(PayVO pay);
+	//@Select("SELECT pay_plan FROM pay WHERE ")
 	public int selectPay_plan(PayVO pay);
 	public int insertTicket_time();
 	

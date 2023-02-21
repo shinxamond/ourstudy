@@ -17,6 +17,13 @@
     	  value="/WEB-INF/views/ticket/ticketList.jsp"/>        
     </definition>
     
+    <!-- 결제 -->
+    <definition name="payPage" extends="main">
+    	<put-attribute name="title" value="결제하기"/>
+    	<put-attribute name="body"
+    	  value="/WEB-INF/views/pay/payPage.jsp"/>        
+    </definition>
+    
     <!-- 관리자 -->
      <definition name="adminTicketList" extends="admin">
     	<put-attribute name="title" value="관리자 이용권 목록"/>
