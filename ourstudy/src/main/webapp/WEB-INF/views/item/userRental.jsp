@@ -6,10 +6,6 @@
 <div class="page-main">
 	<h1 class="align-center">물품대여</h1>
 	<h2 class="align-center">${oneitem.item_title}</h2>
-	<div class="align-right">
-	<input type="button" value="목록" onclick="location.href='userList.do'">
-	</div>
-	
 	<div class="item-image">
 		<img src="imageView.do?item_num=${oneitem.item_num}" width=300" height="300" class="my-photo">
 	</div>

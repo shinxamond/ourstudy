@@ -68,14 +68,15 @@ public class ItemController {
 	}
 	//=====대여 목록 생성(유저)======//
 	@RequestMapping("/item/rentalItemList.do")
-	public ModelAndView rentalItemList(@RequestParam(value="pageNum", defaultValue="1")int currentPage, HttpSession session) {
+	public ModelAndView rentalItemList(@RequestParam(value="pageNum", defaultValue="1")int currentPage, HttpSession session, Model model, HttpServletRequest request) {
 		Map<String,Object> map = new HashMap<String, Object>();
 
 		MemberVO user = (MemberVO)session.getAttribute("user");
 
 		int rentalItemCount = itemService.rentalItemCount(2, user.getMem_num());//표시여부 값
 		logger.debug("<<대여목록count>> : " + rentalItemCount);
-
+		
+		
 		PagingUtil page = new PagingUtil(currentPage, rentalItemCount, rentalItemCount, 1, "/item/rentalItemList.do");
 
 		List <ItemVO> list = null;
@@ -105,7 +106,7 @@ public class ItemController {
 		int count = itemService.selectItemCount(item_index);
 		//물품명 식별번호에 속한 물품중 하나의 물품
 		ItemVO oneitem = itemService.selectIndexItem(item_index);
-
+		
 
 		ModelAndView mav = new ModelAndView();
 		mav.setViewName("userRental");//타일스값
@@ -118,6 +119,11 @@ public class ItemController {
 	@PostMapping("/item/userItemRental.do")
 	public String itemRental(ItemVO itemVO, HttpSession session, Model model, HttpServletRequest request) {
 		logger.debug("<<물품 대여>> : " + itemVO);
+		if(session.getAttribute("user")==null) {
+			model.addAttribute("message", "로그인 필수");
+			model.addAttribute("url", request.getContextPath()+"/item/userList.do");
+			return "common/resultView";
+		}
 		//세션값
 		MemberVO user = (MemberVO)session.getAttribute("user");
 
@@ -125,6 +131,7 @@ public class ItemController {
 		item.setMem_num(user.getMem_num());
 
 		int distinctCount = itemService.itemDistinct(item.getItem_index(), user.getMem_num(), 1);
+		
 		
 		
 		if(distinctCount > 0 ) {
