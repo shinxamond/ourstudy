@@ -1,8 +1,8 @@
 @charset "UTF-8";
 
-/*---------------------
-		사이드바
-----------------------*/
+/*------------------------------------------------
+# 사이드바
+--------------------------------------------------*/
 body {
   min-height: 100vh;
   min-height: -webkit-fill-available;
@@ -172,4 +172,50 @@ main {
 }
 .logout-btn{
 	margin-left:62px;
+}
+
+/*------------------------------------------------
+# 로그인 모달
+--------------------------------------------------*/
+.modal-dialog{
+	width:360px!important;
+}
+form{
+	width:800px;
+	margin:0 auto;
+	border:none;
+	padding:auto 10px;
+}
+form ul{
+	padding-left:0;
+}
+form ul li{
+	clear:both;
+	margin-bottom:10px;
+}
+form ul li label{
+	width:130px;
+	float:left;
+}
+ul{
+	list-style:none;
+}
+#login_form #mem_id,#login_form #mem_pw{
+	width:275px;
+	height:40px;
+	border-radius:10px;
+	border:none;
+	box-shadow: inset 3px 2px 8px #babebc, inset -5px -5px 12px #fff;
+	padding:0 10px;
+}
+.login-submit{
+	width:150px;
+	margin-left:65px;
+}
+
+.find-id{
+	margin-left:8px;
+}
+.find-id li{
+	display:inline-block;
 }
