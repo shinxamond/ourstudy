@@ -22,6 +22,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.servlet.ModelAndView;
 
 import kr.spring.member.service.MemberService;
 import kr.spring.member.vo.MemberVO;
@@ -148,6 +149,8 @@ public class MemberController {
 				session.setAttribute("user", member);
 
 				logger.debug("<<인증 성공>> : " + member.getMem_id());
+				
+				
 
 				if(member.getMem_auth()==9) {
 					logger.debug("<<관리자 로그인 성공>> : " + member.getMem_auth());
@@ -155,6 +158,7 @@ public class MemberController {
 				}else {
 					return "redirect:/main/main.do";
 				}
+				
 			}
 			//인증실패
 			throw new AuthCheckException();
@@ -168,8 +172,9 @@ public class MemberController {
 			}
 
 			logger.debug("<<인증 실패>>");
-
+			
 			return formLogin();
+			
 		}	
 	}
 	

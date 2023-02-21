@@ -15,6 +15,7 @@ public class MemberVO {
 	@Pattern(regexp="^[a-z0-9]{4,12}$") //알파벳 소문자&숫자가능, 4~12자
 	private String mem_id;
 	private int mem_auth;
+	private int mem_status;
 	private String auto; //자동로그인 처리
 	private String auto_id;
 	@NotEmpty
@@ -81,6 +82,14 @@ public class MemberVO {
 
 	public void setMem_auth(int mem_auth) {
 		this.mem_auth = mem_auth;
+	}
+	
+	public int getMem_status() {
+		return mem_status;
+	}
+
+	public void setMem_status(int mem_status) {
+		this.mem_status = mem_status;
 	}
 
 	public String getAuto() {
@@ -205,12 +214,12 @@ public class MemberVO {
 
 	@Override
 	public String toString() {
-		return "MemberVO [mem_num=" + mem_num + ", mem_id=" + mem_id + ", mem_auth=" + mem_auth + ", auto=" + auto
-				+ ", auto_id=" + auto_id + ", mem_name=" + mem_name + ", mem_pw=" + mem_pw + ", mem_phone=" + mem_phone
-				+ ", mem_email=" + mem_email + ", mem_zipcode=" + mem_zipcode + ", mem_address1=" + mem_address1
-				+ ", mem_address2=" + mem_address2 + ", mem_photo_name=" + mem_photo_name + ", mem_regdate="
-				+ mem_regdate + ", mem_mdate=" + mem_mdate + ", pw_confirm=" + pw_confirm + ", now_passwd=" + now_passwd
-				+ "]";
+		return "MemberVO [mem_num=" + mem_num + ", mem_id=" + mem_id + ", mem_auth=" + mem_auth + ", mem_status="
+				+ mem_status + ", auto=" + auto + ", auto_id=" + auto_id + ", mem_name=" + mem_name + ", mem_pw="
+				+ mem_pw + ", mem_phone=" + mem_phone + ", mem_email=" + mem_email + ", mem_zipcode=" + mem_zipcode
+				+ ", mem_address1=" + mem_address1 + ", mem_address2=" + mem_address2 + ", mem_photo_name="
+				+ mem_photo_name + ", mem_regdate=" + mem_regdate + ", mem_mdate=" + mem_mdate + ", pw_confirm="
+				+ pw_confirm + ", now_passwd=" + now_passwd + "]";
 	}
 
 }
