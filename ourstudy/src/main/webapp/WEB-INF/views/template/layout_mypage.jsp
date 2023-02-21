@@ -6,18 +6,32 @@
 <head>
 <meta charset="UTF-8">
 <title><tiles:getAsString name="title"/></title>
+<link rel="stylesheet" href="${pageContext.request.contextPath}/css/narimain.css">
 <link rel="stylesheet" href="${pageContext.request.contextPath}/css/mypage/mypage.css">
 <script type="text/javascript" src="${pageContext.request.contextPath}/js/jquery-3.6.0.min.js"></script>
+ 
 </head>
-<body>
-
-	<tiles:insertAttribute name="header" />
+<body style = "padding-left : 220px;"> <!-- style = "display : flex;" -->
+	<tiles:insertAttribute name="sidebar"/>
+<div id="main" style = "margin : 0 auto; width : 100%;"> <!--  -->
+	<div id="main_header">
+		<tiles:insertAttribute name="header"/>
+		<tiles:insertAttribute name="myPageHeader" />
+	</div>
+	<div id="main_body">
+		<tiles:insertAttribute name="body"/>
+	</div>
+	<div id="main_footer">
+		<tiles:insertAttribute name="footer"/>
+	</div>
+</div>
+	<%-- tiles:insertAttribute name="header" />
 
 	<tiles:insertAttribute name="myPageHeader" />
 
 	<tiles:insertAttribute name="body" />
 
-	<tiles:insertAttribute name="footer" />
+	<tiles:insertAttribute name="footer" /> --%>
 
 </body>
 </html>

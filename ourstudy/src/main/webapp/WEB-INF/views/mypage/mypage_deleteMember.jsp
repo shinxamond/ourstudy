@@ -16,14 +16,14 @@
 				<tr>
 					<th>아이디</th>
 					<td>
-						<form:input path="mem_id"/>
+						<form:input path="mem_id" class = "input-textbox"/>
 						<form:errors path="mem_id" cssClass="error-color"/>
 					</td>
 				</tr>
 				<tr>
 					<th>비밀번호</th>
 					<td>
-						<form:password path="mem_pw"/>
+						<form:password path="mem_pw" class = "input-textbox"/>
 						<form:errors path="mem_pw" cssClass="error-color"/>
 					</td>
 				</tr>

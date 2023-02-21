@@ -32,16 +32,16 @@ function numberphone(e){
 				<tr>
 					<th>이름</th>
 					<td>
-						<form:input path="mem_name"/>
+						<form:input path="mem_name" class = "input-textbox"/>
 						<form:errors path="mem_name" cssClass="error-color"/>
 					</td>
 				</tr>
 				<tr>
 					<th>이메일</th>
 					<td>
-						<input type="text" id="user_email" required value = "${fn:substringBefore(member.mem_email, '@')}">
+						<input type="text" id="user_email" class = "input-textbox-email" required value = "${fn:substringBefore(member.mem_email, '@')}">
 						<span id="middle">@</span>
-						<select id="email_address" name="email_address" title="이메일 선택" class="email_address">
+						<select id="email_address" class = "select-email" name="email_address" title="이메일 선택" class="email_address">
 							<option value="naver.com">naver.com</option>
 							<option value="gmail.com">gmail.com</option>
 							<option value="daum.net">daum.net</option>
@@ -56,29 +56,29 @@ function numberphone(e){
 				<tr>
 					<th>전화번호</th>
 					<td>
-						<form:input path="mem_phone" oninput="numberphone(this)" maxlength="13" placeholder=" 숫자만 입력하세요"/>
+						<form:input path="mem_phone"  class = "input-textbox" oninput="numberphone(this)" maxlength="13" placeholder=" 숫자만 입력하세요"/>
 						<form:errors path="mem_phone" cssClass="error-color"/>
 					</td>
 				</tr>
 				<tr>
 					<th>우편번호</th>
 					<td>
-						<form:input path="mem_zipcode"/>
-						<input type="button" onclick="execDaumPostcode()" value="우편번호찾기">
+						<form:input path="mem_zipcode" class = "input-textbox"/>
+						<input type="button" onclick="execDaumPostcode()" value="우편번호찾기" class = "zip-button">
 						<form:errors path="mem_zipcode" cssClass="error-color"/>
 					</td>
 				</tr>
 				<tr>
 					<th>주소</th>
 					<td>
-						<form:input path="mem_address1"/>
+						<form:input path="mem_address1" class = "input-textbox"/>
 						<form:errors path="mem_address1" cssClass="error-color"/>
 					</td>
 				</tr>
 				<tr>
 					<th>상세주소</th>
 					<td>
-						<form:input path="mem_address2"/>
+						<form:input path="mem_address2" class = "input-textbox"/>
 						<form:errors path="mem_address2" cssClass="error-color"/>
 					</td>
 				</tr>

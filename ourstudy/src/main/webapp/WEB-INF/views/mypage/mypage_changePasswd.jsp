@@ -16,21 +16,21 @@
 				<tr>
 					<th>현재 비밀번호</th>
 					<td>
-						<form:password path="now_passwd"/>
+						<form:password path="now_passwd" class = "input-textbox"/>
 						<form:errors path="now_passwd" cssClass="error-color"/>
 					</td>
 				</tr>
 				<tr>
 					<th>새비밀번호</th>
 					<td>
-						<form:password path="mem_pw"/>
+						<form:password path="mem_pw" class = "input-textbox"/>
 						<form:errors path="mem_pw" cssClass="error-color"/>
 					</td>
 				</tr>
 				<tr>
 					<th>비밀번호 확인</th>
 					<td>
-						<input type="password" id="confirm_passwd"/>
+						<input type="password" id="confirm_passwd" class = "input-textbox"/>
 						<span id="message_id"></span>
 					</td>
 				</tr>

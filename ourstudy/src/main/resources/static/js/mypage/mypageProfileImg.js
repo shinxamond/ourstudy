@@ -30,9 +30,7 @@ $(function(){
 	//서버에 데이터 전송
 	$('#photo_submit').click(function(){
 		if($('#upload').val() == ''){
-			//alert('프로필 이미지를 선택해주세요.');
-			//$('#upload').focus();
-			//$('#profile_modal').modal();
+			alert('프로필 이미지를 선택해주세요.');
 			my_photo = photo_path;
 			return;
 		}
@@ -56,6 +54,7 @@ $(function(){
 					//교체된 이미지 저장
 					photo_path = $('.profile-photo').attr('src');
 					$('#upload').val('');
+					$('#profile-change').modal('hide');
 				}else{
 					alert('파일 전송 중 오류가 발생했습니다.');
 				}
