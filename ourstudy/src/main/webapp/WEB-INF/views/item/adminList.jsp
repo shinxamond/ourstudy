@@ -3,7 +3,9 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <link rel="stylesheet" href="${pageContext.request.contextPath}/css/item.css">
 <div class="page-main">
+	<div class="align-center">
 	<h2>물품목록(관리자)</h2>
+	</div><br>
 	<form action="adminList.do" id="item_search_form" method="get">
 		<ul class="item_search">
 			<li>

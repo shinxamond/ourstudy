@@ -2,7 +2,7 @@
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-
+<link rel="stylesheet" href="${pageContext.request.contextPath}/css/item.css">
 <!-- <script type="text/javascript">
 $(function(){
 	$('#item_modify_form').submit(function(){
@@ -14,7 +14,10 @@ $(function(){
 	});
 });
 </script>
- --><h2>물품 수정</h2>
+ -->
+<div class="align-center">
+<h2>물품 수정</h2>
+</div><br>
 <form:form action="itemModify.do" id="item_modify_form" modelAttribute="itemVO" enctype="multipart/form-data">
 	<form:hidden path="item_num"/>
 	<ul>
@@ -30,7 +33,7 @@ $(function(){
 		</li>
 		<li>
 			<label for="item_index">물품명 식별번호</label>
-			<form:input path="item_index" type="number"/>
+			<form:input path="item_index" type="number" size="15"/>
 			<form:errors path="item_index" cssClass="error-color"/>
 		</li>
 		<li>

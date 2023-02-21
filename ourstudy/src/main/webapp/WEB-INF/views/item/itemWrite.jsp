@@ -1,7 +1,10 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
+<link rel="stylesheet" href="${pageContext.request.contextPath}/css/item.css">
+<div class="align-center">
 <h2>물품 생성</h2>
+</div><br>
 <form:form action="itemWrite.do" id="item_write_form" modelAttribute="itemVO" enctype="multipart/form-data">
 	<ul>
 		<li>
@@ -16,7 +19,7 @@
 		</li>
 		<li>
 			<label for="item_index">물품명 식별번호</label>
-			<form:input path="item_index"/>
+			<form:input path="item_index" type="number"/>
 			<form:errors path="item_index" cssClass="error-color"/>
 		</li>
 		<li>
@@ -26,7 +29,7 @@
 		</li>
 		<li>
 			<label for="item_time">대여 기간(일)</label>
-			<form:input path="item_time"/>
+			<form:input path="item_time" type="number"/>
 			<form:errors path="item_time" cssClass="error-color"/>
 		</li>
 	</ul>
