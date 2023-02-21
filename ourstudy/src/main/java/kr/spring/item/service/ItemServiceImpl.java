@@ -93,8 +93,8 @@ public class ItemServiceImpl implements ItemService{
 	}
 
 	@Override
-	public int itemDistinct(int item_index, int mem_num) {
-		return itemMapper.itemDistinct(item_index, mem_num);
+	public int itemDistinct(int item_index, int mem_num, int item_r_status) {
+		return itemMapper.itemDistinct(item_index, mem_num, item_r_status);
 	}
 
 	@Override
@@ -105,6 +105,11 @@ public class ItemServiceImpl implements ItemService{
 	@Override
 	public List<ItemVO> rentalItemList(Map<String, Object> map) {
 		return itemMapper.rentalItemList(map);
+	}
+
+	@Override
+	public void deleteItemDetail(Integer item_num) {
+		itemMapper.deleteItemDetail(item_num);
 	}
 
 	

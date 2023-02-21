@@ -3,6 +3,7 @@ package kr.spring.item.service;
 import java.util.List;
 import java.util.Map;
 
+import org.apache.ibatis.annotations.Delete;
 import org.apache.ibatis.annotations.Param;
 import org.apache.ibatis.annotations.Select;
 
@@ -13,6 +14,8 @@ public interface ItemService {
 	public void insertItem(ItemVO item);
 	//물품삭제
 	public void deleteItem(Integer item_num);
+	//물품상세정보삭제
+	public void deleteItemDetail(Integer item_num);
 	//물품수정
 	public void updateItem(ItemVO item);
 	//물품 개수
@@ -44,5 +47,5 @@ public interface ItemService {
 	//물품명 식별번호에 속한 물품중 하나의 물품  						  
 	public ItemVO selectIndexItem(Integer item_index);
 	//동일한 물품 빌렸는지 확인
-	public int itemDistinct(@Param(value="item_index")int item_index, @Param(value="mem_num")int mem_num);
+	public int itemDistinct(@Param(value="item_index")int item_index, @Param(value="mem_num")int mem_num, @Param(value="item_r_status")int item_r_status);
 }

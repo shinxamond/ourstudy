@@ -21,13 +21,16 @@ public interface ItemMapper {
 	//물품삭제
 	@Delete("DELETE FROM item WHERE item_num=#{item_num}")
 	public void deleteItem(Integer item_num);
+	//물품상세정보삭제
+	@Delete("DELETE FROM item_detail WHERE item_num=#{item_num}")
+	public void deleteItemDetail(Integer item_num);
 	//물품수정
 	public void updateItem(ItemVO item);
 
 	//표시물품 개수(회원)
-	@Select("SELECT count(DISTINCT item_index) FROM item WHERE item_r_status=1")
+	@Select("SELECT count(DISTINCT item_index) FROM item")
 	public int selectCount();
-	//물품 리스트(회원)
+	//표시물품 리스트(회원)
 	public List<ItemVO> selectList(Map<String,Object> map);
 
 	//표시물품 개수(관리자)
@@ -54,7 +57,7 @@ public interface ItemMapper {
 	public List<ItemVO> selectDetailList(Integer item_index);
 	
 	//대여 물품 리스트 개수
-	@Select("SELECT count(*) FROM item i JOIN item_detail d USING(item_num) WHERE i.item_r_status>=#{item_r_status} AND d.mem_num=#{mem_num}")
+	@Select("SELECT count(*) FROM item i JOIN item_detail d USING(item_num) WHERE i.item_r_status>=#{item_r_status} AND d.mem_num=#{mem_num} AND d.item_end IS NULL")
 	public int rentalItemCount(@Param(value="item_r_status")int item_r_status, @Param(value="mem_num")int mem_num);
 	//대여 물품 리스트
 	public List<ItemVO> rentalItemList(Map<String,Object> map);
@@ -67,8 +70,8 @@ public interface ItemMapper {
 	@Update("UPDATE item SET item_r_status=#{item_r_status} WHERE item_num=#{item_num}")
 	public void Rstatus(@Param(value="item_r_status")int item_r_status, @Param(value="item_num")int item_num);
 	//동일한 물품 빌렸는지 확인
-	@Select("SELECT count(*) FROM item i JOIN item_detail d USING(item_num) WHERE i.item_index=#{item_index} AND d.mem_num=#{mem_num}")
-	public int itemDistinct(@Param(value="item_index")int item_index, @Param(value="mem_num")int mem_num);
+	@Select("SELECT count(*) FROM item i JOIN item_detail d USING(item_num) WHERE i.item_index=#{item_index} AND d.mem_num=#{mem_num} AND i.item_r_status > #{item_r_status}")
+	public int itemDistinct(@Param(value="item_index")int item_index, @Param(value="mem_num")int mem_num, @Param(value="item_r_status")int item_r_status);
 	//반납
 	@Update("UPDATE item_detail SET item_end=SYSDATE WHERE item_num=#{item_num}")
 	public void Return(Integer item_num);

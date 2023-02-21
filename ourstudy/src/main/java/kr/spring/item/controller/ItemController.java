@@ -124,8 +124,9 @@ public class ItemController {
 		ItemVO item = itemService.selectItem(itemVO.getItem_num());
 		item.setMem_num(user.getMem_num());
 
-		int distinctCount = itemService.itemDistinct(item.getItem_index(), user.getMem_num());
-
+		int distinctCount = itemService.itemDistinct(item.getItem_index(), user.getMem_num(), 1);
+		
+		
 		if(distinctCount > 0 ) {
 			model.addAttribute("message", "동일한 물품 1개만 대여 가능");
 			model.addAttribute("url", request.getContextPath()+"/item/userList.do");
@@ -234,20 +235,25 @@ public class ItemController {
 	public String submitModify(@Valid ItemVO itemVO, BindingResult result, Model model, HttpServletRequest request) {
 
 		logger.debug("<<물품수정후>> : " + itemVO);
-		if(itemVO.getItem_ufile().length==0) {
-			//upload는 자바빈(VO)에 팔드가 없기 때문에 명시 할 수 없음
-			result.rejectValue("item_ufile", "required");
-		}
+		ItemVO vo = itemService.selectItem(itemVO.getItem_num());
+		
+			if(itemVO.getItem_ufile().length==0 && vo.getItem_ufile()==null) {
+				//upload는 자바빈(VO)에 팔드가 없기 때문에 명시 할 수 없음
+				result.rejectValue("item_ufile", "required");
+			}
+			
+		
 		//이미지 용량 체크
 		if(itemVO.getItem_ufile().length > 5*1024*1024) {//5MB    {"5MB"} validation.properties에 limitUploadSize {0}을 의미 
 			result.rejectValue("item_ufile", "limitUploadSize",new Object[] {"5MB"},null);
 		}
 
 		if(result.hasErrors()) {
-
+			
+			itemVO.setItem_imgsrc(vo.getItem_imgsrc());
 			return "itemModify";
 		}
-		ItemVO vo = itemService.selectItem(itemVO.getItem_num());
+		//ItemVO vo = itemService.selectItem(itemVO.getItem_num());
 		if(vo.getItem_r_status()!= 1) {
 			model.addAttribute("message", "대여중인 물품 수정 불가능");
 			model.addAttribute("url", request.getContextPath()+"/item/adminList.do");
@@ -270,8 +276,11 @@ public class ItemController {
 			model.addAttribute("url", request.getContextPath()+"/item/adminList.do");
 			return "common/resultView";
 		}
+		//물품 상세 삭제
+		itemService.deleteItemDetail(item_num);
 		//물품 삭제
 		itemService.deleteItem(item_num);
+		
 
 		return "redirect:/item/adminList.do";
 	}

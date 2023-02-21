@@ -25,7 +25,7 @@
 			  FROM (SELECT * 
 			  		FROM item i JOIN item_detail d
 			  		USING(item_num)
-			  		WHERE i.item_r_status>=#{item_r_status} AND d.mem_num=#{mem_num}
+			  		WHERE i.item_r_status>=#{item_r_status} AND d.mem_num=#{mem_num} AND d.item_end IS NULL
 			  		ORDER BY item_num DESC)a) 
 		<![CDATA[
 		WHERE rnum >= #{start} and rnum <= #{end}
