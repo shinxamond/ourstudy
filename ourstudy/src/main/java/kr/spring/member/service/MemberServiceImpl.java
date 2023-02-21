@@ -33,13 +33,12 @@ public class MemberServiceImpl implements MemberService {
 
 	@Override
 	public MemberVO selectAuto_id(String auto_id) {
-		// TODO Auto-generated method stub
-		return null;
+		return memberMapper.selectAuto_id(auto_id);
 	}
 
 	@Override
 	public void deleteAuto_id(int mem_num) {
-		// TODO Auto-generated method stub
+		memberMapper.deleteAuto_id(mem_num);
 		
 	}
 
