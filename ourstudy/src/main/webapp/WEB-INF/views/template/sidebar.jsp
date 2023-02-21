@@ -32,7 +32,8 @@
 				</c:if>
 				<div>
 					<c:if test="${empty user}">
-						<button class="btn text-white mt-4 mb-4 rounded" style="background-color:#037332;">로그인 | 회원가입</button>
+						<button class="btn text-white mt-4 mb-4 rounded" style="background-color:#037332;"
+						onclick="location.href='${pageContext.request.contextPath}/member/login.do'">로그인 | 회원가입</button>
 					</c:if>
 					<%--임시로 넣어둠--%>
 					<c:if test="${user.mem_status == 0}">
@@ -111,7 +112,8 @@
 				</div>
 				<br>
 				<c:if test="${!empty user}">
-						<button class="btn text-white rounded logout-btn" style="background-color:#037332;">로그아웃</button>
+						<button class="btn text-white rounded logout-btn" style="background-color:#037332;"
+						onclick="location.href='${pageContext.request.contextPath}/member/logout.do'">로그아웃</button>
 				</c:if>
 				<br><br>
 			</div>
