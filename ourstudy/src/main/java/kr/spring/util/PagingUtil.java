@@ -30,7 +30,7 @@ public class PagingUtil {
 		
 		String sub_url = "";
 		if(keyword != null) sub_url = "&keyfield="+keyfield+"&keyword="+keyword;
-		else if(keyword == null) sub_url = "&keyfield="+keyfield;
+		else if(keyword == null) sub_url = "&keyfield="+keyfield; //서지현 - 관리자페이지 추가
 		
 		if(addKey != null) sub_url += addKey;
 		
