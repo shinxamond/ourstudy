@@ -16,7 +16,7 @@
 				</select>
 			</li>
 			<li>
-				<input type="search" name="keyword" id="keyword" value="${param.keyword}">
+				<input type="search" name="keyword" id="keyword" value="${param.keyword}" placeholder="이름 또는 회원번호 검색" style="width:170px;">
 			</li>
 			<li>
 				<input type="submit" value="찾기">
