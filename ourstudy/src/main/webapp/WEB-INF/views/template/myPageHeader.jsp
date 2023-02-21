@@ -7,6 +7,7 @@
 	<div class = "element-box">
 		<div class = "element">
 			<a href="#profile-change" data-bs-toggle="modal"><img src = "${pageContext.request.contextPath}/mypage/photoView.do" class = "profile-photo"></a>
+			<a href="#profile-change" data-bs-toggle="modal"><img src = "${pageContext.request.contextPath}/image_bundle/settings.png" class = "settings-img"></a>
 				<span class = "span-align">안녕하세요, <strong><a href = "${pageContext.request.contextPath}/mypage/myPageMain.do">${member.mem_name}</a></strong>님</span>
 				<br>
 				<span class = "welcome-msg">오늘도 아워스터디를 이용해주셔서 감사합니다.</span>
