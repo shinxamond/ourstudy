@@ -147,6 +147,7 @@ public class MemberController {
 
 				//인증 성공, 로그인 처리
 				session.setAttribute("user", member);
+				session.setAttribute("user_num", member.getMem_num());
 
 				logger.debug("<<인증 성공>> : " + member.getMem_id());
 				
