@@ -105,6 +105,27 @@ function kakaoLogout() {
 				<div class="my-4 d-flex justify-content-center" onclick="kakaoLogin()">
 					<a href="javascript:void(0)"><img src="${pageContext.request.contextPath}/image_bundle/kakao.PNG" width="30" height="30" class="my-photo">카카오톡 간편로그인</a>
 				</div>
+				
+				
+				
+				
+				
+				
+				<h1>Kakao Login Test</h1>
+				<c:if test="${userId == null}">
+				ff7c36253de87f88a0e37cffd2dd2bfa
+	
+				<a href="https://kauth.kakao.com//oauth/authorize?client_id=ff7c36253de87f88a0e37cffd2dd2bfa/&redirect_uri=http://localhost:8081/kakaologin&response_type=code ">
+					<img src="${pageContext.request.contextPath}/image_bundle/kakao_login_medium_narrow.png">
+				</a>	
+				</c:if>
+				
+			
+				
+				
+				
+				
+				
 				<div class="my-4 d-flex justify-content-center" style="color:#037332;">비회원으로 계속하기</div>
 			</div>
 		</div>
