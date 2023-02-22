@@ -219,3 +219,9 @@ ul{
 .find-id li{
 	display:inline-block;
 }
+#login_Id{
+	color:red;
+}
+#login_Pw{
+	color:red;
+}

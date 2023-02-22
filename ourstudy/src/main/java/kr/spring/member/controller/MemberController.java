@@ -6,6 +6,7 @@ import java.util.UUID;
 import java.util.regex.Pattern;
 
 import javax.servlet.http.Cookie;
+import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import javax.validation.Valid;
@@ -22,7 +23,6 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
-import org.springframework.web.servlet.ModelAndView;
 
 import kr.spring.member.service.MemberService;
 import kr.spring.member.vo.MemberVO;
@@ -92,6 +92,7 @@ public class MemberController {
 	}
 
 	//========회원로그인=========
+	
 	//로그인 폼 호출
 	@GetMapping("/member/login.do")
 	public String formLogin() {
@@ -102,17 +103,17 @@ public class MemberController {
 	@PostMapping("/member/login.do")
 	public String submitLogin(@Valid MemberVO memberVO, BindingResult result,
 			HttpSession session,
+			HttpServletRequest request,
 			HttpServletResponse response) {
 		logger.debug("<<회원로그인>> : " + memberVO);
 
-		//유효성 체크 결과 오류가 있으면 폼을 호출
-		//특정 필드만 체크
-		if(result.hasFieldErrors("mem_id") || result.hasFieldErrors("mem_pw")) {
-			return formLogin();
-		}
-
+		
 		//로그인 체크
 		MemberVO member = null;
+		
+		memberVO.setMem_id(request.getParameter("mem_id"));
+		memberVO.setMem_pw(request.getParameter("mem_pw"));
+		
 		try {
 			member = memberService.selectCheckMember(memberVO.getMem_id());
 			boolean check = false;
@@ -144,13 +145,12 @@ public class MemberController {
 					//생성한 쿠키를 클라이언트에 전송
 					response.addCookie(auto_cookie);
 				}
-
+				
 				//인증 성공, 로그인 처리
 				session.setAttribute("user", member);
 				session.setAttribute("user_num", member.getMem_num());
 
 				logger.debug("<<인증 성공>> : " + member.getMem_id());
-				
 				
 
 				if(member.getMem_auth()==9) {

@@ -15,7 +15,7 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Leckerli+One&display=swap" rel="stylesheet">
 <%--로그인 유효성 체크 --%>
-
+<script type="text/javascript" src="${pageContext.request.contextPath}/js/logincheck.js"></script>
 <%-- 사이드바 시작 --%>
 <div>
 <%-- 로그인 모달 시작 --%>
@@ -37,12 +37,14 @@
 					</div>
 				</div>
 				
-				<form action="login.do" method="post" id="login_form">
+				<form action="${pageContext.request.contextPath}/member/login.do" method="post" id="login_form">
 						<ul>
 							<li><label for="mem_id"></label>
 								<input type="text" name="mem_id" id="mem_id" placeholder=" ID"/></li>
+								<li><span id="login_Id"></span></li>
 							<li><label for="mem_pw"></label>
 								<input type="password" name="mem_pw" id="mem_pw" placeholder=" Password"/></li>
+								<li><span id="login_Pw"></span></li>
 							<li>&nbsp;<input type="checkbox" name="auto" id="auto">&nbsp;로그인 상태 유지
 							</li>
 						</ul>
