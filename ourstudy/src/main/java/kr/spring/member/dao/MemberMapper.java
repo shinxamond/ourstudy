@@ -40,6 +40,9 @@ public interface MemberMapper {
 	@Update("UPDATE member SET auto_id='' WHERE mem_num=#{mem_num}")
 	public void deleteAuto_id(int mem_num);
 	
+	//회원정보 불러오기(SeatAdminController에서 사용)-----------------
+	@Select("SELECT mem_name FROM MEMBER_DETAIL WHERE mem_num=#{mem_num}")
+	public int getMem_Name(int mem_num);
 }
 
 
