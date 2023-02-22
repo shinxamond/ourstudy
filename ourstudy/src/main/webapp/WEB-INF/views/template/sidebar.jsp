@@ -103,7 +103,7 @@ function kakaoLogout() {
 				</ul>
 				
 				<div class="my-4 d-flex justify-content-center" onclick="kakaoLogin()">
-					<a href="javascript:void(0)">카카오톡 간편로그인</a>
+					<a href="javascript:void(0)"><img src="${pageContext.request.contextPath}/image_bundle/kakao.PNG" width="30" height="30" class="my-photo">카카오톡 간편로그인</a>
 				</div>
 				<div class="my-4 d-flex justify-content-center" style="color:#037332;">비회원으로 계속하기</div>
 			</div>
