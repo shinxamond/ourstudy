@@ -11,7 +11,7 @@
 <script type="text/javascript" src="${pageContext.request.contextPath}/js/jquery-3.6.0.min.js"></script>
  
 </head>
-<body style = "padding-left : 220px;"> <!-- style = "display : flex;" -->
+<body style = "padding-left : 230px;"> <!-- style = "display : flex;" -->
 	<tiles:insertAttribute name="sidebar"/>
 <div id="main" style = "margin : 0 auto; width : 100%;"> <!--  -->
 	<div id="main_header">
