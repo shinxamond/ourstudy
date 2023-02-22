@@ -16,6 +16,46 @@
 <link href="https://fonts.googleapis.com/css2?family=Leckerli+One&display=swap" rel="stylesheet">
 <%--로그인 유효성 체크 --%>
 <script type="text/javascript" src="${pageContext.request.contextPath}/js/logincheck.js"></script>
+<script src="https://developers.kakao.com/sdk/js/kakao.js"></script>
+<script src="https://developers.kakao.com/sdk/js/kakao.js"></script>
+<script>
+Kakao.init('29a4ee7bbc4eb20216c3708400363a9a'); //발급받은 키 중 javascript키를 사용해준다.
+console.log(Kakao.isInitialized()); // sdk초기화여부판단
+//카카오로그인
+function kakaoLogin() {
+    Kakao.Auth.login({
+      success: function (response) {
+        Kakao.API.request({
+          url: '/v2/user/me',
+          success: function (response) {
+        	  console.log(response)
+          },
+          fail: function (error) {
+            console.log(error)
+          },
+        })
+      },
+      fail: function (error) {
+        console.log(error)
+      },
+    })
+  }
+//카카오로그아웃  
+function kakaoLogout() {
+    if (Kakao.Auth.getAccessToken()) {
+      Kakao.API.request({
+        url: '/v1/user/unlink',
+        success: function (response) {
+        	console.log(response)
+        },
+        fail: function (error) {
+          console.log(error)
+        },
+      })
+      Kakao.Auth.setAccessToken(undefined)
+    }
+  }  
+</script>
 <%-- 사이드바 시작 --%>
 <div>
 <%-- 로그인 모달 시작 --%>
@@ -61,7 +101,10 @@
 					<li>&nbsp;|&nbsp;</li>
 					<li>회원가입</li>
 				</ul>
-				<div class="my-4 d-flex justify-content-center">카카오톡 간편로그인</div>
+				
+				<div class="my-4 d-flex justify-content-center" onclick="kakaoLogin()">
+					<a href="javascript:void(0)">카카오톡 간편로그인</a>
+				</div>
 				<div class="my-4 d-flex justify-content-center" style="color:#037332;">비회원으로 계속하기</div>
 			</div>
 		</div>
