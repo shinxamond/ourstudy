@@ -24,4 +24,6 @@ public interface MypageService {
 	public List<PointVO> selectPointListByMemNum(Map<String, Object> map);
 	
 	public int selectTotalPoint(int mem_num);
+	
+	public String selectSeatName(Integer mem_num);
 }

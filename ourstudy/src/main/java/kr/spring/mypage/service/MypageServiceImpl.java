@@ -60,4 +60,9 @@ public class MypageServiceImpl implements MypageService{
 		return mypageMapper.selectTotalPoint(mem_num);
 	}
 
+	@Override
+	public String selectSeatName(Integer mem_num) {
+		return mypageMapper.selectSeatName(mem_num);
+	}
+
 }

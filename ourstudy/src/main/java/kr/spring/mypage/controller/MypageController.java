@@ -28,6 +28,7 @@ import kr.spring.member.service.MemberService;
 import kr.spring.member.vo.MemberVO;
 import kr.spring.mypage.service.MypageService;
 import kr.spring.point.vo.PointVO;
+import kr.spring.seat.vo.SeatVO;
 
 @Controller
 public class MypageController {
@@ -41,6 +42,10 @@ public class MypageController {
 	@ModelAttribute
 	public MemberVO initCommand1() {
 		return new MemberVO();
+	}
+	@ModelAttribute
+	public SeatVO initCommand2() {
+		return new SeatVO();
 	}
 	@Autowired
 	private MypageService mypageService;
@@ -56,7 +61,12 @@ public class MypageController {
 		
 		MemberVO member = mypageService.selectMember(user.getMem_num());
 		
+		SeatVO seat = new SeatVO();
+		
+		seat.setSeat_name(mypageService.selectSeatName(user.getMem_num()));				;
+		
 		model.addAttribute("member", member);
+		model.addAttribute("seat", seat);
 		
 		return "myPageMain"; //타일스 설정값
 	}
@@ -69,7 +79,12 @@ public class MypageController {
 		
 		MemberVO member = (MemberVO)mypageService.selectMember(user.getMem_num());
 		
+		SeatVO seat = new SeatVO();
+		
+		seat.setSeat_name(mypageService.selectSeatName(user.getMem_num()));				;
+		
 		model.addAttribute("member", member);
+		model.addAttribute("seat", seat);
 		
 		return "myPageModify";
 	}
@@ -101,8 +116,12 @@ public class MypageController {
 		
 		MemberVO member = (MemberVO)mypageService.selectMember(user.getMem_num());
 		
-		logger.debug("<<변경폼에서 멤버 정보>> : " + member);
+		SeatVO seat = new SeatVO();
+		
+		seat.setSeat_name(mypageService.selectSeatName(user.getMem_num()));				;
+		
 		model.addAttribute("member", member);
+		model.addAttribute("seat", seat);
 		
 		return "myPagechangePasswd";
 	}
@@ -164,7 +183,12 @@ public class MypageController {
 		
 		MemberVO member = (MemberVO)mypageService.selectMember(user.getMem_num());
 		
+		SeatVO seat = new SeatVO();
+		
+		seat.setSeat_name(mypageService.selectSeatName(user.getMem_num()));				;
+		
 		model.addAttribute("member", member);
+		model.addAttribute("seat", seat);
 		
 		return "myPagedeleteMember";
 	}
