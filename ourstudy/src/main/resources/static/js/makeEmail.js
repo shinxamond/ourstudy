@@ -81,6 +81,7 @@ $(function(){
 				alert('인증번호가 전송되었습니다.')
 			}			
 		});
+				
 	}); // end send eamil
 
 	// 인증번호 비교 

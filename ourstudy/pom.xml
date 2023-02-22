@@ -105,6 +105,14 @@
     		<artifactId>mail</artifactId>
     		<version>1.4.7</version>
 		</dependency>
+		<!-- MailSender 인터페이스 포함된 라이브러리	
+		<dependency>
+			<groupId>org.springframework</groupId>
+			<artifactId>spring-context-support</artifactId>
+			<version>5.3.22.RELEASE</version>
+		</dependency>
+		 -->
+
 		
 	</dependencies>
 

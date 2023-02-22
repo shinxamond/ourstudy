@@ -9,8 +9,10 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.mail.javamail.JavaMailSenderImpl;
 import org.springframework.mail.javamail.MimeMessageHelper;
 import org.springframework.stereotype.Component;
+import org.springframework.transaction.annotation.Transactional;
 
 @Component
+@Transactional
 public class MailSendService {
 	
 	@Autowired
@@ -59,6 +61,4 @@ public class MailSendService {
 				e.printStackTrace();
 			}
 		}
-		
-	
 }

@@ -38,8 +38,12 @@ spring:
       mail:
         smtp:
           auth: true
+          connectiontimeout: 5000
+          timeout: 5000
+          writetimeout: 5000
           starttls: 
-            enable: true        mybatis: #mybatis 설정
+            enable: true
+            required: true        mybatis: #mybatis 설정
   type-aliases-package: kr.spring.**.vo
   mapper-locations: kr/spring/**/dao/*.xml   
     
