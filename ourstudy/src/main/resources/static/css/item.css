@@ -2,7 +2,10 @@
 /*
 기본 폼---------*/
 #item_modify_form, #item_write_form{
-	width:750px;
+	width:720px;
+	margin:0 auto;
+	border:1px solid #000;
+	padding:10px 10px 10px 30px;
 }
 div#userList #userList-area{
 	margin:2px;
