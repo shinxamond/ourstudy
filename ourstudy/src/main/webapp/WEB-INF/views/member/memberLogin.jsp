@@ -8,7 +8,7 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Leckerli+One&display=swap" rel="stylesheet">
 
-<!-- 중앙 컨텐츠 시작 -->
+<!-- 로그인 모달 시작 -->
 <!-- Button trigger modal -->
 <button type="button" class="btn btn-primary" data-bs-toggle="modal"
 	data-bs-target="#loginModal">이거 누르면 로그인 모달창 나옴</button>
@@ -63,4 +63,4 @@
 		</div>
 	</div>
 </div>
-<!-- 중앙 컨텐츠 끝 -->
+<!-- 로그인 모달 끝 -->

@@ -14,22 +14,23 @@
 				<p><a href = "${pageContext.request.contextPath}/mypage/myPageModify.do"  class = "link-font small">정보수정 ></a></p>
 		</div>
 		<div class = "element">
-			<p><a href = "${pageContext.request.contextPath}/mypage/pointList.do" class = "link-font big">포인트 ></a></p>
-			<span class = "data-align top">1300p</span>
-		</div>
-		<div class = "element">
 			<p><a href = "${pageContext.request.contextPath}/mypage/studyTimeList.do" class = "link-font big">누적 공부시간 ></a></p>
 			<span class = "data-align top">73 시간</span>
 		</div>
 		<div class = "element">
-			NO.<span class = "data-align"> 33</span> 번 자리
+			<p><a href = "${pageContext.request.contextPath}/mypage/pointList.do" class = "link-font big">포인트 ></a></p>
+			<span class = "data-align top">1300p</span>
+		</div>
+		<div class = "element">
+			NO.<span class = "data-align" style = "display : inline-block; width : 50px; text-align : right;"> ${seat.seat_name }</span> 번 자리
 			<span class = "data-time">잔여시간 : <span class = "data-align">00일 00시간 00분</span></span>
 			<br>
-			<br>
-			<br>
-			<button class = "seatcheck-button">입실</button>
-			<button class = "seatcheck-button">외출</button>
-			<button class = "seatcheck-button">퇴실</button>
+			<div class = "seatcheck-buttons">
+				<button class = "seatcheck-button">입실</button>
+				<button class = "seatcheck-button">외출</button>
+				<button class = "seatcheck-button">퇴실</button>			
+			</div>
+
 			<span><a href = "${pageContext.request.contextPath}/mypage/myPageselectSeat.do" class = "link-font small">좌석선택 ></a></span>
 		</div>
 	</div>
@@ -38,7 +39,7 @@
   <div class="modal-dialog modal-width">
     <div class="modal-content">
       <div class="modal-header">
-        <h5 class="modal-title" style = "margin-left: 106px;">프로필 사진 변경</h5>
+        <h5 class="modal-title" style = "margin-left: 85px;">프로필 사진 변경</h5>
         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
       <div class="modal-body">
@@ -46,7 +47,7 @@
 			<img src = "${pageContext.request.contextPath}/mypage/photoView.do" class = "profile-photo" width = "150" height = "150">
 			<br>
 			<br>
-			<input type = "file" id = "upload" accept = "image/gif, image/png, image/jpeg" style = "margin-left : 79px;">
+			<input type = "file" id = "upload" accept = "image/gif, image/png, image/jpeg" style = "margin-left : 57px;">
 		</p>
       </div>
       <div class="modal-footer justify-content-center" style = "align-items: center;">
