@@ -1,7 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>    
-<link rel="stylesheet" href="${pageContext.request.contextPath}/css/mypage/mypage.css">
 <!-- 마이페이지 비밀번호 변경 시작 -->
 <div id = "mypage_mem_info">
 	<div class = "wrap-meminfo">

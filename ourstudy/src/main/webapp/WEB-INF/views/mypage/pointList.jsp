@@ -1,7 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>    
-<link rel="stylesheet" href="${pageContext.request.contextPath}/css/mypage/mypage.css">
 <!-- 마이페이지 포인트 내역 시작 -->
 <div id = "mypage_mem_info">
 	<div class = "wrap-meminfo">
