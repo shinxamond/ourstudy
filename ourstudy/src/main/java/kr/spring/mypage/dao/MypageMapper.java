@@ -47,6 +47,9 @@ public interface MypageMapper {
 	@Delete("DELETE FROM member_detail WHERE mem_num = #{mem_num}")
 	public void deleteMember_detail(Integer mem_num);
 	
+	
+	
+	
 	/*==================================
                      포인트
     ====================================*/
@@ -69,31 +72,32 @@ public interface MypageMapper {
 	@Select("SELECT sum(point) FROM point WHERE mem_num = #{mem_num}")
 	public int selectTotalPoint(int mem_num);
 	
+	
+	
+	
 	/*==================================
     			    공부시간
 	====================================*/	
 	
-	//개인별 공부시간 불러오기(좌석쪽에서 데이터 불러오는 메소드 없을 시) - 나중에 페이징 처리 xml에 작성
-	//public List<PointVO> selectStudyTime(Integer mem_num);
 	
 	//좌석 이름 가져오기
-	@Select("SELECT s.seat_name FROM seat s JOIN seat_detail d ON s.seat_num = d.seat_num WHERE mem_num = #{mem_num}")
+	@Select("SELECT s.seat_name FROM seat s JOIN seat_detail d ON s.seat_num = d.seat_num WHERE mem_num = #{mem_num} AND d.total_time IS NULL")
 	public String selectSeatName(Integer mem_num);
 	
 	//누적 공부시간 불러오기
-	//@Select("SELECT mem_study FROM member_detail WHERE mem_num = #{mem_num}")
+	//@Select("SELECT mem_study FROM member_history WHERE mem_num = #{mem_num}")
 	//public int selectAccrueStudyTime(MemberVO member);
 	
 	//공부 시간 누적
-	//@Insert("INSERT INTO member_detail (mem_study) VALUES (#{total_time})")
-	//public void insertStudyTime(SeatVO seat);
+	//@Update("Update member_history SET mem_study = mem_study + #{total_time} WHERE mem_num = #{mem_num}") //나중에 seatVO에 mem_study 필드 추가해야될 수도 있음 그럼 #{mem_study} + #{total_time}으로 수정 // or 위에 누적 공부시간 불러오는 메서드 써서 데이터 가져온 다음 java로 연산해서 update
+	//public void updateStudyTime(SeatVO seat);
 	
 	
-	//잔여 시간 불러오기
-	//@Select("SELECT mem_study FROM member_detail WHERE mem_num = #{mem_num}")
+	//잔여 시간 불러오기 - 저장될 때 ms 단위로 되면 num길이 늘려야될수도 + update 되는거니까 디폴트값 0으로 변경
+	//@Select("SELECT mem_study FROM member_history WHERE mem_num = #{mem_num}")
 	//public int selectRemainTime(MemberVO member);
 	
 	//잔여 시간 업데이트
-	//@Update("UPDATE member_detail SET mem_study = #{mem_study}")
+	//@Update("UPDATE member_history SET mem_study = mem_study + #{total_time} WHERE mem_num = #{mem_num}") //마찬가지
 	//public void updateRemainTime(MemberVO member);
 }

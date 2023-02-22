@@ -115,6 +115,7 @@ a, a:hover, a:visited, a:focus{
 	position : relative;
 	top : 65px;
 	left : 285px;
+	width : 72px;
 }
 .element:nth-child(4) span a{
 	position : relative;

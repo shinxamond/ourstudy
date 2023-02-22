@@ -11,9 +11,9 @@
 <script type="text/javascript" src="${pageContext.request.contextPath}/js/jquery-3.6.0.min.js"></script>
  
 </head>
-<body style = "padding-left : 230px;"> <!-- style = "display : flex;" -->
+<body style = "padding-left : 230px;">
 	<tiles:insertAttribute name="sidebar"/>
-<div id="main" style = "margin : 0 auto; width : 100%;"> <!--  -->
+<div id="main" style = "margin : 0 auto; width : 100%;">
 	<div id="main_header">
 		<tiles:insertAttribute name="header"/>
 		<tiles:insertAttribute name="myPageHeader" />
@@ -25,13 +25,5 @@
 		<tiles:insertAttribute name="footer"/>
 	</div>
 </div>
-	<%-- tiles:insertAttribute name="header" />
-
-	<tiles:insertAttribute name="myPageHeader" />
-
-	<tiles:insertAttribute name="body" />
-
-	<tiles:insertAttribute name="footer" /> --%>
-
 </body>
 </html>
