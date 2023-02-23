@@ -16,5 +16,5 @@ public interface MemberService {
 	public void deleteAuto_id(int mem_num);
 	
 	//회원번호 불러오기 (seatAdminController에서 사용)
-	public int getMem_Name(int mem_num);
+	public String getMem_Name(int mem_num);
 }
