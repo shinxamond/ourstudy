@@ -43,6 +43,6 @@ public interface MemberMapper {
 	
 	//회원정보 불러오기(SeatAdminController에서 사용)-----------------
 	@Select("SELECT mem_name FROM MEMBER_DETAIL WHERE mem_num=#{mem_num}")
-	public String getMem_Name(int mem_num);
+	public String getMem_name(int mem_num);
 }
 

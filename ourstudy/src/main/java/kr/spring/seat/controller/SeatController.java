@@ -77,7 +77,7 @@ public class SeatController {
 		
 		int mem_num = (Integer)session.getAttribute("user_num");		
 		logger.debug("mem_num = " + mem_num);
-		String mem_name = memberService.getMem_Name(mem_num);			
+		String mem_name = memberService.getMem_name(mem_num);			
 		logger.debug("mem_name = " + mem_name);
 		
 		SeatVO seatVO = initCommand();
