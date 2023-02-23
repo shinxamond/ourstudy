@@ -11,6 +11,7 @@ import org.apache.ibatis.annotations.Update;
 
 import kr.spring.member.vo.MemberVO;
 import kr.spring.point.vo.PointVO;
+import kr.spring.seat.vo.SeatVO;
 
 @Mapper
 public interface MypageMapper {
@@ -81,8 +82,10 @@ public interface MypageMapper {
 	
 	
 	//좌석 이름 가져오기
-	@Select("SELECT s.seat_name FROM seat s JOIN seat_detail d ON s.seat_num = d.seat_num WHERE mem_num = #{mem_num} AND d.total_time IS NULL")
-	public String selectSeatName(Integer mem_num);
+	@Select("SELECT s.seat_name, s.seat_num FROM seat s JOIN seat_detail d ON s.seat_num = d.seat_num WHERE mem_num = #{mem_num} AND d.total_time IS NULL")
+	public SeatVO selectCurSeat(Integer mem_num);
+	
+	
 	
 	//누적 공부시간 불러오기
 	//@Select("SELECT mem_study FROM member_history WHERE mem_num = #{mem_num}")

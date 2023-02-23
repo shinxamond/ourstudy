@@ -10,6 +10,7 @@ import org.springframework.transaction.annotation.Transactional;
 import kr.spring.member.vo.MemberVO;
 import kr.spring.mypage.dao.MypageMapper;
 import kr.spring.point.vo.PointVO;
+import kr.spring.seat.vo.SeatVO;
 
 @Service
 @Transactional
@@ -61,8 +62,8 @@ public class MypageServiceImpl implements MypageService{
 	}
 
 	@Override
-	public String selectSeatName(Integer mem_num) {
-		return mypageMapper.selectSeatName(mem_num);
+	public SeatVO selectCurSeat(Integer mem_num) {
+		return mypageMapper.selectCurSeat(mem_num);
 	}
 
 }

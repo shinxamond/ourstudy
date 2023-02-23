@@ -5,6 +5,7 @@ import java.util.Map;
 
 import kr.spring.member.vo.MemberVO;
 import kr.spring.point.vo.PointVO;
+import kr.spring.seat.vo.SeatVO;
 
 public interface MypageService {
 	
@@ -25,5 +26,5 @@ public interface MypageService {
 	
 	public int selectTotalPoint(int mem_num);
 	
-	public String selectSeatName(Integer mem_num);
+	public SeatVO selectCurSeat(Integer mem_num);
 }

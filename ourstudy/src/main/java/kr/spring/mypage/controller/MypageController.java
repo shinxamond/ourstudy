@@ -61,10 +61,8 @@ public class MypageController {
 		
 		MemberVO member = mypageService.selectMember(user.getMem_num());
 		
-		SeatVO seat = new SeatVO();
-		
-		seat.setSeat_name(mypageService.selectSeatName(user.getMem_num()));				;
-		
+		SeatVO seat = mypageService.selectCurSeat(user.getMem_num());
+				
 		model.addAttribute("member", member);
 		model.addAttribute("seat", seat);
 		
@@ -79,9 +77,7 @@ public class MypageController {
 		
 		MemberVO member = (MemberVO)mypageService.selectMember(user.getMem_num());
 		
-		SeatVO seat = new SeatVO();
-		
-		seat.setSeat_name(mypageService.selectSeatName(user.getMem_num()));				;
+		SeatVO seat = mypageService.selectCurSeat(user.getMem_num());
 		
 		model.addAttribute("member", member);
 		model.addAttribute("seat", seat);
@@ -116,9 +112,7 @@ public class MypageController {
 		
 		MemberVO member = (MemberVO)mypageService.selectMember(user.getMem_num());
 		
-		SeatVO seat = new SeatVO();
-		
-		seat.setSeat_name(mypageService.selectSeatName(user.getMem_num()));				;
+		SeatVO seat = mypageService.selectCurSeat(user.getMem_num());
 		
 		model.addAttribute("member", member);
 		model.addAttribute("seat", seat);
@@ -166,7 +160,6 @@ public class MypageController {
 		
 		mypageService.updatePassword(member);
 		
-		//============나중에 자동로그인 삭제 추가되면 하기=====================//
 		memberService.deleteAuto_id(member.getMem_num());
 		
 		model.addAttribute("message", "비밀번호가 변경되었습니다(재접속 시 설정되어 있는 자동 로그인 기능이 해제됩니다).");
@@ -183,9 +176,7 @@ public class MypageController {
 		
 		MemberVO member = (MemberVO)mypageService.selectMember(user.getMem_num());
 		
-		SeatVO seat = new SeatVO();
-		
-		seat.setSeat_name(mypageService.selectSeatName(user.getMem_num()));				;
+		SeatVO seat = mypageService.selectCurSeat(user.getMem_num());
 		
 		model.addAttribute("member", member);
 		model.addAttribute("seat", seat);
