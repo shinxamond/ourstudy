@@ -2,17 +2,10 @@
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
 <!-- 중앙 컨텐츠 시작 -->
-<link rel="stylesheet"
-	href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.3/font/bootstrap-icons.css">
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Leckerli+One&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="${pageContext.request.contextPath}/css/memberRegister.css">
-<link rel="stylesheet" href="${pageContext.request.contextPath}/css/sidebar.css">
+
 <script type="text/javascript" src="${pageContext.request.contextPath}/js/confirmId.js"></script>
 <script type="text/javascript" src="${pageContext.request.contextPath}/js/makeEmail.js"></script>
 <script>
-
 $(document).on("keyup", ".mem_phone", function() {
 	$(this).val($(this).val().replace(/[^0-9]/g, "").replace(/(^02|^0505|^1[0-9]{3}|^0[0-9]{2})([0-9]+)?([0-9]{4})$/, "$1-$2-$3" ).replace("--", "-")); 
 });
@@ -21,93 +14,99 @@ function numberphone(e){
 		e.value=e.value.slice(0,13);
 	}
 }
-
 </script>
-<div class="register-body">
-<div class="register-container" id="register-container">
-	<div class="form-container sign-up-container">
+<div class="register_left">
+</div>
+<div class="register-main">
 	<form:form action="registerUser.do" id="register_form" modelAttribute="memberVO">
+		<img src="${pageContext.request.contextPath}/image_bundle/logo.png" style="width:155px; height:150px; margin:30px auto; display:block;">
 		<br>
-		<img src="${pageContext.request.contextPath}/image_bundle/logo.png" style="width:150px; height:145px;">
-		<br>
-		
+		<div class="register-content">
 		<form:errors element="div" cssClass="error-color"/>
+		<ul>
+			<li>
+				<label for="mem_id">아이디</label>
+				<form:input path="mem_id" autocomplete="off"/>
+				<input type="button" id="confirmId" value="아이디 중복체크">
+				<div id="message_id"></div> <!-- js를 위한 span 태그 -->
+				<form:errors path="mem_id" cssClass="error-color"/> <!-- 에러문구 -->
+			</li>
+			<li>
+				<label for="mem_pw">비밀번호</label>
+				<form:password path="mem_pw"/>
+				<form:errors path="mem_pw" cssClass="error-color"/>
+			</li>
 		
-			<label for="mem_id">아이디</label>
-			<form:input path="mem_id" autocomplete="off"/>
-			<input type="button" id="confirmId" value="아이디 중복체크">
-			<span id="message_id"></span> <!-- js를 위한 span 태그 -->
-			<form:errors path="mem_id" cssClass="error-color"/> <!-- 에러문구 -->
-			<br>
-			
-			<label for="mem_pw">비밀번호</label>
-			<form:password path="mem_pw"/>
-			<form:errors path="mem_pw" cssClass="error-color"/>
-			<br>
-			
-			<label for="pw_confirm">비밀번호 확인</label>
-			<form:password path="pw_confirm"/>
-			<span id="confirmMsg"></span>
-			<br>
-			
-			<label for="mem_name">이름</label>
-			<form:input path="mem_name"/>
-			<form:errors path="mem_name" cssClass="error-color"/>
-			<br>
-			
-			<label for="user_email">본인확인 이메일</label>
-			<input type="text" id="user_email" required>
-			<span id="middle">@</span>
-			<select id="email_address" name="email_address" title="이메일 선택" class="email_address">
-				<option value="naver.com">naver.com</option>
-				<option value="gmail.com">gmail.com</option>
-				<option value="daum.net">daum.net</option>
-				<option value="hanmail.net">hanmail.net</option>
-				<option value="nate.com">nate.com</option>
-				<option value="direct">직접입력</option>
-			</select>
-				<input type="text" id="email_direct" name="email_direct"/>
+			<li>
+				<label for="pw_confirm">비밀번호 확인</label>
+				<form:password path="pw_confirm"/>
+				<span id="confirmMsg"></span>
+			</li>
+			<li>
+				<label for="mem_name">이름</label>
+				<form:input path="mem_name"/>
+				<form:errors path="mem_name" cssClass="error-color"/>
+			</li>
+			<li>
+				<label for="user_email">본인확인 이메일</label>
+				<input type="text" id="user_email" required>
+				<span id="middle">@</span>
+				<select id="email_address" name="email_address" title="이메일 선택" class="email_address">
+					<option value="naver.com">naver.com</option>
+					<option value="gmail.com">gmail.com</option>
+					<option value="daum.net">daum.net</option>
+					<option value="hanmail.net">hanmail.net</option>
+					<option value="nate.com">nate.com</option>
+					<option value="direct">직접입력</option>
+				</select>
+				<input type="text" id="email_direct" name="email_direct" placeholder="이메일 입력"/>
 				<input type="hidden" id="mem_email" name="mem_email" value="">
-			<br>
+			</li>
+			
 			
 			<%--=======================이메일 인증코드 구현 시작========================  --%>
-
-			<div class="input-group-addon">
-				<button type="button" class="btn btn-primary" id="mail-Check-Btn">본인인증</button>
-			</div>
-			<div class="mail-check-box">
-				<input class="form-control mail-check-input" placeholder="인증번호 6자리를 입력해주세요!" disabled="disabled" maxlength="6">
-			</div>
-			<span id="mail-check-warn"></span>
-			<br>
+			<li>
+				<div class="mail-check-box">
+					<input class="form-control mail-check-input" placeholder="인증번호 6자리 입력" disabled="disabled" maxlength="6">
+					<button type="button" class="btn btn-primary" id="mail-Check-Btn">본인인증</button>
+				</div>
+				<div id="mail-check-warn"></div>
+			</li>
 			 <%-- =======================이메일 인증코드 구현 끝========================  --%>
 			
-			<label for="phone">전화번호</label>
-			<form:input path="mem_phone" oninput="numberphone(this)" class="mem_phone" maxlength="13" placeholder="숫자만 입력하세요"/>
-			<form:errors path="mem_phone" cssClass="error-color"/>
-			<br>
-
-			<label for="zipcode">우편번호</label>
-			<form:input path="mem_zipcode"/>
-			<input type="button" onclick="execDaumPostcode()" value="우편번호찾기">
-			<form:errors path="mem_zipcode" cssClass="error-color"/>
-			<br>
-
-			<label for="address1">주소</label>
-			<form:input path="mem_address1"/>
-			<form:errors path="mem_address1" cssClass="error-color"/>
-			<br>
 			
-			<label for="address2">상세주소</label>
-			<form:input path="mem_address2"/>
-			<form:errors path="mem_address2" cssClass="error-color"/>
-			<br><br>
 			
-			<form:button id="register-submit">전송</form:button>
+			<li>
+				<label for="phone">전화번호 (선택)</label>
+				<form:input path="mem_phone" oninput="numberphone(this)" class="mem_phone" maxlength="13" placeholder="숫자만 입력하세요"/>
+				<form:errors path="mem_phone" cssClass="error-color"/>
+			</li>
+
+			<li>
+				<label for="zipcode">우편번호 (선택)</label>
+				<form:input path="mem_zipcode"/>
+				<input type="button" id="find-zipcode" onclick="execDaumPostcode()" value="우편번호찾기">
+				<form:errors path="mem_zipcode" cssClass="error-color"/>
+			</li>
+			<li>
+				<label for="address1">주소 (선택)</label>
+				<form:input path="mem_address1"/>
+				<form:errors path="mem_address1" cssClass="error-color"/>
+			</li>
+			<li>
+				<label for="address2">상세주소 (선택)</label>
+				<form:input path="mem_address2"/>
+				<form:errors path="mem_address2" cssClass="error-color"/>
+			</li>
+		</ul>
+		</div>
+		<div class="align-center">
+			<form:button id="register-submit-btn">가입하기</form:button>
+		</div>
 	</form:form>
-	</div>
 </div>
-</div>
+
+
 <!-- 우편번호 검색 시작 -->
 <!-- iOS에서는 position:fixed 버그가 있음, 적용하는 사이트에 맞게 position:absolute 등을 이용하여 top,left값 조정 필요 -->
 <div id="layer" style="display:none;position:fixed;overflow:hidden;z-index:1;-webkit-overflow-scrolling:touch;">

@@ -2,71 +2,31 @@
 /*------------------------------------------------
 # 회원가입
 --------------------------------------------------*/
-
-.register-body {
-  background: white;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  flex-direction: column;
-  font-family: 'Montserrat', sans-serif;
-  height: 100vh;
-  margin: -20px 0 50px;
-}
-
-#register-submit {
-  border-radius: 20px;
-  border: 1px solid #FF4B2B;
-  background-color: #FF4B2B;
-  color: #FFFFFF;
-  font-size: 12px;
-  font-weight: bold;
-  padding: 12px 45px;
-  letter-spacing: 1px;
-  text-transform: uppercase;
-  transition: transform 80ms ease-in;
-}
-
-#register-submit:active {
-  transform: scale(0.95);
-}
-
-#register-submit:focus {
-  outline: none;
-}
-
-#register-submit.ghost {
-  background-color: transparent;
-  border-color: #FFFFFF;
-}
-
-#register_form {
-  background-color: #FFFFFF;
-  flex-direction: column;
-  padding: 0 50px;
-  height: 300px;
-  
-}
-
-/*
-input {
-  background-color: #eee;
-  border: none;
-  padding: 12px 15px;
-  margin: 8px 0;
-  width: 100%;
-}
-*/
-
-.register-container {
-  background-color: #fff;
+.register_left{
+  background-color: gray;
   border-radius: 10px;
   box-shadow: 0 14px 28px rgba(0,0,0,0.25), 0 10px 10px rgba(0,0,0,0.22);
+  position: absolute;
+  top:90px;
+  left:470px;
+  width: 550px;
+  height:990px;
+}
+
+.register-main{
+	width:55%;
+	margin:70px 40px 50px 220px;
+	padding:50px;
+}
+#register_form {
+  background-color: #fff;
+  border-radius: 10px;
+  box-shadow: 0 14px 28px rgba(0,0,0,0.25), 0 0 10px 10px rgba(0,0,0,0.22);
   position: relative;
   overflow: hidden;
   width: 768px;
   max-width: 100%;
-  min-height: 480px;
+  min-height: 850px;
 }
 
 .form-container {
@@ -76,16 +36,75 @@ input {
   transition: all 0.6s ease-in-out;
 }
 
-.sign-in-container {
-  left: 0;
-  width: 50%;
-  z-index: 2;
-}
-input{
-  width:275px;
+input:not(input[id="confirmId"],#find-zipcode),select,#email_direct{
+	width:150px;
 	height:40px;
 	border-radius:10px;
 	border:none;
 	box-shadow: inset 2px 2px 5px #babebc, inset -5px -5px 12px #fff;
 	padding:0 10px;
+}
+
+select,#email_direct{
+	width:127px !important;
+}
+#email_direct{
+	width:110px !important;
+	margin:10px 0 0px 320px;
+}
+
+input[id="mem_id"],input[id="mem_pw"],input[id="pw_confirm"],input[id="mem_name"],
+input[id="mem_phone"],input[id="mem_address1"],input[id="mem_address2"]{
+	width:230px;
+	margin-bottom:5px;
+}
+input[id="mem_id"]{
+	width:150px !important;
+}
+input[id="mem_zipcode"]{
+	width:195px;
+}
+
+input[id="user_email"]{
+	width:130px;
+	margin-bottom:5px;
+}
+
+input[id="confirmId"],#mail-Check-Btn,#find-zipcode{
+	color:white;
+	background-color:#037332;
+	width:125px;
+	height:40px;
+	border-radius:10px;
+	border:none;
+	margin-left:20px;
+	font-size:10pt;
+	margin-bottom:5px;
+}
+#register-submit-btn{
+	color:white;
+	background-color:#037332;
+	width:125px;
+	height:40px;
+	border-radius:10px;
+	border:none;
+	font-size:10pt;
+	margin-top:10px;
+	margin-bottom:50px;
+}
+.mail-check-input{
+	margin-left:130px;
+	font-size:10pt;
+	display:inline;
+}
+.register-content{
+	margin-left:40px;
+	margin-bottom:10px;
+}
+ul li label{
+	margin-top:16px;
+}
+#message_id{
+	margin-top:3px;
+	margin-left:135px;
 }
