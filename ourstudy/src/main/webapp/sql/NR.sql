@@ -31,8 +31,8 @@ create table member_detail(
 --회원 기록
 create table member_history(
  mem_num number,
- mem_study number,
- mem_ticket number(3),
+ mem_study number(15) default 0,
+ mem_ticket number default 0,
  constraint member_history_pk primary key (mem_num),
  constraint member_history_fk1 foreign key (mem_num) references member (mem_num)
 );

@@ -30,10 +30,16 @@ public class MemberVO {
 	private String mem_address2;
 	private byte[] mem_photo;
 	private String mem_photo_name;
-	
 	private Date mem_regdate;
 	private Date mem_mdate;
 	
+	private int mem_study;
+	private int mem_ticket;
+
+	public void setMem_ticket(int mem_ticket) {
+		this.mem_ticket = mem_ticket;
+	}
+
 	//회원가입시 비밀번호 확인
 	@Pattern(regexp="^[A-Za-z0-9]{8,16}$")
 	private String pw_confirm;
@@ -195,6 +201,19 @@ public class MemberVO {
 	public void setMem_mdate(Date mem_mdate) {
 		this.mem_mdate = mem_mdate;
 	}
+	
+
+	public int getMem_study() {
+		return mem_study;
+	}
+
+	public void setMem_study(int mem_study) {
+		this.mem_study = mem_study;
+	}
+
+	public int getMem_ticket() {
+		return mem_ticket;
+	}
 
 	public String getPw_confirm() {
 		return pw_confirm;
@@ -218,8 +237,9 @@ public class MemberVO {
 				+ mem_status + ", auto=" + auto + ", auto_id=" + auto_id + ", mem_name=" + mem_name + ", mem_pw="
 				+ mem_pw + ", mem_phone=" + mem_phone + ", mem_email=" + mem_email + ", mem_zipcode=" + mem_zipcode
 				+ ", mem_address1=" + mem_address1 + ", mem_address2=" + mem_address2 + ", mem_photo_name="
-				+ mem_photo_name + ", mem_regdate=" + mem_regdate + ", mem_mdate=" + mem_mdate + ", pw_confirm="
-				+ pw_confirm + ", now_passwd=" + now_passwd + "]";
+				+ mem_photo_name + ", mem_regdate=" + mem_regdate + ", mem_mdate=" + mem_mdate + ", mem_study="
+				+ mem_study + ", mem_ticket=" + mem_ticket + ", pw_confirm=" + pw_confirm + ", now_passwd=" + now_passwd
+				+ "]";
 	}
 
 }
