@@ -15,6 +15,11 @@
 		</li>
 		<li>
 			<input type="button" class="menu-btn"
+			 value="좌석 관리" 
+			 onclick="location.href='${pageContext.request.contextPath}/seat/insertForm.do'">
+		</li>
+		<li>
+			<input type="button" class="menu-btn"
 			 value="물품대여기록" 
 			 onclick="location.href='#'">
 		</li>

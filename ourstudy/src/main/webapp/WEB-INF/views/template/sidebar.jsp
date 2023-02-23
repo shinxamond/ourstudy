@@ -167,7 +167,9 @@ function kakaoLogout() {
 				<div class="side-inline chair-bottom" style="cursor: pointer;" onclick="location.href=''">
 					<ul>
 						<li><i class="fas fa-regular fa-chair"></i></li>
-						<li class="chair">좌석 선택</li>
+						<%-- <c:if test="${user.mem_auth == 1}"> --%>
+						<li class="chair"><a href="${pageContext.request.contextPath}/seat/selectSeatForm.do">좌석 선택</a></li>
+						<%-- </c:if> --%>
 					</ul>
 				</div>
 				
