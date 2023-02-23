@@ -36,7 +36,7 @@ public interface SeatMapper {
 	
 	
 	/*========================================
-	 				LOGIC
+	 				GET DATA(LIST)
 	 ======================================= */
 	//해당 DB에서 정보 가져오기
 	public List<SeatVO> getSeatList();
@@ -44,27 +44,32 @@ public interface SeatMapper {
 	//좌석이용시간 구하기
 	
 	//해당 멤버의 좌석 번호 구하기
-	@Select("SELECT seat_num FROM SEAT_DETAIL WHERE mem_num=#{mem_num} AND out_time IS NULL")
-	public int getSeat_numByMem_num(int mem_num);
+	@Select("SELECT seat_num, mem_num, mem_name FROM SEAT_DETAIL WHERE mem_num=#{mem_num} AND out_time IS NULL")
+	public SeatVO getSeatDetailByMem_num(int mem_num);
+	
+	//total_time 이 null인 회원의 입실날짜와 퇴실날짜를 String으로 불러온다.
+	@Select("SELECT TO_CHAR(in_time, 'yyyy-MM-dd HH24:MI:SS') in_time, TO_CHAR(out_time, 'yyyy-MM-dd HH24:MI:SS') out_time FROM SEAT_DETAIL WHERE seat_num=#{seat_num} AND total_time IS NULL")
+	public SeatVO getTimes(int seat_num);
+
+	
+	/*========================================
+	 				IN / OUT / HOLD
+	 ======================================= */
 	//좌석 상태 변경
-	//외출상태로 변경
-	@Update("UPDATE SEAT SET seat_status=2 WHERE seat_num=#{seat_num}") 
-	public void seatStatusHold(int seat_num);
-	//사용불가상태로 변경
-	@Update("UPDATE SEAT SET seat_status=0 WHERE seat_num=#{seat_num}")
-	public void seatStatusIn(SeatVO vo);
 	//사용가능 상태로 변경
 	@Update("UPDATE SEAT SET seat_status=1 WHERE seat_num=#{seat_num}")
 	public void seatStatusOut(int seat_num);
+	//사용불가상태로 변경
+	@Update("UPDATE SEAT SET seat_status=0 WHERE seat_num=#{seat_num}")
+	public void seatStatusIn(SeatVO vo);
+	//외출상태로 변경
+	@Update("UPDATE SEAT SET seat_status=2 WHERE seat_num=#{seat_num}") 
+	public void seatStatusHold(int seat_num);
 	//퇴실날짜정보 등록
 	@Update("UPDATE SEAT_DETAIL SET out_time=SYSDATE WHERE seat_num=#{seat_num} AND out_time IS NULL")
 	public void insertOutTimeBySeat_num(int seat_num);
 	@Update("UPDATE SEAT_DETAIL SET out_time=SYSDATE WHERE mem_num=#{mem_num} AND out_time IS NULL")
 	public void insertOutTimeByMem_num(int mem_num);
-	
-	//total_time 이 null인 회원의 입실날짜와 퇴실날짜를 String으로 불러온다.
-	@Select("SELECT TO_CHAR(in_time, 'yyyy-MM-dd HH24:MI:SS') in_time, TO_CHAR(out_time, 'yyyy-MM-dd HH24:MI:SS') out_time FROM SEAT_DETAIL WHERE seat_num=#{seat_num} AND total_time IS NULL")
-	public SeatVO getTimes(int seat_num);
 	//퇴실날짜 저장
 	@Update("UPDATE SEAT_DETAIL SET total_time=#{total_time} WHERE seat_num=#{seat_num} AND total_time IS NULL")
 	public void insertTotal_time(SeatVO vo);

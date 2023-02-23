@@ -19,6 +19,8 @@ public interface SeatService {
 	public void outSeat(int seat_num);
 	//날짜 추출
 	public SeatVO getTimes(int seat_num);
+	//좌석번호,회원번호,회원이름 추출
+	public SeatVO getSeatDetail(int mem_num);
 	//total_time 입력
 	public void insertTotal_time(SeatVO vo);
 }

@@ -50,25 +50,27 @@ public class SeatServiceImpl implements SeatService{
 	@Override
 	public void holdSeat(int seat_num) {
 		seatMapper.insertOutTimeBySeat_num(seat_num);			//퇴실시간 찍기
-		
-		//좌석 이용시간 구하는 메서드
-		
-		seatMapper.seatStatusHold(seat_num);	//외출상태로 변환(status)
+		seatMapper.seatStatusHold(seat_num);					//외출상태로 변환(status)
 	}
 
 	//퇴실처리
 	@Override
 	public void outSeat(int seat_num) {
 		seatMapper.insertOutTimeBySeat_num(seat_num);			//퇴실시간 찍기
-		seatMapper.seatStatusOut(seat_num); 		//사용가능 상태로 변환(status)
-		//좌석 이용시간 구하기 메서드(DB에서 가져와서 차이 계산한다음 DB total_time에 다시 넣어줘야 할듯)
+		seatMapper.seatStatusOut(seat_num); 					//사용가능 상태로 변환(status)
 	}
 
+	//입실시간/ 퇴실시간 추출
 	@Override
 	public SeatVO getTimes(int seat_num) {
 		return seatMapper.getTimes(seat_num);
 	}
 
+	//회원이름, 회원번호, 좌석번호 추출
+	public SeatVO getSeatDetail(int mem_num) {
+		return seatMapper.getSeatDetailByMem_num(mem_num);
+	}
+	
 	//퇴실시간 - 입실시간
 	@Override
 	public void insertTotal_time(SeatVO vo) {

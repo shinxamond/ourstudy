@@ -73,8 +73,6 @@ public class SeatController {
 					+ " null");
 		}
 		
-		MemberVO member = (MemberVO)session.getAttribute("user");
-		
 		int mem_num = (Integer)session.getAttribute("user_num");		
 		logger.debug("mem_num = " + mem_num);
 		String mem_name = memberService.getMem_name(mem_num);			
