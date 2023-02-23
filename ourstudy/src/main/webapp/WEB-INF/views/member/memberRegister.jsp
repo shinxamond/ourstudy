@@ -19,7 +19,9 @@ function numberphone(e){
 </div>
 <div class="register-main">
 	<form:form action="registerUser.do" id="register_form" modelAttribute="memberVO">
-		<img src="${pageContext.request.contextPath}/image_bundle/logo.png" style="width:155px; height:150px; margin:30px auto; display:block;">
+		<a href="${pageContext.request.contextPath}/main/main.do">
+			<img src="${pageContext.request.contextPath}/image_bundle/logo.png" id="register-logo">
+		</a>
 		<br>
 		<div class="register-content">
 		<form:errors element="div" cssClass="error-color"/>

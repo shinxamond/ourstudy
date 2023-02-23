@@ -2,31 +2,53 @@
 /*------------------------------------------------
 # 회원가입
 --------------------------------------------------*/
+@keyframes fadeInUp {
+	0% {
+		opacity: 0;
+        transform: translate3d(0, 5%, 0);
+        
+    }
+    to {
+        opacity: 1;
+        transform: translateZ(0);
+    }
+}
+    
+#register-logo{
+	width:155px;
+	height:150px;
+	margin:35px auto;
+	margin-bottom:0px;
+	display:block;
+}
+
 .register_left{
-  background-color: gray;
+  background-color: #014a20;
   border-radius: 10px;
   box-shadow: 0 14px 28px rgba(0,0,0,0.25), 0 10px 10px rgba(0,0,0,0.22);
-  position: absolute;
+  position: relative;
   top:90px;
-  left:470px;
+  left:230px;
   width: 550px;
-  height:990px;
+  height:970px;
+  animation: fadeInUp 1s;
 }
 
 .register-main{
 	width:55%;
-	margin:70px 40px 50px 220px;
+	margin:-890px 40px 50px 225px;
+	position: relative;
 	padding:50px;
+	animation: fadeInUp 1s;
 }
 #register_form {
   background-color: #fff;
   border-radius: 10px;
   box-shadow: 0 14px 28px rgba(0,0,0,0.25), 0 0 10px 10px rgba(0,0,0,0.22);
-  position: relative;
   overflow: hidden;
   width: 768px;
   max-width: 100%;
-  min-height: 850px;
+  min-height: 860px;
 }
 
 .form-container {
@@ -107,4 +129,8 @@ ul li label{
 #message_id{
 	margin-top:3px;
 	margin-left:135px;
+}
+label{
+	font-weight:bold;
+	font-size:10pt;
 }
