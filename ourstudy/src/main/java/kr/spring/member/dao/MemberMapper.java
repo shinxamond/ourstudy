@@ -20,7 +20,9 @@ public interface MemberMapper {
 	@Insert("INSERT INTO member_detail (mem_num,mem_name,mem_pw,mem_phone,mem_email,mem_zipcode,mem_address1,mem_address2) VALUES"
 			+ " (#{mem_num},#{mem_name},#{mem_pw},#{mem_phone},#{mem_email},#{mem_zipcode},#{mem_address1},#{mem_address2})")
 	public void insertMember_detail(MemberVO member);
-
+	@Insert("INSERT INTO member_history (mem_num,mem_study,mem_ticket) VALUES (#{mem_num},#{mem_study},#{mem_ticket})")
+	public void insertMember_history(MemberVO member);
+	
 	//아이디 중복 체크 및 로그인
 	@Select("SELECT m.mem_num,m.mem_id,m.mem_auth,m.auto_id,m.mem_status,d.mem_pw,d.mem_email FROM member m "
 			+ "LEFT OUTER JOIN member_detail d ON m.mem_num=d.mem_num WHERE m.mem_id=#{mem_id}")
@@ -44,5 +46,4 @@ public interface MemberMapper {
 	@Select("SELECT mem_name FROM MEMBER_DETAIL WHERE mem_num=#{mem_num}")
 	public int getMem_Name(int mem_num);
 }
-
 
