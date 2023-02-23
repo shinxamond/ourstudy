@@ -15,12 +15,33 @@
 					<th>퇴실시간</th>
 					<th>합계 공부시간</th>
 				</tr>
+				<c:if test="${count == 0}">
+					입/퇴실 내역이 없습니다.
+				</c:if>
+				<c:if test="${count > 0}">
+				<c:forEach var = "study" items = "${list}">
 				
-				<tr>
-					<td>2023.02.16 09:00</td>
-					<td>2023.02.16 18:00</td>
-					<td>9시간</td>
-				</tr>
+				<td>${study.in_time}</td>
+				
+				<c:if test = "${empty study.out_time}">
+				<td>입실중</td>
+				</c:if>
+				
+				<c:if test="${!empty study.out_time}">
+				<td>${study.out_time}</td>
+				</c:if>
+				
+				<c:if test = "${empty study.total_time}">
+				<td>입실중</td>
+				</c:if>
+				
+				<c:if test="${!empty study.total_time}">
+				<td>${study.total_time}</td>
+				</c:if>
+				${page }
+				
+				</c:forEach>				
+				</c:if>
 			</table>
 		</div>
 		<div style = "text-align : center;">

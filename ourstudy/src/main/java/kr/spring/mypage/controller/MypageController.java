@@ -1,6 +1,7 @@
 package kr.spring.mypage.controller;
 
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
@@ -23,6 +24,7 @@ import org.springframework.web.servlet.ModelAndView;
 
 import kr.spring.util.AuthCheckException;
 import kr.spring.util.FileUtil;
+import kr.spring.util.PagingUtil;
 import kr.spring.member.controller.MemberController;
 import kr.spring.member.service.MemberService;
 import kr.spring.member.vo.MemberVO;
@@ -232,10 +234,58 @@ public class MypageController {
 	 */
 	
 	//공부시간 목록
-	@GetMapping("/mypage/studyTimeList.do")
-	public String studyTimeList() {
-		return "studyTimeList";
+	@RequestMapping("/mypage/studyTimeList.do")
+	public ModelAndView studyTimeList(@RequestParam(value = "pageNum", defaultValue = "1") int currentPage, String keyfield , HttpSession session, Model model) {
+		
+		ModelAndView mav = new ModelAndView();
+		
+		//마이페이지 헤더 정보
+		MemberVO user = (MemberVO)session.getAttribute("user");
+		
+		MemberVO member = (MemberVO)mypageService.selectMember(user.getMem_num());
+		
+		SeatVO seat = mypageService.selectCurSeat(user.getMem_num());
+		
+		mav.addObject("member", member);
+		mav.addObject("seat", seat);
+		
+		//공부시간 리스트
+		Map<String, Object> map = new HashMap<String, Object>();
+		
+		logger.debug("<<user>> : " + user.getMem_num());
+		
+		int count = mypageService.selectSeatDetailRowCount(user.getMem_num());
+		
+		logger.debug("<<count>>" + count);
+		
+		
+		PagingUtil page = new PagingUtil(keyfield, null, currentPage, count, 5, 10, "studyTimeList.do");
+		
+		List<SeatVO> list = null; 
+		
+		if(count > 0) {
+		
+		map.put("start", page.getStartRow()); 
+		map.put("end", page.getEndRow());
+		map.put("mem_num", user.getMem_num());
+		
+		list = mypageService.selectSeatDetailListByMem_num(map);
+		}
+		
+		
+		mav.addObject("count", count); 
+		mav.addObject("list", list);
+		mav.addObject("page", page.getPage());
+		
+		logger.debug("list" + list);
+		
+		mav.setViewName("studyTimeList");
+		
+		return mav;
 	}
+	
+	
+	
 	//좌석선택 폼
 	@GetMapping("/mypage/myPageselectSeat.do")
 	public String myPageSelectSeat() {

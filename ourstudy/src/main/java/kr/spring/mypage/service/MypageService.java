@@ -27,4 +27,8 @@ public interface MypageService {
 	public int selectTotalPoint(int mem_num);
 	
 	public SeatVO selectCurSeat(Integer mem_num);
+	
+	public int selectSeatDetailRowCount(Integer mem_num);
+	
+	public List<SeatVO> selectSeatDetailListByMem_num(Map<String, Object> map);
 }

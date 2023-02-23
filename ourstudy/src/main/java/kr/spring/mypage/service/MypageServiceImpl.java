@@ -66,4 +66,14 @@ public class MypageServiceImpl implements MypageService{
 		return mypageMapper.selectCurSeat(mem_num);
 	}
 
+	@Override
+	public int selectSeatDetailRowCount(Integer mem_num) {
+		return mypageMapper.selectSeatDetailRowCount(mem_num);
+	}
+
+	@Override
+	public List<SeatVO> selectSeatDetailListByMem_num(Map<String, Object> map) {
+		return mypageMapper.selectSeatDetailListByMem_num(map);
+	}
+
 }

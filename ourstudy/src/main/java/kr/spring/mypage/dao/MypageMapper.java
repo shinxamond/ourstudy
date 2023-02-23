@@ -81,11 +81,16 @@ public interface MypageMapper {
 	====================================*/	
 	
 	
-	//좌석 이름 가져오기
+	//현재 좌석 가져오기
 	@Select("SELECT s.seat_name, s.seat_num FROM seat s JOIN seat_detail d ON s.seat_num = d.seat_num WHERE mem_num = #{mem_num} AND d.total_time IS NULL")
 	public SeatVO selectCurSeat(Integer mem_num);
 	
+	//공부내역 카운트
+	@Select("SELECT COUNT(*) FROM seat_detail WHERE mem_num = #{mem_num}")
+	public int selectSeatDetailRowCount(Integer mem_num);
 	
+	//회원별 입퇴실 내역 및 공부시간 seat table에서 가져오기
+	public List<SeatVO> selectSeatDetailListByMem_num(Map<String, Object> map);
 	
 	//누적 공부시간 불러오기
 	//@Select("SELECT mem_study FROM member_history WHERE mem_num = #{mem_num}")
