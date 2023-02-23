@@ -28,7 +28,7 @@
 			<div class = "seatcheck-buttons">
 				<button class = "seatcheck-button">입실</button>
 				<button class = "seatcheck-button">외출</button>
-				<button class = "seatcheck-button">퇴실</button>			
+				<button class = "seatcheck-button" onclick="location.href='${pageContext.request.contextPath}/seat/out.do?seat_num=${seat.seat_num}'">퇴실</button>			
 			</div>
 
 			<span><a href = "${pageContext.request.contextPath}/mypage/myPageselectSeat.do" class = "link-font small">좌석선택 ></a></span>
