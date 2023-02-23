@@ -107,6 +107,36 @@ public class SeatController {
 		//
 	}
 	//외출처리
+	@RequestMapping("/seat/hold.do")
+	public String Holder(@RequestParam int seat_num) {
+		seatService.holdSeat(seat_num);
+		
+		SeatVO seatVO = seatService.getTimes(seat_num);
+		String in_time = seatVO.getIn_time();
+		String out_time = seatVO.getOut_time(); 
+		
+		SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+		
+		Date in_date = null;
+		Date out_date = null;
+		
+		try {
+			in_date = format.parse(in_time);				
+			out_date = format.parse(out_time);
+		} catch (ParseException e) {
+			e.printStackTrace();
+		}
+		
+		long diff = out_date.getTime() - in_date.getTime();
+		long diffSeconds = diff / 1000;	
+		
+		int diffIntSeconds = Long.valueOf(diffSeconds).intValue();
+		seatVO.setTotal_time(diffIntSeconds);
+		seatVO.setSeat_num(seat_num);
+		
+		seatService.insertTotal_time(seatVO);
+		return "";
+	}
 	
 	//퇴실처리
 	@RequestMapping("/seat/out.do")
