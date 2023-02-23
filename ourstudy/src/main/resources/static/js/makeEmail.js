@@ -85,7 +85,6 @@ $(function(){
 	}); // end send eamil
 
 	// 인증번호 비교 
-	// blur -> focus가 벗어나는 경우 발생
 	$('.mail-check-input').blur(function () {
 		const inputCode = $(this).val();
 		const $resultMsg = $('#mail-check-warn');

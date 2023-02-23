@@ -19,6 +19,7 @@ public class MemberServiceImpl implements MemberService {
 		member.setMem_num(memberMapper.selectMem_num());
 		memberMapper.insertMember(member);
 		memberMapper.insertMember_detail(member);
+		memberMapper.insertMember_history(member);
 	}
 
 	@Override

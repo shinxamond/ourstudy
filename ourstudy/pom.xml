@@ -100,11 +100,11 @@
 		    <artifactId>spring-boot-starter-mail</artifactId>
 		</dependency>
 		
-		<dependency>
+		<!-- <dependency>
     		<groupId>javax.mail</groupId>
     		<artifactId>mail</artifactId>
     		<version>1.4.7</version>
-		</dependency>
+		</dependency>-->
 		<!-- MailSender 인터페이스 포함된 라이브러리	
 		<dependency>
 			<groupId>org.springframework</groupId>
