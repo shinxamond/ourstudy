@@ -22,9 +22,8 @@
 		<c:if test="${count > 0}">
 			<c:forEach var="ticket" items="${list}">
 				<div class="card" style="width: 40rem;">
-					<div class="card-header">독서실 이용권(시간제)</div>
 					<div class="card-body">
-						${ticket.ticket_name}
+						<a href="admin_ticketModify.do?ticket_num=${ticket.ticket_num}">${ticket.ticket_name}</a>
 						<div style="float: right;"><fmt:formatNumber value="${ticket.ticket_price}"/>원</div>
 					</div>
 				</div>

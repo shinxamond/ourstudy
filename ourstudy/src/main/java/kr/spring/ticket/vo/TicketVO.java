@@ -1,10 +1,17 @@
 package kr.spring.ticket.vo;
 
+import javax.validation.constraints.NotEmpty;
+import javax.validation.constraints.NotNull;
+
 public class TicketVO {
 	private int ticket_num;
+	@NotNull
 	private int ticket_kind;
+	@NotEmpty
 	private String ticket_name;
+	@NotNull
 	private int ticket_type;
+	@NotNull
 	private int ticket_price;
 
 	public int getTicket_num() {

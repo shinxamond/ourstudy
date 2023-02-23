@@ -106,6 +106,47 @@ public class TicketAdminController {
 
 		return "common/resultView";
 	}
+	
+	//======= 이용권 수정 =======//
+	//수정 폼 호출
+	@GetMapping("/ticket/admin_ticketModify.do")
+	public String formUpdate(
+			@RequestParam int ticket_num,
+			Model model) {
+		
+		TicketVO ticketVO = ticketService.selectTicket(ticket_num);
+		model.addAttribute("ticketVO", ticketVO);
+		
+		return "ticketAdminModify";
+	}
+	
+	//폼에서 전송된 데이터 처리
+	@PostMapping("/ticket/admin_ticketModify.do")
+	public String submitUpdate(
+					@Valid TicketVO vo,
+					BindingResult result,
+					Model model,
+					HttpServletRequest request) {
+		
+		logger.debug("<<이용권 수정>> : " + vo);
+		
+		//유효성 체크 결과 오류가 있으면 폼 호출
+		if(result.hasErrors()) {
+			return "ticketAdminModify";
+		}
+		
+		ticketService.updateTicket(vo);
+		
+		//View에 표시할 메시지
+		model.addAttribute("message", "이용권 수정이 완료되었습니다.");
+		model.addAttribute("url", 
+			request.getContextPath() 
+			+ "/ticket/admin_ticketList.do?ticket_num="+vo.getTicket_num());		
+		
+		return "common/resultView";
+	}
+	
+	
 }
 
 
