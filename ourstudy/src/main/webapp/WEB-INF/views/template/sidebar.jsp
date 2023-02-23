@@ -176,7 +176,7 @@ function kakaoLogout() {
 				<div class="side-inline laptop-bottom" style="cursor: pointer;" onclick="location.href=''">
 					<ul>
 						<li><i class="fas fa-regular fa-laptop"></i></li>
-						<li class="laptop"><a href="${pageContext.request.contextPath}/item/userlist.do">물품 대여</a></li>
+						<li class="laptop"><a href="${pageContext.request.contextPath}/item/userList.do">물품 대여</a></li>
 					</ul>
 				</div>
 				
