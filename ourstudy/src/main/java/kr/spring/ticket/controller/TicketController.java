@@ -4,15 +4,19 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import javax.servlet.http.HttpSession;
+
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
+import kr.spring.member.vo.MemberVO;
 import kr.spring.ticket.service.TicketService;
 import kr.spring.ticket.vo.TicketVO;
 import kr.spring.util.PagingUtil;
@@ -30,7 +34,7 @@ public class TicketController {
 	public TicketVO initCommand() {
 		return new TicketVO();
 	}
-
+	
 	//이용권 목록
 	@RequestMapping("/ticket/ticketList.do")
 	public ModelAndView process(
@@ -50,24 +54,23 @@ public class TicketController {
 		PagingUtil page = new PagingUtil(keyfield, keyword,
 				currentPage, count, 20, 10, "list.do");
 
-		List<TicketVO> list = null;
+		List<TicketVO> ticket = null;
 		if(count > 0) {
 			map.put("start", page.getStartRow());
 			map.put("end", page.getEndRow());
 
-			list = ticketService.selectTicketList(map);
+			ticket = ticketService.selectTicketList(map);
 		}
 
 		ModelAndView mav = new ModelAndView();
 		mav.setViewName("ticketList");
-		mav.addObject("count",count);
-		mav.addObject("list",list);
-		mav.addObject("page",page.getPage());
+		mav.addObject("count", count);
+		mav.addObject("ticket", ticket);
+		mav.addObject("page", page.getPage());
 
 
 		return mav;
 		
 	}
-	
 
 }

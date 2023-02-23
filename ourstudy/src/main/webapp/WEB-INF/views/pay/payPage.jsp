@@ -19,6 +19,6 @@
 				onclick="requestKakaoPay()">카카오페이</button>
 		</div>
 	</form>	
-<script src="${pageContext.request.contextPath}/js/pay/pay.js"></script>
+<script src="${pageContext.request.contextPath}/js/pay.js"></script>
 </div>
 <!-- 결제 페이지 끝 -->

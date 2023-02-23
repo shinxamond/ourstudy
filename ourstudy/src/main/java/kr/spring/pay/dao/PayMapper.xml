@@ -10,22 +10,14 @@
 	</resultMap>
 	
 	<sql id="payCondition">
-		WHERE mem_num=#{mem_num}			<!--  -->
-		<if test="pay_numbers!=null and pay_numbers.length>0">
-			AND pay_num IN 
-			<foreach item="ticket" collection="pay_numbers"
-					 open="(" separator="," close=")">
-				#{ticket}
-			</foreach>
-		</if>
+		WHERE mem_num=#{mem_num}		
+			AND pay_num=#{pay_num}		
 	</sql>
-	<select id="selectListPay" parameterType="map" resultMap="payMap">
+	<select id="selectPay" parameterType="map" resultMap="payMap">
 		SELECT
 		  pay_num,
-		  item_num,
-		  mem_num,
-		  ticket_name,
-		  ticket_price,
+		  ticket_num,
+		  pay_price
 		FROM pay JOIN ticket USING(ticket_num)
 		<include refid="payCondition"></include>
 	</select>

@@ -53,12 +53,9 @@ public class TicketVO {
 	public void setTicket_price(int ticket_price) {
 		this.ticket_price = ticket_price;
 	}
-
 	@Override
 	public String toString() {
 		return "TicketVO [ticket_num=" + ticket_num + ", ticket_kind=" + ticket_kind + ", ticket_name=" + ticket_name
 				+ ", ticket_type=" + ticket_type + ", ticket_price=" + ticket_price + "]";
 	}
-	
-	
 }
