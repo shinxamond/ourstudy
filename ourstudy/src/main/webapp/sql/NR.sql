@@ -32,7 +32,8 @@ create table member_detail(
 create table member_history(
  mem_num number,
  mem_study number(15) default 0,
- mem_ticket number default 0,
+ mem_ticket_hour number default 0,
+ mem_ticket_term number default 0,
  constraint member_history_pk primary key (mem_num),
  constraint member_history_fk1 foreign key (mem_num) references member (mem_num)
 );
