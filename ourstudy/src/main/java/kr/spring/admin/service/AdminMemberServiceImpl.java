@@ -16,7 +16,24 @@ public class AdminMemberServiceImpl implements AdminMemberService{
 
 	@Autowired
 	private AdminMemberMapper adminmemberMapper;
+	
+	//현재고객현황판
+	@Override
+	public int countUsingNum() {
+		return adminmemberMapper.countUsingNum();
+	}
 
+	@Override
+	public int countTermNum() {
+		return adminmemberMapper.countTermNum();
+	}
+
+	@Override
+	public int countTimeNum() {
+		return adminmemberMapper.countTimeNum();
+	}
+	
+	//회원목록
 	@Override
 	public List<AdminMemberVO> selectList(Map<String, Object> map) {
 		return adminmemberMapper.selectList(map);
