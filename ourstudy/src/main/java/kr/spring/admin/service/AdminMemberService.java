@@ -9,8 +9,14 @@ import org.apache.ibatis.annotations.Select;
 import kr.spring.admin.vo.AdminMemberVO;
 
 public interface AdminMemberService {
-	//회원관리 - 관리자
+	//현재고객현황판
+	public int countUsingNum();
+	public int countTermNum();
+	public int countTimeNum();
+	
+	//회원목록
 	public List<AdminMemberVO> selectList(
 			Map<String,Object> map);
 	public int selectRowCount(Map<String,Object> map);
+	
 }

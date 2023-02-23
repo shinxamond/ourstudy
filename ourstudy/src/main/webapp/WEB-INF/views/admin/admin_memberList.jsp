@@ -2,10 +2,24 @@
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 
-
 <!-- 중앙 컨텐츠 시작 -->
 <div class="page-main">
-	<h2>회원목록(관리자전용)</h2>
+	<h2>현재고객현황판</h2>
+	<table class="striped-table">
+		<tr>
+			<th>현재 이용중인 회원수</th>
+			<th>기간권 회원수</th>
+			<th>시간권 회원수</th>
+			<th>전체 회원수</th>
+		</tr>
+		<tr>
+			<td><span style="color:red">${usingnum}</span>명</td>
+			<td><span style="color:red">${periodnum}</span>명</td>
+			<td><span style="color:red">${timenum}</span>명</td>
+			<td><span style="color:red">${totalnum}</span>명</td>
+		</tr>
+	</table><br>
+	<h2>회원목록</h2>
 	<form action="admin_list.do" id="search_form"
 	                                   method="get">
 		<ul class="search">

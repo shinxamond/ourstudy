@@ -1,5 +1,6 @@
 package kr.spring.admin.controller;
 
+import java.text.DecimalFormat;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -29,15 +30,31 @@ public class AdminMemberController {
 	@Autowired
 	private AdminMemberService adminMemberService;
 	
-	//=========회원목록관리========//
+	//=====현재고객현황판 및 회원목록 관리=====//
 	@RequestMapping("/admin/admin_list.do")
 	public ModelAndView process(
 			@RequestParam(value="pageNum",defaultValue="1") int currentPage,
 			@RequestParam(value="keyfield",defaultValue="1") String keyfield, 
 			String keyword) {
 		
-		Map<String,Object> map = 
-				new HashMap<String,Object>();
+		//현재 고객 현황판
+		DecimalFormat df = new DecimalFormat("###,###");
+		
+		int total1 = adminMemberService.countUsingNum();	
+		String usingnum = df.format(total1);
+		logger.debug("<<현재 이용중인 회원수  - usingnum>> : " + usingnum);
+		
+		int total2 = adminMemberService.countTermNum();	
+		String periodnum = df.format(total2);
+		logger.debug("<<기간권 회원수  - periodnum>> : " + periodnum);
+		
+		int total3 = adminMemberService.countTimeNum();	
+		String timenum = df.format(total3);
+		logger.debug("<<시간권 회원수  - timenum>> : " + timenum);
+		
+		String totalnum = df.format(total2+total3);
+		
+		Map<String,Object> map = new HashMap<String,Object>();
 		map.put("keyfield", keyfield);
 		map.put("keyword", keyword);
 		
@@ -47,10 +64,7 @@ public class AdminMemberController {
 		logger.debug("<<회원관리 - count>> : " + count);
 		
 		//페이지 처리
-		PagingUtil page = 
-				new PagingUtil(keyfield,keyword,
-						currentPage,count,5,10,
-						"admin_list.do");
+		PagingUtil page = new PagingUtil(keyfield,keyword,currentPage,count,5,10,"admin_list.do");
 		
 		List<AdminMemberVO> list = null;
 		if(count > 0) {
@@ -62,6 +76,14 @@ public class AdminMemberController {
 		
 		ModelAndView mav = new ModelAndView();
 		mav.setViewName("adminMemberList");
+		
+		//현재고객현황판
+		mav.addObject("usingnum", usingnum);
+		mav.addObject("periodnum", periodnum);
+		mav.addObject("timenum", timenum);
+		mav.addObject("totalnum", totalnum);
+		
+		//회원목록
 		mav.addObject("count", count);
 		mav.addObject("adminMemberList", list);
 		mav.addObject("page", page.getPage());

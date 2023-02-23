@@ -14,7 +14,18 @@ import kr.spring.admin.vo.AdminMemberVO;
 
 @Mapper
 public interface AdminMemberMapper {
-	//회원관리 - 관리자
+	//현재 고객 현황판
+	@Select("SELECT COUNT(*) FROM seat WHERE SEAT_STATUS!=1")
+	public int countUsingNum(); //현재 이용중인 회원수
+		
+	@Select("SELECT COUNT(*) FROM member_history WHERE MEM_TICKET_TERM>0")
+	public int countTermNum(); //기간권 회원수
+	
+	@Select("SELECT COUNT(*) FROM member_history WHERE MEM_TICKET_HOUR>0")
+	public int countTimeNum(); //시간권 회원수
+	
+	
+	//회원목록
 	public List<AdminMemberVO> selectList(Map<String,Object> map);
 	
 	public int selectRowCount(Map<String,Object> map);
