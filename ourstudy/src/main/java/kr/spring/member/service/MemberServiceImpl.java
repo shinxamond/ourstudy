@@ -48,5 +48,14 @@ public class MemberServiceImpl implements MemberService {
 		return memberMapper.getMem_name(mem_num);
 	}
 
+	@Override
+	public String find_id(String mem_name, String mem_email) {
+		return memberMapper.find_id(mem_name, mem_email);
+	}
+	
+	@Override
+	public String find_pw(String mem_id, String mem_email) {
+		return memberMapper.find_pw(mem_id, mem_email);
+	}
 	
 }

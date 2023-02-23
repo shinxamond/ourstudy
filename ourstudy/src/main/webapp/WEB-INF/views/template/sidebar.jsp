@@ -95,11 +95,11 @@ function kakaoLogout() {
 				</form>
 				
 				<ul class="find-id my-3">
-					<li>아이디 찾기</li>
+					<li><a href="${pageContext.request.contextPath}/member/findId.do">아이디 찾기</a></li>
 					<li>&nbsp;|&nbsp;</li>
-					<li>비밀번호 찾기</li>
+					<li><a href="${pageContext.request.contextPath}/member/findPw.do">비밀번호 찾기</a></li>
 					<li>&nbsp;|&nbsp;</li>
-					<li>회원가입</li>
+					<li><a href="${pageContext.request.contextPath}/member/registerUser.do">회원가입</a></li>
 				</ul>
 				
 				<div class="my-4 d-flex justify-content-center" onclick="kakaoLogin()">

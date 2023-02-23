@@ -5,8 +5,19 @@
        "http://tiles.apache.org/dtds/tiles-config_3_0.dtd">
 
 <tiles-definitions>
+	<!-- 회원가입 -->
     <definition name="memberRegister" template="/WEB-INF/views/template/layout_register.jsp">
     	<put-attribute name="body" value="/WEB-INF/views/member/memberRegister.jsp"/>
+    </definition>
+    
+    <!-- 아이디 찾기 -->
+    <definition name="memberFindId" extends="memberRegister">
+    	<put-attribute name="body" value="/WEB-INF/views/member/memberFindId.jsp"/>
+    </definition>
+    
+    <!-- 비밀번호 찾기 -->
+    <definition name="memberFindPw" extends="memberRegister">
+    	<put-attribute name="body" value="/WEB-INF/views/member/memberFindPw.jsp"/>
     </definition>
     
     <!-- 로그인 -->

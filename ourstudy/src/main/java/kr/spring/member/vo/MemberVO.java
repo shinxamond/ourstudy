@@ -41,6 +41,9 @@ public class MemberVO {
 	@Pattern(regexp="^[A-Za-z0-9]{8,16}$")
 	private String pw_confirm;
 	
+	//이메일 인증코드
+	private int email_code;
+	
 	//비밀번호 변경시 현재 비밀번호를 저장하는 용도로 사용
 	@Pattern(regexp="^[A-Za-z0-9]{8,16}$")
 	private String now_passwd;
@@ -224,6 +227,15 @@ public class MemberVO {
 		this.mem_ticket_term = mem_ticket_term;
 	}
 
+	public int getEmail_code() {
+		return email_code;
+	}
+
+	public void setEmail_code(int email_code) {
+		this.email_code = email_code;
+	}
+
+	
 	public String getPw_confirm() {
 		return pw_confirm;
 	}
@@ -248,7 +260,8 @@ public class MemberVO {
 				+ ", mem_address1=" + mem_address1 + ", mem_address2=" + mem_address2 + ", mem_photo_name="
 				+ mem_photo_name + ", mem_regdate=" + mem_regdate + ", mem_mdate=" + mem_mdate + ", mem_study="
 				+ mem_study + ", mem_ticket_hour=" + mem_ticket_hour + ", mem_ticket_term=" + mem_ticket_term
-				+ ", pw_confirm=" + pw_confirm + ", now_passwd=" + now_passwd + "]";
+				+ ", pw_confirm=" + pw_confirm + ", email_code=" + email_code + ", now_passwd=" + now_passwd + "]";
 	}
+
 
 }

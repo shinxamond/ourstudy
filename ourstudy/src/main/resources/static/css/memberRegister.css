@@ -23,7 +23,7 @@
 }
 
 .register_left{
-  background-color: #014a20;
+  background-color: #025224;
   border-radius: 10px;
   box-shadow: 0 14px 28px rgba(0,0,0,0.25), 0 10px 10px rgba(0,0,0,0.22);
   position: relative;
@@ -49,13 +49,6 @@
   width: 768px;
   max-width: 100%;
   min-height: 860px;
-}
-
-.form-container {
-  position: absolute;
-  top: 0;
-  height: 100%;
-  transition: all 0.6s ease-in-out;
 }
 
 input:not(input[id="confirmId"],#find-zipcode),select,#email_direct{
@@ -133,4 +126,97 @@ ul li label{
 label{
 	font-weight:bold;
 	font-size:10pt;
+}
+button,input[type="button"]{
+	cursor:pointer;
+}
+
+
+
+/*=====================================
+			  아이디 찾기
+======================================*/
+
+.find_left{
+  background-color: #025224;
+  border-radius:5px;
+  box-shadow: 0 14px 28px rgba(0,0,0,0.25), 5px 8px 10px rgba(0,0,0,0.22);
+  position: relative;
+  top:70px;
+  left:210px;
+  width:260px;
+  height:585px;
+  z-index:2;
+  animation: fadeInUp 1s;
+}
+
+.find-logo{
+	width:150px;
+	height:145px;
+	margin:205px 0 0 55px;
+	display:relative;
+	z-index:3;
+}
+
+.find_form {
+  position: relative;
+  margin:-480px 40px -700px 140px;
+  background-color: #fff;
+  border-radius: 6px;
+  box-shadow: 2px 2px 14px 5px rgba(0,0,0,.1);
+  overflow: hidden;
+  width:800px;
+  height:490px;
+  z-index:1;
+  animation: fadeInUp 1s;
+}
+
+.find-content{
+	margin:25px 60px 0px 390px;
+	text-align:center;
+	margin-right:60px;
+	font-size:11pt;
+	margin-top:25px;
+	padding:10px 0;
+}
+
+.find-content ul li{
+	margin-bottom:0;
+}
+
+.find-content ul li label{
+	text-align:left;
+	padding-left:15px;
+}
+.find-content ul li input#mem_name{
+	margin-right:152px;
+}
+.find-content ul li #email_direct{
+	margin-left:198px;
+	width:107px !important;
+}
+.find-content ul li .mail-check-input{
+	margin-top:13px;
+	margin-left:0px;
+}
+
+.find-submit-btn{
+	color:white;
+	background-color:#037332;
+	width:125px;
+	height:40px;
+	border-radius:10px;
+	border:none;
+	font-size:10pt;
+	margin:35px 0 0 490px;
+}
+
+.find-text{
+	margin-top:40px;
+	font-weight:bold;
+	font-size:15pt;
+}
+
+.find-content ul li input#mem_id{
+	margin-right:152px;
 }

@@ -197,6 +197,43 @@ public class MemberController {
 
 		return "redirect:/main/main.do";
 	}
+	
+	//========아이디 찾기==========
+	
+	//아이디 찾기 폼 호출
+	@GetMapping("/member/findId.do")
+	public String findIdForm() {
+		return "memberFindId";
+	}
+	
+	//아이디 찾기 처리
+	@PostMapping("/member/findId.do")
+	public String FindIdSubmit(@Valid MemberVO memberVO, BindingResult result,
+								HttpSession session, HttpServletRequest request) {
+		
+		logger.debug("<<아이디 찾기>> : " + memberVO);
+
+		memberVO.setMem_name(request.getParameter("mem_name"));
+		memberVO.setMem_email(request.getParameter("mem_email"));
+		
+		String mem_id = memberService.find_id("mem_name", "mem_email");
+		
+		request.setAttribute("mem_id", mem_id);
+		
+		
+		
+		return null;
+		
+	}
+	
+	
+	//========비밀번호 찾기=========
+	
+	//비밀번호 찾기 폼 호출
+	@GetMapping("/member/findPw.do")
+	public String findPwForm() {
+		return "memberFindPw";
+	}
 }
 
 

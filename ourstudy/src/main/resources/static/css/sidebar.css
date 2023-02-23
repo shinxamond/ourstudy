@@ -219,6 +219,10 @@ ul{
 .find-id li{
 	display:inline-block;
 }
+.find-id a:hover{
+	color:#037332;
+	text-decoration:none;
+}
 #login_Id{
 	color:red;
 }

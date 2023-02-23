@@ -87,7 +87,7 @@ function numberphone(e){
 			<li>
 				<label for="zipcode">우편번호 (선택)</label>
 				<form:input path="mem_zipcode"/>
-				<input type="button" id="find-zipcode" onclick="execDaumPostcode()" value="우편번호찾기">
+				<input type="button" id="find-zipcode" onclick="execDaumPostcode()" value="우편번호 찾기">
 				<form:errors path="mem_zipcode" cssClass="error-color"/>
 			</li>
 			<li>
