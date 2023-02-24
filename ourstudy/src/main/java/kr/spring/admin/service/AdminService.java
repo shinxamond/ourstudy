@@ -32,4 +32,8 @@ public interface AdminService {
 	//물품대여 히스토리목록
 	public List<AdminItemHistoryVO> selectItemList(Map<String,Object> map);
 	public int selectItemRowCount(Map<String,Object> map);		
+	
+	//미반납자 목록
+	public List<AdminItemHistoryVO> selectUnreturnList(Map<String,Object> map);
+	public int selectUnreturnRowCount(Map<String,Object> map);	
 }

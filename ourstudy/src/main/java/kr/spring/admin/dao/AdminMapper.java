@@ -41,7 +41,11 @@ public interface AdminMapper {
 	
 	//물품대여 히스토리목록
 	public int selectItemRowCount(Map<String,Object> map);
-	public List<AdminItemHistoryVO> selectItemList(Map<String,Object> map);		
+	public List<AdminItemHistoryVO> selectItemList(Map<String,Object> map);	
+	
+	//미반납자 목록
+	public int selectUnreturnRowCount(Map<String,Object> map);
+	public List<AdminItemHistoryVO> selectUnreturnList(Map<String,Object> map);	
 }
 
 

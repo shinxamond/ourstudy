@@ -53,7 +53,7 @@
 		<li>
 			<input type="button" class="menu-btn"
 			 value="물품대여기록(미반납자)" 
-			 onclick="location.href='#'">
+			 onclick="location.href='${pageContext.request.contextPath}/admin/admin_unreturnlist.do'">
 		</li>		
 		<li>
 			<input type="button" class="menu-btn"

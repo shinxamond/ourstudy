@@ -113,8 +113,8 @@
   	<select id="selectItemRowCount" parameterType="map" resultType="integer">
   		SELECT
   		  COUNT(*)
-  		FROM item_detail d LEFT OUTER JOIN item i
-  		ON d.item_num = i.item_num
+  		FROM item_detail d LEFT OUTER JOIN item i 
+  		ON d.item_num = i.item_num 
   		<if test="keyword != null and keyword != ''">
   		WHERE i.item_title LIKE '%' || #{keyword} || '%' 
   		</if>    		                   
@@ -149,6 +149,50 @@
 		<![CDATA[
 		WHERE rnum >= #{start} AND rnum <= #{end}
 		]]>   		               		                         
-  	</select>  	  	  	  	  	  	
+  	</select> 
+  	
+	<!-- 미반납자 목록 -->
+  	<select id="selectUnreturnRowCount" parameterType="map" resultType="integer">
+  		SELECT
+  		  COUNT(*)
+  		FROM item_detail d LEFT OUTER JOIN item i
+  		ON d.item_num = i.item_num
+  		WHERE d.item_end IS NULL  
+  		<if test="keyword != null and keyword != ''">
+  		AND i.item_title LIKE '%' || #{keyword} || '%' 
+  		</if>    		                   
+  	</select>
+  	
+  	<select id="selectUnreturnList" parameterType="map" resultType="adminItemHistoryVO">
+  		SELECT
+  		   *
+  		FROM (SELECT
+  		        a.*,  
+  		        rownum rnum 
+  		      FROM (SELECT b.*, mem_name, mem_phone 
+					FROM (SELECT item_rnum, item_title, item_index, mem_num, item_start, item_end     
+        				  FROM item_detail d LEFT OUTER JOIN item i 
+        				  ON d.item_num = i.item_num)b LEFT OUTER JOIN member_detail m 
+					ON b.mem_num = m.mem_num
+					WHERE b.item_end IS NULL 
+			  		<if test="keyword != null and keyword != ''">
+				  		AND b.item_title LIKE '%' || #{keyword} || '%'
+			  		</if>					            				  		 
+  		            <if test="keyfield == 1">	            
+  		            ORDER BY b.item_start DESC NULLS LAST
+  		            </if>
+  		            <if test="keyfield == 2">
+  		            ORDER BY b.item_start ASC NULLS LAST
+  		            </if>
+  		            <!--
+  		            <if test="keyfield == 3">
+  		            ORDER BY a.item_utime DESC NULLS FIRST
+  		            </if>
+  		             -->
+  		            )a)
+		<![CDATA[
+		WHERE rnum >= #{start} AND rnum <= #{end}
+		]]>   		               		                         
+  	</select>  	 	  	  	  	  	  	
 </mapper>
 

@@ -78,5 +78,18 @@ public class AdminServiceImpl implements AdminService{
 	@Override
 	public int selectItemRowCount(Map<String, Object> map) {
 		return adminMapper.selectItemRowCount(map);
-	}		
+	}
+
+	//미반납자 목록
+	@Override
+	public List<AdminItemHistoryVO> selectUnreturnList(Map<String, Object> map) {
+		return adminMapper.selectUnreturnList(map);
+	}
+
+	@Override
+	public int selectUnreturnRowCount(Map<String, Object> map) {
+		return adminMapper.selectUnreturnRowCount(map);
+	}
+	
+	
 }

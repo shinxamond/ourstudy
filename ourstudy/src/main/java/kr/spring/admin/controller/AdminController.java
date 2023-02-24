@@ -218,7 +218,44 @@ public class AdminController {
 		mav.addObject("page", page.getPage());
 		
 		return mav;
-	}		
+	}
+	
+	//=====미반납자 목록=====//
+	@RequestMapping("/admin/admin_unreturnlist.do")
+	public ModelAndView unreturnlist(
+			@RequestParam(value="pageNum",defaultValue="1") int currentPage,
+			@RequestParam(value="keyfield",defaultValue="1") String keyfield, 
+			String keyword) {
+		
+		Map<String,Object> map = new HashMap<String,Object>();
+		map.put("keyfield", keyfield);
+		map.put("keyword", keyword);
+		
+		//총 글의 개수 또는 검색된 글의 갯수
+		int count = adminService.selectUnreturnRowCount(map);
+		logger.debug("<<총 글 갯수>> : " + count);
+		
+		//페이지 처리
+		PagingUtil page = new PagingUtil(keyfield,keyword,currentPage,count,4,10,"admin_unreturnlist.do");
+		
+		List<AdminItemHistoryVO> list = null;
+		if(count > 0) {
+			map.put("start", page.getStartRow());
+			map.put("end", page.getEndRow());
+			
+			list = adminService.selectUnreturnList(map);
+		}
+				
+		ModelAndView mav = new ModelAndView();
+		mav.setViewName("adminUnreturnList");
+		
+		//좌석히스토리목록
+		mav.addObject("count", count);
+		mav.addObject("adminUnreturnList", list);
+		mav.addObject("page", page.getPage());
+		
+		return mav;
+	}	
 }
 
 
