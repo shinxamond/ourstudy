@@ -53,7 +53,7 @@ public class SeatAdminController {
 		model.addAttribute("member", member);
 		model.addAttribute("list", list);
 		
-		return "seat/admin_drawing";
+		return "seat/admin_editForm";
 	}
 	
 //	@RequestMapping("/seat/insert.do")

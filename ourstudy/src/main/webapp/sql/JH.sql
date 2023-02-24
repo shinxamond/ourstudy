@@ -21,7 +21,7 @@ CREATE TABLE locker_detail
     
     CONSTRAINT locker_detail_pk PRIMARY KEY (locker_detail_num),
     CONSTRAINT locker_detail_fk FOREIGN KEY (locker_num) REFERENCES locker_info(locker_num),
-    CONSTRAINT locker_detail_fk2 FOREIGN KEY (mem_num) REFERENCES member(mem_num)
+    CONSTRAINT locker_detail_fk2 FOREIGN KEY (mem_num) REFERENCES member_detail(mem_num)
 );
 
 CREATE SEQUENCE locker_detail_seq;

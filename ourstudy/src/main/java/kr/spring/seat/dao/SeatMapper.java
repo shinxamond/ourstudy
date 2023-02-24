@@ -59,12 +59,18 @@ public interface SeatMapper {
 	//사용가능 상태로 변경
 	@Update("UPDATE SEAT SET seat_status=1 WHERE seat_num=#{seat_num}")
 	public void seatStatusOut(int seat_num);
+	@Update("UPDATE MEMBER SET mem_status=1 WHERE mem_num=#{mem_num}")
+	public void memberStatusOut(int mem_num);
 	//사용불가상태로 변경
 	@Update("UPDATE SEAT SET seat_status=0 WHERE seat_num=#{seat_num}")
 	public void seatStatusIn(SeatVO vo);
+	@Update("UPDATE MEMBER SET mem_status=0 WHERE mem_num=#{mem_num}")
+	public void memberStatusIn(int mem_num);
 	//외출상태로 변경
 	@Update("UPDATE SEAT SET seat_status=2 WHERE seat_num=#{seat_num}") 
 	public void seatStatusHold(int seat_num);
+	@Update("UPDATE MEMBER SET mem_status=2 WHERE mem_num=#{mem_num}")
+	public void memberStatusHold(int mem_num);
 	//퇴실날짜정보 등록
 	@Update("UPDATE SEAT_DETAIL SET out_time=SYSDATE WHERE seat_num=#{seat_num} AND out_time IS NULL")
 	public void insertOutTimeBySeat_num(int seat_num);

@@ -5,10 +5,15 @@
        "http://tiles.apache.org/dtds/tiles-config_3_0.dtd">
 
 <tiles-definitions>
-    <definition name="" extends="main">
-    	<put-attribute name="title" value="채팅방 생성"/>
+    <definition name="adminDrawing" extends="admin">
+    	<put-attribute name="title" value="관리자 좌석 배치도 편집"/>
     	<put-attribute name="body"
-    	  value="/WEB-INF/views/talk/talkRoomWrite.jsp"/>        
+    	  value="/WEB-INF/views/seat/admin_drawing.jsp"/>        
+    </definition>
+    <definition name="selectSeatForm" extends="main">
+    	<put-attribute name="title" value="좌석 선택 페이지"/>
+    	<put-attribute name="body"
+    	  value="/WEB-INF/views/seat/drawing.jsp"/>        
     </definition>
 </tiles-definitions>
 

@@ -3,9 +3,7 @@ package kr.spring.seat.controller;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
@@ -14,12 +12,15 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
+import kr.spring.locker.service.LockerService;
+import kr.spring.locker.vo.LockerVO;
 import kr.spring.member.service.MemberService;
 import kr.spring.member.vo.MemberVO;
 import kr.spring.seat.service.SeatService;
@@ -36,6 +37,8 @@ public class SeatController {
 	@Autowired
 	private MemberService memberService;
 	
+	@Autowired
+	private LockerService lockerService;
 	
 	//VO 초기화
 	@ModelAttribute("seatVO")
@@ -54,28 +57,27 @@ public class SeatController {
 		ModelAndView mav = new ModelAndView();
 		List<SeatVO> list = seatService.getSeatList();
 
-		mav.setViewName("seat/drawing");
+		mav.setViewName("seat/selectForm");
 		mav.addObject("list", list);
 		
 		return mav;
 	}
-	
 
+	/*===========KEEP============================================================================
 	//좌석을 선택한 회원의 정보가 입력됨
-	@RequestMapping("/seat/selectSeat.do")
+	@RequestMapping("/seat/select.do")
 	@ResponseBody
 	public Map<String, String> selectSeat(@RequestParam int seat_num, HttpServletRequest request) {
 		Map<String, String> mapJson = new HashMap<String, String>();
 		
 		HttpSession session = request.getSession();
 		if(session.getAttribute("user") == null) {
-			logger.debug("객체"
-					+ " null");
+			logger.debug("객체 null");
 		}
 		
 		int mem_num = (Integer)session.getAttribute("user_num");		
-		logger.debug("mem_num = " + mem_num);
 		String mem_name = memberService.getMem_name(mem_num);			
+		logger.debug("mem_num = " + mem_num);
 		logger.debug("mem_name = " + mem_name);
 		
 		SeatVO seatVO = initCommand();
@@ -93,9 +95,43 @@ public class SeatController {
 		
 		return mapJson;
 	}
+	=============================================================================================*/
+	
+	//좌석을 선택한 회원의 정보가 입력됨
+	@RequestMapping("/seat/select.do")
+	public String selectSeat(@RequestParam int seat_num,HttpServletRequest request,RedirectAttributes attributes, Model model) {
+		HttpSession session = request.getSession();
+		if(session.getAttribute("user") == null) {
+			logger.debug("객체 null");
+		}
+		
+		int mem_num = (Integer)session.getAttribute("user_num");		
+		String mem_name = memberService.getMem_name(mem_num);			
+		logger.debug("mem_num = " + mem_num);
+		logger.debug("mem_name = " + mem_name);
+		
+		SeatVO seatVO = initCommand();
+		if(seatVO == null) {
+			logger.debug("이미 선택된 좌석임");
+		}
+		
+		seatVO.setMem_num(mem_num);
+		seatVO.setMem_name(mem_name);
+		seatVO.setSeat_num(seat_num);
+		seatService.selectSeat(seatVO);
+		
+		String success_message = "좌석이 선택되었습니다.";
+		attributes.addFlashAttribute("message", success_message);
+		List<LockerVO> list = lockerService.getLockerList();
+		
+		model.addAttribute("list", list);
+		
+		return "locker/selectForm";
+	}
+
 	
 	//좌석이동
-	@RequestMapping("seat/move.do")
+	@RequestMapping("/seat/move.do")
 	public String moveSeat(HttpServletRequest request) {
 		//세션에서 mem_num값을 가져온다
 		HttpSession session = request.getSession();
@@ -108,8 +144,11 @@ public class SeatController {
 	}
 	//외출처리
 	@RequestMapping("/seat/hold.do")
-	public String Holder(@RequestParam int seat_num) {
+	public String Holder(@RequestParam int seat_num, HttpServletRequest request) {
+		HttpSession session = request.getSession();
+		int mem_num = (Integer)session.getAttribute("user_num");
 		seatService.holdSeat(seat_num);
+		
 		
 		SeatVO seatVO = seatService.getTimes(seat_num);
 		String in_time = seatVO.getIn_time();

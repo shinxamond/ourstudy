@@ -29,6 +29,7 @@ public class SeatServiceImpl implements SeatService{
 		vo.setSeat_detail_num(seatMapper.selectSeat_Detail_num());
 		seatMapper.insertToSelectSeat(vo);		//회원상세정보 등록
 		seatMapper.seatStatusIn(vo);
+		seatMapper.memberStatusIn(vo.getMem_num());
 	}
 
 	//좌석 리스트

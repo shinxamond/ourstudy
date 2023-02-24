@@ -11,7 +11,7 @@
 	<table>
 		<c:forEach var="seat" items="${list}">
 			<tr>
-				<td><a href="selectSeat.do?seat_num=${seat.seat_num}">${seat.seat_name}</a></td>
+				<td><a href="select.do?seat_num=${seat.seat_num}">${seat.seat_name}</a></td>
 			</tr>
 		</c:forEach>
 	</table>
