@@ -54,9 +54,10 @@
   		   *
   		FROM (SELECT
   		        a.*, 
-  		        rownum rnum
+  		        rownum rnum 
   		      FROM (SELECT
-  		              * 
+  		      			seat_detail_num, seat_num, mem_num, mem_name, total_time,
+  		      			TO_CHAR(in_time, 'yyyy-MM-dd HH24:MI:SS') in_time, TO_CHAR(out_time, 'yyyy-MM-dd HH24:MI:SS') out_time       
   		            FROM seat_detail s          				  		 
   		            <if test="keyfield == 1">	            
   		            ORDER BY s.in_time DESC NULLS LAST

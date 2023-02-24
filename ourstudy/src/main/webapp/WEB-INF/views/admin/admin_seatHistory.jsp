@@ -64,7 +64,7 @@ $(document).ready(function() {
 	    <div class="modal-content">
 	      <div class="modal-header">
 	        <h1 class="modal-title fs-5" id="exampleModalLabel">
-				<span id="seat"></span>번 좌석
+				<span id="seat">${history.seat_num}</span>번 좌석
 			</h1>
 	        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
 	      </div>

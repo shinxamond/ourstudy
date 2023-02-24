@@ -15,8 +15,8 @@ public class AdminSeatHistoryVO {
 	private int seat_num;
 	private int mem_num;
 	private String mem_name;
-	private Date in_time;
-	private Date out_time;
+	private String in_time;
+	private String out_time;
 	private int total_time;
 	
 	public int getSeat_detail_num() {
@@ -51,19 +51,19 @@ public class AdminSeatHistoryVO {
 		this.mem_name = mem_name;
 	}
 
-	public Date getIn_time() {
+	public String getIn_time() {
 		return in_time;
 	}
 
-	public void setIn_time(Date in_time) {
+	public void setIn_time(String in_time) {
 		this.in_time = in_time;
 	}
 
-	public Date getOut_time() {
+	public String getOut_time() {
 		return out_time;
 	}
 
-	public void setOut_time(Date out_time) {
+	public void setOut_time(String out_time) {
 		this.out_time = out_time;
 	}
 
