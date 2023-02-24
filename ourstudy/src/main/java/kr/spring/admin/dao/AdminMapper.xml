@@ -30,7 +30,7 @@
 				  		WHERE d.mem_name LIKE '%' || #{keyword} || '%' OR
 				  			  d.mem_num LIKE '%' || #{keyword} || '%' 
 			  		</if>
-  		            <if test="keyfield == 1">
+  		            <if test="keyfield == 1 or keyfield == null">
   		            ORDER BY d.mem_regdate DESC NULLS LAST
   		            </if>
   		            <if test="keyfield == 2">
