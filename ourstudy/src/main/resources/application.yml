@@ -28,19 +28,7 @@ spring:
   
   servlet:    multipart:      max-file-size: 50MB #파일 한 개당 최대 사이즈
       max-request-size: 200MB #요청당 최대 파일 크기(주의)max-request-size도 설정이 필요
-      
-  mail:
-    host: smtp.gmail.com
-    port: 587
-    username: ourstudy777@gmail.com
-    password: pxugayiqebevjtwm
-    properties:
-      mail:
-        smtp:
-          auth: true
-          starttls: 
-            enable: true
-mybatis: #mybatis 설정
+      mybatis: #mybatis 설정
   type-aliases-package: kr.spring.**.vo
   mapper-locations: kr/spring/**/dao/*.xml   
     

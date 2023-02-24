@@ -209,20 +209,20 @@ public class MemberController {
 	//아이디 찾기 처리
 	@PostMapping("/member/findId.do")
 	public String FindIdSubmit(@Valid MemberVO memberVO, BindingResult result,
-								HttpSession session, HttpServletRequest request) {
+							  HttpServletRequest request, Model model) {
 		
 		logger.debug("<<아이디 찾기>> : " + memberVO);
 
-		memberVO.setMem_name(request.getParameter("mem_name"));
-		memberVO.setMem_email(request.getParameter("mem_email"));
+		String mem_name = request.getParameter("mem_name");
+		String mem_email = request.getParameter("mem_email");
 		
-		String mem_id = memberService.find_id("mem_name", "mem_email");
+		String mem_id = memberService.find_id(mem_name, mem_email);
 		
 		request.setAttribute("mem_id", mem_id);
 		
+		model.addAttribute("accessMsg", mem_name+"님의 아이디는<br><br>" + mem_id + "<br><br>입니다");
 		
-		
-		return null;
+		return "common/notice";
 		
 	}
 	
@@ -233,6 +233,25 @@ public class MemberController {
 	@GetMapping("/member/findPw.do")
 	public String findPwForm() {
 		return "memberFindPw";
+	}
+	
+	//비밀번호 찾기 처리
+	@PostMapping("/member/findPw.do")
+	public String FindPwsubmit(@Valid MemberVO memberVO, BindingResult result,
+			HttpServletRequest request, Model model) {
+
+		logger.debug("<<비밀번호 찾기>> : " + memberVO);
+
+		String mem_id = request.getParameter("mem_id");
+		String mem_email = request.getParameter("mem_email");
+		
+		String mem_pw = memberService.find_pw(mem_id, mem_email);
+
+		request.setAttribute("mem_pw", mem_pw);
+
+		model.addAttribute("accessMsg", "비밀번호는<br><br>" + mem_pw + "<br><br>입니다");
+
+		return "common/notice";
 	}
 }
 

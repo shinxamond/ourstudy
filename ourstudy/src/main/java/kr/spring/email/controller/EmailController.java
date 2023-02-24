@@ -1,10 +1,7 @@
 package kr.spring.email.controller;
 
-import java.util.Random;
-
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.mail.SimpleMailMessage;
-import org.springframework.mail.javamail.JavaMailSender;
+
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
@@ -15,15 +12,23 @@ import kr.spring.email.service.MailSendService;
 public class EmailController {
 	
 	@Autowired
-	private MailSendService mailService;
+	//private MailSendService mailService;
+	private EmailSender emailSender;
+	@Autowired
+	private EmailVO emailVO;
 	
 	//이메일 인증
 	@GetMapping("/mailCheck")
 	@ResponseBody
-	public String mailCheck(String email) {
-		System.out.println("이메일 인증 요청이 들어옴!");
-		System.out.println("이메일 인증 이메일 : " + email);
-		return mailService.joinEmail(email);
+	public String mailCheck(String email) throws Exception {
+		
+		emailVO.setContent("안녕하세요");
+		emailVO.setReceiver("renoir421@naver.com");
+		emailVO.setSubject("제목부분");
+	
+		emailSender.sendEmail(emailVO);
+		
+		return "redirect:/main/main.do";
 	}
 	
 
