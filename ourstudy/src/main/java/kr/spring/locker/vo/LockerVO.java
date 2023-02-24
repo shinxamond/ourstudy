@@ -1,6 +1,7 @@
 package kr.spring.locker.vo;
 
 public class LockerVO {
+	private int locker_detail_num;
 	private int locker_num;
 	private int locker_status;
 	private int mem_num;
@@ -8,6 +9,13 @@ public class LockerVO {
 	private String locker_start;
 	private String locker_end;
 	private long locker_diff;
+	
+	public int getLocker_detail_num() {
+		return locker_detail_num;
+	}
+	public void setLocker_detail_num(int locker_detail_num) {
+		this.locker_detail_num = locker_detail_num;
+	}
 	public int getLocker_num() {
 		return locker_num;
 	}
@@ -52,11 +60,8 @@ public class LockerVO {
 	}
 	@Override
 	public String toString() {
-		return "LockerVO [locker_num=" + locker_num + ", locker_status=" + locker_status + ", mem_num=" + mem_num
-				+ ", mem_name=" + mem_name + ", locker_start=" + locker_start + ", locker_end=" + locker_end
-				+ ", locker_diff=" + locker_diff + "]";
+		return "LockerVO [locker_detail_num=" + locker_detail_num + ", locker_num=" + locker_num + ", locker_status="
+				+ locker_status + ", mem_num=" + mem_num + ", mem_name=" + mem_name + ", locker_start=" + locker_start
+				+ ", locker_end=" + locker_end + ", locker_diff=" + locker_diff + "]";
 	}
-	
-	
-	
 }
