@@ -51,7 +51,9 @@ public interface SeatMapper {
 	@Select("SELECT TO_CHAR(in_time, 'yyyy-MM-dd HH24:MI:SS') in_time, TO_CHAR(out_time, 'yyyy-MM-dd HH24:MI:SS') out_time FROM SEAT_DETAIL WHERE seat_num=#{seat_num} AND total_time IS NULL")
 	public SeatVO getTimes(int seat_num);
 
-	
+	//현재 회원의 좌석 상태 구하기
+	@Select("SELECT mem_status FROM MEMBER WHERE mem_num=#{mem_num}")
+	public int getMem_status(int mem_num);
 	/*========================================
 	 				IN / OUT / HOLD
 	 ======================================= */
@@ -76,7 +78,7 @@ public interface SeatMapper {
 	public void insertOutTimeBySeat_num(int seat_num);
 	@Update("UPDATE SEAT_DETAIL SET out_time=SYSDATE WHERE mem_num=#{mem_num} AND out_time IS NULL")
 	public void insertOutTimeByMem_num(int mem_num);
-	//퇴실날짜 저장
+	//입퇴실날짜 저장
 	@Update("UPDATE SEAT_DETAIL SET total_time=#{total_time} WHERE seat_num=#{seat_num} AND total_time IS NULL")
 	public void insertTotal_time(SeatVO vo);
 	/*===========================================

@@ -50,19 +50,34 @@ public class SeatServiceImpl implements SeatService{
 	//외출처리
 	@Override
 	public void holdSeat(SeatVO vo) {
-		seatMapper.insertOutTimeBySeat_num(vo.getSeat_num());			//퇴실시간 찍기
 		seatMapper.seatStatusHold(vo.getSeat_num());					//외출상태로 변환(status)
 		seatMapper.memberStatusHold(vo.getMem_num());
 	}
 
-	//퇴실처리
+	//입실 상태일 때 퇴실처리
 	@Override
-	public void outSeat(SeatVO vo) {
+	public void outSeatWhenIn(SeatVO vo) {
 		seatMapper.insertOutTimeBySeat_num(vo.getSeat_num());			//퇴실시간 찍기
 		seatMapper.seatStatusOut(vo.getSeat_num()); 					//사용가능 상태로 변환(status)
 		seatMapper.memberStatusOut(vo.getMem_num());
 	}
-
+	
+	//외출 상태일 때 퇴실 처리
+	@Override
+	public void outSeatWhenHold(SeatVO vo) {
+		seatMapper.insertOutTimeBySeat_num(vo.getSeat_num());			//퇴실시간 찍기
+		seatMapper.seatStatusOut(vo.getSeat_num());
+		seatMapper.memberStatusOut(vo.getMem_num());
+		
+	}
+	
+	//외출했다가 다시 입실
+	@Override
+	public void inSeatWhenHold(SeatVO vo) {
+		seatMapper.seatStatusIn(vo.getSeat_num());
+		seatMapper.memberStatusIn(vo.getMem_num());
+	}
+	
 	//입실시간/ 퇴실시간 추출
 	@Override
 	public SeatVO getTimes(int seat_num) {
@@ -79,7 +94,12 @@ public class SeatServiceImpl implements SeatService{
 	public void insertTotal_time(SeatVO vo) {
 		seatMapper.insertTotal_time(vo);
 	}
-	
+
+	@Override
+	public int getMem_status(int mem_num) {
+		return seatMapper.getMem_status(mem_num);
+	}
+
 	
 
 }
