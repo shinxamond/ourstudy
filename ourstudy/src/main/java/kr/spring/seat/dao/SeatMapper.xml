@@ -5,18 +5,18 @@
        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="kr.spring.seat.dao.SeatMapper">
 
-	<select id="getSeatList" resultType="seatVO">
-  	       SELECT * FROM SEAT
-  	</select>
+   <select id="getSeatList" resultType="seatVO">
+            SELECT * FROM SEAT
+     </select>
 
-	<select id="getSeatDetailList" resultType="seatVO">
-<!-- 			SELECT 
-   		 		seat_num,seat_name,mem_name,TO_CHAR(in_time, 'yyyy-MM-dd HH24:MI:SS') in_time,TO_CHAR(out_time, 'yyyy-MM-dd HH24:MI:SS') out_time 
-			FROM SEAT_DETAIL -->
-			<!-- SELECT d.seat_num,s.seat_name,d.mem_name,TO_CHAR(d.in_time, 'yyyy-MM-dd HH24:MI:SS') in_time
-				FROM SEAT_DETAIL d JOIN SEAT s ON s.seat_num = d.seat_num -->
-			SELECT 
-    			d.seat_detail_num,d.seat_num,s.seat_name,d.mem_name,TO_CHAR(d.in_time, 'yyyy-MM-dd HH24:MI:SS') in_time, TO_CHAR(d.out_time, 'yyyy-MM-dd HH24:MI:SS') out_time,d.total_time 
-			FROM SEAT_DETAIL d JOIN SEAT s ON s.seat_num = d.seat_num 
-  	</select>
+   <select id="getSeatDetailList" resultType="seatVO">
+<!--          SELECT 
+                seat_num,seat_name,mem_name,TO_CHAR(in_time, 'yyyy-MM-dd HH24:MI:SS') in_time,TO_CHAR(out_time, 'yyyy-MM-dd HH24:MI:SS') out_time 
+         FROM SEAT_DETAIL -->
+         <!-- SELECT d.seat_num,s.seat_name,d.mem_name,TO_CHAR(d.in_time, 'yyyy-MM-dd HH24:MI:SS') in_time
+            FROM SEAT_DETAIL d JOIN SEAT s ON s.seat_num = d.seat_num -->
+         SELECT 
+             d.seat_detail_num,d.seat_num,s.seat_name,d.mem_name,TO_CHAR(d.in_time, 'yyyy-MM-dd HH24:MI:SS') in_time, TO_CHAR(d.out_time, 'yyyy-MM-dd HH24:MI:SS') out_time,d.total_time 
+         FROM SEAT_DETAIL d JOIN SEAT s ON s.seat_num = d.seat_num 
+     </select>
 </mapper>

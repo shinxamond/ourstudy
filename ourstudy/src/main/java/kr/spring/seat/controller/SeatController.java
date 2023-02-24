@@ -3,6 +3,7 @@ package kr.spring.seat.controller;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
@@ -148,45 +149,31 @@ public class SeatController {
       return "";
       //
    }
+   
    //외출 상태에서 입실 처리
    @RequestMapping("/seat/in.do")
-   public String In(@RequestParam int seat_num, HttpServletRequest request) {
+   @ResponseBody
+   public Map<String, String> In(@RequestParam int seat_num, HttpServletRequest request) {
       HttpSession session = request.getSession();
+      Map<String, String> map = new HashMap<String, String>();
+      
       int mem_num = (Integer)session.getAttribute("user_num");
-      String mem_name = memberService.getMem_name(mem_num);   
       int mem_status = seatService.getMem_status(mem_num);
       
       SeatVO seatVO = initCommand();
       seatVO.setMem_num(mem_num);
       seatVO.setSeat_num(seat_num);
 
-      if(mem_status != 2) {            
-         
-      }else if(mem_status == 2) {            //외출 상태일 때
-         seatService.inSeatWhenHold(seatVO);
+      if(mem_status != 2) {            //외출 상태가 아닐때
+         map.put("status", "NotHold");
       }
-      return "";
+         // 외출상태일 때
+         seatService.inSeatWhenHold(seatVO);
+         map.put("status", "Hold");
+         
+         return map;
    }
    
-//   @RequestMapping("/seat/in.do")
-//   @ResponseBody
-//   public Map<String, String> In(@RequestParam int seat_num, HttpServletRequest request) {
-//      HttpSession session = request.getSession();
-//      int mem_num = (Integer)session.getAttribute("user_num");
-//      String mem_name = memberService.getMem_name(mem_num);   
-//      int mem_status = seatService.getMem_status(mem_num);
-//      
-//      SeatVO seatVO = initCommand();
-//      seatVO.setMem_num(mem_num);
-//      seatVO.setSeat_num(seat_num);
-//      
-//      if(mem_status != 2) {            
-//         
-//      }else if(mem_status == 2) {            //외출 상태일 때
-//         seatService.inSeatWhenHold(seatVO);
-//      }
-//   }
-//   
    //외출처리
    @RequestMapping("/seat/hold.do")
    public String Hold(@RequestParam int seat_num, HttpServletRequest request) {
