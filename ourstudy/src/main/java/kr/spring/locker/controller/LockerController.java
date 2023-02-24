@@ -57,8 +57,8 @@ public class LockerController {
 			logger.debug("NULL");
 		}
 		
-		logger.debug("1." + memberVO.getMem_num() + "2." + memberService.getMem_name(memberVO.getMem_num()) +  
-				"3." +locker_num );
+		logger.debug("mem_num : " + memberVO.getMem_num() + ", mem_name = " + memberService.getMem_name(memberVO.getMem_num()) +  
+				", locker_num = " +locker_num );
 		
 
 		lockerVO.setMem_num(memberVO.getMem_num());

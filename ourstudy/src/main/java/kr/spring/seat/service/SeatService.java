@@ -14,9 +14,9 @@ public interface SeatService {
 	public List<SeatVO> getSeatList();
 	//좌석 이동 (좌석 퇴실 처리 후, 새좌석에 추가)
 	//외출
-	public void holdSeat(int seat_num);
+	public void holdSeat(SeatVO vo);
 	//퇴실
-	public void outSeat(int seat_num);
+	public void outSeat(SeatVO vo);
 	//날짜 추출
 	public SeatVO getTimes(int seat_num);
 	//좌석번호,회원번호,회원이름 추출

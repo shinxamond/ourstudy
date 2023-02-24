@@ -135,9 +135,13 @@ public class SeatController {
 	public String moveSeat(HttpServletRequest request) {
 		//세션에서 mem_num값을 가져온다
 		HttpSession session = request.getSession();
-		int mem_num = (Integer)session.getAttribute("user_num");
+		int mem_num = (Integer)session.getAttribute("user_num");		
+		String mem_name = memberService.getMem_name(mem_num);	
 		
-		seatService.outSeat(mem_num);
+		SeatVO seatVO = initCommand();
+		seatVO.setMem_num(mem_num);
+//		seatVO.setSeat_num(seat_num);
+		seatService.outSeat(seatVO);
 		
 		return "";
 		//
@@ -146,11 +150,16 @@ public class SeatController {
 	@RequestMapping("/seat/hold.do")
 	public String Holder(@RequestParam int seat_num, HttpServletRequest request) {
 		HttpSession session = request.getSession();
-		int mem_num = (Integer)session.getAttribute("user_num");
-		seatService.holdSeat(seat_num);
+		int mem_num = (Integer)session.getAttribute("user_num");		
+		String mem_name = memberService.getMem_name(mem_num);	
+		
+		SeatVO seatVO = initCommand();
+		seatVO.setMem_num(mem_num);
+		seatVO.setSeat_num(seat_num);
+		seatService.holdSeat(seatVO);
 		
 		
-		SeatVO seatVO = seatService.getTimes(seat_num);
+		seatVO = seatService.getTimes(seat_num);
 		String in_time = seatVO.getIn_time();
 		String out_time = seatVO.getOut_time(); 
 		
@@ -179,11 +188,19 @@ public class SeatController {
 	
 	//퇴실처리
 	@RequestMapping("/seat/out.do")
-	public String Out(@RequestParam int seat_num) {
-		seatService.outSeat(seat_num);
+	public String Out(@RequestParam int seat_num, HttpServletRequest request) {
+		HttpSession session = request.getSession();
+		int mem_num = (Integer)session.getAttribute("user_num");		
+		String mem_name = memberService.getMem_name(mem_num);	
+		
+		SeatVO seatVO = initCommand();
+		seatVO.setMem_num(mem_num);
+		seatVO.setSeat_num(seat_num);
+		seatService.outSeat(seatVO);
+		
 		logger.debug("seat_num = " + seat_num);
 		
-		SeatVO seatVO = seatService.getTimes(seat_num);
+		seatVO = seatService.getTimes(seat_num);
 		String in_time = seatVO.getIn_time();
 		String out_time = seatVO.getOut_time();
 		
