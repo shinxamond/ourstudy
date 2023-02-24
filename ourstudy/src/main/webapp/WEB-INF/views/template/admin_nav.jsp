@@ -47,9 +47,14 @@
 		</li>
 		<li>
 			<input type="button" class="menu-btn"
-			 value="물품대여기록" 
-			 onclick="location.href='#'">
+			 value="물품대여기록(히스토리)" 
+			 onclick="location.href='${pageContext.request.contextPath}/admin/admin_itemhistory.do'">
 		</li>
+		<li>
+			<input type="button" class="menu-btn"
+			 value="물품대여기록(미반납자)" 
+			 onclick="location.href='#'">
+		</li>		
 		<li>
 			<input type="button" class="menu-btn"
 			 value="판매기록" 
@@ -57,9 +62,14 @@
 		</li>
 		<li>
 			<input type="button" class="menu-btn"
-			 value="채팅기록" 
+			 value="채팅기록(수신)" 
 			 onclick="location.href='#'">
-		</li>						
+		</li>
+		<li>
+			<input type="button" class="menu-btn"
+			 value="채팅기록(발신)" 
+			 onclick="location.href='#'">
+		</li>								
 	</ul>
 </div>
 <!-- Admin 메뉴 끝 -->

@@ -8,6 +8,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import kr.spring.admin.dao.AdminMapper;
+import kr.spring.admin.vo.AdminItemHistoryVO;
 import kr.spring.admin.vo.AdminLockerHistoryVO;
 import kr.spring.admin.vo.AdminMemberVO;
 import kr.spring.admin.vo.AdminSeatHistoryVO;
@@ -46,7 +47,7 @@ public class AdminServiceImpl implements AdminService{
 		return adminMapper.selectRowCount(map);
 	}	
 	
-	//좌석히스토리목록
+	//좌석 히스토리목록
 	@Override
 	public List<AdminSeatHistoryVO> selectSeatList(Map<String, Object> map) {
 		return adminMapper.selectSeatList(map);
@@ -57,7 +58,7 @@ public class AdminServiceImpl implements AdminService{
 		return adminMapper.selectSeatRowCount(map);
 	}
 
-	//사물함히스토리목록
+	//사물함 히스토리목록
 	@Override
 	public List<AdminLockerHistoryVO> selectLockerList(Map<String, Object> map) {
 		return adminMapper.selectLockerList(map);
@@ -66,5 +67,16 @@ public class AdminServiceImpl implements AdminService{
 	@Override
 	public int selectLockerRowCount(Map<String, Object> map) {
 		return adminMapper.selectLockerRowCount(map);
+	}
+	
+	//물품대여 히스토리목록
+	@Override
+	public List<AdminItemHistoryVO> selectItemList(Map<String, Object> map) {
+		return adminMapper.selectItemList(map);
+	}
+
+	@Override
+	public int selectItemRowCount(Map<String, Object> map) {
+		return adminMapper.selectItemRowCount(map);
 	}		
 }

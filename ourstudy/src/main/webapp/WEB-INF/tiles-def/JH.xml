@@ -29,6 +29,18 @@
     	<put-attribute name="body" 
     	  value="/WEB-INF/views/admin/admin_lockerHistory.jsp"/>        
     </definition>  
+    
+    <definition name="adminItemHistory" extends="admin">
+    	<put-attribute name="title" value="물품대여히스토리목록"/>
+    	<put-attribute name="body" 
+    	  value="/WEB-INF/views/admin/admin_itemHistory.jsp"/>        
+    </definition>
+    
+    <definition name="adminUnreturnList" extends="admin">
+    	<put-attribute name="title" value="미반납자목록"/>
+    	<put-attribute name="body" 
+    	  value="/WEB-INF/views/admin/admin_unreturnList.jsp"/>        
+    </definition>          
 </tiles-definitions>
 
 

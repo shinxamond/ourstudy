@@ -20,6 +20,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
 import kr.spring.admin.service.AdminService;
+import kr.spring.admin.vo.AdminItemHistoryVO;
 import kr.spring.admin.vo.AdminLockerHistoryVO;
 import kr.spring.admin.vo.AdminMemberVO;
 import kr.spring.admin.vo.AdminSeatHistoryVO;
@@ -44,6 +45,11 @@ public class AdminController {
 
 	@ModelAttribute("AdminLockerHistoryVO")
 	public AdminLockerHistoryVO initCommand3() {
+		return new AdminLockerHistoryVO();
+	}
+
+	@ModelAttribute("AdminItemHistoryVO")
+	public AdminLockerHistoryVO initCommand4() {
 		return new AdminLockerHistoryVO();
 	}
 	
@@ -175,7 +181,44 @@ public class AdminController {
 		mav.addObject("page", page.getPage());
 		
 		return mav;
-	}			
+	}
+	
+	//=====물품대여 히스토리 목록=====//
+	@RequestMapping("/admin/admin_itemhistory.do")
+	public ModelAndView itemhistory(
+			@RequestParam(value="pageNum",defaultValue="1") int currentPage,
+			@RequestParam(value="keyfield",defaultValue="1") String keyfield, 
+			String keyword) {
+		
+		Map<String,Object> map = new HashMap<String,Object>();
+		map.put("keyfield", keyfield);
+		map.put("keyword", keyword);
+		
+		//총 글의 개수 또는 검색된 글의 갯수
+		int count = adminService.selectItemRowCount(map);
+		logger.debug("<<총 글 갯수>> : " + count);
+		
+		//페이지 처리
+		PagingUtil page = new PagingUtil(keyfield,keyword,currentPage,count,4,10,"admin_itemhistory.do");
+		
+		List<AdminItemHistoryVO> list = null;
+		if(count > 0) {
+			map.put("start", page.getStartRow());
+			map.put("end", page.getEndRow());
+			
+			list = adminService.selectItemList(map);
+		}
+				
+		ModelAndView mav = new ModelAndView();
+		mav.setViewName("adminItemHistory");
+		
+		//좌석히스토리목록
+		mav.addObject("count", count);
+		mav.addObject("adminItemHistoryList", list);
+		mav.addObject("page", page.getPage());
+		
+		return mav;
+	}		
 }
 
 
