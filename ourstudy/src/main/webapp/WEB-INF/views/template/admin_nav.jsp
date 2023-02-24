@@ -32,6 +32,11 @@
 		</li>
 		<li>
 			<input type="button" class="menu-btn"
+			 value="사물함 관리" 
+			 onclick="location.href='${pageContext.request.contextPath}/locker/editForm.do'">
+		</li>
+		<li>
+			<input type="button" class="menu-btn"
 			 value="이용권 관리" 
 			 onclick="location.href='${pageContext.request.contextPath}/ticket/admin_ticketList.do'">
 		</li>
