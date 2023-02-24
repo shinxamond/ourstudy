@@ -6,6 +6,7 @@ import java.util.Map;
 import org.apache.ibatis.annotations.Param;
 import org.apache.ibatis.annotations.Select;
 
+import kr.spring.admin.vo.AdminLockerHistoryVO;
 import kr.spring.admin.vo.AdminMemberVO;
 import kr.spring.admin.vo.AdminSeatHistoryVO;
 
@@ -22,4 +23,8 @@ public interface AdminService {
 	//좌석히스토리목록
 	public List<AdminSeatHistoryVO> selectSeatList(Map<String,Object> map);
 	public int selectSeatRowCount(Map<String,Object> map);
+	
+	//사물함히스토리목록
+	public List<AdminLockerHistoryVO> selectLockerList(Map<String,Object> map);
+	public int selectLockerRowCount(Map<String,Object> map);	
 }

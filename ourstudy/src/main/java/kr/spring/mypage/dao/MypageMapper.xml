@@ -14,7 +14,7 @@
   		              in_time,
   		              out_time,
   		              total_time
-  		            FROM seat_detail WHERE mem_num = #{mem_num}        
+  		            FROM seat_detail WHERE mem_num = #{mem_num}
   		            <if test="keyfield == 1">
   		            ORDER BY in_time DESC NULLS FIRST
   		            </if>

@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib prefix = "fmt" uri = "http://java.sun.com/jsp/jstl/fmt" %>     
 <script type="text/javascript" src="${pageContext.request.contextPath}/js/mypage/mypageProfileImg.js"></script>
 <script type="text/javascript" src="${pageContext.request.contextPath}/js/mypage/changePw.js"></script>
 <!-- 마이페이지 헤더 시작 -->
@@ -15,7 +16,7 @@
 		</div>
 		<div class = "element">
 			<p><a href = "${pageContext.request.contextPath}/mypage/studyTimeList.do" class = "link-font big">누적 공부시간 ></a></p>
-			<span class = "data-align top">73 시간</span>
+			<span class = "data-align top"><fmt:parseNumber value = "${member.mem_study / 3600}"  integerOnly="true"/> 시간</span>
 		</div>
 		<div class = "element">
 			<p><a href = "${pageContext.request.contextPath}/mypage/pointList.do" class = "link-font big">포인트 ></a></p>

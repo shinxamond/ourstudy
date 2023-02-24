@@ -64,7 +64,9 @@ public class MypageController {
 		MemberVO member = mypageService.selectMember(user.getMem_num());
 		
 		SeatVO seat = mypageService.selectCurSeat(user.getMem_num());
-				
+		
+		logger.debug("<<마이페이지 멤버 정보>> : " + member);
+		
 		model.addAttribute("member", member);
 		model.addAttribute("seat", seat);
 		
@@ -235,7 +237,7 @@ public class MypageController {
 	
 	//공부시간 목록
 	@RequestMapping("/mypage/studyTimeList.do")
-	public ModelAndView studyTimeList(@RequestParam(value = "pageNum", defaultValue = "1") int currentPage, String keyfield , HttpSession session, Model model) {
+	public ModelAndView studyTimeList(@RequestParam(value = "pageNum", defaultValue = "1") int currentPage, @RequestParam(value = "keyfield", defaultValue = "1") String keyfield , HttpSession session, Model model) {
 		
 		ModelAndView mav = new ModelAndView();
 		
@@ -257,9 +259,8 @@ public class MypageController {
 		int count = mypageService.selectSeatDetailRowCount(user.getMem_num());
 		
 		logger.debug("<<count>>" + count);
-		
-		
-		PagingUtil page = new PagingUtil(keyfield, null, currentPage, count, 5, 10, "studyTimeList.do");
+				
+		PagingUtil page = new PagingUtil(keyfield, null, currentPage, count, 5, 5, "studyTimeList.do");
 		
 		List<SeatVO> list = null; 
 		
@@ -267,6 +268,7 @@ public class MypageController {
 		
 		map.put("start", page.getStartRow()); 
 		map.put("end", page.getEndRow());
+		map.put("keyfield", keyfield);
 		map.put("mem_num", user.getMem_num());
 		
 		list = mypageService.selectSeatDetailListByMem_num(map);

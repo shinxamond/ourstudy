@@ -31,238 +31,239 @@ import kr.spring.seat.vo.SeatVO;
 
 @Controller
 public class SeatController {
-	private static final Logger logger = LoggerFactory.getLogger(SeatController.class);
-	
-	//서비스 주입
-	@Autowired
-	private SeatService seatService;
-	
-	@Autowired
-	private MemberService memberService;
-	
-	@Autowired
-	private LockerService lockerService;
-	
-	//VO 초기화
-	@ModelAttribute("seatVO")
-	public SeatVO initCommand() {
-		return new SeatVO();
-	}
-	
-	@ModelAttribute("memberVO")
-	public MemberVO initCommand2() {
-		return new MemberVO();
-	}
-	
-	//좌석선택폼으로 이동
-	@RequestMapping("/seat/selectSeatForm.do")
-	public ModelAndView drawing() {
-		ModelAndView mav = new ModelAndView();
-		List<SeatVO> list = seatService.getSeatList();
+   private static final Logger logger = LoggerFactory.getLogger(SeatController.class);
+   
+   //서비스 주입
+   @Autowired
+   private SeatService seatService;
+   
+   @Autowired
+   private MemberService memberService;
+   
+   @Autowired
+   private LockerService lockerService;
+   
+   //VO 초기화
+   @ModelAttribute("seatVO")
+   public SeatVO initCommand() {
+      return new SeatVO();
+   }
+   
+   @ModelAttribute("memberVO")
+   public MemberVO initCommand2() {
+      return new MemberVO();
+   }
+   
+   //좌석선택폼으로 이동
+   @RequestMapping("/seat/selectSeatForm.do")
+   public ModelAndView drawing() {
+      ModelAndView mav = new ModelAndView();
+      List<SeatVO> list = seatService.getSeatList();
 
-		mav.setViewName("seat/selectForm");
-		mav.addObject("list", list);
-		
-		return mav;
-	}
+      mav.setViewName("seat/selectForm");
+      mav.addObject("list", list);
+      
+      return mav;
+   }
 
-	/*===========KEEP============================================================================
-	//좌석을 선택한 회원의 정보가 입력됨
-	@RequestMapping("/seat/select.do")
-	@ResponseBody
-	public Map<String, String> selectSeat(@RequestParam int seat_num, HttpServletRequest request) {
-		Map<String, String> mapJson = new HashMap<String, String>();
-		
-		HttpSession session = request.getSession();
-		if(session.getAttribute("user") == null) {
-			logger.debug("객체 null");
-		}
-		
-		int mem_num = (Integer)session.getAttribute("user_num");		
-		String mem_name = memberService.getMem_name(mem_num);			
-		logger.debug("mem_num = " + mem_num);
-		logger.debug("mem_name = " + mem_name);
-		
-		SeatVO seatVO = initCommand();
-		if(seatVO == null) {
-			logger.debug("이미 선택된 좌석임");
-			mapJson.put("result", "fail");
-		}
-		
-		seatVO.setMem_num(mem_num);
-		seatVO.setMem_name(mem_name);
-		seatVO.setSeat_num(seat_num);
-		seatService.selectSeat(seatVO);
-		
-		mapJson.put("result", "success");
-		
-		return mapJson;
-	}
-	=============================================================================================*/
-	
-	//좌석을 선택한 회원의 정보가 입력됨
-	@RequestMapping("/seat/select.do")
-	public String selectSeat(@RequestParam int seat_num,HttpServletRequest request,RedirectAttributes attributes, Model model) {
-		HttpSession session = request.getSession();
-		if(session.getAttribute("user") == null) {
-			logger.debug("객체 null");
-		}
-		
-		int mem_num = (Integer)session.getAttribute("user_num");		
-		String mem_name = memberService.getMem_name(mem_num);			
-		logger.debug("mem_num = " + mem_num);
-		logger.debug("mem_name = " + mem_name);
-		
-		SeatVO seatVO = initCommand();
-		if(seatVO == null) {
-			logger.debug("이미 선택된 좌석임");
-		}
-		
-		seatVO.setMem_num(mem_num);
-		seatVO.setMem_name(mem_name);
-		seatVO.setSeat_num(seat_num);
-		seatService.selectSeat(seatVO);
-		
-		String success_message = "좌석이 선택되었습니다.";
-		attributes.addFlashAttribute("message", success_message);
-		List<LockerVO> list = lockerService.getLockerList();
-		
-		model.addAttribute("list", list);
-		
-		return "locker/selectForm";
-	}
+   /*===========KEEP============================================================================
+   //좌석을 선택한 회원의 정보가 입력됨
+   @RequestMapping("/seat/select.do")
+   @ResponseBody
+   public Map<String, String> selectSeat(@RequestParam int seat_num, HttpServletRequest request) {
+      Map<String, String> mapJson = new HashMap<String, String>();
+      
+      HttpSession session = request.getSession();
+      if(session.getAttribute("user") == null) {
+         logger.debug("객체 null");
+      }
+      
+      int mem_num = (Integer)session.getAttribute("user_num");      
+      String mem_name = memberService.getMem_name(mem_num);         
+      logger.debug("mem_num = " + mem_num);
+      logger.debug("mem_name = " + mem_name);
+      
+      SeatVO seatVO = initCommand();
+      if(seatVO == null) {
+         logger.debug("이미 선택된 좌석임");
+         mapJson.put("result", "fail");
+      }
+      
+      seatVO.setMem_num(mem_num);
+      seatVO.setMem_name(mem_name);
+      seatVO.setSeat_num(seat_num);
+      seatService.selectSeat(seatVO);
+      
+      mapJson.put("result", "success");
+      
+      return mapJson;
+   }
+   =============================================================================================*/
+   
+   //좌석을 선택한 회원의 정보가 입력됨
+   @RequestMapping("/seat/select.do")
+   public String selectSeat(@RequestParam int seat_num,HttpServletRequest request,RedirectAttributes attributes, Model model) {
+      HttpSession session = request.getSession();
+      if(session.getAttribute("user") == null) {
+         logger.debug("객체 null");
+      }
+      
+      int mem_num = (Integer)session.getAttribute("user_num");      
+      String mem_name = memberService.getMem_name(mem_num);         
+      logger.debug("mem_num = " + mem_num);
+      logger.debug("mem_name = " + mem_name);
+      
+      SeatVO seatVO = initCommand();
+      if(seatVO == null) {
+         logger.debug("이미 선택된 좌석임");
+      }
+      
+      seatVO.setMem_num(mem_num);
+      seatVO.setMem_name(mem_name);
+      seatVO.setSeat_num(seat_num);
+      seatService.selectSeat(seatVO);
+      
+      String success_message = "좌석이 선택되었습니다.";
+      attributes.addFlashAttribute("message", success_message);
+      List<LockerVO> list = lockerService.getLockerList();
+      
+      model.addAttribute("list", list);
+      
+      return "locker/selectForm";
+   }
 
-	
-	//좌석이동
-	@RequestMapping("/seat/move.do")
-	public String moveSeat(HttpServletRequest request) {
-		//세션에서 mem_num값을 가져온다
-		HttpSession session = request.getSession();
-		int mem_num = (Integer)session.getAttribute("user_num");		
-//		String mem_name = memberService.getMem_name(mem_num);	
-		
-		SeatVO seatVO = initCommand();
-		seatVO.setMem_num(mem_num);
-//		seatVO.setSeat_num(seat_num);
-		seatService.outSeatWhenIn(seatVO);
-		
-		return "";
-		//
-	}
-	
-	//외출 상태에서 입실 처리
-	@RequestMapping("/seat/in.do")
-	@ResponseBody
-	public Map<String, String> In(@RequestParam int seat_num, HttpServletRequest request) {
-		HttpSession session = request.getSession();
-		Map<String, String> map = new HashMap<String, String>();
-		
-		int mem_num = (Integer)session.getAttribute("user_num");
-		int mem_status = seatService.getMem_status(mem_num);
-		
-		SeatVO seatVO = initCommand();
-		seatVO.setMem_num(mem_num);
-		seatVO.setSeat_num(seat_num);
 
-		if(mem_status != 2) {				//외출 상태가 아닐때
-			map.put("status", "NotHold");
-		}
-			// 외출상태일 때
-			seatService.inSeatWhenHold(seatVO);
-			map.put("status", "Hold");
-			
-			return map;
-	}
-	
-	//외출처리
-	@RequestMapping("/seat/hold.do")
-	public String Hold(@RequestParam int seat_num, HttpServletRequest request) {
-		HttpSession session = request.getSession();
-		int mem_num = (Integer)session.getAttribute("user_num");		
-		String mem_name = memberService.getMem_name(mem_num);	
-		
-		SeatVO seatVO = initCommand();
-		seatVO.setMem_num(mem_num);
-		seatVO.setSeat_num(seat_num);
-		seatService.holdSeat(seatVO);
-		
-		
-		seatVO = seatService.getTimes(seat_num);
-		String in_time = seatVO.getIn_time();
-		String out_time = seatVO.getOut_time(); 
-		
-		SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
-		
-		Date in_date = null;
-		Date out_date = null;
-		
-		try {
-			in_date = format.parse(in_time);				
-			out_date = format.parse(out_time);
-		} catch (ParseException e) {
-			e.printStackTrace();
-		}
-		
-		long diff = out_date.getTime() - in_date.getTime();
-		long diffSeconds = diff / 1000;	
-		
-		int diffIntSeconds = Long.valueOf(diffSeconds).intValue();
-		seatVO.setTotal_time(diffIntSeconds);
-		seatVO.setSeat_num(seat_num);
-		
-		seatService.insertTotal_time(seatVO);
-		return "";
-	}
-	
-	//퇴실처리
-	@RequestMapping("/seat/out.do")
-	public String Out(@RequestParam int seat_num, HttpServletRequest request) {
-		HttpSession session = request.getSession();
-		int mem_num = (Integer)session.getAttribute("user_num");
-		String mem_name = memberService.getMem_name(mem_num);	
-		int mem_status = seatService.getMem_status(mem_num);
-		
-		SeatVO seatVO = initCommand();
-		seatVO.setMem_num(mem_num);
-		seatVO.setSeat_num(seat_num);
+   
+   //좌석이동
+   @RequestMapping("/seat/move.do")
+   public String moveSeat(HttpServletRequest request) {
+      //세션에서 mem_num값을 가져온다
+      HttpSession session = request.getSession();
+      int mem_num = (Integer)session.getAttribute("user_num");      
+//      String mem_name = memberService.getMem_name(mem_num);   
+      
+      SeatVO seatVO = initCommand();
+      seatVO.setMem_num(mem_num);
+//      seatVO.setSeat_num(seat_num);
+      seatService.outSeatWhenIn(seatVO);
+      
+      return "";
+      //
+   }
+   
+   //외출 상태에서 입실 처리
+   @RequestMapping("/seat/in.do")
+   @ResponseBody
+   public Map<String, String> In(@RequestParam int seat_num, HttpServletRequest request) {
+      HttpSession session = request.getSession();
+      Map<String, String> map = new HashMap<String, String>();
+      
+      int mem_num = (Integer)session.getAttribute("user_num");
+      int mem_status = seatService.getMem_status(mem_num);
+      
+      SeatVO seatVO = initCommand();
+      seatVO.setMem_num(mem_num);
+      seatVO.setSeat_num(seat_num);
 
-		if(mem_status == 2) {				//외출 상태일 때
-			seatService.outSeatWhenHold(seatVO);
-		}if(mem_status == 1) {				//입실 상태일 때
-			seatService.outSeatWhenIn(seatVO);
-		}
-		
-		
-		logger.debug("seat_num = " + seat_num);
-		
-		seatVO = seatService.getTimes(seat_num);
-		String in_time = seatVO.getIn_time();
-		String out_time = seatVO.getOut_time();
-		
-		logger.debug("in = " + in_time + ", out = " + out_time);
-		
-		SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
-		
-		Date in_date = null;
-		Date out_date = null;
-		
-		try {
-			in_date = format.parse(in_time);				
-			out_date = format.parse(out_time);
-		} catch (ParseException e) {
-			e.printStackTrace();
-		}
-		
-		long diff = out_date.getTime() - in_date.getTime();
-		long diffSeconds = diff / 1000;	
-		
-		int diffIntSeconds = Long.valueOf(diffSeconds).intValue();
-		seatVO.setTotal_time(diffIntSeconds);
-		seatVO.setSeat_num(seat_num);
-		
-		seatService.insertTotal_time(seatVO);
-		
-		return "";
-	}
+      if(mem_status != 2) {            //외출 상태가 아닐때
+         map.put("status", "NotHold");
+      }
+         // 외출상태일 때
+         seatService.inSeatWhenHold(seatVO);
+         map.put("status", "Hold");
+         
+         return map;
+   }
+   
+   //외출처리
+   @RequestMapping("/seat/hold.do")
+   public String Hold(@RequestParam int seat_num, HttpServletRequest request) {
+      HttpSession session = request.getSession();
+      int mem_num = (Integer)session.getAttribute("user_num");      
+      String mem_name = memberService.getMem_name(mem_num);   
+      
+      SeatVO seatVO = initCommand();
+      seatVO.setMem_num(mem_num);
+      seatVO.setSeat_num(seat_num);
+      seatService.holdSeat(seatVO);
+      
+      
+      seatVO = seatService.getTimes(seat_num);
+      String in_time = seatVO.getIn_time();
+      String out_time = seatVO.getOut_time(); 
+      
+      SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+      
+      Date in_date = null;
+      Date out_date = null;
+      
+      try {
+         in_date = format.parse(in_time);            
+         out_date = format.parse(out_time);
+      } catch (ParseException e) {
+         e.printStackTrace();
+      }
+      
+      long diff = out_date.getTime() - in_date.getTime();
+      long diffSeconds = diff / 1000;   
+      
+      int diffIntSeconds = Long.valueOf(diffSeconds).intValue();
+      seatVO.setTotal_time(diffIntSeconds);
+      seatVO.setSeat_num(seat_num);
+      
+      seatService.insertTotal_time(seatVO);
+      return "";
+   }
+   
+   //퇴실처리
+   @RequestMapping("/seat/out.do")
+   public String Out(@RequestParam int seat_num, HttpServletRequest request) {
+      HttpSession session = request.getSession();
+      int mem_num = (Integer)session.getAttribute("user_num");
+      String mem_name = memberService.getMem_name(mem_num);   
+      int mem_status = seatService.getMem_status(mem_num);
+      
+      SeatVO seatVO = initCommand();
+      seatVO.setMem_num(mem_num);
+      seatVO.setSeat_num(seat_num);
+
+      if(mem_status == 2) {            //외출 상태일 때
+         seatService.outSeatWhenHold(seatVO);
+      }if(mem_status == 1) {            //입실 상태일 때
+         seatService.outSeatWhenIn(seatVO);
+      }
+      
+      
+      logger.debug("seat_num = " + seat_num);
+      
+      seatVO = seatService.getTimes(seat_num);
+      String in_time = seatVO.getIn_time();
+      String out_time = seatVO.getOut_time();
+      
+      logger.debug("in = " + in_time + ", out = " + out_time);
+      
+      SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+      
+      Date in_date = null;
+      Date out_date = null;
+      
+      try {
+         in_date = format.parse(in_time);            
+         out_date = format.parse(out_time);
+      } catch (ParseException e) {
+         e.printStackTrace();
+      }
+      
+      long diff = out_date.getTime() - in_date.getTime();
+      long diffSeconds = diff / 1000;   
+      
+      int diffIntSeconds = Long.valueOf(diffSeconds).intValue();
+      seatVO.setTotal_time(diffIntSeconds);
+      seatVO.setSeat_num(seat_num);
+      
+      seatService.insertTotal_time(seatVO);
+      
+      return "";
+   }
+
 }
-

@@ -76,4 +76,14 @@ public class MypageServiceImpl implements MypageService{
 		return mypageMapper.selectSeatDetailListByMem_num(map);
 	}
 
+	@Override
+	public int selectAccrueStudyTime(MemberVO member) {
+		return mypageMapper.selectAccrueStudyTime(member);
+	}
+
+	@Override
+	public void updateStudyTime(SeatVO seat) {
+		mypageMapper.updateStudyTime(seat);
+	}
+
 }

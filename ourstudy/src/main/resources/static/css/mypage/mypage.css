@@ -86,7 +86,7 @@ a, a:hover, a:visited, a:focus{
 /*이름 span 설정*/
 .span-align{
 	position : relative;
-	font-size : 18pt;
+	font-size : 16pt;
 	bottom : -5px;
 }
 /*이동 링크 폰트 굵기 설정*/
@@ -241,13 +241,14 @@ form#myPageModify_form{
 }
 /*========포인트 내역========*/
 .point-content{
-	margin : 30px 100px;
+	margin : 30px 50px;
 }
 .point-table{
 	width : 100%;
 	margin : 0;
 	padding : 0;
-	border-collapse: collapse
+	border-collapse: collapse;
+	text-align : center;
 }
 .point-table tr{
 	border-bottom : 1px solid rgba(0, 0, 0, 0.2);
@@ -255,4 +256,16 @@ form#myPageModify_form{
 }
 .point-table td{
 	text-align : center;
+}
+.page-button{
+	text-align : center;
+}
+.align-selectbox{
+	text-align : right;
+}
+.align-selectbox select{
+	border-radius : 5px;
+	height : 30px;
+	font-size : 10pt;
+	padding : 5px;
 }
