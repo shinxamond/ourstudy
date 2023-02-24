@@ -1,17 +1,12 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-<script>
-var seatnum ="";
-
-$(document).ready(function() {     
-    $('#exampleModal').on('show.bs.modal', function(event) {          
-        seatnum = $(event.relatedTarget).data('seat_num');
-        $('#seat').innerHTML = seatnum;
-    });
-});
-</script>
 <!-- 중앙 컨텐츠 시작 -->
+<script>
+
+
+</script>
+
 <div class="page-main">
 	<h2>좌석 히스토리 목록</h2>
 	<form action="admin_seathistory.do" id="search_form" method="get">
@@ -39,11 +34,11 @@ $(document).ready(function() {
 			<th>종료시간</th>
 			<th>이용시간</th>
 		</tr>
-		<c:forEach var="history" items="${adminUseHistoryList}">
+	  <c:forEach var="history" items="${adminUseHistoryList}" varStatus="status">
 		<tr>
 			<td>${history.seat_detail_num}</td>
-			<td><a class="open_modal" data-bs-toggle="modal" href="#exampleModal" data-seat="${history.seat_num}">
-				<span class="seatnum" style="color:blue">${history.seat_num}</span></a></td>			
+			<td><a class="open_modal" data-bs-toggle="modal" data-bs-target="#exampleModal${status.count}">
+				${history.seat_num}</a></td>		
 			<td>${history.mem_num}</td>
 			<td>${history.mem_name}</td>
 			<td>${history.in_time}</td>
@@ -55,29 +50,32 @@ $(document).ready(function() {
 			<td>${history.total_time}</td>
 			</c:if>			
 		</tr>
-		</c:forEach>
+		
+		<!-- Modal -->
+		<div class="modal fade" id="exampleModal${status.count}" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+		  <div class="modal-dialog">
+		    <div class="modal-content">
+		      <div class="modal-header">
+		        <h1 class="modal-title fs-5" id="exampleModalLabel">
+					<span id="seat_num">${history.seat_num}</span>번 좌석
+				</h1>
+		        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+		      </div>
+		      <div class="modal-body">
+		      정말 퇴실처리 하시겠습니까?
+		      </div>
+		      <div class="modal-footer">
+		        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">취소</button>
+		        <!-- 추후 퇴실처리 완료 후, 확인버튼 재확인 필요!! -->
+		        <button type="button" class="btn btn-primary" 
+		        	onclick="location.href='/seat/out.do?seat_num='+${history.seat_num}">확인(퇴실처리)</button>
+		      </div>
+		    </div>
+		  </div>
+		</div>	
+			
+	  </c:forEach>
 	</table>
-	
-	<!-- Modal -->
-	<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-	  <div class="modal-dialog">
-	    <div class="modal-content">
-	      <div class="modal-header">
-	        <h1 class="modal-title fs-5" id="exampleModalLabel">
-				<span id="seat">${history.seat_num}</span>번 좌석
-			</h1>
-	        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-	      </div>
-	      <div class="modal-body">
-	      정말 퇴실처리 하시겠습니까?
-	      </div>
-	      <div class="modal-footer">
-	        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">취소</button>
-	        <button type="button" class="btn btn-primary">확인(퇴실처리)</button>
-	      </div>
-	    </div>
-	  </div>
-	</div>	
 			
 	<div class="align-center">${page}</div>
 	</c:if>
