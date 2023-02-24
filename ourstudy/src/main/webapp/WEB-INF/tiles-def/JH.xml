@@ -17,6 +17,12 @@
     	<put-attribute name="body"
     	  value="/WEB-INF/views/admin/admin_memberList.jsp"/>        
     </definition>
+    
+    <definition name="adminSeatHistory" extends="admin">
+    	<put-attribute name="title" value="이용기록(좌석 히스토리)"/>
+    	<put-attribute name="body" 
+    	  value="/WEB-INF/views/admin/admin_seatHistory.jsp"/>        
+    </definition>    
  
 </tiles-definitions>
 
