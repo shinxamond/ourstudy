@@ -42,7 +42,7 @@
   		]]>                           
   	</select>
 
-	<!-- 좌석히스토리목록 -->
+	<!-- 좌석 히스토리목록 -->
   	<select id="selectSeatRowCount" parameterType="map" resultType="integer">
   		SELECT
   		  COUNT(*)
@@ -58,7 +58,7 @@
   		      FROM (SELECT
   		      			seat_detail_num, seat_num, mem_num, mem_name, total_time,
   		      			TO_CHAR(in_time, 'yyyy-MM-dd HH24:MI:SS') in_time, TO_CHAR(out_time, 'yyyy-MM-dd HH24:MI:SS') out_time       
-  		            FROM seat_detail s          				  		 
+  		            FROM seat_detail s           				  		 
   		            <if test="keyfield == 1">	            
   		            ORDER BY s.in_time DESC NULLS LAST
   		            </if>
@@ -72,6 +72,41 @@
 		<![CDATA[
 		WHERE rnum >= #{start} AND rnum <= #{end}
 		]]>   		               		                         
-  	</select>  	  	
+  	</select>
+  	
+	<!-- 사물함 히스토리목록 -->
+  	<select id="selectLockerRowCount" parameterType="map" resultType="integer">
+  		SELECT
+  		  COUNT(*)
+  		FROM locker_detail                     
+  	</select>
+  	
+  	<select id="selectLockerList" parameterType="map" resultType="adminLockerHistoryVO">
+  		SELECT
+  		   *
+  		FROM (SELECT
+  		        a.*, 
+  		        rownum rnum 
+  		      FROM (SELECT
+  		      			d.locker_detail_num, d.locker_num, d.mem_num, d.mem_name, 
+  		      			TO_CHAR(d.locker_start, 'yyyy-MM-dd HH24:MI:SS') locker_start, 
+  		      			TO_CHAR(d.locker_end, 'yyyy-MM-dd HH24:MI:SS') locker_end, 
+  		      			l.locker_status        
+  		            FROM locker_detail d LEFT OUTER JOIN locker_info l 
+  		            ON l.locker_num = d.locker_num          				  		 
+  		            <if test="keyfield == 1">	            
+  		            ORDER BY d.locker_start DESC NULLS LAST
+  		            </if>
+  		            <if test="keyfield == 2">
+  		            ORDER BY d.mem_name ASC NULLS LAST
+  		            </if>
+  		            <if test="keyfield == 3">
+  		            ORDER BY d.locker_end DESC NULLS FIRST
+  		            </if>
+  		            )a)
+		<![CDATA[
+		WHERE rnum >= #{start} AND rnum <= #{end}
+		]]>   		               		                         
+  	</select>  	  	  	  	  	
 </mapper>
 

@@ -28,7 +28,7 @@
 		<li>
 			<input type="button" class="menu-btn"
 			 value="이용기록(사물함)" 
-			 onclick="location.href='#'">
+			 onclick="location.href='${pageContext.request.contextPath}/admin/admin_lockerhistory.do'">
 		</li>		
 		<li>
 			<input type="button" class="menu-btn"

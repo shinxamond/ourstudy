@@ -8,6 +8,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import kr.spring.admin.dao.AdminMapper;
+import kr.spring.admin.vo.AdminLockerHistoryVO;
 import kr.spring.admin.vo.AdminMemberVO;
 import kr.spring.admin.vo.AdminSeatHistoryVO;
 
@@ -54,5 +55,16 @@ public class AdminServiceImpl implements AdminService{
 	@Override
 	public int selectSeatRowCount(Map<String, Object> map) {
 		return adminMapper.selectSeatRowCount(map);
+	}
+
+	//사물함히스토리목록
+	@Override
+	public List<AdminLockerHistoryVO> selectLockerList(Map<String, Object> map) {
+		return adminMapper.selectLockerList(map);
+	}
+	
+	@Override
+	public int selectLockerRowCount(Map<String, Object> map) {
+		return adminMapper.selectLockerRowCount(map);
 	}		
 }
