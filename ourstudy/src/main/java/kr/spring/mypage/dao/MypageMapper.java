@@ -29,7 +29,7 @@ public interface MypageMapper {
 	             회원정보 수정
 	====================================*/
 	//회원정보 가져오기
-	@Select("SELECT * FROM member m JOIN member_detail d ON m.mem_num=d.mem_num WHERE m.mem_num=#{mem_num}")
+	@Select("SELECT * FROM member m JOIN member_detail d ON m.mem_num=d.mem_num JOIN member_history h ON m.mem_num = h.mem_num WHERE m.mem_num=#{mem_num}")
 	public MemberVO selectMember(Integer mem_num);
 	
 	//회원 상세 정보 수정
@@ -93,12 +93,12 @@ public interface MypageMapper {
 	public List<SeatVO> selectSeatDetailListByMem_num(Map<String, Object> map);
 	
 	//누적 공부시간 불러오기
-	//@Select("SELECT mem_study FROM member_history WHERE mem_num = #{mem_num}")
-	//public int selectAccrueStudyTime(MemberVO member);
+	@Select("SELECT mem_study FROM member_history WHERE mem_num = #{mem_num}")
+	public int selectAccrueStudyTime(MemberVO member);
 	
 	//공부 시간 누적
-	//@Update("Update member_history SET mem_study = mem_study + #{total_time} WHERE mem_num = #{mem_num}") //나중에 seatVO에 mem_study 필드 추가해야될 수도 있음 그럼 #{mem_study} + #{total_time}으로 수정 // or 위에 누적 공부시간 불러오는 메서드 써서 데이터 가져온 다음 java로 연산해서 update
-	//public void updateStudyTime(SeatVO seat);
+	@Update("Update member_history SET mem_study = (SELECT mem_study FROM mem_history WHERE mem_num = #{mem_num}) + #{total_time} WHERE mem_num = #{mem_num}") //나중에 seatVO에 mem_study 필드 추가해야될 수도 있음 그럼 #{mem_study} + #{total_time}으로 수정 // or 위에 누적 공부시간 불러오는 메서드 써서 데이터 가져온 다음 java로 연산해서 update
+	public void updateStudyTime(SeatVO seat);
 	
 	
 	//잔여 시간 불러오기 - 저장될 때 ms 단위로 되면 num길이 늘려야될수도 + update 되는거니까 디폴트값 0으로 변경

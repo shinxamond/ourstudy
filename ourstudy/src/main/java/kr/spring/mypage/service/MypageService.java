@@ -8,10 +8,17 @@ import kr.spring.point.vo.PointVO;
 import kr.spring.seat.vo.SeatVO;
 
 public interface MypageService {
-	
-	public MemberVO selectMember(Integer mem_num);
+	/*==================================
+    		프로필 이미지 등록 및 수정
+	====================================*/	
 	
 	public void updateProfile(MemberVO member);
+	
+	/*==================================
+    			회원정보 수정
+	====================================*/
+	
+	public MemberVO selectMember(Integer mem_num);
 	
 	public void updateMember_detail(MemberVO member);
 	
@@ -26,9 +33,17 @@ public interface MypageService {
 	
 	public int selectTotalPoint(int mem_num);
 	
+	/*==================================
+    				공부시간
+	====================================*/		
+	
 	public SeatVO selectCurSeat(Integer mem_num);
 	
 	public int selectSeatDetailRowCount(Integer mem_num);
 	
 	public List<SeatVO> selectSeatDetailListByMem_num(Map<String, Object> map);
+	
+	public int selectAccrueStudyTime(MemberVO member);
+
+	public void updateStudyTime(SeatVO seat);
 }
