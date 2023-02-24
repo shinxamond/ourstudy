@@ -20,8 +20,7 @@
 		</tr>
 	</table><br>
 	<h2>회원목록</h2>
-	<form action="admin_list.do" id="search_form"
-	                                   method="get">
+	<form action="admin_list.do" id="search_form" method="get">
 		<ul class="search">
 			<li>
 				<select name="keyfield" onchange="location.href='admin_list.do?keyfield='+this.value">

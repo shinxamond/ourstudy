@@ -22,9 +22,14 @@
 		</li>
 		<li>
 			<input type="button" class="menu-btn"
-			 value="이용기록" 
-			 onclick="location.href='#'">
+			 value="이용기록(좌석)" 
+			 onclick="location.href='${pageContext.request.contextPath}/admin/admin_seathistory.do'">
 		</li>
+		<li>
+			<input type="button" class="menu-btn"
+			 value="이용기록(사물함)" 
+			 onclick="location.href='#'">
+		</li>		
 		<li>
 			<input type="button" class="menu-btn"
 			 value="좌석 관리" 

@@ -11,7 +11,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 
-import kr.spring.admin.service.AdminMemberService;
+import kr.spring.admin.service.AdminService;
 import kr.spring.admin.vo.AdminMemberVO;
 import kr.spring.member.vo.MemberVO;
 
@@ -19,7 +19,7 @@ import kr.spring.member.vo.MemberVO;
 public class MainController {
 	
 	@Autowired
-	private AdminMemberService adminMemberService;
+	private AdminService adminMemberService;
 	
 	//자바빈(VO) 초기화
 	@ModelAttribute
