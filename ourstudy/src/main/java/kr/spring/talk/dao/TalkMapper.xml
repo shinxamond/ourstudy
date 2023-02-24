@@ -1,0 +1,116 @@
+<?xml version="1.0" encoding="UTF-8" ?>  
+<!DOCTYPE mapper   
+    PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"   
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">  
+<mapper namespace="kr.spring.talk.dao.TalkMapper">  
+	<resultMap type="talkRoomVO" id="talkMap"><!-- 속성 추가 -->
+		<result property="talkVO.message" column="message"/><!-- talkroomVO아래에 talkVO에 message에 넣어준다 -->
+		<result property="talkVO.chat_date" column="chat_date"/>
+	</resultMap>
+	
+	<select id="selectTalkRoomList" parameterType="map" resultMap="talkMap">
+		SELECT
+			*
+		FROM talkroom r JOIN talk_member m 
+		USING (talkroom_num)
+		LEFT OUTER JOIN (SELECT 
+							talkroom_num,
+							mem_num,
+							count(*) room_cnt<!-- 안읽은 개수 -->
+						FROM talk_read
+						WHERE mem_num=#{mem_num}
+						GROUP BY talkroom_num,mem_num) e USING(talkroom_num)
+		LEFT OUTER JOIN (SELECT 
+							talk_num,
+							<![CDATA[
+							REPLACE(REPLACE(REPLACE(message,'<','&lt;'),'>','&gt;'),'@{exit}@','') message,
+							]]>
+							chat_date,
+							talkroom_num
+						FROM talk WHERE talk_num IN (SELECT MAX(talk_num) talk_num FROM talk
+						GROUP BY talkroom_num)) USING(talkroom_num)
+		WHERE m.mem_num=#{mem_num}
+		<if test="keyword != null and keyword != ''">
+		AND talkroom_name LIKE '%' || #{keyword} || '%'
+		</if>
+		ORDER BY (CASE
+				  WHEN chat_date IS NULL THEN talkroom_date <!-- chat_date(채팅을 한번도 안치면)가 널이면 방생성 날짜가 들어간다 -->
+				  ELSE chat_date
+				  END) DESC
+					
+	</select>
+	
+	<select id="selectTalkDetail" parameterType="integer" resultType="talkVO">
+		SELECT
+			<![CDATA[
+			REPLACE(REPLACE(message,'<','&lt;'),'>','&gt;') message,
+			]]>
+			chat_date,
+			read_count,<!-- 읽지 않은 카운트 -->
+			mem_num,
+			mem_id
+		FROM talk t LEFT OUTER JOIN (SELECT
+										talk_num,
+										count(*) read_count
+									   FROM talk_read
+									   GROUP BY talk_num) r USING(talk_num)
+									   JOIN member m USING(mem_num)
+		WHERE talkroom_num=#{talkroom_num}
+		ORDER BY chat_date ASC
+	</select>
+	
+	
+	<select id="selectMemberCount" parameterType="map" resultType="integer">
+		SELECT
+			COUNT(*)
+		FROM member m JOIN member_detail d USING(mem_num)
+		<where>
+			<if test="keyword != null and keyword != ''">
+				<if test="keyfield == 1">
+					mem_num LIKE '%' || #{keyword} || '%'
+				</if>
+				<if test="keyfield == 2">
+					m.mem_id LIKE '%' || #{keyword} || '%'
+				</if>
+				<if test="keyfield == 3">
+					d.mem_name LIKE '%' || #{keyword} || '%'
+				</if>
+			</if>
+			AND m.mem_auth=1
+		</where>
+	</select>  	
+	
+	<select id="selectMemberList" parameterType="map" resultType="memberVO">
+	SELECT
+			*
+		FROM (SELECT
+				a.*,
+				rownum rnum
+			  FROM (SELECT
+			  			*
+			  		FROM member m JOIN member_detail d USING(mem_num)
+			  		<where>
+						<if test="keyword != null and keyword != ''">
+							<if test="keyfield == 1">
+								mem_num LIKE '%' || #{keyword} || '%'
+							</if>
+							<if test="keyfield == 2">
+								m.mem_id LIKE '%' || #{keyword} || '%'
+							</if>
+							<if test="keyfield == 3">
+								d.mem_name LIKE '%' || #{keyword} || '%'
+							</if>
+						</if>
+						AND m.mem_auth=1
+					</where>
+			  		ORDER BY mem_num DESC)a)
+	</select>
+	
+</mapper>
+
+
+
+
+
+
+
