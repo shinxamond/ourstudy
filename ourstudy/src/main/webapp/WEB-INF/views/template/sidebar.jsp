@@ -17,29 +17,43 @@
 <%--로그인 유효성 체크 --%>
 <script type="text/javascript" src="${pageContext.request.contextPath}/js/logincheck.js"></script>
 <script src="https://developers.kakao.com/sdk/js/kakao.js"></script>
-<script src="https://developers.kakao.com/sdk/js/kakao.js"></script>
-<script>
-Kakao.init('29a4ee7bbc4eb20216c3708400363a9a'); //발급받은 키 중 javascript키를 사용해준다.
-console.log(Kakao.isInitialized()); // sdk초기화여부판단
-//카카오로그인
-function kakaoLogin() {
-    Kakao.Auth.login({
-      success: function (response) {
-        Kakao.API.request({
-          url: '/v2/user/me',
-          success: function (response) {
-        	  console.log(response)
-          },
-          fail: function (error) {
-            console.log(error)
-          },
-        })
-      },
-      fail: function (error) {
-        console.log(error)
-      },
-    })
-  }
+<script type="text/javascript">
+
+	Kakao.init('29a4ee7bbc4eb20216c3708400363a9a');
+	
+	console.log(Kakao.isInitialized()); //sdk초기화
+	
+	function kakaoLogin() {
+		Kakao.Auth.login({
+			scope:'profile_nickname,profile_image,account_email',
+			success:function(authObj){
+				Kakao.API.request({
+					url:'/v2/user/me',
+					success:function(res){
+						console.log(res);
+						
+						var kakao_nickname = res.profile_nickname;
+						var kakao_image = res.profile_image;
+						var kakao_email = res.account_email;
+						
+						console.log(kakao_nickname);
+						
+						
+						<%--리다이렉트 커스텀 할 부분
+						location.href='';--%>
+					}
+				})
+				
+				  console.log(authObj);
+				  var token = authOjb.access_token;
+			},
+			fail:function(err){
+				alert('카톡로그인 실패!');
+			}
+		});
+	}
+</script>
+<%--
 //카카오로그아웃  
 function kakaoLogout() {
     if (Kakao.Auth.getAccessToken()) {
@@ -56,6 +70,8 @@ function kakaoLogout() {
     }
   }  
 </script>
+ --%>
+ 
 <%-- 사이드바 시작 --%>
 <div>
 <%-- 로그인 모달 시작 --%>
@@ -66,7 +82,7 @@ function kakaoLogout() {
 				<div class="row">
 					<div class="col-3"></div>
 					<div class="col-7">
-						<h3 class="modal-title ourstudy mb-3" id="loginModalLabel">OurStudy</h3>
+						<h3 class="modal-title ourstudy mb-3 mt-3" id="loginModalLabel">OurStudy</h3>
 					</div>
 					<div class="col-2">
 						<%-- x 닫기 --%>
@@ -103,7 +119,7 @@ function kakaoLogout() {
 				</ul>
 				
 				<div class="my-4 d-flex justify-content-center" onclick="kakaoLogin()">
-					<a href="javascript:void(0)"><img src="${pageContext.request.contextPath}/image_bundle/kakao.PNG" width="30" height="30" class="my-photo">카카오톡 간편로그인</a>
+					<a href="javascript:void(0)"><img src="${pageContext.request.contextPath}/image_bundle/kakao_login_medium_narrow.png"></a>
 				</div>
 				
 				<div class="my-4 d-flex justify-content-center" style="color:#037332;">비회원으로 계속하기</div>

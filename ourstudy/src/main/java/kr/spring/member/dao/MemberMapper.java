@@ -51,6 +51,17 @@ public interface MemberMapper {
 	@Select("SELECT mem_pw FROM member JOIN member_detail USING(mem_num) "
 		  + "WHERE mem_id=#{mem_id} AND mem_email=#{mem_email}")
 	public String find_pw(@Param("mem_id") String mem_id, @Param("mem_email") String mem_email);
+
+	//카카오톡 회원가입
+	@Insert("INSERT INTO member (mem_num,mem_id) VALUES (#{mem_num},#{kakao_nickname})")
+	public void insertKakao(MemberVO member);
+	
+	@Insert("INSERT INTO member_detail (mem_num,mem_name,mem_pw,mem_phone,mem_email,mem_zipcode,mem_address1,mem_address2) VALUES"
+			+ " (#{mem_num},#{mem_name},#{mem_pw},#{mem_phone},#{mem_email},#{mem_zipcode},#{mem_address1},#{mem_address2})")
+	public void insertKakao_detail(MemberVO member);
+	@Insert("INSERT INTO member_history (mem_num,mem_study,mem_ticket_hour,mem_ticket_term) "
+		  + "VALUES (#{mem_num},#{mem_study},#{mem_ticket_hour},#{mem_ticket_term})")
+	public void insertKakao_history(MemberVO member);
 	
 	//회원정보 불러오기(SeatAdminController에서 사용)-----------------
 	@Select("SELECT mem_name FROM MEMBER_DETAIL WHERE mem_num=#{mem_num}")
