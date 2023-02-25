@@ -19,7 +19,7 @@ public class EmailSender{
 
 		MimeMessage msg = mailSender.createMimeMessage();
 		try {
-                        //송신자를 설정해도 소용없지만 없으면 오류가 발생한다
+            //송신자를 설정해도 소용없지만 없으면 오류가 발생한다
 			msg.setFrom();
 			msg.setSubject(email.getSubject());
 			msg.setText(email.getContent());

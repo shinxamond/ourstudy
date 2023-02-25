@@ -47,7 +47,7 @@ $(function(){
 	//submit 이벤트 발생시 아이디 중복 체크 여부 확인
 	$('#register_form').submit(function(){
 		if(checkId==0){
-			$('#message_id').css('color','red').text('필수입력');
+			$('#message_id').css('color','red').text('중복체크 필수');
 			if($('#mem_id').val().trim()==''){
 				$('#mem_id').val('').focus();
 			}

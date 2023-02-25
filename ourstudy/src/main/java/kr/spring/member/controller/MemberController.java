@@ -174,7 +174,7 @@ public class MemberController {
 
 			logger.debug("<<인증 실패>>");
 			
-			return formLogin();
+			return "redirect:/main/main.do";
 			
 		}	
 	}
