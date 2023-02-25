@@ -25,9 +25,6 @@ public interface SeatMapper {
    /*==================================
                  MEMBER
    ==================================*/
-   //좌석 선택 
-   @Select("SELECT seat_detail_seq.nextval FROM DUAL")
-   public int selectSeat_Detail_num();
    //회원 정보, 입실 날짜 입력
    @Insert("INSERT INTO SEAT_DETAIL(seat_detail_num,mem_num,mem_name,seat_num) VALUES (seat_detail_seq.nextval,#{mem_num},#{mem_name},#{seat_num})")
    public void insertToSelectSeat(SeatVO vo);

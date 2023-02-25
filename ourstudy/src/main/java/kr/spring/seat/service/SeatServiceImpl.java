@@ -26,7 +26,6 @@ public class SeatServiceImpl implements SeatService{
    //좌석 선택
    @Override
    public void selectSeat(SeatVO vo) {
-      vo.setSeat_detail_num(seatMapper.selectSeat_Detail_num());
       seatMapper.insertToSelectSeat(vo);      //회원상세정보 등록
       seatMapper.seatStatusIn(vo.getSeat_num());
       seatMapper.memberStatusIn(vo.getMem_num());
