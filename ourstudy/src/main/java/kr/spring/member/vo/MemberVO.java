@@ -36,6 +36,17 @@ public class MemberVO {
 	private int mem_study;
 	private int mem_ticket_hour;
 	private int mem_ticket_term;
+	
+	//아이디 찾기 시 전체 아이디
+	private String[] mem_all_id;
+
+	public String[] getMem_all_id() {
+		return mem_all_id;
+	}
+
+	public void setMem_all_id(String[] mem_all_id) {
+		this.mem_all_id = mem_all_id;
+	}
 
 	//회원가입시 비밀번호 확인
 	@Pattern(regexp="^[A-Za-z0-9]{8,16}$")

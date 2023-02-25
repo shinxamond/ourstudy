@@ -49,7 +49,7 @@ public class MemberServiceImpl implements MemberService {
 	}
 
 	@Override
-	public String find_id(String mem_name, String mem_email) {
+	public String[] find_id(String mem_name, String mem_email) {
 		return memberMapper.find_id(mem_name, mem_email);
 	}
 	

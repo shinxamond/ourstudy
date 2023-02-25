@@ -92,12 +92,17 @@ $(function(){
 
 
 	//유효성 체크
-	$('#register_form').submit(function(){
+	$('.find_form').submit(function(){
 		
-		if($('#mem_pw').val()==''){
-			$('#mem_pw').val('').focus();
-			$("#message_pw").text("비밀번호 필수입력");
-			$('#message_pw').css('color','red');
+		if($('#mem_name').val()==''){
+			$('#mem_name').val('').focus();
+			$("#message_name").text("이름을 입력해주세요").css('color','red');
+			return false;
+		}
+		
+		if($('#mem_id').val()==''){
+			$('#mem_id').val('').focus();
+			$("#message_name").text("아이디를 입력해주세요").css('color','red');
 			return false;
 		}
 		
@@ -116,13 +121,16 @@ $(function(){
 			return false;
 		}
 		
-	});
-	
+		const inputCode = $('.mail-check-input').val();
+		const $resultMsg = $('#mail-check-warn');
+			
+		if(inputCode !== code){
+			$resultMsg.html('인증번호가 불일치 합니다');
+			$resultMsg.css('color','red');
+			return false;	
+		}
 		
-	
-	
-	
-	
+	});
 	
 	
 });

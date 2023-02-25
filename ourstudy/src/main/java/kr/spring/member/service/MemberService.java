@@ -16,7 +16,7 @@ public interface MemberService {
 	public void deleteAuto_id(int mem_num);
 	
 	//아이디 찾기
-	public String find_id(String mem_name, String mem_email);
+	public String[] find_id(String mem_name, String mem_email);
 	//비밀번호 찾기
 	public String find_pw(String mem_id, String mem_email);
 	

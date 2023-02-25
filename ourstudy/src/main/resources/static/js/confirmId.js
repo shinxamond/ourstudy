@@ -1,7 +1,7 @@
 $(function(){
 	let checkId = 0;
 	
-	//아이디 중복 체크
+	//=============아이디 중복 체크=============
 	$('#confirmId').click(function(){
 		if($('#mem_id').val().trim()==''){
 			$('#message_id').css('color','red').text('아이디를 입력하세요');
@@ -38,7 +38,7 @@ $(function(){
 		
 	}); //end of click
 	
-	//아이디 중복 안내 메시지 초기화 및 아이디 중복 값 초기화
+	//=========아이디 중복 안내 메시지 초기화 및 아이디 중복 값 초기화=========
 	$('#register_form #mem_id').keydown(function(){
 		checkId = 0;
 		$('#message_id').text('');
@@ -54,6 +54,31 @@ $(function(){
 			return false;
 		}
 	}); //end of submit
+	
+	
+	//=============비밀번호 확인===============
+	$("#mem_pw,#pw_confirm").keyup(function(){
+		let mem_pw = $("#mem_pw").val();
+		let pw_confirm = $("#pw_confirm").val();
+		
+		if(mem_pw=='' && pw_confirm==''){
+			$("#confirmMsg").text("");
+			return;
+		}
+		
+		if(mem_pw!='' && pw_confirm!=''){
+			if(mem_pw == pw_confirm){
+				$("#confirmMsg").text("비밀번호 일치");
+				return;
+			}
+			if(mem_pw != pw_confirm){
+				$("#confirmMsg").text("비밀번호 불일치");
+				return;
+			}
+		}
+	});
+	
+	
 });
 
 

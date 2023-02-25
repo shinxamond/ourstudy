@@ -30,7 +30,7 @@ function numberphone(e){
 				<label for="mem_id">아이디</label>
 				<form:input path="mem_id" autocomplete="off"/>
 				<input type="button" id="confirmId" value="아이디 중복체크">
-				<div id="message_id"></div> <!-- js를 위한 span 태그 -->
+				<div id="message_id"></div> <!-- js를 위한 태그 -->
 				<form:errors path="mem_id" cssClass="error-color"/> <!-- 에러문구 -->
 			</li>
 			<li>
@@ -73,7 +73,7 @@ function numberphone(e){
 					<input class="form-control mail-check-input" placeholder="인증번호 6자리 입력" disabled="disabled" maxlength="6">
 					<button type="button" class="btn btn-primary" id="mail-Check-Btn">본인인증</button>
 				</div>
-				<div id="mail-check-warn"></div>
+				<div id="mail-check-warn" style="margin-left:132px;"></div>
 			</li>
 			 <%-- =======================이메일 인증코드 구현 끝========================  --%>
 			

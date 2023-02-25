@@ -45,7 +45,7 @@ public interface MemberMapper {
 	//아이디 찾기
 	@Select("SELECT mem_id FROM member m LEFT OUTER JOIN member_detail d ON m.mem_num=d.mem_num	"
 		  + "WHERE d.mem_name=#{mem_name} AND d.mem_email=#{mem_email}")
-	public String find_id(@Param("mem_name") String mem_name, @Param("mem_email") String mem_email);
+	public String[] find_id(@Param("mem_name") String mem_name, @Param("mem_email") String mem_email);
 	
 	//비밀번호 찾기
 	@Select("SELECT mem_pw FROM member JOIN member_detail USING(mem_num) "

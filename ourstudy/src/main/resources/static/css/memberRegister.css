@@ -96,6 +96,7 @@ input[id="confirmId"],#mail-Check-Btn,#find-zipcode{
 	font-size:10pt;
 	margin-bottom:5px;
 }
+
 #register-submit-btn{
 	color:white;
 	background-color:#037332;
@@ -112,6 +113,7 @@ input[id="confirmId"],#mail-Check-Btn,#find-zipcode{
 	font-size:10pt;
 	display:inline;
 }
+
 .register-content{
 	margin-left:40px;
 	margin-bottom:10px;
@@ -138,7 +140,7 @@ button,input[type="button"]{
 
 
 /*=====================================
-			  아이디 찾기
+			  아이디,비밀번호 찾기
 ======================================*/
 
 .find_left{
@@ -223,4 +225,27 @@ button,input[type="button"]{
 
 .find-content ul li input#mem_id{
 	margin-right:152px;
+}
+
+
+/*=====================================
+			  common/notice
+======================================*/
+.notice-content{
+	margin:130px 60px 0 390px;
+	text-align:center;
+	margin-right:60px;
+	font-size:12pt;
+	font-weight:bold;
+	padding:10px 0;
+}
+.notice-btn{
+	color:white;
+	background-color:#037332;
+	width:125px;
+	height:40px;
+	border-radius:10px;
+	border:none;
+	font-size:10pt;
+	margin:15px 0px 5px 7px;
 }

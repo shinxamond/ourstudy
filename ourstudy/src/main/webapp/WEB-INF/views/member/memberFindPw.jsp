@@ -2,7 +2,7 @@
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
 
-<script type="text/javascript" src="${pageContext.request.contextPath}/js/makeEmail.js"></script>
+<script type="text/javascript" src="${pageContext.request.contextPath}/js/findIdPw.js"></script>
 
 <!-- 중앙 컨텐츠 시작 -->
 <div>
@@ -20,6 +20,7 @@
 				<br>
 				<label for="mem_id">아이디</label><br><br>
 				<form:input path="mem_id"/>
+				<div id="message_id"></div> <!-- js를 위한 태그 -->
 				<form:errors path="mem_id" cssClass="error-color"/>
 			</li>
 			<li>
@@ -45,7 +46,7 @@
 					<input class="form-control mail-check-input" placeholder="인증번호 6자리 입력" disabled="disabled" maxlength="6">
 					<button type="button" class="btn btn-primary" id="mail-Check-Btn">본인인증</button>
 				</div>
-				<div id="mail-check-warn"></div>
+				<div id="mail-check-warn" style="text-align:left; margin-left:17px;"></div>
 			</li>
 			 <%-- =======================이메일 인증코드 구현 끝========================  --%>
 			

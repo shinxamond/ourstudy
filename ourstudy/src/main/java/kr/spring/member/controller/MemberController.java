@@ -1,5 +1,6 @@
 package kr.spring.member.controller;
 
+import java.util.Arrays;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.UUID;
@@ -216,13 +217,18 @@ public class MemberController {
 		String mem_name = request.getParameter("mem_name");
 		String mem_email = request.getParameter("mem_email");
 		
-		String mem_id = memberService.find_id(mem_name, mem_email);
+		memberVO.setMem_all_id(memberService.find_id(mem_name, mem_email));
+		String[] mem_all_id = memberVO.getMem_all_id();
 		
-		request.setAttribute("mem_id", mem_id);
 		
-		model.addAttribute("accessMsg", mem_name+"님의 아이디는<br><br>" + mem_id + "<br><br>입니다");
-		
-		return "common/notice";
+		if(mem_all_id.length==0) {
+			model.addAttribute("message","존재하지 않는 계정입니다.");
+			model.addAttribute("url", "/member/findId.do");
+			return "common/resultView";
+		}else {
+			model.addAttribute("accessMsg", mem_name+"님의 아이디는<br><br>" + Arrays.toString(mem_all_id) + "<br><br>입니다");
+			return "common/notice";
+		}
 		
 	}
 	
@@ -247,11 +253,15 @@ public class MemberController {
 		
 		String mem_pw = memberService.find_pw(mem_id, mem_email);
 
-		request.setAttribute("mem_pw", mem_pw);
-
-		model.addAttribute("accessMsg", "비밀번호는<br><br>" + mem_pw + "<br><br>입니다");
-
-		return "common/notice";
+		if(mem_pw==null) {
+			model.addAttribute("message","존재하지 않는 계정입니다.");
+			model.addAttribute("url", "/member/findPw.do");
+			return "common/resultView";
+		}else {
+			model.addAttribute("accessMsg", "비밀번호는<br><br>" + mem_pw + "<br><br>입니다");
+			return "common/notice";
+		}
+		
 	}
 }
 
