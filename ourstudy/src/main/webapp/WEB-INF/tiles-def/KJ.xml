@@ -35,6 +35,29 @@
     	<put-attribute name="body"
     	  value="/WEB-INF/views/item/itemModify.jsp"/>        
     </definition>
+    
+    <!-- 채팅 -->
+    <definition name="talkRoomWrite" extends="main">
+    	<put-attribute name="title" value="채팅방생성(관리자)"/>
+    	<put-attribute name="body"
+    	  value="/WEB-INF/views/talk/talkRoomWrite.jsp"/>        
+    </definition>
+    <definition name="talkList" extends="main">
+    	<put-attribute name="title" value="채팅방목록(관리자)"/>
+    	<put-attribute name="body"
+    	  value="/WEB-INF/views/talk/talkList.jsp"/>        
+    </definition>
+    <definition name="talkDetail" extends="main">
+    	<put-attribute name="title" value="채팅"/>
+    	<put-attribute name="body"
+    	  value="/WEB-INF/views/talk/talkDetail.jsp"/>        
+    </definition>
+    
+    <definition name="modal1" extends="main">
+    	<put-attribute name="title" value="연습"/>
+    	<put-attribute name="body"
+    	  value="/WEB-INF/views/talk/modal1.jsp"/>        
+    </definition>
 </tiles-definitions>
 
 
