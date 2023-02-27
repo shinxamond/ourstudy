@@ -170,13 +170,13 @@ form#detail_form{
 .main_modal-content{
 	width:530px;
 }
-.modal-content{
+#mcontent{
 	width:520px;
 }
-.modal-header{
+#mheader{
 	background-color:#9bbbd4;
 }
-.modal-body{
+#mbody{
 	background-color:#9bbbd4;
 	height:700px;
 }
