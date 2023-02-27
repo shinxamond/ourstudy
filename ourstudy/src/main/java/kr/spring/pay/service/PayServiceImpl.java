@@ -43,10 +43,5 @@ public class PayServiceImpl implements PayService{
 		return payMapper.selectPoint(mem_num);
 	}
 
-	@Override
-	public int updatePoint(Integer mem_num) {
-		return payMapper.updatePoint(mem_num);
-	}
-
 }
 

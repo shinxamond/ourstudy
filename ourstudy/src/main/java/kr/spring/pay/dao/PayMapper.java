@@ -23,9 +23,7 @@ public interface PayMapper {
 	//포인트
 	@Select("SELECT point_accrue FROM point WHERE mem_num=#{mem_num}")
 	public int selectPoint(Integer mem_num);
-	@Update("UPDATE point SET point_accrue=#{point_accrue} WHERE mem_num=#{mem_num}")
-	public int updatePoint(Integer mem_num);
-
+	
 	//이용권 시간 계산
 	public int insertTicket_time();
 

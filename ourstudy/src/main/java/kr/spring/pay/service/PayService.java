@@ -12,7 +12,6 @@ public interface PayService {
 	public List<PayVO> selectListPay(Map<String, Object> map);
 	
 	public int selectPoint(Integer mem_num);
-	public int updatePoint(Integer mem_num);
 	
 	public PayVO selectPay(PayVO payVO);
 }
