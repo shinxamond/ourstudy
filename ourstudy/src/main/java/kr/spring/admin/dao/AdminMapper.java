@@ -49,12 +49,12 @@ public interface AdminMapper {
 	public List<AdminItemHistoryVO> selectUnreturnList(Map<String,Object> map);	
 	
 	//일별 판매 정산판
-	@Select("SELECT SUM(TICKET_PRICE) FROM ticket t LEFT OUTER JOIN pay p "
+	@Select("SELECT NVL(SUM(TICKET_PRICE), 0) FROM ticket t LEFT OUTER JOIN pay p "
 			+ "ON t.ticket_num=p.ticket_num "
 			+ "WHERE TICKET_KIND=1 AND TO_CHAR(PAY_DATE, 'YYYY-MM-DD') = TO_CHAR(sysdate, 'YYYY-MM-DD')")
 	public int ticketSalesSum(); //이용권 판매 금액
 		
-	@Select("SELECT SUM(TICKET_PRICE) FROM ticket t LEFT OUTER JOIN pay p "
+	@Select("SELECT NVL(SUM(TICKET_PRICE), 0) FROM ticket t LEFT OUTER JOIN pay p "
 			+ "ON t.ticket_num=p.ticket_num "
 			+ "WHERE TICKET_KIND=2 AND TO_CHAR(PAY_DATE, 'YYYY-MM-DD') = TO_CHAR(sysdate, 'YYYY-MM-DD')")
 	public int lockerSalesSum(); //사물함 판매 금액
