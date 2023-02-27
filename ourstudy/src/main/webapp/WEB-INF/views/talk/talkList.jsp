@@ -1,42 +1,64 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<!-- 메인 시작 -->
-<script type="text/javascript" src="${pageContext.request.contextPath}/js/main/clock.js"></script>
-<script type="text/javascript" src="${pageContext.request.contextPath}/js/main/quotes.js"></script>
-<div>
-	<div class="digital-clock">00:00:00</div>
-</div>
-
-<div>
-	<span>
-		<a href="https://developers.kakao.com/logout">카톡 로그아웃용 임시</a>
-	</span>
-</div>
-
-<div>
-	<span id="quote"></span><br>
-	<span id="author"></span>
-</div>
-<!-- 메인 끝 -->
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/css/bootstrap.min.css">
+<!-- <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"></script> -->
+<script type="text/javascript" src="${pageContext.request.contextPath}/js/message.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.11.0/umd/popper.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/js/bootstrap.min.js"></script>
+<link rel="stylesheet" href="${pageContext.request.contextPath}/css/talk.css">
 <script type="text/javascript">
 $(function(){
-	if(${check==0}){
-		$('#talkCheck').
-	}
+	
 	
 });
 </script>
-<form action="talkRoomWrite.do" method="post" id="talk_form">
-	<input type="hidden" name="members" value="${user.mem_num}">
-	<input type="hidden" name="members" value="461">
-	<input type="hidden" name="talkroom_name" id="talkroom_name" value="${user.mem_id}, admin">
-	<input type="submit" value="채팅방 확인" id="talkCheck">
-</form>
-<div style="position: fixed; right: 40px; bottom: 50px;">
-<img src="${pageContext.request.contextPath}/images/chat.jfif" width="50" height="50" class="my-photo">
-</div>
-
-<script type="text/javascript">
+<div class="page-main" id="pageList">
+	<h2>채팅목록</h2>
+	<form action="talkList.do" id="search_form" method="get">
+		<ul class="search">
+			<li>
+				<input type="search" name="keyword" id="keyword" value="${param.keyword}">
+			</li>
+			<li>
+				<input type="submit" value="찾기">
+				<input type="button" value="목록" onclick="location.href='talkList.do'">
+			</li>
+		</ul>
+	</form>
+	<div class="align-right">
+		<input type="button" value="채팅방 생성" onclick="location.href='talkRoomWrite.do'">
+	</div>
+	<c:if test="${empty list}">
+	<div class="result-display">표시할 채팅방이 없습니다.</div>
+	</c:if>
+	
+	<c:if test="${!empty list}">
+	<table class="striped-table">
+		<c:forEach var="talk" items="${list}">
+		
+		<tr id="${talk.talkroom_num}">
+			<td style="text-align:left">
+				<%-- <a href="talkDetail.do?talkroom_num=${talk.talkroom_num}"> --%>
+				<a href="#" data-toggle="modal" data-target="#${talk.talkroom_num}" id="10${talk.talkroom_num}"  data-id="${talk.talkroom_num}">
+					<span>${talk.talkroom_name}</span>
+				</a>
+					<br>
+					<span>${fn:substring(talk.talkVO.message,0,45)}</span><!-- fn : 함수 사용 -->
+			</td>
+			<td style="text-align:right">
+				<c:if test="${!empty talk.talkVO.chat_date}">
+					${talk.talkVO.chat_date}<br>
+					<c:if test="${talk.room_cnt!=0}">
+					<span id="talk_inform">${talk.room_cnt}</span>
+					</c:if>
+				</c:if>
+				<c:if test="${empty talk.talkVO.chat_date}">${talk.talkroom_date}</c:if>
+			</td>	
+		</tr>
+		
+		<script type="text/javascript">
 		//중복 제거 
 		var isSubmitted = false;  
 		$(document).on('click','#10${talk.talkroom_num}',function(){//목록 클릭
@@ -290,4 +312,49 @@ $(function(){
 		});
 		isSubmitted = false;
 		</script>
-<!-- 메인 끝 -->
+			<!-- ------------------------------------------ 모달 --------------------------------------------------- -->
+	
+	<div class="modal fade" id="${talk.talkroom_num}" data-backdrop="static" data-keyboard="false">
+    <div class="modal-dialog modal-xl modal-dialog-centered">
+      <div class="modal-content">
+
+        <!-- Modal Header -->
+        <div class="modal-header">
+	        <div>
+	        	 <b><span id="roomname${talk.talkroom_num}"></span></b><br>
+				채팅 멤버 : <span id="name${talk.talkroom_num}"></span>
+	        </div>
+			<div class="align-right">
+				<input type="button" value="채팅방 나가기" id="delete_talkroom${user.mem_num}">
+			</div>
+			 <button type="button" class="close" data-dismiss="modal">&times;</button>
+        </div>
+ 
+        <!-- Modal body -->
+        <div class="modal-body">
+		<div id="chatting_message${talk.talkroom_num}" style="width:500px; height:500px; overflow-y:scroll;"></div><!-- 다른 채팅창이 안보여서 나눔 -->
+		<form method="post" id="detail_form${talk.talkroom_num}${user.mem_num}">
+			<input type="hidden" name="talkroom_num" id="talkroom_num" value="${talk.talkroom_num}">
+			<input type="hidden" name="mem_num" id="mem_num" value="${user.mem_num}">
+			
+			<textarea rows="5" cols="62" name="message" id="message${talk.talkroom_num}"></textarea>
+			<input type="submit" value="전송">
+			
+		</form>
+        </div>
+        
+        <!-- Modal footer 
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+        </div>-->
+        
+      </div>
+    </div>
+</div>
+			
+			
+		</c:forEach>
+	</table>
+	</c:if>
+	
+</div>

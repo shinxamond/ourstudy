@@ -8,8 +8,7 @@ public class LockerVO {
 	private String mem_name;
 	private String locker_start;
 	private String locker_end;
-	private long locker_diff;
-	
+	private int locker_diff;
 	public int getLocker_detail_num() {
 		return locker_detail_num;
 	}
@@ -52,10 +51,10 @@ public class LockerVO {
 	public void setLocker_end(String locker_end) {
 		this.locker_end = locker_end;
 	}
-	public long getLocker_diff() {
+	public int getLocker_diff() {
 		return locker_diff;
 	}
-	public void setLocker_diff(long locker_diff) {
+	public void setLocker_diff(int locker_diff) {
 		this.locker_diff = locker_diff;
 	}
 	@Override
@@ -64,4 +63,6 @@ public class LockerVO {
 				+ locker_status + ", mem_num=" + mem_num + ", mem_name=" + mem_name + ", locker_start=" + locker_start
 				+ ", locker_end=" + locker_end + ", locker_diff=" + locker_diff + "]";
 	}
+	
+	
 }

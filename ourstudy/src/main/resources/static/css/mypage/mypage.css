@@ -80,7 +80,9 @@ a, a:hover, a:visited, a:focus{
 	width : 100px;
 	height : 100px;
 }
-.profile-photo{
+.profile-photo, .my-photo{
+	object-fit: cover;
+    object-position: top;
 	border-radius : 50%;
 }
 /*이름 span 설정*/

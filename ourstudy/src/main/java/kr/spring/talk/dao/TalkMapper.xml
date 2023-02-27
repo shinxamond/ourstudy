@@ -7,6 +7,10 @@
 		<result property="talkVO.message" column="message"/><!-- talkroomVO아래에 talkVO에 message에 넣어준다 -->
 		<result property="talkVO.chat_date" column="chat_date"/>
 	</resultMap>
+	<resultMap type="talkRoomVO" id="talkMap2"><!-- 속성 추가 -->
+		<result property="talkVO.message" column="message"/><!-- talkroomVO아래에 talkVO에 message에 넣어준다 -->
+		<result property="talkVO.chat_date" column="chat_date"/>
+	</resultMap>
 	
 	<select id="selectTalkRoomList" parameterType="map" resultMap="talkMap">
 		SELECT
@@ -38,6 +42,30 @@
 				  ELSE chat_date
 				  END) DESC
 					
+	</select>
+	
+	<select id="selectTalkRoomOne" parameterType="integer" resultMap="talkMap2">
+		SELECT
+			*
+		FROM talkroom r JOIN talk_member m 
+		USING (talkroom_num)
+		LEFT OUTER JOIN (SELECT 
+							talkroom_num,
+							mem_num,
+							count(*) room_cnt<!-- 안읽은 개수 -->
+						FROM talk_read
+						WHERE mem_num=#{mem_num}
+						GROUP BY talkroom_num,mem_num) e USING(talkroom_num)
+		LEFT OUTER JOIN (SELECT 
+							talk_num,
+							<![CDATA[
+							REPLACE(REPLACE(REPLACE(message,'<','&lt;'),'>','&gt;'),'@{exit}@','') message,
+							]]>
+							chat_date,
+							talkroom_num
+						FROM talk WHERE talk_num IN (SELECT MAX(talk_num) talk_num FROM talk
+						GROUP BY talkroom_num)) USING(talkroom_num)
+		WHERE talkroom_num=#{talkroom_num}
 	</select>
 	
 	<select id="selectTalkDetail" parameterType="integer" resultType="talkVO">

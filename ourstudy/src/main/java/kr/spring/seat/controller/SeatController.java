@@ -26,6 +26,7 @@ import kr.spring.locker.service.LockerService;
 import kr.spring.locker.vo.LockerVO;
 import kr.spring.member.service.MemberService;
 import kr.spring.member.vo.MemberVO;
+import kr.spring.mypage.service.MypageService;
 import kr.spring.seat.service.SeatService;
 import kr.spring.seat.vo.SeatVO;
 
@@ -43,6 +44,9 @@ public class SeatController {
    @Autowired
    private LockerService lockerService;
    
+   @Autowired
+   private MypageService myPageService;
+   
    //VO 초기화
    @ModelAttribute("seatVO")
    public SeatVO initCommand() {
@@ -56,17 +60,40 @@ public class SeatController {
    
    //좌석선택폼으로 이동
    @RequestMapping("/seat/selectSeatForm.do")
-   public ModelAndView drawing() {
+   public ModelAndView drawing(HttpSession session) {
+	  int mem_status = seatService.getMem_status((Integer)session.getAttribute("user_num"));
+	  
       ModelAndView mav = new ModelAndView();
       List<SeatVO> list = seatService.getSeatList();
 
       mav.setViewName("seat/selectForm");
       mav.addObject("list", list);
+      mav.addObject("mem_status", mem_status);
       
       return mav;
    }
 
    /*===========KEEP============================================================================
+   //좌석선택폼으로 이동
+   @RequestMapping("/seat/checkMember.do")
+   @ResponseBody
+   public Map<String, String> checkMember(@RequestParam (value="mem_auth", defaultValue="0") int mem_auth, HttpSession session) {
+//	   HttpSession session = request.getSession();
+//	   MemberVO memberVO = (MemberVO)session.getAttribute("user");
+	   Map<String, String> map  = new HashMap<String, String>();
+	   logger.debug("mem_auth = " + mem_auth);
+	   
+	   if(mem_auth == 0) {
+		   map.put("auth", "notMember"); 			//로그아웃 상태거나 회원이 아님
+	   }else if(mem_auth == 9) {
+		   map.put("auth", "admin");				//관리자임
+	   }
+	   map.put("auth", "member");					//일반회원임
+	   return map;
+   }
+   
+   
+   
    //좌석을 선택한 회원의 정보가 입력됨
    @RequestMapping("/seat/select.do")
    @ResponseBody
@@ -109,9 +136,12 @@ public class SeatController {
       }
       
       int mem_num = (Integer)session.getAttribute("user_num");      
-      String mem_name = memberService.getMem_name(mem_num);         
+      String mem_name = memberService.getMem_name(mem_num);       
+      int mem_status = seatService.getMem_status(mem_num);
+      
       logger.debug("mem_num = " + mem_num);
       logger.debug("mem_name = " + mem_name);
+      logger.debug("mem_status = " + mem_status);
       
       SeatVO seatVO = initCommand();
       if(seatVO == null) {
@@ -128,6 +158,7 @@ public class SeatController {
       List<LockerVO> list = lockerService.getLockerList();
       
       model.addAttribute("list", list);
+      model.addAttribute("mem_status", mem_status);
       
       return "locker/selectForm";
    }
@@ -260,8 +291,13 @@ public class SeatController {
       int diffIntSeconds = Long.valueOf(diffSeconds).intValue();
       seatVO.setTotal_time(diffIntSeconds);
       seatVO.setSeat_num(seat_num);
+      seatVO.setMem_num(mem_num);
       
       seatService.insertTotal_time(seatVO);
+      seatVO.setTotal_time(diffIntSeconds);
+      myPageService.updateStudyTime(seatVO);
+      
+      logger.debug("seatVO" + seatVO);
       
       return "";
    }
