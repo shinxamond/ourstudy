@@ -95,6 +95,29 @@ public class TalkServiceIml implements TalkService{
 	public int selectMemberCount(Map<String, Object> map) {
 		return talkMapper.selectMemberCount(map);
 	}
+
+	@Override
+	public int selectTalkRoomCheck(String talkroom_name) {
+		return talkMapper.selectTalkRoomCheck(talkroom_name);
+	}
+
+	@Override
+	public int selectTalkRoomNumMain(String talkroom_name) {
+		return talkMapper.selectTalkRoomNumMain(talkroom_name);
+	}
+
+	@Override
+	public List<TalkRoomVO> selectTalkRoomOne(Integer talkroom_num) {
+		return talkMapper.selectTalkRoomOne(talkroom_num);
+	}
+
+	@Override
+	public void talkRoomCheck(Integer mem_num1, Integer mem_num2) {
+		talkMapper.talkRoomCheck(mem_num1, mem_num2);
+	}
+
+	
+	
 }
 
 
