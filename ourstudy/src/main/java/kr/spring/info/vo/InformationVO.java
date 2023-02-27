@@ -1,15 +1,12 @@
-package kr.spring.community.vo;
+package kr.spring.info.vo;
 
 import java.sql.Date;
 
-import javax.validation.constraints.NotEmpty;
 
 public class InformationVO {
 	private int info_num;
 	private Date info_date; 
-	@NotEmpty
 	private String info_title;
-	@NotEmpty
 	private String info_content;
 	private int info_pin;
 	private int mem_num;
