@@ -18,7 +18,7 @@ public interface SeatMapper {
    @Select("SELECT seat_seq.nextval FROM dual")
    public int selectSeat_num();
    //좌석 등록
-   @Insert("INSERT INTO SEAT(seat_num,seat_name) VALUES(seat_seq.nextval, #{seat_name})")
+   @Insert("INSERT INTO SEAT(seat_num,seat_name) VALUES(#{seat_num}, #{seat_name})")
    public void insertSeat(SeatVO vo);
    
    

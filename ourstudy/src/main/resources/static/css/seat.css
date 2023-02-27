@@ -1,0 +1,44 @@
+/* =========================
+		  FRAME
+   =========================*/
+	.seat-option{
+		font-size:12px;
+		padding:5px; margin:5px;
+		border-radius:8px;
+		width:35px;
+		height:35px;
+		text-align:center;
+		border:none;
+	}
+	.seat-option:not(:disabled){
+		cursor:pointer;
+	}
+	#seat_box{
+		position:relative;
+		top:-150px; left:220px;
+		z-index:100;
+	}
+	#canvas_box{
+		position:relative;
+	}
+	
+	#canvas{
+		position:relative;
+		z-index:1;
+	}
+/*===========================
+		GUIDE LETTER
+  ===========================*/
+  .guide-letter{
+  	font-weight:900;
+  	font-size:16px;
+  	color:#BEBEBE;
+  	position:relative;
+  	z-index:4;
+  }
+  #locker_zone{left:695px; bottom:415px;}
+  #locker{left:690px; bottom:310px;}
+  #rent{left:815px; bottom:470px;}
+  #info{left:815px; bottom:390px;}
+  #toilet{left:560px; bottom:775px;}
+  
