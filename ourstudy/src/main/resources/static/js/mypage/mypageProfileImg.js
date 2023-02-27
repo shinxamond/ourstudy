@@ -24,6 +24,7 @@ $(function(){
 		
 		reader.onload = function(){
 			$('.profile-photo').attr('src', reader.result);
+			$('.my-photo').attr('src', reader.result);
 		};
 	});
 	
