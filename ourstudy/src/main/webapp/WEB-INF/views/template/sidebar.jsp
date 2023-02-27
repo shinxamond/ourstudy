@@ -256,7 +256,7 @@ function kakaoLogout() {
         			</div>
         		</div>      				    
 				</c:if>
-				<br>					
+				<br>			      		
 				<c:if test="${!empty user}">
 						<button class="btn text-white rounded logout-btn" style="background-color:#037332;"
 						onclick="location.href='${pageContext.request.contextPath}/member/logout.do'">로그아웃</button>

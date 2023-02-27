@@ -1,0 +1,198 @@
+<?xml version="1.0" encoding="UTF-8" ?>  
+<!DOCTYPE mapper   
+    PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"   
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">  
+<mapper namespace="kr.spring.admin.dao.AdminMapper">
+	<!-- 회원목록 -->
+  	<select id="selectRowCount" parameterType="map" resultType="integer">
+  		SELECT
+  		  COUNT(*)
+  		FROM member m LEFT OUTER JOIN member_detail d
+  		ON m.mem_num = d.mem_num
+  		<if test="keyword != null and keyword != ''">
+  			WHERE d.mem_name LIKE '%' || #{keyword} || '%' OR
+  				  d.mem_num LIKE '%' || #{keyword} || '%'
+  		</if>                         
+  	</select>
+  	
+  	<select id="selectList" parameterType="map" resultType="adminMemberVO">
+  		SELECT
+  		   *
+  		FROM (SELECT
+  		        a.*,
+  		        rownum rnum
+  		      FROM (SELECT
+  		              *
+  		            FROM member m LEFT OUTER JOIN
+  		                 member_detail d 
+  		            ON m.mem_num = d.mem_num             
+			  		<if test="keyword != null and keyword != ''">
+				  		WHERE d.mem_name LIKE '%' || #{keyword} || '%' OR
+				  			  d.mem_num LIKE '%' || #{keyword} || '%' 
+			  		</if>
+  		            <if test="keyfield == 1 or keyfield == null">
+  		            ORDER BY d.mem_regdate DESC NULLS LAST
+  		            </if>
+  		            <if test="keyfield == 2">
+  		            ORDER BY d.mem_name ASC NULLS LAST
+  		            </if>
+  		            )a) 				  		
+  		<![CDATA[
+  		WHERE rnum >= #{start} AND rnum <= #{end}
+  		]]>                           
+  	</select>
+
+	<!-- 좌석 히스토리목록 -->
+  	<select id="selectSeatRowCount" parameterType="map" resultType="integer">
+  		SELECT
+  		  COUNT(*)
+  		FROM seat_detail                     
+  	</select>
+  	
+  	<select id="selectSeatList" parameterType="map" resultType="adminSeatHistoryVO">
+  		SELECT
+  		   *
+  		FROM (SELECT
+  		        a.*, 
+  		        rownum rnum 
+  		      FROM (SELECT
+  		      			seat_detail_num, seat_num, mem_num, mem_name, total_time,
+  		      			TO_CHAR(in_time, 'yyyy-MM-dd HH24:MI:SS') in_time, TO_CHAR(out_time, 'yyyy-MM-dd HH24:MI:SS') out_time       
+  		            FROM seat_detail s           				  		 
+  		            <if test="keyfield == 1">	            
+  		            ORDER BY s.in_time DESC NULLS LAST
+  		            </if>
+  		            <if test="keyfield == 2">
+  		            ORDER BY s.mem_name ASC NULLS LAST
+  		            </if>
+  		            <if test="keyfield == 3">
+  		            ORDER BY s.total_time DESC NULLS FIRST
+  		            </if>
+  		            )a)
+		<![CDATA[
+		WHERE rnum >= #{start} AND rnum <= #{end}
+		]]>   		               		                         
+  	</select>
+  	
+	<!-- 사물함 히스토리목록 -->
+  	<select id="selectLockerRowCount" parameterType="map" resultType="integer">
+  		SELECT
+  		  COUNT(*)
+  		FROM locker_detail                     
+  	</select>
+  	
+  	<select id="selectLockerList" parameterType="map" resultType="adminLockerHistoryVO">
+  		SELECT
+  		   *
+  		FROM (SELECT
+  		        a.*, 
+  		        rownum rnum 
+  		      FROM (SELECT
+  		      			d.locker_detail_num, d.locker_num, d.mem_num, d.mem_name, 
+  		      			TO_CHAR(d.locker_start, 'yyyy-MM-dd HH24:MI:SS') locker_start, 
+  		      			TO_CHAR(d.locker_end, 'yyyy-MM-dd HH24:MI:SS') locker_end, 
+  		      			l.locker_status        
+  		            FROM locker_detail d LEFT OUTER JOIN locker_info l 
+  		            ON l.locker_num = d.locker_num          				  		 
+  		            <if test="keyfield == 1">	            
+  		            ORDER BY d.locker_start DESC NULLS LAST
+  		            </if>
+  		            <if test="keyfield == 2">
+  		            ORDER BY d.mem_name ASC NULLS LAST
+  		            </if>
+  		            <if test="keyfield == 3">
+  		            ORDER BY d.locker_end DESC NULLS FIRST
+  		            </if>
+  		            )a)
+		<![CDATA[
+		WHERE rnum >= #{start} AND rnum <= #{end}
+		]]>   		               		                         
+  	</select>
+  	
+	<!-- 물품대여 히스토리목록 -->
+  	<select id="selectItemRowCount" parameterType="map" resultType="integer">
+  		SELECT
+  		  COUNT(*)
+  		FROM item_detail d LEFT OUTER JOIN item i 
+  		ON d.item_num = i.item_num 
+  		<if test="keyword != null and keyword != ''">
+  		WHERE i.item_title LIKE '%' || #{keyword} || '%' 
+  		</if>    		                   
+  	</select>
+  	
+  	<select id="selectItemList" parameterType="map" resultType="adminItemHistoryVO">
+  		SELECT
+  		   *
+  		FROM (SELECT
+  		        a.*,  
+  		        rownum rnum 
+  		      FROM (SELECT b.*, mem_name, mem_phone 
+					FROM (SELECT item_rnum, item_title, item_index, mem_num, item_start, item_end     
+        				  FROM item_detail d LEFT OUTER JOIN item i 
+        				  ON d.item_num = i.item_num)b LEFT OUTER JOIN member_detail m 
+					ON b.mem_num = m.mem_num
+			  		<if test="keyword != null and keyword != ''">
+				  		WHERE b.item_title LIKE '%' || #{keyword} || '%'
+			  		</if>					            				  		 
+  		            <if test="keyfield == 1">	            
+  		            ORDER BY b.item_start DESC NULLS LAST
+  		            </if>
+  		            <if test="keyfield == 2">
+  		            ORDER BY m.mem_name ASC NULLS LAST
+  		            </if>
+  		            <!--
+  		            <if test="keyfield == 3">
+  		            ORDER BY a.item_utime DESC NULLS FIRST
+  		            </if>
+  		             -->
+  		            )a)
+		<![CDATA[
+		WHERE rnum >= #{start} AND rnum <= #{end}
+		]]>   		               		                         
+  	</select> 
+  	
+	<!-- 미반납자 목록 -->
+  	<select id="selectUnreturnRowCount" parameterType="map" resultType="integer">
+  		SELECT
+  		  COUNT(*)
+  		FROM item_detail d LEFT OUTER JOIN item i
+  		ON d.item_num = i.item_num
+  		WHERE d.item_end IS NULL  
+  		<if test="keyword != null and keyword != ''">
+  		AND i.item_title LIKE '%' || #{keyword} || '%' 
+  		</if>    		                   
+  	</select>
+  	
+  	<select id="selectUnreturnList" parameterType="map" resultType="adminItemHistoryVO">
+  		SELECT
+  		   *
+  		FROM (SELECT
+  		        a.*,  
+  		        rownum rnum 
+  		      FROM (SELECT b.*, mem_name, mem_phone 
+					FROM (SELECT item_rnum, item_title, item_index, mem_num, item_start, item_end     
+        				  FROM item_detail d LEFT OUTER JOIN item i 
+        				  ON d.item_num = i.item_num)b LEFT OUTER JOIN member_detail m 
+					ON b.mem_num = m.mem_num
+					WHERE b.item_end IS NULL 
+			  		<if test="keyword != null and keyword != ''">
+				  		AND b.item_title LIKE '%' || #{keyword} || '%'
+			  		</if>					            				  		 
+  		            <if test="keyfield == 1">	            
+  		            ORDER BY b.item_start DESC NULLS LAST
+  		            </if>
+  		            <if test="keyfield == 2">
+  		            ORDER BY b.item_start ASC NULLS LAST
+  		            </if>
+  		            <!--
+  		            <if test="keyfield == 3">
+  		            ORDER BY a.item_utime DESC NULLS FIRST
+  		            </if>
+  		             -->
+  		            )a)
+		<![CDATA[
+		WHERE rnum >= #{start} AND rnum <= #{end}
+		]]>   		               		                         
+  	</select>  	 	  	  	  	  	  	
+</mapper>
+

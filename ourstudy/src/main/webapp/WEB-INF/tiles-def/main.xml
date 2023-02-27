@@ -13,20 +13,7 @@
     	<put-attribute name="body" value="/WEB-INF/views/main/main.jsp"/>
     	<put-attribute name="footer" value="/WEB-INF/views/template/footer.jsp"/>         
     </definition>
-    
-    <definition name="admin" 
-        template="/WEB-INF/views/template/layout_admin.jsp">
-    	<put-attribute name="title" value="관리자페이지"/>
-    	<put-attribute name="header" 
-    	  value="/WEB-INF/views/template/header.jsp"/>
-    	<put-attribute name="nav" 
-    	  value="/WEB-INF/views/template/admin_nav.jsp"/>
-    	<put-attribute name="body"
-    	  value="/WEB-INF/views/main/admin.jsp"/> 
-    	<put-attribute name="footer"
-    	  value="/WEB-INF/views/template/footer.jsp"/>         
-    </definition>
-    
+     
     <!-- 나리수정중 -->
     <!-- 기본메인 -->
      <definition name="memberHome" 
@@ -36,13 +23,24 @@
     	<put-attribute name="body" value="/WEB-INF/views/main/main.jsp"/>   
     </definition>
     
-    <!-- 관리자메인 -->
-     <definition name="memberHome" 
-        template="/WEB-INF/views/template/layout_main.jsp">
+    
+    <!-- 관리자메인 -->        
+    <definition name="admin" 
+    	template="/WEB-INF/views/template/layout_admin.jsp">
+    	<put-attribute name="title" value="관리자페이지"/>
+        <put-attribute name="sidebar" value="/WEB-INF/views/template/sidebar.jsp"/>
+    	<put-attribute name="header" value="/WEB-INF/views/template/header.jsp"/>
+    	<put-attribute name="body" value="/WEB-INF/views/main/main.jsp"/>
+    	<put-attribute name="footer" value="/WEB-INF/views/template/footer.jsp"/>       
+    </definition>
+    <!-- 
+     <definition name="admin" 
+        template="/WEB-INF/views/template/layout_admin.jsp">
     	<put-attribute name="title" value="SpringPage"/>
     	<put-attribute name="header" value="/WEB-INF/views/template/layout_basic.jsp"/>
     	<put-attribute name="body" value="/WEB-INF/views/main/main.jsp"/>   
     </definition>
+	 -->
     
 </tiles-definitions>
 

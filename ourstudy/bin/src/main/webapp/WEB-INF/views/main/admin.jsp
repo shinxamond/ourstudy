@@ -3,7 +3,7 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>    
 <!-- 중앙 컨텐츠 시작 -->
 <div class="page-main">
-	<h2>회원목록</h2>
+	<h2>최근회원목록(5명)</h2>
 	<table class="striped-table">
 		<tr>
 			<th>회원번호</th>

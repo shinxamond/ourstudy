@@ -193,6 +193,47 @@
 		<![CDATA[
 		WHERE rnum >= #{start} AND rnum <= #{end}
 		]]>   		               		                         
-  	</select>  	 	  	  	  	  	  	
+  	</select> 
+  	
+	<!-- 판매기록목록 -->
+  	<select id="selectSalesRowCount" parameterType="map" resultType="integer">
+  		SELECT
+  		  COUNT(*)
+  		FROM pay p LEFT OUTER JOIN member_detail d
+  		ON p.mem_num = d.mem_num
+  		<if test="keyword != null and keyword != ''">
+  			WHERE d.mem_name LIKE '%' || #{keyword} || '%' OR
+  				  d.mem_num LIKE '%' || #{keyword} || '%'
+  		</if>                        
+  	</select>
+  	
+  	<select id="selectSalesList" parameterType="map" resultType="adminSalesVO">
+  		SELECT
+  		   *
+  		FROM (SELECT
+  		        a.*,  
+  		        rownum rnum 
+  		      FROM (SELECT b.*, ticket_name
+					FROM (SELECT p.mem_num, mem_name, pay_plan,
+								 TO_CHAR(pay_date, 'yyyy-MM-dd HH24:MI:SS') pay_date, 
+								 ticket_num 
+      					  FROM pay p LEFT OUTER JOIN member_detail d 
+      					  ON p.mem_num = d.mem_num)b LEFT OUTER JOIN ticket t 
+					ON b.ticket_num = t.ticket_num 
+			  		<if test="keyword != null and keyword != ''">
+				  	WHERE b.mem_name LIKE '%' || #{keyword} || '%' OR 
+      					  b.mem_num LIKE '%' || #{keyword} || '%'
+			  		</if>					            				  		 
+  		            <if test="keyfield == 1">	            
+  		            ORDER BY b.pay_date DESC NULLS LAST
+  		            </if>
+  		            <if test="keyfield == 2">
+  		            ORDER BY b.mem_name ASC NULLS LAST
+  		            </if>
+  		            )a)
+		<![CDATA[
+		WHERE rnum >= #{start} AND rnum <= #{end}
+		]]>   		        
+  	</select>  	 	 	  	  	  	  	  	
 </mapper>
 

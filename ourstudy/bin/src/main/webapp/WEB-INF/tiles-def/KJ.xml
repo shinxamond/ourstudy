@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<!DOCTYPE tiles-definitions PUBLIC
+       "-//Apache Software Foundation//DTD Tiles Configuration 3.0//EN"
+       "http://tiles.apache.org/dtds/tiles-config_3_0.dtd">
+
+<tiles-definitions>
+    <definition name="itemWrite" extends="main">
+    	<put-attribute name="title" value="물품생성(관리자)"/>
+    	<put-attribute name="body"
+    	  value="/WEB-INF/views/item/itemWrite.jsp"/>        
+    </definition>
+    <definition name="userList" extends="main">
+    	<put-attribute name="title" value="회원리스트"/>
+    	<put-attribute name="body"
+    	  value="/WEB-INF/views/item/userList.jsp"/>        
+    </definition>
+     <definition name="rentalItemList" extends="main">
+    	<put-attribute name="title" value="대여목록"/>
+    	<put-attribute name="body"
+    	  value="/WEB-INF/views/item/rentalItemList.jsp"/>        
+    </definition>
+    <definition name="userRental" extends="main">
+    	<put-attribute name="title" value="물품대여"/>
+    	<put-attribute name="body"
+    	  value="/WEB-INF/views/item/userRental.jsp"/>        
+    </definition>
+    <definition name="adminList" extends="main">
+    	<put-attribute name="title" value="관리자리스트"/>
+    	<put-attribute name="body"
+    	  value="/WEB-INF/views/item/adminList.jsp"/>        
+    </definition>
+     <definition name="itemModify" extends="main">
+    	<put-attribute name="title" value="물품수정(관리자)"/>
+    	<put-attribute name="body"
+    	  value="/WEB-INF/views/item/itemModify.jsp"/>        
+    </definition>
+    
+    <!-- 채팅 -->
+    <definition name="talkRoomWrite" extends="main">
+    	<put-attribute name="title" value="채팅방생성(관리자)"/>
+    	<put-attribute name="body"
+    	  value="/WEB-INF/views/talk/talkRoomWrite.jsp"/>        
+    </definition>
+    <definition name="talkList" extends="main">
+    	<put-attribute name="title" value="채팅방목록(관리자)"/>
+    	<put-attribute name="body"
+    	  value="/WEB-INF/views/talk/talkList.jsp"/>        
+    </definition>
+    <definition name="talkDetail" extends="main">
+    	<put-attribute name="title" value="채팅"/>
+    	<put-attribute name="body"
+    	  value="/WEB-INF/views/talk/talkDetail.jsp"/>        
+    </definition>
+    
+    <definition name="modal1" extends="main">
+    	<put-attribute name="title" value="연습"/>
+    	<put-attribute name="body"
+    	  value="/WEB-INF/views/talk/modal1.jsp"/>        
+    </definition>
+</tiles-definitions>
+
+
+
+

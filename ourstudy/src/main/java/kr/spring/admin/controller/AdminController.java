@@ -23,7 +23,9 @@ import kr.spring.admin.service.AdminService;
 import kr.spring.admin.vo.AdminItemHistoryVO;
 import kr.spring.admin.vo.AdminLockerHistoryVO;
 import kr.spring.admin.vo.AdminMemberVO;
+import kr.spring.admin.vo.AdminSalesVO;
 import kr.spring.admin.vo.AdminSeatHistoryVO;
+import kr.spring.admin.vo.AdminTalkHistoryVO;
 import kr.spring.seat.vo.SeatVO;
 import kr.spring.util.PagingUtil;
 
@@ -51,6 +53,16 @@ public class AdminController {
 	@ModelAttribute("AdminItemHistoryVO")
 	public AdminLockerHistoryVO initCommand4() {
 		return new AdminLockerHistoryVO();
+	}
+
+	@ModelAttribute("AdminSalesVO")
+	public AdminSalesVO initCommand5() {
+		return new AdminSalesVO();
+	}
+	
+	@ModelAttribute("AdminTalkHistoryVO")
+	public AdminTalkHistoryVO initCommand6() {
+		return new AdminTalkHistoryVO();
 	}
 	
 	@Autowired
@@ -175,7 +187,7 @@ public class AdminController {
 		ModelAndView mav = new ModelAndView();
 		mav.setViewName("adminLockerHistory");
 		
-		//좌석히스토리목록
+		//좌석 히스토리목록
 		mav.addObject("count", count);
 		mav.addObject("adminLockerHistoryList", list);
 		mav.addObject("page", page.getPage());
@@ -212,7 +224,7 @@ public class AdminController {
 		ModelAndView mav = new ModelAndView();
 		mav.setViewName("adminItemHistory");
 		
-		//좌석히스토리목록
+		//물품대여 히스토리목록
 		mav.addObject("count", count);
 		mav.addObject("adminItemHistoryList", list);
 		mav.addObject("page", page.getPage());
@@ -249,13 +261,103 @@ public class AdminController {
 		ModelAndView mav = new ModelAndView();
 		mav.setViewName("adminUnreturnList");
 		
-		//좌석히스토리목록
+		//미반납자 히스토리목록
 		mav.addObject("count", count);
 		mav.addObject("adminUnreturnList", list);
 		mav.addObject("page", page.getPage());
 		
 		return mav;
 	}	
+	
+	//=====일별판매정산판 및 판매기록목록 관리=====//
+	@RequestMapping("/admin/admin_saleslist.do")
+	public ModelAndView saleslist(
+			@RequestParam(value="pageNum",defaultValue="1") int currentPage,
+			@RequestParam(value="keyfield",defaultValue="1") String keyfield, 
+			String keyword) {
+		
+		//현재 고객 현황판
+		DecimalFormat df = new DecimalFormat("###,###");
+		
+		int total1 = adminService.ticketSalesSum();	
+		String ticketsales = df.format(total1);
+		
+		int total2 = adminService.lockerSalesSum();	
+		String lockersales = df.format(total2);
+		
+		String totalsales = df.format(total1+total2);
+		
+		Map<String,Object> map = new HashMap<String,Object>();
+		map.put("keyfield", keyfield);
+		map.put("keyword", keyword);
+		
+		//총 글의 개수 또는 검색된 글의 갯수
+		int count = adminService.selectSalesRowCount(map);
+		logger.debug("<<총 판매기록 목록 갯수>> : " + count);
+		
+		//페이지 처리
+		PagingUtil page = new PagingUtil(keyfield,keyword,currentPage,count,4,10,"admin_saleslist.do");
+		
+		List<AdminSalesVO> list = null;
+		if(count > 0) {
+			map.put("start", page.getStartRow());
+			map.put("end", page.getEndRow());
+			
+			list = adminService.selectSalesList(map);
+		}
+		
+		ModelAndView mav = new ModelAndView();
+		mav.setViewName("adminSalesList");
+		
+		//일별판매정산판
+		mav.addObject("ticketsales", ticketsales);
+		mav.addObject("lockersales", lockersales);
+		mav.addObject("totalsales", totalsales);
+		
+		//판매기록목록
+		mav.addObject("count", count);
+		mav.addObject("adminSalesList", list);
+		mav.addObject("page", page.getPage());
+		
+		return mav;
+	}
+	
+	/*
+	//=====수신 채팅 히스토리 목록=====//
+	@RequestMapping("/admin/admin_receivehistory.do")
+	public ModelAndView receivehistory(
+			@RequestParam(value="pageNum",defaultValue="1") int currentPage,
+			@RequestParam(value="keyfield",defaultValue="1") String keyfield) {
+		
+		Map<String,Object> map = new HashMap<String,Object>();
+		map.put("keyfield", keyfield);
+		
+		//총 글의 개수 또는 검색된 글의 갯수
+		int count = adminService.selectReceiveRowCount(map);
+		logger.debug("<<총 글 갯수>> : " + count);
+		
+		//페이지 처리
+		PagingUtil page = new PagingUtil(keyfield,null,currentPage,count,4,10,"admin_receivehistory.do");
+		
+		List<AdminTalkHistoryVO> list = null;
+		if(count > 0) {
+			map.put("start", page.getStartRow());
+			map.put("end", page.getEndRow());
+			
+			list = adminService.selectSeatList(map);
+		}
+				
+		ModelAndView mav = new ModelAndView();
+		mav.setViewName("adminSeatHistory");
+		
+		//좌석히스토리목록
+		mav.addObject("count", count);
+		mav.addObject("adminUseHistoryList", list);
+		mav.addObject("page", page.getPage());
+		
+		return mav;
+	}	
+	*/		
 }
 
 

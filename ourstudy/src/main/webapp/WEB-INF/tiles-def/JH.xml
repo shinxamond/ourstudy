@@ -40,7 +40,13 @@
     	<put-attribute name="title" value="미반납자목록"/>
     	<put-attribute name="body" 
     	  value="/WEB-INF/views/admin/admin_unreturnList.jsp"/>        
-    </definition>          
+    </definition> 
+    
+    <definition name="adminSalesList" extends="admin">
+    	<put-attribute name="title" value="판매기록"/>
+    	<put-attribute name="body" 
+    	  value="/WEB-INF/views/admin/admin_salesList.jsp"/>        
+    </definition>              
 </tiles-definitions>
 
 

@@ -11,6 +11,7 @@ import kr.spring.admin.dao.AdminMapper;
 import kr.spring.admin.vo.AdminItemHistoryVO;
 import kr.spring.admin.vo.AdminLockerHistoryVO;
 import kr.spring.admin.vo.AdminMemberVO;
+import kr.spring.admin.vo.AdminSalesVO;
 import kr.spring.admin.vo.AdminSeatHistoryVO;
 
 @Service
@@ -91,5 +92,26 @@ public class AdminServiceImpl implements AdminService{
 		return adminMapper.selectUnreturnRowCount(map);
 	}
 	
+	//일별판매정산판
+	@Override
+	public int ticketSalesSum() {
+		return adminMapper.ticketSalesSum();
+	}
+
+	@Override
+	public int lockerSalesSum() {
+		return adminMapper.lockerSalesSum();
+	}
+	
+	//판매기록목록
+	@Override
+	public List<AdminSalesVO> selectSalesList(Map<String, Object> map) {
+		return adminMapper.selectSalesList(map);
+	}
+
+	@Override
+	public int selectSalesRowCount(Map<String, Object> map) {
+		return adminMapper.selectSalesRowCount(map);
+	}
 	
 }

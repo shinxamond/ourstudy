@@ -153,14 +153,15 @@ public class MemberController {
 
 				logger.debug("<<인증 성공>> : " + member.getMem_id());
 				
-
+				/*
 				if(member.getMem_auth()==9) {
 					logger.debug("<<관리자 로그인 성공>> : " + member.getMem_auth());
 					return "redirect:/main/admin.do";
 				}else {
 					return "redirect:/main/main.do";
 				}
-				
+				*/
+				return "redirect:/main/main.do";
 			}
 			//인증실패
 			throw new AuthCheckException();
