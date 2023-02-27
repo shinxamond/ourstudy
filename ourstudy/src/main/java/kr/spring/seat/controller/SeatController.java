@@ -26,6 +26,7 @@ import kr.spring.locker.service.LockerService;
 import kr.spring.locker.vo.LockerVO;
 import kr.spring.member.service.MemberService;
 import kr.spring.member.vo.MemberVO;
+import kr.spring.mypage.service.MypageService;
 import kr.spring.seat.service.SeatService;
 import kr.spring.seat.vo.SeatVO;
 
@@ -42,6 +43,9 @@ public class SeatController {
    
    @Autowired
    private LockerService lockerService;
+   
+   @Autowired
+   private MypageService myPageService;
    
    //VO 초기화
    @ModelAttribute("seatVO")
@@ -287,8 +291,13 @@ public class SeatController {
       int diffIntSeconds = Long.valueOf(diffSeconds).intValue();
       seatVO.setTotal_time(diffIntSeconds);
       seatVO.setSeat_num(seat_num);
+      seatVO.setMem_num(mem_num);
       
       seatService.insertTotal_time(seatVO);
+      seatVO.setTotal_time(diffIntSeconds);
+      myPageService.updateStudyTime(seatVO);
+      
+      logger.debug("seatVO" + seatVO);
       
       return "";
    }
