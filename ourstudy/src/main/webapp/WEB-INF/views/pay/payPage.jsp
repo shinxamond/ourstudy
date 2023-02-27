@@ -1,7 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
-<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <!-- 결제 페이지 시작 -->
 <!-- iamport.payment.js -->
@@ -22,10 +21,10 @@
 			</h6>
 			<hr>
 			<h6>결제 금액 <span id="final_price" style="float:right;" data-pricenum="${ticket.ticket_price}">${ticket.ticket_price}</span></h6>
-			<button id="pay_card" type="button" class="btn btn-primary" style="margin-left: 428px; margin-bottom: 3px;"
-				onclick="requestCardPay()" value="1">카드 결제</button>
+			<button id="pay_card" type="button" class="btn btn-primary" style="margin-left: 428px; margin-bottom: 3px;" name="pay_plan"
+				onclick="requestCardPay()" value="1" data-payplan="${pay.pay_plan}">카드 결제</button>
 			<button id="pay_kakao" type="button" class="btn btn-primary" style="margin-bottom: 3px;"
-				onclick="requestKakaoPay()" value="2">카카오페이</button>
+				onclick="requestKakaoPay()" value="2" name="pay_plan" data-payplan="${pay.pay_plan}">카카오페이</button>
 		</div>
 	</form>
 <script src="${pageContext.request.contextPath}/js/pay.js"></script>
