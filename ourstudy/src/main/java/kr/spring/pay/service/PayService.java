@@ -4,10 +4,15 @@ import java.util.List;
 import java.util.Map;
 
 import kr.spring.pay.vo.PayVO;
+import kr.spring.point.vo.PointVO;
 
 public interface PayService {
 	public int selectPay_num();
 	public int insertPay(PayVO pay);
 	public List<PayVO> selectListPay(Map<String, Object> map);
+	
+	public int selectPoint(Integer mem_num);
+	public int updatePoint(Integer mem_num);
+	
 	public PayVO selectPay(PayVO payVO);
 }

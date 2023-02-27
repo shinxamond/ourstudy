@@ -9,6 +9,7 @@ import org.springframework.transaction.annotation.Transactional;
 
 import kr.spring.pay.dao.PayMapper;
 import kr.spring.pay.vo.PayVO;
+import kr.spring.point.vo.PointVO;
 
 @Service
 @Transactional
@@ -36,5 +37,16 @@ public class PayServiceImpl implements PayService{
 	public PayVO selectPay(PayVO payVO) {
 		return payMapper.selectPay(payVO);
 	}
+
+	@Override
+	public int selectPoint(Integer mem_num) {
+		return payMapper.selectPoint(mem_num);
+	}
+
+	@Override
+	public int updatePoint(Integer mem_num) {
+		return payMapper.updatePoint(mem_num);
+	}
+
 }
 

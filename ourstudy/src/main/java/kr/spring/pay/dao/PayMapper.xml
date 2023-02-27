@@ -3,24 +3,10 @@
     PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"   
     "http://mybatis.org/dtd/mybatis-3-mapper.dtd">  
 <mapper namespace="kr.spring.pay.dao.PayMapper">  
-	<resultMap type="payVO" id="payMap">
-		<result property="ticketVO.ticket_kind" column="ticket_kind"/>
-		<result property="ticketVO.ticket_name" column="ticket_name"/>
-		<result property="ticketVO.ticket_type" column="ticket_type"/>
-	</resultMap>
 	
 	<sql id="payCondition">
-		WHERE mem_num=#{mem_num}		
-			AND pay_num=#{pay_num}		
+		WHERE mem_num=#{mem_num}			
 	</sql>
-	<select id="selectPay" parameterType="map" resultMap="payMap">
-		SELECT
-		  pay_num,
-		  ticket_num,
-		  pay_price
-		FROM pay JOIN ticket USING(ticket_num)
-		<include refid="payCondition"></include>
-	</select>
 	
 </mapper>
 

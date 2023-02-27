@@ -16,6 +16,7 @@ public interface TicketMapper {
 	
 	@Select("SELECT ticket_seq.nextval FROM dual")
 	public int selectTicket_num();
+	//이용권 선택
 	@Select("SELECT * FROM ticket WHERE ticket_num=#{ticket_num}")
 	public TicketVO selectTicket(Integer ticket_num);
 	//이용권 등록

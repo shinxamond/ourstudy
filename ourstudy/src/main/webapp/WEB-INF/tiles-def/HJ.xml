@@ -16,10 +16,10 @@
 		<put-attribute name="body"
 			value="/WEB-INF/views/ticket/ticketList.jsp" />
 	</definition>
-
+	
 	<!-- 결제 -->
 	<definition name="payPage" extends="main">
-		<put-attribute name="title" value="결제하기" />
+		<put-attribute name="title" value="이용권 결제" />
 		<put-attribute name="body"
 			value="/WEB-INF/views/pay/payPage.jsp" />
 	</definition>
