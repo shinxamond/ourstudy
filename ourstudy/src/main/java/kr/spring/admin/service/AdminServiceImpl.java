@@ -19,7 +19,7 @@ import kr.spring.admin.vo.AdminSeatHistoryVO;
 public class AdminServiceImpl implements AdminService{
 
 	@Autowired
-	private AdminMapper adminMapper;
+	private AdminMapper adminMapper; 
 	
 	//현재고객현황판
 	@Override

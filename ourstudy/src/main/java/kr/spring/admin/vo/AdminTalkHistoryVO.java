@@ -17,7 +17,7 @@ public class AdminTalkHistoryVO {
 	private Date chat_date; //나중에 String으로 변환해야할수도
 	private String message;
 	
-	public int getTalk_num() {
+	public int getTalk_num() { 
 		return talk_num;
 	}
 	public void setTalk_num(int talk_num) {

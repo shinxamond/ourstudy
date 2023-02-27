@@ -19,7 +19,7 @@ import kr.spring.member.vo.MemberVO;
 public class MainController {
 	
 	@Autowired
-	private AdminService adminMemberService;
+	private AdminService adminMemberService; 
 	
 	//자바빈(VO) 초기화
 	@ModelAttribute

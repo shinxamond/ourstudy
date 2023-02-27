@@ -3,7 +3,7 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 
 <!-- 중앙 컨텐츠 시작 -->
-<div class="page-main">
+<div class="page-main"> 
 	<h2>일별 판매 정산판</h2>
 	<table class="striped-table">
 		<tr>

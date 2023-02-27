@@ -17,7 +17,7 @@
     <!-- 나리수정중 -->
     <!-- 기본메인 -->
      <definition name="memberHome" 
-        template="/WEB-INF/views/template/layout_main.jsp">
+        template="/WEB-INF/views/template/layout_main.jsp"> 
     	<put-attribute name="title" value="SpringPage"/>
     	<put-attribute name="header" value="/WEB-INF/views/template/layout_basic.jsp"/>
     	<put-attribute name="body" value="/WEB-INF/views/main/main.jsp"/>   

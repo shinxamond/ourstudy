@@ -23,7 +23,7 @@
 	
 	console.log(Kakao.isInitialized()); //sdk초기화
 	
-	function kakaoLogin() {
+	function kakaoLogin() { 
 		Kakao.Auth.login({
 			scope:'profile_nickname,profile_image,account_email',
 			success:function(authObj){
@@ -231,7 +231,6 @@ function kakaoLogout() {
 					</ul>
 				</div>
 				</c:if>
-				<br>
         		<c:if test="${!empty user && user.mem_auth == 9}">
 				<div class="side-bottom">
        				<button class="btn btn-toggle  d-inline-flex  align-items-center rounded collapsed border-white" 
@@ -254,9 +253,9 @@ function kakaoLogout() {
             			<li><a href="#" class="link-dark d-inline-flex rounded">채팅기록(발신)</a></li>
           			</ul>
         			</div>
-        		</div>      				    
+        		</div>       				
 				</c:if>
-				<br>			      		
+				<br>				
 				<c:if test="${!empty user}">
 						<button class="btn text-white rounded logout-btn" style="background-color:#037332;"
 						onclick="location.href='${pageContext.request.contextPath}/member/logout.do'">로그아웃</button>

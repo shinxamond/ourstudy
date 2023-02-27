@@ -46,7 +46,7 @@
   	<select id="selectSeatRowCount" parameterType="map" resultType="integer">
   		SELECT
   		  COUNT(*)
-  		FROM seat_detail                     
+  		FROM seat_detail                    
   	</select>
   	
   	<select id="selectSeatList" parameterType="map" resultType="adminSeatHistoryVO">

@@ -3,6 +3,7 @@ package kr.spring.pay.dao;
 import java.util.List;
 import java.util.Map;
 
+import org.apache.ibatis.annotations.Insert;
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Select;
 import org.apache.ibatis.annotations.Update;
@@ -16,7 +17,11 @@ public interface PayMapper {
 	//결제
 	@Select("SELECT pay_seq.nextval FROM dual")
 	public int selectPay_num();
-	public int insertPay(PayVO pay);
+	@Insert("INSERT INTO pay (pay_num,pay_price,pay_plan,"
+		  + "pay_content,pay_date,mem_num,ticket_num,point_num)"
+		  + " VALUES (pay_seq.nextval,#{pay_price},#{pay_plan},"
+		  + "#{pay_content},#{pay_date},#{mem_num},#{ticket_num},#{point_num}")
+	public int insertPay(PayVO payVO);
 	public List<PayVO> selectListPay(Map<String, Object> map);
 	public PayVO selectPay(PayVO payVO);
 

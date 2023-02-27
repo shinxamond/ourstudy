@@ -12,7 +12,7 @@ import kr.spring.admin.vo.AdminMemberVO;
 import kr.spring.admin.vo.AdminSalesVO;
 import kr.spring.admin.vo.AdminSeatHistoryVO;
 
-public interface AdminService {
+public interface AdminService { 
 	//현재고객현황판
 	public int countUsingNum();
 	public int countTermNum();

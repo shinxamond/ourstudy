@@ -64,7 +64,7 @@ public class AdminController {
 	public AdminTalkHistoryVO initCommand6() {
 		return new AdminTalkHistoryVO();
 	}
-	
+	 
 	@Autowired
 	private AdminService adminService;
 	

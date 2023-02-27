@@ -14,7 +14,7 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Leckerli+One&display=swap" rel="stylesheet">
 <!--
-<div class="side-bar">
+<div class="side-bar"> 
 	<ul>
 		<li>
 			<input type="button" class="menu-btn"

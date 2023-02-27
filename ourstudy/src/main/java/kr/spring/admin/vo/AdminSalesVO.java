@@ -13,7 +13,7 @@ import org.springframework.web.multipart.MultipartFile;
 public class AdminSalesVO {
 	private int mem_num;
 	private String mem_name;
-	private String ticket_name;
+	private String ticket_name; 
 	private int ticket_kind;
 	private int pay_plan;
 	private String pay_date;

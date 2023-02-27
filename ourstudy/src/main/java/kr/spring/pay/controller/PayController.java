@@ -71,7 +71,24 @@ public class PayController {
 		return mapAjax;
 	}
 	
-
+	//결제 데이터 받아오기
+	@RequestMapping("/pay/payResult.do")
+	@ResponseBody
+	public Map<String, String> payResult(PayVO payVO,
+										 HttpSession session){
+		
+		Map<String, String>mapAjax = new HashMap<String, String>();
+		MemberVO user = (MemberVO)session.getAttribute("user");
+		
+		if(user == null) {
+			mapAjax.put("result", "logout");
+		}else {
+			payService.insertPay(payVO);
+			mapAjax.put("result", "success");
+		}
+		
+		return mapAjax;
+	}
 }
 
 

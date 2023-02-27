@@ -24,8 +24,8 @@ public class PayServiceImpl implements PayService{
 	}
 
 	@Override
-	public int insertPay(PayVO pay) {
-		return payMapper.insertPay(pay);
+	public int insertPay(PayVO payVO) {
+		return payMapper.insertPay(payVO);
 	}
 
 	@Override

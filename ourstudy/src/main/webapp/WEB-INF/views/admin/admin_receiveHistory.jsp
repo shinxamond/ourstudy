@@ -3,7 +3,7 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 
 <!-- 중앙 컨텐츠 시작 -->
-<div class="page-main">
+<div class="page-main"> 
 	<h2>좌석 히스토리 목록</h2>
 	<form action="admin_receivehistory.do" id="search_form" method="get">
 		<ul class="search">
