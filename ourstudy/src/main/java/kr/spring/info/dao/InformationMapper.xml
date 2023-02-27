@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8" ?>  
+<!DOCTYPE mapper   
+    PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"   
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">  
+<mapper namespace="kr.spring.info.dao.InformationMapper">
+
+	<sql id="infoSearch">
+		<where>
+			<if test="keyword != null and keyword != ''">
+  				<if test="keyfield == 1">
+  					i.info_title LIKE '%' || #{keyword} || '%'
+  				</if>
+  				<if test="keyfield == 2">
+  					m.id LIKE '%' || #{keyword} || '%' OR
+  					i.info_content LIKE '%' || #{keyword} || '%'
+  				</if>
+  			</if>
+		</where>
+	</sql>
+	<select id="selectinfoRowCount" parameterType="map"
+  	                           resultType="integer">
+  	SELECT
+  		  COUNT(*)
+  		FROM information i JOIN member_detail d
+  		ON i.mem_num = d.mem_num
+  		<include refid="infoSearch"></include> 
+  	</select>                     
+	<select id="selectInfoList" parameterType="map"
+  	                         resultType="informationVO">
+		SELECT
+  		   *
+  		FROM (SELECT
+  		        a.*,
+  		        rownum rnum
+  		      FROM (SELECT
+  		    		  i.info_num,
+  		    		  <![CDATA[
+  		              REPLACE(REPLACE(b.title,'<','&lt;'),'>','&gt;') info_title,
+  		              ]]>
+  		              i.mem_num
+  		             FROM information i JOIN member_detail d
+  		    		 ON i.mem_num = d.mem_num
+  		    		 <include refid="infoSearch"></include> 
+  		      		ORDER BY i.info_num DESC)a)
+  		<![CDATA[
+  		WHERE rnum >= #{start} AND rnum <= #{end}
+  		]]>   	
+	</select>
+
+</mapper>

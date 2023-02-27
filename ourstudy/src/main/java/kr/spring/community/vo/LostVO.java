@@ -1,6 +1,6 @@
 package kr.spring.community.vo;
 
-public class LostFoundVO {
+public class LostVO {
 	private int lf_num;
 	private int lf_type;
 	private String lf_title;
@@ -53,7 +53,11 @@ public class LostFoundVO {
 	}
 	
 	
-	
+	@Override
+	public String toString() {
+		return "LostVO [lf_num=" + lf_num +", lf_type" + lf_type + ", lf_title" + lf_title +
+				", lf_content" + lf_content + ", lf_imgsrc" + lf_imgsrc + ", f_condition" + f_condition + ", mem_num" + mem_num + "]";
+	}
 	
 	
 }

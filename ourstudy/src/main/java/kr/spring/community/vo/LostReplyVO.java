@@ -2,7 +2,7 @@ package kr.spring.community.vo;
 
 import java.sql.Date;
 
-public class LostFoundReplyVO {
+public class LostReplyVO {
 	private int re_num;
 	private Date re_date;
 	private String re_content;
@@ -41,6 +41,10 @@ public class LostFoundReplyVO {
 	}
 	
 	
-	
+	@Override
+	public String toString() {
+		return "LostReplyVO [re_num=" + re_num +", re_date" + re_date + ", re_content" + re_content +
+				", lf_num" + lf_num + ", mem_num" + mem_num + "]";
+	}
 	
 }
