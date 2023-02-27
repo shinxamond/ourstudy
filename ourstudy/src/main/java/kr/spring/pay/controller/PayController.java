@@ -71,28 +71,6 @@ public class PayController {
 		return mapAjax;
 	}
 	
-	@RequestMapping("/pay/updatePoint.do")
-	@ResponseBody
-	public Map<String,Object> updatePoint(HttpSession session){
-		
-		MemberVO user = (MemberVO)session.getAttribute("user");
-		Map<String, Object> mapAjax = new HashMap<String, Object>();
-		
-		if(user == null) {
-			mapAjax.put("result", "logout");
-		}else {
-			int uppoint = payService.updatePoint(user.getMem_num());
-			
-			mapAjax.put("result", "success");
-			mapAjax.put("uppoint", uppoint);
-			
-			logger.debug("<<업데이트 후 포인트 >> : " + uppoint);
-		}
-		
-		
-		return mapAjax;
-	}
-	
 
 }
 

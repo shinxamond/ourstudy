@@ -22,22 +22,22 @@ $(function(){
 		console.log($('#my_point').text());
 		var mpoint = parseInt($('#my_point').text());
 		
-		//사용할 포인트
-		if(mpoint >= 1000){
-		var upoint = parseInt($('#use_point').val());
+		if(mpoint >= 1000){//내 포인트가 1000 이상 있을 경우
+			//사용할 포인트
+			var upoint = parseInt($('#use_point').val());
 		
-		//남은 포인트
-		var fpoint = mpoint - upoint;
-		
-		//지불할 금액
-		var tprice = parseInt($('#final_price').text());
-		
-		//총 합계 금액
-		var total = tprice - upoint;
-		
-		$('#final_price').text(total.toLocaleString() + "원");		
-		
-		$('#my_point').text(fpoint.toLocaleString() + "P");
+			//남은 포인트
+			var fpoint = mpoint - upoint;
+			
+			//지불할 금액
+			var tprice = parseInt($('#final_price').text());
+			
+			//총 합계 금액
+			var total = tprice - upoint;
+			
+			$('#final_price').text(total.toLocaleString() + "원");		
+			
+			$('#my_point').text(fpoint.toLocaleString() + "P");
 		}else{
 			alert('1000P 부터 사용 가능합니다.');
 			$('#use_point').val('').focus();
@@ -85,8 +85,8 @@ IMP.init("imp36873723"); // 예: imp00000000
 		IMP.request_pay({
 			pg : "kakaopay.TC0ONETIME",
 			pay_method : "card",
-			merchant_uid : "ourstudy0007", // 주문번호
-			name : "독서실 100시간 이용권",
+			merchant_uid : "ourstudy0008", // 주문번호
+			name : "독서실 200시간 이용권",
 			amount : 100000, // 숫자 타입
 			buyer_email : "test1@gmail.com",
 			buyer_name : "박테스트",

@@ -14,7 +14,7 @@
 </div>
 
 <div>
-	<span id="first-child"></span>
-	<span id="last-child"></span>
+	<span id="quote"></span><br>
+	<span id="author"></span>
 </div>
 <!-- 메인 끝 -->
