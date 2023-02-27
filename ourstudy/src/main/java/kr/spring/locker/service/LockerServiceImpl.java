@@ -56,7 +56,6 @@ public class LockerServiceImpl implements LockerService{
 	@Override
 	public void insertEndAndDiff(LockerVO vo) {
 		lockerMapper.insertEndAndDiff(vo);
-		lockerMapper.lockerStatusOut(vo);
 	}
 
 }

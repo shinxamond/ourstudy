@@ -16,6 +16,8 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import com.sun.mail.imap.protocol.SaslAuthenticator;
+
 import kr.spring.locker.service.LockerService;
 import kr.spring.locker.vo.LockerVO;
 import kr.spring.member.service.MemberService;
@@ -69,12 +71,9 @@ public class LockerController {
 		lockerVO.setMem_name(memberService.getMem_name(memberVO.getMem_num()));
 		lockerVO.setLocker_num(locker_num);
 		
-		logger.debug("ddddddddddddddddddd 들어오자마자 lockervo setting" + lockerVO);
-		
 		lockerService.selectLocker(lockerVO);
 		
 		String locker_in_db = lockerService.getLocker_start(lockerVO);
-		logger.debug("sssssssssssssssss 들어오자마자 lockervo setting" + lockerVO);
 		DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss");
 		
 		LocalDateTime in_time = LocalDateTime.parse(locker_in_db,formatter);
@@ -98,6 +97,7 @@ public class LockerController {
 		
 		logger.debug("<<dif>> : " + diffSeconds);
 		logger.debug("<<difInt>> : " + diffIntSeconds);
+		
 		
 		int hour = diffIntSeconds  / 3600;					
 		int minute = diffIntSeconds  % 3600 / 60;			
