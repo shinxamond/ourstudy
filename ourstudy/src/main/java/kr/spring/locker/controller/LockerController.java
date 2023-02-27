@@ -73,25 +73,25 @@ public class LockerController {
 		
 		lockerService.selectLocker(lockerVO);
 		
-		String locker_in = lockerService.getLocker_start(lockerVO);
+		String locker_in_db = lockerService.getLocker_start(lockerVO);
 		logger.debug("sssssssssssssssss 들어오자마자 lockervo setting" + lockerVO);
-		//locker_in = "2023-02-12 15:34:58";
 		DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss");
 		
-		LocalDateTime in_time = LocalDateTime.parse(locker_in,formatter);
+		LocalDateTime in_time = LocalDateTime.parse(locker_in_db,formatter);
 		LocalDateTime now_time = LocalDateTime.now();
-		String s_now_time = now_time.format(formatter);
-		now_time = LocalDateTime.parse(s_now_time,formatter);
+		String now = now_time.format(formatter);
+		now_time = LocalDateTime.parse(now,formatter);
 		
 		LocalDateTime out_time = in_time.plusWeeks(1);		//1주, 2주, 4주
-		String locker_out = out_time.format(formatter);
+		String locker_out_db = out_time.format(formatter);
 		
-		logger.debug("<<시작>> : " + locker_in.getClass().getSimpleName());
-		logger.debug("<<종료일>> : " + locker_out.getClass().getSimpleName());
-		logger.debug("<<지금>> : " + now_time.getClass().getSimpleName());
-		logger.debug("<<out_time>> : " + out_time.getClass().getSimpleName());
+		logger.debug("<<DB에서 가져온 이용시작 시간(String)>> : " + locker_in_db);
+		logger.debug("<<종료예정시각(String)>> : " + locker_out_db);
 		
-		Duration diff = Duration.between(out_time.toLocalTime(), now_time.toLocalTime());
+		logger.debug("<<현재시각(LocalDateTime)>> : " + now_time);
+		logger.debug("<<종료예정시각(LocalDateTime)>> : " + out_time);
+		
+		Duration diff = Duration.between(now_time, out_time);
 		long diffSeconds = diff.getSeconds();
 		int diffIntSeconds = Long.valueOf(diffSeconds).intValue();
 		
@@ -105,7 +105,7 @@ public class LockerController {
 		
 		logger.debug("종료까지 남은 시간 : " + hour +"시간 " + minute + "분 " + second + "초");
 		
-		lockerVO.setLocker_end(locker_out);
+		lockerVO.setLocker_end(locker_out_db);
 		lockerVO.setLocker_diff(diffIntSeconds);
 		
 		logger.debug("<<lockerVO>> : " + lockerVO);
