@@ -1,5 +1,9 @@
 package kr.spring.locker.controller;
 
+import java.time.Duration;
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
+
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
@@ -46,29 +50,93 @@ public class LockerController {
 	   사용하는 사물함이 없을 경우 : result - empty  -> 다른 링크로 이동
 	==================================================*/
 	
+	
+//	//입실 날짜 찍힘과 동시에 마감날짜, 마감까지 남은 날짜 저장
 	@RequestMapping("/locker/select.do")
 	public String selectLocker(@RequestParam int locker_num, HttpServletRequest request, Model model) {
 		HttpSession session = request.getSession();
 		MemberVO memberVO = (MemberVO)session.getAttribute("user");		
 		LockerVO lockerVO = initCommand();
 		
-		
-		if(lockerVO == null || memberVO == null) {
+		if(memberVO == null) {
 			logger.debug("NULL");
 		}
 		
 		logger.debug("mem_num : " + memberVO.getMem_num() + ", mem_name = " + memberService.getMem_name(memberVO.getMem_num()) +  
 				", locker_num = " +locker_num );
 		
-
 		lockerVO.setMem_num(memberVO.getMem_num());
 		lockerVO.setMem_name(memberService.getMem_name(memberVO.getMem_num()));
 		lockerVO.setLocker_num(locker_num);
+		
+		logger.debug("ddddddddddddddddddd 들어오자마자 lockervo setting" + lockerVO);
+		
 		lockerService.selectLocker(lockerVO);
 		
-		model.addAttribute("lockerVO", lockerVO);
+		String locker_in = lockerService.getLocker_start(lockerVO);
+		logger.debug("sssssssssssssssss 들어오자마자 lockervo setting" + lockerVO);
+		//locker_in = "2023-02-12 15:34:58";
+		DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss");
 		
-		return "";
+		LocalDateTime in_time = LocalDateTime.parse(locker_in,formatter);
+		LocalDateTime now_time = LocalDateTime.now();
+		String s_now_time = now_time.format(formatter);
+		now_time = LocalDateTime.parse(s_now_time,formatter);
+		
+		LocalDateTime out_time = in_time.plusWeeks(1);		//1주, 2주, 4주
+		String locker_out = out_time.format(formatter);
+		
+		logger.debug("<<시작>> : " + locker_in.getClass().getSimpleName());
+		logger.debug("<<종료일>> : " + locker_out.getClass().getSimpleName());
+		logger.debug("<<지금>> : " + now_time.getClass().getSimpleName());
+		logger.debug("<<out_time>> : " + out_time.getClass().getSimpleName());
+		
+		Duration diff = Duration.between(out_time.toLocalTime(), now_time.toLocalTime());
+		long diffSeconds = diff.getSeconds();
+		int diffIntSeconds = Long.valueOf(diffSeconds).intValue();
+		
+		
+		logger.debug("<<dif>> : " + diffSeconds);
+		logger.debug("<<difInt>> : " + diffIntSeconds);
+		
+		int hour = diffIntSeconds  / 3600;					
+		int minute = diffIntSeconds  % 3600 / 60;			
+		int second = diffIntSeconds  % 3600 % 60;
+		
+		logger.debug("종료까지 남은 시간 : " + hour +"시간 " + minute + "분 " + second + "초");
+		
+		lockerVO.setLocker_end(locker_out);
+		lockerVO.setLocker_diff(diffIntSeconds);
+		
+		logger.debug("<<lockerVO>> : " + lockerVO);
+		System.out.println(diffIntSeconds);
+		
+		lockerService.insertEndAndDiff(lockerVO);
+		
+		return "";			//다시 메인 리다이렉트하던가 모 ... 
+	}
+	
+	
+	@RequestMapping("/locker/lockerList.do")
+	public String lockerList(@RequestParam String section, Model model) {
+		String sec = "";
+		switch (section) {
+		case "A" : 
+			//사물함 리스트를 뽑아서 보낸다. jsp에서 인덱스에 제한을 두고 출력함
+			sec = "sectionA";
+			break;
+		case "B" :
+			sec = "sectionB";
+			break;
+		case "C" : 
+			sec = "sectionC";
+			break;
+		case "D" : 
+			sec = "sectionD";
+			break;
+		};
+		model.addAttribute("list", "추출한 사물함 리스트");
+		return sec;
 	}
 	
 //	@RequestMapping("/locker/select.do")
@@ -83,4 +151,34 @@ public class LockerController {
 	================================================*/
 	
 	
+//	public String out(HttpServletRequest request) {
+//		HttpSession session = request.getSession();
+//	    int mem_num = (Integer)session.getAttribute("user_num");
+//	    
+//	    
+//		String in = "2023-02-22 15:34:58";		//사물함 선택한 시간
+//		
+//		DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss");
+//		
+//		LocalDateTime in_time = LocalDateTime.parse(in,formatter);
+//		LocalDateTime now_time = LocalDateTime.now();
+//		
+//		System.out.println("사물함 선택 시간 = " + in_time);
+//		System.out.println("현재시간 = " + now_time);	
+//		
+//		LocalDateTime out_time = in_time.plusWeeks(1);		//1주, 2주, 4주
+//		System.out.println(out_time);
+//		
+//		Duration diff = Duration.between(now_time.toLocalTime(), out_time.toLocalTime());
+//		long diffSeconds = diff.getSeconds();
+//		int diffIntSeconds = Long.valueOf(diffSeconds).intValue();
+//		
+//		int hour = diffIntSeconds  / 3600;					
+//		int minute = diffIntSeconds  % 3600 / 60;			
+//		int second = diffIntSeconds  % 3600 % 60;
+//		
+//		System.out.println("종료까지 남은 시간 : " + hour +"시간 " + minute + "분 " + second + "초");
+//		return "";
+//	}
+//	
 }

@@ -14,4 +14,8 @@ public interface LockerService {
 	//사물함 정보 불러오기
 	public List<LockerVO> getLockerList();
 	
+	//시작일 불러오기
+	public String getLocker_start(LockerVO vo);
+	//종료일, 남은 시각 저장
+	public void insertEndAndDiff(LockerVO vo);
 }

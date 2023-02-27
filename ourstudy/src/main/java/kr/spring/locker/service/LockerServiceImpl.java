@@ -32,7 +32,6 @@ public class LockerServiceImpl implements LockerService{
 	//좌석 선택
 	@Override
 	public void selectLocker(LockerVO vo) {
-		vo.setLocker_detail_num(lockerMapper.selectLocker_Detail_num());
 		lockerMapper.insertToSelectLocker(vo);
 		lockerMapper.lockerStatusIn(vo);
 	}
@@ -44,4 +43,20 @@ public class LockerServiceImpl implements LockerService{
 	}
 
 	
+	/*=================================
+				IN / OUT / DATE
+	  =================================*/
+	//시작일 불러오기
+	@Override
+	public String getLocker_start(LockerVO vo) {
+		return lockerMapper.getLocker_start(vo);
+	}
+
+	//종료일, 남은시각 저장 (퇴실 시)
+	@Override
+	public void insertEndAndDiff(LockerVO vo) {
+		lockerMapper.insertEndAndDiff(vo);
+		lockerMapper.lockerStatusOut(vo);
+	}
+
 }
