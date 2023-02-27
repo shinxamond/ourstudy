@@ -254,7 +254,7 @@ function kakaoLogout() {
             			<li><a href="#" class="link-dark d-inline-flex rounded">채팅기록(발신)</a></li>
           			</ul>
         			</div>
-        		</div>       				
+        		</div>      				    
 				</c:if>
 				<br>					
 				<c:if test="${!empty user}">
