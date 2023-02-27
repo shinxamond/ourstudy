@@ -68,7 +68,8 @@ $(function(){
 				success : function (data) {
 					checkInput.attr('disabled',false);
 					code =data;
-					alert('인증번호가 전송되었습니다.')
+					alert('인증번호가 전송되었습니다.');
+					console.log(code);
 				}			
 			});
 		}
@@ -119,12 +120,6 @@ $(function(){
 	});
 	
 		
-	
-	
-	
-	
-	
-	
 });
 
 	

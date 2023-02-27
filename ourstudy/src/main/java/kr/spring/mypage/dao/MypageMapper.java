@@ -97,7 +97,7 @@ public interface MypageMapper {
 	public int selectAccrueStudyTime(MemberVO member);
 	
 	//공부 시간 누적
-	@Update("Update member_history SET mem_study = (SELECT mem_study FROM mem_history WHERE mem_num = #{mem_num}) + #{total_time} WHERE mem_num = #{mem_num}") //나중에 seatVO에 mem_study 필드 추가해야될 수도 있음 그럼 #{mem_study} + #{total_time}으로 수정 // or 위에 누적 공부시간 불러오는 메서드 써서 데이터 가져온 다음 java로 연산해서 update
+	@Update("Update member_history SET mem_study = (SELECT mem_study FROM member_history WHERE mem_num = #{mem_num}) + #{total_time} WHERE mem_num = #{mem_num}") //나중에 seatVO에 mem_study 필드 추가해야될 수도 있음 그럼 #{mem_study} + #{total_time}으로 수정 // or 위에 누적 공부시간 불러오는 메서드 써서 데이터 가져온 다음 java로 연산해서 update
 	public void updateStudyTime(SeatVO seat);
 	
 	
