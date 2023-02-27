@@ -258,7 +258,7 @@ public class MemberController {
 			model.addAttribute("url", "/member/findPw.do");
 			return "common/resultView";
 		}else {
-			model.addAttribute("accessMsg", "비밀번호는<br><br>" + mem_pw + "<br><br>입니다");
+			model.addAttribute("accessMsg", "비밀번호는<br><br> [" + mem_pw + "] <br><br>입니다");
 			return "common/notice";
 		}
 		
