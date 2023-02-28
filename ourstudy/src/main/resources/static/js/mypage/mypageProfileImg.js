@@ -10,9 +10,9 @@ $(function(){
 			return
 		}
 		
-		if(my_photo.size > 1024*1024){
-			alert(Math.round(my_photo.size/1024) 
-			   + 'kbytes(1024kbytes까지만 업로드 가능)');
+		if(my_photo.size > 1024*1024*5){
+			alert(Math.round(my_photo.size/1024/5) 
+			   + 'MB(5MB까지만 업로드 가능)');
 			$('.profile-photo').attr('src',photo_path);
 			$(this).val('');
 			return;			
