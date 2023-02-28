@@ -194,9 +194,11 @@
             			<li><a href="${pageContext.request.contextPath}/seat/insertForm.do" class="link-dark d-inline-flex rounded">좌석관리</a></li>
             			<li><a href="${pageContext.request.contextPath}/locker/editForm.do" class="link-dark d-inline-flex rounded">사물함관리</a></li>
             			<li><a href="${pageContext.request.contextPath}/ticket/admin_ticketList.do" class="link-dark d-inline-flex rounded">이용권관리</a></li>
+            			<li><a href="${pageContext.request.contextPath}/item/adminList.do" class="link-dark d-inline-flex rounded">물품관리</a></li>
             			<li><a href="${pageContext.request.contextPath}/admin/admin_itemhistory.do" class="link-dark d-inline-flex rounded">물품대여기록(히스토리)</a></li>
             			<li><a href="${pageContext.request.contextPath}/admin/admin_unreturnlist.do" class="link-dark d-inline-flex rounded">물품대여기록(미반납자)</a></li>
             			<li><a href="${pageContext.request.contextPath}/admin/admin_saleslist.do" class="link-dark d-inline-flex rounded">판매기록</a></li>
+            			<li><a href="${pageContext.request.contextPath}/talk/talkList.do" class="link-dark d-inline-flex rounded">채팅목록</a></li>
             			<li><a href="#" class="link-dark d-inline-flex rounded">채팅기록(수신)</a></li> <!-- ${pageContext.request.contextPath}/admin/admin_receivehistory.do -->
             			<li><a href="#" class="link-dark d-inline-flex rounded">채팅기록(발신)</a></li>
           			</ul>
