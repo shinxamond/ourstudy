@@ -19,4 +19,5 @@
              d.seat_detail_num,d.seat_num,s.seat_name,d.mem_name,TO_CHAR(d.in_time, 'yyyy-MM-dd HH24:MI:SS') in_time, TO_CHAR(d.out_time, 'yyyy-MM-dd HH24:MI:SS') out_time,d.total_time 
          FROM SEAT_DETAIL d JOIN SEAT s ON s.seat_num = d.seat_num 
      </select>
+     
 </mapper>

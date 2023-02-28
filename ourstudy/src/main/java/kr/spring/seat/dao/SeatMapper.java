@@ -37,12 +37,12 @@ public interface SeatMapper {
     ======================================= */
    //해당 DB에서 정보 가져오기
    public List<SeatVO> getSeatList();
-   public List<SeatVO> getSeatDetailList();
+   public List<SeatVO> getSeatDetailList(); //*없음*/
    //좌석이용시간 구하기
    
    //해당 멤버의 좌석 번호 구하기
-   @Select("SELECT seat_num, mem_num, mem_name FROM SEAT_DETAIL WHERE mem_num=#{mem_num} AND out_time IS NULL")
-   public SeatVO getSeatDetailByMem_num(int mem_num);
+   @Select("SELECT seat_num, mem_num, mem_name FROM SEAT_DETAIL WHERE seat_num=#{seat_num} AND out_time IS NULL")
+   public SeatVO getSeatDetailBySeat_num(int seat_num);			//*없음*/
    
    //total_time 이 null인 회원의 입실날짜와 퇴실날짜를 String으로 불러온다.
    @Select("SELECT TO_CHAR(in_time, 'yyyy-MM-dd HH24:MI:SS') in_time, TO_CHAR(out_time, 'yyyy-MM-dd HH24:MI:SS') out_time FROM SEAT_DETAIL WHERE seat_num=#{seat_num} AND total_time IS NULL")

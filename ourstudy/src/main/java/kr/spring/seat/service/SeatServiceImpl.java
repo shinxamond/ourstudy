@@ -26,11 +26,16 @@ public class SeatServiceImpl implements SeatService{
    //좌석 선택
    @Override
    public void selectSeat(SeatVO vo) {
-      seatMapper.insertToSelectSeat(vo);      //회원상세정보 등록
+      seatMapper.insertToSelectSeat(vo);      						//회원상세정보 등록
       seatMapper.seatStatusIn(vo.getSeat_num());
       seatMapper.memberStatusIn(vo.getMem_num());
    }
 
+   //회원이름, 회원번호, 좌석번호 추출
+   public SeatVO getSeatDetail(int seat_num) {
+	   return seatMapper.getSeatDetailBySeat_num(seat_num);
+   }
+   
 
    //좌석 리스트
    @Override
@@ -39,18 +44,10 @@ public class SeatServiceImpl implements SeatService{
       return list;
    }
    
-   
-   //좌석이동
-      //기존 좌석 퇴실
-      //기존 좌석 status = 1 변환
-      //새 좌석 입실
-      //해당 좌석 status = 0 변환
-   
-   
    //외출처리
    @Override
    public void holdSeat(SeatVO vo) {
-      seatMapper.seatStatusHold(vo.getSeat_num());               //외출상태로 변환(status)
+      seatMapper.seatStatusHold(vo.getSeat_num());               	//외출상태로 변환(status)
       seatMapper.memberStatusHold(vo.getMem_num());
    }
 
@@ -58,7 +55,7 @@ public class SeatServiceImpl implements SeatService{
    @Override
    public void outSeatWhenIn(SeatVO vo) {
       seatMapper.insertOutTimeBySeat_num(vo.getSeat_num());         //퇴실시간 찍기
-      seatMapper.seatStatusOut(vo.getSeat_num());                //사용가능 상태로 변환(status)
+      seatMapper.seatStatusOut(vo.getSeat_num());                	//사용가능 상태로 변환(status)
       seatMapper.memberStatusOut(vo.getMem_num());
    }
    
@@ -84,11 +81,6 @@ public class SeatServiceImpl implements SeatService{
       return seatMapper.getTimes(seat_num);
    }
 
-   //회원이름, 회원번호, 좌석번호 추출
-   public SeatVO getSeatDetail(int mem_num) {
-      return seatMapper.getSeatDetailByMem_num(mem_num);
-   }
-   
    //퇴실시간 - 입실시간
    @Override
    public void insertTotal_time(SeatVO vo) {
@@ -100,7 +92,8 @@ public class SeatServiceImpl implements SeatService{
       return seatMapper.getMem_status(mem_num);
    }
 
-
    
-
+   /*========================================
+          			KEEP
+    ======================================= */
 }

@@ -246,23 +246,32 @@ public class SeatController {
       return "";
    }
    
-   //퇴실처리
+   //회원 퇴실처리 + 관리자 권한 강제 퇴실처리
    @RequestMapping("/seat/out.do")
    public String Out(@RequestParam int seat_num, HttpServletRequest request) {
       HttpSession session = request.getSession();
+      MemberVO member = (MemberVO)session.getAttribute("user");
+      
       int mem_num = (Integer)session.getAttribute("user_num");
+      if(member.getMem_auth() == 9) {
+    	  mem_num = seatService.getSeatDetail(seat_num).getMem_num();
+    	  logger.debug("<<타겟 멤넘>> ::::: " + mem_num);
+      }
       int mem_status = seatService.getMem_status(mem_num);
+      
+      logger.debug("<<user_auth>> --------------= " + member.getMem_auth());					//관리자 신분 검사
       
       SeatVO seatVO = initCommand();
       seatVO.setMem_num(mem_num);
       seatVO.setSeat_num(seat_num);
 
-      if(mem_status == 2) {            //외출 상태일 때
-         seatService.outSeatWhenHold(seatVO);
-      }if(mem_status == 1) {            //입실 상태일 때
-         seatService.outSeatWhenIn(seatVO);
-      }
-      
+      														
+	  if(mem_status == 2) {            //외출 상태일 때
+		  seatService.outSeatWhenHold(seatVO);
+	  }if(mem_status == 1) {            //입실 상태일 때
+		  seatService.outSeatWhenIn(seatVO);
+	  }
+  
       
       logger.debug("seat_num = " + seat_num);
       
