@@ -94,9 +94,9 @@ public class PayController {
 			logger.debug("<<카카오 페이 결과>> : " + payVO);
 			
 			payVO.setMem_num(user.getMem_num());
-			PayVO db_pay = payService.insertPay(payVO);
+			payService.insertPay(payVO);
 			mapAjax.put("result", "success");
-			mapAjax.put("db_pay", db_pay);
+			mapAjax.put("payVO", payVO);
 		}
 		
 		return mapAjax;

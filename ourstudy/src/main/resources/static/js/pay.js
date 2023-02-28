@@ -51,15 +51,6 @@ $(function(){
 					$('#use_point').val('').focus();
 				}	
 			}
-		
-		/*$('input[name="pay_plan"]').click(function(){
-			if($(this).val()==1){
-				$('#pay_btn').requestKaKaoPay();
-			}else{
-				$('#pay_btn').requestCardPay();
-			}
-		});*/
-		
 	});
 });
 

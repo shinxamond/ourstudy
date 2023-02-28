@@ -24,10 +24,10 @@ public class PayServiceImpl implements PayService{
 	}
 
 	@Override
-	public PayVO insertPay(PayVO payVO) {
-		return payMapper.insertPay(payVO);
+	public void insertPay(PayVO payVO) {
+		payMapper.insertPay(payVO);
 	}
-
+	
 	@Override
 	public List<PayVO> selectListPay(Map<String, Object> map) {
 		return payMapper.selectListPay(map);

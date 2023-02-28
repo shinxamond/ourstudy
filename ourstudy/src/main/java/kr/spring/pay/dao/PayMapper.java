@@ -21,7 +21,7 @@ public interface PayMapper {
 		  + "pay_content,pay_date,mem_num,ticket_num)"
 		  + " VALUES (pay_seq.nextval,#{pay_price},#{pay_plan},"
 		  + "#{pay_content},SYSDATE,#{mem_num},#{ticket_num})")
-	public PayVO insertPay(PayVO payVO);
+	public void insertPay(PayVO payVO);
 	public List<PayVO> selectListPay(Map<String, Object> map);
 	public PayVO selectPay(PayVO payVO);
 

@@ -23,7 +23,9 @@
 			<Button type="button" id="minus_btn" class="btn btn-primary">포인트 사용</Button>
 			</h6>
 			<hr>
-			<h6>결제 금액 <span id="final_price" style="float:right;" data-pricenum="${ticket.ticket_price}">${ticket.ticket_price}</span></h6>
+			<h6>결제 금액 <span id="final_price" style="float:right;" data-pricenum="${ticket.ticket_price}">${ticket.ticket_price}</span>
+			<span id="total_price" style="display:none;"></span>
+			</h6>
 			<input type="button" id="pay_kakao" type="button" class="btn btn-primary" style="margin-left: 428px; margin-bottom: 3px;"
 				onclick="requestKakaoPay()" name="pay_plan" value="카카오">
 			<input type="button" id="pay_card" type="button" class="btn btn-primary" style="margin-bottom: 3px;" name="pay_plan"
