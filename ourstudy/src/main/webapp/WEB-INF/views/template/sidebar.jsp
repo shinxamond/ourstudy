@@ -183,26 +183,76 @@
 				<div class="side-bottom">
        				<button class="btn btn-toggle  d-inline-flex  align-items-center rounded collapsed border-white" 
         				data-bs-toggle="collapse" data-bs-target="#admin-collapse" aria-expanded="false">
-          				&nbsp;<i class="fas fa-light fa-id-card"></i></li>
+          				&nbsp;<i class="fas fa-light fa-id-card"></i>
           				<span class="comm-span side-main-link">관리페이지</span>
         			</button>
         			<div class="collapse" id="admin-collapse">
          		 	<ul class="btn-toggle-nav fw-normal pb-1 small">
-           				<li><a href="${pageContext.request.contextPath}/admin/admin_list.do" class="link-dark d-inline-flex rounded">회원관리</a></li>
-            			<li><a href="${pageContext.request.contextPath}/admin/admin_seathistory.do" class="link-dark d-inline-flex rounded">이용기록(좌석)</a></li>
-            			<li><a href="${pageContext.request.contextPath}/admin/admin_lockerhistory.do" class="link-dark d-inline-flex rounded">이용기록(사물함)</a></li>
-            			<li><a href="${pageContext.request.contextPath}/seat/insertForm.do" class="link-dark d-inline-flex rounded">좌석관리</a></li>
-            			<li><a href="${pageContext.request.contextPath}/locker/editForm.do" class="link-dark d-inline-flex rounded">사물함관리</a></li>
-            			<li><a href="${pageContext.request.contextPath}/ticket/admin_ticketList.do" class="link-dark d-inline-flex rounded">이용권관리</a></li>
-            			<li><a href="${pageContext.request.contextPath}/item/adminList.do" class="link-dark d-inline-flex rounded">물품관리</a></li>
-            			<li><a href="${pageContext.request.contextPath}/admin/admin_itemhistory.do" class="link-dark d-inline-flex rounded">물품대여기록(히스토리)</a></li>
-            			<li><a href="${pageContext.request.contextPath}/admin/admin_unreturnlist.do" class="link-dark d-inline-flex rounded">물품대여기록(미반납자)</a></li>
-            			<li><a href="${pageContext.request.contextPath}/admin/admin_saleslist.do" class="link-dark d-inline-flex rounded">판매기록</a></li>
-            			<li><a href="${pageContext.request.contextPath}/talk/talkList.do" class="link-dark d-inline-flex rounded">채팅목록</a></li>
-            			<li><a href="${pageContext.request.contextPath}/admin/admin_receivehistory.do"" class="link-dark d-inline-flex rounded">채팅기록(수신)</a></li> 
-            			<li><a href="#" class="link-dark d-inline-flex rounded">채팅기록(발신)</a></li>
-          			</ul>
-        			</div>
+         		 		<li>
+	         		 		<button class="btn btn-toggle  d-inline-flex  align-items-center rounded collapsed border-white" 
+	        					data-bs-toggle="collapse" data-bs-target="#admin-collapse1" aria-expanded="false">
+	        					<i class="bi bi-plus-circle-fill"></i>
+	          					<span class="comm-span side-main-link">관리자추가</span>
+	        				</button>
+	        				<div class="collapse" id="admin-collapse1">
+	        				<ul class="btn-toggle-nav fw-normal pb-1 small">
+	        					<li><a href="${pageContext.request.contextPath}/seat/insertForm.do" class="link-dark d-inline-flex rounded">좌석추가</a></li>
+            					<li><a href="${pageContext.request.contextPath}/locker/editForm.do" class="link-dark d-inline-flex rounded">사물함추가</a></li>
+            					<li><a href="${pageContext.request.contextPath}/ticket/admin_ticketList.do" class="link-dark d-inline-flex rounded">이용권추가</a></li>
+            					<li><a href="${pageContext.request.contextPath}/item/adminList.do" class="link-dark d-inline-flex rounded">물품추가</a></li>        					
+	        				</ul>
+	        				</div>
+         		 		</li>     		 		         		 	
+         		 		<li>
+         		 		&nbsp;&nbsp;&nbsp;&nbsp;<i class="bi bi-person-fill-gear" style="font-size:13pt;"></i>
+         		 		<a href="${pageContext.request.contextPath}/admin/admin_list.do" class="link-dark d-inline-flex rounded" style="font-size:12pt; margin-left:2pt; margin-top:0;">회원관리</a>
+         		 		</li>
+         		 		<li>
+	         		 		<button class="btn btn-toggle  d-inline-flex  align-items-center rounded collapsed border-white" 
+	        					data-bs-toggle="collapse" data-bs-target="#admin-collapse2" aria-expanded="false">
+	        					<i class="bi bi-database-fill"></i>
+	          					<span class="comm-span side-main-link">이용기록</span>
+	        				</button>
+	        				<div class="collapse" id="admin-collapse2">
+	        				<ul class="btn-toggle-nav fw-normal pb-1 small">
+	        					<li><a href="${pageContext.request.contextPath}/admin/admin_seathistory.do" class="link-dark d-inline-flex rounded">좌석기록</a></li>
+	        					<li><a href="${pageContext.request.contextPath}/admin/admin_lockerhistory.do" class="link-dark d-inline-flex rounded">사물함기록</a></li>
+	        				</ul>
+	        				</div>
+         		 		</li>     		 		
+         		 		<li>
+	         		 		<button class="btn btn-toggle  d-inline-flex  align-items-center rounded collapsed border-white" 
+	        					data-bs-toggle="collapse" data-bs-target="#admin-collapse3" aria-expanded="false">
+	        					<i class="bi bi-inboxes-fill"></i>  
+	          					<span class="comm-span side-main-link">물품기록</span>
+	        				</button>
+	        				<div class="collapse" id="admin-collapse3">
+	        				<ul class="btn-toggle-nav fw-normal pb-1 small">
+	        					<li><a href="${pageContext.request.contextPath}/admin/admin_itemhistory.do" class="link-dark d-inline-flex rounded">대여히스토리</a></li>
+	        					<li><a href="${pageContext.request.contextPath}/admin/admin_unreturnlist.do" class="link-dark d-inline-flex rounded">미반납자</a></li>	        					
+	        				</ul>
+	        				</div>
+         		 		</li>	
+         		 		<li>
+         		 		&nbsp;&nbsp;&nbsp;&nbsp;<i class="bi bi-piggy-bank-fill" style="font-size:13pt;"></i>
+         		 		<a href="${pageContext.request.contextPath}/admin/admin_saleslist.do" class="link-dark d-inline-flex rounded" style="font-size:12pt; margin-left:2pt; margin-top:0;">판매기록</a>
+         		 		</li>         		 		 			
+           				<li>
+	         		 		<button class="btn btn-toggle  d-inline-flex  align-items-center rounded collapsed border-white" 
+	        					data-bs-toggle="collapse" data-bs-target="#admin-collapse4" aria-expanded="false">
+          						<i class="bi bi-chat-left-dots-fill"></i>	        					
+	          					<span class="comm-span side-main-link">채팅기록</span>
+	        				</button>
+	        				<div class="collapse" id="admin-collapse4">
+	        				<ul class="btn-toggle-nav fw-normal pb-1 small">
+	        					<li><a href="${pageContext.request.contextPath}/talk/talkList.do" class="link-dark d-inline-flex rounded">채팅목록</a></li>
+	        					<li><a href="${pageContext.request.contextPath}/admin/admin_receivehistory.do" class="link-dark d-inline-flex rounded">수신채팅</a></li>
+	        					<li><a href="#" class="link-dark d-inline-flex rounded">발신채팅</a></li>	        					
+	        				</ul>
+	        				</div>
+         		 		</li>           		 		         		 		
+           			</ul>
+        			</div>        		 		
         		</div>       				
 				</c:if>
 				<br>				
