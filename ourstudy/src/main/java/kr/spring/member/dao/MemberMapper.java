@@ -54,7 +54,17 @@ public interface MemberMapper {
 	public String find_pw(@Param("mem_id") String mem_id, @Param("mem_email") String mem_email);
 
 
-	
+	//============================
+	//		카카오톡 작업중
+	//============================
+	@Insert("INSERT INTO member (mem_num,mem_id) VALUES (#{mem_num},#{mem_id})")
+	public void insertKMember(MemberVO member);
+	@Insert("INSERT INTO member_detail (mem_num,mem_name,mem_pw,mem_email,mem_photo) VALUES"
+			+ " (#{mem_num},#{mem_name},#{mem_pw},#{mem_email},#{mem_photo}")
+	public void insertKMember_detail(MemberVO member);
+	@Insert("INSERT INTO member_history (mem_num,mem_study,mem_ticket_hour,mem_ticket_term) "
+		  + "VALUES (#{mem_num},#{mem_study},#{mem_ticket_hour},#{mem_ticket_term})")
+	public void insertKMember_history(MemberVO member);
 	
 	
 	
