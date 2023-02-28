@@ -51,5 +51,8 @@ public interface MypageService {
 	
 	
 	public void insertPoint(PayVO payVO);
+	
+	//////////////나중에 지울것////////////////////////////
+	public void deleteSomething(Integer mem_num);
 
 }

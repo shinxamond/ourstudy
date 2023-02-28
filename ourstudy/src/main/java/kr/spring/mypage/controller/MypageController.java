@@ -49,6 +49,23 @@ public class MypageController {
 	@Autowired
 	private MemberService memberService;
 	
+	//////////////나중에 지울것////////////////////////////
+	@PostMapping("/mypage/deleteSometing.do")
+	public String deleteSome(HttpSession session, String delnum) {
+		
+		MemberVO user = (MemberVO)session.getAttribute("user");
+		
+		if(delnum == null || delnum == "") {
+			mypageService.deleteSomething(user.getMem_num());
+		}else {
+			mypageService.deleteSomething(Integer.parseInt(delnum));
+		}
+		
+		return "redirect:/mypage/myPageMain.do";
+		
+	}
+	
+	
 	//마이페이지 메인 호출
 	@RequestMapping("/mypage/myPageMain.do")
 	public String form(HttpSession session, Model model) {

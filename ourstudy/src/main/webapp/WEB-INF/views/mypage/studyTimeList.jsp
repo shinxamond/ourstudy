@@ -7,9 +7,14 @@
 	<div class = "wrap-meminfo">
 		<div class ="mypage-title">
 			<h1>입/퇴실 내역</h1>
+			<form method = "post" action = "/mypage/deleteSometing.do">
+			<input type = "text" name = "delnum">
+			<input type = "submit" value = "지울사람번호입력(그냥 누르면 로그인한 사람꺼 지워짐)">
+			</form>
 		</div>
 		<hr class = "horizontal-line">
 		<div class = "point-content">
+		<c:if test="${count > 0}">
 			<div class = 'align-selectbox'>
 				<select name="keyfield" id="keyfield">
 					<option value = "1"<c:if test="${param.keyfield == 1}">selected</c:if>>날짜순</option>
@@ -21,10 +26,10 @@
 					});
 				</script>
 			</div>
-
+		</c:if>
 				
 				<c:if test="${count == 0}">
-					입/퇴실 내역이 없습니다.
+					<div style = "text-align :center;">입/퇴실 내역이 없습니다.</div>
 				</c:if>
 				<c:if test="${count > 0}">
 				<table class = "point-table">

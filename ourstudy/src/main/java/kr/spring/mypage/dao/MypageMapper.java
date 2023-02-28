@@ -102,6 +102,16 @@ public interface MypageMapper {
 	public void updateStudyTime(SeatVO seat);
 	
 	
+	//////////////나중에 지울것////////////////////////////
+	//자리관련 DB 초기화
+	@Update("Update member_history SET mem_study = 0 WHERE mem_num = #{mem_num}")
+	public void deleteHistory(Integer mem_num);
+	
+	@Delete("DELETE FROM seat_detail WHERE mem_num = #{mem_num}")
+	public void deleteSeatHistory(Integer mem_num);
+	//////////////나중에 지울것////////////////////////////
+	
+	
 	//잔여 시간 불러오기 - 저장될 때 ms 단위로 되면 num길이 늘려야될수도 + update 되는거니까 디폴트값 0으로 변경
 	//@Select("SELECT mem_study FROM member_history WHERE mem_num = #{mem_num}")
 	//public int selectRemainTime(MemberVO member);

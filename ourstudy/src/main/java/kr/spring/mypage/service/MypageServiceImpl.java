@@ -91,6 +91,14 @@ public class MypageServiceImpl implements MypageService{
 	public void insertPoint(PayVO payVO) {
 		mypageMapper.insertPoint(payVO);
 	}
+	
+	
+	//////////////나중에 지울것////////////////////////////
+	@Override
+	public void deleteSomething(Integer mem_num) {
+		mypageMapper.deleteHistory(mem_num);
+		mypageMapper.deleteSeatHistory(mem_num);
+	}
 
 
 }
