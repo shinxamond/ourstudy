@@ -14,7 +14,7 @@ public class AdminTalkHistoryVO {
 	private int talk_num;
 	private int mem_num;
 	private String mem_name;
-	private Date chat_date; //나중에 String으로 변환해야할수도
+	private String chat_date;
 	private String message;
 	
 	public int getTalk_num() { 
@@ -35,10 +35,10 @@ public class AdminTalkHistoryVO {
 	public void setMem_name(String mem_name) {
 		this.mem_name = mem_name;
 	}
-	public Date getChat_date() {
+	public String getChat_date() {
 		return chat_date;
 	}
-	public void setChat_date(Date chat_date) {
+	public void setChat_date(String chat_date) {
 		this.chat_date = chat_date;
 	}
 	public String getMessage() {

@@ -234,6 +234,49 @@
 		<![CDATA[
 		WHERE rnum >= #{start} AND rnum <= #{end}
 		]]>   		        
-  	</select>  	 	 	  	  	  	  	  	
+  	</select>  	 	 	  	
+  	
+	<!-- 수신 채팅 히스토리 -->
+  	<select id="selectReceiveRowCount" parameterType="map" resultType="integer">
+		SELECT 
+		  COUNT(*)
+		FROM (SELECT talk_num, t.mem_num, mem_name, message, chat_date   
+		      FROM talk t LEFT OUTER JOIN member_detail d 
+		      ON t.mem_num = d.mem_num)b LEFT OUTER JOIN member m 
+		ON b.mem_num = m.mem_num 
+		WHERE m.mem_auth != 9 
+  		<if test="keyword != null and keyword != ''">
+  			  AND (b.mem_name LIKE '%' || #{keyword} || '%' OR
+  				   b.mem_num LIKE '%' || #{keyword} || '%') 
+  		</if>
+  		 -->                        
+  	</select>
+  	
+  	<select id="selectReceiveList" parameterType="map" resultType="adminTalkHistoryVO">
+  		SELECT
+  		   *
+  		FROM (SELECT a.*, rownum rnum 
+			  FROM (SELECT *
+      				FROM (SELECT talk_num, t.mem_num, mem_name, message, 
+      							 TO_CHAR(chat_date, 'yyyy-MM-dd HH24:MI:SS') chat_date   
+            			  FROM talk t LEFT OUTER JOIN member_detail d 
+      					  ON t.mem_num = d.mem_num)b LEFT OUTER JOIN member m 
+      				ON b.mem_num = m.mem_num 
+      				WHERE m.mem_auth != 9          
+			  		<if test="keyword != null and keyword != ''">
+				  	AND (b.mem_name LIKE '%' || #{keyword} || '%' OR 
+      					 b.mem_num LIKE '%' || #{keyword} || '%')
+			  		</if>				            				  		 
+  		            <if test="keyfield == 1">	            
+  		            ORDER BY b.chat_date DESC NULLS LAST
+  		            </if>
+  		            <if test="keyfield == 2">
+  		            ORDER BY b.mem_name ASC NULLS LAST
+  		            </if>
+  		            )a)
+		<![CDATA[
+		WHERE rnum >= #{start} AND rnum <= #{end}
+		]]>   		        
+  	</select>  	 	 	  	  	  	  	  	  	
 </mapper>
 

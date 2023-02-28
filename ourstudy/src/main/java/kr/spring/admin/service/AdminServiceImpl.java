@@ -13,6 +13,7 @@ import kr.spring.admin.vo.AdminLockerHistoryVO;
 import kr.spring.admin.vo.AdminMemberVO;
 import kr.spring.admin.vo.AdminSalesVO;
 import kr.spring.admin.vo.AdminSeatHistoryVO;
+import kr.spring.admin.vo.AdminTalkHistoryVO;
 
 @Service
 @Transactional
@@ -112,6 +113,17 @@ public class AdminServiceImpl implements AdminService{
 	@Override
 	public int selectSalesRowCount(Map<String, Object> map) {
 		return adminMapper.selectSalesRowCount(map);
+	}
+
+	//수신 채팅 히스토리
+	@Override
+	public List<AdminTalkHistoryVO> selectReceiveList(Map<String, Object> map) {
+		return adminMapper.selectReceiveList(map);
+	}
+
+	@Override
+	public int selectReceiveRowCount(Map<String, Object> map) {
+		return adminMapper.selectReceiveRowCount(map);
 	}
 	
 }

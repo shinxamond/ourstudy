@@ -15,6 +15,7 @@ import kr.spring.admin.vo.AdminLockerHistoryVO;
 import kr.spring.admin.vo.AdminMemberVO;
 import kr.spring.admin.vo.AdminSalesVO;
 import kr.spring.admin.vo.AdminSeatHistoryVO;
+import kr.spring.admin.vo.AdminTalkHistoryVO;
 
 @Mapper
 public interface AdminMapper {
@@ -62,6 +63,10 @@ public interface AdminMapper {
 	//판매기록목록
 	public int selectSalesRowCount(Map<String,Object> map);
 	public List<AdminSalesVO> selectSalesList(Map<String,Object> map);	
+	
+	//수신 채팅 히스토리
+	public int selectReceiveRowCount(Map<String,Object> map);
+	public List<AdminTalkHistoryVO> selectReceiveList(Map<String,Object> map);		
 }
 
 
