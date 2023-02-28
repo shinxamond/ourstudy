@@ -132,7 +132,7 @@
 					<ul>
 						<li><i class="fas fa-regular fa-chair"></i></li>
 						<%-- <c:if test="${user.mem_auth == 1}"> --%>
-						<li class="chair"><a href="${pageContext.request.contextPath}/seat/selectSeatForm.do">좌석 선택</a></li>
+						<li class="chair"><a href="${pageContext.request.contextPath}/seat/selectSeatForm.do" class="side-main-link">좌석 선택</a></li>
 						<%-- </c:if> --%>
 					</ul>
 				</div>
@@ -140,7 +140,7 @@
 				<div class="side-inline laptop-bottom" style="cursor: pointer;" onclick="location.href=''">
 					<ul>
 						<li><i class="fas fa-regular fa-laptop"></i></li>
-						<li class="laptop"><a href="${pageContext.request.contextPath}/item/userList.do">물품 대여</a></li>
+						<li class="laptop"><a href="${pageContext.request.contextPath}/item/userList.do" class="side-main-link">물품 대여</a></li>
 					</ul>
 				</div>
 				
@@ -175,7 +175,7 @@
 				<div>
 					<ul	class="side-inline" style="cursor: pointer;" onclick="location.href='${pageContext.request.contextPath}/mypage/myPageMain.do'">
 						<li><i class="fas fa-light fa-id-card"></i></li>
-						<li class="myp">마이페이지</li>
+						<li class="myp side-main-link">마이페이지</li>
 					</ul>
 				</div>
 				</c:if>
@@ -184,7 +184,7 @@
        				<button class="btn btn-toggle  d-inline-flex  align-items-center rounded collapsed border-white" 
         				data-bs-toggle="collapse" data-bs-target="#admin-collapse" aria-expanded="false">
           				&nbsp;<i class="fas fa-light fa-id-card"></i></li>
-          				<span class="comm-span">관리페이지</span>
+          				<span class="comm-span side-main-link">관리페이지</span>
         			</button>
         			<div class="collapse" id="admin-collapse">
          		 	<ul class="btn-toggle-nav fw-normal pb-1 small">

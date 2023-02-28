@@ -65,6 +65,7 @@ main {
   margin-top: .3rem;
   margin-left: 1.1rem;
   text-decoration: none;
+  font-size:11pt;
 }
 
 .btn-toggle-nav a:hover,
@@ -173,6 +174,14 @@ main {
 .logout-btn{
 	margin-left:62px;
 }
+.side-main-link{
+	font-size:12pt;
+}
+.side-main-link:hover{
+	text-decoration:none;
+	color:black;
+}
+
 
 /*------------------------------------------------
 # 로그인 모달
