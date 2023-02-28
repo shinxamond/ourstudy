@@ -5,8 +5,6 @@ import java.util.HashMap;
 import java.util.Map;
 
 import javax.servlet.http.HttpSession;
-import javax.validation.Valid;
-
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -29,80 +27,78 @@ import kr.spring.ticket.vo.TicketVO;
 
 @Controller
 public class PayController {
-	private final Logger logger = LoggerFactory.getLogger(PayController.class);
+   private final Logger logger = LoggerFactory.getLogger(PayController.class);
 
-	@Autowired
-	private PayService payService;
+   @Autowired
+   private PayService payService;
 
-	@Autowired
-	private TicketService ticketService;
-	
-	@Autowired
-	private MypageService myPageService;
+   @Autowired
+   private TicketService ticketService;
+   
+   @Autowired
+   private MypageService myPageService;
 
-	@ModelAttribute
-	public PayVO initCommand() {
-		return new PayVO();
-	}
+   @ModelAttribute
+   public PayVO initCommand() {
+      return new PayVO();
+   }
 
-	@GetMapping("/pay/payPage.do")
-	public ModelAndView process(@RequestParam int ticket_num) {
+   @GetMapping("/pay/payPage.do")
+   public ModelAndView process(@RequestParam int ticket_num) {
 
-		logger.debug("<<이용권 정보>> : " + ticket_num);
+      logger.debug("<<이용권 정보>> : " + ticket_num);
 
-		TicketVO ticketVO = ticketService.selectTicket(ticket_num);
-		return new ModelAndView("payPage","ticket", ticketVO);
+      TicketVO ticketVO = ticketService.selectTicket(ticket_num);
+      return new ModelAndView("payPage","ticket", ticketVO);
 
-	}
+   }
 
-	@RequestMapping("/pay/payPagePoint.do")
-	@ResponseBody
-	public Map<String, Object> selectPoint(HttpSession session){
+   @RequestMapping("/pay/payPagePoint.do")
+   @ResponseBody
+   public Map<String, Object> selectPoint(HttpSession session){
 
-		MemberVO user = (MemberVO)session.getAttribute("user");
-		Map<String, Object> mapAjax = new HashMap<String, Object>();
+      MemberVO user = (MemberVO)session.getAttribute("user");
+      Map<String, Object> mapAjax = new HashMap<String, Object>();
 
-		if(user == null) {//로그인 되지 않은 경우
-			mapAjax.put("result", "logout");
-		}else{//로그인 된 경우 
-			Integer mypoint = myPageService.selectTotalPoint(user.getMem_num());
+      if(user == null) {//로그인 되지 않은 경우
+         mapAjax.put("result", "logout");
+      }else{//로그인 된 경우 
+         Integer mypoint = myPageService.selectTotalPoint(user.getMem_num());
 
-			mapAjax.put("result", "success");
-			mapAjax.put("mypoint", mypoint);
-			if(mypoint == null) {
-				mapAjax.put("mypoint", 0);
-			}
+         mapAjax.put("result", "success");
+         mapAjax.put("mypoint", mypoint);
+         if(mypoint == null) {
+            mapAjax.put("mypoint", 0);
+         }
 
-			logger.debug("<<포인트 정보>> : " + mypoint);
+         logger.debug("<<포인트 정보>> : " + mypoint);
 
-		}
-		return mapAjax;
-	}
-	
-	//결제 데이터 받아오기
-	@RequestMapping("/pay/payResult.do")
-	@ResponseBody
-	public Map<String, Object> payResult(PayVO payVO, PointVO pointVO,
-										 HttpSession session){
-		
-		Map<String, Object>mapAjax = new HashMap<String, Object>();
-		MemberVO user = (MemberVO)session.getAttribute("user");
-		
-		if(user == null) {
-			mapAjax.put("result", "logout");
-		}else {
-			logger.debug("<<카카오 페이 결과 pay>> : " + payVO);
-			logger.debug("<<카카오 페이 결과 point>> : " + pointVO);
-			payVO.setMem_num(user.getMem_num());
-			payService.insertPay(payVO);
-			mapAjax.put("result", "success");
-			mapAjax.put("payVO", payVO);
-		}
-		
-		return mapAjax;
-	}
+      }
+      return mapAjax;
+   }
+   
+   //결제 데이터 받아오기
+   @RequestMapping("/pay/payResult.do")
+   @ResponseBody
+   public Map<String, Object> payResult(PayVO payVO,
+                               HttpSession session){
+      
+      Map<String, Object>mapAjax = new HashMap<String, Object>();
+      MemberVO user = (MemberVO)session.getAttribute("user");
+      
+      if(user == null) {
+         mapAjax.put("result", "logout");
+      }else {
+         logger.debug("<<카카오 페이 결과 pay>> : " + payVO);
+         payVO.setMem_num(user.getMem_num());
+         payService.insertPay(payVO);
+         mapAjax.put("result", "success");
+         mapAjax.put("payVO", payVO);
+      }
+      
+      return mapAjax;
+   }
 }
-
 
 
 

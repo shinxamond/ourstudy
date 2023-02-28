@@ -16,6 +16,9 @@ public class PayVO {
 	private int ticket_num;
 	private int point_num;
 	
+	private int use_point;
+	private boolean check_useP;
+	
 	private int point_point;
 	
 	//이용권 정보 받아오기
@@ -105,6 +108,22 @@ public class PayVO {
 	public String toString() {
 		return "PayVO [pay_num=" + pay_num + ", pay_price=" + pay_price + ", pay_plan=" + pay_plan + ", pay_content="
 				+ pay_content + ", pay_date=" + pay_date + ", mem_num=" + mem_num + ", ticket_num=" + ticket_num
-				+ ", point_num=" + point_num + ", ticketVO=" + ticketVO + "]";
+				+ ", point_num=" + point_num + ", use_point=" + use_point + ", check_useP=" + check_useP +"]";
+	}
+
+	public int getUse_point() {
+		return use_point;
+	}
+
+	public void setUse_point(int use_point) {
+		this.use_point = use_point;
+	}
+
+	public boolean getCheck_useP() {
+		return check_useP;
+	}
+
+	public void setCheck_useP(boolean check_useP) {
+		this.check_useP = check_useP;
 	}
 }
