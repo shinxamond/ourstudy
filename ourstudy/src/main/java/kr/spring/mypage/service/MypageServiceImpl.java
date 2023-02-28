@@ -88,7 +88,7 @@ public class MypageServiceImpl implements MypageService{
 
 	@Override
 	public void insertPoint(PointVO point) {
-		mypageMapper.selectPoint_num();
+		point.setPoint_num(mypageMapper.selectPoint_num());
 		mypageMapper.insertPoint(point);
 	}
 

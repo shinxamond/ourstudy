@@ -44,10 +44,6 @@ public class MypageController {
 	public MemberVO initCommand1() {
 		return new MemberVO();
 	}
-	@ModelAttribute
-	public SeatVO initCommand2() {
-		return new SeatVO();
-	}
 	@Autowired
 	private MypageService mypageService;
 	@Autowired
