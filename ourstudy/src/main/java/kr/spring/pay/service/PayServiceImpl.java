@@ -26,6 +26,7 @@ public class PayServiceImpl implements PayService{
 	@Override
 	public void insertPay(PayVO payVO) {
 		payMapper.insertPay(payVO);
+		//지불금액 * 0.05 --> 포인트 point insert
 		
 	}
 	
