@@ -16,7 +16,7 @@ public class PayVO {
 	private int ticket_num;
 	private int point_num;
 	
-	private PointVO pointVO;
+	private int point_point;
 	
 	//이용권 정보 받아오기
 	private TicketVO ticketVO;
@@ -93,18 +93,18 @@ public class PayVO {
 		this.ticketVO = ticketVO;
 	}
 
+	public int getPoint_point() {
+		return point_point;
+	}
+
+	public void setPoint_point(int point_point) {
+		this.point_point = point_point;
+	}
+
 	@Override
 	public String toString() {
 		return "PayVO [pay_num=" + pay_num + ", pay_price=" + pay_price + ", pay_plan=" + pay_plan + ", pay_content="
 				+ pay_content + ", pay_date=" + pay_date + ", mem_num=" + mem_num + ", ticket_num=" + ticket_num
 				+ ", point_num=" + point_num + ", ticketVO=" + ticketVO + "]";
-	}
-
-	public PointVO getPointVO() {
-		return pointVO;
-	}
-
-	public void setPointVO(PointVO pointVO) {
-		this.pointVO = pointVO;
 	}
 }

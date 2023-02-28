@@ -10,6 +10,7 @@ import org.apache.ibatis.annotations.Select;
 import org.apache.ibatis.annotations.Update;
 
 import kr.spring.member.vo.MemberVO;
+import kr.spring.pay.vo.PayVO;
 import kr.spring.point.vo.PointVO;
 import kr.spring.seat.vo.SeatVO;
 
@@ -56,12 +57,12 @@ public interface MypageMapper {
     ====================================*/
 	
 	//포인트
-	@Select("SELECT point_seq.nextval FROM dual")
-	public int selectPoint_num();
+	//@Select("SELECT point_seq.nextval FROM dual")
+	//public int selectPoint_num();
 	
 	//포인트 합산하는 열 필요 없을 듯
-	@Insert("INSERT INTO point (point_num, point_point, pay_num, mem_num) VALUES (#{point_num}, #{point_point}, #{pay_num}, #{mem_num})")
-	public void insertPoint(PointVO point);
+	@Insert("INSERT INTO point (point_num, point_point, pay_num, mem_num) VALUES (point_seq.nextval, #{point_point}, #{pay_num}, #{mem_num})")
+	public void insertPoint(PayVO payVO);
 	
 	//개인별 포인트 내역 확인
 	//@Select("SELECT s.in_time, s.out_time, s.total_time, p.point_point, p.point_accrue FROM seat_detail s JOIN point p WHERE mem_num = #{mem_num}")

@@ -9,6 +9,7 @@ import org.springframework.transaction.annotation.Transactional;
 
 import kr.spring.member.vo.MemberVO;
 import kr.spring.mypage.dao.MypageMapper;
+import kr.spring.pay.vo.PayVO;
 import kr.spring.point.vo.PointVO;
 import kr.spring.seat.vo.SeatVO;
 
@@ -87,9 +88,9 @@ public class MypageServiceImpl implements MypageService{
 	}
 
 	@Override
-	public void insertPoint(PointVO point) {
-		point.setPoint_num(mypageMapper.selectPoint_num());
-		mypageMapper.insertPoint(point);
+	public void insertPoint(PayVO payVO) {
+		mypageMapper.insertPoint(payVO);
 	}
+
 
 }

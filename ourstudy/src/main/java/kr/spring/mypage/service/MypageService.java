@@ -4,6 +4,7 @@ import java.util.List;
 import java.util.Map;
 
 import kr.spring.member.vo.MemberVO;
+import kr.spring.pay.vo.PayVO;
 import kr.spring.point.vo.PointVO;
 import kr.spring.seat.vo.SeatVO;
 
@@ -49,6 +50,6 @@ public interface MypageService {
 	
 	
 	
-	public void insertPoint(PointVO point);
+	public void insertPoint(PayVO payVO);
 
 }

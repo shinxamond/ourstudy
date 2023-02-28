@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import kr.spring.mypage.dao.MypageMapper;
 import kr.spring.pay.dao.PayMapper;
 import kr.spring.pay.vo.PayVO;
 import kr.spring.point.vo.PointVO;
@@ -17,6 +18,9 @@ public class PayServiceImpl implements PayService{
 	
 	@Autowired
 	private PayMapper payMapper;
+	
+	@Autowired
+	private MypageMapper mypageMapper;
 
 	@Override
 	public int selectPay_num() {
@@ -25,7 +29,12 @@ public class PayServiceImpl implements PayService{
 
 	@Override
 	public void insertPay(PayVO payVO) {
+		
+		payVO.setPay_num(payMapper.selectPay_num());
 		payMapper.insertPay(payVO);
+		
+		mypageMapper.insertPoint(payVO);
+		
 		//지불금액 * 0.05 --> 포인트 point insert
 		
 	}
