@@ -46,4 +46,9 @@ public interface MypageService {
 	public int selectAccrueStudyTime(MemberVO member);
 
 	public void updateStudyTime(SeatVO seat);
+	
+	
+	
+	public void insertPoint(PointVO point);
+
 }

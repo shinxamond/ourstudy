@@ -5,6 +5,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 import javax.servlet.http.HttpSession;
+import javax.validation.Valid;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -81,17 +82,21 @@ public class PayController {
 	//결제 데이터 받아오기
 	@RequestMapping("/pay/payResult.do")
 	@ResponseBody
-	public Map<String, String> payResult(PayVO payVO,
+	public Map<String, Object> payResult(PayVO payVO,
 										 HttpSession session){
 		
-		Map<String, String>mapAjax = new HashMap<String, String>();
+		Map<String, Object>mapAjax = new HashMap<String, Object>();
 		MemberVO user = (MemberVO)session.getAttribute("user");
 		
 		if(user == null) {
 			mapAjax.put("result", "logout");
 		}else {
-			payService.insertPay(payVO);
+			logger.debug("<<카카오 페이 결과>> : " + payVO);
+			
+			payVO.setMem_num(user.getMem_num());
+			PayVO db_pay = payService.insertPay(payVO);
 			mapAjax.put("result", "success");
+			mapAjax.put("db_pay", db_pay);
 		}
 		
 		return mapAjax;

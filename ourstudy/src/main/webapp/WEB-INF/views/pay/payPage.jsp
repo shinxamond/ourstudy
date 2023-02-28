@@ -2,14 +2,17 @@
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
+<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
 <!-- 결제 페이지 시작 -->
 <!-- iamport.payment.js -->
 <script type="text/javascript"
 	src="${pageContext.request.contextPath}/js/jquery-3.6.0.min.js"></script>
 <script src="https://cdn.iamport.kr/v1/iamport.js"></script>
 <div class="container">
-<h4>이용권 선택내역</h4>
+<h4>${user.mem_id}님의 이용권 선택내역</h4>
 	<form id="ticketDetail" action="payPage.do" method="post">
+		<input type="hidden" name="mem_num"
+		 data-memnum="${user.mem_num}" id="mem_num">
 		<input type="hidden" name="ticket_num"
 		 data-ticketnum="${ticket.ticket_num}" id="ticket_num">
 		<div class="container border border-primary" style="background-color: #E4F7BA;">
@@ -21,12 +24,14 @@
 			</h6>
 			<hr>
 			<h6>결제 금액 <span id="final_price" style="float:right;" data-pricenum="${ticket.ticket_price}">${ticket.ticket_price}</span></h6>
-			<button id="pay_card" type="button" class="btn btn-primary" style="margin-left: 428px; margin-bottom: 3px;" name="pay_plan"
-				onclick="requestCardPay()" value="1" data-payplan="${pay.pay_plan}">카드 결제</button>
-			<button id="pay_kakao" type="button" class="btn btn-primary" style="margin-bottom: 3px;"
-				onclick="requestKakaoPay()" value="2" name="pay_plan" data-payplan="${pay.pay_plan}">카카오페이</button>
+			<input type="button" id="pay_kakao" type="button" class="btn btn-primary" style="margin-left: 428px; margin-bottom: 3px;"
+				onclick="requestKakaoPay()" name="pay_plan" value="카카오">
+			<input type="button" id="pay_card" type="button" class="btn btn-primary" style="margin-bottom: 3px;" name="pay_plan"
+				onclick="requestCardPay()" data-payplan="${pay.pay_plan}" value="카드">
 		</div>
 	</form>
+	
+	
 <script src="${pageContext.request.contextPath}/js/pay.js"></script>
 </div>
 <!-- 결제 페이지 끝 -->

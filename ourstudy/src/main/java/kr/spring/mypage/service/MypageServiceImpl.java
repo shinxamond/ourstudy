@@ -86,4 +86,10 @@ public class MypageServiceImpl implements MypageService{
 		mypageMapper.updateStudyTime(seat);
 	}
 
+	@Override
+	public void insertPoint(PointVO point) {
+		mypageMapper.selectPoint_num();
+		mypageMapper.insertPoint(point);
+	}
+
 }

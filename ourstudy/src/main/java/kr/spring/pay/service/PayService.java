@@ -7,7 +7,7 @@ import kr.spring.pay.vo.PayVO;
 
 public interface PayService {
 	public int selectPay_num();
-	public int insertPay(PayVO payVO);
+	public PayVO insertPay(PayVO payVO);
 	public List<PayVO> selectListPay(Map<String, Object> map);
 	
 	public int selectPoint(Integer mem_num);
