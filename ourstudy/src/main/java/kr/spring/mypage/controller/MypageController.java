@@ -25,7 +25,6 @@ import org.springframework.web.servlet.ModelAndView;
 import kr.spring.util.AuthCheckException;
 import kr.spring.util.FileUtil;
 import kr.spring.util.PagingUtil;
-import kr.spring.member.controller.MemberController;
 import kr.spring.member.service.MemberService;
 import kr.spring.member.vo.MemberVO;
 import kr.spring.mypage.service.MypageService;
@@ -51,7 +50,7 @@ public class MypageController {
 	}
 	@Autowired
 	private MypageService mypageService;
-	
+	@Autowired
 	private MemberService memberService;
 	
 	//마이페이지 메인 호출
