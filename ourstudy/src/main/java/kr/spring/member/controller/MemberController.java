@@ -108,6 +108,7 @@ public class MemberController {
 			HttpServletResponse response) {
 		logger.debug("<<회원로그인>> : " + memberVO);
 
+		Map<String,String> mapAjax = new HashMap<String,String>();
 		
 		//로그인 체크
 		MemberVO member = null;
@@ -123,6 +124,8 @@ public class MemberController {
 				//비밀번호 일치여부 체크
 				check = member.isCheckedPassword(memberVO.getMem_pw());
 			}
+			
+			
 			if(check) { //인증성공
 				//자동로그인 체크
 				boolean autoLogin = memberVO.getAuto() != null && memberVO.getAuto().equals("on");
@@ -168,15 +171,14 @@ public class MemberController {
 		}catch(AuthCheckException e) {
 			//인증실패로 로그인폼 호출
 			if(member!=null && member.getMem_auth()==0) {
-				//탈퇴회원 메시지 표시
+				//정지회원 메시지 표시
 				result.reject("noAuthority");
 			}else {
 				result.reject("invalidIdOrPassword");
 			}
-
 			logger.debug("<<인증 실패>>");
 			
-			return "redirect:/main/main.do";
+			return formLogin();
 			
 		}	
 	}

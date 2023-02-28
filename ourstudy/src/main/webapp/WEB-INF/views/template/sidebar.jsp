@@ -16,61 +16,6 @@
 <link href="https://fonts.googleapis.com/css2?family=Leckerli+One&display=swap" rel="stylesheet">
 <%--로그인 유효성 체크 --%>
 <script type="text/javascript" src="${pageContext.request.contextPath}/js/logincheck.js"></script>
-<script src="https://developers.kakao.com/sdk/js/kakao.js"></script>
-<script type="text/javascript">
-
-	Kakao.init('29a4ee7bbc4eb20216c3708400363a9a');
-	
-	console.log(Kakao.isInitialized()); //sdk초기화
-	
-	function kakaoLogin() { 
-		Kakao.Auth.login({
-			scope:'profile_nickname,profile_image,account_email',
-			success:function(authObj){
-				Kakao.API.request({
-					url:'/v2/user/me',
-					success:function(res){
-						console.log(res);
-						
-						var kakao_nickname = res.profile_nickname;
-						var kakao_image = res.profile_image;
-						var kakao_email = res.account_email;
-						
-						console.log(kakao_nickname);
-						
-						
-						<%--리다이렉트 커스텀 할 부분
-						location.href='';--%>
-					}
-				})
-				
-				  console.log(authObj);
-				  var token = authOjb.access_token;
-			},
-			fail:function(err){
-				alert('카톡로그인 실패!');
-			}
-		});
-	}
-</script>
-<%--
-//카카오로그아웃  
-function kakaoLogout() {
-    if (Kakao.Auth.getAccessToken()) {
-      Kakao.API.request({
-        url: '/v1/user/unlink',
-        success: function (response) {
-        	console.log(response)
-        },
-        fail: function (error) {
-          console.log(error)
-        },
-      })
-      Kakao.Auth.setAccessToken(undefined)
-    }
-  }  
-</script>
- --%>
  
 <%-- 사이드바 시작 --%>
 <div>
@@ -118,8 +63,11 @@ function kakaoLogout() {
 					<li><a href="${pageContext.request.contextPath}/member/registerUser.do">회원가입</a></li>
 				</ul>
 				
-				<div class="my-4 d-flex justify-content-center" onclick="kakaoLogin()">
-					<a href="javascript:void(0)"><img src="${pageContext.request.contextPath}/image_bundle/kakao_login_medium_narrow.png"></a>
+				<%--Rest API --%>
+				<div class="my-4 d-flex justify-content-center">
+					<a href="https://kauth.kakao.com/oauth/authorize?client_id=0ed971182cc827fbd73de790073ac06a&redirect_uri=http://localhost:8001/member/kakaoLogin
+&response_type=code">
+   					<img src="${pageContext.request.contextPath}/image_bundle/kakao_login_medium_narrow.png"></a>
 				</div>
 				
 				<div class="my-4 d-flex justify-content-center" style="color:#037332;">비회원으로 계속하기</div>

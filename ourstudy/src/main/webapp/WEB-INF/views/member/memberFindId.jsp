@@ -8,7 +8,8 @@
 <div>
 <div class="find_left">
 	<a href="${pageContext.request.contextPath}/main/main.do">
-		<img src="${pageContext.request.contextPath}/image_bundle/logo.png" class="find-logo">
+		<img src="${pageContext.request.contextPath}/image_bundle/writelogo.png" class="find-logo" style="margin-top:165px; height:37px;" >
+		<img src="${pageContext.request.contextPath}/image_bundle/whitelogo.png" class="find-logo" style="margin-top:30px;">
 	</a>
 </div>
 	<form:form action="findId.do" class="find_form" modelAttribute="memberVO" method="post">
