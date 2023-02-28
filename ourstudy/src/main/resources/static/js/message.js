@@ -92,7 +92,7 @@ $(function(){
 		//alert(id);
 		//선택한 id를 배열에 저장
 		member_list.push(id);
-		alert(member_list[0]);
+		//alert(member_list[0]);
 		//선택한 id를 화면에 표시
 		let choice_id = '<span class="member-span" data-id="'+id+'">';
 		choice_id += '<input type="hidden" name="members" value="'+mem_num+'">';
