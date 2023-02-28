@@ -18,6 +18,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
 import kr.spring.member.vo.MemberVO;
+import kr.spring.mypage.service.MypageService;
 import kr.spring.pay.service.PayService;
 import kr.spring.pay.vo.PayVO;
 import kr.spring.point.vo.PointVO;
@@ -34,6 +35,9 @@ public class PayController {
 
 	@Autowired
 	private TicketService ticketService;
+	
+	@Autowired
+	private MypageService myPageService;
 
 	@ModelAttribute
 	public PayVO initCommand() {
@@ -60,10 +64,13 @@ public class PayController {
 		if(user == null) {//로그인 되지 않은 경우
 			mapAjax.put("result", "logout");
 		}else{//로그인 된 경우 
-			int mypoint = payService.selectPoint(user.getMem_num());
+			Integer mypoint = myPageService.selectTotalPoint(user.getMem_num());
 
 			mapAjax.put("result", "success");
 			mapAjax.put("mypoint", mypoint);
+			if(mypoint == null) {
+				mapAjax.put("mypoint", 0);
+			}
 
 			logger.debug("<<포인트 정보>> : " + mypoint);
 
@@ -71,7 +78,24 @@ public class PayController {
 		return mapAjax;
 	}
 	
-
+	//결제 데이터 받아오기
+	@RequestMapping("/pay/payResult.do")
+	@ResponseBody
+	public Map<String, String> payResult(PayVO payVO,
+										 HttpSession session){
+		
+		Map<String, String>mapAjax = new HashMap<String, String>();
+		MemberVO user = (MemberVO)session.getAttribute("user");
+		
+		if(user == null) {
+			mapAjax.put("result", "logout");
+		}else {
+			payService.insertPay(payVO);
+			mapAjax.put("result", "success");
+		}
+		
+		return mapAjax;
+	}
 }
 
 

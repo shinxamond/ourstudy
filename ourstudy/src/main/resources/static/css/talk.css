@@ -1,0 +1,182 @@
+@charset "UTF-8";
+/*
+기본 폼---------*/
+#talk_inform {
+   
+    height: 20px;
+    width: 20px;
+    color:white;
+    text-align: center;
+    background-color: red;
+    border-radius: 15px;
+    display: inline-block;
+}
+form#talk_form{
+	width:605px;
+	margin:0 auto;
+	border:1px solid #000;
+	padding:10px 10px 10px 30px;
+}
+.member-span:after {display: inline-block; content: "\00d7"; font-size:14px;}
+.table-wrapper {
+  width: 520px;
+  height:300px;
+  overflow: auto;
+}
+table.striped-talk-table{
+	border:1px solid #FFF;
+	font-size:15px;
+	width: 100%;
+	border-collapse:collapse;
+	margin:7px0;
+  	
+}
+table.striped-talk-table td, table.striped-talk-table th{
+	padding: .7em .5em;
+	vertical-align:middle;
+}
+table.striped-talk-table th{
+	font-weight:bold;
+	text-align:center;
+	background:#E1E1E1;
+}
+table.striped-talk-table td{
+	border-bottom:1px solid rgba(0,0,0,.1);
+	text-align:center;
+}
+table.striped-talk-table tr:nth-child(odd){
+	background-color:rgb(250,250,247);
+}
+
+
+.table-wrapper-search {
+  margin-top:15px;
+  width: 520px;
+  height:150px;
+  overflow: auto;
+
+}
+table.striped-talk-search-table{
+	border:1px solid #FFF;
+	font-size:15px;
+	width: 100%;
+	border-collapse:collapse;
+	margin:7px0;
+  	
+}
+table.striped-talk-search-table td, table.striped-talk-search-table th{
+	padding: .7em .5em;
+	vertical-align:middle;
+}
+table.striped-talk-search-table th{
+	font-weight:bold;
+	text-align:center;
+	background:#E1E1E1;
+}
+table.striped-talk-search-table td{
+	border-bottom:1px solid rgba(0,0,0,.1);
+	text-align:center;
+}
+table.striped-talk-search-table tr:nth-child(odd){
+	background-color:rgb(250,250,247);
+}
+input[type="number"]{
+	width:350px;
+}
+
+/* 채팅하기
+---------------------------*/
+#chatting_message{
+	width:500px;
+	height:500px;
+	overflow-y:scroll;
+}
+.date-position{
+	text-align:center;
+}
+.date-position span{
+	display:inline-block;
+	width:300px;
+	height:20px;
+	border-radius:10px;
+	background-color:#f2efef;
+}
+.form-position{
+	width:fit-content;
+	margin:10px 0 10px 360px;
+}
+.form-position .item{
+	float:right;
+	background-color:yellow;
+	padding:5px;
+	min-height:50px;
+	border-radius:20px;
+	border-top-right-radius:0;
+}
+.to-position{
+	
+	max-width: 200px;
+	margin:10px 0 10px 0;
+}
+.to-position .item{
+	float:left;
+	margin-left:20px;
+	background-color:#ffffff;
+	padding:8px;
+	min-height:50px;
+	border-radius:20px;
+	border-top-left-radius:0;
+}
+.yname{
+	padding-left:10px;
+	padding-bottom:9px;
+}
+.rdate{
+	margin-right:70px;
+}
+.ldate{
+	margin-left:60px;
+}
+.to-position div.space-photo{
+	float:left;
+	width:15%;
+}
+.to-position div.space-message{
+	float:left;
+	width:85%;
+}
+.to-position div.space-clear{
+	clear:both;
+}
+.exit-message{
+	width:230px;
+	height:30px;
+	border-radius:10px;
+	background-color:#eee;
+	margin:10px auto;
+	text-align:center;
+	padding-top:8px;
+	clear:both;
+}
+
+form#detail_form{
+	width:640px;
+}
+
+#roomname{
+	font-size:18px;
+	font-weight:bold;
+}
+.main_modal-content{
+	width:530px;
+}
+#mcontent{
+	width:520px;
+}
+#mheader{
+	background-color:#9bbbd4;
+}
+#mbody{
+	background-color:#9bbbd4;
+	height:700px;
+}

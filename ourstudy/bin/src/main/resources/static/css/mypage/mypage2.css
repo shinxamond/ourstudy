@@ -1,0 +1,23 @@
+@charset "UTF-8";
+/* *{
+	text-decoration:none;
+	list-style-type : none; 
+	color : black;
+	margin : 0;
+	padding : 0;
+}
+========마이페이지 헤더========
+
+헤더 기본
+
+#mypage-header{
+	text-decoration:none;
+	list-style-type : none; 
+	color : black;
+	margin : 0;
+	padding : 0;
+	background-color : #f2f0f0;
+	opacity:0.8;
+	float :left;
+}
+ */

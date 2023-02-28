@@ -23,7 +23,7 @@
 	
 	console.log(Kakao.isInitialized()); //sdk초기화
 	
-	function kakaoLogin() {
+	function kakaoLogin() { 
 		Kakao.Auth.login({
 			scope:'profile_nickname,profile_image,account_email',
 			success:function(authObj){
@@ -231,7 +231,31 @@ function kakaoLogout() {
 					</ul>
 				</div>
 				</c:if>
-				<br>
+        		<c:if test="${!empty user && user.mem_auth == 9}">
+				<div class="side-bottom">
+       				<button class="btn btn-toggle  d-inline-flex  align-items-center rounded collapsed border-white" 
+        				data-bs-toggle="collapse" data-bs-target="#admin-collapse" aria-expanded="false">
+          				&nbsp;<i class="fas fa-light fa-id-card"></i></li>
+          				<span class="comm-span">관리페이지</span>
+        			</button>
+        			<div class="collapse" id="admin-collapse">
+         		 	<ul class="btn-toggle-nav fw-normal pb-1 small">
+           				<li><a href="${pageContext.request.contextPath}/admin/admin_list.do" class="link-dark d-inline-flex rounded">회원관리</a></li>
+            			<li><a href="${pageContext.request.contextPath}/admin/admin_seathistory.do" class="link-dark d-inline-flex rounded">이용기록(좌석)</a></li>
+            			<li><a href="${pageContext.request.contextPath}/admin/admin_lockerhistory.do" class="link-dark d-inline-flex rounded">이용기록(사물함)</a></li>
+            			<li><a href="${pageContext.request.contextPath}/seat/insertForm.do" class="link-dark d-inline-flex rounded">좌석관리</a></li>
+            			<li><a href="${pageContext.request.contextPath}/locker/editForm.do" class="link-dark d-inline-flex rounded">사물함관리</a></li>
+            			<li><a href="${pageContext.request.contextPath}/ticket/admin_ticketList.do" class="link-dark d-inline-flex rounded">이용권관리</a></li>
+            			<li><a href="${pageContext.request.contextPath}/admin/admin_itemhistory.do" class="link-dark d-inline-flex rounded">물품대여기록(히스토리)</a></li>
+            			<li><a href="${pageContext.request.contextPath}/admin/admin_unreturnlist.do" class="link-dark d-inline-flex rounded">물품대여기록(미반납자)</a></li>
+            			<li><a href="${pageContext.request.contextPath}/admin/admin_saleslist.do" class="link-dark d-inline-flex rounded">판매기록</a></li>
+            			<li><a href="#" class="link-dark d-inline-flex rounded">채팅기록(수신)</a></li> <!-- ${pageContext.request.contextPath}/admin/admin_receivehistory.do -->
+            			<li><a href="#" class="link-dark d-inline-flex rounded">채팅기록(발신)</a></li>
+          			</ul>
+        			</div>
+        		</div>       				
+				</c:if>
+				<br>				
 				<c:if test="${!empty user}">
 						<button class="btn text-white rounded logout-btn" style="background-color:#037332;"
 						onclick="location.href='${pageContext.request.contextPath}/member/logout.do'">로그아웃</button>

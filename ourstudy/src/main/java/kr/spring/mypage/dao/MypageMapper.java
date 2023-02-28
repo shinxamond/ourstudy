@@ -71,7 +71,7 @@ public interface MypageMapper {
 	
 	//합산 포인트 불러오기
 	@Select("SELECT sum(point_point) FROM point WHERE mem_num = #{mem_num}")
-	public int selectTotalPoint(int mem_num);
+	public Integer selectTotalPoint(int mem_num);
 	
 	
 	

@@ -9,9 +9,10 @@ import org.apache.ibatis.annotations.Select;
 import kr.spring.admin.vo.AdminItemHistoryVO;
 import kr.spring.admin.vo.AdminLockerHistoryVO;
 import kr.spring.admin.vo.AdminMemberVO;
+import kr.spring.admin.vo.AdminSalesVO;
 import kr.spring.admin.vo.AdminSeatHistoryVO;
 
-public interface AdminService {
+public interface AdminService { 
 	//현재고객현황판
 	public int countUsingNum();
 	public int countTermNum();
@@ -36,4 +37,13 @@ public interface AdminService {
 	//미반납자 목록
 	public List<AdminItemHistoryVO> selectUnreturnList(Map<String,Object> map);
 	public int selectUnreturnRowCount(Map<String,Object> map);	
+	
+	//현재고객현황판
+	public int ticketSalesSum();
+	public int lockerSalesSum();
+
+	//판매기록목록
+	public List<AdminSalesVO> selectSalesList(Map<String,Object> map);
+	public int selectSalesRowCount(Map<String,Object> map);	
+	
 }

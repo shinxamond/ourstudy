@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="UTF-8" ?>  
+<!DOCTYPE mapper   
+    PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"   
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">  
+<mapper namespace="kr.spring.item.dao.ItemMapper">  
+	<select id="selectList" parameterType="map" resultType="itemVO">
+		SELECT * 
+		FROM (SELECT a.*,rownum rnum 
+			  FROM (SELECT * 
+			  		FROM item 
+			  		WHERE item_num IN(SELECT max(item_num )
+			  						  FROM item
+			  						  WHERE item_title IN(SELECT DISTINCT item_title 
+			  						  					  FROM item) 
+			  						  GROUP BY item_index)  
+			  		ORDER BY item_num DESC)a) 
+		<![CDATA[
+		WHERE rnum >= #{start} and rnum <= #{end}
+		]]>
+	</select>
+	
+	<select id="rentalItemList" parameterType="map" resultType="itemVO">
+		SELECT * 
+		FROM (SELECT a.*,rownum rnum 
+			  FROM (SELECT * 
+			  		FROM item i JOIN item_detail d
+			  		USING(item_num)
+			  		WHERE i.item_r_status>=#{item_r_status} AND d.mem_num=#{mem_num} AND d.item_end IS NULL
+			  		ORDER BY item_num DESC)a) 
+		<![CDATA[
+		WHERE rnum >= #{start} and rnum <= #{end}
+		]]>
+		
+	</select>
+	
+	<select id="selectAdminCount" parameterType="map" resultType="integer">
+		SELECT
+			COUNT(*)
+		FROM item
+		<where>
+			<if test="keyword != null and keyword != ''">
+				<if test="keyfield == 1">
+					item_title LIKE '%' || #{keyword} || '%'
+				</if>
+				<if test="keyfield == 2">
+					item_index LIKE '%' || #{keyword} || '%'
+				</if>
+				<if test="keyfield == 3">
+					item_p_status LIKE '%' || #{keyword} || '%'
+				</if>
+				<if test="keyfield == 4">
+					item_r_status LIKE '%' || #{keyword} || '%'
+				</if>
+			</if>
+		</where>
+	</select>  	
+	
+	<select id="selectAdminList" parameterType="map" resultType="itemVO">
+	SELECT
+			*
+		FROM (SELECT
+				a.*,
+				rownum rnum
+			  FROM (SELECT
+			  			*
+			  		FROM item
+			  		<where>
+						<if test="keyword != null and keyword != ''">
+							<if test="keyfield == 1">
+								item_title LIKE '%' || #{keyword} || '%'
+							</if>
+							<if test="keyfield == 2">
+								item_index LIKE '%' || #{keyword} || '%'
+							</if>
+							<if test="keyfield == 3">
+								item_p_status LIKE '%' || #{keyword} || '%'
+							</if>
+							<if test="keyfield == 4">
+								item_r_status LIKE '%' || #{keyword} || '%'
+							</if>
+						</if>
+					</where>
+			  		ORDER BY item_num DESC)a)
+		<![CDATA[
+		WHERE rnum >= #{start} and rnum <= #{end}
+		]]>
+	</select>
+
+	<update id="updateItem" parameterType="itemVO">
+		UPDATE item SET
+			<if test="item_imgsrc != ''">
+			 item_ufile=#{item_ufile},
+			 item_imgsrc=#{item_imgsrc},
+			 </if>
+			item_index=#{item_index}, item_title=#{item_title}, 
+			item_p_status=#{item_p_status}, item_time=#{item_time}
+		WHERE item_num=#{item_num} 
+	</update>
+</mapper>
+
+
+
+
+
+
+

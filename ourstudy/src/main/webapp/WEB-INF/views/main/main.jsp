@@ -1,8 +1,12 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!-- 메인 시작 -->
 <script type="text/javascript" src="${pageContext.request.contextPath}/js/main/clock.js"></script>
 <script type="text/javascript" src="${pageContext.request.contextPath}/js/main/quotes.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.11.0/umd/popper.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/js/bootstrap.min.js"></script>
+<link rel="stylesheet" href="${pageContext.request.contextPath}/css/talk.css">
 <div>
 	<div class="digital-clock">00:00:00</div>
 </div>
@@ -21,32 +25,43 @@
 <script type="text/javascript">
 $(function(){
 	if(${check==0}){
-		$('#talkCheck').
+		$('#talkCheck').hide();
+		$('#roomc').text('채팅방 생성 완료(↑ 클릭)');
+	}
+	if(${check==1}){
+		$('#talkCheck').hide();
+		$('#roomc').text('채팅방이 있습니다(↑ 클릭)');
 	}
 	
 });
 </script>
-<form action="talkRoomWrite.do" method="post" id="talk_form">
+<form action="/talk/maintalkRoomWrite.do" method="post" id="check_talk_form">
 	<input type="hidden" name="members" value="${user.mem_num}">
-	<input type="hidden" name="members" value="461">
-	<input type="hidden" name="talkroom_name" id="talkroom_name" value="${user.mem_id}, admin">
-	<input type="submit" value="채팅방 확인" id="talkCheck">
+	<input type="hidden" name="members" value="527">
+	<input type="hidden" name="talkroom_name" id="talkroom_name" value="${user.mem_id}, admin9">
+	<input type="submit" value="채팅방 확인" id="talkCheck" style="position: fixed; right: 40px; bottom: 50px;">
 </form>
-<div style="position: fixed; right: 40px; bottom: 50px;">
-<img src="${pageContext.request.contextPath}/images/chat.jfif" width="50" height="50" class="my-photo">
-</div>
-
+<c:if test="${!empty check}">
+<button type="button" class="btn btn-primary" data-bs-toggle="modal" id="${room_num}" data-bs-target="#modal${room_num}" style="position: fixed; right: 40px; bottom: 50px; background-color:white; border:none;"><img src="${pageContext.request.contextPath}/images/chat.jfif" width="50" height="50" class="my-photo">
+</button>
+<c:forEach var="talk_count" items="${roomList}">
+<c:if test="${talk_count.room_cnt > 0}">
+<span id="talk_inform" style="position: fixed; right: 47px; bottom: 87px;">${talk_count.room_cnt}</span>
+</c:if>
+</c:forEach>
+<span id="roomc" style="position: fixed; right: 40px; bottom: 30px;"></span>
+</c:if>
 <script type="text/javascript">
 		//중복 제거 
 		var isSubmitted = false;  
-		$(document).on('click','#10${talk.talkroom_num}',function(){//목록 클릭
-			
+		$(document).on('click','#${room_num}',function(){//목록 클릭
+			//alert('aa');
 
 			function alarm_connect(){
 				//alert('소켓연결');
 				message_socket = new WebSocket("ws://localhost:8001/message-ws.do");
 				message_socket.onopen = function(ent){//연결
-					if(${talk.talkroom_num}){
+					if(${room_num}){
 						message_socket.send("msg:");
 					}
 					console.log("채팅페이지 접속");
@@ -54,7 +69,7 @@ $(function(){
 				//서버로부터 메시지를 받으면 호출되는 함수 지정 
 				message_socket.onmessage=function(evt){
 					let data = evt.data;
-					if(${talk.talkroom_num} && data.substring(0,4) == 'msg:'){
+					if(${room_num} && data.substring(0,4) == 'msg:'){
 						selectMsg${talk.talkroom_num}();
 					}
 				};
@@ -65,16 +80,13 @@ $(function(){
 			}
 			alarm_connect();
 			
-			$(document).on('click','.close',function(){
-				message_socket.close();
-			}); 
 			
 			
-			function selectMsg${talk.talkroom_num}(){//메시지 불러오기
+			function selectMsg(){//메시지 불러오기
 				$.ajax({
 					url:'../talk/talkDetailAjax.do',
 					type:'post',
-					data:{talkroom_num:${talk.talkroom_num}},
+					data:{talkroom_num:${room_num}},
 					dataType:'json',
 					success:function(param){
 						if(param.result == 'logout'){	
@@ -128,9 +140,9 @@ $(function(){
 								}
 								
 								//문서 객체에 추가
-								$('#chatting_message${talk.talkroom_num}').append(output);
+								$('#chatting_message').append(output);
 								//스크롤을 하단에 위치시킴
-								$('#chatting_message${talk.talkroom_num}').scrollTop($('#chatting_message${talk.talkroom_num}')[0].scrollHeight);
+								$('#chatting_message').scrollTop($('#chatting_message')[0].scrollHeight);
 								
 							});
 												
@@ -152,14 +164,14 @@ $(function(){
 			$.ajax({
 				url:'../talk/talkDetailA.do',
 				type:'post',
-				data:{talkroom_num:data},
+				data:{talkroom_num:${room_num}},
 				dataType:'json',
 				success:function(param){
 					if(param.result == 'logout'){
 						alert('로그인 후 사용하세요!');
 						//message_socket.close();
 					}else if(param.result == 'success'){
-						$('#roomname${talk.talkroom_num}').text('');
+						$('#roomname').text('');
 						let rname = '';
 						var roomnum = '';
 						$(param.talkRoomVO).each(function(index,item){
@@ -171,8 +183,8 @@ $(function(){
 						//alert(rname);
 						$('#talkroom_num').val(roomnum);
 						
-						$('#roomname${talk.talkroom_num}').append(rname);
-						$('#name${talk.talkroom_num}').text('');
+						$('#roomname').append(rname);
+						$('#name').text('');
 						let output2 = '';
 						var count = 0;
 						$(param.detailList).each(function(index,item){
@@ -181,8 +193,8 @@ $(function(){
 							  count++;
 							});
 							output2 += ' '+count + '명';
-						$('#name${talk.talkroom_num}').append(output2);
-						$('#myModal').show();
+						$('#name').append(output2);
+						
 						
 						
 											
@@ -198,7 +210,7 @@ $(function(){
 			});
 			
 			//============채팅 등록================//
-			$('#detail_form${talk.talkroom_num}${user.mem_num}').submit(function(event){
+			$('#detail_form').submit(function(event){
 				//중복제거
 				 function oneTimeSubmit(){  
 				    if(isSubmitted == false){
@@ -210,14 +222,14 @@ $(function(){
 				
 				//기본 이벤트 제거
 				event.preventDefault();
-				if($('#message${talk.talkroom_num}').val().trim()==''){
+				if($('#message').val().trim()==''){
 					alert('메시지를 입력하세요');
-					$('#message${talk.talkroom_num}').val('').focus();
+					$('#message').val('').focus();
 					return false;
 				}
 				
 				//글자수 체크
-				if($('#message${talk.talkroom_num}').val().length>1333){
+				if($('#message').val().length>1333){
 					alert('메시지는 1333자까지만 입력 가능합니다.');
 					return false;
 				}
@@ -236,7 +248,7 @@ $(function(){
 							message_socket.close();
 						}else if(param.result == 'success'){
 							//폼 초기화
-							$('#message${talk.talkroom_num}').val('').focus();
+							$('#message').val('').focus();
 							//메시지가 저장되었다고 소켓에 신호를 보냄
 							message_socket.send('msg:');
 							//---------임시 처리 시작---------//
@@ -254,40 +266,41 @@ $(function(){
 				});
 			});
 			
-			//=========채팅방 나가기==========//
-			$('#delete_talkroom${user.mem_num}').click(function(){
-				let choice = confirm('채팅방을 나가길 원하시나요?');
-				if(!choice){
-					return;
-				}
-				
-				$.ajax({
-					url:'../talk/deleteTalkRoomMember.do',
-					type:'post',
-					data:{talkroom_num:$('#talkroom_num').val(),mem_num:$('#mem_num').val()},
-					dataType:'json',
-					success:function(param){
-						if(param.result == 'logout'){
-							alert('로그인해야 작성할 수 있습니다');
-							message_socket.close();
-						}else if(param.result == 'success'){
-							alert('정상적으로 채팅방 나갔습니다.');
-							location.href='../talk/talkList.do';
-						}else{
-							alert('채팅방 나가기 오류 발생');
-							message_socket.close();
-						}
-					},
-					error:function(){
-						alert('네트워크 오류 발생');
-						message_socket.close();
-					}
-				});
-				
-			});
+			
 			
 			
 		});
 		isSubmitted = false;
-		</script>
+	</script>
+		<!-- Modal -->
+<div class="modal fade" id="modal${room_num}" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+	        <div>
+	        	 <b><span id="roomname"></span></b><br>
+				채팅 멤버 : <span id="name"></span>
+	        </div>
+			<div class="align-right">
+			</div>
+			 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+ 
+        <!-- Modal body -->
+        <div class="modal-body">
+		<div id="chatting_message" style="width:500px; height:500px; overflow-y:scroll;"></div><!-- 다른 채팅창이 안보여서 나눔 -->
+		<form method="post" id="detail_form">
+			<input type="hidden" name="talkroom_num" id="talkroom_num" value="${room_num}">
+			<input type="hidden" name="mem_num" id="mem_num" value="${user.mem_num}">
+			
+			<textarea rows="5" cols="62" name="message" id="message"></textarea>
+			<input type="submit" value="전송">
+			
+		</form>
+        </div>
+    </div>
+  </div>
+</div>
+
+
 <!-- 메인 끝 -->

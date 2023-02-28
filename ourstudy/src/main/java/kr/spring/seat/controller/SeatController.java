@@ -160,7 +160,7 @@ public class SeatController {
       model.addAttribute("list", list);
       model.addAttribute("mem_status", mem_status);
       
-      return "locker/selectForm";
+      return "locker/sectionForm";
    }
 
 
@@ -251,7 +251,6 @@ public class SeatController {
    public String Out(@RequestParam int seat_num, HttpServletRequest request) {
       HttpSession session = request.getSession();
       int mem_num = (Integer)session.getAttribute("user_num");
-      String mem_name = memberService.getMem_name(mem_num);   
       int mem_status = seatService.getMem_status(mem_num);
       
       SeatVO seatVO = initCommand();

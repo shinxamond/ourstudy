@@ -31,7 +31,7 @@ public interface MypageService {
 	
 	public List<PointVO> selectPointListByMemNum(Map<String, Object> map);
 	
-	public int selectTotalPoint(int mem_num);
+	public Integer selectTotalPoint(int mem_num);
 	
 	/*==================================
     				공부시간

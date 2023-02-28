@@ -13,7 +13,8 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Leckerli+One&display=swap" rel="stylesheet">
-<div class="side-bar">
+<!--
+<div class="side-bar"> 
 	<ul>
 		<li>
 			<input type="button" class="menu-btn"
@@ -58,12 +59,12 @@
 		<li>
 			<input type="button" class="menu-btn"
 			 value="판매기록" 
-			 onclick="location.href='#'">
+			 onclick="location.href='${pageContext.request.contextPath}/admin/admin_saleslist.do'">
 		</li>
 		<li>
 			<input type="button" class="menu-btn"
 			 value="채팅기록(수신)" 
-			 onclick="location.href='#'">
+			 onclick="location.href='${pageContext.request.contextPath}/admin/admin_receivehistory.do'">
 		</li>
 		<li>
 			<input type="button" class="menu-btn"
@@ -72,4 +73,5 @@
 		</li>								
 	</ul>
 </div>
+-->
 <!-- Admin 메뉴 끝 -->

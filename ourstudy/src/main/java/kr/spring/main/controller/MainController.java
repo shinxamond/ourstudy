@@ -19,7 +19,7 @@ import kr.spring.member.vo.MemberVO;
 public class MainController {
 	
 	@Autowired
-	private AdminService adminMemberService;
+	private AdminService adminMemberService; 
 	
 	//자바빈(VO) 초기화
 	@ModelAttribute
@@ -38,6 +38,7 @@ public class MainController {
 		return "main";//타일스 설정값
 	}
 	
+	/*
 	@RequestMapping("/main/admin.do")
 	public String adminMain(Model model) {
 		Map<String,Object> map = 
@@ -51,7 +52,7 @@ public class MainController {
 		
 		return "admin";//타일스 설정값
 	}
-	
+	*/
 }
 
 

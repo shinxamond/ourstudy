@@ -57,7 +57,7 @@ public class MypageServiceImpl implements MypageService{
 	}
 
 	@Override
-	public int selectTotalPoint(int mem_num) {
+	public Integer selectTotalPoint(int mem_num) {
 		return mypageMapper.selectTotalPoint(mem_num);
 	}
 
