@@ -23,6 +23,20 @@
 </div>
 <!-- 메인 끝 -->
 <script type="text/javascript">
+var reload;
+if(${user.mem_auth == 1}){
+	reload = setInterval(function(){ location.reload(); }, 5000);
+	function start(){
+		//alert('시작');
+		 reload =   setInterval(function(){ location.reload(); }, 5000);
+	};
+	function end(){
+		//alert('끝');
+	clearInterval(reload);
+};
+}
+
+
 $(function(){
 	if(${check==0}){
 		$('#talkCheck').hide();
@@ -32,31 +46,32 @@ $(function(){
 		$('#talkCheck').hide();
 		$('#roomc').text('채팅방이 있습니다(↑ 클릭)');
 	}
-	
 });
 </script>
+<c:if test="${!empty user && user.mem_auth==1}">
 <form action="/talk/maintalkRoomWrite.do" method="post" id="check_talk_form">
 	<input type="hidden" name="members" value="${user.mem_num}">
 	<input type="hidden" name="members" value="527">
 	<input type="hidden" name="talkroom_name" id="talkroom_name" value="${user.mem_id}, admin9">
 	<input type="submit" value="채팅방 확인" id="talkCheck" style="position: fixed; right: 40px; bottom: 50px;">
 </form>
-<c:if test="${!empty check}">
-<button type="button" class="btn btn-primary" data-bs-toggle="modal" id="${room_num}" data-bs-target="#modal${room_num}" style="position: fixed; right: 40px; bottom: 50px; background-color:white; border:none;"><img src="${pageContext.request.contextPath}/images/chat.jfif" width="50" height="50" class="my-photo">
-</button>
-<c:forEach var="talk_count" items="${roomList}">
-<c:if test="${talk_count.room_cnt > 0}">
-<span id="talk_inform" style="position: fixed; right: 47px; bottom: 87px;">${talk_count.room_cnt}</span>
 </c:if>
-</c:forEach>
-<span id="roomc" style="position: fixed; right: 40px; bottom: 30px;"></span>
+<c:if test="${!empty check}">
+	<button type="button" class="btn btn-primary" data-bs-toggle="modal" id="${room_num}" data-bs-target="#modal${room_num}" style="position: fixed; right: 40px; bottom: 50px; background-color:white; border:none;"><img src="${pageContext.request.contextPath}/images/chat.jfif" width="50" height="50" class="my-photo">
+	</button>
+	<c:forEach var="talk_count" items="${roomList}">
+		<c:if test="${talk_count.room_cnt > 0 }">
+		<span id="talk_inform" style="position: fixed; right: 47px; bottom: 87px;">${talk_count.room_cnt}</span>
+		</c:if>
+	</c:forEach>
+	<span id="roomc" style="position: fixed; right: 40px; bottom: 30px;"></span>
 </c:if>
 <script type="text/javascript">
 		//중복 제거 
 		var isSubmitted = false;  
 		$(document).on('click','#${room_num}',function(){//목록 클릭
 			//alert('aa');
-
+			end();
 			function alarm_connect(){
 				//alert('소켓연결');
 				message_socket = new WebSocket("ws://localhost:8001/message-ws.do");
@@ -275,19 +290,19 @@ $(function(){
 		<!-- Modal -->
 <div class="modal fade" id="modal${room_num}" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
   <div class="modal-dialog">
-    <div class="modal-content">
-      <div class="modal-header">
+    <div class="modal-content" id="mcontent">
+      <div class="modal-header" id="mheader">
 	        <div>
 	        	 <b><span id="roomname"></span></b><br>
 				채팅 멤버 : <span id="name"></span>
 	        </div>
 			<div class="align-right">
 			</div>
-			 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+			 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close" onclick="start();"></button>
         </div>
  
         <!-- Modal body -->
-        <div class="modal-body">
+        <div class="modal-body" id="mbody">
 		<div id="chatting_message" style="width:500px; height:500px; overflow-y:scroll;"></div><!-- 다른 채팅창이 안보여서 나눔 -->
 		<form method="post" id="detail_form">
 			<input type="hidden" name="talkroom_num" id="talkroom_num" value="${room_num}">
