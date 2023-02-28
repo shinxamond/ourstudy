@@ -1,9 +1,11 @@
 package kr.spring.talk.controller;
 
 import java.util.HashMap;
+import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
 
+import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
 import org.slf4j.Logger;
@@ -60,9 +62,24 @@ public class TalkController {
 
 	// 폼에서 전송된 데이터 처리
 	@PostMapping("/talk/talkRoomWrite.do")
-	public String submitTalkRoom(TalkRoomVO vo) {
+	public String submitTalkRoom(TalkRoomVO vo, Model model, HttpServletRequest request) {
 		logger.debug("<<채팅방 생성>> : " + vo);
-
+		
+		if(vo.getMembers().length==2) {
+			//getMembers()[배열]값을 가지고온다
+			int[] tmem_num = new int[2];
+			for (int i = 0; i < vo.getMembers().length; i++) {
+				tmem_num[i] = vo.getMembers()[i];
+			}
+			//중복 체크
+			int count = talkService.talkRoomCheck(tmem_num[0],tmem_num[1]);
+			
+			if(count != 0 ) {
+				model.addAttribute("message", "1:1 채팅은 중복 불가능");
+				model.addAttribute("url", request.getContextPath()+"/talk/talkRoomWrite.do");
+				return "common/resultView";
+			}
+		}
 		talkService.insertTalkRoom(vo);
 
 		return "redirect:/talk/talkList.do";
@@ -75,10 +92,17 @@ public class TalkController {
 		
 		
 		MemberVO user = (MemberVO) session.getAttribute("user");
-		int count = talkService.selectTalkRoomCheck(vo.getTalkroom_name());
+		
 		int room_num;
-		//배열에서 인덱스
-		logger.debug("<<채팅방 멤버 값>> : " + vo.getMembers());
+		
+		//getMembers()[배열]값을 가지고온다
+		int[] tmem_num = new int[2];
+		for (int i = 0; i < vo.getMembers().length; i++) {
+			tmem_num[i] = vo.getMembers()[i];
+		}
+		//중복 체크
+		int count = talkService.talkRoomCheck(tmem_num[0],tmem_num[1]);
+		
 		Map<String, Object> map = new HashMap<String, Object>();
 		map.put("keyword", user.getMem_id() +", admin");
 		map.put("mem_num", user.getMem_num());

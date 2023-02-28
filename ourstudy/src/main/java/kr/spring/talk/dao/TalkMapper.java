@@ -25,7 +25,7 @@ public interface TalkMapper {
 	@Select("SELECT * FROM talkroom WHERE talkroom_num=#{talkroom_num}")
 	public TalkRoomVO selectTalkRoom(Integer talkroom_num);
 	
-	//채팅방 체크(있는지 없는지 확인)
+	//채팅방 체크(있는지 없는지 확인)1
 	@Select("SELECT count(*) FROM talkroom WHERE talkroom_name=#{talkroom_name}")
 	public int selectTalkRoomCheck(String talkroom_name);
 	//채팅방 번호 구하기
@@ -34,9 +34,9 @@ public interface TalkMapper {
 	//채팅방 하나의 정보?
 	public List<TalkRoomVO> selectTalkRoomOne(Integer talkroom_num);
 	
-	//채팅방 중복 검사
-	@Select("SELECT count(*) FROM talk_member WHERE mem_num=#{mem_num1} AND talkroom_num IN (SELECT talkroom_num FROM talk_member WHERE mem_num=#{mem_num2});")
-	public void talkRoomCheck(@Param(value="mem_num1") Integer mem_num1, 
+	//채팅방 중복 검사2
+	@Select("SELECT count(*) FROM talk_member WHERE mem_num=#{mem_num1} AND talkroom_num IN (SELECT talkroom_num FROM talk_member WHERE mem_num=#{mem_num2})")
+	public int talkRoomCheck(@Param(value="mem_num1") Integer mem_num1, 
 		     @Param(value="mem_num2") Integer mem_num2);
 	
 	//채팅방 번호 생성

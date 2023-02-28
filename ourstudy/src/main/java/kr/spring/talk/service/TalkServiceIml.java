@@ -112,8 +112,8 @@ public class TalkServiceIml implements TalkService{
 	}
 
 	@Override
-	public void talkRoomCheck(Integer mem_num1, Integer mem_num2) {
-		talkMapper.talkRoomCheck(mem_num1, mem_num2);
+	public int talkRoomCheck(Integer mem_num1, Integer mem_num2) {
+		return talkMapper.talkRoomCheck(mem_num1, mem_num2);
 	}
 
 	

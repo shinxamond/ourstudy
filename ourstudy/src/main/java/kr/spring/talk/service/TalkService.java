@@ -36,6 +36,6 @@ public interface TalkService {
 	//채팅방 하나의 정보?
 	public List<TalkRoomVO> selectTalkRoomOne(Integer talkroom_num);
 	//채팅방 중복 검사
-	public void talkRoomCheck(@Param(value="mem_num1") Integer mem_num1, 
+	public int talkRoomCheck(@Param(value="mem_num1") Integer mem_num1, 
 			@Param(value="mem_num2") Integer mem_num2);
 }
