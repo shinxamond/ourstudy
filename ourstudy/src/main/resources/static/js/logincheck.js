@@ -31,7 +31,8 @@ let mem_pw = document.getElementById('mem_pw');
       		$('#login_Pw').text("8~16자의 영문 대소문자, 숫자로 입력하세요.");
 			$('#mem_pw').val('').focus();
 			return false;
-		}	
+		}
+	
 	});
 
 });
