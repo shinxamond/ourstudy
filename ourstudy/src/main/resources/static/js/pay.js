@@ -80,8 +80,6 @@ $(function(){
 				var msg = '결제가 완료되었습니다.';
 				alert(msg);
 				
-				var plan = parseInt($('input[name="pay_plan"]').val());
-				
 				$.ajax({
 					url:'payResult.do',
 					type:'post',
@@ -128,15 +126,28 @@ $(function(){
 				var msg = '결제가 완료되었습니다.';
 				alert(msg);
 				
-				/*$.ajax({
-				url:'payResult.do',
-				type:'post',
-				data:{pay_price:$(this).attr('data-pricenum'),
-					  pay_content:$(this).attr('data-ticketname')}
+				$.ajax({
+					url:'payResult.do',
+					type:'post',
+					data:{pay_price:$('#final_price').attr('data-pricenum'),
+						  pay_content:$('#ticket_name').attr('data-ticketname'),
+						  ticket_num:$('#ticket_num').attr('data-ticketnum'),
+						  pay_plan:2},
+					dataType:'json',
+					success:function(param){
+						if(param.result == 'logout'){
+							alert('로그인 후 사용하세요');
+						}else if(param.result == 'success'){
+							alert('결제 정보 저장됨');
+						}else{
+							alert('오류 발생');
+						}
+					},
+					error:function(){
+						alert('네트워크 오류 발생');
+					}
+				});
 				
-				});*/
-				
-				//location.href = "payList.do";
 			} else {
 				var msg = '결제에 실패하였습니다.';
 				msg += '에러내용 : ' + rsp.error_msg;
