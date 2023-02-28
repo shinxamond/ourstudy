@@ -286,13 +286,13 @@ $(function(){
 	//}
 	//------------임시 처리 끝-------------//
 	
-	//=========메시지 입력 후 enter 이벤트 처리========//
+	/*//=========메시지 입력 후 enter 이벤트 처리========//
 	$('#message').keydown(function(event){
 		if(event.keyCode == 13 && !event.shiftKey){//엔터를 눌렀을 때
 			$('#detail_form').trigger('submit');
 		}
 	});
-	
+	*/
 	/*//============채팅 등록================//
 	$('#detail_form').submit(function(event){
 		//기본 이벤트 제거

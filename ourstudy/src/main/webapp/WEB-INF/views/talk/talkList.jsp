@@ -9,11 +9,19 @@
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/js/bootstrap.min.js"></script>
 <link rel="stylesheet" href="${pageContext.request.contextPath}/css/talk.css">
 <script type="text/javascript">
-$(function(){
-	
-	
-});
-</script>
+
+			var reload;
+			reload = setInterval(function(){ location.reload(); }, 5000);
+			function start(){
+				//alert('시작');
+				 reload =   setInterval(function(){ location.reload(); }, 5000);
+			};
+			function end(){
+				//alert('끝');
+				 clearInterval(reload);
+			};
+
+	</script>
 <div class="page-main" id="pageList">
 	<h2>채팅목록</h2>
 	<form action="talkList.do" id="search_form" method="get">
@@ -30,6 +38,11 @@ $(function(){
 	<div class="align-right">
 		<input type="button" value="채팅방 생성" onclick="location.href='talkRoomWrite.do'">
 	</div>
+	<div class="align-right">
+		<!-- <input type="button" value="새로고침 시작" onclick="start();" id="start" style="background-color:#B4FBFF">
+		<input type="button" value="새로고침 종료" onclick="end();" id="end"> -->
+	</div>
+	
 	<c:if test="${empty list}">
 	<div class="result-display">표시할 채팅방이 없습니다.</div>
 	</c:if>
@@ -62,7 +75,7 @@ $(function(){
 		//중복 제거 
 		var isSubmitted = false;  
 		$(document).on('click','#10${talk.talkroom_num}',function(){//목록 클릭
-			
+			end();
 
 			function alarm_connect(){
 				//alert('소켓연결');
@@ -103,7 +116,7 @@ $(function(){
 							alert('로그인 후 사용하세요!');
 							message_socket.close();
 						}else if(param.result == 'success'){
-							$('#chatting_message').empty();
+							$('#chatting_message${talk.talkroom_num}').empty();
 							
 							//채팅 날짜 표시
 							let chat_date = '';
@@ -220,7 +233,7 @@ $(function(){
 			});
 			
 			//============채팅 등록================//
-			$('#detail_form${talk.talkroom_num}${user.mem_num}').submit(function(event){
+			$('#detail_form${talk.talkroom_num}').submit(function(event){
 				//중복제거
 				 function oneTimeSubmit(){  
 				    if(isSubmitted == false){
@@ -310,16 +323,24 @@ $(function(){
 			
 			
 		});
+		
+		//=========메시지 입력 후 enter 이벤트 처리========//
+		$('#message${talk.talkroom_num}').keydown(function(event){
+			if(event.keyCode == 13 && !event.shiftKey){//엔터를 눌렀을 때
+				$('#detail_form${talk.talkroom_num}').trigger('submit');
+			}
+		});
+		
 		isSubmitted = false;
 		</script>
 			<!-- ------------------------------------------ 모달 --------------------------------------------------- -->
 	
 	<div class="modal fade" id="${talk.talkroom_num}" data-backdrop="static" data-keyboard="false">
     <div class="modal-dialog modal-xl modal-dialog-centered">
-      <div class="modal-content">
+      <div class="modal-content" id="mcontent">
 
         <!-- Modal Header -->
-        <div class="modal-header">
+        <div class="modal-header" id="mheader">
 	        <div>
 	        	 <b><span id="roomname${talk.talkroom_num}"></span></b><br>
 				채팅 멤버 : <span id="name${talk.talkroom_num}"></span>
@@ -327,13 +348,13 @@ $(function(){
 			<div class="align-right">
 				<input type="button" value="채팅방 나가기" id="delete_talkroom${user.mem_num}">
 			</div>
-			 <button type="button" class="close" data-dismiss="modal">&times;</button>
+			 <button type="button" class="close" data-dismiss="modal" onclick="start();">&times;</button>
         </div>
  
         <!-- Modal body -->
-        <div class="modal-body">
+        <div class="modal-body" id="mbody">
 		<div id="chatting_message${talk.talkroom_num}" style="width:500px; height:500px; overflow-y:scroll;"></div><!-- 다른 채팅창이 안보여서 나눔 -->
-		<form method="post" id="detail_form${talk.talkroom_num}${user.mem_num}">
+		<form method="post" id="detail_form${talk.talkroom_num}">
 			<input type="hidden" name="talkroom_num" id="talkroom_num" value="${talk.talkroom_num}">
 			<input type="hidden" name="mem_num" id="mem_num" value="${user.mem_num}">
 			
