@@ -70,6 +70,7 @@ $(function(){
 	//취소시
 	$('#photo_reset').click(function(){
 		$('.my-photo').attr('src',photo_path);
+		$('.profile-photo').attr('src',photo_path);
 		$('#upload').val('');
 	});
 });
