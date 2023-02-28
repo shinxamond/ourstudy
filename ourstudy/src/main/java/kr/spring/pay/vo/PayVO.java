@@ -2,6 +2,7 @@ package kr.spring.pay.vo;
 
 import java.sql.Date;
 
+import kr.spring.point.vo.PointVO;
 import kr.spring.ticket.vo.TicketVO;
 
 public class PayVO {
@@ -14,6 +15,8 @@ public class PayVO {
 	private int mem_num;
 	private int ticket_num;
 	private int point_num;
+	
+	private PointVO pointVO;
 	
 	//이용권 정보 받아오기
 	private TicketVO ticketVO;
@@ -95,5 +98,13 @@ public class PayVO {
 		return "PayVO [pay_num=" + pay_num + ", pay_price=" + pay_price + ", pay_plan=" + pay_plan + ", pay_content="
 				+ pay_content + ", pay_date=" + pay_date + ", mem_num=" + mem_num + ", ticket_num=" + ticket_num
 				+ ", point_num=" + point_num + ", ticketVO=" + ticketVO + "]";
+	}
+
+	public PointVO getPointVO() {
+		return pointVO;
+	}
+
+	public void setPointVO(PointVO pointVO) {
+		this.pointVO = pointVO;
 	}
 }

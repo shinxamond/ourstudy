@@ -3,8 +3,16 @@
     PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"   
     "http://mybatis.org/dtd/mybatis-3-mapper.dtd">  
 <mapper namespace="kr.spring.pay.dao.PayMapper">  
+<!-- 	<resultMap type="payVO" id="payMap">
+		property로 위치를 지정해주지 않으면 talkRoomVO로 가버리게 됨
+		<result property="pointVO.point_point" column="point_point"/>
+	</resultMap>	
 	
-	
+	<insert id="insertPay" parameterType="payVO">
+		INSERT INTO 
+		   pay (pay_num,pay_price,pay_plan, pay_content,pay_date,mem_num,ticket_num)
+		VALUES (pay_seq.nextval,#{pay_price},#{pay_plan},#{pay_content},SYSDATE,#{mem_num},#{ticket_num})
+	</insert> -->
 </mapper>
 
 

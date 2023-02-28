@@ -1,3 +1,6 @@
+var upoint;
+var check_useP = 0;
+
 $(function(){
 	$.ajax({
 	         url:'payPagePoint.do',
@@ -18,15 +21,16 @@ $(function(){
 	      });
 
 	var mpoint;
-	var upoint;
 	var fpoint;
 	var tprice;
 	var total;
-	
+
 
 	$('#minus_btn').on('click',function(){
 		//보유중인 포인트
 		mpoint = parseInt($('#my_point').text());
+		
+		check_useP = 1;
 		
 		if(mpoint >= 1000){//내 포인트가 1000 이상 있을 경우
 			//사용할 포인트
@@ -65,6 +69,21 @@ $(function(){
 	
 	IMP.init("imp36873723"); // 예: imp00000000
 	
+	var ajaxParam1 = {
+		pay_price:$('#final_price').attr('data-pricenum'),
+		pay_content:$('#ticket_name').attr('data-ticketname'),
+		ticket_num:$('#ticket_num').attr('data-ticketnum'),
+		pay_plan:1,
+		point_point : -upoint
+	}
+	var ajaxParam2 = {
+		pay_price:$('#final_price').attr('data-pricenum'),
+		pay_content:$('#ticket_name').attr('data-ticketname'),
+		ticket_num:$('#ticket_num').attr('data-ticketnum'),
+		pay_plan:1,
+		point_point : pprice * 0.05
+	}
+	
 	function requestKakaoPay() {
 		IMP.request_pay({
 			pg : "kakaopay.TC0ONETIME",
@@ -83,10 +102,14 @@ $(function(){
 				$.ajax({
 					url:'payResult.do',
 					type:'post',
-					data:{pay_price:$('#final_price').attr('data-pricenum'),
+					/*data:{pay_price:$('#final_price').attr('data-pricenum'),
 						  pay_content:$('#ticket_name').attr('data-ticketname'),
 						  ticket_num:$('#ticket_num').attr('data-ticketnum'),
-						  pay_plan:1},
+						  pay_plan:1},*/
+					
+				
+					data: (check_useP == 1) ? ajaxParam1 : ajaxParam2,
+					
 					dataType:'json',
 					success:function(param){
 						if(param.result == 'logout'){

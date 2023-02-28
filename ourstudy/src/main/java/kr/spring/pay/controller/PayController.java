@@ -82,7 +82,7 @@ public class PayController {
 	//결제 데이터 받아오기
 	@RequestMapping("/pay/payResult.do")
 	@ResponseBody
-	public Map<String, Object> payResult(PayVO payVO,
+	public Map<String, Object> payResult(PayVO payVO, PointVO pointVO,
 										 HttpSession session){
 		
 		Map<String, Object>mapAjax = new HashMap<String, Object>();
@@ -91,8 +91,8 @@ public class PayController {
 		if(user == null) {
 			mapAjax.put("result", "logout");
 		}else {
-			logger.debug("<<카카오 페이 결과>> : " + payVO);
-			
+			logger.debug("<<카카오 페이 결과 pay>> : " + payVO);
+			logger.debug("<<카카오 페이 결과 point>> : " + pointVO);
 			payVO.setMem_num(user.getMem_num());
 			payService.insertPay(payVO);
 			mapAjax.put("result", "success");
