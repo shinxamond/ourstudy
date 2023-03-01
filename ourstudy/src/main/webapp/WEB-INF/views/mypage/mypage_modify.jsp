@@ -17,7 +17,7 @@ function numberphone(e){
 <div id = "mypage_mem_info">
 	<div class = "wrap-meminfo">
 		<div class ="mypage-title">
-			<h1>회원정보수정</h1>
+			<h3>회원정보수정</h3>
 		</div>
 		<hr class = "horizontal-line">
 		<form:form action = "myPageModify.do" id = "myPageModify_form" modelAttribute="member">

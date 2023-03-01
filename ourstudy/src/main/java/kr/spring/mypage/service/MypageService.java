@@ -27,10 +27,13 @@ public interface MypageService {
 	
 	public void deleteMember(Integer mem_num);
 	
-	//결제에서 같이 처리
-	//public void insertPoint(PointVO point);
+	/*==================================
+					포인트
+	====================================*/		
 	
-	public List<PointVO> selectPointListByMemNum(Map<String, Object> map);
+	public int selectPointListCountByMemNum(Integer mem_num);
+	
+	public List<PayVO> selectPointListByMemNum(Map<String, Object> map);
 	
 	public Integer selectTotalPoint(int mem_num);
 	
@@ -51,6 +54,8 @@ public interface MypageService {
 	
 	
 	public void insertPoint(PayVO payVO);
+	
+	
 	
 	//////////////나중에 지울것////////////////////////////
 	public void deleteSomething(Integer mem_num);

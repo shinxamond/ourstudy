@@ -27,6 +27,40 @@
   		]]>                           
   	</select>
   	
+  	<select id="selectPointListByMemNum" parameterType="map" resultType="payVO">
+  		SELECT 
+  		   *
+  		FROM (SELECT 
+  		         a.*,
+  		         rownum rnum
+  		      FROM (SELECT
+  		               y.pay_price,
+  		   			   y.pay_plan,
+  		   			   y.pay_date,
+  		  			   y.pay_content,
+  		   			   p.point_point
+  		   			FROM pay y JOIN point p
+  		   			ON y.pay_num = p.pay_num WHERE y.mem_num = #{mem_num}
+  		   			<if test="keyfield == 1">
+  		   				
+  		   			</if>
+  		   			<if test="keyfield == 2">
+  		   			<![CDATA[
+  		   				AND p.point_point > 0
+  		   			]]>
+  		   			</if>
+  		   			<if test="keyfield == 3">
+  		   			<![CDATA[
+  		   				AND p.point_point < 0
+  		   			]]>
+  		   			</if>
+  		   			ORDER BY y.pay_date DESC
+  		   			)a)
+  		<![CDATA[
+ 			WHERE rnum >= #{start} AND rnum <= #{end}
+  		]]>
+  	</select>
+  	
 </mapper>
 
 

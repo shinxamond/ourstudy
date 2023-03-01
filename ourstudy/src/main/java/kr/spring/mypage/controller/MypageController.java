@@ -30,6 +30,7 @@ import kr.spring.item.vo.ItemVO;
 import kr.spring.member.service.MemberService;
 import kr.spring.member.vo.MemberVO;
 import kr.spring.mypage.service.MypageService;
+import kr.spring.pay.vo.PayVO;
 import kr.spring.point.vo.PointVO;
 import kr.spring.seat.vo.SeatVO;
 
@@ -108,6 +109,7 @@ public class MypageController {
 		return "myPageMain"; //타일스 설정값
 	}
 	
+	//회원정보
 	@RequestMapping("/mypage/myPageMemInfo.do")
 	public String formInfo(HttpSession session, Model model) {
 		
@@ -277,15 +279,45 @@ public class MypageController {
 	}
 	
 	//포인트 목록
-	@GetMapping("/mypage/pointList.do")
-	public String pointList() {
-		return "pointList";
+	@RequestMapping("/mypage/pointList.do")
+	public ModelAndView pointList(@RequestParam(value = "pageNum", defaultValue = "1") int currentPage, @RequestParam(value = "keyfield", defaultValue = "1") String keyfield, HttpSession session, Model model) {
+		
+		ModelAndView mav = new ModelAndView();
+		
+		//헤더 정보 세팅
+		MemberVO user = (MemberVO)session.getAttribute("user");
+		
+		MemberVO member = (MemberVO)mypageService.selectMember(user.getMem_num());
+		
+		SeatVO seat = mypageService.selectCurSeat(user.getMem_num());		
+		
+		mav.addObject("member", member);
+		mav.addObject("seat", seat);
+		
+		Map<String, Object> map = new HashMap<String, Object>();
+		
+		int count = mypageService.selectPointListCountByMemNum(user.getMem_num());
+		
+		PagingUtil page = new PagingUtil(keyfield, null, currentPage, count, 5, 5, "pointList.do");
+		
+		List<PayVO> list = null;
+		
+		if(count > 0) {
+			map.put("start", page.getStartRow());
+			map.put("end", page.getEndRow());
+			map.put("keyfield", keyfield);
+			map.put("mem_num", user.getMem_num());
+			
+			list = mypageService.selectPointListByMemNum(map);
+		}
+		
+		mav.addObject("count", count); 
+		mav.addObject("list", list);
+		mav.addObject("page", page.getPage());
+		
+		mav.setViewName("pointList");
+		return mav;
 	}
-	/*
-	 * @RequestMapping("/mypage/pointList.do") public ModelAndView pointList() {
-	 * 
-	 * }
-	 */
 	
 	//공부시간 목록
 	@RequestMapping("/mypage/studyTimeList.do")

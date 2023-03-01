@@ -5,7 +5,7 @@
 <div id = "mypage_mem_info">
 	<div class = "wrap-meminfo">
 		<div class ="mypage-title">
-			<h1>비밀번호변경</h1>
+			<h3>비밀번호변경</h3>
 		</div>
 		<hr class = "horizontal-line">
 		<form:form action = "myPagechangePasswd.do" id = "myPagechangePasswd_form" modelAttribute="memberVO">

@@ -5,7 +5,7 @@
 <div id = "mypage_mem_info">
 	<div class = "wrap-meminfo">
 		<div class ="mypage-title">
-			<h1>회원정보</h1>
+			<h3>회원정보</h3>
 		</div>
 		<hr class = "horizontal-line">
 		<div class = "mem-info-content">

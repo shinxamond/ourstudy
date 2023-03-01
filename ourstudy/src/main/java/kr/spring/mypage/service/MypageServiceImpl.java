@@ -53,7 +53,12 @@ public class MypageServiceImpl implements MypageService{
 	 */
 
 	@Override
-	public List<PointVO> selectPointListByMemNum(Map<String, Object> map) {
+	public int selectPointListCountByMemNum(Integer mem_num) {
+		return mypageMapper.selectPointListCountByMemNum(mem_num);
+	}
+	
+	@Override
+	public List<PayVO> selectPointListByMemNum(Map<String, Object> map) {
 		return mypageMapper.selectPointListByMemNum(map);
 	}
 
@@ -99,6 +104,8 @@ public class MypageServiceImpl implements MypageService{
 		mypageMapper.deleteHistory(mem_num);
 		mypageMapper.deleteSeatHistory(mem_num);
 	}
+
+
 
 
 }

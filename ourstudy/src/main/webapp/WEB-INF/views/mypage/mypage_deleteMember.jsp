@@ -5,7 +5,7 @@
 <div id = "mypage_mem_info">
 	<div class = "wrap-meminfo">
 		<div class ="mypage-title">
-			<h1>회원탈퇴</h1>
+			<h3>회원탈퇴</h3>
 		</div>
 		<hr class = "horizontal-line">
 		<form:form action = "myPagedeleteMember.do" id = "myPagedeleteMember_form" modelAttribute="memberVO">

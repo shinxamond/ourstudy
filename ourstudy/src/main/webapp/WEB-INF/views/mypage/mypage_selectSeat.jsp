@@ -5,7 +5,7 @@
 <div id = "mypage_mem_info">
 	<div class = "wrap-meminfo">
 		<div class ="mypage-title">
-			<h1>좌석선택</h1>
+			<h3>좌석선택</h3>
 		</div>
 		<hr class = "horizontal-line">
 	</div>
