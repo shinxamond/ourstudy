@@ -25,6 +25,8 @@ import org.springframework.web.servlet.ModelAndView;
 import kr.spring.util.AuthCheckException;
 import kr.spring.util.FileUtil;
 import kr.spring.util.PagingUtil;
+import kr.spring.item.service.ItemService;
+import kr.spring.item.vo.ItemVO;
 import kr.spring.member.service.MemberService;
 import kr.spring.member.vo.MemberVO;
 import kr.spring.mypage.service.MypageService;
@@ -48,6 +50,8 @@ public class MypageController {
 	private MypageService mypageService;
 	@Autowired
 	private MemberService memberService;
+	@Autowired
+	private ItemService itemService;
 	
 	//////////////나중에 지울것////////////////////////////
 	@PostMapping("/mypage/deleteSometing.do")
@@ -68,9 +72,45 @@ public class MypageController {
 	
 	//마이페이지 메인 호출
 	@RequestMapping("/mypage/myPageMain.do")
-	public String form(HttpSession session, Model model) {
+	public String form(@RequestParam(value="pageNum", defaultValue="1")int currentPage, HttpSession session, Model model) {
 		
 		//회원 기본 정보 세팅
+		MemberVO user = (MemberVO)session.getAttribute("user");
+		
+		MemberVO member = mypageService.selectMember(user.getMem_num());
+		
+		SeatVO seat = mypageService.selectCurSeat(user.getMem_num());
+		
+		logger.debug("<<마이페이지 멤버 정보>> : " + member);
+		
+		Map<String, Object> map = new HashMap<String, Object>();
+		
+		int count = itemService.rentalItemCount(2, user.getMem_num());
+		
+		PagingUtil page = new PagingUtil(currentPage, count, 3, 3, "myPageMain.do");
+		
+		List<ItemVO> list = null;
+		
+		map.put("item_r_status", 2);
+		map.put("mem_num", user.getMem_num());
+		if(count > 0) {
+			map.put("start", page.getStartRow());
+			map.put("end", page.getEndRow());
+			
+			list = itemService.rentalItemList(map);
+		}
+		
+		model.addAttribute("count", count);
+		model.addAttribute("list", list);
+		model.addAttribute("member", member);
+		model.addAttribute("seat", seat);
+		
+		return "myPageMain"; //타일스 설정값
+	}
+	
+	@RequestMapping("/mypage/myPageMemInfo.do")
+	public String formInfo(HttpSession session, Model model) {
+		
 		MemberVO user = (MemberVO)session.getAttribute("user");
 		
 		MemberVO member = mypageService.selectMember(user.getMem_num());
@@ -82,7 +122,7 @@ public class MypageController {
 		model.addAttribute("member", member);
 		model.addAttribute("seat", seat);
 		
-		return "myPageMain"; //타일스 설정값
+		return "myPageMemInfo";
 	}
 	
 	//회원정보 수정 폼 호출

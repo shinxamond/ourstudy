@@ -162,6 +162,25 @@ input[type=file]::file-selector-button:hover {
     background: #A2A2A2;
     color: #fff;
 }
+/*========마이페이지 메인 목록========*/
+.sum-title{
+	text-align : left;
+	font-weight : bold;
+}
+#main_item_table{
+	margin : 0 auto;
+	width : 1040px;
+}
+#main_item_table tr th, #main_item_table tr td{
+	text-align : center;
+	height : 50px;
+}
+#main_item_table input[type="button"]{
+	border : 1px solid #A2A2A2;
+	border-radius : 5px;
+	padding : 2px 5px;
+	background-color : white;
+}
 /*========마이페이지 회원정보관련========*/
 /*
 기본*/
