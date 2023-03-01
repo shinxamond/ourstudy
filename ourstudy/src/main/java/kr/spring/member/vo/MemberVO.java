@@ -2,6 +2,7 @@ package kr.spring.member.vo;
 
 import java.io.IOException;
 import java.sql.Date;
+import java.util.Arrays;
 
 import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.Pattern;
@@ -32,7 +33,19 @@ public class MemberVO {
 	private String mem_photo_name;
 	private Date mem_regdate;
 	private Date mem_mdate;
+	private String kakaocheck;
 	
+
+	public String getKakaocheck() {
+		return kakaocheck;
+	}
+
+	public void setKakaocheck(String kakaocheck) {
+		this.kakaocheck = kakaocheck;
+	}
+	
+	
+
 	private int mem_study;
 	private int mem_ticket_hour;
 	private int mem_ticket_term;
@@ -269,10 +282,14 @@ public class MemberVO {
 				+ mem_status + ", auto=" + auto + ", auto_id=" + auto_id + ", mem_name=" + mem_name + ", mem_pw="
 				+ mem_pw + ", mem_phone=" + mem_phone + ", mem_email=" + mem_email + ", mem_zipcode=" + mem_zipcode
 				+ ", mem_address1=" + mem_address1 + ", mem_address2=" + mem_address2 + ", mem_photo_name="
-				+ mem_photo_name + ", mem_regdate=" + mem_regdate + ", mem_mdate=" + mem_mdate + ", mem_study="
-				+ mem_study + ", mem_ticket_hour=" + mem_ticket_hour + ", mem_ticket_term=" + mem_ticket_term
+				+ mem_photo_name + ", mem_regdate=" + mem_regdate + ", mem_mdate=" + mem_mdate + ", kakaocheck="
+				+ kakaocheck + ", mem_study=" + mem_study + ", mem_ticket_hour=" + mem_ticket_hour
+				+ ", mem_ticket_term=" + mem_ticket_term + ", mem_all_id=" + Arrays.toString(mem_all_id)
 				+ ", pw_confirm=" + pw_confirm + ", email_code=" + email_code + ", now_passwd=" + now_passwd + "]";
 	}
 
+	
+	
+	
 
 }

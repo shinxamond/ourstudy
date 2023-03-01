@@ -100,6 +100,7 @@ public class MemberController {
 		return "memberLogin";
 	}
 
+
 	//로그인 폼에 전송된 데이터 처리
 	@PostMapping("/member/login.do")
 	public String submitLogin(@Valid MemberVO memberVO, BindingResult result,

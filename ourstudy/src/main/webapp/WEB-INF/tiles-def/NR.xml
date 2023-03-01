@@ -10,6 +10,11 @@
     	<put-attribute name="body" value="/WEB-INF/views/member/memberRegister.jsp"/>
     </definition>
     
+    <!-- 카카오톡 전용 회원가입 -->
+    <definition name="memberKakaoRegister" template="/WEB-INF/views/template/layout_register.jsp">
+    	<put-attribute name="body" value="/WEB-INF/views/member/memberKakaoRegister.jsp"/>
+    </definition>
+    
     <!-- 아이디 찾기 -->
     <definition name="memberFindId" extends="memberRegister">
     	<put-attribute name="body" value="/WEB-INF/views/member/memberFindId.jsp"/>

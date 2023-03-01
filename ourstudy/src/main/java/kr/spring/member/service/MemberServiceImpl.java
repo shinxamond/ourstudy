@@ -57,5 +57,20 @@ public class MemberServiceImpl implements MemberService {
 	public String find_pw(String mem_id, String mem_email) {
 		return memberMapper.find_pw(mem_id, mem_email);
 	}
+
+	@Override
+	public MemberVO selectKakaoCheck(String kakao_email) {
+		return memberMapper.selectKakaoCheck(kakao_email);
+	}
+
+	@Override
+	public void insertKMember(MemberVO member) {
+		member.setMem_num(memberMapper.selectMem_num());
+		memberMapper.insertKMember(member);
+		memberMapper.insertKMember_detail(member);
+		memberMapper.insertKMember_history(member);
+		
+	}
+
 	
 }

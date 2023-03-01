@@ -28,10 +28,29 @@ public interface MemberMapper {
 	@Select("SELECT m.mem_num,m.mem_id,m.mem_auth,m.auto_id,m.mem_status,d.mem_pw,d.mem_email FROM member m "
 			+ "LEFT OUTER JOIN member_detail d ON m.mem_num=d.mem_num WHERE m.mem_id=#{mem_id}")
 	public MemberVO selectCheckMember(String mem_id);
-
-	@Select("SELECT * FROM member m JOIN member_detail d "
-		  + "ON m.mem_num=d.mem_num WHERE m.mem_num=#{mem_num}")
-	public MemberVO selectMember(Integer mem_num);
+	
+	
+	
+	
+	
+	//카카오톡으로 우리 사이트에 회원가입했는지 체크
+	@Select("SELECT m.mem_num,m.mem_id,d.mem_pw FROM member m LEFT OUTER JOIN member_detail d"
+		  + " ON m.mem_num=d.mem_num WHERE d.kakaocheck=#{kakaocheck}")
+	public MemberVO selectKakaoCheck(String kakao_email);
+	//카카오톡을 통한 회원가입
+	@Insert("INSERT INTO member (mem_num,mem_id) VALUES (#{mem_num},#{mem_id})")
+	public void insertKMember(MemberVO member);
+	@Insert("INSERT INTO member_detail (mem_num,mem_name,mem_pw,mem_email,kakaocheck) VALUES"
+			+ " (#{mem_num},#{mem_name},#{mem_pw},#{mem_email},#{kakaocheck})")
+	public void insertKMember_detail(MemberVO member);
+	@Insert("INSERT INTO member_history (mem_num,mem_study,mem_ticket_hour,mem_ticket_term) "
+		  + "VALUES (#{mem_num},#{mem_study},#{mem_ticket_hour},#{mem_ticket_term})")
+	public void insertKMember_history(MemberVO member);
+	
+	
+	
+	
+	
 	
 	//자동로그인
 	@Update("UPDATE member SET auto_id=#{auto_id} WHERE mem_id=#{mem_id}")
@@ -52,20 +71,6 @@ public interface MemberMapper {
 	@Select("SELECT mem_pw FROM member JOIN member_detail USING(mem_num) "
 		  + "WHERE mem_id=#{mem_id} AND mem_email=#{mem_email}")
 	public String find_pw(@Param("mem_id") String mem_id, @Param("mem_email") String mem_email);
-
-
-	//============================
-	//		카카오톡 작업중
-	//============================
-	@Insert("INSERT INTO member (mem_num,mem_id) VALUES (#{mem_num},#{mem_id})")
-	public void insertKMember(MemberVO member);
-	@Insert("INSERT INTO member_detail (mem_num,mem_name,mem_pw,mem_email,mem_photo) VALUES"
-			+ " (#{mem_num},#{mem_name},#{mem_pw},#{mem_email},#{mem_photo}")
-	public void insertKMember_detail(MemberVO member);
-	@Insert("INSERT INTO member_history (mem_num,mem_study,mem_ticket_hour,mem_ticket_term) "
-		  + "VALUES (#{mem_num},#{mem_study},#{mem_ticket_hour},#{mem_ticket_term})")
-	public void insertKMember_history(MemberVO member);
-	
 	
 	
 	//회원정보 불러오기(SeatAdminController에서 사용)-----------------
