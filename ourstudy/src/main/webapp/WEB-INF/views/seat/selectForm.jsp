@@ -4,6 +4,7 @@
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
 <link rel="stylesheet" href="${pageContext.request.contextPath}/css/seat.css">
 <script type="text/javascript" src="${pageContext.request.contextPath}/js/seat_frame.js"></script>
+<script type="text/javascript" src="${pageContext.request.contextPath}/js/seat.js"></script>
 <div id="container">
 	<div id="canvas_box">
 	<canvas id="canvas"></canvas>

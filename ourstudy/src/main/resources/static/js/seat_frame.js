@@ -2,107 +2,112 @@
         let canvas = document.getElementById('canvas'); 
         if(canvas.getContext){
             let context = canvas.getContext('2d');
-            
-            canvas.width = 950;
-            canvas.height = 550;
+
+            canvas.width = 1100;
+            canvas.height = 650;
 /*=======================================================
                        Frame
   ========================================================*/           
         context.beginPath();         
         context.moveTo(50,50);       
-        context.lineTo(550,50);      //위
+        context.lineTo(660,50);      //위
         context.moveTo(50,50); 
-        context.lineTo(50,500);      //왼쪽
-        context.lineTo(900,500);     //아래
+        context.lineTo(50,600);      //왼쪽
+        context.lineTo(1050,600);     //아래
         
-        context.moveTo(610,50);      //위
-        context.lineTo(900,50);
-        context.lineTo(900,240);     //오른쪽2
-        context.moveTo(900,310);
-        context.lineTo(900,500);
+        context.moveTo(730,50);      //위
+        context.lineTo(1050,50);
+        context.lineTo(1050,288);     //오른쪽2
+        context.moveTo(1050,372);
+        context.lineTo(1050,600);
 
 /*=======================================================
                          Section A,B
   ========================================================*/ 
-        context.moveTo(180,500);
-        context.lineTo(180,345);          
+        context.moveTo(215,600);
+        context.lineTo(215,415);          
 /*=======================================================
                          Section C,D
   ========================================================*/
 
   /*-----------------전체 틀--------------------*/
-        context.moveTo(180,50);
-        context.lineTo(180,270);
-        context.lineTo(280,270);
+        context.moveTo(215,50);
+        context.lineTo(215,325);
+        context.lineTo(280,325);
 
-        context.moveTo(360,270);
-        context.lineTo(545,270);
-        context.lineTo(545,50)
+        context.moveTo(432,325);
+        context.lineTo(654,325);
+        context.lineTo(654,50)
 
     /*--------------개인실-----------------------*/
     //X=75(40) 간격 Y=105고정값
-        context.moveTo(180,105);        //첫번째 개인실
-        context.lineTo(220,105);
-
-        context.moveTo(255,50);         //두번째 개인실
+        context.moveTo(215,105);        //첫번째 개인실
         context.lineTo(255,105);
-        context.lineTo(295,105);
 
-        context.moveTo(325,50);         //세번째 개인실
+        context.moveTo(285,50);         //두번째 개인실
+        context.lineTo(285,105);
         context.lineTo(325,105);
-        context.lineTo(365,105);
 
-        context.moveTo(400,50);         //중간 벽
-        context.lineTo(400,105);
+        context.moveTo(355,50);         //세번째 개인실
+        context.lineTo(355,105);
+        context.lineTo(395,105);
 
-        context.moveTo(475,50);         //네번째 개인실
-        context.lineTo(475,105);        
-        context.lineTo(435,105);    
+        context.moveTo(430,50);         //중간 벽
+        context.lineTo(430,105);
 
-        context.moveTo(510,105);
-        context.lineTo(545,105)
+        context.moveTo(508,50);         //네번째 개인실
+        context.lineTo(508,105);        
+        context.lineTo(465,105);    
+
+        context.moveTo(578,50);         //다섯번째 개인실
+        context.lineTo(578,105);
+        context.lineTo(535,105);
+
+        context.moveTo(610,105);        //여섯번째 개인실
+        context.lineTo(655,105);
+
 /*=======================================================
                          Section E,F
   ========================================================*/
-        context.moveTo(450,500);
-        context.lineTo(450,345);
+        context.moveTo(540,600);
+        context.lineTo(540,414);
 
-        context.moveTo(670,500);    
-        context.lineTo(670,345);
+        context.moveTo(814,600);    
+        context.lineTo(814,414);
 
 /*=======================================================
                          Section  G
   ========================================================*/
-        context.moveTo(625,50);
-        context.lineTo(625,140);
+        context.moveTo(750,50);         //화장실 쪽 벽
+        context.lineTo(750,168);
 
-        context.moveTo(650,190);
-        context.lineTo(670,215);
-        context.lineTo(670,255);
+        context.moveTo(780,218);
+        context.lineTo(814,254); 
+        context.lineTo(814,305); 
 
-        context.moveTo(670,215);
-        context.lineTo(900,215)
+        context.moveTo(814,254);        //락커 쪽 벽
+        context.lineTo(1050, 254);
 
 
 /*=======================================================
                          INFO
   ========================================================*/
-        context.moveTo(770,500);
-        context.lineTo(770,440);
+        context.moveTo(924,600);
+        context.lineTo(924,528);
 
-        context.moveTo(800,410);
-        context.lineTo(770,440);
+        context.moveTo(960,492);
+        context.lineTo(924,528);
 
-        context.moveTo(900,410);
-        context.lineTo(860,410);
+        context.moveTo(1050,492);
+        context.lineTo(1050,492);
 
 /*=======================================================
                          RENT
   =======================================================*/
-        context.moveTo(900,330);
-        context.lineTo(770,330);
-        context.moveTo(770,350);
-        context.lineTo(770,330);
+        context.moveTo(1050,396);
+        context.lineTo(924,396);
+        context.moveTo(924,420);
+        context.lineTo(924,396);
 /*========================================================
                          END
 =========================================================*/

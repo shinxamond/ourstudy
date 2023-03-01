@@ -36,9 +36,9 @@
   	position:relative;
   	z-index:4;
   }
-  #locker_zone{left:695px; bottom:415px;}
-  #locker{left:690px; bottom:310px;}
-  #rent{left:815px; bottom:470px;}
-  #info{left:815px; bottom:390px;}
-  #toilet{left:560px; bottom:775px;}
+  #locker_zone{left:840px; bottom:480px;}
+  #locker{left:840px; bottom:333px;}
+  #rent{left:970px; bottom:510px;}
+  #info{left:970px; bottom:400px;}
+  #toilet{left:672px; bottom:875px;}
   
