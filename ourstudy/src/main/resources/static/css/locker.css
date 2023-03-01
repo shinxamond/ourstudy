@@ -1,0 +1,41 @@
+/* =========================
+		  FRAME
+   =========================*/
+ 	.section{
+		font-size:50px;
+		padding:40px; margin:5px;
+		border-radius:8px;
+		width:35px;
+		height:35px;
+		text-align:center;
+		border:none;
+	}
+	.section:hover{
+		cursor:pointer;
+	}
+	#seat_box{
+		position:relative;
+		top:-150px; left:220px;
+		z-index:100;
+	}
+	#canvas_box{
+		position:relative;
+	}
+	
+	#canvas{
+		position:relative;
+		z-index:1;
+	}
+/*===========================
+		GUIDE LETTER
+  ===========================*/
+  .guide-letter{
+  	font-weight:500;
+  	font-size:35px;
+  	color:#D9D9D9;
+  	position:relative;
+  	z-index:4;
+  }
+  #rent{left:450px; bottom:610px;}
+  #info{left:150px; bottom:655px;}
+  
