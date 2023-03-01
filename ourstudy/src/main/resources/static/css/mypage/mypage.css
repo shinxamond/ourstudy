@@ -167,6 +167,9 @@ input[type=file]::file-selector-button:hover {
 	text-align : left;
 	font-weight : bold;
 }
+.main-item-tr:hover{
+	background : rgba(0,102,51, 0.3);
+}
 #main_item_table{
 	margin : 0 auto;
 	width : 1040px;

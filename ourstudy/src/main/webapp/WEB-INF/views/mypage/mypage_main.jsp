@@ -22,7 +22,7 @@
 					<th>반납처리</th>
 				</tr>
 				<c:forEach var = "item" items = "${list }">
-				<tr>
+				<tr class = "main-item-tr">
 					<td>
 						<img src="${pageContext.request.contextPath}/item/imageView.do?item_num=${item.item_num}" width="50" height="50" class="my-photo"><span>  &nbsp;<a href = "${pageContext.request.contextPath}/item/userRental.do?item_index=${item.item_index}">${item.item_title}</a></span>
 					</td>
