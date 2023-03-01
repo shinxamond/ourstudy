@@ -26,7 +26,7 @@ function numberphone(e){
 			<table>
 				<tr>
 					<th>아이디</th>
-					<td>sky9999</td>
+					<td>${member.mem_id}</td>
 				</tr>
 				<tr>
 					<th>이름</th>
