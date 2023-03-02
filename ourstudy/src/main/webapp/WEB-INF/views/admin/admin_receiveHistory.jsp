@@ -1,7 +1,16 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-
+<style>
+.truncate-text {
+    max-width: 270px; /** 현재 한글 기준 10글자 정도로 설정됨 */
+    display:inline-block;
+    vertical-align: middle;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+}
+</style>
 <!-- 중앙 컨텐츠 시작 -->
 <div class="page-main"> 
 	<h2>수신 채팅 히스토리</h2>
@@ -33,14 +42,35 @@
 			<th>수신시각</th>
 			<th>내용</th>
 		</tr>
-	  <c:forEach var="history" items="${adminReceiveList}">
+	  <c:forEach var="history" items="${adminReceiveList}" varStatus="status">
 		<tr>
 			<td>${history.talk_num}</td>
 			<td>${history.mem_num}</td>
 			<td>${history.mem_name}</td>
 			<td>${history.chat_date}</td>
-			<td>${history.message}</td>
-		</tr>			
+			<td><a class="open_modal" data-bs-toggle="modal" data-bs-target="#exampleModal${status.count}">
+				<span class="truncate-text">${history.message}</span></a></td>
+		</tr>
+		
+		<!-- Modal -->
+		<div class="modal fade" id="exampleModal${status.count}" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+		  <div class="modal-dialog modal-dialog-scrollable">
+		    <div class="modal-content">
+		      <div class="modal-header">
+		        <h1 class="modal-title fs-5" id="exampleModalLabel">
+					<span id="seat_num">${history.mem_name}</span>님[${history.chat_date}]
+				</h1>
+		        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+		      </div>
+		      <div class="modal-body">
+		      ${history.message}
+		      </div>
+		      <div class="modal-footer">
+		        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">닫기</button>
+		      </div>
+		    </div>
+		  </div>
+		</div>					
 	  </c:forEach>
 	</table>
 			
