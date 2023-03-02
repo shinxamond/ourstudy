@@ -16,6 +16,7 @@ public class AdminSalesVO {
 	private String ticket_name; 
 	private int ticket_kind;
 	private int pay_plan;
+	private String pay_price;
 	private String pay_date;
 	
 	public int getMem_num() {
@@ -47,6 +48,12 @@ public class AdminSalesVO {
 	}
 	public void setPay_plan(int pay_plan) {
 		this.pay_plan = pay_plan;
+	}	
+	public String getPay_price() {
+		return pay_price;
+	}
+	public void setPay_price(String pay_price) {
+		this.pay_price = pay_price;
 	}
 	public String getPay_date() {
 		return pay_date;
@@ -58,6 +65,7 @@ public class AdminSalesVO {
 	@Override
 	public String toString() {
 		return "AdminSalesVO [mem_num=" + mem_num + ", mem_name=" + mem_name + ", ticket_name=" + ticket_name
-				+ ", ticket_kind=" + ticket_kind + ", pay_plan=" + pay_plan + ", pay_date=" + pay_date + "]";
-	}	
+				+ ", ticket_kind=" + ticket_kind + ", pay_plan=" + pay_plan + ", pay_price=" + pay_price + ", pay_date="
+				+ pay_date + "]";
+	}
 }

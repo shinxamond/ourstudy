@@ -44,6 +44,7 @@
 			<th>이름</th>
 			<th>판매상품</th>
 			<th>구매방법</th>
+			<th>구매금액</th>
 			<th>판매시각</th>
 		</tr>
 		<c:forEach var="sales" items="${adminSalesList}">
@@ -59,7 +60,8 @@
 			</c:if>
 			<c:if test="${sales.pay_plan == 2}">
 				<td>카드</td>
-			</c:if>						
+			</c:if>
+			<td>${sales.pay_price}원</td>					
 			<td>${sales.pay_date}</td>
 		</tr>
 		</c:forEach>
