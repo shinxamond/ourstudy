@@ -58,7 +58,7 @@
 		    <div class="modal-content">
 		      <div class="modal-header">
 		        <h1 class="modal-title fs-5" id="exampleModalLabel">
-					<span id="seat_num">${history.mem_name}</span>님[${history.chat_date}]
+					<span id="seat_num" style="color:blue;">${history.mem_name}님</span>[${history.chat_date}]
 				</h1>
 		        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
 		      </div>
