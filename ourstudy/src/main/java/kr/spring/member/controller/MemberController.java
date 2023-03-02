@@ -25,6 +25,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import kr.spring.member.kakao.KakaoService;
 import kr.spring.member.service.MemberService;
 import kr.spring.member.vo.MemberVO;
 import kr.spring.util.AuthCheckException;
@@ -34,13 +35,16 @@ public class MemberController {
 	private static final Logger logger = LoggerFactory.getLogger(MemberController.class);
 
 	@Autowired
-	private MemberService memberService; 
+	private MemberService memberService;
+	@Autowired
+	private KakaoService kakao;
 
 	//자바빈(VO) 초기화
 	@ModelAttribute
 	public MemberVO initCommand() {
 		return new MemberVO();
 	}
+	
 
 	//========회원가입=========
 	//아이디 중복 체크
@@ -188,6 +192,18 @@ public class MemberController {
 	@RequestMapping("/member/logout.do")
 	public String processLogout(HttpSession session, HttpServletResponse response) {
 
+		String access_Token = (String)session.getAttribute("access_Token");
+        
+		if(access_Token != null && !"".equals(access_Token)){
+		
+            kakao.kakaoLogout(access_Token);
+            session.removeAttribute("access_Token");
+            
+        	//세션 만료가 안 되는 문제
+            System.out.println("###카카오톡 로그아웃###");
+            System.out.println(access_Token);
+        }				
+		
 		//로그아웃
 		session.invalidate();
 

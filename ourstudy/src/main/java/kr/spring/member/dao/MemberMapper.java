@@ -30,9 +30,6 @@ public interface MemberMapper {
 	public MemberVO selectCheckMember(String mem_id);
 	
 	
-	
-	
-	
 	//카카오톡으로 우리 사이트에 회원가입했는지 체크
 	@Select("SELECT m.mem_num,m.mem_id,d.mem_pw FROM member m LEFT OUTER JOIN member_detail d"
 		  + " ON m.mem_num=d.mem_num WHERE d.kakaocheck=#{kakaocheck}")
@@ -46,8 +43,6 @@ public interface MemberMapper {
 	@Insert("INSERT INTO member_history (mem_num,mem_study,mem_ticket_hour,mem_ticket_term) "
 		  + "VALUES (#{mem_num},#{mem_study},#{mem_ticket_hour},#{mem_ticket_term})")
 	public void insertKMember_history(MemberVO member);
-	
-	
 	
 	
 	

@@ -41,13 +41,14 @@ public class KakaoController {
 	
 	//카카오 데이터 가져오기 및 로그인
 	@RequestMapping("/member/kakaoLogin")
-	public String kakaoLogin( 
-			@RequestParam("code") String code, Model model,
+	public String kakaoLogin(@RequestParam("code") String code, Model model,
 			HttpSession session) {
 
 		String access_Token = kakao.getAccessToken(code);
 		System.out.println("controller access_token : " + access_Token);
-
+		
+		session.setAttribute("access_Token", access_Token);
+		
 		HashMap<String, Object> userInfo = kakao.getUserInfo(access_Token);
 		
 		//mem_id
@@ -67,10 +68,15 @@ public class KakaoController {
 		MemberVO member = memberService.selectKakaoCheck(kakao_email);
 		
 		if(member!=null) { //회원가입 했음
+			logger.debug("<<카카오톡 인증 성공>> : " + member.getMem_id());
+			
+			member.setMem_id(member.getMem_id());
+			member.setMem_pw(member.getMem_pw());
+			
+			member = memberService.selectCheckMember(member.getMem_id());
+			
 			session.setAttribute("user", member);
 			session.setAttribute("user_num", member.getMem_num());
-			
-			logger.debug("<<카카오톡 인증 성공>> : " + member.getMem_id());
 			
 			return "redirect:/main/main.do";
 			
@@ -96,7 +102,7 @@ public class KakaoController {
 	//카카오톡 회원가입 데이터 전송
 	@PostMapping("/member/registerKakaoUser.do")
 	public String submit(@Valid MemberVO memberVO, BindingResult result,
-						HttpSession session, Model model) {
+						HttpSession session, Model model, @RequestParam("code") String code) {
 		
 		
 		logger.debug("<<카카오톡 회원가입>> : " + memberVO);
@@ -117,32 +123,16 @@ public class KakaoController {
 		
 		model.addAttribute("accessMsg", "회원가입이 완료되었습니다.");
 		
+		String access_Token = kakao.getAccessToken(code);
+		session.setAttribute("access_Token", access_Token);
+		
 
 		return "common/notice"; // 이렇게 경로/타일명으로 명시하면 jsp 호출
 		
 		
 	}
 	
-	
-	
-	
-	
-	
-	
-	
-	
 
-	//카카오톡 로그아웃(로그아웃 안 됨!!!!!!!!!!!!!!!!)
-	@RequestMapping("/member/kakaoLogout")
-	public String kakaologout(HttpSession session) {
-		kakao.kakaoLogout((String)session.getAttribute("access_Token"));
-		session.removeAttribute("access_Token");
-		session.removeAttribute("userId");
-		return "redirect:/main/main.do";
-	}
-
-	
-	
 
 
 }
