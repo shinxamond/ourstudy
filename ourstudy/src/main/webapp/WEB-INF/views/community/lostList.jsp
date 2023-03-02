@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+
 <!-- 중앙 컨텐츠 시작 -->
 <div class="page-main">
 	<h2>분실물 찾기</h2>
@@ -26,6 +27,7 @@
 				onclick="location.href='lostWrite.do'">
 			<input type="button" value="습득물등록" 
 				onclick="location.href='foundWrite.do'">
+			
 	</div>
 	<c:if test="${count == 0}">
 		<div class="result-display">표시할 안내사항이 없습니다.</div>
@@ -38,18 +40,20 @@
 				<th>작성일</th>
 				<th>작성자</th>
 		</tr>
-		<c:forEach var="lost" items="${list}">
+		<c:forEach var="lost" items="${lostList}">
 		<tr>
 			<td>${lost.lf_type}</td>
 			<td>
 				<a href="lostView.do?lf_num=${lost.lf_num}">${lost.lf_title}</a>
 			</td>
-			<td>${lost.lf_date}</td>
-			<td>${lost.mem_num}</td>
+			<td>${lost.lf_date}</td> 
+			<td>${lost.mem_num}</td> 
+			
+			
 		</tr>
 		</c:forEach>
 	</table>
-	
+	<div class="align-center">${page}</div> 
 	</c:if>
 
 </div>
