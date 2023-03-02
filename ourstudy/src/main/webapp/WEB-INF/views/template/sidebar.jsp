@@ -98,7 +98,7 @@ Kakao.API.request({
 
 	<div class="main-side">
 		<nav id="main-sidebar">
-			<div class="flex-shrink-0 shadow p-1 sidescroll" style="width:230px; height:100%;">
+			<div class="flex-shrink-0 shadow p-1 sidescroll" style="width:240px; height:100%;">
 				<div style="text-align:center;">
 					<a href="${pageContext.request.contextPath}/main/main.do"
 						class="d-flex align-items-center pb-3 mb-3 link-dark text-decoration-none border-bottom">
