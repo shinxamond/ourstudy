@@ -1,0 +1,12 @@
+@charset "UTF-8";
+
+/* 전체 레이아웃
+---------------------------*/
+div#main{
+	width:100%;
+	font-size:10pt;
+	font-family:"맑은 고딕";
+}
+div#main_body{
+	width:100%;
+}

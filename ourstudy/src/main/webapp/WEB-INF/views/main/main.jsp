@@ -4,9 +4,39 @@
 <!-- 메인 시작 -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.11.0/umd/popper.min.js"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/js/bootstrap.min.js"></script>
-<link rel="stylesheet" href="${pageContext.request.contextPath}/css/talk.css">
-<div>
+<script type="text/javascript" src="${pageContext.request.contextPath}/js/main/clock.js"></script>
+<script type="text/javascript" src="${pageContext.request.contextPath}/js/main/quotes.js"></script>
 
+<link rel="stylesheet" href="${pageContext.request.contextPath}/css/talk.css">
+<link rel="stylesheet" href="${pageContext.request.contextPath}/css/main.css">
+<div id="main_content_body" width="1500px;">
+	<div class="digital-clock">00:00:00</div>
+	<div class="quote_author">
+		<span id="quote"></span><br>
+		<span id="author"></span>
+		가나랄잳뢪ㅁ루ㅏㅓㅇㄴㅁ리ㅏㅈㄷㅁ<br>
+		가나랄잳뢪ㅁ루ㅏㅓㅇㄴㅁ리ㅏㅈㄷㅁ<br>
+		가나랄잳뢪ㅁ루ㅏㅓㅇㄴㅁ리ㅏㅈㄷㅁ<br>
+		가나랄잳뢪ㅁ루ㅏㅓㅇㄴㅁ리ㅏㅈㄷㅁ<br>
+		가나랄잳뢪ㅁ루ㅏㅓㅇㄴㅁ리ㅏㅈㄷㅁ<br>
+		가나랄잳뢪ㅁ루ㅏㅓㅇㄴㅁ리ㅏㅈㄷㅁ<br>
+		가나랄잳뢪ㅁ루ㅏㅓㅇㄴㅁ리ㅏㅈㄷㅁ<br>
+		가나랄잳뢪ㅁ루ㅏㅓㅇㄴㅁ리ㅏㅈㄷㅁ<br>
+		가나랄잳뢪ㅁ루ㅏㅓㅇㄴㅁ리ㅏㅈㄷㅁ<br>
+		가나랄잳뢪ㅁ루ㅏㅓㅇㄴㅁ리ㅏㅈㄷㅁ<br>
+		가나랄잳뢪ㅁ루ㅏㅓㅇㄴㅁ리ㅏㅈㄷㅁ<br>
+		가나랄잳뢪ㅁ루ㅏㅓㅇㄴㅁ리ㅏㅈㄷㅁ<br>
+		가나랄잳뢪ㅁ루ㅏㅓㅇㄴㅁ리ㅏㅈㄷㅁ<br>
+		가나랄잳뢪ㅁ루ㅏㅓㅇㄴㅁ리ㅏㅈㄷㅁ<br>
+		가나랄잳뢪ㅁ루ㅏㅓㅇㄴㅁ리ㅏㅈㄷㅁ<br>
+		가나랄잳뢪ㅁ루ㅏㅓㅇㄴㅁ리ㅏㅈㄷㅁ<br>
+		가나랄잳뢪ㅁ루ㅏㅓㅇㄴㅁ리ㅏㅈㄷㅁ<br>
+		가나랄잳뢪ㅁ루ㅏㅓㅇㄴㅁ리ㅏㅈㄷㅁ<br>
+		가나랄잳뢪ㅁ루ㅏㅓㅇㄴㅁ리ㅏㅈㄷㅁ<br>
+		가나랄잳뢪ㅁ루ㅏㅓㅇㄴㅁ리ㅏㅈㄷㅁ<br>
+		가나랄잳뢪ㅁ루ㅏㅓㅇㄴㅁ리ㅏㅈㄷㅁ<br>
+		
+	</div>
 </div>
 <!-- 메인 끝 -->
 <script type="text/javascript">
