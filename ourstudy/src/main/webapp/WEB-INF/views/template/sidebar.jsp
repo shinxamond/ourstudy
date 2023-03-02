@@ -150,7 +150,7 @@ Kakao.API.request({
 					<ul>
 						<li><i class="fas fa-regular fa-chair"></i></li>
 						<%-- <c:if test="${user.mem_auth == 1}"> --%>
-						<li class="chair"><a href="${pageContext.request.contextPath}/seat/selectSeatForm.do" class="side-main-link">좌석 선택</a></li>
+						<li class="chair"><a href="${pageContext.request.contextPath}/seat/selectForm.do" class="side-main-link">좌석 선택</a></li>
 						<%-- </c:if> --%>
 					</ul>
 				</div>
