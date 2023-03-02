@@ -5,7 +5,13 @@
 <!-- 중앙 컨텐츠 시작 -->
 <link href="https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css" rel="stylesheet">
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
-
+<style>
+.ck-editor__editable_inline{
+	min-height:250px;
+}
+</style>
+<script src="${pageContext.request.contextPath}/js/ckeditor.js"></script>
+<script src="${pageContext.request.contextPath}/js/uploadAdapter.js"></script>
 <div class="page-main">
 	<h2>안내사항 글 쓰기</h2>
 	<form:form action="infoWrite.do" id="info_write_form"
@@ -21,12 +27,29 @@
 			</li>
 			<li>
 				<label for="info_content">내용</label>
-				<form:input path="info_content"/>
+				<form:textarea path="info_content"/>
 				<form:errors path="info_content" 
 				                  cssClass="error-color"/>
-		
+				<script>
+				 function MyCustomUploadAdapterPlugin(editor) {
+					    editor.plugins.get('FileRepository').createUploadAdapter = (loader) => {
+					        return new UploadAdapter(loader);
+					    }
+					}
+				 
+				 ClassicEditor
+		            .create( document.querySelector( '#info_content' ),{
+		            	extraPlugins: [MyCustomUploadAdapterPlugin]
+		            })
+		            .then( editor => {
+						window.editor = editor;
+					} )
+		            .catch( error => {
+		                console.error( error );
+		            } );
+			    </script>
 			</li>
-
+			
 			<!-- <li>
 				<label for="info_pin">상단고정</label>
 			</li> -->

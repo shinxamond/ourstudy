@@ -1,0 +1,12 @@
+@charset "UTF-8";
+
+/* 게시판 폼
+---------------------------*/
+/*CKEditor 사용시 등록, 수정폼*/
+form#info_write_form, form#info_update_form{
+	padding:0 0 10px 0;
+	width:800px;
+}
+form#info_write_form ul, form#info_update_form ul{
+	padding:20px;
+}

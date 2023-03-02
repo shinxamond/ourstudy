@@ -22,6 +22,7 @@ create table lost_found(
   lf_title varchar2(100) not null,
   lf_content varchar2(1000) not null,
   lf_imgsrc varchar2(300),
+  lf_date date not null,
   f_condition number(1) not null,
   mem_num number not null,
   constraint lost_found_pk primary key (lf_num),
@@ -29,7 +30,7 @@ create table lost_found(
 );
 create sequence lost_found_seq;
 
-ALTER TABLE lost_found ADD lf_date date not null;
+
 
 
 --분실물 찾기 댓글 
