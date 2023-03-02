@@ -35,8 +35,9 @@
   		      FROM (SELECT
   		    		  l.lf_num,
   		    		  <![CDATA[
-  		              REPLACE(REPLACE(b.title,'<','&lt;'),'>','&gt;') lf_title,
+  		              REPLACE(REPLACE(l.lf_title,'<','&lt;'),'>','&gt;') lf_title,
   		              ]]>
+  		              l.lf_date,
   		              l.mem_num
   		             FROM lost_found l JOIN member_detail d
   		    		 ON l.mem_num = d.mem_num
@@ -46,7 +47,6 @@
   		WHERE rnum >= #{start} AND rnum <= #{end}
   		]]>   	
 	</select>
-
 
 
 

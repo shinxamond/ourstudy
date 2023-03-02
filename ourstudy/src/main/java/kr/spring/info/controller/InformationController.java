@@ -172,9 +172,6 @@ public class InformationController {
 		return "common/resultView";
 	}
 	
-
-	
-	
 	//==글삭제
 	@RequestMapping("/info/infoDelete.do")
 	public String submitDelete(@RequestParam int info_num,Model model,

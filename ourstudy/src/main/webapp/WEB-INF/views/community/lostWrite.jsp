@@ -1,7 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
-<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>    
+<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>   
 <!-- 중앙 컨텐츠 시작 -->
 <div class="page-main">
 	<h2>분실물찾기 등록</h2>
@@ -15,6 +15,17 @@
 			<label for="lf_title">제목</label>
 			<form:input path="lf_title"/>
 			<form:input path="lf_title" cssClass="error-color"/>
+		</li>
+		<li>
+			<label for="lf_title">분실품</label>
+			<form:input path="lf_title"/>
+			<form:input path="lf_title" cssClass="error-color"/>
+		</li>
+		<li>
+		
+		</li>
+		<li>
+		
 		</li>
 		<li>
 			<label for="lf_content">내용</label>
