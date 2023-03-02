@@ -277,7 +277,7 @@ Kakao.API.request({
 				<br>				
 				<c:if test="${!empty user}">
 						<button class="btn text-white rounded logout-btn" style="background-color:#037332;"
-						onclick="location.href='${pageContext.request.contextPath}/member/logout.do';location.href='https://kauth.kakao.com/oauth/logout?client_id=29a4ee7bbc4eb20216c3708400363a9a&logout_redirect_uri=http://localhost:8001/main/main.do'">
+						onclick="location.href='https://kauth.kakao.com/oauth/logout?client_id=29a4ee7bbc4eb20216c3708400363a9a&logout_redirect_uri=http://localhost:8001/main/main.do';location.href='${pageContext.request.contextPath}/member/logout.do';">
 						로그아웃</button>
 				</c:if>
 				<br><br>
