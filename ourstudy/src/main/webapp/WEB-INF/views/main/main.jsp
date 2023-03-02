@@ -9,7 +9,8 @@
 
 <link rel="stylesheet" href="${pageContext.request.contextPath}/css/talk.css">
 <link rel="stylesheet" href="${pageContext.request.contextPath}/css/main.css">
-<div id="main_content_body" width="1500px;">
+<div class="container">
+<div id="main_content_body">
 	<div class="digital-clock">00:00:00</div>
 	<div class="quote_author">
 		<span id="quote"></span><br>
@@ -37,6 +38,7 @@
 		가나랄잳뢪ㅁ루ㅏㅓㅇㄴㅁ리ㅏㅈㄷㅁ<br>
 		
 	</div>
+</div>
 </div>
 <!-- 메인 끝 -->
 <script type="text/javascript">

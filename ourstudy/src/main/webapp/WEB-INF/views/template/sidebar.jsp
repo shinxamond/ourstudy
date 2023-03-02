@@ -12,7 +12,7 @@
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.3/font/bootstrap-icons.css">
 <%--폰트 --%>
 <link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="preconnect" href="https://fonts.gstatic.com">
 <link href="https://fonts.googleapis.com/css2?family=Leckerli+One&display=swap" rel="stylesheet">
 <%--로그인 유효성 체크 --%>
 <script type="text/javascript" src="${pageContext.request.contextPath}/js/logincheck.js"></script>
@@ -96,7 +96,7 @@ Kakao.API.request({
 <%-- 로그인 모달 끝 --%>
 
 	<div class="main-side">
-		<nav id="main-sidebar">
+		<nav id="main-sidebar" style="background-color: #FFF;">
 			<div class="shadow p-1 sidescroll" style="width:240px; height:100%;">
 				<div style="text-align:center;">
 					<a href="${pageContext.request.contextPath}/main/main.do"

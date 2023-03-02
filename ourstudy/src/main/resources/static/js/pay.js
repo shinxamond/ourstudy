@@ -1,4 +1,4 @@
-var upoint;
+
 var check_useP = 0;
 
 $(function(){
@@ -20,10 +20,11 @@ $(function(){
             }
          });
 
-   var mpoint;
-   var fpoint;
-   var tprice;
-   var total;
+    var upoint;
+	var mpoint;
+	var fpoint;
+	var tprice;
+	var total;
 
 
    $('#minus_btn').on('click',function(){
@@ -35,8 +36,10 @@ $(function(){
       if(mpoint >= 1000){//내 포인트가 1000 이상 있을 경우
          //사용할 포인트
          upoint = parseInt($('#use_point').val());
+		$('#point_point').text(upoint);
       
-            if(upoint <= 1000){
+
+            if(upoint >= 1000){
                //남은 포인트
                fpoint = mpoint - upoint;
             
@@ -46,9 +49,12 @@ $(function(){
                //총 합계 금액
                total = tprice - upoint;
                
-               $('#final_price').text(total.toLocaleString());      
+               $('#final_price').text(total);      
                
                $('#my_point').text(fpoint.toLocaleString() + "P");
+
+				
+				console.log("포인트>"  + upoint);
                
             }else{
                alert('1000P 부터 사용 가능합니다.');
@@ -58,15 +64,14 @@ $(function(){
    });
 });
 
-
-
-   
    var pname = $('#ticket_name').text();
    var pprice = $('#final_price').text();
-   
+   var useP = $('#point_point').text();
+
    console.log("이름" + pname);
    console.log("금액" + pprice);
-   
+   console.log("useP" + useP);
+
    IMP.init("imp36873723"); // 예: imp00000000
    
    var ajaxParam1 = {
@@ -74,7 +79,7 @@ $(function(){
       pay_content:$('#ticket_name').attr('data-ticketname'),
       ticket_num:$('#ticket_num').attr('data-ticketnum'),
       pay_plan:1,
-      point_point : -upoint
+      point_point : parseInt((useP) * (-1))
    }
    var ajaxParam2 = {
       pay_price:$('#final_price').attr('data-pricenum'),
@@ -85,6 +90,8 @@ $(function(){
    }
    
    function requestKakaoPay() {
+   	var pprice = $('#final_price').text();
+	
       IMP.request_pay({
          pg : "kakaopay.TC0ONETIME",
          pay_method : "card",
@@ -95,10 +102,7 @@ $(function(){
          buyer_name : "박테스트",
       }, function(rsp) { // callback
          console.log(rsp);
-         if (rsp.success) {
-            var msg = '결제가 완료되었습니다.';
-            alert(msg);
-            
+         if (rsp.success) {            
             $.ajax({
                url:'payResult.do',
                type:'post',
@@ -115,7 +119,7 @@ $(function(){
                   if(param.result == 'logout'){
                      alert('로그인 후 사용하세요');
                   }else if(param.result == 'success'){
-                     alert('결제 정보 저장됨');
+                     alert('결제 완료 되었습니다');
                   }else{
                      alert('오류 발생');
                   }
@@ -125,16 +129,16 @@ $(function(){
                }
             });
             
-            //location.href = "payList.do";
          } else {
             var msg = '결제에 실패하였습니다.';
             msg += '에러내용 : ' + rsp.error_msg;
             alert(msg);
          }
       });
-   }
+	}
    
    function requestCardPay() {
+   	var pprice = $('#final_price').text();
       IMP.request_pay({
          pg : "html5_inicis.INIpayTest",
          pay_method : "card",
@@ -145,10 +149,6 @@ $(function(){
          
       }, function(rsp) { // callback   
          if (rsp.success) {
-            
-            var msg = '결제가 완료되었습니다.';
-            alert(msg);
-            
             $.ajax({
                url:'payResult.do',
                type:'post',
@@ -161,7 +161,7 @@ $(function(){
                   if(param.result == 'logout'){
                      alert('로그인 후 사용하세요');
                   }else if(param.result == 'success'){
-                     alert('결제 정보 저장됨');
+                     alert('결제 완료 되었습니다');
                   }else{
                      alert('오류 발생');
                   }
@@ -177,6 +177,6 @@ $(function(){
             alert(msg);
          }
       });
-      
    }
+
    
