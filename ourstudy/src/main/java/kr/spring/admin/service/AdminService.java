@@ -50,6 +50,10 @@ public interface AdminService {
 	
 	//수신 채팅 히스토리
 	public List<AdminTalkHistoryVO> selectReceiveList(Map<String,Object> map);
-	public int selectReceiveRowCount(Map<String,Object> map);		
+	public int selectReceiveRowCount(Map<String,Object> map);	
+	
+	//발신 채팅 히스토리
+	public List<AdminTalkHistoryVO> selectSendList(Map<String,Object> map);
+	public int selectSendRowCount(Map<String,Object> map);	
 	
 }

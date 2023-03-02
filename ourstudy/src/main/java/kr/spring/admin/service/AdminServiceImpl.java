@@ -131,4 +131,14 @@ public class AdminServiceImpl implements AdminService{
 		return adminMapper.selectReceiveRowCount(map);
 	}
 	
+	//발신 채팅 히스토리
+	@Override
+	public List<AdminTalkHistoryVO> selectSendList(Map<String, Object> map) {
+		return adminMapper.selectSendList(map);
+	}
+
+	@Override
+	public int selectSendRowCount(Map<String, Object> map) {
+		return adminMapper.selectSendRowCount(map);
+	}
 }

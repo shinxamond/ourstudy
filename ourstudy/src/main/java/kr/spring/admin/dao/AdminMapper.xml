@@ -278,6 +278,68 @@
 		<![CDATA[
 		WHERE rnum >= #{start} AND rnum <= #{end}
 		]]>   		        
-  	</select>  	 	 	  	  	  	  	  	  	
+  	</select>  	
+  	
+	<!-- 발신 채팅 히스토리 -->
+  	<select id="selectSendRowCount" parameterType="map" resultType="integer">
+		SELECT 
+		  COUNT(*)
+		FROM (SELECT talk_num, c.mem_num, c.mem_name, chat_date, message
+			  FROM 
+				   (SELECT b.*, m.mem_auth
+					FROM (SELECT talk_num, talkroom_num, t.mem_num, mem_name, message, 
+					             TO_CHAR(chat_date, 'yyyy-MM-dd HH24:MI:SS') chat_date   
+					      FROM talk t LEFT OUTER JOIN member_detail d 
+					      ON t.mem_num = d.mem_num)b LEFT OUTER JOIN member m 
+					ON b.mem_num = m.mem_num 
+					WHERE mem_auth = 9)d
+					LEFT OUTER JOIN
+				   (SELECT talkroom_num, t.mem_num, mem_name, mem_auth  
+					    FROM talk_member t LEFT OUTER JOIN member_detail d ON t.mem_num=d.mem_num
+					                       LEFT OUTER JOIN member m ON d.mem_num=m.mem_num
+					WHERE mem_auth !=9)c
+			   ON c. talkroom_num=d.talkroom_num 
+		  	   <if test="keyword != null and keyword != ''">
+		  	   WHERE (c.mem_name LIKE '%' || #{keyword} || '%' OR
+		  			  c.mem_num LIKE '%' || #{keyword} || '%') 
+		  	   </if>
+		  	   )
+  		 -->                        
+  	</select>
+  	
+  	<select id="selectSendList" parameterType="map" resultType="adminTalkHistoryVO">
+  		SELECT
+  		   *
+  		FROM (SELECT a.*, rownum rnum 
+			  FROM (SELECT talk_num, c.mem_num, c.mem_name, chat_date, message
+					FROM 
+					    (SELECT b.*, m.mem_auth
+					    FROM (SELECT talk_num, talkroom_num, t.mem_num, mem_name, message, 
+					                TO_CHAR(chat_date, 'yyyy-MM-dd HH24:MI:SS') chat_date   
+					          FROM talk t LEFT OUTER JOIN member_detail d 
+					          ON t.mem_num = d.mem_num)b LEFT OUTER JOIN member m 
+					    ON b.mem_num = m.mem_num 
+					    WHERE mem_auth = 9)d
+					    LEFT OUTER JOIN
+					    (SELECT talkroom_num, t.mem_num, mem_name, mem_auth  
+					    FROM talk_member t LEFT OUTER JOIN member_detail d ON t.mem_num=d.mem_num
+					                       LEFT OUTER JOIN member m ON d.mem_num=m.mem_num
+					    WHERE mem_auth !=9)c
+					ON c. talkroom_num=d.talkroom_num          
+			  		<if test="keyword != null and keyword != ''">
+				  	WHERE c.mem_name LIKE '%' || #{keyword} || '%' OR 
+      					  c.mem_num LIKE '%' || #{keyword} || '%'
+			  		</if>				            				  		 
+  		            <if test="keyfield == 1">	            
+  		            ORDER BY d.chat_date DESC NULLS LAST
+  		            </if>
+  		            <if test="keyfield == 2">
+  		            ORDER BY c.mem_name ASC NULLS LAST
+  		            </if>
+  		            )a)
+		<![CDATA[
+		WHERE rnum >= #{start} AND rnum <= #{end}
+		]]>   		        
+  	</select>  	   	 	 	  	  	  	  	  	  	
 </mapper>
 

@@ -265,7 +265,7 @@ Kakao.API.request({
 	        				<ul class="btn-toggle-nav fw-normal pb-1 small">
 	        					<li><a href="${pageContext.request.contextPath}/talk/talkList.do" class="link-dark d-inline-flex rounded">채팅목록</a></li>
 	        					<li><a href="${pageContext.request.contextPath}/admin/admin_receivehistory.do" class="link-dark d-inline-flex rounded">수신채팅</a></li>
-	        					<li><a href="#" class="link-dark d-inline-flex rounded">발신채팅</a></li>	        					
+	        					<li><a href="${pageContext.request.contextPath}/admin/admin_sendhistory.do" class="link-dark d-inline-flex rounded">발신채팅</a></li>	        					
 	        				</ul>
 	        				</div>
          		 		</li>           		 		         		 		
