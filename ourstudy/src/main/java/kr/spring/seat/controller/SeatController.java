@@ -155,12 +155,13 @@ public class SeatController {
       
       String success_message = "좌석이 선택되었습니다.";
       attributes.addFlashAttribute("message", success_message);
-      List<LockerVO> list = lockerService.getLockerList();
+//      List<LockerVO> list = lockerService.getLockerList();
+//      
+//      model.addAttribute("list", list);
+//      model.addAttribute("mem_status", mem_status);
+      	model.addAttribute("seat_num",seat_num);
       
-      model.addAttribute("list", list);
-      model.addAttribute("mem_status", mem_status);
-      
-      return "locker/sectionForm";
+      return "seat/temporary_page";
    }
 
 
