@@ -10,13 +10,19 @@
 <script type="text/javascript" src="${pageContext.request.contextPath}/js/jquery-3.6.0.min.js"></script>
 </head>
 <body>
-<div id="main">
-		<tiles:insertAttribute name="sidebar"/>
-	<div id="main_body">
-		<tiles:insertAttribute name="body"/>
+<div id="main" class="container">
+	<div class="row">
+		<div id="main_side" class="col">
+			<tiles:insertAttribute name="sidebar"/>
+		</div>
+	<div id="main_content" class="col-9">
+		<div id="main_body">
+			<tiles:insertAttribute name="body"/>
+		</div>
+		<div id="main_footer">
+			<tiles:insertAttribute name="footer"/>
+		</div>
 	</div>
-	<div id="main_footer">
-		<tiles:insertAttribute name="footer"/>
 	</div>
 </div>
 </body>

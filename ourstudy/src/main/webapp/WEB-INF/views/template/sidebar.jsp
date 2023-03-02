@@ -83,13 +83,12 @@ Kakao.API.request({
 				</ul>
 				
 				<%--Rest API --%>
-				<div class="my-4 d-flex justify-content-center">
+				<div class="mt-4 mb-5 d-flex justify-content-center">
 					<a href="https://kauth.kakao.com/oauth/authorize?client_id=0ed971182cc827fbd73de790073ac06a&redirect_uri=http://localhost:8001/member/kakaoLogin
 &response_type=code">
    					<img src="${pageContext.request.contextPath}/image_bundle/kakao_login_medium_narrow.png"></a>
 				</div>
-				
-				<div class="my-4 d-flex justify-content-center" style="color:#037332;">비회원으로 계속하기</div>
+
 			</div>
 		</div>
 	</div>
@@ -97,7 +96,7 @@ Kakao.API.request({
 <%-- 로그인 모달 끝 --%>
 
 	<div class="main-side">
-		<nav id="main-sidebar">
+		<nav id="main-sidebar" style="width:250px;">
 			<div class="flex-shrink-0 shadow p-1 sidescroll" style="width:240px; height:100%;">
 				<div style="text-align:center;">
 					<a href="${pageContext.request.contextPath}/main/main.do"

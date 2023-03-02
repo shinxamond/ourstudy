@@ -2,24 +2,11 @@
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!-- 메인 시작 -->
-<script type="text/javascript" src="${pageContext.request.contextPath}/js/main/clock.js"></script>
-<script type="text/javascript" src="${pageContext.request.contextPath}/js/main/quotes.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.11.0/umd/popper.min.js"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/js/bootstrap.min.js"></script>
 <link rel="stylesheet" href="${pageContext.request.contextPath}/css/talk.css">
 <div>
-	<div class="digital-clock">00:00:00</div>
-</div>
 
-<div>
-	<span>
-		<a href="https://developers.kakao.com/logout">카톡 로그아웃용 임시</a>
-	</span>
-</div>
-
-<div>
-	<span id="quote"></span><br>
-	<span id="author"></span>
 </div>
 <!-- 메인 끝 -->
 <script type="text/javascript">
