@@ -7,6 +7,7 @@
 <div id="canvas_box">
 <canvas id="canvas"></canvas>  
 </div>
+<div id="section_box">
 <div id="sectionA"><input type="button"  class="section" value="A" onclick=""></div>
 <div id="sectionB"><input type="button"  class="section" value="B" onclick=""></div>
 <div id="sectionC"><input type="button"  class="section" value="C" onclick=""></div>
@@ -15,7 +16,7 @@
 <div class="clear-box" style="clear:both;"></div>
 <span id="rent" class="guide-letter">RENT</span><br>
 <span id="info" class="guide-letter">INFO</span><br>
-	
+</div>	
 <table border="1" style="text-align:center; padding:5px;">
 <tr>
 <c:forEach var="locker" items="${list}" step="3" begin="0" end="${fn:length(list)-1}">

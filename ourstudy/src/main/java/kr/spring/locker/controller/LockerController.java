@@ -3,6 +3,7 @@ package kr.spring.locker.controller;
 import java.time.Duration;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
+import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
@@ -15,8 +16,6 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
-
-import com.sun.mail.imap.protocol.SaslAuthenticator;
 
 import kr.spring.locker.service.LockerService;
 import kr.spring.locker.vo.LockerVO;
@@ -52,6 +51,15 @@ public class LockerController {
 	   사용하는 사물함이 없을 경우 : result - empty  -> 다른 링크로 이동
 	==================================================*/
 	
+	//섹션 폼 이동
+	@RequestMapping("/locker/section.do")
+	public String Section(Model model) {
+		List<LockerVO> list = lockerService.getLockerList();
+     
+		model.addAttribute("list", list);
+		
+		return "locker/sectionForm";
+	}
 	
 //	//입실 날짜 찍힘과 동시에 마감날짜, 마감까지 남은 날짜 저장
 	@RequestMapping("/locker/select.do")
