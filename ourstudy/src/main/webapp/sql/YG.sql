@@ -10,6 +10,10 @@ create table information(
 );
 create sequence information_seq;
 
+SELECT *
+FROM   information
+ORDER BY (CASE WHEN info_pin = 1 THEN 1 ELSE 2 END), info_date DESC;
+
 
 --분실물 찾기
 create table lost_found(
@@ -24,6 +28,8 @@ create table lost_found(
   constraint lost_found_fk foreign key(mem_num)references member (mem_num)
 );
 create sequence lost_found_seq;
+
+ALTER TABLE lost_found ADD lf_date date not null;
 
 
 --분실물 찾기 댓글 

@@ -5,6 +5,7 @@ import java.util.List;
 import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
 import javax.validation.Valid;
 
 import org.slf4j.Logger;
@@ -21,6 +22,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
 import kr.spring.info.vo.InformationVO;
+import kr.spring.member.vo.MemberVO;
 import kr.spring.info.service.InformationService;
 
 import kr.spring.util.PagingUtil;
@@ -46,7 +48,7 @@ public class InformationController {
 	@RequestMapping("/info/informationList.do")
 	public ModelAndView process(
 			 @RequestParam(value="pageNum",defaultValue="1") 
-			    int currentPage,String keyfield,String keyword) {
+			    int currentPage,String keyfield,String keyword) { 
 				
 			Map<String,Object> map = 
 						new HashMap<String,Object>();
@@ -54,13 +56,13 @@ public class InformationController {
 			map.put("keyword", keyword);
 			
 			//글의 총개수 또는 검색된 글의 개수
-			int count = informationService.selectinfoRowCount(map);
+			int count = informationService.selectinfoRowCount(map); 
 			logger.debug("<<count>> : " + count);
 			
 			//페이지 처리
 			PagingUtil page = 
 					new PagingUtil(keyfield,keyword,
-					 currentPage,count,20,10,"informationList.do");
+					 currentPage,count,10,10,"informationList.do");
 			
 			List<InformationVO> list = null;
 			if(count > 0) {
@@ -86,51 +88,87 @@ public class InformationController {
 	}
 	
 	//등록 폼에서 전송된 데이터 처리
-	@PostMapping("/info/informationWrite.do")
-	public String submit(@Valid InformationVO informationVO, BindingResult result, Model model) {
+	@PostMapping("/info/infoWrite.do")
+	public String submit(@Valid InformationVO informationVO, BindingResult result,
+			Model model,
+			HttpServletRequest request,
+			HttpSession session) {
 		logger.debug("<<게시판 글쓰기>> : " + informationVO);
 		//유효성 체크 결과 오류가 있으면 폼을 호출
-				if(result.hasErrors()) {
-					return form();
-				}
+		if(result.hasErrors()) {
+			return form();
+		}
+		
+		MemberVO user = (MemberVO)session.getAttribute("user");
+		informationVO.setMem_num(user.getMem_num());
+		
 		//글쓰기	
 		informationService.insertInformation(informationVO);
 		
-		return "redirect:/info/informationList.do";
+		model.addAttribute("message", "등록 되었습니다.");
+		model.addAttribute("url",
+				request.getContextPath()+"/info/informationList.do");
+		return "common/resultView";
 	}
 	
 	//==글상세
-	/*
-	 * @RequestMapping("/info/infoView.do") public ModelAndView process(
-	 * 
-	 * @RequestParam int info_num) { logger.debug("<<info_num>> : " + info_num);
-	 * 
-	 * return new ModelAndView("informationView","information",info); }
-	 */
+	
+	 @GetMapping("/info/infoDetail.do") 
+	 public ModelAndView process(@RequestParam int info_num) {
+		 
+		 logger.debug("<<info_num>> : " + info_num);
+		 
+		 InformationVO informationVO =
+				 informationService.selectInformation(info_num);
+		 
+		 return new ModelAndView("informationView","information",informationVO); 
+	 
+	 }
+	 
+	
+	
 	//==글수정
 	//수정 폼 호출
-	@GetMapping("/info/infoModify.do")
-	public String infoModify(
-	          @RequestParam int info_num,Model model) {
-		InformationVO informationVO= informationService.selectInformation(info_num);
-		
-		model.addAttribute("informationVO", informationVO);
-		return "informationModify";	
+	@GetMapping("/info/infoUpdate.do")
+	public String formUpdate(@RequestParam int info_num, Model model) { 
+		InformationVO informationVO = informationService.selectInformation(info_num);
+		model.addAttribute("informationVO",informationVO);
+	
+		return "informationModify";
 	}
+	/*
+	 * public String formUpdate(HttpSession session, Model model) {
+	 * 
+	 * MemberVO user = (MemberVO)session.getAttribute("user"); InformationVO
+	 * information =
+	 * (InformationVO)informationService.selectInformation(user.getMem_num());
+	 * model.addAttribute("user", user); model.addAttribute("information",
+	 * information); return "infoUpdate"; }
+	 */
 	
 	//폼에서 전송된 데이터 처리
+	@PostMapping("/info/infoUpdate.do")
 	public String submitUpdate(@Valid InformationVO informationVO,
-			BindingResult result,
-			Model model,
-			HttpServletRequest request) {
+								BindingResult result,
+								HttpServletRequest request,
+								Model model,
+								HttpSession session) {
+		
 		logger.debug("<<안내사항 수정>> : " + informationVO);
+		
+		if(result.hasErrors()) {
+			return "informationModify";
+		}
+		MemberVO user = (MemberVO)session.getAttribute("user");
+		informationVO.setMem_num(user.getMem_num());
+		
 		
 		informationService.updateInformation(informationVO);
 
 	
-		model.addAttribute("message", "수정 완료되었습니다");
-		model.addAttribute("url", request.getContextPath()
-				+"/info/informationView.do?info_num"+informationVO.getInfo_num());
+		model.addAttribute("message", "수정 되었습니다.");
+		model.addAttribute("url",
+				request.getContextPath()+"/info/informationList.do");
 		return "common/resultView";
 	}
 	

@@ -5,14 +5,13 @@
 <!-- 중앙 컨텐츠 시작 -->
 <div class="page-main">
 	<h2>안내사항</h2>
+	<br>
 	<ul class="view-info">
 		<li>
-			<c:if test="${!empty information.info_title}">${info_title}</c:if>
+			<h4>${information.info_title}</h4>
 		</li>
 		<li>
-			<c:if test="${empty information.info_date}">
 			작성일 : ${information.info_date}
-			</c:if>
 		</li>
 	</ul>
 	<hr size="1" width="100%">

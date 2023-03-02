@@ -35,8 +35,10 @@
   		      FROM (SELECT
   		    		  i.info_num,
   		    		  <![CDATA[
-  		              REPLACE(REPLACE(b.title,'<','&lt;'),'>','&gt;') info_title,
+  		              REPLACE(REPLACE(i.info_title,'<','&lt;'),'>','&gt;') info_title,
   		              ]]>
+  		              i.info_pin,
+  		              i.info_date,
   		              i.mem_num
   		             FROM information i JOIN member_detail d
   		    		 ON i.mem_num = d.mem_num
