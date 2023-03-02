@@ -110,7 +110,7 @@ public class MemberController {
 	public String submitLogin(@Valid MemberVO memberVO, BindingResult result,
 			HttpSession session,
 			HttpServletRequest request,
-			HttpServletResponse response) {
+			HttpServletResponse response, Model model) {
 		logger.debug("<<회원로그인>> : " + memberVO);
 
 		Map<String,String> mapAjax = new HashMap<String,String>();
@@ -177,13 +177,15 @@ public class MemberController {
 			//인증실패로 로그인폼 호출
 			if(member!=null && member.getMem_auth()==0) {
 				//정지회원 메시지 표시
-				result.reject("noAuthority");
-			}else {
-				result.reject("invalidIdOrPassword");
+				model.addAttribute("message", "탈퇴한 계정입니다.");
+				model.addAttribute("url", "/main/main.do");
+				return "common/resultView";
+			}else { //아이디 또는 비밀번호 틀림
+				model.addAttribute("message", "아이디 또는 비밀번호 오류");
+				model.addAttribute("url", "/main/main.do");
+				return "common/resultView";
 			}
-			logger.debug("<<인증 실패>>");
-			
-			return formLogin();
+	
 			
 		}	
 	}

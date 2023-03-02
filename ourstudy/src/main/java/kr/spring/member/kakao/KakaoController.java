@@ -2,6 +2,7 @@ package kr.spring.member.kakao;
 
 import java.util.HashMap;
 
+import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 import javax.validation.Valid;
 
@@ -37,7 +38,6 @@ public class KakaoController {
 		return new MemberVO();
 	}
 
-	
 	
 	//카카오 데이터 가져오기 및 로그인
 	@RequestMapping("/member/kakaoLogin")
@@ -82,6 +82,7 @@ public class KakaoController {
 			
 		}else { //회원가입한 적 없음
 			
+			model.addAttribute("code", access_Token);
 			model.addAttribute("kakao_email", kakao_email);
 			model.addAttribute("kakao_name", kakao_name);
 			
@@ -102,7 +103,7 @@ public class KakaoController {
 	//카카오톡 회원가입 데이터 전송
 	@PostMapping("/member/registerKakaoUser.do")
 	public String submit(@Valid MemberVO memberVO, BindingResult result,
-						HttpSession session, Model model, @RequestParam("code") String code) {
+						HttpSession session, Model model) {
 		
 		
 		logger.debug("<<카카오톡 회원가입>> : " + memberVO);
@@ -123,8 +124,7 @@ public class KakaoController {
 		
 		model.addAttribute("accessMsg", "회원가입이 완료되었습니다.");
 		
-		String access_Token = kakao.getAccessToken(code);
-		session.setAttribute("access_Token", access_Token);
+		
 		
 
 		return "common/notice"; // 이렇게 경로/타일명으로 명시하면 jsp 호출
