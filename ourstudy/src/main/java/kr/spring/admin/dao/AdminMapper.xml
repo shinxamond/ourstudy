@@ -214,7 +214,8 @@
   		        a.*,  
   		        rownum rnum 
   		      FROM (SELECT b.*, ticket_name
-					FROM (SELECT p.mem_num, mem_name, pay_plan,
+					FROM (SELECT p.mem_num, mem_name, pay_plan, 
+								 TO_CHAR(pay_price, '999,999') pay_price,
 								 TO_CHAR(pay_date, 'yyyy-MM-dd HH24:MI:SS') pay_date, 
 								 ticket_num 
       					  FROM pay p LEFT OUTER JOIN member_detail d 
