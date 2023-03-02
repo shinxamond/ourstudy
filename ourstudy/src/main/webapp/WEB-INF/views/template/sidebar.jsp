@@ -16,7 +16,26 @@
 <link href="https://fonts.googleapis.com/css2?family=Leckerli+One&display=swap" rel="stylesheet">
 <%--로그인 유효성 체크 --%>
 <script type="text/javascript" src="${pageContext.request.contextPath}/js/logincheck.js"></script>
- 
+
+<%--카카오톡 로그아웃 --%>
+<script src="https://developers.kakao.com/sdk/js/kakao.js"></script>
+<script>
+Kakao.init('29a4ee7bbc4eb20216c3708400363a9a'); //발급받은 키 중 javascript키를 사용해준다.
+console.log(Kakao.isInitialized()); // sdk초기화여부판단
+
+function kakaoLogout() {
+Kakao.API.request({
+	  url: '/v1/user/unlink',
+	})
+	  .then(function(response) {
+	    console.log(response);
+	  })
+	  .catch(function(error) {
+	    console.log(error);
+	  });
+}
+</script>
+
 <%-- 사이드바 시작 --%>
 <div>
 <%-- 로그인 모달 시작 --%>
@@ -258,7 +277,8 @@
 				<br>				
 				<c:if test="${!empty user}">
 						<button class="btn text-white rounded logout-btn" style="background-color:#037332;"
-						onclick="location.href='${pageContext.request.contextPath}/member/logout.do'">로그아웃</button>
+						onclick="location.href='${pageContext.request.contextPath}/member/logout.do';location.href='https://kauth.kakao.com/oauth/logout?client_id=29a4ee7bbc4eb20216c3708400363a9a&logout_redirect_uri=http://localhost:8001/main/main.do'">
+						로그아웃</button>
 				</c:if>
 				<br><br>
 			</div>
