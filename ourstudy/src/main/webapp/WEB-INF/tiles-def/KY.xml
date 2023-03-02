@@ -5,15 +5,22 @@
        "http://tiles.apache.org/dtds/tiles-config_3_0.dtd">
 
 <tiles-definitions>
-    <definition name="adminDrawing" extends="admin">
-    	<put-attribute name="title" value="관리자 좌석 배치도 편집"/>
+	<!-- LOCKER -->
+    <definition name="sectionForm" extends="main">
+    	<put-attribute name="title" value="사물함 섹션 배치도"/>
     	<put-attribute name="body"
-    	  value="/WEB-INF/views/seat/admin_drawing.jsp"/>        
+    	  value="/WEB-INF/views/locker/sectionForm.jsp"/>        
     </definition>
-    <definition name="selectSeatForm" extends="main">
-    	<put-attribute name="title" value="좌석 선택 페이지"/>
+    <!-- SEAT -->
+    <definition name="selectForm" extends="main">
+    	<put-attribute name="title" value="좌석 배치도"/>
     	<put-attribute name="body"
-    	  value="/WEB-INF/views/seat/drawing.jsp"/>        
+    	  value="/WEB-INF/views/seat/selectForm.jsp"/>        
+    </definition>
+    <definition name="temporary" extends="main">
+    	<put-attribute name="title" value="임시페이지"/>
+    	<put-attribute name="body"
+    	  value="/WEB-INF/views/seat/temporary_page.jsp"/>        
     </definition>
 </tiles-definitions>
 

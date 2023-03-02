@@ -59,14 +59,14 @@ public class SeatController {
    }
    
    //좌석선택폼으로 이동
-   @RequestMapping("/seat/selectSeatForm.do")
+   @RequestMapping("/seat/selectForm.do")
    public ModelAndView drawing(HttpSession session) {
 	  int mem_status = seatService.getMem_status((Integer)session.getAttribute("user_num"));
 	  
       ModelAndView mav = new ModelAndView();
       List<SeatVO> list = seatService.getSeatList();
 
-      mav.setViewName("seat/selectForm");
+      mav.setViewName("selectForm");
       mav.addObject("list", list);
       mav.addObject("mem_status", mem_status);
       
@@ -161,7 +161,7 @@ public class SeatController {
 //      model.addAttribute("mem_status", mem_status);
       	model.addAttribute("seat_num",seat_num);
       
-      return "seat/temporary_page";
+      return "temporary";
    }
 
 

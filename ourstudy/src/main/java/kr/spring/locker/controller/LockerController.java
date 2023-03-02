@@ -58,7 +58,7 @@ public class LockerController {
      
 		model.addAttribute("list", list);
 		
-		return "locker/sectionForm";
+		return "sectionForm";
 	}
 	
 //	//입실 날짜 찍힘과 동시에 마감날짜, 마감까지 남은 날짜 저장
