@@ -81,13 +81,17 @@ public class AdminController {
 		int total1 = adminService.countUsingNum();	
 		String usingnum = df.format(total1);
 		
-		int total2 = adminService.countTermNum();	
-		String periodnum = df.format(total2);
+		int total2 = adminService.countGoOutNum();	
+		String gooutnum = df.format(total2);
 		
-		int total3 = adminService.countTimeNum();	
-		String timenum = df.format(total3);
+		int total3 = adminService.countTermNum();	
+		String periodnum = df.format(total3);
 		
-		String totalnum = df.format(total2+total3);
+		int total4 = adminService.countTimeNum();	
+		String timenum = df.format(total4);
+		
+		
+		String totalnum = df.format(total3+total4);
 		
 		Map<String,Object> map = new HashMap<String,Object>();
 		map.put("keyfield", keyfield);
@@ -111,6 +115,7 @@ public class AdminController {
 		mav.setViewName("adminMemberList");
 		
 		//현재고객현황판
+		mav.addObject("gooutnum", gooutnum);
 		mav.addObject("usingnum", usingnum);
 		mav.addObject("periodnum", periodnum);
 		mav.addObject("timenum", timenum);

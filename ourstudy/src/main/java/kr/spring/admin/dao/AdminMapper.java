@@ -20,8 +20,11 @@ import kr.spring.admin.vo.AdminTalkHistoryVO;
 @Mapper
 public interface AdminMapper {
 	//현재 고객 현황판
-	@Select("SELECT COUNT(*) FROM seat WHERE SEAT_STATUS!=1")
-	public int countUsingNum(); //현재 이용중인 회원수
+	@Select("SELECT COUNT(*) FROM seat WHERE SEAT_STATUS=0")
+	public int countUsingNum(); //이용중인 회원수
+	
+	@Select("SELECT COUNT(*) FROM seat WHERE SEAT_STATUS=2")
+	public int countGoOutNum(); //외출중인 회원수	
 		
 	@Select("SELECT COUNT(*) FROM member_history WHERE MEM_TICKET_TERM>0")
 	public int countTermNum(); //기간권 회원수

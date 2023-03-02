@@ -8,12 +8,14 @@
 	<table class="striped-table">
 		<tr>
 			<th>현재 이용중인 회원수</th>
+			<th>현재 외출중인 회원수</th>
 			<th>기간권 회원수</th>
 			<th>시간권 회원수</th>
 			<th>전체 회원수</th>
 		</tr>
 		<tr>
 			<td><span style="color:red">${usingnum}</span>명</td>
+			<td><span style="color:red">${gooutnum}</span>명</td>
 			<td><span style="color:red">${periodnum}</span>명</td>
 			<td><span style="color:red">${timenum}</span>명</td>
 			<td><span style="color:red">${totalnum}</span>명</td>

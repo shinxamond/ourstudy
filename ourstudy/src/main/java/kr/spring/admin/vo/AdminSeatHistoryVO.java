@@ -13,6 +13,7 @@ import org.springframework.web.multipart.MultipartFile;
 public class AdminSeatHistoryVO {
 	private int seat_detail_num;
 	private int seat_num;
+	private int seat_status;
 	private int mem_num;
 	private String mem_name;
 	private String in_time;
@@ -33,6 +34,14 @@ public class AdminSeatHistoryVO {
 
 	public void setSeat_num(int seat_num) {
 		this.seat_num = seat_num;
+	}
+
+	public int getSeat_status() {
+		return seat_status;
+	}
+
+	public void setSeat_status(int seat_status) {
+		this.seat_status = seat_status;
 	}
 
 	public int getMem_num() {
@@ -77,8 +86,8 @@ public class AdminSeatHistoryVO {
 
 	@Override
 	public String toString() {
-		return "AdminSeatHistoryVO [seat_detail_num=" + seat_detail_num + ", seat_num=" + seat_num + ", mem_num="
-				+ mem_num + ", mem_name=" + mem_name + ", in_time=" + in_time + ", out_time=" + out_time
-				+ ", total_time=" + total_time + "]";
-	}	
+		return "AdminSeatHistoryVO [seat_detail_num=" + seat_detail_num + ", seat_num=" + seat_num + ", seat_status="
+				+ seat_status + ", mem_num=" + mem_num + ", mem_name=" + mem_name + ", in_time=" + in_time
+				+ ", out_time=" + out_time + ", total_time=" + total_time + "]";
+	}
 }

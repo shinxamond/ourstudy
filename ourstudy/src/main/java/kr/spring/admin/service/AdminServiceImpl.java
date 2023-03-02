@@ -29,6 +29,11 @@ public class AdminServiceImpl implements AdminService{
 	}
 
 	@Override
+	public int countGoOutNum() {
+		return adminMapper.countGoOutNum();
+	}
+	
+	@Override
 	public int countTermNum() {
 		return adminMapper.countTermNum();
 	}
@@ -37,7 +42,7 @@ public class AdminServiceImpl implements AdminService{
 	public int countTimeNum() {
 		return adminMapper.countTimeNum();
 	}
-
+	
 	//회원목록
 	@Override
 	public List<AdminMemberVO> selectList(Map<String, Object> map) {

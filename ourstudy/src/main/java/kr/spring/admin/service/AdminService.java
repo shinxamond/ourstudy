@@ -16,6 +16,7 @@ import kr.spring.admin.vo.AdminTalkHistoryVO;
 public interface AdminService { 
 	//현재고객현황판
 	public int countUsingNum();
+	public int countGoOutNum();
 	public int countTermNum();
 	public int countTimeNum();
 
