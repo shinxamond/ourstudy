@@ -18,7 +18,7 @@
 		<ul class="search">
 			<li>
 				<select name="keyfield" onchange="location.href='admin_sendhistory.do?keyfield='+this.value">
-					<option value="1" <c:if test="${param.keyfield == 1}">selected</c:if>>최근수신순</option>
+					<option value="1" <c:if test="${param.keyfield == 1}">selected</c:if>>최근발신순</option>
 					<option value="2" <c:if test="${param.keyfield == 2}">selected</c:if>>가나다순(이름)</option>
 				</select>
 			</li>
