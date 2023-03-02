@@ -25,7 +25,7 @@
 <script type="text/javascript">
 var reload;
 if(${user.mem_auth == 1}){
-	reload = setInterval(function(){ location.reload(); }, 5000);
+	reload = setInterval(function(){ location.reload(); }, 10000);
 	function start(){
 		//alert('시작');
 		 reload =   setInterval(function(){ location.reload(); }, 700);
