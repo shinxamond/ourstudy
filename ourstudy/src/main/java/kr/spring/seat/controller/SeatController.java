@@ -307,6 +307,11 @@ public class SeatController {
       myPageService.updateStudyTime(seatVO);
       
       logger.debug("seatVO" + seatVO);
+
+      //관리자에서 강제 퇴실할 경우 
+      if(member.getMem_auth() == 9) {
+    	  return "redirect:/admin/admin_seathistory.do";
+      }
       
       return "";
    }
