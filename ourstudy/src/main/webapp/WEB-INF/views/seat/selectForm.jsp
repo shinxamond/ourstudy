@@ -29,14 +29,15 @@
 				onclick=<c:if test="${mem_status == 0}">"location.href='${pageContext.request.contextPath}/seat/select.do?seat_num=${seat.seat_num}'"</c:if>
 						<c:if test="${mem_status != 0}">"alert('이미 입실중입니다.'); return false;"</c:if> >
 	</c:forEach> --%>
-	<c:forEach var="seat" items="${list}" begin="0" end="65" >
+	<c:forEach var="seat" items="${list}" begin="0" end="${fn:length(list)-1}" >
 	<input type="button" style="<c:if test="${seat.seat_status == 0 }">background-color:#D7D5D5;</c:if>
 					   <c:if test="${seat.seat_status == 1 }">background-color:#BBFE97;</c:if>
 					   <c:if test="${seat.seat_status == 2 }">background-color:#F8B1AA;</c:if>"
+				id="${seat.seat_name}" 
 				class="seat-option" <c:if test="${seat.seat_status != 1}">disabled</c:if> 
 				data-num="${seat.seat_name}"  data-seatnum="${seat.seat_num}"
 				value="<c:out value="${seat.seat_name}"/>"
-				onclick=<c:if test="${mem_status == 0}">"checkSelect();"</c:if>
+				onclick=<c:if test="${mem_status == 0}">"checkSelect(this);"</c:if>
 						<c:if test="${mem_status != 0}">"alert('이미 입실중입니다.'); return false;"</c:if> >
 	</c:forEach>
 

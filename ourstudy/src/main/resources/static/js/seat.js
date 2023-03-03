@@ -1,19 +1,10 @@
 
-/*이거 존나 클릭하면 알람떠야 되는 데 안 뜸*/	
-	function select(message){
-		console.log('왜 안 되노');
-		alert(message);
-		return false;
-	}
-	
 /*==============================
 		좌석 선택 확인 alert
   =============================*/
-	function checkSelect(){
-		let seat_name = $('.seat-option').val();
-		let seat_num = $('.seat-option').attr('data-seatnum');
-		
-		console.log(seat_num);
+	function checkSelect(e){
+		let seat_name = document.getElementById(e.getAttribute('id')).getAttribute('id');
+		let seat_num = document.getElementById(e.getAttribute('id')).getAttribute('data-seatnum');
 		
 		let select = confirm(seat_name + '번 좌석을 선택할까요?');
 		
@@ -29,7 +20,7 @@
 				//(이전으로 못돌아감, 돌아갈 수 있음)
 				location.href='select.do?seat_num=' + seat_num;
 			}else if(locker == true){
-				location.href='';
+				location.href='/locker/section.do';
 			}
 		}
 		
