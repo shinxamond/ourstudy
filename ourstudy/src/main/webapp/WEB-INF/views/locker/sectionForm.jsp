@@ -8,10 +8,10 @@
 <canvas id="canvas"></canvas>  
 </div>
 <div id="section_box">
-<div id="sectionA"><input type="button" class="section" value="A" onclick="${pageContext.request.contextPath}/locker/sectionA.do"></div>
-<div id="sectionB"><input type="button"  class="section" value="B" onclick="${pageContext.request.contextPath}/locker/sectionB.do"></div>
-<div id="sectionC"><input type="button"  class="section" value="C" onclick="${pageContext.request.contextPath}/locker/sectionC.do"></div>
-<div id="sectionD"><input type="button"  class="section" value="D" onclick="${pageContext.request.contextPath}/locker/sectionD.do"></div>
+<div id="sectionA"><input type="button" class="section" value="A" onclick="location.href='${pageContext.request.contextPath}/locker/sectionDetail.do?section=A'"></div>
+<div id="sectionB"><input type="button"  class="section" value="B" onclick="location.href='${pageContext.request.contextPath}/locker/sectionDetail.do?section=B'"></div>
+<div id="sectionC"><input type="button"  class="section" value="C" onclick="location.href='${pageContext.request.contextPath}/locker/sectionDetail.do?section=C'"></div>
+<div id="sectionD"><input type="button"  class="section" value="D" onclick="location.href='${pageContext.request.contextPath}/locker/sectionDetail.do?section=D'"></div>
 
 <div class="clear-box" style="clear:both;"></div>
 <span id="rent" class="guide-letter">RENT</span><br>

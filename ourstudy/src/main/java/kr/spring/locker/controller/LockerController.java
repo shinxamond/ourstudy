@@ -125,8 +125,8 @@ public class LockerController {
 	}
 	
 	
-	@RequestMapping("/locker/lockerList.do")
-	public String lockerList(@RequestParam String section, Model model) {
+	@RequestMapping("/locker/sectionDetail.do")
+	public String sectionDetail(@RequestParam String section, Model model) {
 		String sec = "";
 		switch (section) {
 		case "A" : 
@@ -143,50 +143,7 @@ public class LockerController {
 			sec = "sectionD";
 			break;
 		};
-		model.addAttribute("list", "추출한 사물함 리스트");
+		logger.debug("<<<<요청된 섹션 파라미터>>>>:" + sec);
 		return sec;
 	}
-	
-//	@RequestMapping("/locker/select.do")
-//	@ResponseBody
-//	public Map<String, String> 
-	/*=================================================
-	2. 사물함 선택 링크 이동  @request String/ModelAndView
-	   //사물함 이용시작 (이용권의 시간 1주/2주/4주 를 check하는 로직 필요) 
-	    - mem_num으로 가지고 있는 이용권 주 (int period) 추출 
-	       ㄴplusWeek(period) 사용
-	          ㄴ종료예정시각, 남은 시간 추출 후 DB입력 
-	================================================*/
-	
-	
-//	public String out(HttpServletRequest request) {
-//		HttpSession session = request.getSession();
-//	    int mem_num = (Integer)session.getAttribute("user_num");
-//	    
-//	    
-//		String in = "2023-02-22 15:34:58";		//사물함 선택한 시간
-//		
-//		DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss");
-//		
-//		LocalDateTime in_time = LocalDateTime.parse(in,formatter);
-//		LocalDateTime now_time = LocalDateTime.now();
-//		
-//		System.out.println("사물함 선택 시간 = " + in_time);
-//		System.out.println("현재시간 = " + now_time);	
-//		
-//		LocalDateTime out_time = in_time.plusWeeks(1);		//1주, 2주, 4주
-//		System.out.println(out_time);
-//		
-//		Duration diff = Duration.between(now_time.toLocalTime(), out_time.toLocalTime());
-//		long diffSeconds = diff.getSeconds();
-//		int diffIntSeconds = Long.valueOf(diffSeconds).intValue();
-//		
-//		int hour = diffIntSeconds  / 3600;					
-//		int minute = diffIntSeconds  % 3600 / 60;			
-//		int second = diffIntSeconds  % 3600 % 60;
-//		
-//		System.out.println("종료까지 남은 시간 : " + hour +"시간 " + minute + "분 " + second + "초");
-//		return "";
-//	}
-//	
 }

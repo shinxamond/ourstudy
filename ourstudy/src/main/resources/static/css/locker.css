@@ -25,16 +25,34 @@
       align-items:center;
       background-color:white;
       color: var(--color);
-        transition: 0.25s;
+      transition: 0.25s;
    }
    .section:hover{
       cursor:pointer;
    }
-   .section:hover, .section:focus{
+   #sectionA input:hover, #sectionA input:focus{
       box-shadow: 0 0.5em 0.5em -0.4em var(--hover);
         transform: translateY(-0.25em);
         border-color:var(--hover);
         color:#7E6BB3;                              /*올라갈 때 바귀는 글자색깔*/
+   }
+   #sectionB input:hover, #sectionB input:focus{
+      box-shadow: 0 0.5em 0.5em -0.4em var(--hover);
+        transform: translateY(-0.25em);
+        border-color:var(--hover);
+        color:#569ECE;                              /*올라갈 때 바귀는 글자색깔*/
+   }
+   #sectionC input:hover, #sectionC input:focus{
+      box-shadow: 0 0.5em 0.5em -0.4em var(--hover);
+        transform: translateY(-0.25em);
+        border-color:var(--hover);
+        color:#9BD0C9;                              /*올라갈 때 바귀는 글자색깔*/
+   }
+   #sectionD input:hover, #sectionD input:focus{
+      box-shadow: 0 0.5em 0.5em -0.4em var(--hover);
+        transform: translateY(-0.25em);
+        border-color:var(--hover);
+        color:#FFF2AE;                              /*올라갈 때 바귀는 글자색깔*/
    }
    #section_box{
       width:1243px; 
@@ -64,7 +82,7 @@
       width:200px; height:160px;
       border:8px solid;
       --color: #ebe7f2;                     /*올라갈때 바뀌는 네모상자색깔*/
-      --hover: #717173;                     /*그림자 색깔*/
+      --hover: #717173;                     /*그림자 색깔=회색*/
    }
    #sectionA input[type=button]:hover,#sectionA input[type=button]:focus{
       box-shadow: 0 0.6em 0.6em -0.6em var(--hover);
@@ -72,15 +90,21 @@
    }
    #sectionB input[type=button]{
       width:380px; height:140px;
-      border:8px solid #569ECE;   
+      border:8px solid; 
+      --color: #d7e8f3;                     /*올라갈때 바뀌는 네모상자색깔*/
+      --hover: #717173; 
    }
    #sectionC input[type=button]{
       width:220px; height:187px;
-      border:8px solid    #9BD0C9;
+      border:8px solid ;
+      --color: #d5ebe8;                     /*올라갈때 바뀌는 네모상자색깔*/
+      --hover: #717173; 
    }
    #sectionD input[type=button]{
       width:220px; height:320px;
-      border:8px solid #FFF2AE;
+      border:8px solid;
+       --color:#fefae6;                     /*올라갈때 바뀌는 네모상자색깔*/
+      --hover: #717173; 
    }
    #canvas_box{
       width:1243px;
