@@ -80,6 +80,7 @@
    }
    #sectionA input[type=button]{
       width:200px; height:160px;
+      line-height:40px;
       border:8px solid;
       --color: #ebe7f2;                     /*올라갈때 바뀌는 네모상자색깔*/
       --hover: #717173;                     /*그림자 색깔=회색*/
@@ -90,6 +91,7 @@
    }
    #sectionB input[type=button]{
       width:380px; height:140px;
+      line-height:40px;
       border:8px solid; 
       --color: #d7e8f3;                     /*올라갈때 바뀌는 네모상자색깔*/
       --hover: #717173; 
