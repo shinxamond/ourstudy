@@ -115,10 +115,10 @@ public interface MypageMapper {
 	
 	
 	//잔여 시간 불러오기 - 저장될 때 ms 단위로 되면 num길이 늘려야될수도 + update 되는거니까 디폴트값 0으로 변경
-	//@Select("SELECT mem_study FROM member_history WHERE mem_num = #{mem_num}")
-	//public int selectRemainTime(MemberVO member);
+	@Select("SELECT mem_ticket_hour FROM member_history WHERE mem_num = #{mem_num}")
+	public float selectRemainTime(Integer mem_num);
 	
 	//잔여 시간 업데이트
-	//@Update("UPDATE member_history SET mem_study = mem_study + #{total_time} WHERE mem_num = #{mem_num}") //마찬가지
+	//@Update("UPDATE member_history SET mem_ticket_hour = mem_ticket_hour + #{total_time} WHERE mem_num = #{mem_num}") //마찬가지
 	//public void updateRemainTime(MemberVO member);
 }

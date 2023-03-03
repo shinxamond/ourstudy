@@ -37,6 +37,8 @@ public interface MypageService {
 	
 	public Integer selectTotalPoint(int mem_num);
 	
+	public void insertPoint(PayVO payVO);
+	
 	/*==================================
     				공부시간
 	====================================*/		
@@ -51,9 +53,9 @@ public interface MypageService {
 
 	public void updateStudyTime(SeatVO seat);
 	
+	public float selectRemainTime(Integer mem_num);
 	
 	
-	public void insertPoint(PayVO payVO);
 	
 	
 	

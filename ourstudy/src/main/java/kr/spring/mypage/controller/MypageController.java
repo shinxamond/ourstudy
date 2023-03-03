@@ -84,6 +84,8 @@ public class MypageController {
 		
 		Integer pointSum = mypageService.selectTotalPoint(user.getMem_num());
 		
+		Float remainTime = mypageService.selectRemainTime(user.getMem_num());
+		
 		if(pointSum == null) {
 			pointSum = 0;
 		}
@@ -112,6 +114,7 @@ public class MypageController {
 		model.addAttribute("member", member);
 		model.addAttribute("seat", seat);
 		model.addAttribute("pointSum", pointSum);
+		model.addAttribute("remainTime", remainTime * 3600);
 		
 		return "myPageMain"; //타일스 설정값
 	}
@@ -128,6 +131,8 @@ public class MypageController {
 		
 		Integer pointSum = mypageService.selectTotalPoint(user.getMem_num());
 		
+		Float remainTime = mypageService.selectRemainTime(user.getMem_num());
+		
 		if(pointSum == null) {
 			pointSum = 0;
 		}
@@ -136,6 +141,7 @@ public class MypageController {
 		model.addAttribute("member", member);
 		model.addAttribute("seat", seat);
 		model.addAttribute("pointSum", pointSum);
+		model.addAttribute("remainTime", remainTime * 3600);
 		
 		return "myPageMemInfo";
 	}
@@ -152,12 +158,15 @@ public class MypageController {
 		
 		Integer pointSum = mypageService.selectTotalPoint(user.getMem_num());
 		
+		Float remainTime = mypageService.selectRemainTime(user.getMem_num());
+		
 		if(pointSum == null) {
 			pointSum = 0;
 		}
 		model.addAttribute("member", member);
 		model.addAttribute("seat", seat);
 		model.addAttribute("pointSum", pointSum);
+		model.addAttribute("remainTime", remainTime * 3600);
 		
 		return "myPageModify";
 	}
@@ -193,12 +202,15 @@ public class MypageController {
 		
 		Integer pointSum = mypageService.selectTotalPoint(user.getMem_num());
 		
+		Float remainTime = mypageService.selectRemainTime(user.getMem_num());
+		
 		if(pointSum == null) {
 			pointSum = 0;
 		}
 		model.addAttribute("member", member);
 		model.addAttribute("seat", seat);
 		model.addAttribute("pointSum", pointSum);
+		model.addAttribute("remainTime", remainTime * 3600);
 		
 		return "myPagechangePasswd";
 	}
@@ -263,12 +275,15 @@ public class MypageController {
 		
 		Integer pointSum = mypageService.selectTotalPoint(user.getMem_num());
 		
+		Float remainTime = mypageService.selectRemainTime(user.getMem_num());
+		
 		if(pointSum == null) {
 			pointSum = 0;
 		}
 		model.addAttribute("member", member);
 		model.addAttribute("seat", seat);
 		model.addAttribute("pointSum", pointSum);
+		model.addAttribute("remainTime", remainTime * 3600);
 		
 		return "myPagedeleteMember";
 	}
@@ -324,12 +339,15 @@ public class MypageController {
 		
 		Integer pointSum = mypageService.selectTotalPoint(user.getMem_num());
 		
+		Float remainTime = mypageService.selectRemainTime(user.getMem_num());
+		
 		if(pointSum == null) {
 			pointSum = 0;
 		}
 		mav.addObject("member", member);
 		mav.addObject("seat", seat);
 		mav.addObject("pointSum", pointSum);
+		mav.addObject("remainTime", remainTime * 3600);
 		
 		Map<String, Object> map = new HashMap<String, Object>();
 		
@@ -371,12 +389,15 @@ public class MypageController {
 		
 		Integer pointSum = mypageService.selectTotalPoint(user.getMem_num());
 		
+		Float remainTime = mypageService.selectRemainTime(user.getMem_num());
+		
 		if(pointSum == null) {
 			pointSum = 0;
 		}
 		mav.addObject("member", member);
 		mav.addObject("seat", seat);
 		mav.addObject("pointSum", pointSum);
+		mav.addObject("remainTime", remainTime * 3600);
 		
 		//공부시간 리스트
 		Map<String, Object> map = new HashMap<String, Object>();

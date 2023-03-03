@@ -24,7 +24,12 @@
 		</div>
 		<div class = "element">
 			NO.<span class = "data-align" style = "display : inline-block; width : 50px; text-align : right;"> ${seat.seat_name }</span> 번 자리
-			<span class = "data-time">잔여시간 : <span class = "data-align">00일 00시간 00분</span></span>
+			<span class = "data-time">잔여시간 : <span class = "data-align">
+			<fmt:parseNumber value = "${remainTime / 86400}"  integerOnly="true"/>일 
+			<fmt:parseNumber value = "${((remainTime / 3600) % 3600) % 24}"  integerOnly="true"/>시간
+			<fmt:parseNumber value = "${(remainTime / 60 % 60)+(((remainTime / 60 % 60)%1>0.5)?(1-((remainTime / 60 % 60)%1))%1:-((remainTime / 60 % 60)%1))}" integerOnly="true"/>분
+			
+			</span></span>
 			<br>
 			<div class = "seatcheck-buttons">
 				<button class = "seatcheck-button">입실</button>

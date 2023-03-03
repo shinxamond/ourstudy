@@ -46,12 +46,6 @@ public class MypageServiceImpl implements MypageService{
 		mypageMapper.deleteMember_detail(mem_num);
 	}
 
-	/* 여기 서비스 말고 결제에서 mypagemapper 주입받고 결제 정보에 따라 point 계산해서 insert
-	 * @Override public void insertPoint(PointVO point) {
-	 * point.setPoint_num(mypageMapper.selectPoint_num());
-	 * mypageMapper.insertPoint(point); }
-	 */
-
 	@Override
 	public int selectPointListCountByMemNum(Integer mem_num) {
 		return mypageMapper.selectPointListCountByMemNum(mem_num);
@@ -97,14 +91,17 @@ public class MypageServiceImpl implements MypageService{
 		mypageMapper.insertPoint(payVO);
 	}
 	
-	
+	@Override
+	public float selectRemainTime(Integer mem_num) {
+		return mypageMapper.selectRemainTime(mem_num);
+	}
+
 	//////////////나중에 지울것////////////////////////////
 	@Override
 	public void deleteSomething(Integer mem_num) {
 		mypageMapper.deleteHistory(mem_num);
 		mypageMapper.deleteSeatHistory(mem_num);
 	}
-
 
 
 
