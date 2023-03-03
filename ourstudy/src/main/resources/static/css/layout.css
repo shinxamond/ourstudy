@@ -3,7 +3,7 @@
 /* 전체 레이아웃
 ---------------------------*/
 div#main{
-	width:1024px;
+	width:100%;
 	margin:0 auto;
 	font-size:10pt;
 	font-family:"맑은 고딕";
@@ -15,9 +15,12 @@ div#main_header{
 div#main_body{
 	padding:5px 5px 30px 5px;
 	min-height:500px;
+	width:82%;
+	position:relative;
+	left:265px;
 }
 div#main_footer{
-	background-color:yellow;
+	background-color:#9BD0C9;
 }
 a:link{
 	text-decoration:none;

@@ -7,39 +7,42 @@
 <script type="text/javascript" src="${pageContext.request.contextPath}/js/main/clock.js"></script>
 <script type="text/javascript" src="${pageContext.request.contextPath}/js/main/quotes.js"></script>
 
-<link rel="stylesheet" href="${pageContext.request.contextPath}/css/talk.css">
 <link rel="stylesheet" href="${pageContext.request.contextPath}/css/main.css">
-<div class="container">
-<div id="main_content_body">
-	<div class="digital-clock">00:00:00</div>
-	<div class="quote_author">
-		<span id="quote"></span><br>
-		<span id="author"></span>
-		가나랄잳뢪ㅁ루ㅏㅓㅇㄴㅁ리ㅏㅈㄷㅁ<br>
-		가나랄잳뢪ㅁ루ㅏㅓㅇㄴㅁ리ㅏㅈㄷㅁ<br>
-		가나랄잳뢪ㅁ루ㅏㅓㅇㄴㅁ리ㅏㅈㄷㅁ<br>
-		가나랄잳뢪ㅁ루ㅏㅓㅇㄴㅁ리ㅏㅈㄷㅁ<br>
-		가나랄잳뢪ㅁ루ㅏㅓㅇㄴㅁ리ㅏㅈㄷㅁ<br>
-		가나랄잳뢪ㅁ루ㅏㅓㅇㄴㅁ리ㅏㅈㄷㅁ<br>
-		가나랄잳뢪ㅁ루ㅏㅓㅇㄴㅁ리ㅏㅈㄷㅁ<br>
-		가나랄잳뢪ㅁ루ㅏㅓㅇㄴㅁ리ㅏㅈㄷㅁ<br>
-		가나랄잳뢪ㅁ루ㅏㅓㅇㄴㅁ리ㅏㅈㄷㅁ<br>
-		가나랄잳뢪ㅁ루ㅏㅓㅇㄴㅁ리ㅏㅈㄷㅁ<br>
-		가나랄잳뢪ㅁ루ㅏㅓㅇㄴㅁ리ㅏㅈㄷㅁ<br>
-		가나랄잳뢪ㅁ루ㅏㅓㅇㄴㅁ리ㅏㅈㄷㅁ<br>
-		가나랄잳뢪ㅁ루ㅏㅓㅇㄴㅁ리ㅏㅈㄷㅁ<br>
-		가나랄잳뢪ㅁ루ㅏㅓㅇㄴㅁ리ㅏㅈㄷㅁ<br>
-		가나랄잳뢪ㅁ루ㅏㅓㅇㄴㅁ리ㅏㅈㄷㅁ<br>
-		가나랄잳뢪ㅁ루ㅏㅓㅇㄴㅁ리ㅏㅈㄷㅁ<br>
-		가나랄잳뢪ㅁ루ㅏㅓㅇㄴㅁ리ㅏㅈㄷㅁ<br>
-		가나랄잳뢪ㅁ루ㅏㅓㅇㄴㅁ리ㅏㅈㄷㅁ<br>
-		가나랄잳뢪ㅁ루ㅏㅓㅇㄴㅁ리ㅏㅈㄷㅁ<br>
-		가나랄잳뢪ㅁ루ㅏㅓㅇㄴㅁ리ㅏㅈㄷㅁ<br>
-		가나랄잳뢪ㅁ루ㅏㅓㅇㄴㅁ리ㅏㅈㄷㅁ<br>
-		
+<link rel="stylesheet" href="${pageContext.request.contextPath}/css/talk.css">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Nanum+Brush+Script&display=swap" rel="stylesheet">
+
+<div id="main_content_body" class="container">
+	<div class="row">
+		<div class="col digital-clock card main_card" id="clock">
+			<span id="quote"></span>
+			<span id="author"></span>
+			00:00:00
+		</div>
+	</div>
+	<div class="row">
+		<div class="card main_card" id="study_banner">
+		캐러셀 배너
+		</div>
+		<div class="card main_card" id="study_board">
+		안내사항 미리보기 5개 정도
+		</div>
+	</div>
+	<div class="row">
+		<div class="card main_card" id="study_time">
+			누적 공부시간 순위 차트
+		</div>
+		<div class="card main_card" id="all_time">
+			모든 회원 일주일 누적 공부시간? 같은 동그라미 그래프 2개
+		</div>
+		<div class="card main_card" id="study_photo">
+			독서실 사진
+		</div>
 	</div>
 </div>
-</div>
+
 <!-- 메인 끝 -->
 <script type="text/javascript">
 var reload;

@@ -90,7 +90,7 @@ main {
     top: 0;
     left: 0;
     height: 100vh;
-    z-index: 999;
+    z-index: 1;
 }
 .sidescroll{
 	overflow-x:hidden;
