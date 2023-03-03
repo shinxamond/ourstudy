@@ -13,10 +13,6 @@
 		let seat_name = document.getElementById(e.getAttribute('id')).getAttribute('id');
 		let seat_num = document.getElementById(e.getAttribute('id')).getAttribute('data-seatnum');
 		
-		console.log(seat_name);
-		console.log(seat_num);
-		
-		
 		let select = confirm(seat_name + '번 좌석을 선택할까요?');
 		
 		if(select == false){
