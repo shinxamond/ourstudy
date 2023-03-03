@@ -10,3 +10,11 @@ form#info_write_form, form#info_update_form{
 form#info_write_form ul, form#info_update_form ul{
 	padding:20px;
 }
+
+form#lost_write_form{
+	padding:0 0 10px 0;
+	width:800px;
+}
+form#lost_write_form ul{
+	padding:20px;
+}

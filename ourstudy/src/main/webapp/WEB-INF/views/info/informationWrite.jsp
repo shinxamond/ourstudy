@@ -53,6 +53,8 @@
 			</li>
 			<!-- <li>
 				<label for="info_pin">상단고정</label>
+				<form:checkbox path="testVar" value="001" label="A" />     
+				<form:errors path="info_pin" cssClass="error-color"/>               
 			</li> -->
 		</ul>
 		<div class="align-right">

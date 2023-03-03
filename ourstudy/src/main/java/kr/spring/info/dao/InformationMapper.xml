@@ -60,5 +60,9 @@
   		  info_modify_date=SYSDATE
   		 WHERE info_num=#{info_num}
 	</update>
- 
+	
+	<!-- 상단고정 -->
+ 	<!-- <select id="notice" resultType="kr.spring.info.dao.InformationMapper" >
+	<![CDATA[select * from (select * from information where info_pin=2 order by info_num desc) where ROWNUM <=1 order by info_num desc]]>
+	</select>  -->
 </mapper>

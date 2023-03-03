@@ -4,6 +4,8 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
 import javax.validation.Valid;
 
 import org.slf4j.Logger;
@@ -22,6 +24,7 @@ import org.springframework.web.servlet.ModelAndView;
 import kr.spring.community.service.LostService;
 import kr.spring.community.vo.LostVO;
 import kr.spring.info.controller.InformationController;
+import kr.spring.member.vo.MemberVO;
 import kr.spring.util.PagingUtil;
 
 @Controller
@@ -41,22 +44,26 @@ public class LostController {
 	//==분실물 게시판 글목록
 		@RequestMapping("/community/lostList.do")
 		public ModelAndView process(
-				 @RequestParam(value="pageNum",defaultValue="1") 
-				    int currentPage,String keyfield,String keyword) {
+				 @RequestParam(value="pageNum",defaultValue="1") int currentPage,
+				 @RequestParam(value="keyfield",defaultValue="1") String keyfield) {
 					
 				Map<String,Object> map = 
 							new HashMap<String,Object>();
 				map.put("keyfield", keyfield);
-				map.put("keyword", keyword);
+	
 				
 				//글의 총개수 또는 검색된 글의 개수
 				int count = lostService.selectRowCount(map);
 				logger.debug("<<count>> : " + count);
 				
 				//페이지 처리
-				PagingUtil page = 
-						new PagingUtil(keyfield,keyword,
-						 currentPage,count,20,10,"lostList.do");
+				PagingUtil page = new PagingUtil(keyfield,null,
+						 currentPage,count,10,10,"lostList.do");
+				
+				map.put("start", page.getStartRow());
+				map.put("end", page.getEndRow());
+				
+				
 				List<LostVO> list = null;
 				if(count > 0) {
 					map.put("start", page.getStartRow());
@@ -83,27 +90,27 @@ public class LostController {
 	
 	//등록 폼에서 전송된 데이터 처리
 	@PostMapping("/community/lostWrite.do")
-		public String submit(@Valid LostVO lostVO, BindingResult result, Model model) {
+		public String submit(@Valid LostVO lostVO, BindingResult result, Model model,
+				HttpServletRequest request,
+				HttpSession session) {
 		logger.debug("<<분실물 글쓰기>> : " + lostVO);
 		//유효성 체크 결과 오류가 있으면 폼을 호출
-				if(result.hasErrors()) {
+		if(result.hasErrors()) {
 					return form();
-				}
+		}
+		
+		MemberVO user = (MemberVO)session.getAttribute("user");
+		lostVO.setMem_num(user.getMem_num());
+		
 		//글쓰기	
 		lostService.insertLost(lostVO);
 		
-		return "redirect:/info/lostList.do";
+		model.addAttribute("message", "등록 되었습니다.");
+		model.addAttribute("url",
+				request.getContextPath()+"/community/lostList.do");
+		return "common/resultView";
 	}
 	
-	/*
-	 * 
-	 * 
-	 * 
-	 * 
-	 * 
-	 * 
-	 * */
-		
 		
 		
 //습득물

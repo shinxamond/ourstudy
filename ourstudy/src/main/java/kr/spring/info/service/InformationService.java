@@ -14,5 +14,5 @@ public interface InformationService {
 	public void updateInformation(InformationVO info);
 	public void deleteInformation(Integer info_num);
 	public void deleteFile(Integer info_num);
-
+	//public List<InformationVO> notice(Integer info_pin);
 }

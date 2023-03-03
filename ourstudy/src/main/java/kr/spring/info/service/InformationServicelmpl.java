@@ -55,4 +55,10 @@ public class InformationServicelmpl implements InformationService{
 		informationMapper.deleteFile(info_num);
 		
 	}
+
+	
+	/*
+	 * @Override public List<InformationVO> notice(Integer info_pin) { return
+	 * informationMapper.notice(); }
+	 */
 }

@@ -47,6 +47,7 @@ public interface InformationMapper {
 	@Update("UPDATE information SET uploadfile='',filename='' WHERE info_num=#{info_num}")
 	public void deleteFile(Integer info_num);
 
-	
+	//상단고정 
+	//public void notice(Integer info_pin);
 	
 }
