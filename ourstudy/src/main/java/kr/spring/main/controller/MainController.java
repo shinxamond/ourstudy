@@ -12,9 +12,9 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import kr.spring.admin.service.AdminService;
-import kr.spring.admin.vo.AdminMemberVO;
 import kr.spring.info.service.InformationService;
 import kr.spring.info.vo.InformationVO;
+import kr.spring.main.service.MainService;
 import kr.spring.member.vo.MemberVO;
 
 @Controller
@@ -25,6 +25,9 @@ public class MainController {
 	
 	@Autowired
 	private InformationService informationService;
+	
+	@Autowired
+	private MainService mainService;
 	
 	//자바빈(VO) 초기화
 	@ModelAttribute
@@ -40,6 +43,7 @@ public class MainController {
 	@RequestMapping("/main/main.do")
 	public String main(Model model) {
 
+		//안내사항 최신글 4개
 		Map<String,Object> map = new HashMap<String,Object>();
 		map.put("start", 1);
 		map.put("end", 4);
@@ -47,24 +51,17 @@ public class MainController {
 		List<InformationVO> infoList = informationService.selectInfoList(map);
 		model.addAttribute("infoList", infoList);
 		
+		//누적공부순위 차트
+	    Map<String, Object> map2 = new HashMap<String,Object>();
+	    map.put("start", 1);
+	    map.put("end", 5);
+	    
+	    List<MemberVO> member_studyTime = mainService.member_studyTime(map2);  
+	    model.addAttribute("studyTime", member_studyTime);
+		
 		return "main";//타일스 설정값
 	}
 	
-	/*
-	@RequestMapping("/main/admin.do")
-	public String adminMain(Model model) {
-		Map<String,Object> map = 
-				     new HashMap<String,Object>();
-		map.put("start", 1);
-		map.put("end", 5);
-		List<AdminMemberVO> adminMemberList = 
-				adminMemberService.selectList(map);
-		
-		model.addAttribute("adminMemberList", adminMemberList);
-		
-		return "admin";//타일스 설정값
-	}
-	*/
 }
 
 

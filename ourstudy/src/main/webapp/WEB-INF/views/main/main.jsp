@@ -2,17 +2,55 @@
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!-- 메인 시작 -->
-<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.11.0/umd/popper.min.js"></script>
-<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/js/bootstrap.min.js"></script>
-<script type="text/javascript" src="${pageContext.request.contextPath}/js/main/clock.js"></script>
-<script type="text/javascript" src="${pageContext.request.contextPath}/js/main/quotes.js"></script>
-
 <link rel="stylesheet" href="${pageContext.request.contextPath}/css/main.css">
 <link rel="stylesheet" href="${pageContext.request.contextPath}/css/talk.css">
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Nanum+Brush+Script&display=swap" rel="stylesheet">
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.11.0/umd/popper.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/js/bootstrap.min.js"></script>
+<script type="text/javascript" src="${pageContext.request.contextPath}/js/main/clock.js"></script>
+<script type="text/javascript" src="${pageContext.request.contextPath}/js/main/quotes.js"></script>
+<script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+<%-- 
+<script>
+	google.charts.load("current", {packages:['corechart']});
+	google.charts.setOnLoadCallback(drawChart);
+	
+	function drawChart() {
+	  var data = google.visualization.arrayToDataTable([
+	    ["이름", "공부시간", { role: "style" } ],
+	    ["${}", 25, "color: green"],
+	    
+	    <c:forEach var="" items="">
+	    ["Platinum", 21.45, "color: #e5e4e2"],
+	    ["Gold", 19.30, "gold"],
+	    ["Silver", 10.49, "silver"],
+	    ["Copper", 8.94, "#b87333"]
+	    </c:forEach>
+	  ]);
+	
+	  var view = new google.visualization.DataView(data);
+	  view.setColumns([0, 1,
+	                   { calc: "stringify",
+	                     sourceColumn: 1,
+	                     type: "string",
+	                     role: "annotation" },
+	                   2]);
+	
+	  var options = {
+	    width: 550,
+	    height: 400,
+	    bar: {groupWidth: "75%"},
+	    legend: { position: "none" }
+	  };
+	  var chart = new google.visualization.ColumnChart(document.getElementById("columnchart_values"));
+	  chart.draw(view, options);
+	}
+</script>
+--%>
 
 <div id="main_content_body" class="container">
 	<div class="row" id="body_header">
@@ -30,13 +68,13 @@
 		<span style="margin:10px 0 10px 5px;">> 안내사항 </span>
 			<table class="table table-hover table-group-divider">
 				<tr>
-					<th width="350" class="align-center">제목</th>
+					<th width="320" class="align-center">제목</th>
 					<th class="align-center">작성일</th>
 				</tr>
 				<c:forEach var="info" items="${infoList}">
 				<tr>
 					<td>
-						<a class="title-link"  style="margin-left:5px; href="${pageContext.request.contextPath}/info/infoDetail.do?info_num=${info.info_num}">${info.info_title}</a>
+						<a href="${pageContext.request.contextPath}/info/infoDetail.do?info_num=${info.info_num}" style="margin-left:5px;">${info.info_title}</a>
 					</td>
 					<td class="align-center">	
 						${info.info_date}
@@ -48,7 +86,7 @@
 	</div>
 	<div class="row">
 		<div class="card main_card" id="study_time">
-			누적 공부시간 순위 차트
+			<div id="columnchart_values" style="width: 900px; height: 300px;"></div>
 		</div>
 		<div class="card main_card" id="all_time">
 			모든 회원 일주일 누적 공부시간? 같은 동그라미 그래프 2개
