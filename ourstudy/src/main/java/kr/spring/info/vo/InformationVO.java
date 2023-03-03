@@ -1,8 +1,11 @@
 package kr.spring.info.vo;
 
+import java.io.IOException;
 import java.sql.Date;
 
 import javax.validation.constraints.NotEmpty;
+
+import org.springframework.web.multipart.MultipartFile;
 
 
 public class InformationVO {
@@ -18,7 +21,15 @@ public class InformationVO {
 	private byte[] uploadfile;
 	private String filename;
 	
-
+	//파일 업로드 처리
+	public void setUpload(MultipartFile upload)
+		                          throws IOException{
+		//MultipartFile -> byte[] 변환
+		setUploadfile(upload.getBytes());
+		//파일명 구하기
+		setFilename(upload.getOriginalFilename());
+		}
+	
 	public int getInfo_num() {
 		return info_num;
 	}
@@ -80,8 +91,7 @@ public class InformationVO {
 	public String toString() {
 		return "InformationVO [info_num=" + info_num +", info_date" + info_date + ", info_title" + info_title +
 				", info_content" + info_content + ", info_pin" + info_pin + ", mem_num" + mem_num + 
-				", info_modify_date" + info_modify_date + ", uploadfile" + uploadfile +
-				", filename" + filename +"]";
+				", info_modify_date" + info_modify_date + ", filename" + filename +"]";
 	}
 	
 }

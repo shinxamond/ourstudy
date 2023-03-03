@@ -169,12 +169,12 @@ public class InformationController {
 								HttpSession session) {
 		
 		logger.debug("<<안내사항 수정>> : " + informationVO);
-		logger.debug("<<업로드 파일 용량>> : " 
-		           + informationVO.getUploadfile().length);
-		
-		if(informationVO.getUploadfile().length > 5*1024*1024) {//5MB
-			result.reject("limitUploadSize",new Object[]{"5MB"},null);
-		}
+//		logger.debug("<<업로드 파일 용량>> : " 
+//		           + informationVO.getUploadfile().length);
+//		
+//		if(informationVO.getUploadfile().length > 5*1024*1024) {//5MB
+//			result.reject("limitUploadSize",new Object[]{"5MB"},null);
+//		}
 		
 		if(result.hasErrors()) {
 			InformationVO vo = informationService.selectInformation(
