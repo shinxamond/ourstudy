@@ -96,8 +96,8 @@ Kakao.API.request({
 <%-- 로그인 모달 끝 --%>
 
 	<div class="main-side">
-		<nav id="main-sidebar" style="background-color: #FFF;">
-			<div class="shadow p-1 sidescroll" style="width:240px; height:100%;">
+		<nav id="main-sidebar">
+			<div class="shadow p-1 sidescroll" style="width:240px; height:100%; background-color:white;">
 				<div style="text-align:center;">
 					<a href="${pageContext.request.contextPath}/main/main.do"
 						class="d-flex align-items-center pb-3 mb-3 link-dark text-decoration-none border-bottom">
