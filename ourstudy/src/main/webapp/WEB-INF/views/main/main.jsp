@@ -14,21 +14,20 @@
 <script type="text/javascript" src="${pageContext.request.contextPath}/js/main/clock.js"></script>
 <script type="text/javascript" src="${pageContext.request.contextPath}/js/main/quotes.js"></script>
 <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
-<%-- 
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.2.1/chart.min.js"></script>
+
 <script>
+	//막대 차트(구글차트 API)
 	google.charts.load("current", {packages:['corechart']});
 	google.charts.setOnLoadCallback(drawChart);
+	google.charts.setOnLoadCallback(drawDoughnut1);
+	google.charts.setOnLoadCallback(drawDoughnut2);
 	
 	function drawChart() {
 	  var data = google.visualization.arrayToDataTable([
-	    ["이름", "공부시간", { role: "style" } ],
-	    ["${}", 25, "color: green"],
-	    
-	    <c:forEach var="" items="">
-	    ["Platinum", 21.45, "color: #e5e4e2"],
-	    ["Gold", 19.30, "gold"],
-	    ["Silver", 10.49, "silver"],
-	    ["Copper", 8.94, "#b87333"]
+	    ['이름', '공부시간', {role: 'style'}],
+	    <c:forEach var="studyTime" items="${studyTime}">
+	    ['${studyTime.mem_name}', ${studyTime.mem_study}, 'fill-color:#037332; opacity: 0.6'],
 	    </c:forEach>
 	  ]);
 	
@@ -41,16 +40,92 @@
 	                   2]);
 	
 	  var options = {
-	    width: 550,
-	    height: 400,
-	    bar: {groupWidth: "75%"},
-	    legend: { position: "none" }
+	    width: 500,
+	    height: 350,
+	    bar: {groupWidth: "50%"},
+	    legend: { position: "none" },
+	    vAxis: {textPosition: 'none', viewWindow: {max: 70}},
+	   	chartArea:{left:15,top:30,width:"93%",height:"80%"}
 	  };
 	  var chart = new google.visualization.ColumnChart(document.getElementById("columnchart_values"));
 	  chart.draw(view, options);
 	}
+	
+	//도넛차트(가짜데이터)
+	function drawDoughnut1() {
+        var data = google.visualization.arrayToDataTable([
+          ['Task', 'Hours per Day'],
+          ['Work',     11],
+          ['Eat',      2],
+          ['Commute',  2],
+          ['Watch TV', 2],
+          ['Sleep',    7]
+        ]);
+
+        var options = {
+          pieHole: 0.6,
+          legend: { position: "none" },
+          chartArea:{left:10,top:5,width:"90%",height:"90%"},
+          'height':195
+        };
+
+        var chart = new google.visualization.PieChart(document.getElementById('donutchart1'));
+        chart.draw(data, options);
+      }
+	
+	function drawDoughnut2() {
+        var data = google.visualization.arrayToDataTable([
+          ['Task', 'Hours per Day'],
+          ['Work',     9],
+          ['Eat',      3],
+          ['Watch TV', 4],
+          ['Sleep',    13]
+        ]);
+
+        var options = {
+          pieHole: 0.6,
+          legend: { position: "none" },
+          chartArea:{left:10,top:5,width:"90%",height:"90%"},
+          'height':195
+        };
+
+        var chart = new google.visualization.PieChart(document.getElementById('donutchart2'));
+        chart.draw(data, options);
+      }
+   
 </script>
---%>
+
+<%-- 도넛 차트(char.js 라이브러리)  --%>
+<script>
+	var ctx = document.getElementById('testChart');
+	var config = {
+		type:'doughnut',
+		data:{
+			datasets:[{
+				data:[10,20,30,40,50],
+				backgroundColor:['red','orange','yellow','green','blue'],
+				label:'Dataset 1'
+			}],
+			labels:['red','orange','yellow','green','blue']
+		},
+		options:{
+			responsive:true,
+			legend:{
+				position:'top',
+			},
+			title:{
+				display:true,
+				text:'Chart.js Doughnut Chart'
+			},
+			animation{
+				animateScale:true,
+				animateRotate:true
+			}
+		}
+	};
+	var myDoughnutChart = new Chart(ctx, config);
+</script>
+
 
 <div id="main_content_body" class="container">
 	<div class="row" id="body_header">
@@ -66,8 +141,8 @@
 		</div>
 		<div class="card main_card" id="study_board">
 		<span style="margin:10px 0 10px 5px;">> 안내사항 </span>
-			<table class="table table-hover table-group-divider">
-				<tr>
+			<table class="table table-hover table-group-divider table table-striped">
+				<tr style="background-color:#037332; opacity: 0.6; color:white;">
 					<th width="320" class="align-center">제목</th>
 					<th class="align-center">작성일</th>
 				</tr>
@@ -86,10 +161,15 @@
 	</div>
 	<div class="row">
 		<div class="card main_card" id="study_time">
-			<div id="columnchart_values" style="width: 900px; height: 300px;"></div>
+			<span style="margin:15px 0 0px 10px;">> 일주일 공부시간 랭킹 </span>
+			<div id="columnchart_values"></div>
 		</div>
 		<div class="card main_card" id="all_time">
-			모든 회원 일주일 누적 공부시간? 같은 동그라미 그래프 2개
+		<div>
+			<div id="donutchart1"></div>
+			</div>
+			<div id="donutchart2"></div>
+  			<%-- <canvas id="testChart" width="60vw" height="60vh"></canvas> --%>
 		</div>
 		<div class="card main_card" id="study_photo">
 			<span style="margin:15px 0 20px 5px;">> 우리 독서실 </span>

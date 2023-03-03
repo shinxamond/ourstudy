@@ -13,7 +13,6 @@ import kr.spring.member.vo.MemberVO;
 public interface MainMapper {
 	
 	//누적시간 차트
-	@Select("SELECT mem_name, mem_study FROM member_detail JOIN member_history USING(mem_num) ORDER BY mem_study DESC")
-	public List<MemberVO> member_studyTime(Map<String,Object> map);
-	
+	@Select("SELECT * FROM (SELECT a.*, rownum rnum FROM (SELECT mem_name, (mem_study/3600) mem_study FROM member_detail JOIN member_history USING(mem_num) ORDER BY mem_study DESC)a) WHERE rownum<=5 ")
+	public List<MemberVO> member_studyTime(Map<String,Object> map);		
 }

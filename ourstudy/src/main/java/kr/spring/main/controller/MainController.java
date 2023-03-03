@@ -53,8 +53,6 @@ public class MainController {
 		
 		//누적공부순위 차트
 	    Map<String, Object> map2 = new HashMap<String,Object>();
-	    map.put("start", 1);
-	    map.put("end", 5);
 	    
 	    List<MemberVO> member_studyTime = mainService.member_studyTime(map2);  
 	    model.addAttribute("studyTime", member_studyTime);
