@@ -17,20 +17,3 @@
 <span id="rent" class="guide-letter">RENT</span><br>
 <span id="info" class="guide-letter">INFO</span><br>
 </div>	
-<table border="1" style="text-align:center; padding:5px;">
-<tr>
-<c:forEach var="locker" items="${list}" step="3" begin="0" end="${fn:length(list)-1}">
-	<td><a href="${pageContext.request.contextPath}/locker/select.do?locker_num=${locker.locker_num}">${locker.locker_num}번</a></td>>
-</c:forEach>
-</tr>
-<tr>
-<c:forEach var="locker" items="${list}" step="3" begin="1" end="${fn:length(list)-1}">
-	<td><a href="${pageContext.request.contextPath}/locker/select.do?locker_num=${locker.locker_num}">${locker.locker_num}번</a></td>
-</c:forEach>
-</tr>
-<tr>
-<c:forEach var="locker" items="${list}" step="3" begin="2" end="${fn:length(list)-1}">
-	<td><a href="${pageContext.request.contextPath}/locker/select.do?locker_num=${locker.locker_num}">${locker.locker_num}번</a></td>
-</c:forEach>
-</tr>
-</table>
