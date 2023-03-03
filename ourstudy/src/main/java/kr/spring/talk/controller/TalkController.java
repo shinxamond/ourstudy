@@ -64,7 +64,7 @@ public class TalkController {
 	@PostMapping("/talk/talkRoomWrite.do")
 	public String submitTalkRoom(TalkRoomVO vo, Model model, HttpServletRequest request) {
 		logger.debug("<<채팅방 생성>> : " + vo);
-		
+
 		if(vo.getMembers().length==2) {
 			//getMembers()[배열]값을 가지고온다
 			int[] tmem_num = new int[2];
@@ -73,7 +73,7 @@ public class TalkController {
 			}
 			//중복 체크
 			int count = talkService.talkRoomCheck(tmem_num[0],tmem_num[1]);
-			
+
 			if(count != 0 ) {
 				model.addAttribute("message", "1:1 채팅은 중복 불가능");
 				model.addAttribute("url", request.getContextPath()+"/talk/talkRoomWrite.do");
@@ -89,12 +89,12 @@ public class TalkController {
 	@PostMapping("/talk/maintalkRoomWrite.do")
 	public String mainsubmitTalkRoom(TalkRoomVO vo, Model model, HttpSession session) {
 		logger.debug("<<채팅방 생성>> : " + vo);
-		
-		
+
+
 		MemberVO user = (MemberVO) session.getAttribute("user");
-		
+
 		int room_num;
-		
+
 		//getMembers()[배열]값을 가지고온다
 		int[] tmem_num = new int[2];
 		for (int i = 0; i < vo.getMembers().length; i++) {
@@ -102,7 +102,7 @@ public class TalkController {
 		}
 		//중복 체크
 		int count = talkService.talkRoomCheck(tmem_num[0],tmem_num[1]);
-		
+
 		Map<String, Object> map = new HashMap<String, Object>();
 		map.put("keyword", user.getMem_id() +", admin");
 		map.put("mem_num", user.getMem_num());
@@ -228,6 +228,27 @@ public class TalkController {
 
 		return mapAjax;
 	}
+
+	// ======읽지 않은 채팅 메시지 개수=======//
+	@RequestMapping("/talk/talkCountAjax.do")
+	@ResponseBody // json
+	public Map<String, Object> talkCountAjax(String keyword, HttpSession session) {
+
+		MemberVO user = (MemberVO) session.getAttribute("user");
+		Map<String, Object> mapAjax = new HashMap<String, Object>();
+		Map<String, Object> map = new HashMap<String, Object>();
+		map.put("keyword", keyword);
+		map.put("mem_num", user.getMem_num());
+
+		List<TalkRoomVO> clist = talkService.selectTalkRoomList(map);
+		logger.debug("<<채팅개수>> : " + clist);
+		
+		mapAjax.put("result", "success");
+		mapAjax.put("clist", clist);
+		
+		return mapAjax;
+	}
+
 
 	// =========채팅 메시지 등록===========//
 	@RequestMapping("/talk/writeTalk.do")

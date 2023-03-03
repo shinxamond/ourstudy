@@ -3,6 +3,7 @@ $(function(){
 	let member_list = [$('#user').attr('data-id')];
 	
 	let message_socket;//웹소켓 식별자
+	let message_socket2;//웹소켓 식별자
 	/*
 	
 	

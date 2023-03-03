@@ -10,10 +10,10 @@
 <link rel="stylesheet" href="${pageContext.request.contextPath}/css/talk.css">
 <script type="text/javascript">
 	 var reload;
-	reload = setInterval(function(){ location.reload(); }, 5000);
+//	reload = setInterval(function(){ location.reload(); }, 5000);
 	function start(){
 		//alert('시작');
-		 reload =   setInterval(function(){ location.reload(); }, 1000);
+		 reload =   setInterval(function(){ location.reload(); }, 700);
 	};
 	function end(){
 		//alert('끝');
@@ -53,20 +53,21 @@
 	<table class="striped-table">
 		<c:forEach var="talk" items="${list}">
 		
-		<tr id="${talk.talkroom_num}">
+		<tr>
 			<td style="text-align:left">
 				<%-- <a href="talkDetail.do?talkroom_num=${talk.talkroom_num}"> --%>
 				<a href="#" data-toggle="modal" data-target="#${user.mem_num}" id="10"  data-id="${talk.talkroom_num}">
 					<span>${talk.talkroom_name}</span>
 				</a>
 					<br>
-					<span>${fn:substring(talk.talkVO.message,0,45)}</span><!-- fn : 함수 사용 -->
+					<span class="m${talk.talkroom_num}">${fn:substring(talk.talkVO.message,0,45)}</span><!-- fn : 함수 사용 -->
 			</td>
 			<td style="text-align:right">
 				<c:if test="${!empty talk.talkVO.chat_date}">
-					${talk.talkVO.chat_date}<br>
+					<span class="t${talk.talkroom_num}">${talk.talkVO.chat_date}</span>
+					<br>
 					<c:if test="${talk.room_cnt!=0}">
-					<span id="talk_inform">${talk.room_cnt}</span>
+					<span class="c${talk.talkroom_num}" id="talk_inform">${talk.room_cnt}</span>
 					</c:if>
 				</c:if>
 				<c:if test="${empty talk.talkVO.chat_date}">${talk.talkroom_date}</c:if>
@@ -97,10 +98,10 @@
         <div class="modal-body" id="mbody">
 		<div id="chatting_message" style="width:500px; height:500px; overflow-y:scroll;"></div><!-- 다른 채팅창이 안보여서 나눔 -->
 		<form method="post" id="detail_form" style="border:none;">
-			<input type="hidden" name="talkroom_num" id="talkroom_num" value="${talk.talkroom_num}">
+			<input type="hidden" name="talkroom_num" id="talkroom_num">
 			<input type="hidden" name="mem_num" id="mem_num" value="${user.mem_num}">
 			
-			<textarea rows="5" cols="62" name="message" id="message"></textarea>
+			<textarea rows="5" cols="60" name="message" id="message"></textarea>
 			<input type="submit" value="전송">
 			
 		</form>
@@ -115,7 +116,6 @@
     </div>
 </div>
 	
-	
 	<script type="text/javascript">
 	function alarm_connect(room_num){
 		
@@ -127,16 +127,40 @@
 		};
 		//서버로부터 메시지를 받으면 호출되는 함수 지정 
 		message_socket.onmessage=function(evt){
+			
 			let data = evt.data;
 			if(data.substring(0,4) == 'msg:'){
 				selectMsg(room_num);
 			}
+			
 		};
 		message_socket.onclose=function(evt){
 			//소켓이 종료된 후 부과적인 작업이 있을 경우 명시
 			console.log('채팅 종료');
 		}
 	};
+	
+function alarm_connect2(){
+		
+		message_socket2 = new WebSocket("ws://localhost:8001/message-ws.do");
+		message_socket2.onopen = function(ent){//연결
+			console.log("채팅페이지 접속");
+		};
+		//서버로부터 메시지를 받으면 호출되는 함수 지정 
+		message_socket2.onmessage=function(evt){
+			
+			let data = evt.data;
+			if(data.substring(0,4) == 'arm:'){
+				countmsg();
+			}
+			
+		};
+		message_socket2.onclose=function(evt){
+			//소켓이 종료된 후 부과적인 작업이 있을 경우 명시
+			console.log('채팅 종료');
+		}
+	};
+	alarm_connect2();
 	
 	function selectMsg(room_num){//메시지 불러오기
 		
@@ -200,9 +224,8 @@
 						$('#chatting_message').append(output);
 						//스크롤을 하단에 위치시킴
 						$('#chatting_message').scrollTop($('#chatting_message')[0].scrollHeight);
-						
-					});
-										
+					});				
+					message_socket2.send("arm:");
 				}else{
 					alert('채팅 메시지 읽기 오류 발생');
 					message_socket.close();
@@ -213,13 +236,41 @@
 				message_socket.close();
 			}
 		});
+	} 
+	function countmsg(){
+		$.ajax({
+			url:'../talk/talkCountAjax.do',
+			type:'post',
+			dataType:'json',
+			success:function(param){
+				if(param.result == 'logout'){
+					alert('로그인해야 작성할 수 있습니다');
+					message_socket.close();
+				}else if(param.result == 'success'){
+					
+					$(param.clist).each(function(index,item){
+						console.log(item.talkroom_num);
+						$('.c'+item.talkroom_num).text(item.room_cnt);
+						$('.t'+item.talkroom_num).text(item.talkVO.chat_date);
+						$('.m'+item.talkroom_num).text(item.talkVO.message.substr(0, 45));
+					});
+				}else{
+					alert('메시지 등록 오류');
+					message_socket.close();
+				}
+			},
+			error:function(){
+				alert('채팅 카운트 네트워크 오류');
+				message_socket.close();
+			}
+		});
 	}
 	
 	
 		$(document).on('click','#10',function(){//목록 클릭
 			end();//새로고침 중지
 			var room_num = $(this).data('id');
-			
+			//$('#talkroom_num').val(room_num);
 			
 			alarm_connect(room_num);
 			
@@ -278,14 +329,7 @@
 			
 			//============채팅 등록================//
 			$('#detail_form').submit(function(event){
-				//중복제거
-				 function oneTimeSubmit(){  
-				    if(isSubmitted == false){
-				      isSubmitted = true;
-				    }else{
-				     alert("데이터를 전송중입니다. 확인메세지가 나올 때 까지 기다리세요");
-				    }
-				   }
+				
 				
 				//기본 이벤트 제거
 				event.preventDefault();
