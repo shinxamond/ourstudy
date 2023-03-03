@@ -9,8 +9,8 @@
 		</div>
 		<hr class = "horizontal-line">
 		<div>
-				<c:if test="${count < 0}">
-					<div>대여한 물품이 없습니다.</div>
+				<c:if test="${count == 0}">
+					<div style = "text-align : center; margin-top : 35px;">최근에 대여한 물품이 없습니다.</div>
 				</c:if>
 				
 				<c:if test="${count > 0}">
