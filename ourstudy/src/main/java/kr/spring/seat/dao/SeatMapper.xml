@@ -6,7 +6,7 @@
 <mapper namespace="kr.spring.seat.dao.SeatMapper">
 
    <select id="getSeatList" resultType="seatVO">
-            SELECT * FROM SEAT
+            select * FROM SEAT ORDER BY seat_num ASC
      </select>
 
    <select id="getSeatDetailList" resultType="seatVO">

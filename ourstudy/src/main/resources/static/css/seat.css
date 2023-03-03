@@ -9,6 +9,7 @@
 		height:35px;
 		text-align:center;
 		border:none;
+		position:relative;
 	}
 	.seat-option:not(:disabled){
 		cursor:pointer;
@@ -43,3 +44,62 @@
   #info{left:970px; bottom:400px;}
   #toilet{left:672px; bottom:875px;}
   
+/*===========================
+		SEAT BLOCKS (시발 진짜 존나 노가다임 시발 목빠지겄다 ^^^)
+  ===========================*/
+input[data-num="A1"]{
+	bottom:445px; right:155px;
+}
+input[data-num="A2"]{
+	bottom:390px; right: 204px;
+}
+input[data-num="A3"]{
+	bottom:333px; right:254px;
+}
+input[data-num="A4"]{
+	bottom:276px; right:303px;
+}
+input[data-num="A5"]{
+	bottom:219px; right:352px;
+}
+
+input[data-num="A6"]{
+	bottom:219px; right:313px;
+}
+input[data-num="A7"]{
+	bottom: 276px;
+    right: 363px;
+}
+input[data-num="A8"]{
+	bottom: 332px;
+    right: 413px;
+}
+input[data-num="A9"]{
+	bottom: 390px;
+	right: 463px;
+}
+input[data-num="A10"]{
+	bottom: 445px;
+    right: 512px;
+}
+
+
+
+input[data-num="C1"]{
+	bottom:450px; right:790px;
+}
+input[data-num="C2"]{
+	bottom:450px; right:770px;
+}
+input[data-num="C3"]{
+	bottom:450px; right:745px;
+}
+input[data-num="C4"]{
+	bottom:450px; right:715px;
+}
+input[data-num="C5"]{
+	bottom:450px; right:690px;
+}
+input[data-num="C6"]{
+	bottom:450px; right:665px;
+}

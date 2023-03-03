@@ -91,40 +91,6 @@ public class SeatController {
 	   map.put("auth", "member");					//일반회원임
 	   return map;
    }
-   
-   
-   
-   //좌석을 선택한 회원의 정보가 입력됨
-   @RequestMapping("/seat/select.do")
-   @ResponseBody
-   public Map<String, String> selectSeat(@RequestParam int seat_num, HttpServletRequest request) {
-      Map<String, String> mapJson = new HashMap<String, String>();
-      
-      HttpSession session = request.getSession();
-      if(session.getAttribute("user") == null) {
-         logger.debug("객체 null");
-      }
-      
-      int mem_num = (Integer)session.getAttribute("user_num");      
-      String mem_name = memberService.getMem_name(mem_num);         
-      logger.debug("mem_num = " + mem_num);
-      logger.debug("mem_name = " + mem_name);
-      
-      SeatVO seatVO = initCommand();
-      if(seatVO == null) {
-         logger.debug("이미 선택된 좌석임");
-         mapJson.put("result", "fail");
-      }
-      
-      seatVO.setMem_num(mem_num);
-      seatVO.setMem_name(mem_name);
-      seatVO.setSeat_num(seat_num);
-      seatService.selectSeat(seatVO);
-      
-      mapJson.put("result", "success");
-      
-      return mapJson;
-   }
    =============================================================================================*/
    
    //좌석을 선택한 회원의 정보가 입력됨
