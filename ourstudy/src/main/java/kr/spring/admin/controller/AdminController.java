@@ -216,7 +216,7 @@ public class AdminController {
 		logger.debug("<<총 글 갯수>> : " + count);
 		
 		//페이지 처리
-		PagingUtil page = new PagingUtil(keyfield,keyword,currentPage,count,4,10,"admin_itemhistory.do");
+		PagingUtil page = new PagingUtil(keyfield,keyword,currentPage,count,5,10,"admin_itemhistory.do");
 		
 		List<AdminItemHistoryVO> list = null;
 		if(count > 0) {
