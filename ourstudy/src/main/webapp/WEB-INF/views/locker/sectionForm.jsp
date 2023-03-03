@@ -8,13 +8,12 @@
 <canvas id="canvas"></canvas>  
 </div>
 <div id="section_box">
-<div id="sectionA"><input type="button" class="section" value="A" onclick=""></div>
-<div id="sectionB"><input type="button"  class="section" value="B" onclick=""></div>
-<div id="sectionC"><input type="button"  class="section" value="C" onclick=""></div>
-<div id="sectionD"><input type="button"  class="section" value="D" onclick=""></div>
+<div id="sectionA"><input type="button" class="section" value="A" onclick="${pageContext.request.contextPath}/locker/sectionA.do"></div>
+<div id="sectionB"><input type="button"  class="section" value="B" onclick="${pageContext.request.contextPath}/locker/sectionB.do"></div>
+<div id="sectionC"><input type="button"  class="section" value="C" onclick="${pageContext.request.contextPath}/locker/sectionC.do"></div>
+<div id="sectionD"><input type="button"  class="section" value="D" onclick="${pageContext.request.contextPath}/locker/sectionD.do"></div>
 
 <div class="clear-box" style="clear:both;"></div>
-<button id="sample">Sample</button>
 <span id="rent" class="guide-letter">RENT</span><br>
 <span id="info" class="guide-letter">INFO</span><br>
 </div>	
