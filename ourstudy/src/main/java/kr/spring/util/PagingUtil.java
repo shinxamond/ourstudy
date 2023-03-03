@@ -28,7 +28,7 @@ public class PagingUtil {
 	public PagingUtil(String keyfield, String keyword, int currentPage, int count, int rowCount,
 			int pageCount,String pageUrl,String addKey) {
 		
-		String sub_url = "";
+		String sub_url = ""; //uri 링크 뒤에 붙이는 파라미터
 		if(keyword != null) sub_url = "&keyfield="+keyfield+"&keyword="+keyword;
 		else if(keyword == null) sub_url = "&keyfield="+keyfield; //서지현 - 관리자페이지 추가
 		
@@ -53,6 +53,7 @@ public class PagingUtil {
 		if (endPage > totalPage) {
 			endPage = totalPage;
 		}
+		/*
 		// 이전 block 페이지
 		page = new StringBuffer();
 		if (currentPage > pageCount) {
@@ -84,6 +85,46 @@ public class PagingUtil {
 			page.append("[다음]");
 			page.append("</a>");
 		}
+		*/
+		page = new StringBuffer();
+		page.append("<nav aria-label='Page navigation example'><ul class='pagination justify-content-center'>");
+			//현재페이지가 페이지의 개수보다 클 때, 이전 block 페이지 표시
+			if (currentPage > pageCount) {
+				page.append("<li class='page-item'>"
+							+ "<a href="+pageUrl+"?pageNum="+ (startPage - 1) + sub_url +" "
+									+ "class='page-link' aria-label='Previous' style='color:#037332;'>");
+				page.append("<span aria-hidden='true'>");
+				page.append("&laquo;");
+				page.append("</span></a></li>");
+			}
+			//페이지 번호.현재 페이지 링크를 제거.
+			for (int i = startPage; i <= endPage; i++) {
+				if (i > totalPage) {
+					break;
+				}
+				if (i == currentPage) {
+					page.append("<li class='page-item active' aria-current='page'>"
+							+ "<a class='page-link' style='border-color:#037332; background-color: #037332; color:white;'>");
+					page.append(i);
+					page.append("</a></li>");
+				} else {
+					page.append("<li class='page-item'>");
+					page.append("<a class='page-link' style='color:#037332;' href='"+pageUrl+"?pageNum=");
+					page.append(i);
+					page.append(sub_url+"'>");
+					page.append(i);
+					page.append("</a></li>");
+				}
+			}
+			// 다음 block 페이지
+			if (totalPage - startPage >= pageCount) {
+				page.append("<li class='page-item'>");
+				page.append("<a href='"+pageUrl+"?pageNum="+ (endPage + 1) + sub_url +"' class='page-link' "
+								+"aria-label='Next' style='color:#037332;'>");
+				page.append("&raquo;");
+				page.append("</a>");
+			}
+		page.append("</ul></nav>");		
 	}
 	public StringBuffer getPage() {
 		return page;
