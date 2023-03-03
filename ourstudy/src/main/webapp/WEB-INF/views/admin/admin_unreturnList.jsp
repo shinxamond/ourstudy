@@ -55,7 +55,7 @@
 		</tr>			
 	  </c:forEach>
 	</table>
-			
+	<br>		
 	<div class="align-center">${page}</div>
 	</c:if>
 </div>
