@@ -10,6 +10,9 @@ body{
 	background-color:#f2f7f4!important;
 	height:100%;
 }
+#body_header{
+	width:1215px;
+}
 .card{
 	position: relative;
 	display:flex;
@@ -24,13 +27,13 @@ body{
 }
 #study_banner{
 	width:700px;
-	height:240px;
+	height:260px;
 	font-family: 'KOTRAHOPE';
 	font-size:17pt;
 }
 #study_board{
 	width:495px;
-	height:240px;
+	height:260px;
 }
 #study_time{
 	width:510px;

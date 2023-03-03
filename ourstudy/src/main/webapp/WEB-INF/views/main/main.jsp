@@ -15,8 +15,8 @@
 <link href="https://fonts.googleapis.com/css2?family=Nanum+Brush+Script&display=swap" rel="stylesheet">
 
 <div id="main_content_body" class="container">
-	<div class="row">
-		<div class="col digital-clock card main_card" id="clock">
+	<div class="row" id="body_header">
+		<div class="digital-clock card main_card" id="clock">
 			<span id="quote"></span>
 			<span id="author"></span>
 			00:00:00
@@ -27,7 +27,7 @@
 		캐러셀 배너
 		</div>
 		<div class="card main_card" id="study_board">
-		> 안내사항
+		<span style="margin:10px 0 10px 5px;">> 안내사항 </span>
 			<table class="table table-hover table-group-divider">
 				<tr>
 					<th width="350" class="align-center">제목</th>
