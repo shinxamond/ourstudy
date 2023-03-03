@@ -71,7 +71,6 @@
 <script type="text/javascript">
 var reload;
 if(${user.mem_auth == 1}){
-	reload = setInterval(function(){ location.reload(); }, 10000);
 	function start(){
 		//alert('시작');
 		 reload =   setInterval(function(){ location.reload(); }, 700);
@@ -108,13 +107,16 @@ $(function(){
 	</button>
 	<c:forEach var="talk_count" items="${roomList}">
 		<c:if test="${talk_count.room_cnt > 0 }">
-		<span id="talk_inform" style="position: fixed; right: 47px; bottom: 87px;">${talk_count.room_cnt}</span>
+		<span class="c${room_num}" id="talk_inform" style="position: fixed; right: 47px; bottom: 87px;">${talk_count.room_cnt}</span>
 		</c:if>
 	</c:forEach>
 	<span id="roomc" style="position: fixed; right: 40px; bottom: 30px;"></span>
 </c:if>
 <script type="text/javascript">
-		
+
+let message_socket;//웹소켓 식별자
+let message_socket2;//웹소켓 식별자
+
 function alarm_connect(room_num){
 	
 	message_socket = new WebSocket("ws://localhost:8001/message-ws.do");
@@ -135,6 +137,27 @@ function alarm_connect(room_num){
 		console.log('채팅 종료');
 	}
 };
+function alarm_connect2(){
+	
+	message_socket2 = new WebSocket("ws://localhost:8001/message-ws.do");
+	message_socket2.onopen = function(ent){//연결
+		console.log("채팅페이지 접속");
+	};
+	//서버로부터 메시지를 받으면 호출되는 함수 지정 
+	message_socket2.onmessage=function(evt){
+		
+		let data = evt.data;
+		if(data.substring(0,4) == 'arm:'){
+			countmsg();
+		}
+		
+	};
+	message_socket2.onclose=function(evt){
+		//소켓이 종료된 후 부과적인 작업이 있을 경우 명시
+		console.log('채팅 종료');
+	}
+};
+alarm_connect2();
 
 function selectMsg(room_num){//메시지 불러오기
 	
@@ -200,7 +223,7 @@ function selectMsg(room_num){//메시지 불러오기
 					$('#chatting_message').scrollTop($('#chatting_message')[0].scrollHeight);
 					
 				});
-									
+				message_socket2.send("arm:");				
 			}else{
 				alert('채팅 메시지 읽기 오류 발생');
 				message_socket.close();
@@ -208,6 +231,32 @@ function selectMsg(room_num){//메시지 불러오기
 		},
 		error:function(){
 			alert('메시지 읽기 네트워크 오류 발생');
+			message_socket.close();
+		}
+	});
+}
+function countmsg(){
+	$.ajax({
+		url:'../talk/talkCountAjax.do',
+		type:'post',
+		dataType:'json',
+		success:function(param){
+			if(param.result == 'logout'){
+				alert('로그인해야 작성할 수 있습니다');
+				message_socket.close();
+			}else if(param.result == 'success'){
+				
+				$(param.clist).each(function(index,item){
+					
+					$('.c'+item.talkroom_num).text(item.room_cnt);
+				});
+			}else{
+				alert('메시지 등록 오류');
+				message_socket.close();
+			}
+		},
+		error:function(){
+			alert('채팅 카운트 네트워크 오류');
 			message_socket.close();
 		}
 	});
