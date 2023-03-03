@@ -29,7 +29,7 @@
 			<div class="card" style="width: 40rem;">
 				<div class="card-body">
 					<input type="checkbox" class="choice-btn" style="margin-right: 3px;">
-					<input type="hidden" value="${ticket.ticket_num}">
+					<input type="hidden" data-ticketnum="${ticket.ticket_num}">
 					<a href="admin_ticketModify.do?ticket_num=${ticket.ticket_num}">${ticket.ticket_name}</a>
 					<div style="float: right;">
 						<fmt:formatNumber value="${ticket.ticket_price}" />

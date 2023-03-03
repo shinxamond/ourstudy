@@ -31,17 +31,23 @@ public interface PayMapper {
 	public int selectPoint(Integer mem_num);
 	
 	//이용권 시간 계산
+	//이용권 정보 가져오기
 	@Select("SELECT * FROM ticket WHERE ticket_num=#{ticket_num}")
 	public TicketVO selectTicket(Integer ticket_num);
+	//독서실 기간권 계산
 	@Update("UPDATE member_history SET mem_ticket_term=mem_ticket_term+#{time} "
 		  + "WHERE mem_num=#{mem_num}")
 	public void updateMemberHistory_Term(@Param(value="time") Integer time, 
 			   							@Param(value="mem_num") Integer mem_num);
+	//독서실 시간권 계산
 	@Update("UPDATE member_history SET mem_ticket_hour=mem_ticket_hour+#{time} "
 		  + "WHERE mem_num=#{mem_num}")
 	public void updateMemberHistory_Hour(@Param(value="time") Integer time, 
 										@Param(value="mem_num") Integer mem_num);
-	public int insertTicketTime();
-
+	
+	//사물함 시작 시간 구하기
+	@Select("SELECT pay_date FROM pay WHERE mem_num=#{mem_num}")
+	public int selectLockerTime(Integer pay_num);
+	
 }
 
