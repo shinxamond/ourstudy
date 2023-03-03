@@ -1,11 +1,4 @@
 
-/*이거 존나 클릭하면 알람떠야 되는 데 안 뜸*/	
-	function select(message){
-		console.log('왜 안 되노');
-		alert(message);
-		return false;
-	}
-	
 /*==============================
 		좌석 선택 확인 alert
   =============================*/
@@ -27,7 +20,7 @@
 				//(이전으로 못돌아감, 돌아갈 수 있음)
 				location.href='select.do?seat_num=' + seat_num;
 			}else if(locker == true){
-				location.href='';
+				location.href='/locker/section.do';
 			}
 		}
 		
