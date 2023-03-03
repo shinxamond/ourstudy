@@ -3,8 +3,6 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>    
 <!-- 중앙 컨텐츠 시작 -->
-<link href="https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css" rel="stylesheet">
-<script src="https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
 <style>
 .ck-editor__editable_inline{
 	min-height:250px;
@@ -49,7 +47,10 @@
 		            } );
 			    </script>
 			</li>
-			
+			<li>
+				<label for="upload">파일 첨부</label>
+				<input type="file" name="upload" id="upload">
+			</li>
 			<!-- <li>
 				<label for="info_pin">상단고정</label>
 			</li> -->

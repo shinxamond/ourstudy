@@ -14,7 +14,11 @@ public class InformationVO {
 	private String info_content;
 	private int info_pin;
 	private int mem_num;
+	private Date info_modify_date;
+	private byte[] uploadfile;
+	private String filename;
 	
+
 	public int getInfo_num() {
 		return info_num;
 	}
@@ -52,10 +56,32 @@ public class InformationVO {
 		this.mem_num = mem_num;
 	}
 	
+	public Date getInfo_modify_date() {
+		return info_modify_date;
+	}
+	public void setInfo_modify_date(Date info_modify_date) {
+		this.info_modify_date = info_modify_date;
+	}
+	public byte[] getUploadfile() {
+		return uploadfile;
+	}
+	public void setUploadfile(byte[] uploadfile) {
+		this.uploadfile = uploadfile;
+	}
+	public String getFilename() {
+		return filename;
+	}
+	public void setFilename(String filename) {
+		this.filename = filename;
+	}
+	
+	
 	@Override
 	public String toString() {
 		return "InformationVO [info_num=" + info_num +", info_date" + info_date + ", info_title" + info_title +
-				", info_content" + info_content + ", info_pin" + info_pin + ", mem_num" + mem_num + "]";
+				", info_content" + info_content + ", info_pin" + info_pin + ", mem_num" + mem_num + 
+				", info_modify_date" + info_modify_date + ", uploadfile" + uploadfile +
+				", filename" + filename +"]";
 	}
 	
 }

@@ -4,6 +4,9 @@ create table information(
   info_title varchar2(100) not null,
   info_content clob not null,
   info_pin number(1) default 1 not null,
+  info_modify_date date,
+  uploadfile blob,
+  filename varchar2(100),
   mem_num number not null,
   constraint information_pk primary key (info_num),
   constraint information_fk foreign key(mem_num) references member (mem_num)

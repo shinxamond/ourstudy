@@ -49,4 +49,10 @@ public class InformationServicelmpl implements InformationService{
 	public void deleteInformation(Integer info_num) {
 		informationMapper.deleteInformation(info_num);		
 	}
+
+	@Override
+	public void deleteFile(Integer info_num) {
+		informationMapper.deleteFile(info_num);
+		
+	}
 }

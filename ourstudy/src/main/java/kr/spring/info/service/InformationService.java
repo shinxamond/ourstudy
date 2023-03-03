@@ -13,5 +13,6 @@ public interface InformationService {
 	public void insertInformation(InformationVO info);
 	public void updateInformation(InformationVO info);
 	public void deleteInformation(Integer info_num);
+	public void deleteFile(Integer info_num);
 
 }

@@ -48,5 +48,17 @@
   		WHERE rnum >= #{start} AND rnum <= #{end}
   		]]>   	
 	</select>
-
+	<update id="updateInformation" parameterType="informationVO">
+		UPDATE information SET
+		 <if test="filename != ''">
+		  uploadfile=#{uploadfile},
+  		  filename=#{filename},
+  		  </if>
+  		  info_title=#{info_title},
+  		  info_content=#{info_content},
+  		  info_pin=#{info_pin},
+  		  info_modify_date=SYSDATE
+  		 WHERE info_num=#{info_num}
+	</update>
+ 
 </mapper>

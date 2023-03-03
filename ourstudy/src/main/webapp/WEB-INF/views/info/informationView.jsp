@@ -3,9 +3,6 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %> 
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %> 
 <!-- 중앙 컨텐츠 시작 -->
-<link href="https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css" rel="stylesheet">
-<script src="https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
-
 <div class="page-main">
 	<h2>안내사항</h2>
 	<br>
@@ -14,16 +11,27 @@
 			<h4>${information.info_title}</h4>
 		</li>
 		<li>
+			<c:if test="${!empty information.info_modify_date}">
+			최근 수정일 : ${information.info_modify_date}
+			</c:if>
+			<c:if test="${empty information.info_modify_date}">
 			작성일 : ${information.info_date}
+			</c:if>
 		</li>
 	</ul>
+	<c:if test="${!empty information.filename}">
+	<ul>
+		<li>
+			첨부파일 : <a href="file.do?info_num=${information.info_num}">${information.filename}</a>
+		</li>	
+	</ul>
+	</c:if>
 	<hr size="1" width="100%">
 	<p>
 		${information.info_content}
 	</p>
 	<hr size="1" width="100%">
 	<div class="align-right">
-		<c:if test="${!empty user && user.mem_num == information.mem_num}">
 		<input type="button" value="수정" 
 			onclick="location.href='infoUpdate.do?info_num=${information.info_num}'">
 		<input type="button" value="삭제" id="delete_btn"> 
@@ -36,7 +44,7 @@
 				}
 			};
 		</script>
-		</c:if> 
+		
 		<input type="button" value="목록"
 		           onclick="location.href='informationList.do'">
 	</div>

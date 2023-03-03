@@ -19,6 +19,7 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
 import kr.spring.info.vo.InformationVO;
@@ -33,7 +34,7 @@ public class InformationController {
 	private static final Logger logger =
 			LoggerFactory.getLogger(InformationController.class);
 	
-	//private int rowCount = 10;
+	private int rowCount = 10;
 	
 	@Autowired
 	private InformationService informationService;
@@ -60,9 +61,15 @@ public class InformationController {
 			logger.debug("<<count>> : " + count);
 			
 			//페이지 처리
+			/*
+			 * PagingUtil page = new PagingUtil(keyfield,keyword,
+			 * currentPage,count,10,10,"informationList.do");
+			 */
 			PagingUtil page = 
-					new PagingUtil(keyfield,keyword,
-					 currentPage,count,10,10,"informationList.do");
+					new PagingUtil(currentPage,count,rowCount,1,null);
+			map.put("start", page.getStartRow());
+			map.put("end", page.getEndRow());
+			
 			
 			List<InformationVO> list = null;
 			if(count > 0) {
@@ -94,6 +101,13 @@ public class InformationController {
 			HttpServletRequest request,
 			HttpSession session) {
 		logger.debug("<<게시판 글쓰기>> : " + informationVO);
+		logger.debug("<<업로드 파일 용량>> : " 
+		           + informationVO.getUploadfile().length);
+		
+		if(informationVO.getUploadfile().length > 5*1024*1024) {//5MB
+			result.reject("limitUploadSize",new Object[]{"5MB"},null);
+		}
+		
 		//유효성 체크 결과 오류가 있으면 폼을 호출
 		if(result.hasErrors()) {
 			return form();
@@ -155,8 +169,17 @@ public class InformationController {
 								HttpSession session) {
 		
 		logger.debug("<<안내사항 수정>> : " + informationVO);
+		logger.debug("<<업로드 파일 용량>> : " 
+		           + informationVO.getUploadfile().length);
+		
+		if(informationVO.getUploadfile().length > 5*1024*1024) {//5MB
+			result.reject("limitUploadSize",new Object[]{"5MB"},null);
+		}
 		
 		if(result.hasErrors()) {
+			InformationVO vo = informationService.selectInformation(
+									informationVO.getInfo_num());
+			informationVO.setFilename(vo.getFilename());
 			return "informationModify";
 		}
 		MemberVO user = (MemberVO)session.getAttribute("user");
@@ -182,6 +205,42 @@ public class InformationController {
 		
 		return "redirect:/info/informationList.do";
 	}
+	
+	//==파일삭제
+	@RequestMapping("/info/deleteFile.do")
+	@ResponseBody
+	public Map<String,String> processFile(
+			                   int info_num,
+			                   HttpSession session){
+		Map<String,String> mapJson = 
+				new HashMap<String,String>();
+		MemberVO user = (MemberVO)session.getAttribute("user");
+		if(user==null) {
+			mapJson.put("result", "logout");
+		}else {
+			informationService.deleteFile(info_num);
+			
+			mapJson.put("result", "success");
+		}
+		
+		return mapJson;
+		
+	}	
+	//==파일다운
+	@RequestMapping("/info/file.do")
+	public ModelAndView download(
+	         @RequestParam int info_num) {
+		InformationVO info = 
+		informationService.selectInformation(info_num);
+
+		ModelAndView mav = new ModelAndView();
+		mav.setViewName("downloadView");
+		mav.addObject("downloadFile", 
+				             info.getUploadfile());
+		mav.addObject("filename", info.getFilename());
+		
+		return mav;
+}
 	
 	
 	
