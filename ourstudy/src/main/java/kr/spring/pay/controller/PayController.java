@@ -27,77 +27,118 @@ import kr.spring.ticket.vo.TicketVO;
 
 @Controller
 public class PayController {
-   private final Logger logger = LoggerFactory.getLogger(PayController.class);
+	private final Logger logger = LoggerFactory.getLogger(PayController.class);
 
-   @Autowired
-   private PayService payService;
+	@Autowired
+	private PayService payService;
 
-   @Autowired
-   private TicketService ticketService;
-   
-   @Autowired
-   private MypageService myPageService;
+	@Autowired
+	private TicketService ticketService;
 
-   @ModelAttribute
-   public PayVO initCommand() {
-      return new PayVO();
-   }
+	@Autowired
+	private MypageService myPageService;
 
-   @GetMapping("/pay/payPage.do")
-   public ModelAndView process(@RequestParam int ticket_num) {
+	@ModelAttribute
+	public PayVO initCommand() {
+		return new PayVO();
+	}
 
-      logger.debug("<<이용권 정보>> : " + ticket_num);
+	@GetMapping("/pay/payPage.do")
+	public ModelAndView process(@RequestParam int ticket_num) {
 
-      TicketVO ticketVO = ticketService.selectTicket(ticket_num);
-      return new ModelAndView("payPage","ticket", ticketVO);
+		logger.debug("<<이용권 정보>> : " + ticket_num);
 
-   }
+		TicketVO ticketVO = ticketService.selectTicket(ticket_num);
+		return new ModelAndView("payPage","ticket", ticketVO);
 
-   @RequestMapping("/pay/payPagePoint.do")
-   @ResponseBody
-   public Map<String, Object> selectPoint(HttpSession session){
+	}
 
-      MemberVO user = (MemberVO)session.getAttribute("user");
-      Map<String, Object> mapAjax = new HashMap<String, Object>();
+	@RequestMapping("/pay/payPagePoint.do")
+	@ResponseBody
+	public Map<String, Object> selectPoint(HttpSession session){
 
-      if(user == null) {//로그인 되지 않은 경우
-         mapAjax.put("result", "logout");
-      }else{//로그인 된 경우 
-         Integer mypoint = myPageService.selectTotalPoint(user.getMem_num());
+		MemberVO user = (MemberVO)session.getAttribute("user");
+		Map<String, Object> mapAjax = new HashMap<String, Object>();
 
-         mapAjax.put("result", "success");
-         mapAjax.put("mypoint", mypoint);
-         if(mypoint == null) {
-            mapAjax.put("mypoint", 0);
-         }
+		if(user == null) {//로그인 되지 않은 경우
+			mapAjax.put("result", "logout");
+		}else{//로그인 된 경우 
+			Integer mypoint = myPageService.selectTotalPoint(user.getMem_num());
 
-         logger.debug("<<포인트 정보>> : " + mypoint);
+			mapAjax.put("result", "success");
+			mapAjax.put("mypoint", mypoint);
+			if(mypoint == null) {
+				mapAjax.put("mypoint", 0);
+			}
 
-      }
-      return mapAjax;
-   }
-   
-   //결제 데이터 받아오기
-   @RequestMapping("/pay/payResult.do")
-   @ResponseBody
-   public Map<String, Object> payResult(PayVO payVO,
-                               HttpSession session){
-      
-      Map<String, Object>mapAjax = new HashMap<String, Object>();
-      MemberVO user = (MemberVO)session.getAttribute("user");
-      
-      if(user == null) {
-         mapAjax.put("result", "logout");
-      }else {
-         logger.debug("<<카카오 페이 결과 pay>> : " + payVO);
-         payVO.setMem_num(user.getMem_num());
-         payService.insertPay(payVO);
-         mapAjax.put("result", "success");
-         mapAjax.put("payVO", payVO);
-      }
-      
-      return mapAjax;
-   }
+			logger.debug("<<포인트 정보>> : " + mypoint);
+
+		}
+		return mapAjax;
+	}
+
+	//결제 데이터 받아오기
+	@RequestMapping("/pay/payResult.do")
+	@ResponseBody
+	public Map<String, Object> payResult(PayVO payVO,
+			HttpSession session){
+
+		TicketVO ticket = new TicketVO();
+
+		Map<String, Object>mapAjax = new HashMap<String, Object>();
+		MemberVO user = (MemberVO)session.getAttribute("user");
+
+		if(user == null) {
+			mapAjax.put("result", "logout");
+		}else {
+			logger.debug("<<카카오 페이 결과 pay>> : " + payVO);
+			payVO.setMem_num(user.getMem_num());
+			payService.insertPay(payVO);
+
+
+			//payVO에 담긴 ticket num으로 ticket db에 있는 행 하나 가져오기 mapper에 작성
+			ticket = payService.selectTicket(payVO.getTicket_num());
+
+
+			//ticket 타입 가져오기
+			int type = ticket.getTicket_type();
+
+			int time;
+
+			if(type == 1) {
+				time = 2;
+			}else if(type == 2) {
+				time = 4;
+			}else if(type == 3) {
+				time = 8;
+			}else if(type == 4) {
+				time = 12;
+			}else if(type == 5) {
+				time = 50;
+			}else if(type == 6) {
+				time = 100;
+			}else if(type == 7) {
+				time = 7*24;
+			}else if(type == 8) {
+				time = 2*7*24;
+			}else {
+				time = 4*7*24;
+			}
+
+			//time 설정 끝
+			if(type > 6) {//기간권
+				payService.updateMemberHistory_Term(time, user.getMem_num());
+			}else {//시간권
+				payService.updateMemberHistory_Hour(time, user.getMem_num());
+			}
+
+			mapAjax.put("result", "success");
+			mapAjax.put("payVO", payVO);
+		}
+
+
+		return mapAjax;
+	}
 }
 
 

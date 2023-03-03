@@ -5,11 +5,6 @@
        "http://tiles.apache.org/dtds/tiles-config_3_0.dtd">
 
 <tiles-definitions>
-	<definition name="" extends="main">
-		<put-attribute name="title" value="채팅방 생성" />
-		<put-attribute name="body"
-			value="/WEB-INF/views/talk/talkRoomWrite.jsp" />
-	</definition>
 
 	<definition name="ticketList" extends="main">
 		<put-attribute name="title" value="이용권 목록" />
