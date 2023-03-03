@@ -32,9 +32,7 @@ public interface LostMapper {
 	public void insertLost(LostVO lost);
 	
 	//글수정 삭제
-	@Update("Update lost_found SET lf_title=#{lf_title},"
-			+"lf_content=#{lf_content},"
-			+ "WHERE lf_num=#{lf_num}")
+
 	public void updateLost(LostVO lost);
 	@Delete("DELETE FROM lost_found WHERE info_num=#{info_num}")
 	public void deleteLost(Integer lf_num);
