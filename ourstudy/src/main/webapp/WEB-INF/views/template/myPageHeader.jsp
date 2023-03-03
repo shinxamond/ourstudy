@@ -20,7 +20,7 @@
 		</div>
 		<div class = "element">
 			<p><a href = "${pageContext.request.contextPath}/mypage/pointList.do" class = "link-font big">포인트 ></a></p>
-			<span class = "data-align top">1300p</span>
+			<span class = "data-align top"><fmt:formatNumber value = "${pointSum}"/>P</span>
 		</div>
 		<div class = "element">
 			NO.<span class = "data-align" style = "display : inline-block; width : 50px; text-align : right;"> ${seat.seat_name }</span> 번 자리

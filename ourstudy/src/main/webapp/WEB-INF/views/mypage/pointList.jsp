@@ -25,7 +25,7 @@
 			</div>
 		</c:if>		
 				<c:if test="${count == 0}">
-				<div style = "text-align :center;">입/퇴실 내역이 없습니다.</div>
+				<div style = "text-align :center;">포인트 적립 내역이 없습니다.</div>
 				</c:if>
 				<c:if test="${count > 0 }">
 				<table class = "point-table">

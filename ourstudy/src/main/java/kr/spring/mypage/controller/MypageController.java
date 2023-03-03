@@ -82,6 +82,12 @@ public class MypageController {
 		
 		SeatVO seat = mypageService.selectCurSeat(user.getMem_num());
 		
+		Integer pointSum = mypageService.selectTotalPoint(user.getMem_num());
+		
+		if(pointSum == null) {
+			pointSum = 0;
+		}
+		
 		logger.debug("<<마이페이지 멤버 정보>> : " + member);
 		
 		Map<String, Object> map = new HashMap<String, Object>();
@@ -105,6 +111,7 @@ public class MypageController {
 		model.addAttribute("list", list);
 		model.addAttribute("member", member);
 		model.addAttribute("seat", seat);
+		model.addAttribute("pointSum", pointSum);
 		
 		return "myPageMain"; //타일스 설정값
 	}
@@ -119,10 +126,16 @@ public class MypageController {
 		
 		SeatVO seat = mypageService.selectCurSeat(user.getMem_num());
 		
+		Integer pointSum = mypageService.selectTotalPoint(user.getMem_num());
+		
+		if(pointSum == null) {
+			pointSum = 0;
+		}
 		logger.debug("<<마이페이지 멤버 정보>> : " + member);
 		
 		model.addAttribute("member", member);
 		model.addAttribute("seat", seat);
+		model.addAttribute("pointSum", pointSum);
 		
 		return "myPageMemInfo";
 	}
@@ -137,8 +150,14 @@ public class MypageController {
 		
 		SeatVO seat = mypageService.selectCurSeat(user.getMem_num());
 		
+		Integer pointSum = mypageService.selectTotalPoint(user.getMem_num());
+		
+		if(pointSum == null) {
+			pointSum = 0;
+		}
 		model.addAttribute("member", member);
 		model.addAttribute("seat", seat);
+		model.addAttribute("pointSum", pointSum);
 		
 		return "myPageModify";
 	}
@@ -172,8 +191,14 @@ public class MypageController {
 		
 		SeatVO seat = mypageService.selectCurSeat(user.getMem_num());
 		
+		Integer pointSum = mypageService.selectTotalPoint(user.getMem_num());
+		
+		if(pointSum == null) {
+			pointSum = 0;
+		}
 		model.addAttribute("member", member);
 		model.addAttribute("seat", seat);
+		model.addAttribute("pointSum", pointSum);
 		
 		return "myPagechangePasswd";
 	}
@@ -236,8 +261,14 @@ public class MypageController {
 		
 		SeatVO seat = mypageService.selectCurSeat(user.getMem_num());
 		
+		Integer pointSum = mypageService.selectTotalPoint(user.getMem_num());
+		
+		if(pointSum == null) {
+			pointSum = 0;
+		}
 		model.addAttribute("member", member);
 		model.addAttribute("seat", seat);
+		model.addAttribute("pointSum", pointSum);
 		
 		return "myPagedeleteMember";
 	}
@@ -291,8 +322,14 @@ public class MypageController {
 		
 		SeatVO seat = mypageService.selectCurSeat(user.getMem_num());		
 		
+		Integer pointSum = mypageService.selectTotalPoint(user.getMem_num());
+		
+		if(pointSum == null) {
+			pointSum = 0;
+		}
 		mav.addObject("member", member);
 		mav.addObject("seat", seat);
+		mav.addObject("pointSum", pointSum);
 		
 		Map<String, Object> map = new HashMap<String, Object>();
 		
@@ -332,8 +369,14 @@ public class MypageController {
 		
 		SeatVO seat = mypageService.selectCurSeat(user.getMem_num());
 		
+		Integer pointSum = mypageService.selectTotalPoint(user.getMem_num());
+		
+		if(pointSum == null) {
+			pointSum = 0;
+		}
 		mav.addObject("member", member);
 		mav.addObject("seat", seat);
+		mav.addObject("pointSum", pointSum);
 		
 		//공부시간 리스트
 		Map<String, Object> map = new HashMap<String, Object>();
