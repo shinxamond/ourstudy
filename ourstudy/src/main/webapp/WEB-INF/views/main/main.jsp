@@ -27,7 +27,23 @@
 		캐러셀 배너
 		</div>
 		<div class="card main_card" id="study_board">
-		안내사항 미리보기 5개 정도
+		> 안내사항
+			<table class="table table-hover table-group-divider">
+				<tr>
+					<th width="350" class="align-center">제목</th>
+					<th class="align-center">작성일</th>
+				</tr>
+				<c:forEach var="info" items="${infoList}">
+				<tr>
+					<td>
+						<a class="title-link"  style="margin-left:5px; href="${pageContext.request.contextPath}/info/infoDetail.do?info_num=${info.info_num}">${info.info_title}</a>
+					</td>
+					<td class="align-center">	
+						${info.info_date}
+					</td>
+				</tr>
+				</c:forEach>
+			</table>
 		</div>
 	</div>
 	<div class="row">
@@ -38,7 +54,15 @@
 			모든 회원 일주일 누적 공부시간? 같은 동그라미 그래프 2개
 		</div>
 		<div class="card main_card" id="study_photo">
-			독서실 사진
+			<span style="margin:15px 0 20px 5px;">> 우리 독서실 </span>
+			<span class="align-center">
+				<img src="${pageContext.request.contextPath}/image_bundle/study1.jpg" class="study_photo">
+				<img src="${pageContext.request.contextPath}/image_bundle/study2.jpg" class="study_photo">
+			</span>
+			<span class="align-center">
+				<img src="${pageContext.request.contextPath}/image_bundle/study3.jpg" class="study_photo">
+				<img src="${pageContext.request.contextPath}/image_bundle/study4.PNG" class="study_photo">
+			</span>
 		</div>
 	</div>
 </div>

@@ -13,6 +13,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 
 import kr.spring.admin.service.AdminService;
 import kr.spring.admin.vo.AdminMemberVO;
+import kr.spring.info.service.InformationService;
+import kr.spring.info.vo.InformationVO;
 import kr.spring.member.vo.MemberVO;
 
 @Controller
@@ -20,6 +22,9 @@ public class MainController {
 	
 	@Autowired
 	private AdminService adminMemberService; 
+	
+	@Autowired
+	private InformationService informationService;
 	
 	//자바빈(VO) 초기화
 	@ModelAttribute
@@ -35,6 +40,13 @@ public class MainController {
 	@RequestMapping("/main/main.do")
 	public String main(Model model) {
 
+		Map<String,Object> map = new HashMap<String,Object>();
+		map.put("start", 1);
+		map.put("end", 4);
+		
+		List<InformationVO> infoList = informationService.selectInfoList(map);
+		model.addAttribute("infoList", infoList);
+		
 		return "main";//타일스 설정값
 	}
 	

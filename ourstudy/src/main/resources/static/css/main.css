@@ -24,13 +24,13 @@ body{
 }
 #study_banner{
 	width:700px;
-	height:230px;
+	height:240px;
 	font-family: 'KOTRAHOPE';
 	font-size:17pt;
 }
 #study_board{
 	width:495px;
-	height:230px;
+	height:240px;
 }
 #study_time{
 	width:510px;
@@ -43,4 +43,10 @@ body{
 #study_photo{
 	width:425px;
 	height:400px;
+}
+.study_photo{
+	width:190px;
+	height:140px;
+	margin:5px;
+	margin-bottom:10px;
 }
