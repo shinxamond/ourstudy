@@ -19,4 +19,6 @@ public interface PayService {
 	public TicketVO selectTicket(Integer ticket_num);
 	public void updateMemberHistory_Term(Integer time, Integer mem_num);
 	public void updateMemberHistory_Hour(Integer time, Integer mem_num);
+	
+	public int selectLockerTime(Integer pay_num);
 }

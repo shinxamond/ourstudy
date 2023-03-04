@@ -48,4 +48,9 @@ public class TicketServiceImpl implements TicketService{
 	public int selectTicketCount(Map<String, Object> map) {
 		return ticketMapper.selectTicketCount(map);
 	}
+
+	@Override
+	public List<TicketVO> selectAdminTicketList(Map<String, Object> map) {
+		return ticketMapper.selectAdminTicketList(map);
+	}
 }

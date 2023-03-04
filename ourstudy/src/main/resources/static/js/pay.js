@@ -68,7 +68,6 @@ $(function(){
                $('#use_point').val('').focus();
             }   
          }
-	
    });
 });
 
@@ -82,9 +81,6 @@ $(function(){
 
    IMP.init("imp36873723"); // 예: imp00000000
    
-
-   
-
   function requestKakaoPay() {
    	var pprice = $('#final_price').text();
 	var useP = document.getElementById('use_point');
@@ -112,23 +108,14 @@ $(function(){
          pay_method : "card",
          merchant_uid : "ourstudy_" + new Date().getTime(), // 주문번호
          name : pname,
-         amount : pprice, // 숫자 타입
-         buyer_email : "pandasticday@gmail.com",
-         buyer_name : "박테스트",
+         amount : pprice,
       }, function(rsp) { // callback
          console.log(rsp);
          if (rsp.success) {            
             $.ajax({
                url:'payResult.do',
                type:'post',
-               /*data:{pay_price:$('#final_price').attr('data-pricenum'),
-                    pay_content:$('#ticket_name').attr('data-ticketname'),
-                    ticket_num:$('#ticket_num').attr('data-ticketnum'),
-                    pay_plan:1},*/
-               
-            
                data: (check_useP == 1) ? ajaxParam1 : ajaxParam2,
-               
                dataType:'json',
                success:function(param){
                   if(param.result == 'logout'){
@@ -159,7 +146,7 @@ $(function(){
          pay_method : "card",
          merchant_uid : "ourstudy_" + new Date().getTime(), // 주문번호
          name : pname,
-         amount : pprice, // 숫자 타입
+         amount : pprice,
          buyer_email :'',
          
       }, function(rsp) { // callback   
@@ -193,76 +180,4 @@ $(function(){
          }
       });
    }
-
-
-/*
-
-	function requestKakaoPay() {
-      pay_process("kakaopay.TC0ONETIME","1");
-   }
-   
-function pay_process(pay_pg,pay_pl){
-   var pname = $('#ticket_name').text();
-   var pprice = $('#final_price').text();
-   
-         IMP.request_pay({
-         pg : pay_pg,
-         pay_method : "card",
-         merchant_uid : "ourstudy_" + new Date().getTime(), // 주문번호
-         name : pname,
-         amount : pprice, // 숫자 타입
-         buyer_email : "pandasticday@gmail.com",
-         buyer_name : "박테스트",
-      }, function(rsp) { // callback
-         console.log(rsp);
-         if (rsp.success) {
-            var msg = '결제가 완료되었습니다.';
-            alert(msg);
-            
-            $.ajax({
-               url:'payResult.do',
-               type:'post',
-               data:{pay_price:$('#final_price').attr('data-pricenum'),
-                    pay_content:$('#ticket_name').attr('data-ticketname'),
-                    ticket_num:$('#ticket_num').attr('data-ticketnum'),
-                    use_point:$('#use_point').val(),
-                    check_useP : check_useP,
-            
-                    pay_plan:pay_pl},
-               
-            
-               data: (check_useP == 1) ? ajaxParam1 : ajaxParam2,
-               
-               dataType:'json',
-               success:function(param){
-                  if(param.result == 'logout'){
-                     alert('로그인 후 사용하세요');
-                  }else if(param.result == 'success'){
-                     alert('결제 정보 저장됨');
-                  }else{
-                     alert('오류 발생');
-                  }
-               },
-               error:function(){
-                  alert('네트워크 오류 발생');
-               }
-            });
-            
-         } else {
-            var msg = '결제에 실패하였습니다.';
-            msg += '에러내용 : ' + rsp.error_msg;
-            alert(msg);
-         }
-      });
-   
-}
-   
-   function requestCardPay() {
-      pay_process("html5_inicis.INIpayTest","2");
-   }
-*/
-
-
-
-
 

@@ -65,7 +65,7 @@ public class TicketAdminController {
 	         map.put("start", page.getStartRow());
 	         map.put("end", page.getEndRow());
 
-	         ticket = ticketService.selectTicketList(map);
+	         ticket = ticketService.selectAdminTicketList(map);
 	      }
 
 	      ModelAndView mav = new ModelAndView();

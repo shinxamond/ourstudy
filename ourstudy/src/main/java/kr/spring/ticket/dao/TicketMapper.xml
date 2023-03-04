@@ -25,6 +25,21 @@
 		
 	</select>
 
+	<select id="selectAdminTicketList" parameterType="map"
+		resultType="ticketVO">
+		SELECT
+		*
+		FROM (SELECT
+		a.*,
+		rownum rnum
+		FROM (SELECT
+		*
+		FROM ticket
+		ORDER BY ticket_kind ASC, ticket_type ASC, ticket_price ASC)a)
+		
+	</select>
+	
+	
 
 </mapper>
 

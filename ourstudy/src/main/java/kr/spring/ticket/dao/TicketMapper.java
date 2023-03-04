@@ -33,8 +33,10 @@ public interface TicketMapper {
 	//이용권 삭제
 	@Delete("DELETE FROM ticket WHERE ticket_num=#{ticket_num}")
 	public void deleteTicket(Integer ticket_num);
-	//이용권 목록
+	//이용권 목록(사용자)
 	public List<TicketVO> selectTicketList(Map<String, Object> map);
+	//이용권 목록(관리자)
+	public List<TicketVO> selectAdminTicketList(Map<String, Object> map);
 	public int selectTicketCount(Map<String, Object> map);
 	
 }

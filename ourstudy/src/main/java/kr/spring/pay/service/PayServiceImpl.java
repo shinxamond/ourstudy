@@ -40,7 +40,6 @@ public class PayServiceImpl implements PayService{
 		payMapper.insertPay(payVO);
 		
 		mypageMapper.insertPoint(payVO);
-		
 	}
 	
 	@Override
@@ -68,6 +67,11 @@ public class PayServiceImpl implements PayService{
 	public void updateMemberHistory_Hour(Integer time, Integer mem_num) {
 		payMapper.updateMemberHistory_Hour(time, mem_num);
 		
+	}
+
+	@Override
+	public int selectLockerTime(Integer pay_num) {
+		return selectLockerTime(pay_num);
 	}
 
 	

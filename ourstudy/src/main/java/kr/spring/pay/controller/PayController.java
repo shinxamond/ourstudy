@@ -123,8 +123,6 @@ public class PayController {
 			int kind = ticket.getTicket_kind();
 			//독서실 시간
 			int time;
-			//사물함 시간
-			int l_time;
 			
 			if(kind == 1) {//독서실 이용권
 				if(type == 1) {
@@ -154,7 +152,9 @@ public class PayController {
 					}
 			}else {//사물함 이용권	
 				//사물함 시간 구하기
-
+				int pay = payVO.getPay_num();
+				payService.selectLockerTime(pay);
+				
 				LockerVO lockerVO = initCommand2();
 				lockerVO.setMem_num(user.getMem_num());
 				lockerVO.setMem_name(memberService.getMem_name(user.getMem_num()));
@@ -164,21 +164,18 @@ public class PayController {
 				DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss");
 				
 				
-				LocalDateTime in_time = LocalDateTime.parse(locker_in_db,formatter);
+				LocalDateTime in_time = LocalDateTime.parse(locker_in_db, formatter);
 				LocalDateTime now_time = LocalDateTime.now();
 				String now = now_time.format(formatter);
 				now_time = LocalDateTime.parse(now,formatter);
 				
 				LocalDateTime out_time;		//1주, 2주, 4주
 				if(type == 7) {
-					l_time = 1;
-					out_time = in_time.plusWeeks(l_time);
+					out_time = in_time.plusWeeks(1);
 				}else if(type == 8){
-					l_time = 2;
-					out_time = in_time.plusWeeks(l_time);
+					out_time = in_time.plusWeeks(2);
 				}else {
-					l_time = 4;
-					out_time = in_time.plusWeeks(l_time);
+					out_time = in_time.plusWeeks(4);
 				}
 				
 				String locker_out_db = out_time.format(formatter);
