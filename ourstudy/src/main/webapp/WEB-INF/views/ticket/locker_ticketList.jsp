@@ -21,7 +21,7 @@
 			</c:if>
 			<c:if test="${count > 0}">
 				<c:forEach var="ticket" items="${ticket}">
-					<c:if test="${ticket.ticket_kind == 1}">
+					<c:if test="${ticket.ticket_kind == 2}">
 						<div class="card-group" style="margin-top: 30px;">
 							<div class="card" style="width: 20rem;">
 								<input type="hidden" value="${ticket.ticket_num}">

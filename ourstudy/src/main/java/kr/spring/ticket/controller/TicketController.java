@@ -30,10 +30,10 @@ public class TicketController {
 	public TicketVO initCommand() {
 		return new TicketVO();
 	}
-	
-	//이용권 목록
+
+	//독서실 이용권 목록
 	@RequestMapping("/ticket/study_ticketList.do")
-	public ModelAndView process(
+	public ModelAndView study_process(
 			@RequestParam(value="pageNum",defaultValue="1")
 			int currentPage,
 			String keyfield,
@@ -66,11 +66,47 @@ public class TicketController {
 
 
 		return mav;
-		
+
 	}
-	
-	
-	
+	//사물함 이용권 목록
+	@RequestMapping("/ticket/locker_ticketList.do")
+	public ModelAndView locker_process(
+			@RequestParam(value="pageNum",defaultValue="1")
+			int currentPage,
+			String keyfield,
+			String keyword) {
+
+		Map<String, Object> map = new HashMap<String, Object>();
+		map.put("keyfield", keyfield);
+		map.put("keyword", keyword);
+
+		//상품의 총 개수 또는 검색된 상품의 개수
+		int count = ticketService.selectTicketCount(map);
+
+		//페이지 처리
+		PagingUtil page = new PagingUtil(keyfield, keyword,
+				currentPage, count, 20, 10, "list.do");
+
+		List<TicketVO> ticket = null;
+		if(count > 0) {	
+			map.put("start", page.getStartRow());
+			map.put("end", page.getEndRow());
+
+			ticket = ticketService.selectTicketList(map);
+		}
+
+		ModelAndView mav = new ModelAndView();
+		mav.setViewName("locker_ticketList");
+		mav.addObject("count", count);
+		mav.addObject("ticket", ticket);
+		mav.addObject("page", page.getPage());
+
+
+		return mav;
+
+	}
+
+
 }
 
 

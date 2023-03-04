@@ -140,8 +140,8 @@ Kakao.API.request({
         			</button>
         			<div class="collapse" id="item-collapse">
          		 	<ul class="btn-toggle-nav fw-normal pb-1 small">
-           				<li><a href="${pageContext.request.contextPath}/ticket/ticketList.do" class="link-dark d-inline-flex rounded">좌석 이용권</a></li>
-            			<li><a href="${pageContext.request.contextPath}/ticket/ticketList.do" class="link-dark d-inline-flex rounded">사물함 이용권</a></li>
+           				<li><a href="${pageContext.request.contextPath}/ticket/study_ticketList.do" class="link-dark d-inline-flex rounded">좌석 이용권</a></li>
+            			<li><a href="${pageContext.request.contextPath}/ticket/locker_ticketList.do" class="link-dark d-inline-flex rounded">사물함 이용권</a></li>
           			</ul>
         			</div>
         		</div>
