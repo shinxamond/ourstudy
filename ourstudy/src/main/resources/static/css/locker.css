@@ -143,4 +143,25 @@
         margin:2px;
         border:0.5px solid #6d6d6d;
     }
+
+/*===========================
+      STATUS BUTTONS
+  ===========================*/
+  .locker-status{
+  	box-sizing:border-box;
+	width:75px;
+	padding:3px; margin:6px;
+	border:none;
+	box-shadow: 3px 3px 3px #848484;
+	position:relative;
+	left:-4px;
+	bottom:-15px;
+	z-index:50;
+  }
+  button#empty{
+	background-color:#BBFE97;
+  }
+  button#full{
+	background-color:#D7D5D5;
+  }
   

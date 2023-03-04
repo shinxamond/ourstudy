@@ -38,4 +38,6 @@
 			style="background-color:#D7D5D5;"</c:if>>${locker.locker_num}</button>
 	</c:forEach>
 	</div>
+	<button id="empty" class="locker-status">선택가능</button>
+	<button id="full" class="locker-status">선택불가</button>
 </div>
