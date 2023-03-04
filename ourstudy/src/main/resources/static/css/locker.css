@@ -13,7 +13,7 @@
         }
    }
 /* =========================
-        FRAME
+       	SECTION BLOCK
    =========================*/
     .section{
       font-size:50px;
@@ -34,13 +34,13 @@
       box-shadow: 0 0.5em 0.5em -0.4em var(--hover);
         transform: translateY(-0.25em);
         border-color:var(--hover);
-        color:#7E6BB3;                              /*올라갈 때 바귀는 글자색깔*/
+        color:#A08EC2;                              /*올라갈 때 바귀는 글자색깔*/
    }
    #sectionB input:hover, #sectionB input:focus{
       box-shadow: 0 0.5em 0.5em -0.4em var(--hover);
         transform: translateY(-0.25em);
         border-color:var(--hover);
-        color:#569ECE;                              /*올라갈 때 바귀는 글자색깔*/
+        color:#8DBDDC;                              /*올라갈 때 바귀는 글자색깔*/
    }
    #sectionC input:hover, #sectionC input:focus{
       box-shadow: 0 0.5em 0.5em -0.4em var(--hover);
@@ -132,6 +132,15 @@
   
 
 /*===========================
-      SECTION BLOCK
+      LOCKER DETAIL
   ===========================*/
+    .locker-box{
+        display: flex;
+    }
+    .locker-option{
+        background-color: #BBFE97;
+        width:175px; height: 90px;
+        margin:2px;
+        border:0.5px solid #6d6d6d;
+    }
   

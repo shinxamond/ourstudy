@@ -41,23 +41,10 @@ public class LockerController {
 	public MemberVO initCommand2() {
 		return new MemberVO();
 	}
-	/*=========================================
-				사물함 이용시작 처리
-	--------------------------------------------
-	1. mapAjax (@respnseBody)
-	    로그인 처리 체크 
-			ㄴmem_num == null  -> {result - logout} json  ->로그인 모달창 이동
-	   이미 이용하는 사물함이 있을 경우 : result - occupied   -> 경고창
-	   사용하는 사물함이 없을 경우 : result - empty  -> 다른 링크로 이동
-	==================================================*/
 	
 	//섹션 폼 이동
 	@RequestMapping("/locker/section.do")
 	public String Section(Model model) {
-		List<LockerVO> list = lockerService.getLockerList();
-     
-		model.addAttribute("list", list);
-		
 		return "sectionForm";
 	}
 	
@@ -126,8 +113,17 @@ public class LockerController {
 	
 	
 	@RequestMapping("/locker/sectionDetail.do")
-	public String sectionDetail(@RequestParam String section, Model model) {
+	public String sectionDetail(@RequestParam String section, Model model, HttpSession session) {
+		MemberVO member = (MemberVO)session.getAttribute("user");
+		int mem_status = member.getMem_status();
+		
+		List<LockerVO> list = lockerService.getLockerList();
+	     
+		model.addAttribute("list", list);
+		model.addAttribute("mem_status", mem_status);
+		
 		String sec = "";
+		
 		switch (section) {
 		case "A" : 
 			//사물함 리스트를 뽑아서 보낸다. jsp에서 인덱스에 제한을 두고 출력함
@@ -143,7 +139,9 @@ public class LockerController {
 			sec = "sectionD";
 			break;
 		};
+		
 		logger.debug("<<<<요청된 섹션 파라미터>>>>:" + sec);
+		
 		return sec;
 	}
 }

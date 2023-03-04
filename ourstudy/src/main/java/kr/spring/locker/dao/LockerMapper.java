@@ -50,6 +50,6 @@ public interface LockerMapper {
      			GET DATA
 	==================================*/
 	//사물함 정보 불러오기
-	@Select("SELECT * FROM LOCKER_INFO")
+	@Select("SELECT * FROM LOCKER_INFO ORDER BY LOCKER_NUM ASC")
 	public List<LockerVO> getLockerList();
 }
