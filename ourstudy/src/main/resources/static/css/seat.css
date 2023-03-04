@@ -186,21 +186,21 @@ input[data-num="E5"]{
 }
 
 input[data-num="E6"]{
-	bottom:63px; right:615px;
+	bottom:63px; right:607px;
 }
 
 input[data-num="E7"]{
-	bottom:5px; right:664px;
+	bottom:5px; right:657px;
 }
 
 input[data-num="E8"]{
-	bottom:124px; right:662px;
+	bottom:124px; right:654px;
 }
 input[data-num="E9"]{
-	bottom:63px; right:712px;
+	bottom:63px; right:704px;
 }
 input[data-num="E10"]{
-	bottom:5px; right:761px;
+	bottom:5px; right:754px;
 }
 
 
@@ -265,4 +265,27 @@ input[data-num="G11"]{
 }
 input[data-num="G12"]{
 	bottom:396px; right:-24px;
+}
+/*===========================
+		STATUS BUTTONS
+  ===========================*/
+.status {
+	box-sizing:border-box;
+	width:75px;
+	padding:3px; margin:6px;
+	border:none;
+	box-shadow: 3px 3px 3px #848484;
+	position:relative;
+	left:46px;
+	bottom:406px;
+	z-index:50;
+}
+button#empty{
+	background-color:#BBFE97;
+}
+button#full{
+	background-color:#D7D5D5;
+}
+button#hold{
+	background-color:#F8B1AA;
 }

@@ -47,4 +47,8 @@
 	<span id="toilet" class="guide-letter">TOILET</span><br>
 	<span id="rent" class="guide-letter">RENT</span><br>
 	<span id="info" class="guide-letter">INFO</span><br>
+	
+	<button id="empty" class="status">선택가능</button>
+	<button id="full" class="status">선택불가</button>
+	<button id="hold" class="status">외출중</button>
 </div>	
