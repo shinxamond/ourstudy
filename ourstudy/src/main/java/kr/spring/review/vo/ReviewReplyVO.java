@@ -1,14 +1,14 @@
-package kr.spring.community.vo;
+package kr.spring.review.vo;
 
+import java.io.IOException;
 import java.sql.Date;
 
-public class ReviewReplyVO {
+public class ReviewReplyVO {		
 	private int revw_num;
 	private Date revw_date;
-	private String revw_content;
-	private int r_num;
-	private int mem_num;
-	
+	private Date revw_mdate;
+	private String revw_content;	
+
 	public int getRevw_num() {
 		return revw_num;
 	}
@@ -21,25 +21,22 @@ public class ReviewReplyVO {
 	public void setRevw_date(Date revw_date) {
 		this.revw_date = revw_date;
 	}
+	public Date getRevw_mdate() {
+		return revw_mdate;
+	}
+	public void setRevw_mdate(Date revw_mdate) {
+		this.revw_mdate = revw_mdate;
+	}
 	public String getRevw_content() {
 		return revw_content;
 	}
 	public void setRevw_content(String revw_content) {
 		this.revw_content = revw_content;
 	}
-	public int getR_num() {
-		return r_num;
-	}
-	public void setR_num(int r_num) {
-		this.r_num = r_num;
-	}
-	public int getMem_num() {
-		return mem_num;
-	}
-	public void setMem_num(int mem_num) {
-		this.mem_num = mem_num;
-	}
-
 	
-	
+	@Override
+	public String toString() {
+		return "ReviewReplyVO [revw_num=" + revw_num + ", revw_date=" + revw_date + ", revw_mdate=" + revw_mdate
+				+ ", revw_content=" + revw_content + "]";
+	}
 }

@@ -185,7 +185,7 @@ Kakao.API.request({
         			<div class="collapse" id="comm-collapse">
          		 	<ul class="btn-toggle-nav fw-normal pb-1 small">
            				<li><a href="${pageContext.request.contextPath}/community/lostList.do" class="link-dark d-inline-flex rounded">분실물 찾기</a></li>
-            			<li><a href="#" class="link-dark d-inline-flex rounded">이용후기</a></li>
+            			<li><a href="${pageContext.request.contextPath}/review/list.do" class="link-dark d-inline-flex rounded">이용후기</a></li>
           			</ul>
         			</div>
         		</div>

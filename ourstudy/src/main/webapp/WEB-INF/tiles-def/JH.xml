@@ -58,7 +58,24 @@
     	<put-attribute name="title" value="발신채팅기록"/>
     	<put-attribute name="body" 
     	  value="/WEB-INF/views/admin/admin_sendHistory.jsp"/>        
-    </definition>                    
+    </definition>
+    
+    <!-- 이용후기 -->
+    <definition name="reviewList" extends="main">
+    	<put-attribute name="title" value="이용후기목록"/>
+    	<put-attribute name="body"
+    	  value="/WEB-INF/views/review/reviewList.jsp"/>        
+    </definition>
+    <definition name="reviewWrite" extends="main">
+    	<put-attribute name="title" value="이용후기글쓰기"/>
+    	<put-attribute name="body"
+    	  value="/WEB-INF/views/review/reviewWrite.jsp"/>        
+    </definition>
+    <definition name="reviewView" extends="main">
+    	<put-attribute name="title" value="이용후기상세"/>
+    	<put-attribute name="body"
+    	  value="/WEB-INF/views/review/reviewView.jsp"/>        
+    </definition>                        
 </tiles-definitions>
 
 
