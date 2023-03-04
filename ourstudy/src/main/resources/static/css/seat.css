@@ -269,7 +269,7 @@ input[data-num="G12"]{
 /*===========================
 		STATUS BUTTONS
   ===========================*/
-.status {
+.seat-status {
 	box-sizing:border-box;
 	width:75px;
 	padding:3px; margin:6px;
