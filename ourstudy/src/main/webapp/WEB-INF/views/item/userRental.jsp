@@ -24,12 +24,13 @@
 			</form:select>
 			</li>
 		</ul>
-		<div class="align-center">
-		<c:if test="${count!=0}">
-		<form:button>대여</form:button>&nbsp;
-		</c:if>
-		<input type="button" value="물품목록" onclick="location.href='userList.do'">
+		<div>
+			<c:if test="${count!=0}">
+			<form:button>대여</form:button>&nbsp;
+			</c:if>
+			<input type="button" value="물품목록" onclick="location.href='userList.do'">
 		</div>
 		</form:form>
 	</div>
+	<div class="page_clear"></div>
 </div>

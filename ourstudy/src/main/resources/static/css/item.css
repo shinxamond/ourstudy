@@ -10,12 +10,11 @@
 div#userList #userList-area{
 	margin:2px;
 	padding:3px;
-	width:300px;
+	width:400px;
 	height:300px;
 	float:left;
 	overflow:hidden;
 	text-align:center;
-	
 }
 div#userItemList #userItemList-area{
 	margin:2px;
@@ -28,16 +27,18 @@ div#userItemList #userItemList-area{
 	
 }
 div.item-image{
-	width:350px;
-	margin:0 0 10px 0;
+	width:450px;
+	margin:0 0 10px 200px;
 	float:left;
+	position: relative;
 }
 div.item-detail{
 	padding:0 0 5px 0;
+	position: relative;
 }
 .item-detail form{
 	border:none;
-	width:350px;
+	width:450px;
 	float:left;
 	margin:0;
 }
@@ -54,7 +55,7 @@ div#clear{
 }
 
 form#item_search_form{
-	width:600px;
+	width:650px;
 	border:none;
 }
 ul.item_search{
@@ -69,7 +70,7 @@ ul.item_search li{
 	display:inline;
 }
 ul.item_search li input[type="search"]{
-	width:150px;
+	width:120px;
 }
 #rental_text{
 	font-size:17px;
@@ -101,3 +102,39 @@ table.striped-item-table tr:nth-child(odd){
 input[type="number"]{
 	width:350px;
 }
+.striped-item-table a:link{
+	text-decoration:none;
+	color:#000000;
+}
+.striped-item-table a:visited {
+	text-decoration:none;
+	color:#000000;
+}
+
+.snowflake{
+	width : 10px;
+	height : 10px;
+	border-radius:12px 1px;
+	background: -webkit-linear-gradient(120deg, rgba(255, 183, 197, 0.9), rgba(255, 197, 208, 0.9));
+	position:absolute;
+	top:-8px;
+	
+}
+.snowflake2{
+	width : 12px;
+	height : 12px;
+	border-radius:1px 12px;
+	background: -webkit-linear-gradient(120deg, rgba(255, 183, 197, 0.9), rgba(255, 197, 208, 0.9));
+	position:absolute;
+	top:-8px;
+	
+}
+@keyframes fall{
+	form{}
+	to{
+		transform:translatey(100vh);
+		opacity :0;
+	}
+}
+
+
