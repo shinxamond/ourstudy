@@ -22,10 +22,9 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
+import kr.spring.info.service.InformationService;
 import kr.spring.info.vo.InformationVO;
 import kr.spring.member.vo.MemberVO;
-import kr.spring.info.service.InformationService;
-
 import kr.spring.util.PagingUtil;
 
 
@@ -239,9 +238,13 @@ public class InformationController {
 		mav.addObject("filename", info.getFilename());
 		
 		return mav;
-}
+	}
 	
-	
+	//등록 폼 호출
+	@RequestMapping("/info/faq.do")
+		public String faq() {
+			return "faq";
+		}
 	
 	
 }

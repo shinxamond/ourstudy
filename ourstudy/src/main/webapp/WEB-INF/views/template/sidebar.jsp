@@ -171,7 +171,7 @@ Kakao.API.request({
         			<div class="collapse" id="notice-collapse">
          		 	<ul class="btn-toggle-nav fw-normal pb-1 small">
            				<li><a href="${pageContext.request.contextPath}/info/informationList.do" class="link-dark d-inline-flex rounded">안내사항</a></li>
-            			<li><a href="#" class="link-dark d-inline-flex rounded">자주 묻는 질문</a></li>
+            			<li><a href="${pageContext.request.contextPath}/info/faq.do" class="link-dark d-inline-flex rounded">자주 묻는 질문</a></li>
           			</ul>
         			</div>
         		</div>

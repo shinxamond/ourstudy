@@ -27,6 +27,12 @@
     	  value="/WEB-INF/views/info/informationWrite.jsp"/>        
     </definition>
     
+    <!-- 자주 묻는 질문 -->
+    <definition name="faq" extends="main">
+    	<put-attribute name="body"
+    	  value="/WEB-INF/views/info/faq.jsp"/>        
+    </definition>
+    
     <!-- 분실물찾기 -->
     <definition name="lostList" extends="main">
     	<put-attribute name="title" value="분실물찾기 목록"/>
