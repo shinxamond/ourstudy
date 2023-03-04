@@ -58,7 +58,26 @@ body{
 	font-family: 'Pretendard-Regular';
 	font-size:12pt;
 }
-
+.digital-clock{
+	width:200px;
+	display:inline-block;
+	position:relative;
+	top:15px;
+	left:450px;
+}
+#___gcse_0{
+	display:inline-block;
+	width:400px;
+	position:relative;
+	left:550px;
+}
+#clock ul{
+	margin:0;
+}
+#clock ul li{
+	float:left;
+	padding:0;
+}
 
 /*======================
   		 footer

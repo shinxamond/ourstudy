@@ -15,7 +15,7 @@
 <script type="text/javascript" src="${pageContext.request.contextPath}/js/main/quotes.js"></script>
 <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.2.1/chart.min.js"></script>
-
+<script async src="https://cse.google.com/cse.js?cx=5059383f37506464a"></script>
 <script>
 	//막대 차트(구글차트 API)
 	google.charts.load("current", {packages:['corechart']});
@@ -129,10 +129,16 @@
 
 <div id="main_content_body" class="container">
 	<div class="row" id="body_header">
-		<div class="digital-clock card main_card" id="clock">
+		<div class="card main_card" id="clock">
+			<ul>
+				<li><div class="digital-clock"></div></li>
+				<li><div class="gcse-search"></div></li>
+			</ul>
+			
+			<%-- 
 			<span id="quote"></span>
-			<span id="author"></span>
-			00:00:00
+			<span id="author"></span>--%>
+			
 		</div>
 	</div>
 	<div class="row">
