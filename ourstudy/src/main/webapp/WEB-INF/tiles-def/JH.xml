@@ -75,7 +75,12 @@
     	<put-attribute name="title" value="이용후기상세"/>
     	<put-attribute name="body"
     	  value="/WEB-INF/views/review/reviewView.jsp"/>        
-    </definition>                        
+    </definition> 
+    <definition name="reviewModify" extends="main">
+    	<put-attribute name="title" value="이용후기수정"/>
+    	<put-attribute name="body"
+    	  value="/WEB-INF/views/review/reviewModify.jsp"/>        
+    </definition>                            
 </tiles-definitions>
 
 

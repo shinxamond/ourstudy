@@ -58,25 +58,23 @@
 	</p>
 	<hr size="1" width="100%">
 	
-<%-- 	<div class="align-right">
-		<c:if test="${!empty user && user.mem_num == board.mem_num}">
-		<input type="button" value="수정" 
-		  onclick="location.href='update.do?board_num=${board.board_num}'">
+	<div class="align-right">
+		<c:if test="${!empty user && user.mem_num == review.mem_num}">
+		<input type="button" value="수정" onclick="location.href='update.do?r_num=${review.r_num}'">
 		<input type="button" value="삭제" id="delete_btn"> 
 		<script type="text/javascript">
 			let delete_btn = document.getElementById('delete_btn');
 			delete_btn.onclick=function(){
 				let choice = confirm('삭제하시겠습니까?');
 				if(choice){
-					location.replace('delete.do?board_num=${board.board_num}');
+					location.replace('delete.do?r_num=${review.r_num}');
 				}
 			};
 		</script> 
 		</c:if> 
-		<input type="button" value="목록"
-		           onclick="location.href='list.do'">
+		<input type="button" value="목록" onclick="location.href='list.do'">
 	</div>
-	<!-- 댓글 UI 시작 -->
+<%-- 	<!-- 댓글 UI 시작 -->
 	<div id="reply_div">
 		<span class="re-title">댓글 달기</span>
 		<form id="re_form">

@@ -12,12 +12,14 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
@@ -125,7 +127,7 @@ public class ReviewController {
 	//========이용후기 글상세=======//
 	@RequestMapping("/review/detail.do")
 	public ModelAndView process(@RequestParam int r_num) {
-		logger.debug("<<review_num>> : " + r_num);
+		logger.debug("<<r_num>> : " + r_num);
 		
 		ReviewVO review = reviewService.selectReview(r_num);
 		
@@ -138,7 +140,62 @@ public class ReviewController {
 		                         //뷰이름       속성명	   속성값
 		return new ModelAndView("reviewView","review",review);
 	}
+	
+	//=====이용후기 글수정=====//
+	//수정 폼 호출
+	@GetMapping("/review/update.do")
+	public String formUpdate(@RequestParam int r_num, Model model) {
+		ReviewVO reviewVO = reviewService.selectReview(r_num);
+		
+		model.addAttribute("reviewVO",reviewVO);
+		
+		return "reviewModify";
+	}	
+	
+	//수정 폼에서 전송된 데이터 처리
+	@PostMapping("/review/update.do")
+	public String submitUpdate(@Valid ReviewVO reviewVO, BindingResult result,
+			HttpServletRequest request, Model model) {
+		
+		logger.debug("<<글수정>> : " + reviewVO);
+		logger.debug("<<업로드 파일 용량>> : " + reviewVO.getR_img().length);
 
+		if(reviewVO.getR_img().length > 5*1024*1024) {//5MB
+			result.reject("limitUploadSize",new Object[]{"5MB"},null);
+		}
+		
+		//유효성 체크 결과 오류가 있으면 폼을 호출
+		if(result.hasErrors()) {
+			//title 또는 content가 입력되지 않아서 유효성
+			//체크에 걸리면 파일 정보를 잃어버리기 때문에
+			//폼을 호출할 때 파일 정보를 다시 셋팅
+			ReviewVO vo = reviewService.selectReview(reviewVO.getR_num());
+			reviewVO.setR_imgname(vo.getR_imgname());
+			return "reviewModify";
+		}
+		
+		//글수정
+		reviewService.updateReview(reviewVO);
+		
+		//View에 표시할 메시지
+		model.addAttribute("message", "글수정 완료!");
+		model.addAttribute("url", request.getContextPath()+"/review/detail.do?r_num="+reviewVO.getR_num());
+		
+		return "common/resultView";
+	}	
+		
+	//=====이용후기 글삭제=======//
+	@RequestMapping("/review/delete.do")
+	public String submitDelete(@RequestParam int r_num, Model model, HttpServletRequest request) {
+		
+		logger.debug("<<이용후기 글삭제>> : " + r_num);
+		
+		//글삭제
+		reviewService.deleteReview(r_num);
+		
+		return "redirect:/review/list.do";
+	}	
+	
 	//=====파일 다운로드====//
 	@RequestMapping("/review/file.do")
 	public ModelAndView download(
@@ -153,7 +210,7 @@ public class ReviewController {
 		return mav;
 	}
 
-	//=====이미지 출력=====//
+	//=====이용후기 이미지 출력=====//
 	@RequestMapping("/review/imageView.do")
 	public ModelAndView viewImage(
 			        @RequestParam int r_num,
@@ -176,14 +233,24 @@ public class ReviewController {
 		}
 		return mav;
 	}
-	
-	//=====이용후기 글수정=====//
-	
-	//=====이용후기 글삭제=======//
 
-	//=====이용후기 이미지 삭제=====//
-	
-	//=====이용후기 이미지 출력=====//
+	//=====이용후기 이미지 삭제=======//
+	@RequestMapping("/review/deleteFile.do")
+	@ResponseBody
+	public Map<String,String> processFile(int r_num, HttpSession session){
+		Map<String,String> mapJson = new HashMap<String,String>();
+		
+		MemberVO user = (MemberVO)session.getAttribute("user");
+		if(user==null) {
+			mapJson.put("result", "logout");
+		}else {
+			reviewService.deleteFile(r_num);
+			
+			mapJson.put("result", "success");
+		}
+		
+		return mapJson;
+	}	
 	
 	//========댓글 등록==========//
 	

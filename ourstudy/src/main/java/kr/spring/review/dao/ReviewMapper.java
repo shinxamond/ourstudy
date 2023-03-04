@@ -30,10 +30,14 @@ public interface ReviewMapper {
 		  + "WHERE r.r_num=#{r_num}") 
 	public ReviewVO selectReview(Integer review_num);
 	
+	//이용후기 글수정
 	public void updateReview(ReviewVO review);
-	//@Delete("DELETE FROM spboard WHERE board_num=#{board_num}")
+	
+	@Delete("DELETE FROM review WHERE r_num=#{r_num}")
 	public void deleteReview(Integer review_num);
-	//@Update("UPDATE spboard SET uploadfile='',filename='' WHERE board_num=#{board_num}")
+
+	//이용후기 이미지 삭제
+	@Update("UPDATE review SET r_img='',r_imgname='' WHERE r_num=#{r_num}")
 	public void deleteFile(Integer review_num);
 
 }

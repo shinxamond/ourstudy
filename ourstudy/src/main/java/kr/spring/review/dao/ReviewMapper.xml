@@ -41,4 +41,17 @@
   		WHERE rnum >= #{start} AND rnum <= #{end}
   		]]>							
   	</select>
+  	
+  	<update id="updateReview" parameterType="reviewVO">
+  		UPDATE review SET
+  		  <if test="r_imgname != ''">
+  		  r_img=#{r_img},
+  		  r_imgname=#{r_imgname},
+  		  </if>
+  		  r_title=#{r_title},
+  		  r_content=#{r_content},
+  		  r_rate=#{r_rate},
+  		  r_mdate=SYSDATE
+  		WHERE r_num=#{r_num}  
+  	</update>  	
 </mapper>
