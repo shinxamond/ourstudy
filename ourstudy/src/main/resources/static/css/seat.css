@@ -38,14 +38,14 @@
   	position:relative;
   	z-index:4;
   }
-  #locker_zone{left:840px; bottom:480px;}
-  #locker{left:840px; bottom:333px;}
-  #rent{left:970px; bottom:510px;}
-  #info{left:970px; bottom:400px;}
-  #toilet{left:672px; bottom:875px;}
+  #locker_zone{left:847px; bottom:527px;}
+  #locker{left:840px; bottom:382px;}
+  #rent{left:970px; bottom:572px;}
+  #info{left:970px; bottom:468px;}
+  #toilet{left:672px; bottom:943px;}
   
 /*===========================
-		SEAT BLOCKS (시발 진짜 존나 노가다임 시발 목빠지겄다 ^^^)
+		SEAT BLOCKS
   ===========================*/
 input[data-num="A1"]{
 	bottom:445px; right:155px;
@@ -83,7 +83,24 @@ input[data-num="A10"]{
     right: 512px;
 }
 
-
+input[data-num="B1"]{
+	bottom:77px; right:650px;
+}
+input[data-num="B2"]{
+	bottom:18px; right:699px;
+}
+input[data-num="B3"]{
+	bottom:-40px; right:749px;
+}
+input[data-num="B4"]{
+	bottom:77px; right:709px;
+}
+input[data-num="B5"]{
+	bottom:18px; right:759px;
+}
+input[data-num="B6"]{
+	bottom:-40px; right:809px;
+}
 
 input[data-num="C1"]{
 	bottom:450px; right:790px;
@@ -102,4 +119,150 @@ input[data-num="C5"]{
 }
 input[data-num="C6"]{
 	bottom:450px; right:665px;
+}
+
+input[data-num="D1"]{
+	bottom:365px; right:1052px;
+}
+input[data-num="D2"]{
+	bottom:310px; right:1102px;
+}
+input[data-num="D3"]{
+	bottom:254px; right:1151px;
+}
+input[data-num="D4"]{
+	bottom:411px; right:-90px;
+}
+input[data-num="D5"]{
+	bottom:355px; right:-40px;
+}
+input[data-num="D6"]{
+	bottom:411px; right:-87px;
+}
+input[data-num="D7"]{
+	bottom:355px; right:-37px;
+}
+input[data-num="D8"]{
+	bottom:300px; right:12px;
+}
+input[data-num="D9"]{
+	bottom:411px; right:12px;
+}
+input[data-num="D10"]{
+	bottom:355px; right:61px;
+}
+input[data-num="D11"]{
+	bottom:300px; right:111px;
+}
+input[data-num="D12"]{
+	bottom:411px; right:61px;
+}
+input[data-num="D13"]{
+	bottom:355px; right:111px;
+}
+input[data-num="D14"]{
+	bottom:300px; right:161px;
+}
+
+
+input[data-num="E1"]{
+	bottom:122px; right:519px;
+}
+
+input[data-num="E2"]{
+	bottom:63px; right:568px;
+}
+
+input[data-num="E3"]{
+	bottom:5px; right:617px;
+}
+
+input[data-num="E4"]{
+	bottom:63px; right:617px;
+}
+
+input[data-num="E5"]{
+	bottom:5px; right:666px;
+}
+
+input[data-num="E6"]{
+	bottom:63px; right:615px;
+}
+
+input[data-num="E7"]{
+	bottom:5px; right:664px;
+}
+
+input[data-num="E8"]{
+	bottom:124px; right:662px;
+}
+input[data-num="E9"]{
+	bottom:63px; right:712px;
+}
+input[data-num="E10"]{
+	bottom:5px; right:761px;
+}
+
+
+input[data-num="F1"]{
+	bottom:124px; right:695px;
+}
+input[data-num="F2"]{
+	bottom:63px; right:745px;
+}
+input[data-num="F3"]{
+	bottom:5px; right:795px;
+}
+input[data-num="F4"]{
+	bottom:5px; right:785px;
+}
+input[data-num="F5"]{
+	bottom:50px; right:-465px;
+}
+input[data-num="F6"]{
+	bottom:50px; right:-474px;
+}
+input[data-num="F7"]{
+	bottom:108px; right:-424px;
+}
+input[data-num="F8"]{
+	bottom:169px; right:-374px;
+}
+
+
+input[data-num="G1"]{
+	bottom:532px; right:-343px;
+}
+input[data-num="G2"]{
+	bottom:480px; right:-294px;
+}
+input[data-num="G3"]{
+	bottom:515px; right:-327px;
+}
+input[data-num="G4"]{
+	bottom:515px; right:-333px;
+}
+input[data-num="G5"]{
+	bottom:515px; right:-339px;
+}
+input[data-num="G6"]{
+	bottom:468px; right:-179px;
+}
+input[data-num="G7"]{
+	bottom:468px; right:-185px;
+}
+input[data-num="G8"]{
+	bottom:468px; right:-190px;
+}
+input[data-num="G9"]{
+	bottom:396px; right:-8px;
+}
+input[data-num="G10"]{
+	bottom:396px; right:-14px;
+}
+input[data-num="G11"]{
+	bottom:396px; right:-19px;
+}
+input[data-num="G12"]{
+	bottom:396px; right:-24px;
 }
