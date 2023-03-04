@@ -15,19 +15,16 @@
 		//alert('시작');
 		 reload =   setInterval(function(){ location.reload(); }, 700);
 	};
-	function end(){
-		//alert('끝');
-		 clearInterval(reload);
-	};
- 
+	
 
 		
 
 </script>
 <div class="page-main" id="pageList">
-	<h2>채팅목록</h2>
+	<h2 class="align-center">채팅목록</h2>
+	<br><br>
 	<form action="talkList.do" id="search_form" method="get">
-		<ul class="search">
+		<ul class="search align-center">
 			<li>
 				<input type="search" name="keyword" id="keyword" value="${param.keyword}">
 			</li>
@@ -40,17 +37,14 @@
 	<div class="align-right">
 		<input type="button" value="채팅방 생성" onclick="location.href='talkRoomWrite.do'">
 	</div>
-	<div class="align-right">
-		<!-- <input type="button" value="새로고침 시작" onclick="start();" id="start" style="background-color:#B4FBFF">
-		<input type="button" value="새로고침 종료" onclick="end();" id="end"> -->
-	</div>
+	
 	
 	<c:if test="${empty list}">
 	<div class="result-display">표시할 채팅방이 없습니다.</div>
 	</c:if>
 	
 	<c:if test="${!empty list}">
-	<table class="striped-table">
+	<table class="striped-talk-table">
 		<c:forEach var="talk" items="${list}">
 		
 		<tr>
@@ -101,7 +95,7 @@
 			<input type="hidden" name="talkroom_num" id="talkroom_num">
 			<input type="hidden" name="mem_num" id="mem_num" value="${user.mem_num}">
 			
-			<textarea rows="5" cols="60" name="message" id="message"></textarea>
+			<textarea rows="5" cols="48" name="message" id="message"></textarea>
 			<input type="submit" value="전송">
 			
 		</form>
@@ -268,7 +262,7 @@ function alarm_connect2(){
 	
 	
 		$(document).on('click','#10',function(){//목록 클릭
-			end();//새로고침 중지
+			
 			var room_num = $(this).data('id');
 			//$('#talkroom_num').val(room_num);
 			

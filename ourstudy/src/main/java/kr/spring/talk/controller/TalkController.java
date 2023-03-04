@@ -20,6 +20,8 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import kr.spring.member.vo.MemberVO;
+import kr.spring.info.service.InformationService;
+import kr.spring.info.vo.InformationVO;
 import kr.spring.member.service.MemberService;
 import kr.spring.talk.service.TalkService;
 import kr.spring.talk.vo.TalkRoomVO;
@@ -31,7 +33,10 @@ public class TalkController {
 
 	@Autowired
 	private MemberService memberService;
-
+	
+	@Autowired
+	private InformationService informationService;
+	
 	@Autowired
 	private TalkService talkService;
 
@@ -90,7 +95,16 @@ public class TalkController {
 	public String mainsubmitTalkRoom(TalkRoomVO vo, Model model, HttpSession session) {
 		logger.debug("<<채팅방 생성>> : " + vo);
 
-
+		//안내사항 부분=========================================
+		Map<String,Object> map2 = new HashMap<String,Object>();
+		map2.put("start", 1);
+		map2.put("end", 4);
+		
+		List<InformationVO> infoList = informationService.selectInfoList(map2);
+		model.addAttribute("infoList", infoList);
+		//===================================================
+		
+		
 		MemberVO user = (MemberVO) session.getAttribute("user");
 
 		int room_num;

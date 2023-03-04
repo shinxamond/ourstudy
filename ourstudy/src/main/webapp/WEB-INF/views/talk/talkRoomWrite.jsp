@@ -18,6 +18,7 @@
 				<span id="name_span"></span>
 				<input type="checkbox" checked id="name_checked">(자동생성) 
 			</li>
+			
 			<li>
 				<div id="talk_member"></div>
 				<label style="font-size:20px;">채팅회원검색</label>
