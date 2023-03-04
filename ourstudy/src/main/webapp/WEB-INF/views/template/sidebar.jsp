@@ -70,7 +70,7 @@ Kakao.API.request({
 						</ul>
 					
 						<button type="submit" class="btn login-submit 
-						text-white rounded submit px-2" style="background-color:#037332;">Login
+						text-white rounded submit p-2" style="background-color:#037332;">Login
 						</button>
 				</form>
 				
