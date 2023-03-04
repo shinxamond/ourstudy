@@ -1,5 +1,6 @@
 package kr.spring.review.controller;
 
+import java.util.Collections;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -36,7 +37,7 @@ public class ReviewController {
             LoggerFactory.getLogger(
 	          ReviewController.class);
 	
-	private int rowCount = 10;
+	private int rowCount = 3;
 	
 	@Autowired
 	private ReviewService reviewService;
@@ -253,10 +254,124 @@ public class ReviewController {
 	}	
 	
 	//========댓글 등록==========//
-	
+	@RequestMapping("/review/writeReply.do")
+	@ResponseBody
+	public Map<String,String> writeReply(ReviewReplyVO vo,
+			               HttpSession session, HttpServletRequest request){
+		
+		logger.debug("<<댓글 등록>> : " + vo);
+		
+		Map<String,String> mapJson = new HashMap<String,String>();
+		
+		MemberVO user = (MemberVO)session.getAttribute("user");
+		if(user==null) {
+			//로그인 안 됨
+			mapJson.put("result","logout");
+		}else {
+			//회원번호 등록
+			vo.setMem_num(user.getMem_num());
+			//댓글 등록
+			reviewService.insertReply(vo);
+			mapJson.put("result", "success");
+		}
+		return mapJson;
+	}
+
 	//======댓글 목록========//
+	@RequestMapping("/review/listReply.do")
+	@ResponseBody
+	public Map<String,Object> getList(@RequestParam(value="pageNum",defaultValue="1")int currentPage, 
+			@RequestParam int r_num, HttpSession session){
+		
+		logger.debug("<<currentPage>> : " + currentPage);
+		logger.debug("<<review_num>> : " + r_num);
+		
+		Map<String,Object> map = new HashMap<String,Object>();
+		map.put("r_num", r_num);
+		
+		//총 글의 개수
+		int count = reviewService.selectRowCountReply(map);
+		
+		//페이지 처리
+		PagingUtil page = new PagingUtil(currentPage,count,rowCount,1,null);
+		map.put("start", page.getStartRow());
+		map.put("end", page.getEndRow());
+		
+		//목록 데이터 읽기
+		List<ReviewReplyVO> list = null;
+		if(count > 0) {
+			list = reviewService.selectListReply(map);
+		}else {
+			list = Collections.emptyList();
+		}
+		
+		Map<String,Object> mapJson = new HashMap<String,Object>();
+		mapJson.put("count", count);
+		mapJson.put("rowCount", rowCount);
+		mapJson.put("list", list);
+		
+		//===== 로그인 한 회원정보 셋팅 =====//
+		MemberVO user = (MemberVO)session.getAttribute("user");
+		if(user!=null) {
+			mapJson.put("user_num", user.getMem_num());
+		}	
+		
+		return mapJson;
+	}
 	
 	//==========댓글수정==========//
+	@RequestMapping("/review/updateReply.do")
+	@ResponseBody
+	public Map<String,String> modifyReply(ReviewReplyVO reviewReplyVO, 
+			        HttpSession session, HttpServletRequest request){
+		
+		logger.debug("<<댓글수정>> : " + reviewReplyVO);
+		
+		Map<String,String> mapJson = new HashMap<String,String>();
+		
+		MemberVO user = (MemberVO)session.getAttribute("user");
+		ReviewReplyVO db_reply = reviewService.selectReply(reviewReplyVO.getRevw_num());
+		if(user==null) {
+			//로그인이 안 되어있는 경우
+			mapJson.put("result", "logout");
+		}else if(user!=null && 
+				user.getMem_num()==db_reply.getMem_num()) {
+			//로그인 회원번호와 작성자 회원번호 일치
+	
+			//댓글 수정
+			reviewService.updateReply(reviewReplyVO);
+			mapJson.put("result", "success");			
+		}else {
+			//로그인 회원번호와 작성자 회원번호 불일치
+			mapJson.put("result", "wrongAccess");
+		}
+		
+		return mapJson;
+	}
 	
 	//======댓글 삭제========//
+	@RequestMapping("/review/deleteReply.do")
+	@ResponseBody
+	public Map<String,String> deleteReply(@RequestParam int revw_num, HttpSession session){
+		logger.debug("<<댓글 삭제>> : " + revw_num);
+		
+		Map<String,String> mapJson = new HashMap<String,String>();
+		
+		MemberVO user = (MemberVO)session.getAttribute("user");
+		ReviewReplyVO db_reply = reviewService.selectReply(revw_num);
+		if(user==null) {
+			//로그인이 되어있지 않음
+			mapJson.put("result", "logout");
+		}else if(user!=null && 
+			user.getMem_num()==db_reply.getMem_num()) {
+			//로그인한 회원번호와 작성자 회원번호 일치
+			reviewService.deleteReply(revw_num);
+			mapJson.put("result", "success");
+		}else {
+			//로그인한 회원번호와 작성자 회원번호 불일치
+			mapJson.put("result", "wrongAccess");
+		}
+		
+		return mapJson;
+	}
 }

@@ -53,5 +53,30 @@
   		  r_rate=#{r_rate},
   		  r_mdate=SYSDATE
   		WHERE r_num=#{r_num}  
-  	</update>  	
+  	</update>
+  	
+  	<!-- 댓글 목록 -->
+	<select id="selectListReply" parameterType="map" resultType="reviewReplyVO">
+  		SELECT
+  		   *
+  		FROM(SELECT
+  		       a.*,
+  		       rownum rnum
+  		     FROM(SELECT
+  		            revw_num,
+  		            <![CDATA[
+  		            REPLACE(REPLACE(revw_content,'<','&lt;'),'>','&gt;') revw_content,
+  		            ]]>
+  		            revw_date,
+  		            revw_mdate,
+  		            r_num,
+  		            mem_num,
+  		            mem_name
+  		          FROM reply_review JOIN member_detail USING (mem_num)
+  		          WHERE r_num = #{r_num}
+  		          ORDER BY revw_num DESC)a)
+  		    <![CDATA[
+  		    WHERE rnum >= #{start} AND rnum <= #{end}
+  		    ]]>          
+  	</select>	  	
 </mapper>

@@ -5,6 +5,7 @@
 <!-- 중앙 컨텐츠 시작 -->
 <script src="${pageContext.request.contextPath}/js/videoAdapter.js"></script>
 <script src="${pageContext.request.contextPath}/js/review.reply.js"></script>
+
 <div class="page-main">
 	<h3>제목 : ${review.r_title}</h3>
 	<ul class="detail-info">
@@ -74,18 +75,14 @@
 		</c:if> 
 		<input type="button" value="목록" onclick="location.href='list.do'">
 	</div>
-<%-- 	<!-- 댓글 UI 시작 -->
+	<!-- 댓글 UI 시작 -->
 	<div id="reply_div">
 		<span class="re-title">댓글 달기</span>
 		<form id="re_form">
-			<input type="hidden" name="board_num"
-			    value="${board.board_num}" id="board_num">
-			<textarea rows="3" cols="50" 
-			  name="re_content" id="re_content"
-			  class="rep-content"
-			  <c:if test="${empty user}">disabled="disabled"</c:if>
-			  ><c:if test="${empty user}">로그인해야 작성할 수 있습니다.</c:if></textarea>    
-		
+			<input type="hidden" name="r_num" value="${review.r_num}" id="r_num">
+			<textarea rows="3" cols="50" name="revw_content" id="revw_content" class="rep-content"
+					  <c:if test="${empty user}">disabled="disabled"</c:if>>
+			<c:if test="${empty user}">로그인해야 작성할 수 있습니다.</c:if></textarea>    		
 			<c:if test="${!empty user}">
 			<div id="re_first">
 				<span class="letter-count">300/300</span>
@@ -102,12 +99,9 @@
 		<input type="button" value="더보기">
 	</div>
 	<div id="loading" style="display:none;">
-		<img src="${pageContext.request.contextPath}/images/loading.gif" width="50" 
-		                                height="50">
+		<img src="${pageContext.request.contextPath}/images/loading.gif" width="50" height="50">
 	</div>
-	<!-- 댓글 UI 끝 --> --%>
-	
-	
+	<!-- 댓글 UI 끝 -->	
 </div>
 <!-- 중앙 컨텐츠 끝 -->
 
