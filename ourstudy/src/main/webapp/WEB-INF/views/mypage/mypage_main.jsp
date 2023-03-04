@@ -10,7 +10,7 @@
 			<h4 class = "sum-title">주간공부시간</h4>
 			</div>
 			<hr class = "horizontal-line">
-				<canvas id = "line-chart" width = "1040" height = "300"></canvas>
+				<canvas id = "line-chart" width = "1040" height = "310"></canvas>
 				<script type="text/javascript">
 				var mon = ('${time[0]}'/3600 <=  0) ? 0 : '${time[0]}' / 3600;
 				var tue = ('${time[1]}'/3600 <=  0) ? 0 : '${time[1]}' / 3600;
@@ -28,10 +28,10 @@
 							label : '내 공부시간',
 							borderColor : '#006633',
 							backgroundColor: '#006633',
-							pointStyle : false,
-							fill : false,
+							pointStyle : 'dash',
+							fill : true,
 							tension : 0.3,
-							borderWidth : 5,
+							borderWidth : 3,
 						}]},
 					options : {
 						scales :{
@@ -99,7 +99,7 @@
 						}
 					});
 				</script>
-				<c:if test="${item.item_r_status==2}"> <!-- 대여중이니까 당연히 버튼이 뜨지 멍청아 -->
+				<c:if test="${item.item_r_status==2}">
 				<span style = "font-weight : bold;">대여중</span>
 				<td><input type="button" value="반납" onclick="location.href='${pageContext.request.contextPath}/item/userItemReturn.do?item_num=${item.item_num}'"></td>
 				</c:if>
