@@ -1,5 +1,6 @@
 package kr.spring.mypage.dao;
 
+import java.sql.Date;
 import java.util.List;
 import java.util.Map;
 
@@ -121,4 +122,16 @@ public interface MypageMapper {
 	//잔여 시간 업데이트
 	//@Update("UPDATE member_history SET mem_ticket_hour = mem_ticket_hour + #{total_time} WHERE mem_num = #{mem_num}") //마찬가지
 	//public void updateRemainTime(MemberVO member);
+	
+	
+	
+	/*==================================
+    				공부시간
+	====================================*/	
+	
+	//가입 날짜 불러오기
+	@Select("SELECT mem_regdate FROM member_detail WHERE mem_num = #{mem_num}")
+	public String selectRegDate(Integer mem_num);
+	
+	public int[] selectSumTotalTime(Map<String, Object> map);
 }

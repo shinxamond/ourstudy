@@ -1,5 +1,6 @@
 package kr.spring.mypage.service;
 
+import java.sql.Date;
 import java.util.List;
 import java.util.Map;
 
@@ -59,7 +60,14 @@ public interface MypageService {
 	
 	
 	
+	public String selectRegDate(Integer mem_num);
+	
+	public int[] selectSumTotalTime(Map<String, Object> map);
+	
 	//////////////나중에 지울것////////////////////////////
 	public void deleteSomething(Integer mem_num);
+	
+	
+	
 
 }

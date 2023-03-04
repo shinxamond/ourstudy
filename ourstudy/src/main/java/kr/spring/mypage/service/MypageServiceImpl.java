@@ -1,5 +1,6 @@
 package kr.spring.mypage.service;
 
+import java.sql.Date;
 import java.util.List;
 import java.util.Map;
 
@@ -101,6 +102,16 @@ public class MypageServiceImpl implements MypageService{
 	public void deleteSomething(Integer mem_num) {
 		mypageMapper.deleteHistory(mem_num);
 		mypageMapper.deleteSeatHistory(mem_num);
+	}
+
+	@Override
+	public String selectRegDate(Integer mem_num) {
+		return mypageMapper.selectRegDate(mem_num);
+	}
+
+	@Override
+	public int[] selectSumTotalTime(Map<String, Object> map) {
+		return mypageMapper.selectSumTotalTime(map);
 	}
 
 
