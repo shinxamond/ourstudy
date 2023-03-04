@@ -4,7 +4,7 @@
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
 <!-- 중앙 컨텐츠 시작 -->
 <script src="${pageContext.request.contextPath}/js/videoAdapter.js"></script>
-<script src="${pageContext.request.contextPath}/js/board.reply.js"></script>
+<script src="${pageContext.request.contextPath}/js/review.reply.js"></script>
 <div class="page-main">
 	<h3>제목 : ${review.r_title}</h3>
 	<ul class="detail-info">
@@ -32,31 +32,27 @@
 			작성일 : ${review.r_date}
 			</c:if>
 		</li>
-	</ul>
-<%-- 	 
-	<c:if test="${!empty review.imgname}">
-	<ul>
+	</ul> 	 
+	<c:if test="${!empty review.r_imgname}">
+	<ul style="padding-left:0; margin-top:10px;">
 		<li>
-			첨부파일 : <a href="file.do?board_num=${board.board_num}">${board.filename}</a>
+			첨부파일 : <a href="file.do?r_num=${review.r_num}">${review.r_imgname}</a>
 		</li>	
 	</ul>
-	</c:if>
- --%>	
-	<hr size="1" width="100%">
-<%-- 	
-	<c:if test="${fn:endsWith(board.filename,'.jpg') || 
-	              fn:endsWith(board.filename,'.JPG') ||
-				  fn:endsWith(board.filename,'.jpeg') ||
-				  fn:endsWith(board.filename,'.JPEG') ||
-				  fn:endsWith(board.filename,'.gif') ||
-				  fn:endsWith(board.filename,'.GIF') ||
-				  fn:endsWith(board.filename,'.png') ||
-				  fn:endsWith(board.filename,'.PNG')}">
+	</c:if>	
+	<hr size="1" width="100%"> 	
+	<c:if test="${fn:endsWith(review.r_imgname,'.jpg') || 
+	              fn:endsWith(review.r_imgname,'.JPG') ||
+				  fn:endsWith(review.r_imgname,'.jpeg') ||
+				  fn:endsWith(review.r_imgname,'.JPEG') ||
+				  fn:endsWith(review.r_imgname,'.gif') ||
+				  fn:endsWith(review.r_imgname,'.GIF') ||
+				  fn:endsWith(review.r_imgname,'.png') ||
+				  fn:endsWith(review.r_imgname,'.PNG')}">
 	<div class="align-center">
-		<img src="imageView.do?board_num=${board.board_num}&board_type=2" class="detail-img">
+		<img src="imageView.do?r_num=${review.r_num}&review_type=2" class="detail-img">
 	</div>	
-	</c:if>
- --%>	
+	</c:if>	
 	<p>
 		${review.r_content}
 	</p>

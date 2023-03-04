@@ -138,11 +138,49 @@ public class ReviewController {
 		                         //뷰이름       속성명	   속성값
 		return new ModelAndView("reviewView","review",review);
 	}
+
+	//=====파일 다운로드====//
+	@RequestMapping("/review/file.do")
+	public ModelAndView download(
+			         @RequestParam int r_num) {
+		ReviewVO review = reviewService.selectReview(r_num);
+		
+		ModelAndView mav = new ModelAndView();
+		mav.setViewName("downloadView");
+		mav.addObject("downloadFile", review.getR_img());
+		mav.addObject("filename", review.getR_imgname());
+		
+		return mav;
+	}
+
+	//=====이미지 출력=====//
+	@RequestMapping("/review/imageView.do")
+	public ModelAndView viewImage(
+			        @RequestParam int r_num,
+			        @RequestParam int review_type) {
+		
+		ReviewVO review = reviewService.selectReview(r_num);
+		
+		ModelAndView mav = new ModelAndView();
+		mav.setViewName("imageView");
+		
+		/*
+		if(review_type==1) {//프로필 사진
+			mav.addObject("imageFile",review.getPhoto());
+			mav.addObject("filename", review.getPhoto_name());
+		}
+		*/
+		if(review_type==2) {//업로드된 이미지
+			mav.addObject("imageFile", review.getR_img());
+			mav.addObject("filename", review.getR_imgname());
+		}
+		return mav;
+	}
 	
 	//=====이용후기 글수정=====//
 	
 	//=====이용후기 글삭제=======//
-	
+
 	//=====이용후기 이미지 삭제=====//
 	
 	//=====이용후기 이미지 출력=====//
