@@ -9,7 +9,6 @@ import org.apache.ibatis.annotations.Param;
 import org.apache.ibatis.annotations.Select;
 import org.apache.ibatis.annotations.Update;
 
-import kr.spring.member.vo.MemberVO;
 import kr.spring.pay.vo.PayVO;
 import kr.spring.ticket.vo.TicketVO;
 
@@ -48,6 +47,7 @@ public interface PayMapper {
 	//사물함 시작 시간 구하기
 	@Select("SELECT pay_date FROM pay WHERE mem_num=#{mem_num}")
 	public int selectLockerTime(Integer pay_num);
+	
 	
 }
 

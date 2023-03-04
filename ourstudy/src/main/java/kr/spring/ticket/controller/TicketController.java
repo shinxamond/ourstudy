@@ -32,7 +32,7 @@ public class TicketController {
 	}
 	
 	//이용권 목록
-	@RequestMapping("/ticket/ticketList.do")
+	@RequestMapping("/ticket/study_ticketList.do")
 	public ModelAndView process(
 			@RequestParam(value="pageNum",defaultValue="1")
 			int currentPage,
@@ -51,7 +51,7 @@ public class TicketController {
 				currentPage, count, 20, 10, "list.do");
 
 		List<TicketVO> ticket = null;
-		if(count > 0) {
+		if(count > 0) {	
 			map.put("start", page.getStartRow());
 			map.put("end", page.getEndRow());
 
@@ -59,7 +59,7 @@ public class TicketController {
 		}
 
 		ModelAndView mav = new ModelAndView();
-		mav.setViewName("ticketList");
+		mav.setViewName("study_ticketList");
 		mav.addObject("count", count);
 		mav.addObject("ticket", ticket);
 		mav.addObject("page", page.getPage());

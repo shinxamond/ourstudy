@@ -1,6 +1,9 @@
 package kr.spring.pay.controller;
 
 
+import java.time.Duration;
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -16,11 +19,14 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
+import kr.spring.locker.controller.LockerController;
+import kr.spring.locker.service.LockerService;
+import kr.spring.locker.vo.LockerVO;
+import kr.spring.member.service.MemberService;
 import kr.spring.member.vo.MemberVO;
 import kr.spring.mypage.service.MypageService;
 import kr.spring.pay.service.PayService;
 import kr.spring.pay.vo.PayVO;
-import kr.spring.point.vo.PointVO;
 import kr.spring.ticket.service.TicketService;
 import kr.spring.ticket.vo.TicketVO;
 
@@ -30,6 +36,9 @@ public class PayController {
 	private final Logger logger = LoggerFactory.getLogger(PayController.class);
 
 	@Autowired
+	private MemberService memberService;
+	
+	@Autowired
 	private PayService payService;
 
 	@Autowired
@@ -37,10 +46,18 @@ public class PayController {
 
 	@Autowired
 	private MypageService myPageService;
+	
+	@Autowired
+	private LockerService lockerService;
 
 	@ModelAttribute
 	public PayVO initCommand() {
 		return new PayVO();
+	}
+	
+	@ModelAttribute("lockerVO")
+	public LockerVO initCommand2() {
+		return new LockerVO();
 	}
 
 	@GetMapping("/pay/payPage.do")
@@ -100,13 +117,16 @@ public class PayController {
 			ticket = payService.selectTicket(payVO.getTicket_num());
 
 
-			//ticket 타입 가져오기
+			//ticket 시간 타입 가져오기
 			int type = ticket.getTicket_type();
+			//ticket 종류 타입 가져오기
 			int kind = ticket.getTicket_kind();
-			
+			//독서실 시간
 			int time;
+			//사물함 시간
+			int l_time;
 			
-			if(kind == 1) {
+			if(kind == 1) {//독서실 이용권
 				if(type == 1) {
 					time = 2;
 				}else if(type == 2) {
@@ -132,20 +152,70 @@ public class PayController {
 					}else {//시간권
 						payService.updateMemberHistory_Hour(time, user.getMem_num());
 					}
-			}else {
+			}else {//사물함 이용권	
+				//사물함 시간 구하기
+
+				LockerVO lockerVO = initCommand2();
+				lockerVO.setMem_num(user.getMem_num());
+				lockerVO.setMem_name(memberService.getMem_name(user.getMem_num()));
+				lockerVO.setLocker_num(lockerVO.getLocker_num());		
+				
+				String locker_in_db = lockerService.getLocker_start(lockerVO);
+				DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss");
+				
+				
+				LocalDateTime in_time = LocalDateTime.parse(locker_in_db,formatter);
+				LocalDateTime now_time = LocalDateTime.now();
+				String now = now_time.format(formatter);
+				now_time = LocalDateTime.parse(now,formatter);
+				
+				LocalDateTime out_time;		//1주, 2주, 4주
 				if(type == 7) {
-					time = 7*24;
+					l_time = 1;
+					out_time = in_time.plusWeeks(l_time);
 				}else if(type == 8){
-					time = 2*7*24;
+					l_time = 2;
+					out_time = in_time.plusWeeks(l_time);
 				}else {
-					time = 4*7*24;
+					l_time = 4;
+					out_time = in_time.plusWeeks(l_time);
 				}
+				
+				String locker_out_db = out_time.format(formatter);
+				
+				logger.debug("<<DB에서 가져온 이용시작 시간(String)>> : " + locker_in_db);
+				logger.debug("<<종료예정시각(String)>> : " + locker_out_db);
+				
+				logger.debug("<<현재시각(LocalDateTime)>> : " + now_time);
+				logger.debug("<<종료예정시각(LocalDateTime)>> : " + out_time);
+				
+				Duration diff = Duration.between(now_time, out_time);
+				long diffSeconds = diff.getSeconds();
+				int diffIntSeconds = Long.valueOf(diffSeconds).intValue();
+				
+				
+				logger.debug("<<dif>> : " + diffSeconds);
+				logger.debug("<<difInt>> : " + diffIntSeconds);
+				
+				
+				int hour = diffIntSeconds  / 3600;					
+				int minute = diffIntSeconds  % 3600 / 60;			
+				int second = diffIntSeconds  % 3600 % 60;
+				
+				logger.debug("종료까지 남은 시간 : " + hour +"시간 " + minute + "분 " + second + "초");
+				
+				lockerVO.setLocker_end(locker_out_db);
+				lockerVO.setLocker_diff(diffIntSeconds);
+				
+				logger.debug("<<lockerVO>> : " + lockerVO);
+				System.out.println(diffIntSeconds);
+				
+				lockerService.insertEndAndDiff(lockerVO);
 			}
 			
 			mapAjax.put("result", "success");
 			mapAjax.put("payVO", payVO);
 		}
-
 
 		return mapAjax;
 	}

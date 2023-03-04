@@ -6,10 +6,16 @@
 
 <tiles-definitions>
 
-	<definition name="ticketList" extends="main">
-		<put-attribute name="title" value="이용권 목록" />
+	<definition name="study_ticketList" extends="main">
+		<put-attribute name="title" value="이용권 목록(독서실)" />
 		<put-attribute name="body"
-			value="/WEB-INF/views/ticket/ticketList.jsp" />
+			value="/WEB-INF/views/ticket/study_ticketList.jsp" />
+	</definition>
+	
+	<definition name="locker_ticketList" extends="main">
+		<put-attribute name="title" value="이용권 목록(사물함)" />
+		<put-attribute name="body"
+			value="/WEB-INF/views/ticket/locker_ticketList.jsp" />
 	</definition>
 	
 	<!-- 결제 -->

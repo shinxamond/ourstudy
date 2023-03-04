@@ -7,6 +7,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import kr.spring.locker.dao.LockerMapper;
+import kr.spring.locker.vo.LockerVO;
 import kr.spring.mypage.dao.MypageMapper;
 import kr.spring.pay.dao.PayMapper;
 import kr.spring.pay.vo.PayVO;
@@ -23,6 +25,9 @@ public class PayServiceImpl implements PayService{
 	@Autowired
 	private MypageMapper mypageMapper;
 
+	@Autowired
+	private LockerMapper lockerMapper;
+	
 	@Override
 	public int selectPay_num() {
 		return payMapper.selectPay_num();
