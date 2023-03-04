@@ -2,8 +2,8 @@
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!-- 메인 시작 -->
-<link rel="stylesheet" href="${pageContext.request.contextPath}/css/main.css">
 <link rel="stylesheet" href="${pageContext.request.contextPath}/css/talk.css">
+<link rel="stylesheet" href="${pageContext.request.contextPath}/css/main.css">
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -27,7 +27,7 @@
 	  var data = google.visualization.arrayToDataTable([
 	    ['이름', '공부시간', {role: 'style'}],
 	    <c:forEach var="studyTime" items="${studyTime}">
-	    ['${studyTime.mem_name}', ${studyTime.mem_study}, 'fill-color:#037332; opacity: 0.6'],
+	    ['${studyTime.mem_name}', ${studyTime.mem_study}, 'fill-color:#037332;'],
 	    </c:forEach>
 	  ]);
 	
@@ -137,14 +137,31 @@
 	</div>
 	<div class="row">
 		<div class="card main_card" id="study_banner">
-		캐러셀 배너
+			<div id="carouselExampleIndicators" class="carousel slide" data-bs-ride="carousel" >
+			  <div class="carousel-indicators">
+			    <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
+			    <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="1" aria-label="Slide 2"></button>
+			    <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="2" aria-label="Slide 3"></button>
+			  </div>
+			  <div class="carousel-inner">
+			    <div class="carousel-item active" data-bs-interval="2000">
+			      <img src="${pageContext.request.contextPath}/image_bundle/banner1.PNG" class="d-block w-100" >
+			    </div>
+			    <div class="carousel-item" data-bs-interval="3000">
+			      <img src="${pageContext.request.contextPath}/image_bundle/banner2.PNG" class="d-block w-100">
+			    </div>
+			    <div class="carousel-item" data-bs-interval="3000">
+			      <img src="${pageContext.request.contextPath}/image_bundle/banner3.PNG" class="d-block w-100">
+			    </div>
+			  </div>
+			</div>		
 		</div>
 		<div class="card main_card" id="study_board">
-		<span style="margin:10px 0 10px 5px;">> 안내사항 </span>
+		<span class="main-title" style="margin:5px 0 10px 5px;">> 안내사항 </span>
 			<table class="table table-hover table-group-divider table table-striped">
-				<tr style="background-color:#037332; opacity: 0.6; color:white;">
-					<th width="320" class="align-center">제목</th>
-					<th class="align-center">작성일</th>
+				<tr style="background-color:#037332;">
+					<th width="320" class="align-center" style="color:#daebe3;">제목</th>
+					<th class="align-center" style="color:#daebe3;">작성일</th>
 				</tr>
 				<c:forEach var="info" items="${infoList}">
 				<tr>
@@ -161,7 +178,7 @@
 	</div>
 	<div class="row">
 		<div class="card main_card" id="study_time">
-			<span style="margin:15px 0 0px 10px;">> 일주일 공부시간 랭킹 </span>
+			<span class="main-title" style="margin:15px 0 0px 10px;">> 일주일 공부시간 랭킹 </span>
 			<div id="columnchart_values"></div>
 		</div>
 		<div class="card main_card" id="all_time">
@@ -172,7 +189,7 @@
   			<%-- <canvas id="testChart" width="60vw" height="60vh"></canvas> --%>
 		</div>
 		<div class="card main_card" id="study_photo">
-			<span style="margin:15px 0 20px 5px;">> 우리 독서실 </span>
+			<span class="main-title" style="margin:10px 0 15px 5px;">> 우리 독서실 </span>
 			<span class="align-center">
 				<img src="${pageContext.request.contextPath}/image_bundle/study1.jpg" class="study_photo">
 				<img src="${pageContext.request.contextPath}/image_bundle/study2.jpg" class="study_photo">

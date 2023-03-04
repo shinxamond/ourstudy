@@ -21,6 +21,8 @@ div#main_body{
 }
 div#main_footer{
 	background-color:#9BD0C9;
+	padding:30px 0 20px 280px;
+	height:220px;
 }
 a:link{
 	text-decoration:none;
