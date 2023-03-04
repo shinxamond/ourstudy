@@ -22,6 +22,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import kr.spring.member.vo.MemberVO;
 import kr.spring.info.service.InformationService;
 import kr.spring.info.vo.InformationVO;
+import kr.spring.main.service.MainService;
 import kr.spring.member.service.MemberService;
 import kr.spring.talk.service.TalkService;
 import kr.spring.talk.vo.TalkRoomVO;
@@ -39,6 +40,9 @@ public class TalkController {
 	
 	@Autowired
 	private TalkService talkService;
+	
+	@Autowired
+	private MainService mainService;
 
 	// =======채팅방 생성=========//
 	// 채팅방 생성 폼 호출
@@ -104,7 +108,14 @@ public class TalkController {
 		model.addAttribute("infoList", infoList);
 		//===================================================
 		
-		
+		//누적공부순위 차트
+	    Map<String, Object> map3 = new HashMap<String,Object>();
+	    
+	    List<MemberVO> member_studyTime = mainService.member_studyTime(map3);  
+	    model.addAttribute("studyTime", member_studyTime);
+		//=================================================
+	    
+	    
 		MemberVO user = (MemberVO) session.getAttribute("user");
 
 		int room_num;
@@ -133,6 +144,7 @@ public class TalkController {
 		model.addAttribute("user", user);
 		model.addAttribute("room_num", room_num);
 		model.addAttribute("roomList", roomList);
+		
 		logger.debug("<<메인 채팅방 리스트>> : " + roomList);
 		return "main";
 	}
