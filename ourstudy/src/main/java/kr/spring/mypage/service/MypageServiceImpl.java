@@ -110,9 +110,24 @@ public class MypageServiceImpl implements MypageService{
 	}
 
 	@Override
-	public int[] selectSumTotalTime(Map<String, Object> map) {
-		return mypageMapper.selectSumTotalTime(map);
+	public int selectSumTotalTimeForGraph(String weekStart, String weekEnd, Integer mem_num) {
+		Integer result;
+		try {
+			result = mypageMapper.selectSumTotalTimeForGraph(weekStart, weekEnd, mem_num);
+			return result;
+		}catch(Exception e) {
+			result = 0;
+			return result;
+		}
 	}
+
+	@Override
+	public void updateRegDate() {
+		mypageMapper.updateRegDate();
+	}
+
+
+
 
 
 

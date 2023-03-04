@@ -3,6 +3,7 @@ package kr.spring.mypage.controller;
 import java.time.DayOfWeek;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
+import java.time.Period;
 import java.time.format.DateTimeFormatter;
 import java.util.HashMap;
 import java.util.List;
@@ -73,7 +74,7 @@ public class MypageController {
 		return "redirect:/mypage/myPageMain.do";
 		
 	}
-		
+	
 	//마이페이지 메인 호출
 	@RequestMapping("/mypage/myPageMain.do")
 	public String form(@RequestParam(value="pageNum", defaultValue="1")int currentPage, HttpSession session, Model model) {
@@ -95,48 +96,116 @@ public class MypageController {
 		
 		logger.debug("<<마이페이지 멤버 정보>> : " + member);
 		
+		String[] setThisWeek = new String[7];
+		Integer[] setTotalTime_thisWeek = new Integer[7];
+		LocalDate now = LocalDate.now();
+		LocalDate setThisMonday = now.with(DayOfWeek.MONDAY);
+		LocalDate setNextMonday = setThisMonday.plusDays(7);
 		
-		//회원가입일 가져오기
-		String u_regdate = mypageService.selectRegDate(user.getMem_num());
+		for(int i = 0; i < setThisWeek.length; i++) {
+			setThisWeek[i] = setThisMonday.plusDays(i).toString();
+		}
+		for(int i = 0; i < setTotalTime_thisWeek.length; i++) {
+			if(i == setTotalTime_thisWeek.length - 1) {
+				setTotalTime_thisWeek[i] = mypageService.selectSumTotalTimeForGraph(setThisWeek[i], setNextMonday.toString(), user.getMem_num());
+			}else {
+				setTotalTime_thisWeek[i] = mypageService.selectSumTotalTimeForGraph(setThisWeek[i], setThisWeek[i+1], user.getMem_num());
+			}
+		}
+		
+		
+		/*=============================================
+		 * 				그래프에 데이터 전달하기
+		 *=============================================*/
+		/*//요일 기준으로 일요일까지 날짜 2011-11-11 형식으로 배열에 담아줄거임 먼저 초기화 일주일치 담을거니까 크기는 7
+		//가입일이 월요일이 아닌 사람은 나머지 값을 널로 해야되니까 세팅
+		String[] setWeek = new String[7];
+		//그 날짜가 포함된 월~수 날짜 전부 담아줄 배열
+		//얘는 그래프 x축에 넘겨줄 데이터
+		String[] setFullWeek = new String[7];
+		//더할 날짜 늘리면서 해야되니까 0으로 미리 초기화
+		int cnt = 0;
+		//이거는 다음주 월료일 담아주려고
+		String setMon = null;
+		//이거는 신규 가입자가 월요일에 가입한게 아닐 때 가입일 담아주려고
+		String u_regdate = null;
+		//이거는 신규 가입자 localdate 타입으로 변환해서 담아두려고 or 월요일일 때 월요일 날짜 담아두려고
+		LocalDate user_regdate = null;
+		//요거는 위에걸로 가져온 날짜에 월요일(1) 담아두려고
+		int userRegWeekNum;
+		u_regdate = mypageService.selectRegDate(user.getMem_num());
 		//회원가입일 String으로 받아오면 2011-11-11 11:11:11이므로 뒤에거 잘라주기
 		String[] u_regdate_split = u_regdate.split(" ");
 		//공백 기준으로 자른 배열 첫 번째(연월일)만 가져와서 다시 하이픈 기준으로 잘라주기
 		String[] u_regdate_split2 = u_regdate_split[0].split("-");
 		
 		//요게 이제 2011-11-11 이런 형식 -> LocalDate로 바꿔서 요일 가져올 수 있게
-		LocalDate user_regdate = LocalDate.of(Integer.parseInt(u_regdate_split2[0]),Integer.parseInt(u_regdate_split2[1]), Integer.parseInt(u_regdate_split2[2]));
-		//요일 구하려면 dayofweek 객체가 필요하다니까 생성
-		DayOfWeek thisWeek = user_regdate.getDayOfWeek();
+		user_regdate = LocalDate.of(Integer.parseInt(u_regdate_split2[0]),Integer.parseInt(u_regdate_split2[1]), Integer.parseInt(u_regdate_split2[2]));		
 		
-		//dayofweek 객체의 getvalue 메소드를 쓰면 요일 가져온대 가입일에 해당하는 요일(1:월~7:일)
-		int userRegWeekNum = thisWeek.getValue();
-		//이제 요일 기준으로 일요일까지 날짜 2011-11-11 형식으로 배열에 담아줄거임 먼저 초기화 일주일치 담을거니까 크기는 7
-		String[] setWeek = new String[7];
-		//더할 날짜 늘리면서 해야되니까 0으로 미리 초기화
-		int cnt = 0;
+		
+		
+		//이거는 컨트롤러 호출될 때 요일
+		int thisMon = LocalDate.now().getDayOfWeek().getValue();
+		Period period = null;
+		//오늘이 월요일이면 user_regdate에 오늘 날짜 localdate로 담아주고 userRegWeek 월(1)로 세팅
+		if(thisMon == 1) {
+			user_regdate = LocalDate.now();
+			
+			userRegWeekNum = thisMon;
+		} else if(Period.between(user_regdate, LocalDate.now()).getDays() < 6){
+			//요일 구하려면 dayofweek 객체가 필요하다니까 생성
+			DayOfWeek thisWeek = user_regdate.getDayOfWeek();
+			
+			//dayofweek 객체의 getvalue 메소드를 쓰면 요일 가져온대 가입일에 해당하는 요일(1:월~7:일)
+			userRegWeekNum = thisWeek.getValue();
+		}
+		
 		//월료일부터 일요일까지 루프 돌리기 날짜 월(1)~일(7)이니까 1부터 시작해보자
 		for(int i = 1; i < 8; i++) {
 			//i가 가입일에 해당하는 요일보다 작으면 ex) 오늘(목,4) i= 1이면 1 < 4 가 되고 setWeek[i(1)-1]에 null세팅
 			if(i < userRegWeekNum) {
 				setWeek[i-1] = null;
+				//데이터는 널이어도 날짜는 x축에 표시해야되니까 plusDays에 -값을 줘서 이전 날짜를 구한다
+				setFullWeek[i-1] = user_regdate.plusDays(i-userRegWeekNum).format(DateTimeFormatter.ofPattern("yyyy-MM-dd"));
 			}else {//오늘 요일(목,4)랑 i가 같아지면(i, 4) setWeek[3]부터 plusDays(0)
 				setWeek[i-1] = user_regdate.plusDays(cnt).format(DateTimeFormatter.ofPattern("yyyy-MM-dd"));
+				setFullWeek[i-1] = user_regdate.plusDays(cnt).format(DateTimeFormatter.ofPattern("yyyy-MM-dd"));
 				//첫번째 호출 때 0 더했으니까 cnt증가시켜주고 다음 호출시엔 1 더하는걸로 그담은 2 ...
 				cnt++;
 			}
 		}
+		//setMon에 일요일 다음에 올 날짜를 미리 담아두고 나중에 시간 비교해서 이 날짜랑 오늘 날짜가 같아지면 mem_detail에 reg_date를 일주일 뒤 값으로 업데이트 해준다
+		setMon = user_regdate.plusDays(cnt).format(DateTimeFormatter.ofPattern("yyyy-MM-dd"));
+		
+		
+		
+		
 		//이까지해서 찍어보면 월화수목금토일 날짜가 나온다
 		//3월 2일일 경우 setWeek에는 null, null, null, 2023-03-02, 2023-03-03, 2023-03-04, 2023-03-05가 들어있음
 		//이러며는 이제 어.. 인덱스 0이 월요일 인덱스 6이 일요일이 될거니까 사실상 요일 정보도 담았다고 볼 수 있다
-		System.out.println(userRegWeekNum);
-		for(int i = 0; i < setWeek.length; i++) {
-			System.out.println(setWeek[i]);
-		}
-		//이제 이 정보로 값이 있는 날짜에 해당하는 공부 시간을 가져오면 될거같음,, 기능고장..뇌정지..
-		Map<String, Object> map_week = new HashMap<String, Object>();
-		map_week.put("setWeek", setWeek);
-		//mypageService.selectSumTotalTime(map_week);
+		//각 날짜별 시간 담을 배열
+		Integer[] setTime = new Integer[7];
 		
+		for(int i = 0; i < setWeek.length; i++) {
+			//setweek배열 가져와서 내용물 끄내보고 null이면 해당 인덱스 값도 null로 세팅
+			if(setWeek[i] == null) {
+				setTime[i] = (Integer) null;
+			}else {
+				if(i == setWeek.length - 1) { //i가 마지막 인덱스에 가면 그 다음 월료일 날짜를 파라미터로 줘서 날짜 검색이 가능하도록 한다
+					setTime[i] = mypageService.selectSumTotalTimeForGraph(setWeek[i], setMon, user.getMem_num());
+				}else { //그 전까진 다음 날 날짜를 검색 범위 날짜로 줌           ex)2023-03-02   2023-03-03
+					setTime[i] = mypageService.selectSumTotalTimeForGraph(setWeek[i], setWeek[i+1], user.getMem_num());
+				}
+			}
+		}*/
+		
+		//날짜별 시간 담은 배열 넘겨주기
+		model.addAttribute("week", setThisWeek);
+		System.out.println("week 찍어보기" + setThisWeek[0]+" "+setThisWeek[1]+" "+setThisWeek[2]+" "+setThisWeek[3]+" "+setThisWeek[4]+" "+setThisWeek[5]+" "+setThisWeek[6]);
+		//한 주 날짜 넘겨주기
+		model.addAttribute("time", setTotalTime_thisWeek);
+		System.out.println("time 찍어보기" + setTotalTime_thisWeek[0]+" "+setTotalTime_thisWeek[1]+" "+setTotalTime_thisWeek[2]+" "+setTotalTime_thisWeek[3]+" "+setTotalTime_thisWeek[4]+" "+setTotalTime_thisWeek[5]+" "+setTotalTime_thisWeek[6]);
+
 		
 		
 		

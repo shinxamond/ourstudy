@@ -12,12 +12,19 @@
 			<hr class = "horizontal-line">
 				<canvas id = "line-chart" width = "1040" height = "300"></canvas>
 				<script type="text/javascript">
+				var mon = ('${time[0]}'/3600 <=  0) ? 0 : '${time[0]}' / 3600;
+				var tue = ('${time[1]}'/3600 <=  0) ? 0 : '${time[1]}' / 3600;
+				var wed = ('${time[2]}'/3600 <=  0) ? 0 : '${time[2]}' / 3600;
+				var thu = ('${time[3]}'/3600 <=  0) ? 0 : '${time[3]}' / 3600;
+				var fri = ('${time[4]}'/3600 <=  0) ? 0 : '${time[4]}' / 3600;
+				var sat = ('${time[5]}'/3600 <=  0) ? 0 : '${time[5]}' / 3600;
+				var sun = ('${time[6]}'/3600 <=  0) ? 0 : '${time[6]}' / 3600;
 				new Chart(document.getElementById('line-chart'), {
 					type : 'line',
 					data : {
-						labels : ['월','토','금','목','수','화','일'],
+						labels : ['${week[0]}', '${week[1]}', '${week[2]}','${week[3]}', '${week[4]}', '${week[5]}','${week[6]}'],
 						datasets : [{
-							data : [6, 9, 3, 7, 4, 2],
+							data : [mon, tue, wed, thu, fri, sat, sun],
 							label : '내 공부시간',
 							borderColor : '#006633',
 							backgroundColor: '#006633',
@@ -29,6 +36,11 @@
 					options : {
 						scales :{
 							y :{
+								ticks :{
+									display : true,
+									stepSize : 0.5,
+								},
+								min : 0,
 								suggestedMin : 0
 							},
 							x : {

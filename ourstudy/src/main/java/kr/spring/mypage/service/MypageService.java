@@ -62,7 +62,9 @@ public interface MypageService {
 	
 	public String selectRegDate(Integer mem_num);
 	
-	public int[] selectSumTotalTime(Map<String, Object> map);
+	public int selectSumTotalTimeForGraph(String weekStart, String weekEnd, Integer mem_num);
+	
+	public void updateRegDate();
 	
 	//////////////나중에 지울것////////////////////////////
 	public void deleteSomething(Integer mem_num);

@@ -7,6 +7,7 @@ import java.util.Map;
 import org.apache.ibatis.annotations.Delete;
 import org.apache.ibatis.annotations.Insert;
 import org.apache.ibatis.annotations.Mapper;
+import org.apache.ibatis.annotations.Param;
 import org.apache.ibatis.annotations.Select;
 import org.apache.ibatis.annotations.Update;
 
@@ -126,12 +127,16 @@ public interface MypageMapper {
 	
 	
 	/*==================================
-    				공부시간
+    			공부시간 그래프
 	====================================*/	
 	
 	//가입 날짜 불러오기
 	@Select("SELECT mem_regdate FROM member_detail WHERE mem_num = #{mem_num}")
 	public String selectRegDate(Integer mem_num);
-	
-	public int[] selectSumTotalTime(Map<String, Object> map);
+	//날짜 1, 날짜 2 받아서 고 사이에 입퇴실 내역 sum 구하기
+	@Select("SELECT sum(total_time) FROM seat_detail WHERE in_time BETWEEN TO_DATE(#{weekStart}) AND TO_DATE(#{weekEnd}) AND mem_num = #{mem_num}")
+	public int selectSumTotalTimeForGraph(@Param(value = "weekStart") String weekStart, @Param(value = "weekEnd") String weekEnd, @Param(value = "mem_num") Integer mem_num);
+	//한 주 지나면 member_detail에 reg_date를 일주일 뒤 값으로 업데이트
+	@Update("UPDATE member_detail SET mem_regdate = sysdate")
+	public void updateRegDate();
 }
