@@ -127,7 +127,7 @@ public class SeatController {
 //      model.addAttribute("mem_status", mem_status);
       	model.addAttribute("seat_num",seat_num);
       
-      return "temporary";
+      return "redirect:/mypage/myPageMain.do";
    }
 
 
@@ -210,7 +210,7 @@ public class SeatController {
       seatVO.setSeat_num(seat_num);
       
       seatService.insertTotal_time(seatVO);
-      return "";
+      return "redirect:/mypage/myPageMain.do";
    }
    
    //회원 퇴실처리 + 관리자 권한 강제 퇴실처리
@@ -279,7 +279,7 @@ public class SeatController {
     	  return "redirect:/admin/admin_seathistory.do";
       }
       
-      return "";
+      return "redirect:/mypage/myPageMain.do";
    }
 
 }

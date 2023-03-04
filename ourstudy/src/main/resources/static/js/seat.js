@@ -7,6 +7,7 @@
 		let seat_num = document.getElementById(e.getAttribute('id')).getAttribute('data-seatnum');
 		
 		let select = confirm(seat_name + '번 좌석을 선택할까요?');
+		console.log(seat_num);
 		
 		if(select == false){
 			alert('좌석 선택이 취소되었습니다');
@@ -18,7 +19,7 @@
 			if(locker == false){
 				//replace, href 중 선택
 				//(이전으로 못돌아감, 돌아갈 수 있음)
-				location.href='select.do?seat_num=' + seat_num;
+				location.href='/seat/select.do?seat_num=' + seat_num;
 			}else if(locker == true){
 				location.href='/locker/section.do';
 			}
