@@ -23,11 +23,10 @@
 		</ul>
 	</form>
 	<div class="align-right">
-			<input type="button" value="분실물등록" 
-				onclick="location.href='lostWrite.do'">
-			<input type="button" value="습득물등록" 
-				onclick="location.href='foundWrite.do'">
-			
+		<c:if test="${!empty user}">
+		<input type="button" value="글쓰기" 
+			onclick="location.href='lostWrite.do'">
+		</c:if>
 	</div>
 	<c:if test="${count == 0}">
 		<div class="result-display">표시할 안내사항이 없습니다.</div>
@@ -42,13 +41,18 @@
 		</tr>
 		<c:forEach var="lost" items="${lostList}">
 		<tr>
-			<td>${lost.lf_type}</td>
+			<c:if test="${lost.lf_type == 0}">
+			<td>분실</td>
+			</c:if>
+			<c:if test="${lost.lf_type == 1}">
+			<td>습득</td>
+			</c:if>
+			
 			<td>
-				<a href="lostView.do?lf_num=${lost.lf_num}">${lost.lf_title}</a>
+				<a href="lostDetail.do?lf_num=${lost.lf_num}">${lost.lf_title}</a>
 			</td>
 			<td>${lost.lf_date}</td> 
-			<td>${lost.mem_num}</td> 
-			
+			<td>${lost.mem_name}</td> 
 			
 		</tr>
 		</c:forEach>

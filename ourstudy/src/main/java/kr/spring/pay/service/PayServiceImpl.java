@@ -69,12 +69,5 @@ public class PayServiceImpl implements PayService{
 		
 	}
 
-	@Override
-	public int selectLockerTime(Integer pay_num) {
-		return selectLockerTime(pay_num);
-	}
-
-	
-
 }
 
