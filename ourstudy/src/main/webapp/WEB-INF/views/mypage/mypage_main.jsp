@@ -10,7 +10,7 @@
 			<h4 class = "sum-title">주간공부시간</h4>
 			</div>
 			<hr class = "horizontal-line">
-				<canvas id = "line-chart" width = "1040" height = "310"></canvas>
+				<canvas id = "line-chart" width = "1040" height = "300"></canvas>
 				<script type="text/javascript">
 				var mon = ('${time[0]}'/3600 <=  0) ? 0 : '${time[0]}' / 3600;
 				var tue = ('${time[1]}'/3600 <=  0) ? 0 : '${time[1]}' / 3600;
@@ -28,8 +28,8 @@
 							label : '내 공부시간',
 							borderColor : '#006633',
 							backgroundColor: '#006633',
-							pointStyle : 'dash',
-							fill : true,
+							pointStyle : false,
+							fill : false,
 							tension : 0.3,
 							borderWidth : 3,
 						}]},

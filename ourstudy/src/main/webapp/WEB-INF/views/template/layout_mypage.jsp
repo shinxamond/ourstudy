@@ -15,7 +15,6 @@
 	<tiles:insertAttribute name="sidebar"/>
 <div id="main" style = "margin : 0 auto; width : 100%;">
 	<div id="main_header">
-		<tiles:insertAttribute name="header"/>
 		<tiles:insertAttribute name="myPageHeader" />
 	</div>
 	<div id="main_body">
