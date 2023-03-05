@@ -51,11 +51,11 @@
 				<label for="upload">파일 첨부</label>
 				<input type="file" name="upload" id="upload">
 			</li>
-			<!-- <li>
+<%-- 			 <li>
 				<label for="info_pin">상단고정</label>
 				<form:checkbox path="testVar" value="001" label="A" />     
 				<form:errors path="info_pin" cssClass="error-color"/>               
-			</li> -->
+			</li>  --%>
 		</ul>
 		<div class="align-right">
 			<form:button>등록</form:button>
