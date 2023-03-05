@@ -14,7 +14,7 @@
 			return false;
 		}else if(select == true){
 			alert(seat_name + '번 좌석이 선택되었습니다.');
-			location.href='/ticket/study_ticketList.do?seat_num=' + seat_num;
+			location.href='/seat/select.do?seat_num=' + seat_num;
 			
 /*			<추후 사용 예정>
  * 			let locker = confirm('사물함을 등록할까요?');
