@@ -21,6 +21,7 @@ import kr.spring.locker.service.LockerService;
 import kr.spring.locker.vo.LockerVO;
 import kr.spring.member.service.MemberService;
 import kr.spring.member.vo.MemberVO;
+import kr.spring.ticket.service.TicketService;
 
 @Controller
 public class LockerController {
@@ -31,6 +32,9 @@ public class LockerController {
 	
 	@Autowired
 	private MemberService memberService;
+	
+	@Autowired
+	private TicketService ticketService;
 	
 	@ModelAttribute("lockerVO")
 	public LockerVO initCommand() {
@@ -110,7 +114,7 @@ public class LockerController {
 		
 		model.addAttribute("locker_num", locker_num);
 		
-		return "locker_ticketList";			
+		return "locker_pay";			
 	}
 	
 	
