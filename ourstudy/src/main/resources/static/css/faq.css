@@ -1,26 +1,116 @@
-@charset "UTF-8";
-
-body {
-  background-color: #F6F7EB;
-  font-family: 'Open Sans', sans-serif;
+@import url(https://fonts.googleapis.com/css?family=Raleway:300);
+*,
+*:before,
+*:after {
+  box-sizing: border-box;
 }
-h1 {
+
+html {
+  background-color: #eeeeee;
+}
+
+html {
+  padding-top: 50px;
+  font-family: "Raleway", Helvetica, arial, sans-serif;
+  background-color: #eeeeee;
+}
+
+.header {
   text-align: center;
-  margin-top: 30px;
-  font-size: 50px;
-  color: #2b3a40;
 }
-.accordion { 
-  background-color: #fefffa;
-  max-width: 650px;
-  margin: 50px auto;
-  border:none;
-  border-top: 6px solid #44BBA4;
-  box-shadow: 5px 5px 10px 0px #808080;
-  border-radius:10px;
-}
-.accordion-button:not(.collapsed){
-	color:#fff;
-	background-color:#44BBA4;
+.header a {
+  text-decoration: none;
+  color: #a98677;
 }
 
+.accordion {
+  width: 100%;
+  max-width: 75rem;
+  margin: 0 auto;
+  padding: 2rem;
+}
+
+.accordion-item {
+  border:none;
+  position: relative;
+}
+.accordion-item .accordion-input {
+  display: none;
+}
+.accordion-item .accordion-input:checked + .heading {
+  color: #bfa499;
+}
+.accordion-item .accordion-input:checked + .heading .icon {
+  background: #fefefe;
+}
+.accordion-item .accordion-input:checked + .heading .icon:before {
+  background: #bfa499;
+}
+.accordion-item .accordion-input:checked + .heading .icon:after {
+  width: 0;
+}
+.accordion-item .accordion-input:checked ~ .content {
+  position: static;
+  visibility: visible;
+  opacity: 1;
+  transform: translateX(0);
+  transition: 0.3s ease-in-out;
+}
+.accordion-item .heading {
+  display: block;
+  text-transform: uppercase;
+  text-decoration: none;
+  color: #7f6559;
+  font-weight: 700;
+  font-size: 1rem;
+  position: relative;
+  padding: 1.5rem 0 1.5rem 4rem;
+  transition: 0.3s ease-in-out;
+}
+@media (min-width: 40rem) {
+  .accordion-item .heading {
+    font-size: 1.2rem;
+  }
+}
+.accordion-input:checked + .accordion-item .heading {
+  color: #bfa499;
+}
+.accordion-input:checked + .accordion-item .heading .icon:before, .accordion-input:checked + .accordion-item .heading .icon:after {
+  background: #bfa499;
+}
+.accordion-item .icon {
+  display: block;
+  position: absolute;
+  top: 50%;
+  left: 0;
+  width: 3rem;
+  height: 3rem;
+  border: 2px solid #fefefe;
+  border-radius: 3px;
+  transform: translateY(-50%);
+}
+.accordion-item .icon:before, .accordion-item .icon:after {
+  content: "";
+  width: 1.25rem;
+  height: 0.25rem;
+  background: #7f6559;
+  position: absolute;
+  border-radius: 3px;
+  left: 50%;
+  top: 50%;
+  transition: 0.3s ease-in-out;
+  transform: translate(-50%, -50%);
+}
+.accordion-item .icon:after {
+  transform: translate(-50%, -50%) rotate(90deg);
+  z-index: -1;
+}
+.accordion-item .content {
+  position: absolute;
+  visibility: hidden;
+  opacity: 0;
+  transform: translateX(10px);
+}
+.accordion-item .content p {
+  margin-top: 0;
+}
