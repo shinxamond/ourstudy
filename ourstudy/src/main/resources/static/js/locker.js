@@ -13,6 +13,6 @@
     	}else if(select == true){
     		alert(locker_num + '번 사물함이 선택되었습니다.');
     		
-    		location.href='/locker/select.do?locker_num=' + locker_num;
+    		location.href='/pay/locker_pay.do?locker_num=' + locker_num;
     	}
     }

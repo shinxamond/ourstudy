@@ -7,11 +7,13 @@ import java.time.format.DateTimeFormatter;
 import java.util.HashMap;
 import java.util.Map;
 
+import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -76,11 +78,17 @@ public class PayController {
 	}
 	
 	@GetMapping("/pay/locker_pay.do")
-	public ModelAndView locker_pay(@RequestParam int ticket_num) {
-
+	public ModelAndView locker_pay(@RequestParam int locker_num, HttpSession session, Model model) {
+		int ticket_num = (Integer)session.getAttribute("ticket_num");						//Session에서 이용권 번호 가져오기
+		
 		logger.debug("<<이용권 정보>> : " + ticket_num);
 
 		TicketVO ticketVO = ticketService.selectTicket(ticket_num);
+		
+		session.invalidate();																//정보 삭제
+		
+		model.addAttribute("locker_num", locker_num);
+		
 		return new ModelAndView("locker_pay","ticket", ticketVO);
 
 	}

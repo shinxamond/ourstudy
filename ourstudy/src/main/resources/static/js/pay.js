@@ -81,7 +81,8 @@ $(function(){
 
    IMP.init("imp36873723"); // 예: imp00000000
    
-  function requestKakaoPay() {
+  function requestKakaoPay(e) {
+	let locker_num = e.getAttribute('data-lockernum');
    	var pprice = $('#final_price').text();
 	var useP = document.getElementById('use_point');
 
@@ -89,6 +90,7 @@ $(function(){
       pay_price:$('#final_price').attr('data-pricenum'),
       pay_content:$('#ticket_name').attr('data-ticketname'),
       ticket_num:$('#ticket_num').attr('data-ticketnum'),
+      locker_num:locker_num,
       pay_plan:1,
 	  check_useP:1,
       point_point : -useP.value
@@ -97,6 +99,7 @@ $(function(){
       pay_price:$('#final_price').attr('data-pricenum'),
       pay_content:$('#ticket_name').attr('data-ticketname'),
       ticket_num:$('#ticket_num').attr('data-ticketnum'),
+      locker_num:locker_num,
       pay_plan:1,
 	  check_useP:0,
       point_point : pprice * 0.05

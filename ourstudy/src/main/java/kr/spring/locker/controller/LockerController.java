@@ -48,7 +48,8 @@ public class LockerController {
 	
 	//섹션 폼 이동
 	@RequestMapping("/locker/section.do")
-	public String Section(Model model) {
+	public String Section(@RequestParam int ticket_num, Model model, HttpSession session) {
+		session.setAttribute("ticket_num", ticket_num);
 		return "sectionForm";
 	}
 	
@@ -114,7 +115,7 @@ public class LockerController {
 		
 		model.addAttribute("locker_num", locker_num);
 		
-		return "locker_pay";			
+		return "redirect:/main/main.do";			
 	}
 	
 	
