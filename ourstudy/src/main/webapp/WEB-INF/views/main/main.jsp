@@ -459,6 +459,13 @@ function countmsg(){
 				}
 			});
 			
+			$('.emoticon').click(function(){
+				var value = $(this).text();
+				var message_str = $("#message").val();
+				message_str += value;
+				$('#message').val(message_str);
+			});
+			
 			//============채팅 등록================//
 			$('#detail_form').submit(function(event){
 				//중복제거
@@ -582,8 +589,44 @@ function countmsg(){
 			
 			<textarea rows="5" cols="60" name="message" id="message"></textarea>
 			<input type="submit" value="전송">
-			
 		</form>
+		&nbsp;
+		<span class="emoticon">&#128539;</span>
+		<span class="emoticon">&#128512;</span>
+		<span class="emoticon">&#128514;</span>
+		<span class="emoticon">&#128516;</span>
+		<span class="emoticon">&#128518;</span>
+		<span class="emoticon">&#128519;</span>
+		<span class="emoticon">&#128525;</span>
+		<span class="emoticon">&#128526;</span>
+		<span class="emoticon">&#128529;</span>
+		<span class="emoticon">&#128541;</span>
+		<span class="emoticon">&#128558;</span>
+		<span class="emoticon">&#128560;</span>
+		<span class="emoticon">&#128561;</span>
+		<span class="emoticon">&#128563;</span>
+		<span class="emoticon">&#128565;</span>
+		<br>&nbsp;
+		<span class="emoticon">&#129505;</span>
+		<span class="emoticon">&#10084;</span>
+		<span class="emoticon">&#9757;</span>
+		<span class="emoticon">&#9994;</span>
+		<span class="emoticon">&#9995;</span>
+		<span class="emoticon">&#9996;</span>
+		<span class="emoticon">&#10060;</span>
+		<span class="emoticon">&#10067;</span>
+		<span class="emoticon">&#10071;</span>
+		<span class="emoticon">&#10083;</span>
+		<span class="emoticon">&#11088;</span>
+		<span class="emoticon">&#127800;</span>
+		<span class="emoticon">&#128077;</span>
+		<span class="emoticon">&#128076;</span>
+		<span class="emoticon">&#128127;</span>
+		<span class="emoticon">&#128144;</span>
+		<span class="emoticon">&#129326;</span>
+		<span class="emoticon">&#129315;</span>
+		<br>
+		
         </div>
     </div>
   </div>
