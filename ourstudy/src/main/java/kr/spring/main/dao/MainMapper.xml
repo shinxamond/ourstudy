@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8" ?>  
+<!DOCTYPE mapper   
+    PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"   
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">  
+<mapper namespace="kr.spring.main.dao.MainMapper">  
+	<select id="member_Rank" resultType="seatVO">
+		SELECT mem_name, sum(total_time) AS total_time
+		FROM (SELECT d.mem_name, d.total_time
+		FROM member_detail m JOIN seat_detail d
+		USING(mem_num)
+		WHERE in_time BETWEEN TO_DATE(#{weekStart}) AND TO_DATE(#{weekEnd}) AND mem_num IN
+		<foreach collection="member_list" item = "mem" open = "(" close = ")" separator = ",">
+			#{mem}		
+		</foreach>
+		)GROUP BY mem_name
+		ORDER BY total_time DESC
+	</select>
+	<!-- SELECT mem_name, sum(total_time) AS total_time
+FROM (SELECT d.mem_name, d.total_time
+FROM member_detail m JOIN seat_detail d
+USING(mem_num)
+WHERE in_time BETWEEN TO_DATE('20230227') AND TO_DATE('20230305')  AND mem_num IN (523, 521))
+GROUP BY mem_name
+ORDER BY total_time DESC -->
+</mapper>
+
+
+
+
+
+
+

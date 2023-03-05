@@ -12,9 +12,9 @@
     font-weight: 400;
     font-style: normal;
 }
-a, a:visited, a:focus{
+a, a:hover a:visited, a:focus{
 	text-decoration: none !important;
-    color: #000000;
+    color: #000000 !important;
 }
 
 div#main_footer{

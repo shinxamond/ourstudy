@@ -112,6 +112,9 @@
 			</tr>
 			</c:forEach>
 			</table>
+			<div class = "page-button">
+				${page }
+			</div>	
 			</c:if>
 		</div>
 	</div>

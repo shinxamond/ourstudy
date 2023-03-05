@@ -1,6 +1,8 @@
 package kr.spring.main.controller;
 
 
+import java.time.DayOfWeek;
+import java.time.LocalDate;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -16,6 +18,7 @@ import kr.spring.info.service.InformationService;
 import kr.spring.info.vo.InformationVO;
 import kr.spring.main.service.MainService;
 import kr.spring.member.vo.MemberVO;
+import kr.spring.seat.vo.SeatVO;
 
 @Controller
 public class MainController {
@@ -54,10 +57,26 @@ public class MainController {
 		//누적공부순위 차트
 	    Map<String, Object> map2 = new HashMap<String,Object>();
 	    
-	    List<MemberVO> member_studyTime = mainService.member_studyTime(map2);  
-	    model.addAttribute("studyTime", member_studyTime);
-		
-		return "main";//타일스 설정값
+	   //List<MemberVO> member_studyTime = mainService.member_studyTime(map2);  
+	    
+	   LocalDate now = LocalDate.now();
+	   LocalDate setThisMonday = now.with(DayOfWeek.MONDAY);
+	   LocalDate setNextMonday = setThisMonday.plusDays(7);
+
+	   int[] memArray = mainService.setMemberArray();
+
+	   for(int i = 0; i < memArray.length; i++) {
+		   System.out.println("member[" + i +"] = " + memArray[i]);
+	   }
+
+	   List<SeatVO> member_RankStudyTime = mainService.member_Rank(memArray, setThisMonday.toString(), setNextMonday.toString());
+
+
+
+	   //model.addAttribute("studyTime", member_studyTime);
+	   model.addAttribute("studyTime", member_RankStudyTime);
+	   
+	   return "main";//타일스 설정값
 	}
 	
 }

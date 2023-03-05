@@ -215,7 +215,7 @@ public class MypageController {
 		
 		int count = itemService.rentalItemCount(2, user.getMem_num());
 		
-		PagingUtil page = new PagingUtil(currentPage, count, 3, 3, "myPageMain.do");
+		PagingUtil page = new PagingUtil(currentPage, count, 3, 5, "myPageMain.do");
 		
 		List<ItemVO> list = null;
 		
@@ -234,6 +234,7 @@ public class MypageController {
 		model.addAttribute("seat", seat);
 		model.addAttribute("pointSum", pointSum);
 		model.addAttribute("remainTime", remainTime * 3600);
+		model.addAttribute("page", page.getPage());
 		
 		return "myPageMain"; //타일스 설정값
 	}
