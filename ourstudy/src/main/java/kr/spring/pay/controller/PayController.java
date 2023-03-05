@@ -137,8 +137,6 @@ public class PayController {
 			int kind = ticket.getTicket_kind();
 			//독서실 시간
 			int time;
-			//사물함 시간
-			int l_time;
 
 			if(kind == 1) {//독서실 이용권
 				if(type == 1) {
@@ -166,65 +164,22 @@ public class PayController {
 				}else {//시간권
 					payService.updateMemberHistory_Hour(time, user.getMem_num());
 				}
-			}else {//사물함 이용권	
-				/*if(type == 7) {
-					l_time = 1;
-				}else if(type == 8) {
-					l_time = 2;
-				}else {
-					l_time = 4;
-				}*/
-				
-				
-				  LockerVO lockerVO = new LockerVO();
-				  
-				  lockerVO.setMem_num(user.getMem_num());
-				  lockerVO.setMem_name(memberService.getMem_name(user.getMem_num()));
-				  lockerVO.setLocker_num(lockerVO.getLocker_num());
-				  
-				  lockerService.selectLocker(lockerVO);
-				 
-				
-				String locker_in_db = lockerService.getLocker_start(lockerVO);
+			}else {//사물함 이용권
+				//사물함 시간 구하기
 				DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss");
 				
-				LocalDateTime in_time = LocalDateTime.parse(locker_in_db,formatter);
 				LocalDateTime now_time = LocalDateTime.now();
 				String now = now_time.format(formatter);
 				now_time = LocalDateTime.parse(now,formatter);
-				
-				LocalDateTime out_time = in_time.plusWeeks(1);		//1주, 2주, 4주
-				String locker_out_db = out_time.format(formatter);
-				
-				logger.debug("<<DB에서 가져온 이용시작 시간(String)>> : " + locker_in_db);
-				logger.debug("<<종료예정시각(String)>> : " + locker_out_db);
-				
-				logger.debug("<<현재시각(LocalDateTime)>> : " + now_time);
-				logger.debug("<<종료예정시각(LocalDateTime)>> : " + out_time);
-				
-				Duration diff = Duration.between(now_time, out_time);
-				long diffSeconds = diff.getSeconds();
-				int diffIntSeconds = Long.valueOf(diffSeconds).intValue();
-				
-				
-				logger.debug("<<dif>> : " + diffSeconds);
-				logger.debug("<<difInt>> : " + diffIntSeconds);
-				
-				
-				int hour = diffIntSeconds  / 3600;					
-				int minute = diffIntSeconds  % 3600 / 60;			
-				int second = diffIntSeconds  % 3600 % 60;
-				
-				logger.debug("종료까지 남은 시간 : " + hour +"시간 " + minute + "분 " + second + "초");
-				
-				lockerVO.setLocker_end(locker_out_db);
-				lockerVO.setLocker_diff(diffIntSeconds);
-				
-				logger.debug("<<lockerVO>> : " + lockerVO);
-				System.out.println(diffIntSeconds);
-				
-				lockerService.insertEndAndDiff(lockerVO);	
-				
+	            LocalDateTime end_time;    //1주, 2주, 4주
+	            if(type == 7) {
+	               end_time = now_time.plusWeeks(1);
+	            }else if(type == 8){
+	               end_time = now_time.plusWeeks(2);
+	            }else {
+	               end_time = now_time.plusWeeks(4);
+	            }
+	            payService.updateLocker_end(end_time, user.getMem_num());
 			}
 			mapAjax.put("result", "success");
 			mapAjax.put("payVO", payVO);

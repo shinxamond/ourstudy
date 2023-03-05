@@ -1,5 +1,6 @@
 package kr.spring.pay.dao;
 
+import java.time.LocalDateTime;
 import java.util.List;
 import java.util.Map;
 
@@ -44,8 +45,11 @@ public interface PayMapper {
 	public void updateMemberHistory_Hour(@Param(value="time") Integer time, 
 										@Param(value="mem_num") Integer mem_num);
 	
-
-	
+	//사물함 시간 계산
+	@Update("UPDATE locker_detail SET locker_end=locker_end+#{end_time} "
+		  + "WHERE mem_num=#{mem_num}")
+	public void updateLocker_end(@Param(value="end_time") LocalDateTime end_time, 
+								 @Param(value="mem_num") Integer mem_num);
 	
 }
 

@@ -1,5 +1,6 @@
 package kr.spring.pay.service;
 
+import java.time.LocalDateTime;
 import java.util.List;
 import java.util.Map;
 
@@ -68,6 +69,14 @@ public class PayServiceImpl implements PayService{
 		payMapper.updateMemberHistory_Hour(time, mem_num);
 		
 	}
+
+	@Override
+	public void updateLocker_end(LocalDateTime end_time, Integer mem_num) {
+		payMapper.updateLocker_end(end_time, mem_num);
+		
+	}
+
+
 
 }
 
