@@ -10,6 +10,7 @@ import org.apache.ibatis.annotations.Param;
 import org.apache.ibatis.annotations.Select;
 import org.apache.ibatis.annotations.Update;
 
+import kr.spring.locker.vo.LockerVO;
 import kr.spring.pay.vo.PayVO;
 import kr.spring.ticket.vo.TicketVO;
 
@@ -46,10 +47,16 @@ public interface PayMapper {
 										@Param(value="mem_num") Integer mem_num);
 	
 	//사물함 시간 계산
-	@Update("UPDATE locker_detail SET locker_end=locker_end+#{end_time} "
+	@Insert("INSERT INTO LOCKER_DETAIL (locker_detail_num,locker_num,mem_num,mem_name,locker_end) VALUES(locker_detail_seq.nextval,#{locker_num},#{mem_num},#{mem_name},#{locker_end})")
+	public void insertNewLockerMember(PayVO payVO);
+	@Update("UPDATE locker_detail SET locker_end= #{locker_end} "
 		  + "WHERE mem_num=#{mem_num}")
-	public void updateLocker_end(@Param(value="end_time") LocalDateTime end_time, 
-								 @Param(value="mem_num") Integer mem_num);
+	public void updateLocker_end(LockerVO lockerVO);
+	//사물함 이용자 locker_end 불러오기
+	@Select("SELECT locker_end FROM locker_detail WHERE mem_num = #{mem_num}")
+	public String selectLockerEnd(Integer mem_num);
+	@Select("SELECT mem_num FROM locker_detail WHERE mem_num = #{mem_num}")
+	public int checkUsingLocker(Integer mem_num);
 	
 }
 

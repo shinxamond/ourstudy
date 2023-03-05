@@ -70,10 +70,32 @@ public class PayServiceImpl implements PayService{
 		
 	}
 
+
+
 	@Override
-	public void updateLocker_end(LocalDateTime end_time, Integer mem_num) {
-		payMapper.updateLocker_end(end_time, mem_num);
-		
+	public int checkUsingLocker(Integer mem_num) {
+		int result;
+		try {
+			result = payMapper.checkUsingLocker(mem_num);
+		}catch(Exception e){
+			result = 0;
+		}
+		return result;
+	}
+
+	@Override
+	public void updateLocker_end(LockerVO lockerVO) {
+		payMapper.updateLocker_end(lockerVO);
+	}
+
+	@Override
+	public String selectLockerEnd(Integer mem_num) {
+		return payMapper.selectLockerEnd(mem_num);
+	}
+
+	@Override
+	public void insertNewLockerMember(PayVO payVO) {
+		payMapper.insertNewLockerMember(payVO);
 	}
 
 

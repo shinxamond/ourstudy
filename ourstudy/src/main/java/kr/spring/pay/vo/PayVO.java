@@ -21,6 +21,34 @@ public class PayVO {
 	
 	private int point_point;
 	
+	private int locker_num;
+	private String mem_name;
+	private String locker_end;
+	
+	public String getLocker_end() {
+		return locker_end;
+	}
+
+	public void setLocker_end(String locker_end) {
+		this.locker_end = locker_end;
+	}
+
+	public String getMem_name() {
+		return mem_name;
+	}
+
+	public void setMem_name(String mem_name) {
+		this.mem_name = mem_name;
+	}
+
+	public int getLocker_num() {
+		return locker_num;
+	}
+
+	public void setLocker_num(int locker_num) {
+		this.locker_num = locker_num;
+	}
+
 	//이용권 정보 받아오기
 	private TicketVO ticketVO;
 

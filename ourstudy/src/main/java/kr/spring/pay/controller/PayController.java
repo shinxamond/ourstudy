@@ -112,7 +112,8 @@ public class PayController {
 	//결제 데이터 받아오기
 	@RequestMapping("/pay/payResult.do")
 	@ResponseBody
-	public Map<String, Object> payResult(PayVO payVO,
+	public Map<String, Object> payResult(
+			PayVO payVO, /* @RequestParam int locker_num, */
 			HttpSession session){
 
 		TicketVO ticket = new TicketVO();
@@ -126,7 +127,6 @@ public class PayController {
 			logger.debug("<<카카오 페이 결과 pay>> : " + payVO);
 			payVO.setMem_num(user.getMem_num());
 			payService.insertPay(payVO);
-
 
 			//payVO에 담긴 ticket num으로 ticket db에 있는 행 하나 가져오기 mapper에 작성
 			ticket = payService.selectTicket(payVO.getTicket_num());
@@ -165,26 +165,79 @@ public class PayController {
 					payService.updateMemberHistory_Hour(time, user.getMem_num());
 				}
 			}else {//사물함 이용권
-				//사물함 시간 구하기
-				DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss");
 				
-				LocalDateTime now_time = LocalDateTime.now();
-				String now = now_time.format(formatter);
-				now_time = LocalDateTime.parse(now,formatter);
-	            LocalDateTime end_time;    //1주, 2주, 4주
-	            if(type == 7) {
-	               end_time = now_time.plusWeeks(1);
-	            }else if(type == 8){
-	               end_time = now_time.plusWeeks(2);
-	            }else {
-	               end_time = now_time.plusWeeks(4);
-	            }
-	            payService.updateLocker_end(end_time, user.getMem_num());
+				int checkUser = payService.checkUsingLocker(user.getMem_num());
+				if(checkUser != 0) {
+					//이미 사물함 이용하고 있으니까 연장해주면 됨
+					String originEnd = payService.selectLockerEnd(user.getMem_num());
+					System.out.println("오리진엔드" + originEnd);
+					DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss");
+					LocalDateTime oEnd = LocalDateTime.parse(originEnd, formatter);
+					System.out.println("변환한 엔드" + oEnd);
+						if(type == 7) {
+							oEnd = oEnd.plusWeeks(1);
+			            }else if(type == 8){
+			            	oEnd = oEnd.plusWeeks(2);
+			            }else {
+			            	oEnd = oEnd.plusWeeks(4);
+			            }
+					
+					originEnd = oEnd.format(DateTimeFormatter.ofPattern("yyyy-MM-dd"));
+					System.out.println("변환후 오리진엔드 스트링" + originEnd);
+					String[] originEnd_split = originEnd.split(" ");
+					System.out.println("오리진엔드 스플릿1" + originEnd_split[0]);
+					LockerVO locker = new LockerVO();
+					locker.setMem_num(user.getMem_num());
+					locker.setLocker_end(originEnd_split[0]);
+					
+					payService.updateLocker_end(locker);
+				}else {
+					//사물함 이용한 내역이 없거나 
+					//사물함 시간 구하기
+					
+					int lockerNum = 60;
+					
+					DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss");
+					/*
+					 * 이미 사물함 이용하고 있고 거기에 + 구매 할떄 end_time 업데이트하기
+					 * 사물함 결제 - 지금 이미 사물함을 이용중인가 or 처음 구매냐 
+					 * 
+					 * 1. locker_detail에서 end_time 값 가져오기 -> vo가 String임
+					 * 2. String타입이니까 계산하라면 localdatetime타입으로 변환 : String -> localdatetime
+					 * 3. 변환한 localdatetime 변수에 .plusWeeks  -> localdatetime 타입임
+					 * 4. localdatetime -> String으로 변환해주기
+					 * 5. 변환된 String타입 변수 vo에 담아서 update문 호출
+					 */
+					PayVO payVOForLocker = new PayVO();
+					String mem_name = memberService.getMem_name(user.getMem_num());
+					
+					payVOForLocker.setMem_num(user.getMem_num());
+					System.out.println(user.getMem_num());
+					payVOForLocker.setMem_name(mem_name);
+					System.out.println(mem_name);
+					payVOForLocker.setLocker_num(lockerNum);
+					
+					LocalDateTime now_time = LocalDateTime.now();
+					String now = now_time.format(formatter);
+					now_time = LocalDateTime.parse(now,formatter);
+		            LocalDateTime end_time;    //1주, 2주, 4주
+		            if(type == 7) {
+		               end_time = now_time.plusWeeks(1);
+		            }else if(type == 8){
+		               end_time = now_time.plusWeeks(2);
+		            }else {
+		               end_time = now_time.plusWeeks(4);
+		            }
+		            String newEnd = end_time.format(DateTimeFormatter.ofPattern("yyyy-MM-dd"));
+		            System.out.println(newEnd);
+					payVOForLocker.setLocker_end(newEnd);
+					
+					payService.insertNewLockerMember(payVOForLocker);
+				}
 			}
 			mapAjax.put("result", "success");
 			mapAjax.put("payVO", payVO);
 		}
-
 		return mapAjax;
 	}
 }

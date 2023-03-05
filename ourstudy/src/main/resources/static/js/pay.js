@@ -122,7 +122,9 @@ $(function(){
                      alert('로그인 후 사용하세요');
                   }else if(param.result == 'success'){
                      alert('결제 완료 되었습니다');
-                  }else{
+                  }else if(param.result == 'inUse'){
+					alert('사물함 기간을 연장 가보자고');	
+				}else{
                      alert('오류 발생');
                   }
                },
