@@ -45,8 +45,8 @@
 		</li>
 		<li>
 			<label for="lf_time">분실/습득 시간</label>
-			<input type="date" value=sysdate>
-			<input type="time" value=sysdate min="06:00" max="24:00">
+			<input type="date" value="sysdate">
+			<input type="time" value="sysdate" min="06:00" max="24:00">
 			<form:errors path="lf_time" cssClass="error-color"/>
 		</li> 
 		<li>
