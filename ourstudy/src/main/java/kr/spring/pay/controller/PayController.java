@@ -85,7 +85,7 @@ public class PayController {
 
 		TicketVO ticketVO = ticketService.selectTicket(ticket_num);
 		
-		session.invalidate();																//정보 삭제
+		session.removeAttribute("ticket_num");												//정보 삭제
 		
 		model.addAttribute("locker_num", locker_num);
 		
