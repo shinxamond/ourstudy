@@ -159,10 +159,10 @@
 	</div>
 --%>
 	<div class="row">
-		<div class="main_banner">
+		<div class="main_banner col-8">
 			<img src="${pageContext.request.contextPath}/image_bundle/newbanner1.PNG" class="newbanner1">
 		</div>
-		<div class="card main_card" id="cal_card">
+		<div class="card main_card col-4" id="cal_card">
 			<div class="sec_cal">
 				<div class="cal_nav">
 			    	<a href="javascript:;" class="nav-btn go-prev">prev</a>
