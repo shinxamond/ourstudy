@@ -25,9 +25,9 @@ public interface LostMapper {
 	
 	//글등록
 	@Insert("INSERT INTO lost_found (lf_num,lf_type,"
-			+"lf_title,lf_content,lf_item,lf_time,lf_loc "
-			+"f_condition,mem_num"
-			+"VALUES (lost_found_seq.nextval,#{lf_type},)"
+			+"lf_title,lf_content,lf_item,lf_time,lf_loc,"
+			+"f_condition,mem_num) "
+			+"VALUES (lost_found_seq.nextval,#{lf_type},"
 			+"#{lf_title},#{lf_content},#{lf_item},#{lf_time},#{lf_loc},"
 			+"#{f_condition},#{mem_num})")
 	public void insertLost(LostVO lost);

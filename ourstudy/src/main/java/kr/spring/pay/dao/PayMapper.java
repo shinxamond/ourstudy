@@ -44,9 +44,7 @@ public interface PayMapper {
 	public void updateMemberHistory_Hour(@Param(value="time") Integer time, 
 										@Param(value="mem_num") Integer mem_num);
 	
-	//사물함 시작 시간 구하기
-	@Select("SELECT pay_date FROM pay WHERE mem_num=#{mem_num}")
-	public int selectLockerTime(Integer pay_num);
+
 	
 	
 }

@@ -37,7 +37,7 @@ public class PayController {
 
 	@Autowired
 	private MemberService memberService;
-	
+
 	@Autowired
 	private PayService payService;
 
@@ -46,7 +46,7 @@ public class PayController {
 
 	@Autowired
 	private MypageService myPageService;
-	
+
 	@Autowired
 	private LockerService lockerService;
 
@@ -54,7 +54,7 @@ public class PayController {
 	public PayVO initCommand() {
 		return new PayVO();
 	}
-	
+
 	@ModelAttribute("lockerVO")
 	public LockerVO initCommand2() {
 		return new LockerVO();
@@ -123,7 +123,9 @@ public class PayController {
 			int kind = ticket.getTicket_kind();
 			//독서실 시간
 			int time;
-			
+			//사물함 시간
+			int l_time;
+
 			if(kind == 1) {//독서실 이용권
 				if(type == 1) {
 					time = 2;
@@ -144,40 +146,39 @@ public class PayController {
 				}else {
 					time = 4*7*24;
 				}
-					//time 설정 끝
-					if(type > 6) {//기간권
-						payService.updateMemberHistory_Term(time, user.getMem_num());
-					}else {//시간권
-						payService.updateMemberHistory_Hour(time, user.getMem_num());
-					}
+				//time 설정 끝
+				if(type > 6) {//기간권
+					payService.updateMemberHistory_Term(time, user.getMem_num());
+				}else {//시간권
+					payService.updateMemberHistory_Hour(time, user.getMem_num());
+				}
 			}else {//사물함 이용권	
-				//사물함 시간 구하기
-				int pay = payVO.getPay_num();
-				payService.selectLockerTime(pay);
+				/*if(type == 7) {
+					l_time = 1;
+				}else if(type == 8) {
+					l_time = 2;
+				}else {
+					l_time = 4;
+				}*/
 				
-				LockerVO lockerVO = initCommand2();
+				
+				LockerVO lockerVO = new LockerVO();
+				
 				lockerVO.setMem_num(user.getMem_num());
 				lockerVO.setMem_name(memberService.getMem_name(user.getMem_num()));
-				lockerVO.setLocker_num(lockerVO.getLocker_num());		
+				lockerVO.setLocker_num(lockerVO.getLocker_num());
+				
+				lockerService.selectLocker(lockerVO);
 				
 				String locker_in_db = lockerService.getLocker_start(lockerVO);
 				DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss");
 				
-				
-				LocalDateTime in_time = LocalDateTime.parse(locker_in_db, formatter);
+				LocalDateTime in_time = LocalDateTime.parse(locker_in_db,formatter);
 				LocalDateTime now_time = LocalDateTime.now();
 				String now = now_time.format(formatter);
 				now_time = LocalDateTime.parse(now,formatter);
 				
-				LocalDateTime out_time;		//1주, 2주, 4주
-				if(type == 7) {
-					out_time = in_time.plusWeeks(1);
-				}else if(type == 8){
-					out_time = in_time.plusWeeks(2);
-				}else {
-					out_time = in_time.plusWeeks(4);
-				}
-				
+				LocalDateTime out_time = in_time.plusWeeks(1);		//1주, 2주, 4주
 				String locker_out_db = out_time.format(formatter);
 				
 				logger.debug("<<DB에서 가져온 이용시작 시간(String)>> : " + locker_in_db);
@@ -207,9 +208,9 @@ public class PayController {
 				logger.debug("<<lockerVO>> : " + lockerVO);
 				System.out.println(diffIntSeconds);
 				
-				lockerService.insertEndAndDiff(lockerVO);
+				lockerService.insertEndAndDiff(lockerVO);	
+				
 			}
-			
 			mapAjax.put("result", "success");
 			mapAjax.put("payVO", payVO);
 		}
@@ -217,6 +218,7 @@ public class PayController {
 		return mapAjax;
 	}
 }
+
 
 
 
