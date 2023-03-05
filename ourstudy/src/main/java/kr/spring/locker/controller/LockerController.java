@@ -110,7 +110,7 @@ public class LockerController {
 		
 		model.addAttribute("locker_num", locker_num);
 		
-		return "ticket/locker_ticketList";			
+		return "locker_ticketList";			
 	}
 	
 	
