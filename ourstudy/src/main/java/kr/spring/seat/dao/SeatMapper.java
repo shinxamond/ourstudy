@@ -52,6 +52,10 @@ public interface SeatMapper {
    //현재 회원의 좌석 상태 구하기
    @Select("SELECT mem_status FROM MEMBER WHERE mem_num=#{mem_num}")
    public int getMem_status(int mem_num);
+   
+   //외출->입실할 경우 현재 외출 상태인 좌석번호 가져오기
+   @Select("SELECT s.seat_num FROM SEAT JOIN (SELECT * FROM seat_detail sd JOIN member m ON sd.mem_num=m.mem_num WHERE m.mem_num=#{mem_num}) ON s.seat_num = d.seat_num WHERE d.mem_status=2 AND s.seat_status=2")
+   public int getOutMemberSeat(int mem_num);
    /*========================================
                 IN / OUT / HOLD
     ======================================= */

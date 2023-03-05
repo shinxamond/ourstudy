@@ -21,6 +21,7 @@ public interface SeatService {
    //외출 상태일 때 퇴실
    public void outSeatWhenHold(SeatVO vo);
    //외출했다가 다시 입실
+   public int getOutMemberSeat(int mem_num);
    public void inSeatWhenHold(SeatVO vo);
    //날짜 추출
    public SeatVO getTimes(int seat_num);
