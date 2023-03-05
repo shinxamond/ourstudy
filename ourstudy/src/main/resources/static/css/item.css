@@ -10,10 +10,10 @@
 div#userList #userList-area{
 	margin:2px;
 	padding:3px;
-	width:400px;
+	width:360px;
 	height:300px;
 	float:left;
-	overflow:hidden;
+	position: relative;
 	text-align:center;
 }
 div#userItemList #userItemList-area{
