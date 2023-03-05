@@ -27,6 +27,7 @@ import kr.spring.member.vo.MemberVO;
 import kr.spring.mypage.service.MypageService;
 import kr.spring.pay.service.PayService;
 import kr.spring.pay.vo.PayVO;
+import kr.spring.seat.service.SeatService;
 import kr.spring.ticket.service.TicketService;
 import kr.spring.ticket.vo.TicketVO;
 
@@ -49,6 +50,10 @@ public class PayController {
 
 	@Autowired
 	private LockerService lockerService;
+	
+	@Autowired
+	private SeatService seatService;
+	
 
 	@ModelAttribute
 	public PayVO initCommand() {
@@ -60,13 +65,23 @@ public class PayController {
 		return new LockerVO();
 	}
 
-	@GetMapping("/pay/payPage.do")
-	public ModelAndView process(@RequestParam int ticket_num) {
+	@GetMapping("/pay/study_pay.do")
+	public ModelAndView study_pay(@RequestParam int ticket_num) {
 
 		logger.debug("<<이용권 정보>> : " + ticket_num);
 
 		TicketVO ticketVO = ticketService.selectTicket(ticket_num);
-		return new ModelAndView("payPage","ticket", ticketVO);
+		return new ModelAndView("study_pay","ticket", ticketVO);
+
+	}
+	
+	@GetMapping("/pay/locker_pay.do")
+	public ModelAndView locker_pay(@RequestParam int ticket_num) {
+
+		logger.debug("<<이용권 정보>> : " + ticket_num);
+
+		TicketVO ticketVO = ticketService.selectTicket(ticket_num);
+		return new ModelAndView("locker_pay","ticket", ticketVO);
 
 	}
 
@@ -116,7 +131,6 @@ public class PayController {
 			//payVO에 담긴 ticket num으로 ticket db에 있는 행 하나 가져오기 mapper에 작성
 			ticket = payService.selectTicket(payVO.getTicket_num());
 
-
 			//ticket 시간 타입 가져오기
 			int type = ticket.getTicket_type();
 			//ticket 종류 타입 가져오기
@@ -162,13 +176,14 @@ public class PayController {
 				}*/
 				
 				
-				LockerVO lockerVO = new LockerVO();
-				
-				lockerVO.setMem_num(user.getMem_num());
-				lockerVO.setMem_name(memberService.getMem_name(user.getMem_num()));
-				lockerVO.setLocker_num(lockerVO.getLocker_num());
-				
-				lockerService.selectLocker(lockerVO);
+				  LockerVO lockerVO = new LockerVO();
+				  
+				  lockerVO.setMem_num(user.getMem_num());
+				  lockerVO.setMem_name(memberService.getMem_name(user.getMem_num()));
+				  lockerVO.setLocker_num(lockerVO.getLocker_num());
+				  
+				  lockerService.selectLocker(lockerVO);
+				 
 				
 				String locker_in_db = lockerService.getLocker_start(lockerVO);
 				DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss");

@@ -34,7 +34,7 @@
 									<div style="margin-top: 5px;">
 										<button id="buy_btn" type="button" class="btn btn-primary"
 											style="float: right;"
-											onclick="location.href='${pageContext.request.contextPath}/pay/payPage.do?ticket_num=${ticket.ticket_num}'">구매하기</button>
+											onclick="location.href='${pageContext.request.contextPath}/pay/study_pay.do?ticket_num=${ticket.ticket_num}'">구매하기</button>
 									</div>
 								</div>
 							</div>

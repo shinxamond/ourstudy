@@ -34,7 +34,7 @@ public class TicketController {
 	//독서실 이용권 목록
 	@RequestMapping("/ticket/study_ticketList.do")
 	public ModelAndView study_process(
-			@RequestParam(value="pageNum",defaultValue="1")
+			@RequestParam(value="pageNum",defaultValue="1") 
 			int currentPage,
 			String keyfield,
 			String keyword) {
@@ -43,6 +43,7 @@ public class TicketController {
 		map.put("keyfield", keyfield);
 		map.put("keyword", keyword);
 
+		
 		//상품의 총 개수 또는 검색된 상품의 개수
 		int count = ticketService.selectTicketCount(map);
 

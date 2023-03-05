@@ -19,10 +19,16 @@
 	</definition>
 	
 	<!-- 결제 -->
-	<definition name="payPage" extends="main">
-		<put-attribute name="title" value="이용권 결제" />
+	<definition name="study_pay" extends="main">
+		<put-attribute name="title" value="이용권 결제(독서실)" />
 		<put-attribute name="body"
-			value="/WEB-INF/views/pay/payPage.jsp" />
+			value="/WEB-INF/views/pay/study_pay.jsp" />
+	</definition>
+	
+	<definition name="locker_pay" extends="main">
+		<put-attribute name="title" value="이용권 결제(사물함)" />
+		<put-attribute name="body"
+			value="/WEB-INF/views/pay/locker_pay.jsp" />
 	</definition>
 
 	<!-- 관리자 -->
