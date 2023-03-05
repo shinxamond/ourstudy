@@ -72,26 +72,6 @@ public class SeatController {
       
       return mav;
    }
-
-   /*===========KEEP============================================================================
-   //좌석선택폼으로 이동
-   @RequestMapping("/seat/checkMember.do")
-   @ResponseBody
-   public Map<String, String> checkMember(@RequestParam (value="mem_auth", defaultValue="0") int mem_auth, HttpSession session) {
-//	   HttpSession session = request.getSession();
-//	   MemberVO memberVO = (MemberVO)session.getAttribute("user");
-	   Map<String, String> map  = new HashMap<String, String>();
-	   logger.debug("mem_auth = " + mem_auth);
-	   
-	   if(mem_auth == 0) {
-		   map.put("auth", "notMember"); 			//로그아웃 상태거나 회원이 아님
-	   }else if(mem_auth == 9) {
-		   map.put("auth", "admin");				//관리자임
-	   }
-	   map.put("auth", "member");					//일반회원임
-	   return map;
-   }
-   =============================================================================================*/
    
    //좌석을 선택한 회원의 정보가 입력됨
    @RequestMapping("/seat/select.do")
@@ -151,34 +131,29 @@ public class SeatController {
    
    //외출 상태에서 입실 처리
    @RequestMapping("/seat/in.do")
-   @ResponseBody
-   public Map<String, String> In(@RequestParam int seat_num, HttpServletRequest request) {
-      HttpSession session = request.getSession();
-      Map<String, String> map = new HashMap<String, String>();
-      
+   public String In(HttpSession session) {
       int mem_num = (Integer)session.getAttribute("user_num");
-      int mem_status = seatService.getMem_status(mem_num);
+      String mem_name = memberService.getMem_name(mem_num);  
+      int seat_num = seatService.getOutMemberSeat(mem_num);
+      logger.debug("<<<<회원정보 >>>>: " + mem_num + "<<<<<<<좌석번호>>>>: " + seat_num + "<<<<회원이름>>>>:" + mem_name);
       
       SeatVO seatVO = initCommand();
       seatVO.setMem_num(mem_num);
+      seatVO.setMem_name(mem_name);
       seatVO.setSeat_num(seat_num);
 
-      if(mem_status != 2) {            //외출 상태가 아닐때
-         map.put("status", "NotHold");
-      }
-         // 외출상태일 때
-         seatService.inSeatWhenHold(seatVO);
-         map.put("status", "Hold");
+      seatService.inSeatWhenHold(seatVO);
          
-         return map;
+      return "redirect:/mypage/myPageMain.do";
    }
    
    //외출처리
    @RequestMapping("/seat/hold.do")
-   public String Hold(@RequestParam int seat_num, HttpServletRequest request) {
-      HttpSession session = request.getSession();
+   public String Hold(@RequestParam int seat_num, HttpSession session) {
       int mem_num = (Integer)session.getAttribute("user_num");      
-      String mem_name = memberService.getMem_name(mem_num);   
+      String mem_name = memberService.getMem_name(mem_num);  
+      
+      logger.debug("user_num ============= " +  mem_num);
       
       SeatVO seatVO = initCommand();
       seatVO.setMem_num(mem_num);
@@ -205,9 +180,13 @@ public class SeatController {
       long diff = out_date.getTime() - in_date.getTime();
       long diffSeconds = diff / 1000;   
       
+      logger.debug("<<<<<<<diffSeconds>>>>> : " + diffSeconds);
+      
       int diffIntSeconds = Long.valueOf(diffSeconds).intValue();
+      
       seatVO.setTotal_time(diffIntSeconds);
       seatVO.setSeat_num(seat_num);
+      seatVO.setMem_num(mem_num);
       
       seatService.insertTotal_time(seatVO);
       return "redirect:/mypage/myPageMain.do";
@@ -227,6 +206,8 @@ public class SeatController {
       int mem_status = seatService.getMem_status(mem_num);
       
       logger.debug("<<user_auth>> --------------= " + member.getMem_auth());					//관리자 신분 검사
+      logger.debug("<<<<mem_NUM>>>> : " + mem_num);
+      logger.debug("<<<<SEAT_NUM>>>> : " + seat_num);
       
       SeatVO seatVO = initCommand();
       seatVO.setMem_num(mem_num);
