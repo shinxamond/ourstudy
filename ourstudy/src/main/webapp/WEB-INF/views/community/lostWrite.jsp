@@ -16,13 +16,39 @@
 			modelAttribute="lostVO"  enctype="multipart/form-data">
 	<ul>
 		<li>
-			<h4>분실물 등록</h4>
+			<h4>분실물 찾기 글쓰기</h4>
 		</li>
+		<li>
+			<label for="type">카테고리</label>
+			<form:radiobutton path="lf_type" value="0" id="습득" checked="checked"/>습득
+			<form:radiobutton path="lf_type" value="1" id="분실"/>분실
+		</li>
+		<!-- 비활성화 
+		<li>
+			<label for="condition">습득품 상태</label>
+			
+		</li>  -->
 		<li>
 			<label for="lf_title">제목</label>
 			<form:input path="lf_title"/>
 			<form:errors path="lf_title" cssClass="error-color"/>
 		</li>
+		<li>
+			<label for="lf_item">분실/습득 물품</label>
+			<form:input path="lf_item"/>
+			<form:errors path="lf_item" cssClass="error-color"/>
+		</li>
+		<li>
+			<label for="lf_loc">분실/습득 위치</label>
+			<form:input path="lf_item"/>
+			<form:errors path="lf_item" cssClass="error-color"/>
+		</li>
+		<li>
+			<label for="lf_time">분실/습득 시간</label>
+			<input type="date" value=sysdate>
+			<input type="time" value=sysdate min="06:00" max="24:00">
+			<form:errors path="lf_time" cssClass="error-color"/>
+		</li> 
 		<li>
 				<label for="lf_content">내용</label>
 				<form:textarea path="lf_content"/>

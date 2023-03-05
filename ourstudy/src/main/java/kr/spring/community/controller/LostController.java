@@ -24,6 +24,7 @@ import org.springframework.web.servlet.ModelAndView;
 import kr.spring.community.service.LostService;
 import kr.spring.community.vo.LostVO;
 import kr.spring.info.controller.InformationController;
+import kr.spring.info.vo.InformationVO;
 import kr.spring.member.vo.MemberVO;
 import kr.spring.util.PagingUtil;
 
@@ -111,11 +112,21 @@ public class LostController {
 		return "common/resultView";
 	}
 	
+	//==글상세
+	 @GetMapping("/community/lostDetail.do")
+	 public ModelAndView process(@RequestParam int lf_num) {
+		 
+		 logger.debug("<<lf_num>> : " + lf_num);
+		 
+		 LostVO lostVO =
+				 lostService.selectLost(lf_num);
+		 
+		 return new ModelAndView("lostView","lost",lostVO); 
+	 
+	 }
+	
 		
-		
-//습득물
-	//==습득물 글쓰기
-		
+
 		
 		
 		

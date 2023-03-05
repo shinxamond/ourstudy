@@ -34,11 +34,7 @@ public interface InformationMapper {
 	public void insertInformation(InformationVO info);
 
 	//글수정
-	/*
-	 * @Update("Update information SET info_title=#{info_title},"
-	 * +"info_content=#{info_content},info_pin=#{info_pin} " +
-	 * "WHERE info_num=#{info_num}")
-	 */
+
 	public void updateInformation(InformationVO info);
 	
 	//글삭제
