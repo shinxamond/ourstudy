@@ -70,7 +70,7 @@ Kakao.API.request({
 						</ul>
 					
 						<button type="submit" class="btn login-submit 
-						text-white rounded submit p-2" style="background-color:#037332;">Login
+						text-white rounded submit p-2" style="background-color:#e65962;">Login
 						</button>
 				</form>
 				
@@ -140,25 +140,32 @@ Kakao.API.request({
         			</button>
         			<div class="collapse" id="item-collapse">
          		 	<ul class="btn-toggle-nav fw-normal pb-1 small">
-           				<li><a href="${pageContext.request.contextPath}/ticket/study_ticketList.do" class="d-inline-flex rounded">좌석 이용권</a></li>
-            			<li><a href="${pageContext.request.contextPath}/ticket/locker_ticketList.do" class="d-inline-flex rounded">사물함 이용권</a></li>
+           				<li>
+           					<a href=<c:if test="${!empty user}">"${pageContext.request.contextPath}/ticket/study_ticketList.do"</c:if> class="d-inline-flex rounded" 
+           					<c:if test="${empty user}">data-bs-toggle="modal" data-bs-target="#loginModal"</c:if> class="rounded">좌석 이용권</a>
+           				</li>
+            			<li>
+	            			<a href=<c:if test="${!empty user}">"${pageContext.request.contextPath}/ticket/locker_ticketList.do"</c:if> class="d-inline-flex rounded"
+							<c:if test="${empty user}">data-bs-toggle="modal" data-bs-target="#loginModal"</c:if> class="rounded">사물함 이용권</a>
+            			</li>
           			</ul>
         			</div>
         		</div>
 				
-				<div class="side-inline chair-bottom" style="cursor: pointer;" onclick="location.href=''">
+				<div class="side-inline chair-bottom" style="cursor: pointer;">
 					<ul>
 						<li><i class="fas fa-regular fa-chair"></i></li>
-						<%-- <c:if test="${user.mem_auth == 1}"> --%>
-						<li class="chair"><a href="${pageContext.request.contextPath}/seat/selectForm.do" class="side-main-link">좌석 선택</a></li>
-						<%-- </c:if> --%>
+						<li class="chair"><a href=<c:if test="${!empty user}">"${pageContext.request.contextPath}/seat/selectForm.do"</c:if> class="side-main-link"
+						<c:if test="${empty user}">data-bs-toggle="modal" data-bs-target="#loginModal"</c:if> class="side-main-link">좌석 선택</a></li>
+
 					</ul>
 				</div>
 				
-				<div class="side-inline laptop-bottom" style="cursor: pointer;" onclick="location.href=''">
+				<div class="side-inline laptop-bottom" style="cursor: pointer;">
 					<ul>
 						<li><i class="fas fa-regular fa-laptop"></i></li>
-						<li class="laptop"><a href="${pageContext.request.contextPath}/item/userList.do" class="side-main-link">물품 대여</a></li>
+						<li class="laptop"><a href=<c:if test="${!empty user}">"${pageContext.request.contextPath}/item/userList.do"</c:if> class="side-main-link"
+						<c:if test="${empty user}">data-bs-toggle="modal" data-bs-target="#loginModal"</c:if> class="side-main-link">물품 대여</a></li>
 					</ul>
 				</div>
 				
@@ -170,8 +177,10 @@ Kakao.API.request({
         			</button>
         			<div class="collapse" id="notice-collapse">
          		 	<ul class="btn-toggle-nav fw-normal pb-1 small">
-           				<li><a href="${pageContext.request.contextPath}/info/informationList.do" class="d-inline-flex rounded">안내사항</a></li>
-            			<li><a href="${pageContext.request.contextPath}/info/faq.do" class="d-inline-flex rounded">자주 묻는 질문</a></li>
+           				<li><a href=<c:if test="${!empty user}">"${pageContext.request.contextPath}/info/informationList.do"</c:if> class="d-inline-flex rounded"
+           				<c:if test="${empty user}">data-bs-toggle="modal" data-bs-target="#loginModal"</c:if> class="rounded">안내사항</a></li>
+            			<li><a href=<c:if test="${!empty user}">"${pageContext.request.contextPath}/info/faq.do"</c:if> class="d-inline-flex rounded"
+            			<c:if test="${empty user}">data-bs-toggle="modal" data-bs-target="#loginModal"</c:if> class="rounded">자주 묻는 질문</a></li>
           			</ul>
         			</div>
         		</div>
@@ -184,8 +193,10 @@ Kakao.API.request({
         			</button>
         			<div class="collapse" id="comm-collapse">
          		 	<ul class="btn-toggle-nav fw-normal pb-1 small">
-           				<li><a href="${pageContext.request.contextPath}/community/lostList.do" class="d-inline-flex rounded">분실물 찾기</a></li>
-            			<li><a href="${pageContext.request.contextPath}/review/list.do" class="d-inline-flex rounded">이용후기</a></li>
+           				<li><a href=<c:if test="${!empty user}">"${pageContext.request.contextPath}/community/lostList.do"</c:if> class="d-inline-flex rounded"
+           				<c:if test="${empty user}">data-bs-toggle="modal" data-bs-target="#loginModal"</c:if> class="rounded">분실물 찾기</a></li>
+            			<li><a href=<c:if test="${!empty user}">"${pageContext.request.contextPath}/review/list.do"</c:if> class="d-inline-flex rounded"
+            			<c:if test="${empty user}">data-bs-toggle="modal" data-bs-target="#loginModal"</c:if> class="rounded">이용후기</a></li>
           			</ul>
         			</div>
         		</div>

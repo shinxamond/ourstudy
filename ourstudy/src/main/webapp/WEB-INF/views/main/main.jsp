@@ -14,9 +14,8 @@
 <script type="text/javascript" src="${pageContext.request.contextPath}/js/main/clock.js"></script>
 <script type="text/javascript" src="${pageContext.request.contextPath}/js/main/quotes.js"></script>
 <script type="text/javascript" src="${pageContext.request.contextPath}/js/main/calrendar.js"></script>
+
 <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.2.1/chart.min.js"></script>
-<script async src="https://cse.google.com/cse.js?cx=5059383f37506464a"></script>
 <script>
 	//막대 차트(구글차트 API)
 	google.charts.load("current", {packages:['corechart']});
@@ -53,111 +52,19 @@
 	                   2]);
 	
 	  var options = {
-	  	width: 440,
+	  	width: 430,
 		height: 350,
 		bar: {groupWidth: "25%"},
 		legend: { position: "none" },
 		vAxis: {textPosition: 'none', viewWindow: {max: 40}},
-			 chartArea:{left:15,top:30,width:"90%",height:"80%"}
+			 chartArea:{left:15,top:20,width:"90%",height:"80%"}
 		};
 	var chart = new google.visualization.ColumnChart(document.getElementById("columnchart_values"));
 	chart.draw(view, options);
 	}
-	
-	//도넛차트(가짜데이터)
-	function drawDoughnut1() {
-        var data = google.visualization.arrayToDataTable([
-          ['Task', 'Hours per Day'],
-          ['Work',     11],
-          ['Eat',      2],
-          ['Commute',  2],
-          ['Watch TV', 2],
-          ['Sleep',    7]
-        ]);
-
-        var options = {
-          pieHole: 0.6,
-          legend: { position: "none" },
-          chartArea:{left:10,top:5,width:"90%",height:"90%"},
-          'height':195
-        };
-
-        var chart = new google.visualization.PieChart(document.getElementById('donutchart1'));
-        chart.draw(data, options);
-      }
-	
-	function drawDoughnut2() {
-        var data = google.visualization.arrayToDataTable([
-          ['Task', 'Hours per Day'],
-          ['Work',     9],
-          ['Eat',      3],
-          ['Watch TV', 4],
-          ['Sleep',    13]
-        ]);
-
-        var options = {
-          pieHole: 0.6,
-          legend: { position: "none" },
-          chartArea:{left:10,top:5,width:"90%",height:"90%"},
-          'height':195
-        };
-
-        var chart = new google.visualization.PieChart(document.getElementById('donutchart2'));
-        chart.draw(data, options);
-      }
-   
 </script>
-
-<%-- 도넛 차트(char.js 라이브러리)  --%>
-<script>
-	var ctx = document.getElementById('testChart');
-	var config = {
-		type:'doughnut',
-		data:{
-			datasets:[{
-				data:[10,20,30,40,50],
-				backgroundColor:['red','orange','yellow','green','blue'],
-				label:'Dataset 1'
-			}],
-			labels:['red','orange','yellow','green','blue']
-		},
-		options:{
-			responsive:true,
-			legend:{
-				position:'top',
-			},
-			title:{
-				display:true,
-				text:'Chart.js Doughnut Chart'
-			},
-			animation{
-				animateScale:true,
-				animateRotate:true
-			}
-		}
-	};
-	var myDoughnutChart = new Chart(ctx, config);
-</script>
-
 
 <div id="main_content_body" class="container">
-<%-- 
-	<div class="row" id="body_header">
-	
-		<div class="card main_card" id="clock">
-			<ul>
-				<li><div class="digital-clock"></div></li>
-				<li><div class="gcse-search"></div></li>
-			</ul>
-			
-			
-			<span id="quote"></span>
-			<span id="author"></span>
-			
-		</div>
-		
-	</div>
---%>
 	<div class="row">
 		<div class="main_banner col-8">
 			<img src="${pageContext.request.contextPath}/image_bundle/newbanner1.PNG" class="newbanner1">
@@ -186,27 +93,38 @@
 	</div>
 	<div class="row">
 		<div class="card main_card" id="study_time">
-			<span class="main-title" style="margin:15px 0 0px 10px;">> 일주일 공부시간 랭킹 </span>
+			<span class="main-title" style="margin:15px 0 0px 10px;">주간 공부시간 랭킹 </span>
 			<div id="columnchart_values"></div>
 		</div>
-		<div class="card main_card" id="all_time">
-		<div>
-			<div id="donutchart1"></div>
+		<div class="card main_card" id="all_todo">
+			<span class="main-title" style="margin:15px 0 18px 5px;">안내사항 </span>
+			<table class="table table-hover table-group-divider table table-striped">
+				<tr style="background-color:#F4ABB2;">
+					<th width="250" class="align-center" style="color:black;">제목</th>
+					<th class="align-center" style="color:black;">작성일</th>
+				</tr>
+				<c:forEach var="info" items="${infoList}">
+				<tr>
+					<td>
+						<a href="${pageContext.request.contextPath}/info/infoDetail.do?info_num=${info.info_num}" style="margin-left:5px;">${info.info_title}</a>
+					</td>
+					<td class="align-center">	
+						${info.info_date}
+					</td>
+				</tr>
+				</c:forEach>
+			</table>
+		</div>
+		<div class="card main_card" id="study_clock">
+			<div class="digital-clock"></div>
+		</div>
+	</div>
+	<div class="card main_card" id="study_maxim">
+			<span class="main-title" style="margin:10px 0 25px 5px;">오늘의 한 마디</span>
+			<div id="quote_author">
+				<div id="quote"></div>
+				<div id="author"></div>
 			</div>
-			<div id="donutchart2"></div>
-  			<%-- <canvas id="testChart" width="60vw" height="60vh"></canvas> --%>
-		</div>
-		<div class="card main_card" id="study_photo">
-			<span class="main-title" style="margin:10px 0 15px 5px;">> 우리 독서실 </span>
-			<span class="align-center">
-				<img src="${pageContext.request.contextPath}/image_bundle/study1.jpg" class="study_photo">
-				<img src="${pageContext.request.contextPath}/image_bundle/study2.jpg" class="study_photo">
-			</span>
-			<span class="align-center">
-				<img src="${pageContext.request.contextPath}/image_bundle/study3.jpg" class="study_photo">
-				<img src="${pageContext.request.contextPath}/image_bundle/study4.PNG" class="study_photo">
-			</span>
-		</div>
 	</div>
 </div>
 

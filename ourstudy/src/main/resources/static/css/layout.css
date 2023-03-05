@@ -13,11 +13,11 @@ div#main_header{
 	padding:0 10px 0 0;
 }
 div#main_body{
-	padding:5px 5px 30px 5px;
+	padding:5px 0 30px 5px;
 	min-height:500px;
-	width:82%;
+	width:90%;
 	position:relative;
-	left:260px;
+	left:240px;
 }
 div#main_footer{
 	background-color:#b4aab1;

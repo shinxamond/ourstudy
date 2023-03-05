@@ -15,9 +15,6 @@ body{
 .main_content_body{
 	position:relative;
 }
-#body_header{
-	width:1215px;
-}
 .card{
 	min-width: 0;
 	border-radius: 1rem;
@@ -34,7 +31,7 @@ body{
 	margin-top:10px;
 }
 .newbanner1{
-	width:810px;
+	width:850px;
 	height:270px;
 	font-family: 'KOTRAHOPE';
 	font-size:17pt;
@@ -44,53 +41,40 @@ body{
 #cal_card{
 	width:330px;
 	height:330px;
-	margin:8px 0 0 35px;
-	left:800px;
+	margin:12px 0 0 35px;
+	left:845px;
 }
 #study_time{
 	width:450px;
 	height:400px;
-	bottom:50px;
+	bottom:60px;
+	left:5px;
 }
-#all_time{
-	width:340px;
+#all_todo{
+	width:382px;
 	height:400px;
-	bottom:50px;
+	bottom:60px;
 }
-#study_photo{
-	width:325px;
-	height:400px;
-}
-.study_photo{
-	width:190px;
+#study_clock{
+	width:328px;
 	height:140px;
-	margin:5px;
-	margin-bottom:10px;
+}
+#study_maxim{
+	width:328px;
+	height:180px;
+	top:-267px;
+	left:860px;
 }
 .main-title{
 	font-family: 'Pretendard-Regular';
 	font-size:12pt;
 }
 .digital-clock{
-	width:200px;
-	display:inline-block;
-	position:relative;
+	width:250px;
 	top:15px;
-	left:450px;
+	left:100px;
 }
-#___gcse_0{
-	display:inline-block;
-	width:400px;
-	position:relative;
-	left:550px;
-}
-#clock ul{
-	margin:0;
-}
-#clock ul li{
-	float:left;
-	padding:0;
-}
+
 
 /*======================
   		 달력
@@ -199,6 +183,24 @@ body{
 }
 
 /*======================
+  		 명언
+========================*/
+#quote_author{
+	width:275px;
+	margin:5px 0 15px 20px;
+}
+#quote_author #quote{
+	color:#e65962;
+	font-weight:bold;
+	font-size:12pt;
+}
+#quote_author #author{
+	margin-top:10px;
+	margin-left:120px;
+	text-align:right;
+}
+
+/*======================
   		 footer
 ========================*/
 #footer-content{
@@ -216,7 +218,7 @@ div#main_footer .footer-main{
 }
 div#main_footer .footer-sns{
 	float:right;
-	margin-right:80px;
+	margin-right:100px;
 	word-spacing:15px;
 	padding-top:40px;
 }
