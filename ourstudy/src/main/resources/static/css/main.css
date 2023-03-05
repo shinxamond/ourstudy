@@ -27,16 +27,14 @@ body{
 }
 .main_card{
 	box-shadow: 2px 4px 8px #babebc;
-	position: absolute;
 	display:flex;
 }
 .main_banner{
 	position: absolute;
 	margin-top:10px;
-	position: relative;
 }
 .newbanner1{
-	width:820px;
+	width:810px;
 	height:270px;
 	font-family: 'KOTRAHOPE';
 	font-size:17pt;
@@ -57,6 +55,7 @@ body{
 #all_time{
 	width:240px;
 	height:400px;
+	bottom:50px;
 }
 #study_photo{
 	width:425px;
