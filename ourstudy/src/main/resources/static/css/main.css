@@ -16,7 +16,6 @@ body{
 }
 .card{
 	position: relative;
-	display:flex;
 	min-width: 0;
 	border-radius: 0.5rem;
 	border: 0 solid #d9dee3;
@@ -24,7 +23,7 @@ body{
 	padding:10px;
 }
 .main_card{
-	box-shadow: 0 2px 6px 0 rgb(67 89 113 / 12%);
+	box-shadow: 2px 4px 8px #babebc;
 }
 .main_banner{
 	margin-top:10px;
@@ -35,11 +34,11 @@ body{
 	font-family: 'KOTRAHOPE';
 	font-size:17pt;
 	border-radius:0.5rem;
-	box-shadow:0 2px 6px 0 rgb(67 89 113 / 12%)
+	box-shadow: 2px 4px 8px #babebc;
 }
-#study_board{
-	width:495px;
-	height:260px;
+#cal_card{
+	width:200px;
+	height:270px;
 }
 #study_time{
 	width:450px;
@@ -85,6 +84,122 @@ body{
 }
 
 /*======================
+  		 달력
+========================*/
+
+.sec_cal {
+    width: 200px;
+    margin: 0 auto;
+    font-family: "NotoSansR";
+}
+
+.sec_cal .cal_nav {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-weight: 700;
+    font-size: 48px;
+    line-height: 78px;
+}
+
+.sec_cal .cal_nav .year-month {
+    width: 300px;
+    text-align: center;
+    line-height: 1;
+}
+
+.sec_cal .cal_nav .nav {
+    display: flex;
+    border: 1px solid #333333;
+    border-radius: 5px;
+}
+
+.sec_cal .cal_nav .go-prev,
+.sec_cal .cal_nav .go-next {
+    display: block;
+    width: 50px;
+    height: 78px;
+    font-size: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.sec_cal .cal_nav .go-prev::before,
+.sec_cal .cal_nav .go-next::before {
+    content: "";
+    display: block;
+    width: 20px;
+    height: 20px;
+    border: 3px solid #000;
+    border-width: 3px 3px 0 0;
+    transition: border 0.1s;
+}
+
+.sec_cal .cal_nav .go-prev:hover::before,
+.sec_cal .cal_nav .go-next:hover::before {
+    border-color: #ed2a61;
+}
+
+.sec_cal .cal_nav .go-prev::before {
+    transform: rotate(-135deg);
+}
+
+.sec_cal .cal_nav .go-next::before {
+    transform: rotate(45deg);
+}
+
+.sec_cal .cal_wrap {
+    padding-top: 40px;
+    position: relative;
+    margin: 0 auto;
+}
+
+.sec_cal .cal_wrap .days {
+    display: flex;
+    margin-bottom: 20px;
+    padding-bottom: 20px;
+    border-bottom: 1px solid #ddd;
+}
+
+.sec_cal .cal_wrap::after {
+    top: 368px;
+}
+
+.sec_cal .cal_wrap .day {
+    display:flex;
+    align-items: center;
+    justify-content: center;
+    width: calc(100% / 7);
+    text-align: left;
+    color: #999;
+    font-size: 12px;
+    text-align: center;
+    border-radius:5px
+}
+
+.current.today {background: #E65962; color:white;}
+
+.sec_cal .cal_wrap .dates {
+    display: flex;
+    flex-flow: wrap;
+    height: 200px;
+}
+
+.sec_cal .cal_wrap .day:nth-child(7n -1) {
+    color: #3c6ffa;
+}
+
+.sec_cal .cal_wrap .day:nth-child(7n) {
+    color: #ed2a61;
+}
+
+.sec_cal .cal_wrap .day.disable {
+    color: #ddd;
+}
+
+
+/*======================
   		 footer
 ========================*/
 #footer-content{
@@ -93,7 +208,7 @@ body{
 	font-size:11pt;
 }
 #footer-logo{
-	color:white;
+	color:#F3F1F1;
 	font-size:12pt;
 	padding:0px;
 }
@@ -107,5 +222,5 @@ div#main_footer .footer-sns{
 	padding-top:40px;
 }
 .footer-sns a:hover{
-	color:#037332;
+	color: #F3F1F1;
 }

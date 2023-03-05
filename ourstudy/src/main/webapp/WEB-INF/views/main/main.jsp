@@ -13,6 +13,7 @@
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/js/bootstrap.min.js"></script>
 <script type="text/javascript" src="${pageContext.request.contextPath}/js/main/clock.js"></script>
 <script type="text/javascript" src="${pageContext.request.contextPath}/js/main/quotes.js"></script>
+<script type="text/javascript" src="${pageContext.request.contextPath}/js/main/calrendar.js"></script>
 <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.2.1/chart.min.js"></script>
 <script async src="https://cse.google.com/cse.js?cx=5059383f37506464a"></script>
@@ -27,19 +28,19 @@
 	  var data = google.visualization.arrayToDataTable([
 	    ['이름', '공부시간', {role: 'style'}],
 	    <c:forEach var="studyTime" items="${studyTime}" begin="0" end="0">
-	    ['${studyTime.mem_name}', ${studyTime.mem_study}, 'fill-color:#384048;'],
+	    ['${studyTime.mem_name}', ${studyTime.total_time}/3600, 'fill-color:#384048;'],
 	    </c:forEach>
 	    <c:forEach var="studyTime" items="${studyTime}" begin="1" end="1">
-	    ['${studyTime.mem_name}', ${studyTime.mem_study}, 'fill-color:#fcf4e8;'],
+	    ['${studyTime.mem_name}', ${studyTime.total_time}/3600, 'fill-color:#fcf4e8;'],
 	    </c:forEach>
 	    <c:forEach var="studyTime" items="${studyTime}" begin="2" end="2">
-	    ['${studyTime.mem_name}', ${studyTime.mem_study}, 'fill-color:#E65962;'],
+	    ['${studyTime.mem_name}', ${studyTime.total_time}/3600, 'fill-color:#E65962;'],
 	    </c:forEach>
 	    <c:forEach var="studyTime" items="${studyTime}" begin="3" end="3">
-	    ['${studyTime.mem_name}', ${studyTime.mem_study}, 'fill-color:#384048;'],
+	    ['${studyTime.mem_name}', ${studyTime.total_time}/3600, 'fill-color:#384048;'],
 	    </c:forEach>
 	    <c:forEach var="studyTime" items="${studyTime}" begin="4" end="4">
-	    ['${studyTime.mem_name}', ${studyTime.mem_study}, 'fill-color:#F4ABB2;'],
+	    ['${studyTime.mem_name}', ${studyTime.total_time}/3600, 'fill-color:#F4ABB2;'],
 	    </c:forEach>
 	  ]);
 	
@@ -56,7 +57,7 @@
 		height: 350,
 		bar: {groupWidth: "25%"},
 		legend: { position: "none" },
-		vAxis: {textPosition: 'none', viewWindow: {max: 70}},
+		vAxis: {textPosition: 'none', viewWindow: {max: 40}},
 			 chartArea:{left:15,top:30,width:"90%",height:"80%"}
 		};
 	var chart = new google.visualization.ColumnChart(document.getElementById("columnchart_values"));
@@ -161,48 +162,27 @@
 		<div class="main_banner">
 			<img src="${pageContext.request.contextPath}/image_bundle/newbanner1.PNG" class="newbanner1">
 		</div>
-		<%-- 슬라이드 이미지
-			<div id="carouselExampleIndicators" class="carousel slide" data-bs-ride="carousel">
-			  <div class="carousel-indicators">
-			    <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
-			    <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="1" aria-label="Slide 2"></button>
-			    <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="2" aria-label="Slide 3"></button>
+		<div class="card main_card" id="cal_card">
+			<div class="sec_cal">
+				<div class="cal_nav">
+			    	<a href="javascript:;" class="nav-btn go-prev">prev</a>
+			    <div class="year-month"></div>
+			    	<a href="javascript:;" class="nav-btn go-next">next</a>
+			 	</div>
+			  	<div class="cal_wrap">
+			    	<div class="days">
+			      		<div class="day">MON</div>
+			      		<div class="day">TUE</div>
+			      		<div class="day">WED</div>
+			     	 	<div class="day">THU</div>
+			     	 	<div class="day">FRI</div>
+			     	 	<div class="day">SAT</div>
+			     	 	<div class="day">SUN</div>
+			    	</div>
+			    <div class="dates"></div>
 			  </div>
-			  
-			  <div class="carousel-inner">
-			    <div class="carousel-item active" data-bs-interval="2000">
-			      <img src="${pageContext.request.contextPath}/image_bundle/banner1.PNG" class="d-block w-100" >
-			    </div>
-			    <div class="carousel-item" data-bs-interval="3000">
-			      <img src="${pageContext.request.contextPath}/image_bundle/banner2.PNG" class="d-block w-100">
-			    </div>
-			    <div class="carousel-item" data-bs-interval="3000">
-			      <img src="${pageContext.request.contextPath}/image_bundle/banner3.PNG" class="d-block w-100">
-			    </div>
-			  </div>
-			</div>	
-		--%>
-		<%--
-		<div class="card main_card" id="study_board">
-		<span class="main-title" style="margin:5px 0 10px 5px;">> 안내사항 </span>
-			<table class="table table-hover table-group-divider table table-striped">
-				<tr style="background-color:#037332;">
-					<th width="320" class="align-center" style="color:#daebe3;">제목</th>
-					<th class="align-center" style="color:#daebe3;">작성일</th>
-				</tr>
-				<c:forEach var="info" items="${infoList}">
-				<tr>
-					<td>
-						<a href="${pageContext.request.contextPath}/info/infoDetail.do?info_num=${info.info_num}" style="margin-left:5px;">${info.info_title}</a>
-					</td>
-					<td class="align-center">	
-						${info.info_date}
-					</td>
-				</tr>
-				</c:forEach>
-			</table>
+			</div>
 		</div>
-		 --%>
 	</div>
 	<div class="row">
 		<div class="card main_card" id="study_time">
