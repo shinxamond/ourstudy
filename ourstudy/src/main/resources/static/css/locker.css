@@ -118,6 +118,37 @@
       z-index:-1;
    }
 /*===========================
+      LOCKER BTNS EFFECTS
+  ===========================*/
+    .locker-option span {         
+    top: 0; left: 0;
+    transition: 0.3s;
+  }
+  .locker-option::before {
+  transition: 0.3s ease-out;
+}
+  .locker-option span {
+  border: none;
+  transition: 0.2s 0.1s;
+}
+.locker-option span:hover {
+  color: rgb(28, 31, 30);
+  transition: 0.3s 0.1s;
+}
+ 
+button.hover-filled-opacity:hover::before {
+  	opacity: 0;
+}
+button.hover-filled-opacity:hover{
+	background-color:#BBFE97;
+	opacity:0.5;
+}
+ button.hover-filled-opacity::before {
+  top:0; bottom: 0; right: 0;
+  height: 100%; width: 100%;
+  opacity: 1;
+}
+/*===========================
       GUIDE LETTER
   ===========================*/
   .guide-letter{
@@ -141,7 +172,7 @@
         background-color: #BBFE97;
         width:175px; height: 90px;
         margin:2px;
-        border:0.5px solid #6d6d6d;
+        border:none;
     }
 
 /*===========================
