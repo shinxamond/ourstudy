@@ -6,9 +6,6 @@
 
 <div class="page-main">
 	<h1 class="align-center">물품 목록</h1>
-	<div class="align-right">
-		<input type="button" value="대여목록" onclick="location.href='rentalItemList.do'">
-	</div>
 	<c:if test="${count == 0}">
 	<div class="result-display">
 		표시할 물품이 없습니다
