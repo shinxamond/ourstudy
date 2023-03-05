@@ -154,7 +154,7 @@ public class ItemController {
 		itemService.Rstatus(3, item_num);//대여상태 변경
 
 		model.addAttribute("message", "반납신청완료");
-		model.addAttribute("url", request.getContextPath()+"/item/rentalItemList.do");
+		model.addAttribute("url", request.getContextPath()+"/mypage/myPageMain.do");
 		return "common/resultView";
 	}
 	
