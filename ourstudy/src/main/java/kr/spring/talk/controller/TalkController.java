@@ -1,5 +1,7 @@
 package kr.spring.talk.controller;
 
+import java.time.DayOfWeek;
+import java.time.LocalDate;
 import java.util.HashMap;
 import java.util.Iterator;
 import java.util.List;
@@ -20,6 +22,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import kr.spring.member.vo.MemberVO;
+import kr.spring.seat.vo.SeatVO;
 import kr.spring.info.service.InformationService;
 import kr.spring.info.vo.InformationVO;
 import kr.spring.main.service.MainService;
@@ -93,7 +96,9 @@ public class TalkController {
 
 		return "redirect:/talk/talkList.do";
 	}
-
+	
+	
+	
 	// 메인에서 보낸 데이터
 	@PostMapping("/talk/maintalkRoomWrite.do")
 	public String mainsubmitTalkRoom(TalkRoomVO vo, Model model, HttpSession session) {
@@ -111,8 +116,18 @@ public class TalkController {
 		//누적공부순위 차트
 	    Map<String, Object> map3 = new HashMap<String,Object>();
 	    
-	    List<MemberVO> member_studyTime = mainService.member_studyTime(map3);  
-	    model.addAttribute("studyTime", member_studyTime);
+	    LocalDate now = LocalDate.now();
+		   LocalDate setThisMonday = now.with(DayOfWeek.MONDAY);
+		   LocalDate setNextMonday = setThisMonday.plusDays(7);
+
+		   int[] memArray = mainService.setMemberArray();
+
+		   for(int i = 0; i < memArray.length; i++) {
+			   System.out.println("member[" + i +"] = " + memArray[i]);
+		   }
+
+		   List<SeatVO> member_RankStudyTime = mainService.member_Rank(memArray, setThisMonday.toString(), setNextMonday.toString());
+	    model.addAttribute("studyTime", member_RankStudyTime);
 		//=================================================
 	    
 	    
