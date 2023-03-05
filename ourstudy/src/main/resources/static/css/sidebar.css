@@ -75,7 +75,8 @@ main {
 
 .btn-toggle-nav a:hover,
 .btn-toggle-nav a:focus {
-  background-color: #d2f4ea;
+  background-color: #f4abb2;
+  color:white;
 }
 
 .scrollarea {
@@ -106,7 +107,7 @@ main {
 }
 .sidescroll::-webkit-scrollbar-thumb {
     height: 80%; /* 스크롤바의 길이 */
-    background: #037332; /* 스크롤바의 색상 */
+    background: #E65962; /* 스크롤바의 색상 */
     
     border-radius: 10px;
 }
@@ -116,7 +117,8 @@ main {
 .ourstudy{
 	font-family: 'Leckerli One', cursive;
 	padding-top:8px;
-	padding-left:12px;
+	padding-left:2px;
+	color:#E65962;
 }
 .side-inline li{
 	display:inline-block;
@@ -177,7 +179,7 @@ main {
 	margin-bottom:23px;
 }
 .logout-btn{
-	margin-left:62px;
+	margin-left:67px;
 }
 .side-main-link{
 	font-size:12pt;

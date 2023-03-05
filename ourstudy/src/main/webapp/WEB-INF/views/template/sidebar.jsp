@@ -102,7 +102,7 @@ Kakao.API.request({
 					<a href="${pageContext.request.contextPath}/main/main.do"
 						class="d-flex align-items-center pb-3 mb-3 link-dark text-decoration-none border-bottom">
 						<svg class="bi pe-none me-2" width="30" height="24"></svg>
-							<span class="fs-3 fw-semibold text-center ourstudy">OurStudy</span>
+							<span class="fs-2 fw-semibold ourstudy">OurStudy</span>
 					</a>
 				<c:if test="${empty user}">
 					<img src="${pageContext.request.contextPath}/image_bundle/face.png" width="130" height="130" class="my-photo">
@@ -116,12 +116,12 @@ Kakao.API.request({
 				<div>
 					<c:if test="${empty user}">
 						<button class="btn text-white mt-4 mb-4 rounded" data-bs-toggle="modal" data-bs-target="#loginModal" 
-						style="background-color:#037332;">로그인 | 회원가입</button>
+						style="background-color:#e65962;">로그인 | 회원가입</button>
 					</c:if>
 						
 					<%--임시로 넣어둠--%>
 					<c:if test="${user.mem_status == 0}">
-						<button class="btn text-white mt-4 mb-4 rounded" style="background-color:gray">퇴실</button>
+						<button class="btn text-white mt-4 mb-4 rounded" style="background-color:#b4aab1">퇴실</button>
 					</c:if>
 					<c:if test="${user.mem_status == 1}">
 						<button class="btn text-white mt-4 mb-4 rounded" style="background-color:red">입실중</button>
@@ -140,8 +140,8 @@ Kakao.API.request({
         			</button>
         			<div class="collapse" id="item-collapse">
          		 	<ul class="btn-toggle-nav fw-normal pb-1 small">
-           				<li><a href="${pageContext.request.contextPath}/ticket/study_ticketList.do" class="link-dark d-inline-flex rounded">좌석 이용권</a></li>
-            			<li><a href="${pageContext.request.contextPath}/ticket/locker_ticketList.do" class="link-dark d-inline-flex rounded">사물함 이용권</a></li>
+           				<li><a href="${pageContext.request.contextPath}/ticket/study_ticketList.do" class="d-inline-flex rounded">좌석 이용권</a></li>
+            			<li><a href="${pageContext.request.contextPath}/ticket/locker_ticketList.do" class="d-inline-flex rounded">사물함 이용권</a></li>
           			</ul>
         			</div>
         		</div>
@@ -170,8 +170,8 @@ Kakao.API.request({
         			</button>
         			<div class="collapse" id="notice-collapse">
          		 	<ul class="btn-toggle-nav fw-normal pb-1 small">
-           				<li><a href="${pageContext.request.contextPath}/info/informationList.do" class="link-dark d-inline-flex rounded">안내사항</a></li>
-            			<li><a href="${pageContext.request.contextPath}/info/faq.do" class="link-dark d-inline-flex rounded">자주 묻는 질문</a></li>
+           				<li><a href="${pageContext.request.contextPath}/info/informationList.do" class="d-inline-flex rounded">안내사항</a></li>
+            			<li><a href="${pageContext.request.contextPath}/info/faq.do" class="d-inline-flex rounded">자주 묻는 질문</a></li>
           			</ul>
         			</div>
         		</div>
@@ -184,8 +184,8 @@ Kakao.API.request({
         			</button>
         			<div class="collapse" id="comm-collapse">
          		 	<ul class="btn-toggle-nav fw-normal pb-1 small">
-           				<li><a href="${pageContext.request.contextPath}/community/lostList.do" class="link-dark d-inline-flex rounded">분실물 찾기</a></li>
-            			<li><a href="${pageContext.request.contextPath}/review/list.do" class="link-dark d-inline-flex rounded">이용후기</a></li>
+           				<li><a href="${pageContext.request.contextPath}/community/lostList.do" class="d-inline-flex rounded">분실물 찾기</a></li>
+            			<li><a href="${pageContext.request.contextPath}/review/list.do" class="d-inline-flex rounded">이용후기</a></li>
           			</ul>
         			</div>
         		</div>
@@ -214,10 +214,10 @@ Kakao.API.request({
 	        				</button>
 	        				<div class="collapse" id="admin-collapse1">
 	        				<ul class="btn-toggle-nav fw-normal pb-1 small">
-	        					<li><a href="${pageContext.request.contextPath}/seat/insertForm.do" class="link-dark d-inline-flex rounded">좌석추가</a></li>
-            					<li><a href="${pageContext.request.contextPath}/locker/editForm.do" class="link-dark d-inline-flex rounded">사물함추가</a></li>
-            					<li><a href="${pageContext.request.contextPath}/ticket/admin_ticketList.do" class="link-dark d-inline-flex rounded">이용권추가</a></li>
-            					<li><a href="${pageContext.request.contextPath}/item/adminList.do" class="link-dark d-inline-flex rounded">물품추가</a></li>        					
+	        					<li><a href="${pageContext.request.contextPath}/seat/insertForm.do" class="d-inline-flex rounded">좌석추가</a></li>
+            					<li><a href="${pageContext.request.contextPath}/locker/editForm.do" class="d-inline-flex rounded">사물함추가</a></li>
+            					<li><a href="${pageContext.request.contextPath}/ticket/admin_ticketList.do" class="d-inline-flex rounded">이용권추가</a></li>
+            					<li><a href="${pageContext.request.contextPath}/item/adminList.do" class="d-inline-flex rounded">물품추가</a></li>        					
 	        				</ul>
 	        				</div>
          		 		</li>     		 		         		 	
@@ -233,8 +233,8 @@ Kakao.API.request({
 	        				</button>
 	        				<div class="collapse" id="admin-collapse2">
 	        				<ul class="btn-toggle-nav fw-normal pb-1 small">
-	        					<li><a href="${pageContext.request.contextPath}/admin/admin_seathistory.do" class="link-dark d-inline-flex rounded">좌석기록</a></li>
-	        					<li><a href="${pageContext.request.contextPath}/admin/admin_lockerhistory.do" class="link-dark d-inline-flex rounded">사물함기록</a></li>
+	        					<li><a href="${pageContext.request.contextPath}/admin/admin_seathistory.do" class="d-inline-flex rounded">좌석기록</a></li>
+	        					<li><a href="${pageContext.request.contextPath}/admin/admin_lockerhistory.do" class="d-inline-flex rounded">사물함기록</a></li>
 	        				</ul>
 	        				</div>
          		 		</li>     		 		
@@ -246,14 +246,14 @@ Kakao.API.request({
 	        				</button>
 	        				<div class="collapse" id="admin-collapse3">
 	        				<ul class="btn-toggle-nav fw-normal pb-1 small">
-	        					<li><a href="${pageContext.request.contextPath}/admin/admin_itemhistory.do" class="link-dark d-inline-flex rounded">대여히스토리</a></li>
-	        					<li><a href="${pageContext.request.contextPath}/admin/admin_unreturnlist.do" class="link-dark d-inline-flex rounded">미반납자</a></li>	        					
+	        					<li><a href="${pageContext.request.contextPath}/admin/admin_itemhistory.do" class="d-inline-flex rounded">대여히스토리</a></li>
+	        					<li><a href="${pageContext.request.contextPath}/admin/admin_unreturnlist.do" class="d-inline-flex rounded">미반납자</a></li>	        					
 	        				</ul>
 	        				</div>
          		 		</li>	
          		 		<li>
          		 		&nbsp;&nbsp;&nbsp;&nbsp;<i class="bi bi-piggy-bank-fill" style="font-size:13pt;"></i>
-         		 		<a href="${pageContext.request.contextPath}/admin/admin_saleslist.do" class="link-dark d-inline-flex rounded" style="font-size:12pt; margin-left:2pt; margin-top:0;">판매기록</a>
+         		 		<a href="${pageContext.request.contextPath}/admin/admin_saleslist.do" class="d-inline-flex rounded" style="font-size:12pt; margin-left:2pt; margin-top:0;">판매기록</a>
          		 		</li>         		 		 			
            				<li>
 	         		 		<button class="btn btn-toggle  d-inline-flex  align-items-center rounded collapsed border-white" 
@@ -263,9 +263,9 @@ Kakao.API.request({
 	        				</button>
 	        				<div class="collapse" id="admin-collapse4">
 	        				<ul class="btn-toggle-nav fw-normal pb-1 small">
-	        					<li><a href="${pageContext.request.contextPath}/talk/talkList.do" class="link-dark d-inline-flex rounded">채팅목록</a></li>
-	        					<li><a href="${pageContext.request.contextPath}/admin/admin_receivehistory.do" class="link-dark d-inline-flex rounded">수신채팅</a></li>
-	        					<li><a href="${pageContext.request.contextPath}/admin/admin_sendhistory.do" class="link-dark d-inline-flex rounded">발신채팅</a></li>	        					
+	        					<li><a href="${pageContext.request.contextPath}/talk/talkList.do" class="d-inline-flex rounded">채팅목록</a></li>
+	        					<li><a href="${pageContext.request.contextPath}/admin/admin_receivehistory.do" class="d-inline-flex rounded">수신채팅</a></li>
+	        					<li><a href="${pageContext.request.contextPath}/admin/admin_sendhistory.do" class="d-inline-flex rounded">발신채팅</a></li>	        					
 	        				</ul>
 	        				</div>
          		 		</li>           		 		         		 		
@@ -275,7 +275,7 @@ Kakao.API.request({
 				</c:if>
 				<br>				
 				<c:if test="${!empty user}">
-						<button class="btn text-white rounded logout-btn" style="background-color:#037332;"
+						<button class="btn text-white rounded logout-btn" style="background-color:#E65962;"
 						onclick="location.href='https://kauth.kakao.com/oauth/logout?client_id=29a4ee7bbc4eb20216c3708400363a9a&logout_redirect_uri=http://localhost:8001/main/main.do';location.href='${pageContext.request.contextPath}/member/logout.do';">
 						로그아웃</button>
 				</c:if>

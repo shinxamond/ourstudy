@@ -40,15 +40,15 @@
 	                   2]);
 	
 	  var options = {
-	    width: 500,
-	    height: 350,
-	    bar: {groupWidth: "50%"},
-	    legend: { position: "none" },
-	    vAxis: {textPosition: 'none', viewWindow: {max: 70}},
-	   	chartArea:{left:15,top:30,width:"93%",height:"80%"}
-	  };
-	  var chart = new google.visualization.ColumnChart(document.getElementById("columnchart_values"));
-	  chart.draw(view, options);
+	  	width: 440,
+		height: 350,
+		bar: {groupWidth: "25%"},
+		legend: { position: "none" },
+		vAxis: {textPosition: 'none', viewWindow: {max: 70}},
+			 chartArea:{left:15,top:30,width:"90%",height:"80%"}
+		};
+	var chart = new google.visualization.ColumnChart(document.getElementById("columnchart_values"));
+	chart.draw(view, options);
 	}
 	
 	//도넛차트(가짜데이터)
@@ -128,27 +128,35 @@
 
 
 <div id="main_content_body" class="container">
+<%-- 
 	<div class="row" id="body_header">
+	
 		<div class="card main_card" id="clock">
 			<ul>
 				<li><div class="digital-clock"></div></li>
 				<li><div class="gcse-search"></div></li>
 			</ul>
 			
-			<%-- 
+			
 			<span id="quote"></span>
-			<span id="author"></span>--%>
+			<span id="author"></span>
 			
 		</div>
+		
 	</div>
+--%>
 	<div class="row">
-		<div class="card main_card" id="study_banner">
-			<div id="carouselExampleIndicators" class="carousel slide" data-bs-ride="carousel" >
+		<div class="main_banner">
+			<img src="${pageContext.request.contextPath}/image_bundle/newbanner1.PNG" class="newbanner1">
+		</div>
+		<%-- 슬라이드 이미지
+			<div id="carouselExampleIndicators" class="carousel slide" data-bs-ride="carousel">
 			  <div class="carousel-indicators">
 			    <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
 			    <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="1" aria-label="Slide 2"></button>
 			    <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="2" aria-label="Slide 3"></button>
 			  </div>
+			  
 			  <div class="carousel-inner">
 			    <div class="carousel-item active" data-bs-interval="2000">
 			      <img src="${pageContext.request.contextPath}/image_bundle/banner1.PNG" class="d-block w-100" >
@@ -160,8 +168,9 @@
 			      <img src="${pageContext.request.contextPath}/image_bundle/banner3.PNG" class="d-block w-100">
 			    </div>
 			  </div>
-			</div>		
-		</div>
+			</div>	
+		--%>
+		<%--
 		<div class="card main_card" id="study_board">
 		<span class="main-title" style="margin:5px 0 10px 5px;">> 안내사항 </span>
 			<table class="table table-hover table-group-divider table table-striped">
@@ -181,6 +190,7 @@
 				</c:forEach>
 			</table>
 		</div>
+		 --%>
 	</div>
 	<div class="row">
 		<div class="card main_card" id="study_time">

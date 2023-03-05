@@ -8,7 +8,7 @@
 }
 
 body{
-	background-color:#f2f7f4!important;
+	background-color:#F3F1F1!important;
 	height:100%;
 }
 #body_header{
@@ -20,24 +20,29 @@ body{
 	min-width: 0;
 	border-radius: 0.5rem;
 	border: 0 solid #d9dee3;
-	margin:10px 10px 15px 10px;
+	margin:20px 10px 15px 10px;
 	padding:10px;
 }
 .main_card{
 	box-shadow: 0 2px 6px 0 rgb(67 89 113 / 12%);
 }
-#study_banner{
-	width:700px;
-	height:260px;
+.main_banner{
+	margin-top:10px;
+}
+.newbanner1{
+	width:800px;
+	height:270px;
 	font-family: 'KOTRAHOPE';
 	font-size:17pt;
+	border-radius:0.5rem;
+	box-shadow:0 2px 6px 0 rgb(67 89 113 / 12%)
 }
 #study_board{
 	width:495px;
 	height:260px;
 }
 #study_time{
-	width:510px;
+	width:450px;
 	height:400px;
 }
 #all_time{
