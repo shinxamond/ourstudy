@@ -108,7 +108,9 @@ public class LockerController {
 		
 		lockerService.insertEndAndDiff(lockerVO);
 		
-		return "";			//다시 메인 리다이렉트하던가 모 ... 
+		model.addAttribute("locker_num", locker_num);
+		
+		return "ticket/locker_ticketList";			
 	}
 	
 	
