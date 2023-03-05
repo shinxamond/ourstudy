@@ -1294,7 +1294,7 @@
                                         <net.java.amateras.uml.sequencediagram.model.LifeLineModel reference="../../.."/>
                                       </children>
                                       <filterProperty/>
-                                      <name>KakaoServiceImpl</name>
+                                      <name>KakaoService</name>
                                       <lifeLine reference="../.."/>
                                       <root reference="../../../../../../../../../../../../../../../../../../.."/>
                                     </owner>
