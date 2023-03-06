@@ -12,7 +12,7 @@
     font-weight: 400;
     font-style: normal;
 }
-.element-box a, a:hover a:visited, a:focus{
+a, a:hover a:visited, a:focus{
 	text-decoration: none !important;
     color: #000000 !important;
 }
@@ -47,7 +47,7 @@ div#main_footer .footer-sns {
     font-size: 11pt;
 }
 .footer-sns a:hover{
-	color: #F3F1F1;
+	color:#F3F1F1;
 }
 /*========마이페이지 헤더========*/
 /*
