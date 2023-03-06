@@ -58,11 +58,13 @@ body{
 #study_clock{
 	width:328px;
 	height:140px;
+	left:860px;
+	top:-427px;
 }
 #study_maxim{
 	width:328px;
 	height:180px;
-	top:-267px;
+	top:-427px;
 	left:860px;
 }
 .main-title{

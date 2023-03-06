@@ -23,7 +23,7 @@
 }
 
 .register_left{
-  background-color: #025224;
+  background-color: #E65962;
   border-radius: 10px;
   box-shadow: 0 14px 28px rgba(0,0,0,0.25), 0 10px 10px rgba(0,0,0,0.22);
   position: relative;
@@ -87,7 +87,7 @@ input[id="user_email"]{
 
 input[id="confirmId"],#mail-Check-Btn,#find-zipcode{
 	color:white;
-	background-color:#037332;
+	background-color:#E65962;
 	width:125px;
 	height:40px;
 	border-radius:10px;
@@ -99,7 +99,7 @@ input[id="confirmId"],#mail-Check-Btn,#find-zipcode{
 
 #register-submit-btn{
 	color:white;
-	background-color:#037332;
+	background-color:#E65962;
 	width:125px;
 	height:40px;
 	border-radius:10px;
@@ -144,7 +144,7 @@ button,input[type="button"]{
 ======================================*/
 
 .find_left{
-  background-color: #025224;
+  background-color: #E65962;
   border-radius:5px;
   box-shadow: 0 14px 28px rgba(0,0,0,0.25), 5px 8px 10px rgba(0,0,0,0.22);
   position: relative;
@@ -208,7 +208,7 @@ button,input[type="button"]{
 
 .find-submit-btn{
 	color:white;
-	background-color:#037332;
+	background-color:#E65962;
 	width:125px;
 	height:40px;
 	border-radius:10px;
@@ -241,7 +241,7 @@ button,input[type="button"]{
 }
 .notice-btn{
 	color:white;
-	background-color:#037332;
+	background-color:#E65962;
 	width:125px;
 	height:40px;
 	border-radius:10px;

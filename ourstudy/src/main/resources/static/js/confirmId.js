@@ -4,7 +4,7 @@ $(function(){
 	//=============아이디 중복 체크=============
 	$('#confirmId').click(function(){
 		if($('#mem_id').val().trim()==''){
-			$('#message_id').css('color','red').text('아이디를 입력하세요');
+			$('#message_id').css('color','#E65962').text('아이디를 입력하세요');
 			$('#mem_id').val('').focus();
 			return;
 		}
@@ -20,10 +20,10 @@ $(function(){
 					$('#message_id').css('color','#000').text('사용가능합니다.');
 					checkId = 1;	
 				}else if(param.result == 'idDuplicated'){
-					$('#message_id').css('color','red').text('존재하는 아이디입니다.');
+					$('#message_id').css('color','#E65962').text('존재하는 아이디입니다.');
 					checkId = 0;
 				}else if(param.result == 'notMatchPattern'){
-					$('#message_id').css('color','red').text('4~12자의 영문 소문자, 숫자만 사용 가능합니다.');
+					$('#message_id').css('color','#E65962').text('4~12자의 영문 소문자, 숫자만 사용 가능합니다.');
 					checkId = 0;
 				}else{
 					checkId = 0;
@@ -47,7 +47,7 @@ $(function(){
 	//submit 이벤트 발생시 아이디 중복 체크 여부 확인
 	$('#register_form').submit(function(){
 		if(checkId==0){
-			$('#message_id').css('color','red').text('중복체크 필수');
+			$('#message_id').css('color','#E65962').text('중복체크 필수');
 			if($('#mem_id').val().trim()==''){
 				$('#mem_id').val('').focus();
 			}
@@ -68,11 +68,11 @@ $(function(){
 		
 		if(mem_pw!='' && pw_confirm!=''){
 			if(mem_pw == pw_confirm){
-				$("#confirmMsg").text("비밀번호 일치");
+				$("#confirmMsg").text("비밀번호 일치").css('color','#000');
 				return;
 			}
 			if(mem_pw != pw_confirm){
-				$("#confirmMsg").text("비밀번호 불일치");
+				$("#confirmMsg").text("비밀번호 불일치").css('color','#E65962');
 				return;
 			}
 		}

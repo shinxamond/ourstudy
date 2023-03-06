@@ -43,7 +43,7 @@ $(function(){
 		if($('#user_email').val()==''){
 			$('#user_email').val('').focus();
 			$('#mail-check-warn').html('이메일을 입력해주세요');
-			$('#mail-check-warn').css('color','red');
+			$('#mail-check-warn').css('color','#E65962');
 			return;
 		}else{
 			$('#mail-check-warn').html('');
@@ -53,7 +53,7 @@ $(function(){
 				$("#email_direct").show();
 				$('#email_direct').val('').focus();
 				$('#mail-check-warn').html('이메일을 입력해주세요');
-				$('#mail-check-warn').css('color','red');
+				$('#mail-check-warn').css('color','#E65962');
 				return;
 			}
 		}
@@ -82,10 +82,10 @@ $(function(){
 		
 		if(inputCode === code){
 			$resultMsg.html('인증번호가 일치합니다');
-			$resultMsg.css('color','green');
+			$resultMsg.css('color','#000');
 		}else{
 			$resultMsg.html('인증번호가 불일치 합니다');
-			$resultMsg.css('color','red');
+			$resultMsg.css('color','#E65962');
 			
 		}
 	});
@@ -96,13 +96,13 @@ $(function(){
 		
 		if($('#mem_name').val()==''){
 			$('#mem_name').val('').focus();
-			$("#message_name").text("이름을 입력해주세요").css('color','red');
+			$("#message_name").text("이름을 입력해주세요").css('color','#E65962');
 			return false;
 		}
 		
 		if($('#mem_id').val()==''){
 			$('#mem_id').val('').focus();
-			$("#message_name").text("아이디를 입력해주세요").css('color','red');
+			$("#message_name").text("아이디를 입력해주세요").css('color','#E65962');
 			return false;
 		}
 		
@@ -117,7 +117,7 @@ $(function(){
 		if($('.mail-check-input').val()==''){
 			$('.mail-check-input').val('');
 			$('#mail-check-warn').html('인증번호를 입력해주세요');
-			$('#mail-check-warn').css('color','red');
+			$('#mail-check-warn').css('color','#E65962');
 			return false;
 		}
 		
@@ -126,7 +126,7 @@ $(function(){
 			
 		if(inputCode !== code){
 			$resultMsg.html('인증번호가 불일치 합니다');
-			$resultMsg.css('color','red');
+			$resultMsg.css('color','#E65962');
 			return false;	
 		}
 		

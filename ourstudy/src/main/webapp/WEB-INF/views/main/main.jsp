@@ -20,12 +20,18 @@
 	//막대 차트(구글차트 API)
 	google.charts.load("current", {packages:['corechart']});
 	google.charts.setOnLoadCallback(drawChart);
-	google.charts.setOnLoadCallback(drawDoughnut1);
-	google.charts.setOnLoadCallback(drawDoughnut2);
 	
+		
+			
 	function drawChart() {
 	  var data = google.visualization.arrayToDataTable([
-	    ['이름', '공부시간', {role: 'style'}],
+	    
+		['이름', '공부시간', {role: 'style'}],
+	    ['',0,''],
+	    <c:if test="${studyTime==0}">
+	    표시할 데이터가 없습니다
+	    </c:if>
+	    <c:if test="${studyTime!=0}">
 	    <c:forEach var="studyTime" items="${studyTime}" begin="0" end="0">
 	    ['${studyTime.mem_name}', ${studyTime.total_time}/3600, 'fill-color:#384048;'],
 	    </c:forEach>
@@ -62,6 +68,7 @@
 	var chart = new google.visualization.ColumnChart(document.getElementById("columnchart_values"));
 	chart.draw(view, options);
 	}
+	</c:if>
 </script>
 
 <div id="main_content_body" class="container">
@@ -115,16 +122,18 @@
 				</c:forEach>
 			</table>
 		</div>
-		<div class="card main_card" id="study_clock">
-			<div class="digital-clock"></div>
-		</div>
-	</div>
-	<div class="card main_card" id="study_maxim">
-			<span class="main-title" style="margin:10px 0 25px 5px;">오늘의 한 마디</span>
-			<div id="quote_author">
-				<div id="quote"></div>
-				<div id="author"></div>
+		<div>
+			<div class="card main_card" id="study_clock">
+				<div class="digital-clock"></div>
 			</div>
+			<div class="card main_card" id="study_maxim">
+				<span class="main-title" style="margin:10px 0 25px 5px;">오늘의 한 마디</span>
+				<div id="quote_author">
+					<div id="quote"></div>
+					<div id="author"></div>
+				</div>
+			</div>
+		</div>
 	</div>
 </div>
 
