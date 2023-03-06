@@ -89,9 +89,9 @@ public class InformationVO {
 	
 	@Override
 	public String toString() {
-		return "InformationVO [info_num=" + info_num +", info_date" + info_date + ", info_title" + info_title +
-				", info_content" + info_content + ", info_pin" + info_pin + ", mem_num" + mem_num + 
-				", info_modify_date" + info_modify_date + ", filename" + filename +"]";
+		return "InformationVO [info_num=" + info_num +", info_date=" + info_date + ", info_title=" + info_title +
+				", info_content=" + info_content + ", info_pin=" + info_pin + ", mem_num=" + mem_num + 
+				", info_modify_date=" + info_modify_date + ", filename=" + filename +"]";
 	}
 	
 }

@@ -39,7 +39,12 @@
 			</tr>
 			<c:forEach var="info" items="${informationList}">
 			<tr>
+				<c:if test="${info.info_pin == 0}">
 				<td>${info.info_num}</td>
+				</c:if>	
+				<c:if test="${info.info_pin == 1}">
+				<td>필독</td>
+				</c:if>	
 				<td>
 					<a href="infoDetail.do?info_num=${info.info_num}">${info.info_title}</a>
 				</td>

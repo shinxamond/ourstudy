@@ -43,11 +43,15 @@
   		             FROM information i JOIN member_detail d
   		    		 ON i.mem_num = d.mem_num
   		    		 <include refid="infoSearch"></include> 
-  		      		ORDER BY i.info_num DESC)a)
+  		      		ORDER BY (CASE WHEN i.info_pin = 1 THEN 0 ELSE 1 END), i.info_pin DESC, i.info_date DESC)a)
+  		  
+  		      		
   		<![CDATA[
   		WHERE rnum >= #{start} AND rnum <= #{end}
-  		]]>   	
+  		]]>  
 	</select>
+
+	
 	<update id="updateInformation" parameterType="informationVO">
 		UPDATE information SET
 		 <if test="filename != ''">
@@ -61,8 +65,5 @@
   		 WHERE info_num=#{info_num}
 	</update>
 	
-	<!-- 상단고정 -->
- 	<!-- <select id="notice" resultType="kr.spring.info.dao.InformationMapper" >
-	<![CDATA[select * from (select * from information where info_pin=2 order by info_num desc) where ROWNUM <=1 order by info_num desc]]>
-	</select>  -->
+
 </mapper>

@@ -84,7 +84,9 @@
 				</c:if>
 			</li>
 		</ul>
-		<div class="align-center">
+		<div class="align-right">
+			<form:checkbox path="info_pin" value="1" label="상단에 고정하기" />
+			<form:hidden path="info_pin" value="0" />		
 			<form:button>수정</form:button>
 			<button type="button" onclick="location.href='informationList.do'">목록</button>
 			${page}

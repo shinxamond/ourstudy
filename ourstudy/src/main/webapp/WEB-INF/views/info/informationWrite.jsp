@@ -50,14 +50,14 @@
 			<li>
 				<label for="upload">파일 첨부</label>
 				<input type="file" name="upload" id="upload">
-			</li>
-<%-- 			 <li>
-				<label for="info_pin">상단고정</label>
-				<form:checkbox path="testVar" value="001" label="A" />     
-				<form:errors path="info_pin" cssClass="error-color"/>               
-			</li>  --%>
+			</li> 
 		</ul>
 		<div class="align-right">
+			<%-- <input type="checkbox" name="info_pin" value="1" id="info_pin"/>상단에 고정하기
+			<input type="hidden" name="info_pin" value="0" id="info_pin_hidden"/> 
+			   문제점 수정할 때 체크 풀려있음 --%>
+			<form:checkbox path="info_pin" value="1" label="상단에 고정하기" />
+			<form:hidden path="info_pin" value="0" />		
 			<form:button>등록</form:button>
 			<input type="button" value="목록" 
 			             onclick="location.href='/info/informationList.do'">

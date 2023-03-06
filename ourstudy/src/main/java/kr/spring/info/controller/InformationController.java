@@ -62,9 +62,7 @@ public class InformationController {
 			 PagingUtil page = new PagingUtil(keyfield,null,
 					 	currentPage,count,10,10,"informationList.do");
 			 
-			/*
-			 * PagingUtil page = new PagingUtil(currentPage,count,rowCount,1,null);
-			 */
+			
 			map.put("start", page.getStartRow());
 			map.put("end", page.getEndRow());
 			
