@@ -162,21 +162,25 @@ $(function(){
 		$('#talkCheck').hide();
 		$('#roomc').text('채팅방이 있습니다(↑ 클릭)');
 	}
+	$('#roomcheckB').click(function(){
+		$('#roomcheckB').hide();
+	});
 });
 </script>
-<c:if test="${!empty user && user.mem_auth==1}">
+<c:if test="${!empty user && user.mem_auth==1 && check==null}">
 <form action="/talk/maintalkRoomWrite.do" method="post" id="check_talk_form">
 	<input type="hidden" name="members" value="${user.mem_num}">
 	<input type="hidden" name="members" value="527">
 	<input type="hidden" name="talkroom_name" id="talkroom_name" value="${user.mem_id}, admin9">
 	
-	<input type="image" src="${pageContext.request.contextPath}/images/chat.jfif" alt="제출버튼" style="position: fixed; right: 40px; bottom: 50px; background-color:white; border:none; height:55px; weight:55px;">
-	<span id="roomc" style="position: fixed; right: 49px; bottom: 30px;">채팅</span>
+	<button id="roomcheckB" style="position: fixed; right: 40px; bottom: 50px; font-size:55px; color:#e65962; border:none; background-color:transparent;">✉</button>
+	<span id="roomc" style="position: fixed; right: 45px; bottom: 40px;">방 확인하기</span>
+	
 </form>
 </c:if>
 
 <c:if test="${!empty check}">
-	<button type="button" class="btn btn-primary" data-bs-toggle="modal" id="10" data-id="${room_num}" data-bs-target="#talkview" style="position: fixed; right: 40px; bottom: 50px; background-color:white; border:none;"><img src="${pageContext.request.contextPath}/images/chat.jfif" width="50" height="50" class="my-photo">
+	<button type="button" class="btn btn-primary" data-bs-toggle="modal" id="10" data-id="${room_num}" data-bs-target="#talkview" style="position: fixed; right: 40px; bottom: 43px; background-color:transparent; border:none; color:#e65962; font-size:55px;">✉
 	</button>
 	<c:forEach var="talk_count" items="${roomList}">
 		<c:if test="${talk_count.room_cnt > 0 }">
