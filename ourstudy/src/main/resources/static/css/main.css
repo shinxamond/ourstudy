@@ -55,26 +55,29 @@ body{
 	height:400px;
 	bottom:60px;
 }
+.guitar{
+	width:350px;
+	height:300px;
+	bottom:60px;
+	padding:0;
+}
 #study_clock{
 	width:328px;
 	height:140px;
-	left:860px;
-	top:-427px;
 }
+
 #study_maxim{
 	width:328px;
 	height:180px;
-	top:-427px;
-	left:860px;
 }
 .main-title{
 	font-family: 'Pretendard-Regular';
 	font-size:12pt;
 }
 .digital-clock{
-	width:250px;
-	top:15px;
-	left:100px;
+	width:260px;
+	padding-left:40px;
+	padding-top:12px;
 }
 
 
