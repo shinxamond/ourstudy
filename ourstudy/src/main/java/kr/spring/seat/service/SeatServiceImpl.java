@@ -74,10 +74,17 @@ public class SeatServiceImpl implements SeatService{
       seatMapper.memberStatusIn(vo.getMem_num());
       seatMapper.insertToSelectSeat(vo);
    }
+   //외출상태인 나의 좌석번호 구하기
    @Override
    public int getOutMemberSeat(int mem_num) {
 	   return seatMapper.getOutMemberSeat(mem_num);
    }
+   //입실상태인 나의 좌석번호 구하기
+   @Override
+   public int getInMemberSeat(int mem_num) {
+	   return seatMapper.getInMemberSeat(mem_num);
+   }
+   
    
    //입실시간/ 퇴실시간 추출
    @Override
@@ -95,8 +102,6 @@ public class SeatServiceImpl implements SeatService{
    public int getMem_status(int mem_num) {
       return seatMapper.getMem_status(mem_num);
    }
-
-
    
    /*========================================
           			KEEP

@@ -185,40 +185,56 @@ public class SeatController {
       
       return "redirect:/mypage/myPageMain.do";
    }
-   
+    
    //회원 퇴실처리 + 관리자 권한 강제 퇴실처리
    @RequestMapping("/seat/out.do")
-   public String Out(@RequestParam int seat_num, HttpServletRequest request) {
-      HttpSession session = request.getSession();
+   public String Out(HttpSession session) {
       MemberVO member = (MemberVO)session.getAttribute("user");
       
+      SeatVO seatVO = initCommand();
+      
       int mem_num = (Integer)session.getAttribute("user_num");
-      if(member.getMem_auth() == 9) {
-    	  mem_num = seatService.getSeatDetail(seat_num).getMem_num();
-    	  
-    	  logger.debug("<<타겟 멤넘>> ::::: " + mem_num);
-      }
       int mem_status = seatService.getMem_status(mem_num);
+      Integer seat_num = null;
+      
+      if(mem_status == 2) {										//현재 회원이 외출 상태일 때
+    	  seat_num = seatService.getOutMemberSeat(mem_num);
+    	  
+    	  logger.debug("<<<<<<<<<<<<<<<<<<<seat_num>>>>>>>>>>>>>>>>" + seat_num);
+    	  
+    	  seatVO.setMem_num(mem_num);
+    	  seatVO.setSeat_num(seat_num);
+    	  
+    	  seatService.outSeatWhenHold(seatVO);
+    	  
+    	  member.setMem_status(seatService.getMem_status(mem_num));
+    	  
+    	  return "redirect:/mypage/myPageMain.do";
+      }else if(mem_status == 1) {								//현재 회원이 입실 상태일 때
+    	  seat_num = seatService.getInMemberSeat(mem_num);
+    	  
+    	  logger.debug("<<<<<<<<<<<<<<<<<<<seat_num>>>>>>>>>>>>>>>>" + seat_num);
+    	  
+    	  seatVO.setMem_num(mem_num);
+    	  seatVO.setSeat_num(seat_num);
+    	  
+    	  seatService.outSeatWhenIn(seatVO);
+      }
+
+      
+       if(member.getMem_auth() == 9) { 
+    	   mem_num = seatService.getSeatDetail(seat_num).getMem_num();
+       
+    	   logger.debug("<<타겟 멤넘>> ::::: " + mem_num); 
+       }
       
       logger.debug("<<user_auth>> --------------= " + member.getMem_auth());					//관리자 신분 검사
       logger.debug("<<<<mem_NUM>>>> : " + mem_num);
       logger.debug("<<<<SEAT_NUM>>>> : " + seat_num);
       
-      SeatVO seatVO = initCommand();
       seatVO.setMem_num(mem_num);
       seatVO.setSeat_num(seat_num);
 
-      														
-	  if(mem_status == 2) {            //외출 상태일 때
-		  seat_num = seatService.getOutMemberSeat(mem_num);
-		  logger.debug("<<<<<<<<<<<<<<<<<<<seat_num>>>>>>>>>>>>>>>>" + seat_num);
-		  seatVO.setSeat_num(seat_num);
-//		  seatService.outSeatWhenHold(seatVO);
-	  }if(mem_status == 1) {            //입실 상태일 때
-		  seatService.outSeatWhenIn(seatVO);
-	  }
-  
-      
       logger.debug("seat_num = " + seat_num);
       
       seatVO = seatService.getTimes(seat_num);
@@ -259,9 +275,10 @@ public class SeatController {
       logger.debug("seatVO" + seatVO);
 
       //관리자에서 강제 퇴실할 경우 
-      if(member.getMem_auth() == 9) {
-    	  return "redirect:/admin/admin_seathistory.do";
+      if(member.getMem_auth() == 9) { 
+    	  return "redirect:/admin/admin_seathistory.do"; 
       }
+		
       
       return "redirect:/mypage/myPageMain.do";
    }
