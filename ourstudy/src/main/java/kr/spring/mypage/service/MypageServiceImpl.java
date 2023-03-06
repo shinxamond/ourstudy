@@ -126,6 +126,15 @@ public class MypageServiceImpl implements MypageService{
 		mypageMapper.updateRegDate();
 	}
 
+	@Override
+	public int selectLockerNumByMem_num(Integer mem_num) {
+		try {
+			return mypageMapper.selectLockerNumByMem_num(mem_num);
+		}catch(Exception e) {
+			return 0;
+		}
+	}
+
 
 
 

@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<%@ taglib prefix = "fmt" uri = "http://java.sun.com/jsp/jstl/fmt" %>     
+<%@ taglib prefix = "fmt" uri = "http://java.sun.com/jsp/jstl/fmt" %>
+<%@ taglib prefix = "c" uri = "http://java.sun.com/jsp/jstl/core" %>
 <script type="text/javascript" src="${pageContext.request.contextPath}/js/mypage/mypageProfileImg.js"></script>
 <script type="text/javascript" src="${pageContext.request.contextPath}/js/mypage/changePw.js"></script>
 <!-- 마이페이지 헤더 시작 -->
@@ -12,6 +13,12 @@
 				<span class = "span-align">안녕하세요, <strong><a href = "${pageContext.request.contextPath}/mypage/myPageMemInfo.do">${member.mem_name}</a></strong>님</span>
 				<br>
 				<span class = "welcome-msg">오늘도 아워스터디를 이용해주셔서 감사합니다.</span>
+				<c:if test="${locker_num == 0}">
+				<button class = "locker-btn" onclick = "location.href = '${pageContext.request.contextPath}/ticket/locker_ticketList.do'">사물함 등록</button>
+				</c:if>
+				<c:if test="${locker_num != 0}">
+				<button class = "locker-btn" onclick = "location.href = '${pageContext.request.contextPath}/ticket/locker_ticketList.do?locker_num=${locker_num}'">사물함 연장: ${locker_num}번</button>
+				</c:if>
 				<p><a href = "${pageContext.request.contextPath}/mypage/myPageModify.do"  class = "link-font small">정보수정 ></a></p>
 		</div>
 		<div class = "element">
@@ -23,7 +30,8 @@
 			<span class = "data-align top"><fmt:formatNumber value = "${pointSum}"/>P</span>
 		</div>
 		<div class = "element">
-			NO.<span class = "data-align" style = "display : inline-block; width : 50px; text-align : right;"> ${seat.seat_name }</span> 번 자리
+			<c:if test="${empty seat.seat_name}"><span>이용중인 좌석이 없습니다.</span></c:if>
+			<c:if test="${!empty seat.seat_name}"><span>NO. <b>${seat.seat_name}</b>번 자리</span></c:if>
 			<span class = "data-time">잔여시간 : <span class = "data-align">
 			<fmt:parseNumber value = "${remainTime / 86400}"  integerOnly="true"/>일 
 			<fmt:parseNumber value = "${((remainTime / 3600) % 3600) % 24}"  integerOnly="true"/>시간

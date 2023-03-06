@@ -197,6 +197,15 @@ div#main_footer .footer-sns {
 	background-color : transparent;
 	cursor : pointer;
 }
+/*사물함 버튼*/
+.locker-btn{
+	position : relative;
+	top : 50px;
+	border : 1px solid #A2A2A2;
+	border-radius : 55px;
+	padding : 5px;
+	background : #FFF;
+}
 /*
 모달창 버튼*/
 #photo_submit, #photo_reset{

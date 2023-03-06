@@ -139,4 +139,12 @@ public interface MypageMapper {
 	//한 주 지나면 member_detail에 reg_date를 일주일 뒤 값으로 업데이트
 	@Update("UPDATE member_detail SET mem_regdate = sysdate")
 	public void updateRegDate();
+	
+	
+	/*==================================
+				공부시간 그래프
+	====================================*/		
+	@Select("SELECT locker_num FROM locker_detail WHERE mem_num = #{mem_num}")
+	public int selectLockerNumByMem_num(Integer mem_num);
+	
 }

@@ -95,6 +95,8 @@ public class MypageController {
 		
 		Float remainTime = mypageService.selectRemainTime(user.getMem_num());
 		
+		int locker_num = mypageService.selectLockerNumByMem_num(user.getMem_num());
+		
 		if(pointSum == null) {
 			pointSum = 0;
 		}
@@ -233,6 +235,7 @@ public class MypageController {
 			list = itemService.rentalItemList(map);
 		}
 		
+		model.addAttribute("locker_num", locker_num);
 		model.addAttribute("count", count);
 		model.addAttribute("list", list);
 		model.addAttribute("member", member);

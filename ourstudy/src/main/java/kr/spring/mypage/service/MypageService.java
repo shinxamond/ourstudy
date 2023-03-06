@@ -71,5 +71,7 @@ public interface MypageService {
 	
 	
 	
+	public int selectLockerNumByMem_num(Integer mem_num);
+	
 
 }
