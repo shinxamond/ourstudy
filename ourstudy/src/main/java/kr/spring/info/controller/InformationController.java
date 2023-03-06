@@ -48,18 +48,19 @@ public class InformationController {
 	@RequestMapping("/info/informationList.do")
 	public ModelAndView process(
 			 @RequestParam(value="pageNum",defaultValue="1") int currentPage,
-			 @RequestParam(value="keyfield",defaultValue="1")String keyfield) { 
+			 @RequestParam(value="keyfield",defaultValue="1") String keyfield, String keyword) { 
 				
 			Map<String,Object> map = 
 						new HashMap<String,Object>();
 			map.put("keyfield", keyfield);
+			map.put("keyword", keyword);
 			
 			//글의 총개수 또는 검색된 글의 개수
 			int count = informationService.selectinfoRowCount(map); 
 			logger.debug("<<count>> : " + count);
 			
 			//페이지 처리
-			 PagingUtil page = new PagingUtil(keyfield,null,
+			 PagingUtil page = new PagingUtil(keyfield,keyword,
 					 	currentPage,count,10,10,"informationList.do");
 			 
 			

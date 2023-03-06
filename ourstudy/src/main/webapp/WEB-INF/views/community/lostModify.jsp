@@ -16,11 +16,11 @@
 	<ul>
 		<li>
 			<label for="type">카테고리</label>
-			<c:if test="${lost.lf_type == 0}">
-			<td>분실</td>
+			<c:if test="${lostVO.lf_type == 0}">
+			분실
 			</c:if>
-			<c:if test="${lost.lf_type == 1}">
-			<td>습득</td>
+			<c:if test="${lostVO.lf_type == 1}">
+			습득
 			
 			</c:if>
 		</li>
@@ -42,8 +42,8 @@
 		</li>
 		<li>
 			<label for="lf_loc">분실/습득 위치</label>
-			<form:input path="lf_item"/>
-			<form:errors path="lf_item" cssClass="error-color"/>
+			<form:input path="lf_loc"/>
+			<form:errors path="lf_loc" cssClass="error-color"/>
 		</li>
 		<li>
 			<label for="lf_time">분실/습득 날짜</label>
@@ -52,9 +52,9 @@
 			
 		</li>  
 		<li>
-				<label for="info_content">내용</label>
-				<form:textarea path="info_content"/>
-				<form:errors path="info_content" 
+				<label for="lf_content">내용</label>
+				<form:textarea path="lf_content"/>
+				<form:errors path="lf_content" 
 				                  cssClass="error-color"/>
 				<script>
 				 function MyCustomUploadAdapterPlugin(editor) {
@@ -64,7 +64,7 @@
 					}
 				 
 				 ClassicEditor
-		            .create( document.querySelector( '#info_content' ),{
+		            .create( document.querySelector( '#lf_content' ),{
 		            	extraPlugins: [MyCustomUploadAdapterPlugin]
 		            })
 		            .then( editor => {

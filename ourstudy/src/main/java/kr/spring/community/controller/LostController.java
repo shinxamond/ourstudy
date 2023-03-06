@@ -138,7 +138,8 @@ public class LostController {
 	 public String formUpdate(@RequestParam int lf_num, Model model) { 
 			LostVO lostVO = lostService.selectLost(lf_num);
 			model.addAttribute("lostVO",lostVO);
-		
+			
+			logger.debug("<<lostVO>> : " + lostVO);
 			return "lostModify";
 	}
 	 
