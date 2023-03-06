@@ -138,7 +138,7 @@
   		            ORDER BY b.item_start DESC NULLS LAST
   		            </if>
   		            <if test="keyfield == 2">
-  		            ORDER BY m.mem_name ASC NULLS LAST
+  		            ORDER BY m.mem_name ASC, b.item_start DESC NULLS LAST
   		            </if>
   		            <!--
   		            <if test="keyfield == 3">

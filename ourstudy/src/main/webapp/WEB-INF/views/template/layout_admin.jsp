@@ -23,16 +23,15 @@
 <body>
 <tiles:insertAttribute name="sidebar"/>
 <div id="main">
-
 	<div id="main_header">
 
 	</div>
 	<div id="main_body">
 	<tiles:insertAttribute name="body"/>
 	</div>
-	<div id="main_footer">
-		<tiles:insertAttribute name="footer"/>
-	</div>
+</div>
+<div id="main_footer">
+	<tiles:insertAttribute name="footer"/>
 </div>
 </body>
 </html>
