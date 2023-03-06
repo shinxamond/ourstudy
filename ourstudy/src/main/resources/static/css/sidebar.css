@@ -120,6 +120,9 @@ main {
 	padding-left:2px;
 	color:#384048;
 }
+.modal-title{
+	padding-left:15px;
+}
 .side-inline li{
 	display:inline-block;
 }
@@ -237,12 +240,12 @@ ul{
 	display:inline-block;
 }
 .find-id a:hover{
-	color:#037332;
+	color:#e65962;
 	text-decoration:none;
 }
 #login_Id{
-	color:red;
+	color:#e65962;
 }
 #login_Pw{
-	color:red;
+	color:#e65962;
 }

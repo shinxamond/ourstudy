@@ -46,7 +46,7 @@ Kakao.API.request({
 				<div class="row">
 					<div class="col-3"></div>
 					<div class="col-7">
-						<h3 class="modal-title ourstudy mb-3 mt-3" id="loginModalLabel">OurStudy</h3>
+						<h3 class="modal-title ourstudy my-3" id="loginModalLabel">OurStudy</h3>
 					</div>
 					<div class="col-2">
 						<%-- x 닫기 --%>

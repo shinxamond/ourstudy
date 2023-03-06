@@ -25,7 +25,6 @@
 	function drawChart() {
 	  var data = google.visualization.arrayToDataTable([
 		['이름', '공부시간', {role: 'style'}],
-	    ['',0,''],
 	    <c:forEach var="studyTime" items="${studyTime}" begin="0" end="0">
 	    ['${studyTime.mem_name}', ${studyTime.total_time}/3600, 'fill-color:#384048;'],
 	    </c:forEach>
@@ -95,7 +94,6 @@
 	<div class="row">
 		<div class="card main_card" id="study_time">
 			<span class="main-title" style="margin:15px 0 0px 10px;">주간 공부시간 랭킹 </span>
-			
 			<c:if test="${empty studyTime}">
 				<div>표시할 데이터가 없습니다</div>
 			</c:if> 

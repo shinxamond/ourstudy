@@ -69,15 +69,12 @@ public class MainController {
 		   System.out.println("member[" + i +"] = " + memArray[i]);
 	   }
 
-	   
 		map2.put("start", 1);
 		map2.put("end", 4);
 	   
 	   List<SeatVO> member_RankStudyTime = mainService.member_Rank(memArray, setThisMonday.toString(), setNextMonday.toString());
 	   
 		   model.addAttribute("studyTime", member_RankStudyTime);
-	   
-	   //model.addAttribute("studyTime", member_studyTime);
 	   
 	   return "main";//타일스 설정값
 	}
