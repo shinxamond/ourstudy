@@ -136,6 +136,10 @@ public class SeatController {
       int mem_status = seatService.getMem_status(mem_num);
       int seat_num = seatService.getOutMemberSeat(mem_num);
       
+      if(mem_status != 2) {
+    	  return "redirect:/seat/selectForm.do";
+      }
+      
       logger.debug("<<<<회원정보 >>>>: " + mem_num + "<<<<<<<좌석번호>>>>: " + seat_num + "<<<<회원이름>>>>:" + mem_name);
       
       SeatVO seatVO = initCommand();
@@ -143,10 +147,6 @@ public class SeatController {
       seatVO.setMem_name(mem_name);
       seatVO.setSeat_num(seat_num);
 
-      if(mem_status != 2) {
-    	  return "redirect:/seat/selectForm.do";
-      }
-      
       seatService.inSeatWhenHold(seatVO);
          
       return "redirect:/mypage/myPageMain.do";
