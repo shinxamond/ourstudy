@@ -38,8 +38,6 @@
 				onclick="requestCardPay()" value="카드">
 		</div>
 	</form>
-	<input type="button" class="btn btn-success"
-			onclick="location.href='${pageContext.request.contextPath}/locker/section.do'" value="경연이의 엄청난 사물함">
 	
 	
 <script src="${pageContext.request.contextPath}/js/pay.js"></script>
