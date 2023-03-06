@@ -76,13 +76,13 @@ public class PayController {
 	
 	@GetMapping("/pay/locker_pay.do")
 	public ModelAndView locker_pay(@RequestParam int locker_num, HttpSession session, Model model) {
-		int ticket_num = (Integer)session.getAttribute("ticket_num");						//Session에서 이용권 번호 가져오기
+		int ticket_num = (Integer)session.getAttribute("ticket_num");//Session에서 이용권 번호 가져오기
 		
 		logger.debug("<<이용권 정보>> : " + ticket_num);
 
 		TicketVO ticketVO = ticketService.selectTicket(ticket_num);
 		
-		session.removeAttribute("ticket_num");												//정보 삭제
+		session.removeAttribute("ticket_num");//정보 삭제
 		
 		model.addAttribute("locker_num", locker_num);
 		

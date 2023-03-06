@@ -22,11 +22,15 @@ $(function(){
 		}
 	});
 	
-	$('#del-btn').on('click',function(){
+	
+	$('#del_btn').on('click',function(){
+		
+		let ticket_nums = $('#ticket_list').serialize();
+		alert(ticket_nums);
 		$.ajax({
 			url:'deleteTicket.do',
 			type:'post',
-			data:{ticket_num:$('#ticket_num').attr('data-ticketnum')},
+			data:ticket_nums,
 			dataType:'json',
 			success:function(param){
 				if(param.result == 'logout'){

@@ -35,11 +35,6 @@ public class TicketServiceImpl implements TicketService{
 	}
 
 	@Override
-	public void deleteTicket(Integer ticket_num) {
-		ticketMapper.deleteTicket(ticket_num);
-	}
-
-	@Override
 	public List<TicketVO> selectTicketList(Map<String, Object> map) {
 		return ticketMapper.selectTicketList(map);
 	}
@@ -52,5 +47,11 @@ public class TicketServiceImpl implements TicketService{
 	@Override
 	public List<TicketVO> selectAdminTicketList(Map<String, Object> map) {
 		return ticketMapper.selectAdminTicketList(map);
+	}
+
+	@Override
+	public void deleteTicket(int[] ticket_nums) {
+		ticketMapper.deleteTicket(ticket_nums);
+		
 	}
 }

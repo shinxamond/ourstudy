@@ -26,8 +26,8 @@
 						datasets : [{
 							data : [mon, tue, wed, thu, fri, sat, sun],
 							label : '내 공부시간',
-							borderColor : '#006633',
-							backgroundColor: '#006633',
+							borderColor : '#E65962',
+							backgroundColor: '#E65962',
 							pointStyle : false,
 							fill : false,
 							tension : 0.3,

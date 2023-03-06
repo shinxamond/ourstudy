@@ -1,5 +1,6 @@
 package kr.spring.ticket.controller;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -150,16 +151,17 @@ public class TicketAdminController {
 	//======= 이용권 삭제 =======//
 	@RequestMapping("/ticket/deleteTicket.do")
 	@ResponseBody
-	public Map<String, String> deleteTicket(
-			@RequestParam int ticket_num,
+	public Map<String, String> deleteTicket(int[] ticket_nums,
 			HttpSession session){
 
+		logger.debug("<<이용권 삭제>> : " + ticket_nums);
+		
 		Map<String, String> mapAjax = new HashMap<String, String>();
 		MemberVO user = (MemberVO)session.getAttribute("user");
 		if(user == null) {
 			mapAjax.put("result", "logout");
 		}else {
-			ticketService.deleteTicket(ticket_num);
+			ticketService.deleteTicket(ticket_nums);
 			mapAjax.put("result", "success");
 		}
 

@@ -1,5 +1,6 @@
 package kr.spring.ticket.dao;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
@@ -31,8 +32,8 @@ public interface TicketMapper {
 			+ "ticket_price=#{ticket_price} WHERE ticket_num=#{ticket_num}")
 	public void updateTicket(TicketVO ticket);
 	//이용권 삭제
-	@Delete("DELETE FROM ticket WHERE ticket_num=#{ticket_num}")
-	public void deleteTicket(Integer ticket_num);
+	//@Delete("DELETE FROM ticket WHERE ticket_num=#{ticket_num}")
+	public void deleteTicket(int[] ticket_nums);
 	//이용권 목록(사용자)
 	public List<TicketVO> selectTicketList(Map<String, Object> map);
 	//이용권 목록(관리자)

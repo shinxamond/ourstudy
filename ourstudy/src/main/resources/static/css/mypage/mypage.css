@@ -12,13 +12,13 @@
     font-weight: 400;
     font-style: normal;
 }
-a, a:hover a:visited, a:focus{
+.element-box a, a:hover a:visited, a:focus{
 	text-decoration: none !important;
     color: #000000 !important;
 }
 
 div#main_footer{
-	background-color:#9BD0C9;
+	background-color:#B4AAB1;
 	padding:30px 0 20px 27px;
 	height:220px;
 }
@@ -47,13 +47,13 @@ div#main_footer .footer-sns {
     font-size: 11pt;
 }
 .footer-sns a:hover{
-	color:#037332;
+	color: #F3F1F1;
 }
 /*========마이페이지 헤더========*/
 /*
 헤더 기본*/
 #mypage-header{
-	background-color : #f2f7f4;
+	background-color : #F8E0E6;
 }
 .mypage-title{
 	text-align: center;
