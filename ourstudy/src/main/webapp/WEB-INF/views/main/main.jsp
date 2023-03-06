@@ -228,7 +228,9 @@ function alarm_connect2(){
 		console.log('채팅 종료');
 	}
 };
-alarm_connect2();
+if(${user!=null}){
+	alarm_connect2();
+	}
 
 function selectMsg(room_num){//메시지 불러오기
 	
@@ -320,6 +322,7 @@ function countmsg(){
 				$(param.clist).each(function(index,item){
 					
 					$('.c'+item.talkroom_num).text(item.room_cnt);
+					$('.c'+item.talkroom_num).css({"background-color":"red","color":"white","border-radius":"15px","display":"inline-block","height":"20px","width":"20px","text-align":"center"});
 				});
 			}else{
 				alert('메시지 등록 오류');
