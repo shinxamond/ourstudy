@@ -56,6 +56,11 @@ public class InformationServicelmpl implements InformationService{
 		
 	}
 
+	@Override
+	public int checkImportant() {
+		return informationMapper.checkImportant();
+	}
+	
 	
 	/*
 	 * @Override public List<InformationVO> notice(Integer info_pin) { return

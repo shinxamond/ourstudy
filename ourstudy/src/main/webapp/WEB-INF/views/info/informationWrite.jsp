@@ -58,7 +58,7 @@
 			   문제점 수정할 때 체크 풀려있음 --%>
 			<form:checkbox path="info_pin" value="1" label="상단에 고정하기" />
 			<form:hidden path="info_pin" value="0" />		
-			<form:button>등록</form:button>
+			<form:button onclick="">등록</form:button>			
 			<input type="button" value="목록" 
 			             onclick="location.href='/info/informationList.do'">
 		</div>

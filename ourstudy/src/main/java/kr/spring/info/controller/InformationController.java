@@ -1,10 +1,12 @@
 package kr.spring.info.controller;
 
+import java.io.PrintWriter;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import javax.validation.Valid;
 
@@ -95,8 +97,8 @@ public class InformationController {
 	@PostMapping("/info/infoWrite.do")
 	public String submit(@Valid InformationVO informationVO, BindingResult result,
 			Model model,
-			HttpServletRequest request,
-			HttpSession session) {
+			HttpServletRequest request, HttpServletResponse response,
+			HttpSession session) throws Exception{
 		logger.debug("<<게시판 글쓰기>> : " + informationVO);
 		logger.debug("<<업로드 파일 용량>> : " 
 		           + informationVO.getUploadfile().length);
@@ -113,12 +115,21 @@ public class InformationController {
 		MemberVO user = (MemberVO)session.getAttribute("user");
 		informationVO.setMem_num(user.getMem_num());
 		
+		//필독 개수 체크
+		int count = informationService.checkImportant();
+		
+		if(informationVO.getInfo_pin()==1 && count == 3) {
+			 response.setContentType("text/html; charset=UTF-8"); PrintWriter out =
+			 response.getWriter();
+			 out.println("<script>alert('필독은 3개까지만 가능합니다.');</script>"); out.flush();
+			 return form();
+		}
+		
 		//글쓰기	
 		informationService.insertInformation(informationVO);
 		
 		model.addAttribute("message", "등록 되었습니다.");
-		model.addAttribute("url",
-				request.getContextPath()+"/info/informationList.do");
+		model.addAttribute("url", request.getContextPath()+"/info/informationList.do");
 		return "common/resultView";
 	}
 	

@@ -42,5 +42,8 @@ public interface InformationMapper {
 	public void deleteInformation(Integer info_num);
 	@Update("UPDATE information SET uploadfile='',filename='' WHERE info_num=#{info_num}")
 	public void deleteFile(Integer info_num);
-
+	
+	//필독 개수 체크
+	@Select("SELECT COUNT(*) FROM information WHERE info_pin = 1")
+	public int checkImportant();
 }

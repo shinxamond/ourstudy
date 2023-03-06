@@ -773,10 +773,19 @@ h6 {
 		margin: auto;
 		padding: 20px 0px;
 	}
+	.search-bar2 {
+		min-width: 85%;
+		margin: auto;
+		padding: 20px 0px;
+	}	
 	#form-select1 {
 		width: 20px;
 		margin-right: 5px;
 	}
+	#form-select2 {
+		width: 20px;
+		margin-right: 5px;
+	}	
 }
 
 
