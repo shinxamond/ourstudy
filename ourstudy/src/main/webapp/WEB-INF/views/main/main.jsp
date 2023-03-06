@@ -178,6 +178,9 @@ $(function(){
 		<c:if test="${talk_count.room_cnt > 0 }">
 		<span class="c${room_num}" id="talk_inform" style="position: fixed; right: 47px; bottom: 87px;">${talk_count.room_cnt}</span>
 		</c:if>
+		<c:if test="${talk_count.room_cnt == 0 }">
+		<span class="c${room_num}" style="position: fixed; right: 47px; bottom: 87px;"></span>
+		</c:if>
 	</c:forEach>
 	<span id="roomc" style="position: fixed; right: 40px; bottom: 30px;"></span>
 </c:if>
