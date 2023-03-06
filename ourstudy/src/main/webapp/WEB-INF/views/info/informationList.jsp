@@ -27,9 +27,9 @@
 				onclick="location.href='infoWrite.do'">
 			</c:if>
 		</div>
-		<c:if test="${count == 0}">
+		<c:if test="${count == 0 && countimport}">
 		<div class="result-display">표시할 안내사항이 없습니다.</div>
-		</c:if>	
+		</c:if>
 		<c:if test="${count > 0}">
 		<table class="striped-table">
 			<tr>
@@ -37,13 +37,30 @@
 				<th width="500">제목</th>
 				<th>작성일</th>
 			</tr>
+	 		<c:if test="${countimport > 0}">
+			<c:forEach var="importinfo" items="${informationImportList}">
+			<tr>
+				<c:if test="${importinfo.info_pin == 0}">
+				<td>${importinfo.info_num}</td>
+				</c:if>	
+				<c:if test="${importinfo.info_pin == 1}">
+				<td><span style="color:#ffc400">★★★</span><span style="color:#097bd9">필독</span><span style="color:#ffc400">★★★</span></td>
+				</c:if>	
+				<td>
+					<a href="infoDetail.do?info_num=${importinfo.info_num}">${importinfo.info_title}</a>
+				</td>
+				<td>${importinfo.info_date}</td> 		
+			</tr>
+			</c:forEach>			
+			</c:if>
+			
 			<c:forEach var="info" items="${informationList}">
 			<tr>
 				<c:if test="${info.info_pin == 0}">
 				<td>${info.info_num}</td>
 				</c:if>	
 				<c:if test="${info.info_pin == 1}">
-				<td>필독</td>
+				<td><span style="color:blue">필독</span></td>
 				</c:if>	
 				<td>
 					<a href="infoDetail.do?info_num=${info.info_num}">${info.info_title}</a>

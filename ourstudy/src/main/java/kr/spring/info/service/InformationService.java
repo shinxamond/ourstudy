@@ -10,6 +10,7 @@ public interface InformationService {
 	public InformationVO selectInformation(Integer info_num);
 	public int selectinfoRowCount(Map<String,Object> map);
 	public List<InformationVO> selectInfoList(Map<String,Object> map);
+	public List<InformationVO> selectImportList();
 	public void insertInformation(InformationVO info);
 	public void updateInformation(InformationVO info);
 	public void deleteInformation(Integer info_num);

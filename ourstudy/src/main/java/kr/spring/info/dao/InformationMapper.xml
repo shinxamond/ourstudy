@@ -5,16 +5,14 @@
 <mapper namespace="kr.spring.info.dao.InformationMapper">
 
 	<sql id="infoSearch">
-		<where>
-			<if test="keyword != null and keyword != ''">
-  				<if test="keyfield == 1">
-  					i.info_title LIKE '%' || #{keyword} || '%'
-  				</if>
-  				<if test="keyfield == 2">
-  					i.info_content LIKE '%' || #{keyword} || '%'
-  				</if>
+		<if test="keyword != null and keyword != ''">
+  			<if test="keyfield == 1">
+  				and i.info_title LIKE '%' || #{keyword} || '%'
   			</if>
-		</where>
+  			<if test="keyfield == 2">
+  				and i.info_content LIKE '%' || #{keyword} || '%'
+  			</if>
+  		</if>
 	</sql>
 	<select id="selectinfoRowCount" parameterType="map"
   	                           resultType="integer">
@@ -22,17 +20,27 @@
   		  COUNT(*)
   	FROM information i JOIN member_detail d
   		ON i.mem_num = d.mem_num
-	<if test="keyword != null and keyword != ''">
-		<if test="keyfield == 1">
-		WHERE i.info_title LIKE '%' || #{keyword} || '%'
-		</if>
-		<if test="keyfield == 2">
-		WHERE i.info_content LIKE '%' || #{keyword} || '%'
-		</if>
-	</if>   		
-  	</select>                     
-	<select id="selectInfoList" parameterType="map"
-  	                         resultType="informationVO">
+  	WHERE i.info_pin = 0 
+	<include refid="infoSearch"></include>		
+  	</select>
+  	<select id="selectImportList" parameterType="map" resultType="informationVO">
+		SELECT
+  		   *
+  		FROM (SELECT
+  		    	i.info_num,
+  		    	<![CDATA[
+  		        REPLACE(REPLACE(i.info_title,'<','&lt;'),'>','&gt;') info_title,
+  		        ]]>
+  		        i.info_pin,
+  		        i.info_date,
+  		        i.mem_num,
+  		        i.info_content 
+  		      FROM information i JOIN member_detail d
+  		      ON i.mem_num = d.mem_num
+  		      WHERE i.info_pin = 1
+  		      ORDER BY i.info_date DESC)	
+  	</select>                    
+	<select id="selectInfoList" parameterType="map" resultType="informationVO">
 		SELECT
   		   *
   		FROM (SELECT
@@ -49,8 +57,9 @@
   		              i.info_content 
   		             FROM information i JOIN member_detail d
   		    		 ON i.mem_num = d.mem_num
-  		    		 <include refid="infoSearch"></include> 
-  		      		ORDER BY (CASE WHEN i.info_pin = 1 THEN 0 ELSE 1 END), i.info_pin DESC, i.info_date DESC)a)
+  		    		 WHERE i.info_pin = 0
+  		    		 <include refid="infoSearch"></include>
+  		      		ORDER BY i.info_date DESC)a)
   		  
   		      		
   		<![CDATA[

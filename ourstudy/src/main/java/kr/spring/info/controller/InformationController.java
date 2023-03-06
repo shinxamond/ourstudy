@@ -57,14 +57,30 @@ public class InformationController {
 			map.put("keyfield", keyfield);
 			map.put("keyword", keyword);
 			
-			//글의 총개수 또는 검색된 글의 개수
+			//필독 제외 글개수
 			int count = informationService.selectinfoRowCount(map); 
 			logger.debug("<<count>> : " + count);
 			
-			//페이지 처리
-			 PagingUtil page = new PagingUtil(keyfield,keyword,
-					 	currentPage,count,10,10,"informationList.do");
-			 
+			//필독 개수 체크
+			int countimport = informationService.checkImportant();
+			logger.debug("<<필독 개수>> : " + countimport);
+						
+			//페이지 처리(필독 개수마다 다르게)
+			PagingUtil page;
+			if(countimport == 1) {
+				page = new PagingUtil(keyfield,keyword,currentPage,count,10-1,10,"informationList.do");
+			} else if(countimport == 2) {
+				page = new PagingUtil(keyfield,keyword,currentPage,count,10-2,10,"informationList.do");
+			} else if(countimport == 3) {
+				page = new PagingUtil(keyfield,keyword,currentPage,count,10-3,10,"informationList.do");
+			} else {
+				//필독 0개일때,
+				page = new PagingUtil(keyfield,keyword,currentPage,count,10,10,"informationList.do");
+			}
+			List<InformationVO> listimport = null;
+			if(countimport>0)
+				listimport = informationService.selectImportList();
+			logger.debug("<<필독처리완료>> : ");
 			
 			map.put("start", page.getStartRow());
 			map.put("end", page.getEndRow());
@@ -76,12 +92,16 @@ public class InformationController {
 				map.put("end", page.getEndRow());
 				
 				list = informationService.selectInfoList(map);
+				logger.debug("<<필독 제외글 처리완료>> : ");
 			}
 			ModelAndView mav = new ModelAndView();
 			mav.setViewName("informationList");
 			mav.addObject("count",count);
 			mav.addObject("informationList",list);
 			mav.addObject("page",page.getPage());
+			
+			mav.addObject("countimport",countimport);
+			mav.addObject("informationImportList",listimport);
 			
 			return mav;
 	}

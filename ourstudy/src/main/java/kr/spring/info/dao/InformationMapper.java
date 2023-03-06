@@ -26,6 +26,8 @@ public interface InformationMapper {
 	public List<InformationVO> selectInfoList(Map<String,Object> map);
 	public int selectinfoRowCount(Map<String,Object> map);
 	
+	public List<InformationVO> selectImportList();
+	
 	//글등록
 	@Insert("INSERT INTO information (info_num,info_date,info_title,"
 			+ "info_content,info_pin,mem_num)" 

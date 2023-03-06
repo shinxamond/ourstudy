@@ -60,6 +60,11 @@ public class InformationServicelmpl implements InformationService{
 	public int checkImportant() {
 		return informationMapper.checkImportant();
 	}
+
+	@Override
+	public List<InformationVO> selectImportList() {
+		return informationMapper.selectImportList();
+	}
 	
 	
 	/*
