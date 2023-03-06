@@ -2,7 +2,7 @@
 *{
 	text-decoration:none;
 	list-style-type : none; 
-	color : black;
+	/*color : black;*/
 	margin : 0;
 	padding : 0;
 }
@@ -12,11 +12,13 @@
     font-weight: 400;
     font-style: normal;
 }
-.element-box a:hover,a:visited,a:focus{
+.element-box a,.element-box a:hover,a:visited,a:focus{
 	text-decoration: none !important;
     color: #000;
 }
-S
+.btn-toggle-nav a{
+	color:black;
+}
 .btn-toggle-nav a:hover,
 .btn-toggle-nav a:focus {
   background-color: #f4abb2;
@@ -51,6 +53,9 @@ div#main_footer .footer-sns {
 	line-height: 1.7em;
     font-family: 'Pretendard-Regular';
     font-size: 11pt;
+}
+.footer-sns a{
+	color:black;
 }
 .footer-sns a:hover{
 	color:#F3F1F1;
