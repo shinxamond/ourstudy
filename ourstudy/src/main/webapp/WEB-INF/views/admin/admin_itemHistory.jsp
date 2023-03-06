@@ -7,6 +7,7 @@
 		<div class="content-main"><!-- 전체 화면의 87% -->
 			<!-- 사이드바 오른쪽 화면 시작 -->
 			<div class="content-right">
+				<h3 style="text-align:center"><b>물품대여기록</b></h3>
 				<!-- 검색폼 시작 -->
 				<div class="section" style="text-align:center"> 
 					<div class="search-bar">
@@ -30,7 +31,7 @@
 				<c:if test="${count == 0}">
 				<table class="table table-group-divider align-center">
 					<tr>
-						<td>표시할 게시물이 없습니다</td>
+						<td>표시할 대여기록이 없습니다</td>
 					</tr>
 				</table>
 				</c:if>

@@ -121,7 +121,7 @@ public class PayController {
 	@RequestMapping("/pay/payResult.do")
 	@ResponseBody
 	public Map<String, Object> payResult(
-			PayVO payVO, /* @RequestParam int locker_num, */
+			PayVO payVO,
 			HttpSession session){
 
 		TicketVO ticket = new TicketVO();
@@ -203,7 +203,6 @@ public class PayController {
 					//사물함 이용한 내역이 없거나 
 					//사물함 시간 구하기
 					
-					int lockerNum = 60;
 					
 					DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss");
 					/*
@@ -223,7 +222,7 @@ public class PayController {
 					System.out.println(user.getMem_num());
 					payVOForLocker.setMem_name(mem_name);
 					System.out.println(mem_name);
-					payVOForLocker.setLocker_num(lockerNum);
+					payVOForLocker.setLocker_num(payVO.getLocker_num());
 					
 					LocalDateTime now_time = LocalDateTime.now();
 					String now = now_time.format(formatter);
