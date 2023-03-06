@@ -4,7 +4,7 @@
     "http://mybatis.org/dtd/mybatis-3-mapper.dtd">  
 <mapper namespace="kr.spring.main.dao.MainMapper">  
 	<select id="member_Rank" resultType="seatVO">
-		SELECT mem_name, sum(total_time) AS total_time
+		SELECT * FROM (SELECT mem_name, sum(total_time) AS total_time
 		FROM (SELECT d.mem_name, d.total_time
 		FROM member_detail m JOIN seat_detail d
 		USING(mem_num)
@@ -13,7 +13,7 @@
 			#{mem}		
 		</foreach>
 		)GROUP BY mem_name
-		ORDER BY total_time DESC
+		ORDER BY total_time DESC) <![CDATA[WHERE ROWNUM <= 5]]>
 	</select>
 	<!-- SELECT mem_name, sum(total_time) AS total_time
 FROM (SELECT d.mem_name, d.total_time
