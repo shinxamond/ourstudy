@@ -107,25 +107,6 @@ public class SeatController {
 
    }
 
-
-   
-   //좌석이동
-   @RequestMapping("/seat/move.do")
-   public String moveSeat(HttpServletRequest request) {
-      //세션에서 mem_num값을 가져온다
-      HttpSession session = request.getSession();
-      int mem_num = (Integer)session.getAttribute("user_num");      
-//      String mem_name = memberService.getMem_name(mem_num);   
-      
-      SeatVO seatVO = initCommand();
-      seatVO.setMem_num(mem_num);
-//      seatVO.setSeat_num(seat_num);
-      
-      seatService.outSeatWhenIn(seatVO);
-      
-      return "";
-   }
-   
    //외출 상태에서 입실 처리
    @RequestMapping("/seat/in.do")
    public String In(HttpSession session) {
@@ -229,7 +210,10 @@ public class SeatController {
 
       														
 	  if(mem_status == 2) {            //외출 상태일 때
-		  seatService.outSeatWhenHold(seatVO);
+		  seat_num = seatService.getOutMemberSeat(mem_num);
+		  logger.debug("<<<<<<<<<<<<<<<<<<<seat_num>>>>>>>>>>>>>>>>" + seat_num);
+		  seatVO.setSeat_num(seat_num);
+//		  seatService.outSeatWhenHold(seatVO);
 	  }if(mem_status == 1) {            //입실 상태일 때
 		  seatService.outSeatWhenIn(seatVO);
 	  }
