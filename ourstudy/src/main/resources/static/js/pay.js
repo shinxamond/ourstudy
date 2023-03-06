@@ -124,8 +124,10 @@ $(function(){
                      alert('로그인 후 사용하세요');
                   }else if(param.result == 'success'){
                      alert('결제 완료 되었습니다');
+					 location.href='/main/main.do';
                   }else if(param.result == 'inUse'){
-					alert('사물함 기간 연장 가보자고');	
+					alert('사물함 기간이 연장되었습니다.');
+					location.href='/main/main.do';
 				}else{
                      alert('오류 발생');
                   }

@@ -12,9 +12,15 @@
     font-weight: 400;
     font-style: normal;
 }
-a, a:hover a:visited, a:focus{
+.element-box a:hover,a:visited,a:focus{
 	text-decoration: none !important;
-    color: #000000 !important;
+    color: #000;
+}
+S
+.btn-toggle-nav a:hover,
+.btn-toggle-nav a:focus {
+  background-color: #f4abb2;
+  color:white;
 }
 
 div#main_footer{
@@ -49,6 +55,10 @@ div#main_footer .footer-sns {
 .footer-sns a:hover{
 	color:#F3F1F1;
 }
+.link-font,.span-align a{
+	text-decoration:none;
+}
+
 /*========마이페이지 헤더========*/
 /*
 헤더 기본*/

@@ -20,9 +20,10 @@
 	<div id="main_body">
 		<tiles:insertAttribute name="body"/>
 	</div>
-	<div id="main_footer">
+	
+</div>
+<div id="main_footer">
 		<tiles:insertAttribute name="footer"/>
 	</div>
-</div>
 </body>
 </html>
