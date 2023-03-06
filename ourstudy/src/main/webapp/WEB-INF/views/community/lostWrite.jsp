@@ -63,8 +63,11 @@
 			</form>  
 			<form:errors path="lf_time" cssClass="error-color"/>  --%>
 			<label for="lf_time">분실/습득 날짜</label>
-			<form:input path="lf_time"/>
-			<form:errors path="lf_time" cssClass="error-color"/>
+			<input type="datetime-local" id="lf_time"
+    			   name="lf_time"  max=sysdate>
+			
+			<%--  <form:input path="lf_time"/>
+			<form:errors path="lf_time" cssClass="error-color"/>--%>
 			
 		</li>  
 		<li>

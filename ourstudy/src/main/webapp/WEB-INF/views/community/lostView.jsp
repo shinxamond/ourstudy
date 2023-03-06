@@ -24,12 +24,12 @@
 	<c:if test="${lost.lf_type == 0}">
 	<p>분실 물품 : ${lost.lf_item}</p>
 	<p>분실 위치 : ${lost.lf_loc}</p>
-	<p>분실 시간 : ${lost.lf_time}</p>
+	<p>분실 시간 : ${fn:replace(lost.lf_time,'T',' ')}</p>
 	</c:if>
 	<c:if test="${lost.lf_type == 1}">
 	<p>습득 물품 : ${lost.lf_item}</p>
 	<p>습득 위치 : ${lost.lf_loc}</p>
-	<p>습득 시간 : ${lost.lf_time}</p>
+	<p>습득 시간 : ${fn:replace(lost.lf_time,'T',' ')}</p>
 	</c:if>	
 	<hr size="1" width="100%">
 	<p>

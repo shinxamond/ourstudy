@@ -45,7 +45,7 @@
   		              ]]>
   		              l.lf_date, l.lf_type,l.f_condition,
   		              l.lf_item,l.lf_loc,
-  		              l.lf_time,
+  		              lf_time,
   		              mem_name,
   		              l.mem_num
   		             FROM lost_found l JOIN member_detail d
