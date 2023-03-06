@@ -44,13 +44,12 @@ public interface LostMapper {
 	
 	//댓글
 	public List<LostReplyVO> selectListLostReply(Map<String,Object> map);
-	@Select("SELECT reply_lost_seq.nextval FROM dual")
+	@Select("SELECT COUNT(*) FROM reply_lost JOIN WHERE lf_num=#{lf_num}")
 	public int selectRowCountLostReply(Map<String,Object> map);
 	@Select("SELECT * FROM reply_lost WHERE re_num=#{re_num}")
 	public LostReplyVO selectLostReply(Integer re_num);
 	@Insert("INSERT INTO reply_lost (re_num,re_content,"
-			  + "lf_num,mem_num) VALUES ("
-			  + "reply_lost_seq.nextval,#{re_content},"
+			  + "lf_num,mem_num) VALUES (reply_lost_seq.nextval,#{re_content},"
 			  + "#{lf_num},#{mem_num})")
 	public void insertLostReply(LostReplyVO lostReply);
 	@Update("UPDATE reply_lost SET re_content=#{re_content}, re_modify_date=SYSDATE "

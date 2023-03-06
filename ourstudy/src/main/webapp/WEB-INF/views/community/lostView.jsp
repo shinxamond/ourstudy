@@ -3,6 +3,7 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %> 
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %> 
 <!-- 중앙 컨텐츠 시작 -->
+<script src="${pageContext.request.contextPath}/js/lf.reply.js"></script>
 <div class="page-main">
 	<h2>분실물 찾기</h2>
 		<ul class="view-info">

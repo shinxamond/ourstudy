@@ -51,19 +51,19 @@ public class LostController {
 		@RequestMapping("/community/lostList.do")
 		public ModelAndView process(
 				 @RequestParam(value="pageNum",defaultValue="1") int currentPage,
-				 @RequestParam(value="keyfield",defaultValue="1") String keyfield) {
+				 @RequestParam(value="keyfield",defaultValue="1") String keyfield, String keyword) {
 					
 				Map<String,Object> map = 
 							new HashMap<String,Object>();
 				map.put("keyfield", keyfield);
-	
+				map.put("keyfield", keyword);
 				
 				//글의 총개수 또는 검색된 글의 개수
 				int count = lostService.selectRowCount(map);
 				logger.debug("<<count>> : " + count);
 				
 				//페이지 처리
-				PagingUtil page = new PagingUtil(keyfield,null,
+				PagingUtil page = new PagingUtil(keyfield,keyword,
 						 currentPage,count,10,10,"lostList.do");
 				
 				map.put("start", page.getStartRow());
@@ -183,10 +183,10 @@ public class LostController {
 	 	//==댓글 등록 
 	 	@RequestMapping("/community/writelfReply.do")
 	 	@ResponseBody
-	 	public Map<String,String> writeReply(LostReplyVO vo,
+	 	public Map<String,String> writeReply(LostReplyVO lost,
 	               HttpSession session, HttpServletRequest request){
 
-			logger.debug("<<댓글 등록>> : " + vo);
+			logger.debug("<<댓글 등록>> : " + lost);
 			
 			Map<String,String> mapJson = new HashMap<String,String>();
 			
@@ -196,9 +196,9 @@ public class LostController {
 				mapJson.put("result","logout");
 			}else {
 				//회원번호 등록
-				vo.setMem_num(user.getMem_num());
+				lost.setMem_num(user.getMem_num());
 				//댓글 등록
-				lostService.insertLostReply(vo);
+				lostService.insertLostReply(lost);
 				mapJson.put("result", "success");
 			}
 			return mapJson;
@@ -207,7 +207,7 @@ public class LostController {
 	 	//==댓글 목록 
 	 	@RequestMapping("/community/listlfReply.do")
 		@ResponseBody
-		public Map<String,Object> getList(@RequestParam(value="pageNum",defaultValue="1")int currentPage, 
+		public Map<String,Object> getList(@RequestParam(value="pageNum",defaultValue="1") int currentPage, 
 				@RequestParam int lf_num, HttpSession session){
 			
 			logger.debug("<<currentPage>> : " + currentPage);

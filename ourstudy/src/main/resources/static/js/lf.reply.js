@@ -11,9 +11,9 @@ $(function(){
 		$('#loading').show();
 		
 		$.ajax({
-			url:'listReply.do',
+			url:'listlfReply.do',
 			type:'post',
-			data:{pageNum:pageNum,board_num:$('#board_num').val()},
+			data:{pageNum:pageNum,lf_num:$('#lf_num').val()},
 			dataType:'json',
 			success:function(param){
 				//로딩 이미지 감추기
@@ -31,13 +31,9 @@ $(function(){
 					let output = '<div class="item">';
 					output += '<ul class="detail-info">';
 					output += '<li>';
-					output += '<img src="../member/viewProfile.do?mem_num='+item.mem_num+'" width="40" height="40" class="my-photo">';
-					output += '</li>';
 					output += '<li>';
-					if(item.nick_name){
-						output += item.nick_name + '<br>';
-					}else{
-						output += item.id + '<br>';
+					if(item.mem_name){
+						output += item.mem_name + '<br>';
 					}
 					if(item.re_modify_date){
 						output += '<span class="modify-date">최근 수정일 : ' + item.re_modify_date + '</span>';
@@ -89,7 +85,7 @@ $(function(){
 	$('#re_form').submit(function(event){
 		//기본 이벤트 제거
 		event.preventDefault();
-		
+
 		if($('#re_content').val().trim()==''){
 			alert('내용을 입력하세요!');
 			$('#re_content').val('').focus();
