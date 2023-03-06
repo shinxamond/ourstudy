@@ -33,9 +33,9 @@
 			<h6>결제 금액 <span id="final_price" style="float:right;" data-pricenum="${ticket.ticket_price}">${ticket.ticket_price}</span>
 			</h6>
 			<input type="button" id="pay_kakao" type="button" class="btn btn-primary" style="margin-left: 428px; margin-bottom: 3px;"
-				onclick="requestKakaoPay(this)" name="pay_plan" value="카카오" data-lockernum="${locker_num}">
+				onclick="requestKakaoPay()" name="pay_plan" value="카카오" data-lockernum="${locker_num}">
 			<input type="button" id="pay_card" type="button" class="btn btn-primary" style="margin-bottom: 3px;" name="pay_plan"
-				onclick="requestCardPay(this)" value="카드" data-lockernum="${locker_num}">
+				onclick="requestCardPay()" value="카드" data-lockernum="${locker_num}">
 		</div>
 	</form>
 	<input type="button" class="btn btn-success"
