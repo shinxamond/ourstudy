@@ -43,11 +43,12 @@
   		    		  <![CDATA[
   		              REPLACE(REPLACE(l.lf_title,'<','&lt;'),'>','&gt;') lf_title,
   		              ]]>
+  		              l.lf_content,
   		              l.lf_date, l.lf_type,l.f_condition,
   		              l.lf_item,l.lf_loc,
   		              lf_time,
-  		              mem_name,
-  		              l.mem_num
+  		              d.mem_name,
+  		              d.mem_num
   		             FROM lost_found l JOIN member_detail d
   		    		 ON l.mem_num = d.mem_num
   		    		<include refid="lostSearch"></include> 
