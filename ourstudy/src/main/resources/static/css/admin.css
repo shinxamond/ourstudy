@@ -742,6 +742,11 @@ h6 {
   margin:auto;
   padding: 20px 0px;
 }
+.search-bar2 {
+  max-width: 440px;
+  margin:auto;
+  padding: 20px 0px;
+}
 #sub-select {
 	display: flex;
 	align-items: flex-end;
@@ -749,6 +754,10 @@ h6 {
 }
 #form-select1 {
 	width: 160px;
+	margin-right: 5px;
+}
+#form-select2 {
+	width: 200px;
 	margin-right: 5px;
 }
 #list_sort {

@@ -15,7 +15,7 @@
 							<select class="form-select" id="form-select1" name="keyfield" aria-label="form-select"
 									onchange="location.href='admin_itemhistory.do?keyfield='+this.value">
 								<option value="1" <c:if test="${param.keyfield==1}">selected</c:if>>최근대여순</option>
-								<option value="2" <c:if test="${param.keyfield==2}">selected</c:if>>가나다순(이름)</option>
+								<option value="2" <c:if test="${param.keyfield==2}">selected</c:if>>이름(가나다순)</option>
 							</select> 
 							<!--                            //검색했을 때 값이 남아있게 하기 위해서 -->
 							<!--                            //자기자신에게 값을 보내기 때문에 param 이용 -->
@@ -73,11 +73,11 @@
 						<c:forEach var="history" items="${adminItemHistoryList}">
 						<tr>
 							<td>
-								<div>${history.item_title}</div>
-								<span class="t-sub-info">${history.item_title}</span> &nbsp; 
-								<span class="t-sub-info">${history.item_index}</span> &nbsp;
-								<span class="t-sub-info">${history.mem_num}</span> &nbsp;
-								<span class="t-sub-info">${history.mem_name}</span> &nbsp;
+								<div>
+								${history.item_title} &nbsp;
+								${history.item_index} &nbsp;
+								${history.mem_name} (${history.mem_num})
+								</div>
 								<span class="t-sub-info">${history.mem_phone}</span> &nbsp;
 								<span class="t-sub-info">${history.item_start}</span> &nbsp;
 								<c:if test="${history.item_end == null}">
