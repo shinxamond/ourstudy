@@ -1,5 +1,6 @@
 package kr.spring.main.service;
 
+import java.util.Collections;
 import java.util.List;
 import java.util.Map;
 
@@ -28,7 +29,13 @@ public class MainServiceImpl implements MainService{
 
 	@Override
 	public List<SeatVO> member_Rank(int[] member_list, String weekStart, String weekEnd) {
-		return mainMapper.member_Rank(member_list, weekStart, weekEnd);
+		
+		try {
+			return mainMapper.member_Rank(member_list, weekStart, weekEnd);
+		}catch(Exception e) {
+			List<SeatVO> list = Collections.emptyList();
+			return list;
+		}
 	}
 	
 
