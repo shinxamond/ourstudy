@@ -69,14 +69,14 @@ public class MainController {
 		   System.out.println("member[" + i +"] = " + memArray[i]);
 	   }
 
+	   
+		map2.put("start", 1);
+		map2.put("end", 4);
+	   
 	   List<SeatVO> member_RankStudyTime = mainService.member_Rank(memArray, setThisMonday.toString(), setNextMonday.toString());
 	   
-	   if(member_RankStudyTime == null || member_RankStudyTime.isEmpty()) {
-		   model.addAttribute("studyTime", 0); //0 아니면 문자열로 "notFound" 이런걸로
-	   }else {
 		   model.addAttribute("studyTime", member_RankStudyTime);
-	   }
-
+	   
 	   //model.addAttribute("studyTime", member_studyTime);
 	   
 	   return "main";//타일스 설정값

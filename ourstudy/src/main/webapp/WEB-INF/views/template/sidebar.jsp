@@ -120,13 +120,13 @@ Kakao.API.request({
 					</c:if>
 						
 					<%--임시로 넣어둠--%>
-					<c:if test="${user.mem_status == 0}">
+					<c:if test="${!empty user && user.mem_status == 0}">
 						<button class="btn text-white mt-4 mb-4 rounded" style="background-color:#b4aab1">퇴실</button>
 					</c:if>
-					<c:if test="${user.mem_status == 1}">
+					<c:if test="${!empty user && user.mem_status == 1}">
 						<button class="btn text-white mt-4 mb-4 rounded" style="background-color:red">입실중</button>
 					</c:if>
-					<c:if test="${user.mem_status == 2}">
+					<c:if test="${!empty user && user.mem_status == 2}">
 						<button class="btn text-white mt-4 mb-4 rounded" style="background-color:blue">외출중</button>
 					</c:if>
 				</div>

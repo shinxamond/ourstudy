@@ -21,17 +21,11 @@
 	google.charts.load("current", {packages:['corechart']});
 	google.charts.setOnLoadCallback(drawChart);
 	
-		
-			
+	
 	function drawChart() {
 	  var data = google.visualization.arrayToDataTable([
-	    
 		['이름', '공부시간', {role: 'style'}],
 	    ['',0,''],
-	    <c:if test="${studyTime==0}">
-	    표시할 데이터가 없습니다
-	    </c:if>
-	    <c:if test="${studyTime!=0}">
 	    <c:forEach var="studyTime" items="${studyTime}" begin="0" end="0">
 	    ['${studyTime.mem_name}', ${studyTime.total_time}/3600, 'fill-color:#384048;'],
 	    </c:forEach>
@@ -68,7 +62,7 @@
 	var chart = new google.visualization.ColumnChart(document.getElementById("columnchart_values"));
 	chart.draw(view, options);
 	}
-	</c:if>
+	
 </script>
 
 <div id="main_content_body" class="container">
@@ -101,7 +95,14 @@
 	<div class="row">
 		<div class="card main_card" id="study_time">
 			<span class="main-title" style="margin:15px 0 0px 10px;">주간 공부시간 랭킹 </span>
-			<div id="columnchart_values"></div>
+			
+			<c:if test="${empty studyTime}">
+				<div>표시할 데이터가 없습니다</div>
+			</c:if> 
+			
+			<c:if test="${!empty studyTime}">
+				<div id="columnchart_values"></div>
+			</c:if>
 		</div>
 		<div class="card main_card" id="all_todo">
 			<span class="main-title" style="margin:15px 0 18px 5px;">안내사항 </span>
