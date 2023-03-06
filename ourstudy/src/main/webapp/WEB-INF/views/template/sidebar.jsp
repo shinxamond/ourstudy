@@ -16,7 +16,6 @@
 <link href="https://fonts.googleapis.com/css2?family=Leckerli+One&display=swap" rel="stylesheet">
 <%--로그인 유효성 체크 --%>
 <script type="text/javascript" src="${pageContext.request.contextPath}/js/logincheck.js"></script>
-
 <%--카카오톡 로그아웃 --%>
 <script src="https://developers.kakao.com/sdk/js/kakao.js"></script>
 <script>
@@ -37,7 +36,7 @@ Kakao.API.request({
 </script>
 
 <%-- 사이드바 시작 --%>
-<div>
+
 <%-- 로그인 모달 시작 --%>
 <div class="modal fade" id="loginModal" tabindex="-1" aria-labelledby="loginModalLabel" aria-hidden="true">
 	<div class="modal-dialog modal-dialog-centered">
@@ -94,15 +93,16 @@ Kakao.API.request({
 	</div>
 </div>
 <%-- 로그인 모달 끝 --%>
-
+<div class="origin-side">
 	<div class="main-side">
+		
 		<nav id="main-sidebar">
 			<div class="shadow p-1 sidescroll" style="width:240px; height:100%; background-color:white;">
 				<div style="text-align:center;">
 					<a href="${pageContext.request.contextPath}/main/main.do"
 						class="d-flex align-items-center pb-3 mb-3 link-dark text-decoration-none border-bottom">
 						<svg class="bi pe-none me-2" width="30" height="24"></svg>
-							<span class="fs-2 fw-semibold ourstudy">OurStudy</span>
+							<span class="fw-semibold ourstudy">OurStudy</span>
 					</a>
 				<c:if test="${empty user}">
 					<img src="${pageContext.request.contextPath}/image_bundle/face.png" width="130" height="130" class="my-photo">
@@ -293,3 +293,75 @@ Kakao.API.request({
 	</div>
 </div>
 <%-- 사이드바 끝 --%>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<nav class="navbar navbar-expand-lg navbar-light" id="navbar">
+				<a href="${pageContext.request.contextPath}/main/main.do"
+						class="link-dark text-decoration-none">
+						<svg class="bi pe-none me-5" width="30" height="24"></svg>
+							<span class="fw-semibold ourstudy" style="margin-left:100px;">OurStudy</span>
+				</a>
+				<button class="navbar-toggler" type="button" 
+					data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
+					aria-controls="navbarSupportedContent" aria-expanded="false"
+					aria-label="Toggle navigation">
+					<span class="navbar-toggler-icon"></span>
+				</button> 
+				<div class="collapse navbar-collapse" id="navbarSupportedContent">
+					<ul class="navbar-nav">
+						<li class="nav-item dropdown"><a
+							class="nav-link dropdown-toggle" id="navbarDropdown" href="#"
+							role="button" data-bs-toggle="dropdown" aria-expanded="false">이용권구매</a>
+							<ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+								<li><a class="dropdown-item" href="${pageContext.request.contextPath}/course/list.do?course_cate=1">좌석 이용권</a></li>
+			       				<li><a class="dropdown-item" href="${pageContext.request.contextPath}/course/list.do?course_cate=2">사물함 이용권</a></li>
+							</ul>
+						</li>
+						<li class="nav-item"><a class="nav-link" href="${pageContext.request.contextPath}/news/list.do">좌석선택</a></li>
+						<li class="nav-item"><a class="nav-link" href="${pageContext.request.contextPath}/event/eventList.do?attr=1&attr=0">물품대여</a></li>
+						<li class="nav-item dropdown"><a
+							class="nav-link dropdown-toggle" id="navbarDropdown" href="#"
+							role="button" data-bs-toggle="dropdown" aria-expanded="false">시설안내</a>
+							<ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+								<li><a class="dropdown-item" href="${pageContext.request.contextPath}/jobEmploy/employList.do">안내사항</a></li>
+								<li><a class="dropdown-item" href="${pageContext.request.contextPath}/jobReview/reviewList.do">자주묻는질문</a></li>
+							</ul>
+						</li>
+						<li class="nav-item dropdown"><a
+							class="nav-link dropdown-toggle" id="navbarDropdown" href="#"
+							role="button" data-bs-toggle="dropdown" aria-expanded="false">커뮤니티</a>
+							<ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+								<li><a class="dropdown-item" href="${pageContext.request.contextPath}/jobEmploy/employList.do">분실물찾기</a></li>
+								<li><a class="dropdown-item" href="${pageContext.request.contextPath}/jobReview/reviewList.do">이용후기</a></li>
+							</ul>
+						</li>	
+					</ul>
+
+				
+					<c:if test="${empty user}">
+						<button class="btn text-white rounded" data-bs-toggle="modal" data-bs-target="#loginModal" 
+						style="background-color:#e65962; margin-left:320px;">로그인 | 회원가입</button>
+					</c:if>
+					<c:if test="${!empty user}">
+						<button class="btn text-white rounded logout-btn" style="background-color:#E65962; margin-left:380px;"
+						onclick="location.href='https://kauth.kakao.com/oauth/logout?client_id=29a4ee7bbc4eb20216c3708400363a9a&logout_redirect_uri=http://localhost:8001/main/main.do';location.href='${pageContext.request.contextPath}/member/logout.do';">
+						로그아웃</button>
+					</c:if>
+						
+				</div>
+			</nav>
+
+
+

@@ -15,7 +15,7 @@ html {
 main {
   display: flex;
   flex-wrap: nowrap;
-  height: 100vh;
+  height: 60vh;
   height: -webkit-fill-available;
   max-height: 100vh;
   overflow-x: auto;
@@ -119,6 +119,7 @@ main {
 	padding-top:8px;
 	padding-left:2px;
 	color:#384048;
+	font-size:23pt;
 }
 .modal-title{
 	padding-left:15px;
@@ -193,6 +194,27 @@ main {
 }
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 /*------------------------------------------------
 # 로그인 모달
 --------------------------------------------------*/
@@ -249,3 +271,102 @@ ul{
 #login_Pw{
 	color:#e65962;
 }
+
+
+/*================
+		반응형
+=================*/
+
+.main-side {
+      position:relative;
+}
+#navbar{
+	background-color:white;
+}
+
+@keyframes nav-ani {
+	from {
+		transform: translate(0, 0);
+	}
+	to {
+		transform: translate(-250px, -0);
+	}
+}
+
+@media screen and (max-width:991px) { 
+      
+        #main_content_body{
+        	position:relative;
+			animation: nav-ani 0.5s linear forwards;
+        }
+        .newbanner1{
+        	display:none;
+        }
+        .main_banner img{
+        	content:url(/image_bundle/study1.PNG);
+        }
+        .origin-side{
+        	display:none;
+        }
+        #navbar{
+        display:block;
+        }
+        
+}
+
+@media screen and (min-width:991px) {
+
+    #navbar{
+    	display:none;
+    }
+}
+
+
+
+/*================
+		nav
+=================*/
+.navbar{
+	box-shadow: 0 0 10px 0 rgba(1, 41, 112, 0.15);
+}
+
+.navbar-toggler{
+	margin-left:90px;
+}
+
+.navbar-nav a{
+	list-style: none;
+	text-decoration:none;
+	font-size:12pt;
+}
+.navbar-nav a:hover{
+	font-size:13pt;	
+}
+
+.nav-item{
+	margin-left:20px;
+}
+
+.dropdown-menu a:hover{
+	text-decoration:none;
+	font-size:12pt;
+	background-color:#F4ABB2;
+	color:white;
+}
+.dropdown-menu>li{
+	font-size:12pt;
+}
+
+.dropdown-menu{
+	width:150px;
+}
+
+
+
+
+
+
+
+
+
+

@@ -10,13 +10,17 @@
 body{
 	background-color:#F3F1F1!important;
 	height:100%;
+	position:relative;
 }
 
-.main_content_body{
+#main_content_body{
+	position:relative;
+}
+.row.yu{
 	position:relative;
 }
 .card{
-	min-width: 0;
+	min-width: 200px;
 	border-radius: 1rem;
 	border: 0 solid #d9dee3;
 	margin:20px 10px 5px 10px;
@@ -27,7 +31,6 @@ body{
 	display:flex;
 }
 .main_banner{
-	position: absolute;
 	margin-top:10px;
 }
 .newbanner1{
@@ -41,31 +44,31 @@ body{
 #cal_card{
 	width:330px;
 	height:330px;
-	margin:12px 0 0 35px;
-	left:845px;
+	top:-12px;
+	left:63px;
+	
 }
 #study_time{
+	min-width: 450px;
 	width:450px;
 	height:400px;
-	bottom:60px;
-	left:5px;
+	top:-75px;
 }
 #all_todo{
 	width:382px;
 	height:400px;
-	bottom:60px;
+	top:-75px;
 }
 .guitar{
 	width:330px;
 	height:300px;
-	bottom:60px;
 	padding:0;
+	margin:0;
 }
 #study_clock{
 	width:328px;
-	height:160px;
+	height:143px;
 }
-
 #study_maxim{
 	width:328px;
 	height:160px;
