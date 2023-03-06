@@ -64,6 +64,7 @@ public class SeatController {
 	  int mem_status = seatService.getMem_status((Integer)session.getAttribute("user_num"));
 	  
       ModelAndView mav = new ModelAndView();
+      
       List<SeatVO> list = seatService.getSeatList();
 
       mav.setViewName("selectForm");
@@ -77,6 +78,7 @@ public class SeatController {
    @RequestMapping("/seat/select.do")
    public String selectSeat(@RequestParam int seat_num,HttpServletRequest request,RedirectAttributes attributes, Model model) {
       HttpSession session = request.getSession();
+      
       if(session.getAttribute("user") == null) {
          logger.debug("객체 null");
       }
@@ -97,15 +99,10 @@ public class SeatController {
       seatVO.setMem_num(mem_num);
       seatVO.setMem_name(mem_name);
       seatVO.setSeat_num(seat_num);
+      
       seatService.selectSeat(seatVO);
       
-      String success_message = "좌석이 선택되었습니다.";
-      attributes.addFlashAttribute("message", success_message);
-//      List<LockerVO> list = lockerService.getLockerList();
-//      
-//      model.addAttribute("list", list);
-//      model.addAttribute("mem_status", mem_status);
-      	model.addAttribute("seat_num",seat_num);
+      model.addAttribute("seat_num",seat_num);
       
       return "redirect:/mypage/myPageMain.do";
    }
@@ -123,6 +120,7 @@ public class SeatController {
       SeatVO seatVO = initCommand();
       seatVO.setMem_num(mem_num);
 //      seatVO.setSeat_num(seat_num);
+      
       seatService.outSeatWhenIn(seatVO);
       
       return "";
@@ -134,7 +132,10 @@ public class SeatController {
    public String In(HttpSession session) {
       int mem_num = (Integer)session.getAttribute("user_num");
       String mem_name = memberService.getMem_name(mem_num);  
+      
+      int mem_status = seatService.getMem_status(mem_num);
       int seat_num = seatService.getOutMemberSeat(mem_num);
+      
       logger.debug("<<<<회원정보 >>>>: " + mem_num + "<<<<<<<좌석번호>>>>: " + seat_num + "<<<<회원이름>>>>:" + mem_name);
       
       SeatVO seatVO = initCommand();
@@ -142,6 +143,10 @@ public class SeatController {
       seatVO.setMem_name(mem_name);
       seatVO.setSeat_num(seat_num);
 
+      if(mem_status != 2) {
+    	  return "redirect:/seat/selectForm.do";
+      }
+      
       seatService.inSeatWhenHold(seatVO);
          
       return "redirect:/mypage/myPageMain.do";
@@ -158,10 +163,12 @@ public class SeatController {
       SeatVO seatVO = initCommand();
       seatVO.setMem_num(mem_num);
       seatVO.setSeat_num(seat_num);
+      
       seatService.holdSeat(seatVO);
       
       
       seatVO = seatService.getTimes(seat_num);
+      
       String in_time = seatVO.getIn_time();
       String out_time = seatVO.getOut_time(); 
       
@@ -189,6 +196,7 @@ public class SeatController {
       seatVO.setMem_num(mem_num);
       
       seatService.insertTotal_time(seatVO);
+      
       return "redirect:/mypage/myPageMain.do";
    }
    
@@ -201,6 +209,7 @@ public class SeatController {
       int mem_num = (Integer)session.getAttribute("user_num");
       if(member.getMem_auth() == 9) {
     	  mem_num = seatService.getSeatDetail(seat_num).getMem_num();
+    	  
     	  logger.debug("<<타겟 멤넘>> ::::: " + mem_num);
       }
       int mem_status = seatService.getMem_status(mem_num);
@@ -224,6 +233,7 @@ public class SeatController {
       logger.debug("seat_num = " + seat_num);
       
       seatVO = seatService.getTimes(seat_num);
+      
       String in_time = seatVO.getIn_time();
       String out_time = seatVO.getOut_time();
       
@@ -250,7 +260,9 @@ public class SeatController {
       seatVO.setMem_num(mem_num);
       
       seatService.insertTotal_time(seatVO);
+      
       seatVO.setTotal_time(diffIntSeconds);
+      
       myPageService.updateStudyTime(seatVO);
       
       logger.debug("seatVO" + seatVO);
