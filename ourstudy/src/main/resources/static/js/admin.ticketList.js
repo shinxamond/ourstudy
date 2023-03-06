@@ -22,11 +22,11 @@ $(function(){
 		}
 	});
 	
-	$('.del-btn').on('click',function(){
+	$('#del-btn').on('click',function(){
 		$.ajax({
 			url:'deleteTicket.do',
 			type:'post',
-			data:{ticket_num:$(this).attr('data-ticketnum')},
+			data:{ticket_num:$('#ticket_num').attr('data-ticketnum')},
 			dataType:'json',
 			success:function(param){
 				if(param.result == 'logout'){

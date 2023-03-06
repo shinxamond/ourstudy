@@ -19,17 +19,17 @@
 	<form id="ticket_list" method="post" style="border:none;">
 	<div class="container" style="margin-bottom: 5px;">
 		<input type="checkbox" id="chk_all" style="margin-left: 5px;">
-		<button type="button" id="del_btn" class="btn btn-danger"
+		<button type="button" id="del_btn" class="btn" style="background-color: #E65962;"
 			disabled="disabled" onclick="location.href='deleteTicket.do'">삭제</button>
 		<button type="button" class="btn"
-			style="background-color: #037332; color: #FFF;"
+			style="background-color: #384048; color: #FFF;"
 			onclick="location.href='admin_write.do'">등록</button>
 	</div>
 		<c:forEach var="ticket" items="${ticket}">
 			<div class="card" style="width: 40rem;">
 				<div class="card-body">
 					<input type="checkbox" class="choice-btn" style="margin-right: 3px;">
-					<input type="hidden" data-ticketnum="${ticket.ticket_num}">
+					<input type="hidden" id="${ticket.ticket_num}" data-ticketnum="${ticket.ticket_num}">
 					<a href="admin_ticketModify.do?ticket_num=${ticket.ticket_num}">${ticket.ticket_name}</a>
 					<div style="float: right;">
 						<fmt:formatNumber value="${ticket.ticket_price}" />
