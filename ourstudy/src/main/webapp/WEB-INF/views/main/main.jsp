@@ -14,7 +14,7 @@
 <script type="text/javascript" src="${pageContext.request.contextPath}/js/main/clock.js"></script>
 <script type="text/javascript" src="${pageContext.request.contextPath}/js/main/quotes.js"></script>
 <script type="text/javascript" src="${pageContext.request.contextPath}/js/main/calrendar.js"></script>
-<script async src="https://cse.google.com/cse.js?cx=5059383f37506464a"></script>
+
 
 <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
 <script>
@@ -125,7 +125,7 @@
 		<div class="guitar">
 			<div class="card main_card" id="study_clock">
 				<div class="digital-clock"></div>
-				<div class="gcse-search"></div>
+				
 			</div>
 			<div class="card main_card" id="study_maxim">
 				<span class="main-title" style="margin:5px 0 25px 5px;">오늘의 한 마디</span>
