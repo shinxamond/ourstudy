@@ -37,6 +37,7 @@ import kr.spring.member.vo.MemberVO;
 import kr.spring.mypage.service.MypageService;
 import kr.spring.pay.vo.PayVO;
 import kr.spring.point.vo.PointVO;
+import kr.spring.seat.service.SeatService;
 import kr.spring.seat.vo.SeatVO;
 
 @Controller
@@ -58,6 +59,8 @@ public class MypageController {
 	private MemberService memberService;
 	@Autowired
 	private ItemService itemService;
+	@Autowired
+	private SeatService seatService;
 	
 	//////////////나중에 지울것////////////////////////////
 	@PostMapping("/mypage/deleteSometing.do")
@@ -85,6 +88,8 @@ public class MypageController {
 		MemberVO member = mypageService.selectMember(user.getMem_num());
 		
 		SeatVO seat = mypageService.selectCurSeat(user.getMem_num());
+		
+		member.setMem_status(seatService.getMem_status(user.getMem_num()));
 		
 		Integer pointSum = mypageService.selectTotalPoint(user.getMem_num());
 		
