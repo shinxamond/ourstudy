@@ -169,7 +169,9 @@ $(function(){
 	<input type="hidden" name="members" value="${user.mem_num}">
 	<input type="hidden" name="members" value="527">
 	<input type="hidden" name="talkroom_name" id="talkroom_name" value="${user.mem_id}, admin9">
-	<input type="submit" value="채팅방 확인" id="talkCheck" style="position: fixed; right: 40px; bottom: 50px;">
+	
+	<input type="image" src="${pageContext.request.contextPath}/images/chat.jfif" alt="제출버튼" style="position: fixed; right: 40px; bottom: 50px; background-color:white; border:none; height:55px; weight:55px;">
+	<span id="roomc" style="position: fixed; right: 49px; bottom: 30px;">채팅</span>
 </form>
 </c:if>
 
