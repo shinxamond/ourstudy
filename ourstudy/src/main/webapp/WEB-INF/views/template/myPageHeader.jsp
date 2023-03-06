@@ -32,7 +32,7 @@
 			</span></span>
 			<br>
 			<div class = "seatcheck-buttons">
-				<button class = "seatcheck-button">입실</button>
+				<button class = "seatcheck-button" onclick="location.href='${pageContext.request.contextPath}/seat/in.do'">입실</button>
 				<button class = "seatcheck-button" onclick="location.href='${pageContext.request.contextPath}/seat/hold.do?seat_num=${seat.seat_num}'">외출</button>
 				<button class = "seatcheck-button" onclick="location.href='${pageContext.request.contextPath}/seat/out.do?seat_num=${seat.seat_num}'">퇴실</button>			
 			</div>
