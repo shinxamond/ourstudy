@@ -42,9 +42,6 @@ public class SeatController {
    private MemberService memberService;
    
    @Autowired
-   private LockerService lockerService;
-   
-   @Autowired
    private MypageService myPageService;
    
    //VO 초기화
@@ -78,8 +75,8 @@ public class SeatController {
    @RequestMapping("/seat/select.do")
    public String selectSeat(@RequestParam int seat_num,HttpServletRequest request,RedirectAttributes attributes, Model model) {
       HttpSession session = request.getSession();
-      
-      if(session.getAttribute("user") == null) {
+      MemberVO user = (MemberVO)session.getAttribute("user");
+      if(user == null) {
          logger.debug("객체 null");
       }
       
@@ -102,9 +99,12 @@ public class SeatController {
       
       seatService.selectSeat(seatVO);
       
+      user.setMem_status(seatService.getMem_status(mem_num));
+      
       model.addAttribute("seat_num",seat_num);
       
       return "redirect:/mypage/myPageMain.do";
+
    }
 
 
@@ -124,7 +124,6 @@ public class SeatController {
       seatService.outSeatWhenIn(seatVO);
       
       return "";
-      //
    }
    
    //외출 상태에서 입실 처리
