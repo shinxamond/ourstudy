@@ -44,7 +44,7 @@
 	</c:if>
 	
 	<c:if test="${!empty list}">
-	<table class="striped-talk-table">
+	<table class="striped-talk-table" id="talkroom_list">
 		<c:forEach var="talk" items="${list}">
 		
 		<tr>
@@ -63,6 +63,10 @@
 					<c:if test="${talk.room_cnt!=0}">
 					<span class="c${talk.talkroom_num}" id="talk_inform">${talk.room_cnt}</span>
 					</c:if>
+					<c:if test="${talk.room_cnt==0}">
+					<span class="c${talk.talkroom_num}"></span>
+					</c:if>
+					
 				</c:if>
 				<c:if test="${empty talk.talkVO.chat_date}">${talk.talkroom_date}</c:if>
 			</td>	
@@ -277,12 +281,38 @@ function alarm_connect2(){
 					alert('로그인해야 작성할 수 있습니다');
 					message_socket.close();
 				}else if(param.result == 'success'){
-					
+					$('#talkroom_list').empty();
 					$(param.clist).each(function(index,item){
-						console.log(item.talkroom_num);
-						$('.c'+item.talkroom_num).text(item.room_cnt);
-						$('.t'+item.talkroom_num).text(item.talkVO.chat_date);
-						$('.m'+item.talkroom_num).text(item.talkVO.message.substr(0, 45));
+						let output = '';
+						output += '<tr>';
+						output += '<td style="text-align:left">';
+						output += '<a href="#" data-toggle="modal" data-target="#${user.mem_num}" id="10"  data-id="'+item.talkroom_num+'">';
+						output += '<span>'+item.talkroom_name+'</span></a>';
+						output += '<br>';
+						if(item.talkVO!=null){
+							let message1 = item.talkVO.message;
+							message1 = message1.substr(0,45);
+							output += '<span class="m'+item.talkroom_num+'">'+message1+'</span>';
+						}
+						
+						output += '</td>';
+						output += '<td style="text-align:right">';
+						if(item.talkVO!=null){
+							if(item.talkVO.chat_date != ''){
+								output += '<span class="t'+item.talkroom_num+'">'+item.talkVO.chat_date+'</span>';
+								output += '<br>';
+								if(item.room_cnt!=0){
+									output += '<span class="c'+item.talkroom_num+'" id="talk_inform">'+item.room_cnt+'</span>';
+								}
+							}
+							if(item.talkVO.cht_date == ''){
+								item.talkroom_date
+							}
+						}
+						output += '</td>';
+						output += '</tr>';
+						
+						$('#talkroom_list').append(output);
 					});
 				}else{
 					alert('메시지 등록 오류');
@@ -296,7 +326,7 @@ function alarm_connect2(){
 		});
 	}
 	
-	
+		
 		$(document).on('click','#10',function(){//목록 클릭
 			
 			var room_num = $(this).data('id');

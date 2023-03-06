@@ -20,7 +20,7 @@
 		LEFT OUTER JOIN (SELECT 
 							talkroom_num,
 							mem_num,
-							count(*) room_cnt<!-- 안읽은 개수 -->
+							count(*) room_cnt /* 안읽은 개수*/
 						FROM talk_read
 						WHERE mem_num=#{mem_num}
 						GROUP BY talkroom_num,mem_num) e USING(talkroom_num)
@@ -38,7 +38,7 @@
 		AND talkroom_name LIKE '%' || #{keyword} || '%'
 		</if>
 		ORDER BY (CASE
-				  WHEN chat_date IS NULL THEN talkroom_date <!-- chat_date(채팅을 한번도 안치면)가 널이면 방생성 날짜가 들어간다 -->
+				  WHEN chat_date IS NULL THEN talkroom_date /* chat_date(채팅을 한번도 안치면)가 널이면 방생성 날짜가 들어간다*/
 				  ELSE chat_date
 				  END) DESC
 					
