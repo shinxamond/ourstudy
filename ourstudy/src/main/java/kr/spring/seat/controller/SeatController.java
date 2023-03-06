@@ -78,8 +78,8 @@ public class SeatController {
    @RequestMapping("/seat/select.do")
    public String selectSeat(@RequestParam int seat_num,HttpServletRequest request,RedirectAttributes attributes, Model model) {
       HttpSession session = request.getSession();
-      MemberVO user = (MemberVO)session.getAttribute("user");
-      if(user == null) {
+      
+      if(session.getAttribute("user") == null) {
          logger.debug("객체 null");
       }
       
@@ -101,8 +101,6 @@ public class SeatController {
       seatVO.setSeat_num(seat_num);
       
       seatService.selectSeat(seatVO);
-      
-      user.setMem_status(seatService.getMem_status(mem_num));
       
       model.addAttribute("seat_num",seat_num);
       
