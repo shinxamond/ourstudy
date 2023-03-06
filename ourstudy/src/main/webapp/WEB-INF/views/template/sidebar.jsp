@@ -177,10 +177,8 @@ Kakao.API.request({
         			</button>
         			<div class="collapse" id="notice-collapse">
          		 	<ul class="btn-toggle-nav fw-normal pb-1 small">
-           				<li><a href=<c:if test="${!empty user}">"${pageContext.request.contextPath}/info/informationList.do"</c:if> class="d-inline-flex rounded"
-           				<c:if test="${empty user}">data-bs-toggle="modal" data-bs-target="#loginModal"</c:if> class="rounded">안내사항</a></li>
-            			<li><a href=<c:if test="${!empty user}">"${pageContext.request.contextPath}/info/faq.do"</c:if> class="d-inline-flex rounded"
-            			<c:if test="${empty user}">data-bs-toggle="modal" data-bs-target="#loginModal"</c:if> class="rounded">자주 묻는 질문</a></li>
+           				<li><a href="${pageContext.request.contextPath}/info/informationList.do" class="d-inline-flex rounded">안내사항</a></li>
+            			<li><a href="${pageContext.request.contextPath}/info/faq.do" class="d-inline-flex rounded">자주 묻는 질문</a></li>
           			</ul>
         			</div>
         		</div>
@@ -195,8 +193,7 @@ Kakao.API.request({
          		 	<ul class="btn-toggle-nav fw-normal pb-1 small">
            				<li><a href=<c:if test="${!empty user}">"${pageContext.request.contextPath}/community/lostList.do"</c:if> class="d-inline-flex rounded"
            				<c:if test="${empty user}">data-bs-toggle="modal" data-bs-target="#loginModal"</c:if> class="rounded">분실물 찾기</a></li>
-            			<li><a href=<c:if test="${!empty user}">"${pageContext.request.contextPath}/review/list.do"</c:if> class="d-inline-flex rounded"
-            			<c:if test="${empty user}">data-bs-toggle="modal" data-bs-target="#loginModal"</c:if> class="rounded">이용후기</a></li>
+            			<li><a href="${pageContext.request.contextPath}/review/list.do" class="d-inline-flex rounded">이용후기</a></li>
           			</ul>
         			</div>
         		</div>

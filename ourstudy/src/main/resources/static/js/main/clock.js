@@ -5,7 +5,7 @@ $(document).ready(function() {
 
 function clockUpdate() {
   var date = new Date();
-  $('.digital-clock').css({'color': '#e65962', 'text-align' : 'center', 'font-weight' : 'bold', 'font-size' : '40pt'});
+  $('.digital-clock').css({'color': '#e65962', 'text-align' : 'center', 'font-weight' : 'bold', 'font-size' : '30pt'});
   function addZero(x) {
     if (x < 10) {
       return x = '0' + x;

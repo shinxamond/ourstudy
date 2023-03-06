@@ -63,12 +63,12 @@ body{
 }
 #study_clock{
 	width:328px;
-	height:140px;
+	height:160px;
 }
 
 #study_maxim{
 	width:328px;
-	height:180px;
+	height:160px;
 }
 .main-title{
 	font-family: 'Pretendard-Regular';
@@ -77,9 +77,10 @@ body{
 .digital-clock{
 	width:260px;
 	padding-left:40px;
-	padding-top:12px;
 }
-
+.gcse-search{
+	padding:0;
+}
 
 /*======================
   		 달력
