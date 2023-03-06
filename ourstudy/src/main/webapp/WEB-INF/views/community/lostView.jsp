@@ -10,7 +10,7 @@
 			<h4>${lost.lf_title}</h4>
 		</li>
 		<li>
-			작성자 : ${lost.mem_name}
+			작성자 : ${lost.mem_name} |
 			<c:if test="${!empty lost.lf_modify_date}">
 			최근 수정일 : ${lost.lf_modify_date}
 			</c:if>
@@ -53,5 +53,36 @@
 		
 		<input type="button" value="목록"
 		           onclick="location.href='lostList.do'">
+	</div>
+	<!-- 댓글 -->
+	<div id="reply_div">
+		<span class="re-title">댓글</span>
+			<form id="re_form">
+			<input type="hidden" name="lf_num"
+			    value="${lost.lf_num}" id="lf_num">
+			<textarea rows="3" cols="50" 
+			  name="re_content" id="re_content"
+			  class="rep-content"
+			  <c:if test="${empty user}">disabled="disabled"</c:if>
+			  ><c:if test="${empty user}">로그인해야 작성할 수 있습니다.</c:if></textarea>    
+		
+			<c:if test="${!empty user}">
+			<div id="re_first">
+				<span class="letter-count">300/300</span>
+			</div>
+			<div id="re_second">
+				<input type="submit" value="전송">
+			</div>
+			</c:if>
+		</form>
+	</div>
+	<!-- 댓글 목록 출력 -->
+	<div id="output"></div>
+	<div class="paging-button" style="display:none;">
+		<input type="button" value="더보기">
+	</div>
+	<div id="loading" style="display:none;">
+		<img src="${pageContext.request.contextPath}/images/loading.gif" width="50" 
+		                                height="50">
 	</div>
 </div>

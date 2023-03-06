@@ -37,12 +37,16 @@
   		    		  <![CDATA[
   		              REPLACE(REPLACE(l.lf_title,'<','&lt;'),'>','&gt;') lf_title,
   		              ]]>
-  		              l.lf_date,
+  		              l.lf_date, l.lf_type,l.f_condition,
+  		              l.lf_item,l.lf_loc,
+  		              l.lf_time,
+  		              d.mem_name,
   		              l.mem_num
   		             FROM lost_found l JOIN member_detail d
   		    		 ON l.mem_num = d.mem_num
-  		    		 <include refid="lostSearch"></include> 
-  		      		ORDER BY l.lf_num DESC)a)
+  		    		<include refid="lostSearch"></include> 
+  		      		ORDER BY l.lf_num DESC 
+  		      		)a)
   		<![CDATA[
   		WHERE rnum >= #{start} AND rnum <= #{end}
   		]]>   	
@@ -51,11 +55,36 @@
 		UPDATE lost_found SET
   		  lf_title=#{lf_title},
   		  lf_content=#{lf_content},
+  		  lf_type=#{lf_type},
+  		  lf_time=#{lf_time},
+  		  lf_loc=#{lf_loc},
+  		  lf_item=#{lf_item},
   		  f_condition=#{f_condition},
   		  lf_modify_date=SYSDATE
   		 WHERE lf_num=#{lf_num}
 	</update>
 
-
-
+	<!-- 댓글 -->
+	<select id="selectListLostReply" parameterType="map" resultType="lostReplyVO">
+  		SELECT
+  		   *
+  		FROM(SELECT
+  		       a.*,
+  		       rownum rnum
+  		     FROM(SELECT
+  		            re_num,
+  		            <![CDATA[
+  		            REPLACE(REPLACE(re_content,'<','&lt;'),'>','&gt;') re_content,
+  		            ]]>
+  		            re_date,re_modify_date,
+  		            lf_num,
+  		            mem_num,
+  		            mem_name
+  		          FROM reply_lost r JOIN member_detail d 
+  		          ON r.mem_num = d.mem_num
+  		           ORDER BY re_num DESC)a)
+  		    <![CDATA[
+  		    WHERE rnum >= #{start} AND rnum <= #{end}
+  		    ]]>          
+  	</select>	  
 </mapper>

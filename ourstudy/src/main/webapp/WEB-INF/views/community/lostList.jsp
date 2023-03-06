@@ -53,7 +53,6 @@
 			</td>
 			<td>${lost.lf_date}</td> 
 			<td>${lost.mem_name}</td> 
-			
 		</tr>
 		</c:forEach>
 	</table>

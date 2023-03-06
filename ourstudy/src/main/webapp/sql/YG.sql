@@ -1,9 +1,9 @@
 create table information(
   info_num number not null,
-  info_date date not null,
+  info_date date default sysdate not null,
   info_title varchar2(100) not null,
   info_content clob not null,
-  info_pin number(1) default 1 not null,
+  info_pin number(1) default 0 not null,
   info_modify_date date,
   uploadfile blob,
   filename varchar2(100),
@@ -13,9 +13,7 @@ create table information(
 );
 create sequence information_seq;
 
-SELECT *
-FROM   information
-ORDER BY (CASE WHEN info_pin = 1 THEN 1 ELSE 2 END), info_date DESC;
+
 
 
 --분실물 찾기
@@ -25,9 +23,9 @@ create table lost_found(
   lf_title varchar2(100) not null,
   lf_content varchar2(1000) not null,
   f_condition number(1) not null,
-  lf_date date not null,
+  lf_date date not default sysdate null,
   lf_item varchar2(100) not null,
-  lf_time timestamp,
+  lf_time varchar2(100),
   lf_loc varchar2(100) not null,
   lf_modify_date date,	
   mem_num number not null,
@@ -44,6 +42,7 @@ create table reply_lost(
   re_num number not null,
   re_date date default sysdate not null,
   re_content varchar2(1000) not null,
+  re_modify_date date,
   lf_num number not null,
   mem_num number not null,
   constraint reply_lost_pk primary key (re_num),

@@ -15,7 +15,6 @@ public interface LostService {
 	public void insertLost(LostVO lost);
 	public void updateLost(LostVO lost);
 	public void deleteLost(Integer lf_num);
-	public void deleteLostFile(Integer lf_num);
 	
 	
 	//댓글
@@ -25,6 +24,7 @@ public interface LostService {
 	public void insertLostReply(LostReplyVO lostReply);
 	public void deleteLostReply(Integer lf_num);
 	public void deleteLostReplyByLostNum(Integer lf_num);
+	public void updateLostReply(LostReplyVO lostReply);
 	
 	
 }

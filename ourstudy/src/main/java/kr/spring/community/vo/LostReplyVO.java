@@ -7,8 +7,16 @@ public class LostReplyVO {
 	private Date re_date;
 	private String re_content;
 	private int lf_num;
+	private Date re_modify_date;
 	private int mem_num;
+	private String mem_name;
 	
+	public String getMem_name() {
+		return mem_name;
+	}
+	public void setMem_name(String mem_name) {
+		this.mem_name = mem_name;
+	}
 	public int getRe_num() {
 		return re_num;
 	}
@@ -39,12 +47,19 @@ public class LostReplyVO {
 	public void setMem_num(int mem_num) {
 		this.mem_num = mem_num;
 	}
+	public Date getRe_modify_date() {
+		return re_modify_date;
+	}
+	public void setRe_modify_date(Date re_modify_date) {
+		this.re_modify_date = re_modify_date;
+	}
 	
 	
 	@Override
 	public String toString() {
-		return "LostReplyVO [re_num=" + re_num +", re_date" + re_date + ", re_content" + re_content +
-				", lf_num" + lf_num + ", mem_num" + mem_num + "]";
+		return "LostReplyVO [re_num=" + re_num +", re_date" + re_date + 
+				", re_content" + re_content + ", re_modify_date" + re_modify_date +
+				", lf_num" + lf_num + ", mem_num" + mem_num + ", mem_name" + mem_name +"]";
 	}
 	
 }

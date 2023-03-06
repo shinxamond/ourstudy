@@ -11,12 +11,16 @@ import org.apache.ibatis.annotations.Update;
 
 import kr.spring.community.vo.LostReplyVO;
 import kr.spring.community.vo.LostVO;
+import kr.spring.review.vo.ReviewReplyVO;
 
 @Mapper
 public interface LostMapper {
 	
 	@Select("SELECT lost_found_seq.nextval FROM dual")
 	public int selectLost_num();
+	@Select("SELECT * FROM lost_found l JOIN member_detail d "
+			  + "USING(mem_num) JOIN member_detail d "
+			  + "USING(mem_num) WHERE l.lf_num=#{lf_num}")
 	public LostVO selectLost(Integer lf_num);
 	
 	//글목록
@@ -33,11 +37,10 @@ public interface LostMapper {
 	public void insertLost(LostVO lost);
 	
 	//글수정 삭제
-
 	public void updateLost(LostVO lost);
-	@Delete("DELETE FROM lost_found WHERE info_num=#{info_num}")
+	@Delete("DELETE FROM lost_found WHERE lf_num=#{lf_num}")
 	public void deleteLost(Integer lf_num);
-	public void deleteLostFile(Integer lf_num);
+
 	
 	//댓글
 	public List<LostReplyVO> selectListLostReply(Map<String,Object> map);
@@ -50,6 +53,9 @@ public interface LostMapper {
 			  + "reply_lost_seq.nextval,#{re_content},"
 			  + "#{lf_num},#{mem_num})")
 	public void insertLostReply(LostReplyVO lostReply);
+	@Update("UPDATE reply_lost SET re_content=#{re_content}, re_modify_date=SYSDATE "
+			  + "WHERE re_num=#{re_num}")
+	public void updateLostReply(LostReplyVO lostReply);
 	@Delete("DELETE FROM reply_lost WHERE re_num=#{re_num}")
 	public void deleteLostReply(Integer lf_num);
 	@Delete("DELETE FROM reply_lost WHERE lf_num=#{lf_num}")

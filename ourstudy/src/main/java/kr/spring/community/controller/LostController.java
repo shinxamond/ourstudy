@@ -1,5 +1,6 @@
 package kr.spring.community.controller;
 
+import java.util.Collections;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -19,19 +20,24 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
 import kr.spring.community.service.LostService;
+import kr.spring.community.vo.LostReplyVO;
 import kr.spring.community.vo.LostVO;
 import kr.spring.info.controller.InformationController;
-import kr.spring.info.vo.InformationVO;
 import kr.spring.member.vo.MemberVO;
+import kr.spring.review.vo.ReviewReplyVO;
 import kr.spring.util.PagingUtil;
+import kr.spring.util.StringUtil;
 
 @Controller
 public class LostController {
 	private static final Logger logger =
 			LoggerFactory.getLogger(InformationController.class);
+	
+	private int rowCount = 10;
 	
 	@Autowired
 	private LostService lostService;
@@ -118,16 +124,181 @@ public class LostController {
 		 
 		 logger.debug("<<lf_num>> : " + lf_num);
 		 
-		 LostVO lostVO =
+		 LostVO lost =
 				 lostService.selectLost(lf_num);
 		 
-		 return new ModelAndView("lostView","lost",lostVO); 
-	 
+		lost.setLf_title(StringUtil.useNoHtml(lost.getLf_title()));
+
+		 
+		 return new ModelAndView("lostView","lost",lost); 
 	 }
 	
+	//==글수정
+	//수정 폼 
+	 @GetMapping("/community/lostUpdate.do") 
+	 public String formUpdate(@RequestParam int lf_num, Model model) { 
+			LostVO lostVO = lostService.selectLost(lf_num);
+			model.addAttribute("lostVO",lostVO);
 		
+			return "lostModify";
+	}
+	 
+	 //폼에서 전송된 데이터 처리
+	 @PostMapping("/community/lostUpdate.do")
+	 public String submitUpdate(@Valid LostVO lostVO, BindingResult result,
+				HttpServletRequest request, Model model) {
+			
+			logger.debug("<<글수정>> : " + lostVO);
+		
+			if(result.hasErrors()) {
+				
+				return "lostModify";
+			}		
+			
+			//글수정 
+			lostService.updateLost(lostVO);
+			
+			//View에 표시할 메시지
+			model.addAttribute("message", "수정 되었습니다.");
+			model.addAttribute("url", request.getContextPath()+"/community/lostList.do");
+			
+			return "common/resultView";
+			
+		}
+	
+	 //==글삭제
+	 @RequestMapping("/community/lostDelete.do")
+		public String submitDelete(@RequestParam int lf_num,Model model,
+				HttpServletRequest request) {
+			logger.debug("<<글삭제>> : " + lf_num);
+			
+			lostService.deleteLost(lf_num);
+			
+			return "redirect:/community/lostList.do";
+		}
+		
+		
+	 
+	 	//댓글!
+	 	//==댓글 등록 
+	 	@RequestMapping("/community/writelfReply.do")
+	 	@ResponseBody
+	 	public Map<String,String> writeReply(LostReplyVO vo,
+	               HttpSession session, HttpServletRequest request){
 
+			logger.debug("<<댓글 등록>> : " + vo);
+			
+			Map<String,String> mapJson = new HashMap<String,String>();
+			
+			MemberVO user = (MemberVO)session.getAttribute("user");
+			if(user==null) {
+				//로그인 안 됨
+				mapJson.put("result","logout");
+			}else {
+				//회원번호 등록
+				vo.setMem_num(user.getMem_num());
+				//댓글 등록
+				lostService.insertLostReply(vo);
+				mapJson.put("result", "success");
+			}
+			return mapJson;
+			}
+	 	
+	 	//==댓글 목록 
+	 	@RequestMapping("/community/listlfReply.do")
+		@ResponseBody
+		public Map<String,Object> getList(@RequestParam(value="pageNum",defaultValue="1")int currentPage, 
+				@RequestParam int lf_num, HttpSession session){
+			
+			logger.debug("<<currentPage>> : " + currentPage);
+			logger.debug("<<lost_num>> : " + lf_num);
+			
+			Map<String,Object> map = new HashMap<String,Object>();
+			map.put("lf_num", lf_num);
+			
+			//총 글의 개수
+			int count = lostService.selectRowCountLostReply(map);
+			
+			//페이지 처리
+			PagingUtil page = new PagingUtil(currentPage,count,rowCount,1,null);
+			map.put("start", page.getStartRow());
+			map.put("end", page.getEndRow());
+			
+			//목록 데이터 읽기
+			List<LostReplyVO> list = null;
+			if(count > 0) {
+				list = lostService.selectListLostReply(map);
+			}else {
+				list = Collections.emptyList();
+			}
+			
+			Map<String,Object> mapJson = new HashMap<String,Object>();
+			mapJson.put("count", count);
+			mapJson.put("rowCount", rowCount);
+			mapJson.put("list", list);
+			
+			//===== 로그인 한 회원정보 셋팅 =====//
+			MemberVO user = (MemberVO)session.getAttribute("user");
+			if(user!=null) {
+				mapJson.put("user_num", user.getMem_num());
+			}	
+			
+			return mapJson;
+		}
+	 	
+	 	
+	 	//==댓글 수정 
+	 	@RequestMapping("/community/updatelfReply.do")
+		@ResponseBody
+		public Map<String,String> modifyReply(LostReplyVO lostReplyVO, 
+				        HttpSession session, HttpServletRequest request){
+			
+			logger.debug("<<댓글수정>> : " + lostReplyVO);
+			
+			Map<String,String> mapJson = new HashMap<String,String>();
+			
+			MemberVO user = (MemberVO)session.getAttribute("user");
+			LostReplyVO db_reply = lostService.selectLostReply(lostReplyVO.getRe_num());
+			if(user==null) {
+				//로그인이 안 되어있는 경우
+				mapJson.put("result", "logout");
+			}else if(user!=null && 
+					user.getMem_num()==db_reply.getMem_num()) {
+				//로그인 회원번호와 작성자 회원번호 일치
 		
-		
-		
+				//댓글 수정
+				lostService.updateLostReply(lostReplyVO);
+				mapJson.put("result", "success");			
+			}else {
+				//로그인 회원번호와 작성자 회원번호 불일치
+				mapJson.put("result", "wrongAccess");
+			}
+			
+			return mapJson;
+		}
+	 	//==댓글 삭제
+	 	@RequestMapping("/community/deletelfReply.do")
+		@ResponseBody
+		public Map<String,String> deleteLostReply(@RequestParam int re_num, HttpSession session){
+			logger.debug("<<댓글 삭제>> : " + re_num);
+			
+			Map<String,String> mapJson = new HashMap<String,String>();
+			
+			MemberVO user = (MemberVO)session.getAttribute("user");
+			LostReplyVO db_reply = lostService.selectLostReply(re_num);
+			if(user==null) {
+				//로그인이 되어있지 않음
+				mapJson.put("result", "logout");
+			}else if(user!=null && 
+				user.getMem_num()==db_reply.getMem_num()) {
+				//로그인한 회원번호와 작성자 회원번호 일치
+				lostService.deleteLostReply(re_num);
+				mapJson.put("result", "success");
+			}else {
+				//로그인한 회원번호와 작성자 회원번호 불일치
+				mapJson.put("result", "wrongAccess");
+			}
+			
+			return mapJson;
+		}
 }

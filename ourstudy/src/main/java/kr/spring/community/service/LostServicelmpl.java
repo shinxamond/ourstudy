@@ -51,11 +51,6 @@ public class LostServicelmpl implements LostService {
 		
 	}
 
-	@Override
-	public void deleteLostFile(Integer lf_num) {
-		lostMapper.deleteLostFile(lf_num);
-		
-	}
 
 	@Override
 	public List<LostReplyVO> selectListLostReply(Map<String, Object> map) {
@@ -87,6 +82,12 @@ public class LostServicelmpl implements LostService {
 	@Override
 	public void deleteLostReplyByLostNum(Integer lf_num) {
 		lostMapper.deleteLostReplyByLostNum(lf_num);
+		
+	}
+
+	@Override
+	public void updateLostReply(LostReplyVO lostReply) {
+		lostMapper.updateLostReply(lostReply);
 		
 	}
 	

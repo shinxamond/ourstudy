@@ -1,7 +1,6 @@
 package kr.spring.community.vo;
 
 import java.sql.Date;
-import java.sql.Timestamp;
 
 public class LostVO {
 	private int lf_num;
@@ -11,8 +10,8 @@ public class LostVO {
 	private int f_condition;
 	private int mem_num;
 	private Date lf_date;
-	private Timestamp lf_time;
-	private String lf_item;
+	private String lf_time;
+    private String lf_item;
 	private String lf_loc;
 	private Date lf_modify_date;
 	private String mem_name;
@@ -83,23 +82,24 @@ public class LostVO {
 	public void setMem_name(String mem_name) {
 		this.mem_name = mem_name;
 	}
-	public Timestamp getLf_time() {
-		return lf_time;
+    public String getLf_time() {
+			return lf_time;
 	}
-	public void setLf_time(Timestamp lf_time) {
-		this.lf_time = lf_time;
+	public void setLf_time(String lf_time) {
+			this.lf_time = lf_time;
 	}
+
 
 
 	
 	
 	@Override
 	public String toString() {
-		return "LostVO [lf_num=" + lf_num +", lf_type" + lf_type + ", lf_title" + lf_title +
-				", lf_content" + lf_content + ", f_condition" + f_condition + 
-				", lf_date" + lf_date + ", lf_item" + lf_item + ", lf_time" + lf_time + 
-				", lf_loc" + lf_loc + ", lf_modify_date" + lf_modify_date + 
-				", mem_name" + mem_name + ", mem_num" + mem_num + "]";
+		return "LostVO [lf_num=" + lf_num +", lf_type=" + lf_type + ", lf_title=" + lf_title +
+				", lf_content=" + lf_content + ", f_condition=" + f_condition + 
+				", lf_date=" + lf_date + ", lf_item=" + lf_item + ", lf_time=" + lf_time + 
+				", lf_loc=" + lf_loc + ", lf_modify_date=" + lf_modify_date + 
+				", mem_name=" + mem_name + ", mem_num=" + mem_num + "]";
 	}
 	
 	
