@@ -11,7 +11,7 @@ import org.apache.ibatis.annotations.Update;
 
 import kr.spring.community.vo.LostReplyVO;
 import kr.spring.community.vo.LostVO;
-import kr.spring.review.vo.ReviewReplyVO;
+
 
 @Mapper
 public interface LostMapper {

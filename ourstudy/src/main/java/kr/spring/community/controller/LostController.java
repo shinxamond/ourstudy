@@ -28,7 +28,6 @@ import kr.spring.community.vo.LostReplyVO;
 import kr.spring.community.vo.LostVO;
 import kr.spring.info.controller.InformationController;
 import kr.spring.member.vo.MemberVO;
-import kr.spring.review.vo.ReviewReplyVO;
 import kr.spring.util.PagingUtil;
 import kr.spring.util.StringUtil;
 
