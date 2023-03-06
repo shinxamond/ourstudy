@@ -18,4 +18,7 @@ public interface LockerService {
 	public String getLocker_start(LockerVO vo);
 	//종료일, 남은 시각 저장
 	public void insertEndAndDiff(LockerVO vo);
+	
+	//기존에 등록된 사물함 갯수 검사 불러오기
+	public int getMyLockerCount(int mem_num);
 }

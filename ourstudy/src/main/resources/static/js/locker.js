@@ -13,6 +13,12 @@
     	}else if(select == true){
     		alert(locker_num + '번 사물함이 선택되었습니다.');
     		
-    		location.href='/pay/locker_pay.do?locker_num=' + locker_num;
+    		location.href='/locker/select.do?locker_num=' + locker_num;
     	}
+    }
+    
+    function hello() {
+    	alert('이미 사물함을 이용중입니다.'); 
+    	
+    	location.href="/mypage/myPageMain.do";
     }

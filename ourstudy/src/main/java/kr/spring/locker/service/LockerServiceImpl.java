@@ -19,7 +19,7 @@ public class LockerServiceImpl implements LockerService{
 	/*=================================
 					ADMIN
 	  =================================*/
-	//새로운 좌석 등록
+	//새로운 사물함 등록
 	@Override
 	public void insertLocker(LockerVO vo) {
 		vo.setLocker_num(lockerMapper.selectLocker_num());
@@ -29,19 +29,26 @@ public class LockerServiceImpl implements LockerService{
 	/*=================================
 					MEMBER
 	  =================================*/
-	//좌석 선택
+	//사물함 선택
 	@Override
 	public void selectLocker(LockerVO vo) {
 		lockerMapper.insertToSelectLocker(vo);
 		lockerMapper.lockerStatusIn(vo);
 	}
-
-	//좌석 정보 불러오기
+	
+	/*==================================
+     			GET DATA
+	==================================*/
+	//사물함 정보 불러오기
 	@Override
 	public List<LockerVO> getLockerList() {
 		return lockerMapper.getLockerList();
 	}
 
+	@Override
+	public int getMyLockerCount(int mem_num) {
+		return lockerMapper.getMyLockerCount(mem_num);
+	}
 	
 	/*=================================
 				IN / OUT / DATE
@@ -57,5 +64,6 @@ public class LockerServiceImpl implements LockerService{
 	public void insertEndAndDiff(LockerVO vo) {
 		lockerMapper.insertEndAndDiff(vo);
 	}
+
 
 }

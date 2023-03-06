@@ -7,7 +7,8 @@
 	<div class="locker-box">
 	<c:forEach var="locker" items="${list}" begin="36" end="38">
 	<button id="${locker.locker_num}" class="locker-option btn hover-filled-opacity"
-			onclick="checkSelect(this);" 
+			onclick= <c:if test="${locker_count < 1}"> "checkSelect(this);" </c:if>
+    				 <c:if test="${locker_count == 1 }">"hello();"</c:if>
 			<c:if test="${locker.locker_status == 0}">
 			style="background-color:#D7D5D5;" disabled</c:if>><span>${locker.locker_num}</span></button>
 	</c:forEach>
@@ -15,7 +16,8 @@
 	<div class="locker-box">
 	<c:forEach var="locker" items="${list}" begin="39" end="41">
 	<button id="${locker.locker_num}" class="locker-option btn hover-filled-opacity"
-			onclick="checkSelect(this);" 
+			onclick= <c:if test="${locker_count < 1}"> "checkSelect(this);" </c:if>
+    				 <c:if test="${locker_count == 1 }">"hello();"</c:if>
 			<c:if test="${locker.locker_status == 0}">
 			style="background-color:#D7D5D5;" disabled</c:if>><span>${locker.locker_num}</span></button>
 	</c:forEach>
@@ -23,7 +25,8 @@
 	<div class="locker-box">
 	<c:forEach var="locker" items="${list}" begin="42" end="44">
 	<button id="${locker.locker_num}" class="locker-option btn hover-filled-opacity"
-			onclick="checkSelect(this);" 
+			onclick= <c:if test="${locker_count < 1}"> "checkSelect(this);" </c:if>
+    				 <c:if test="${locker_count == 1 }">"hello();"</c:if>
 			<c:if test="${locker.locker_status == 0}">
 			style="background-color:#D7D5D5;" disabled</c:if>><span>${locker.locker_num}</span></button>
 	</c:forEach>
@@ -31,7 +34,8 @@
 	<div class="locker-box">
 	<c:forEach var="locker" items="${list}" begin="45" end="47">
 	<button id="${locker.locker_num}" class="locker-option btn hover-filled-opacity"
-			onclick="checkSelect(this);" 
+			onclick= <c:if test="${locker_count < 1}"> "checkSelect(this);" </c:if>
+    				 <c:if test="${locker_count == 1 }">"hello();"</c:if>
 			<c:if test="${locker.locker_status == 0}">
 			style="background-color:#D7D5D5;" disabled</c:if>><span>${locker.locker_num}</span></button>
 	</c:forEach>

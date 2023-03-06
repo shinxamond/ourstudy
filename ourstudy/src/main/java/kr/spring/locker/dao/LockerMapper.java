@@ -52,4 +52,8 @@ public interface LockerMapper {
 	//사물함 정보 불러오기
 	@Select("SELECT * FROM LOCKER_INFO ORDER BY LOCKER_NUM ASC")
 	public List<LockerVO> getLockerList();
+	
+	//기존에 등록된 사물함 check 갯수 불러오기
+	@Select("SELECT count(*) FROM LOCKER_INFO i JOIN (SELECT * FROM LOCKER_DETAIL WHERE mem_num=#{mem_num}) d ON d.locker_num=i.locker_num WHERE i.locker_status=0")
+	public int getMyLockerCount(int mem_num);
 }
