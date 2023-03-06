@@ -124,10 +124,10 @@ Kakao.API.request({
 						<button class="btn text-white mt-4 mb-4 rounded" style="background-color:#b4aab1">퇴실</button>
 					</c:if>
 					<c:if test="${!empty user && user.mem_status == 1}">
-						<button class="btn text-white mt-4 mb-4 rounded" style="background-color:red">입실중</button>
+						<button class="btn text-white mt-4 mb-4 rounded" style="background-color:#e65962">입실중</button>
 					</c:if>
 					<c:if test="${!empty user && user.mem_status == 2}">
-						<button class="btn text-white mt-4 mb-4 rounded" style="background-color:blue">외출중</button>
+						<button class="btn text-white mt-4 mb-4 rounded" style="background-color:#384048">외출중</button>
 					</c:if>
 				</div>
 				</div>

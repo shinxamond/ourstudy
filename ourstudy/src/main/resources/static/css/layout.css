@@ -15,9 +15,9 @@ div#main_header{
 div#main_body{
 	padding:5px 0 30px 5px;
 	min-height:500px;
-	width:90%;
+	width:80%;
 	position:relative;
-	left:240px;
+	left:260px;
 }
 div#main_footer{
 	background-color:#b4aab1;

@@ -67,7 +67,7 @@
 <div id="main_content_body" class="container">
 	<div class="row">
 		<div class="main_banner col-8">
-			<img src="${pageContext.request.contextPath}/image_bundle/newbanner1.PNG" class="newbanner1">
+			<img src="${pageContext.request.contextPath}/image_bundle/newbanner4.PNG" class="newbanner1">
 		</div>
 		<div class="card main_card col-4" id="cal_card">
 			<div class="sec_cal">
@@ -121,7 +121,7 @@
 				</c:forEach>
 			</table>
 		</div>
-		<div>
+		<div class="guitar">
 			<div class="card main_card" id="study_clock">
 				<div class="digital-clock"></div>
 			</div>
