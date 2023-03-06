@@ -75,8 +75,8 @@ public class SeatController {
    @RequestMapping("/seat/select.do")
    public String selectSeat(@RequestParam int seat_num,HttpServletRequest request,RedirectAttributes attributes, Model model) {
       HttpSession session = request.getSession();
-      MemberVO user = (MemberVO)session.getAttribute("user");
-      if(user == null) {
+      MemberVO member = (MemberVO)session.getAttribute("user");
+      if(member == null) {
          logger.debug("객체 null");
       }
       
@@ -99,7 +99,7 @@ public class SeatController {
       
       seatService.selectSeat(seatVO);
       
-      user.setMem_status(seatService.getMem_status(mem_num));
+      member.setMem_status(seatService.getMem_status(mem_num));
       
       model.addAttribute("seat_num",seat_num);
       
@@ -129,6 +129,7 @@ public class SeatController {
    //외출 상태에서 입실 처리
    @RequestMapping("/seat/in.do")
    public String In(HttpSession session) {
+	  MemberVO member = (MemberVO)session.getAttribute("user");
       int mem_num = (Integer)session.getAttribute("user_num");
       String mem_name = memberService.getMem_name(mem_num);  
       
@@ -147,6 +148,8 @@ public class SeatController {
       seatVO.setSeat_num(seat_num);
 
       seatService.inSeatWhenHold(seatVO);
+      
+      member.setMem_status(seatService.getMem_status(mem_num));
          
       return "redirect:/mypage/myPageMain.do";
    }
@@ -154,6 +157,7 @@ public class SeatController {
    //외출처리
    @RequestMapping("/seat/hold.do")
    public String Hold(@RequestParam int seat_num, HttpSession session) {
+	  MemberVO member = (MemberVO)session.getAttribute("user");
       int mem_num = (Integer)session.getAttribute("user_num");      
       String mem_name = memberService.getMem_name(mem_num);  
       
@@ -195,6 +199,8 @@ public class SeatController {
       seatVO.setMem_num(mem_num);
       
       seatService.insertTotal_time(seatVO);
+      
+      member.setMem_status(seatService.getMem_status(mem_num));
       
       return "redirect:/mypage/myPageMain.do";
    }
@@ -263,6 +269,8 @@ public class SeatController {
       seatVO.setTotal_time(diffIntSeconds);
       
       myPageService.updateStudyTime(seatVO);
+      
+      member.setMem_status(seatService.getMem_status(mem_num));
       
       logger.debug("seatVO" + seatVO);
 
