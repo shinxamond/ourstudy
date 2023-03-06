@@ -3,6 +3,7 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>   
 <!-- 중앙 컨텐츠 시작 -->
+<script src="${pageContext.request.contextPath}/js/f_condition.js"></script>
 <style>
 .ck-editor__editable_inline{
 	min-height:250px;
@@ -18,22 +19,19 @@
 		<form:errors element="div" cssClass="error-color"/>
 	<ul>
 		<li>
-			<h4>분실물 찾기 글쓰기</h4>
-		</li>
-		<li>
 			<label for="type">카테고리</label>
 			<form:radiobutton path="lf_type" value="0" id="분실"  checked="checked"/>분실
 			<form:radiobutton path="lf_type" value="1" id="습득" />습득 
 
 		</li>
-		<%-- <li>
+		<li>
 			<label for="condition">습득품 상태</label>
-			<form:radiobutton path="f_condition" value="0" id="보관중" />보관중
-			<form:radiobutton path="f_condition" value="1" id="수령완료" />수령완료
+			<%-- <form:radiobutton path="f_condition" value="0" id="보관중" />보관중
+			<form:radiobutton path="f_condition" value="1" id="수령완료" />수령완료--%>
 			<input type="radio" name="f_condition" value="0" id="보관중" />보관중
 			<input type="radio" name="f_condition" value="1" id="수령완료"/>수령완료
 			
-		</li> --%>
+		</li> 
 		<li>
 			<label for="lf_title">제목</label>
 			<form:input path="lf_title"/>

@@ -2,12 +2,14 @@ package kr.spring.community.vo;
 
 import java.sql.Date;
 
+import kr.spring.util.DurationFromNow;
+
 public class LostReplyVO {
 	private int re_num;
-	private Date re_date;
+	private String re_date;
 	private String re_content;
 	private int lf_num;
-	private Date re_modify_date;
+	private String re_modify_date;
 	private int mem_num;
 	private String mem_name;
 	
@@ -23,11 +25,11 @@ public class LostReplyVO {
 	public void setRe_num(int re_num) {
 		this.re_num = re_num;
 	}
-	public Date getRe_date() {
+	public String getRe_date() {
 		return re_date;
 	}
 	public void setRe_date(Date re_date) {
-		this.re_date = re_date;
+		this.re_date = DurationFromNow.getTimeDiffLabel(re_date);
 	}
 	public String getRe_content() {
 		return re_content;
@@ -47,11 +49,11 @@ public class LostReplyVO {
 	public void setMem_num(int mem_num) {
 		this.mem_num = mem_num;
 	}
-	public Date getRe_modify_date() {
+	public String getRe_modify_date() {
 		return re_modify_date;
 	}
 	public void setRe_modify_date(Date re_modify_date) {
-		this.re_modify_date = re_modify_date;
+		this.re_modify_date = DurationFromNow.getTimeDiffLabel(re_modify_date);
 	}
 	
 	
