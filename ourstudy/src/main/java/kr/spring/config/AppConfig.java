@@ -11,6 +11,7 @@ import org.springframework.web.servlet.view.tiles3.TilesConfigurer;
 import org.springframework.web.servlet.view.tiles3.TilesView;
 import org.springframework.web.servlet.view.tiles3.TilesViewResolver;
 
+import kr.spring.interceptor.AdminCheckInterceptor;
 import kr.spring.interceptor.AutoLoginCheckInterceptor;
 import kr.spring.interceptor.LoginCheckInterceptor;
 
@@ -20,6 +21,7 @@ public class AppConfig implements WebMvcConfigurer{
 	
 	private AutoLoginCheckInterceptor autoLogin;
 	private LoginCheckInterceptor loginCheck;
+	private AdminCheckInterceptor adminCheck;
 	
 	@Bean
 	public AutoLoginCheckInterceptor interceptor() {
@@ -32,6 +34,45 @@ public class AppConfig implements WebMvcConfigurer{
 		loginCheck = new LoginCheckInterceptor();
 		return loginCheck;
 	}
+	
+	@Bean
+	public AdminCheckInterceptor interceptor3() {
+		adminCheck = new AdminCheckInterceptor();
+		return adminCheck;
+	}
+	
+	//인터셉터 등록
+		@Override
+		public void addInterceptors(InterceptorRegistry registry) {
+			//AutoLoginCheckInterceptor 설정
+			registry.addInterceptor(autoLogin).addPathPatterns("/**") //모든 경로
+											  .excludePathPatterns("/member/login.do") //제외할 화면
+											  .excludePathPatterns("/member/logout.do"); //제외할 화면
+			//LoginCheckInterceptor 설정
+			registry.addInterceptor(loginCheck).addPathPatterns("/community/lostList.do")
+											   .addPathPatterns("/community/lostWrite.do")
+											   .addPathPatterns("/community/lostDetail.do")
+											   .addPathPatterns("/community/lostUpdate.do")
+											   .addPathPatterns("/community/lostDelete.do")
+											   .addPathPatterns("/community/writelfReply.do")
+											   .addPathPatterns("/community/listlfReply.do")
+											   .addPathPatterns("/community/updatelfReply.do")
+											   .addPathPatterns("/community/deletelfReply.do");
+			//AdminCheckInterceptor 설정
+			registry.addInterceptor(adminCheck).addPathPatterns("/admin/admin_list.do")
+											   .addPathPatterns("/admin/admin_seathistory.do")
+											   .addPathPatterns("/admin/admin_lockerhistory.do")
+											   .addPathPatterns("/admin/admin_itemhistory.do")
+											   .addPathPatterns("/admin/admin_unreturnlist.do")
+											   .addPathPatterns("/admin/admin_saleslist.do")
+											   .addPathPatterns("/admin/admin_receivehistory.do")
+											   .addPathPatterns("/admin/admin_sendhistory.do")
+											   .addPathPatterns("/info/infoWrite.do")
+											   .addPathPatterns("/info/infoUpdate.do")
+											   .addPathPatterns("/info/infoDelete.do")
+											   .addPathPatterns("/info/deleteFile.do");
+			//WriterCheckInterceptor 설정
+		}
 	
 	//타일스 설정
 	@Bean
