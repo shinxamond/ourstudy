@@ -325,18 +325,22 @@ Kakao.API.request({
 							class="nav-link dropdown-toggle" id="navbarDropdown" href="#"
 							role="button" data-bs-toggle="dropdown" aria-expanded="false">이용권구매</a>
 							<ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-								<li><a class="dropdown-item" href="${pageContext.request.contextPath}/course/list.do?course_cate=1">좌석 이용권</a></li>
-			       				<li><a class="dropdown-item" href="${pageContext.request.contextPath}/course/list.do?course_cate=2">사물함 이용권</a></li>
+								<li><a href=<c:if test="${!empty user}">"${pageContext.request.contextPath}/ticket/study_ticketList.do"</c:if> class="d-inline-flex rounded" 
+           					<c:if test="${empty user}">data-bs-toggle="modal" data-bs-target="#loginModal"</c:if> class="rounded">좌석 이용권</a></li>
+			       				<li><a href=<c:if test="${!empty user}">"${pageContext.request.contextPath}/ticket/locker_ticketList.do"</c:if> class="d-inline-flex rounded"
+							<c:if test="${empty user}">data-bs-toggle="modal" data-bs-target="#loginModal"</c:if> class="rounded">사물함 이용권</a></li>
 							</ul>
 						</li>
-						<li class="nav-item"><a class="nav-link" href="${pageContext.request.contextPath}/news/list.do">좌석선택</a></li>
-						<li class="nav-item"><a class="nav-link" href="${pageContext.request.contextPath}/event/eventList.do?attr=1&attr=0">물품대여</a></li>
+						<li class="nav-item"><a href=<c:if test="${!empty user}">"${pageContext.request.contextPath}/seat/selectForm.do"</c:if> class="side-main-link"
+						<c:if test="${empty user}">data-bs-toggle="modal" data-bs-target="#loginModal"</c:if> class="side-main-link">좌석 선택</a></li>
+						<li class="nav-item"><a href=<c:if test="${!empty user}">"${pageContext.request.contextPath}/item/userList.do"</c:if> class="side-main-link"
+						<c:if test="${empty user}">data-bs-toggle="modal" data-bs-target="#loginModal"</c:if> class="side-main-link">물품 대여</a></li>
 						<li class="nav-item dropdown"><a
 							class="nav-link dropdown-toggle" id="navbarDropdown" href="#"
 							role="button" data-bs-toggle="dropdown" aria-expanded="false">시설안내</a>
 							<ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-								<li><a class="dropdown-item" href="${pageContext.request.contextPath}/jobEmploy/employList.do">안내사항</a></li>
-								<li><a class="dropdown-item" href="${pageContext.request.contextPath}/jobReview/reviewList.do">자주묻는질문</a></li>
+								<li><a href="${pageContext.request.contextPath}/info/informationList.do" class="d-inline-flex rounded">안내사항</a></li>
+								<li><a href="${pageContext.request.contextPath}/info/faq.do" class="d-inline-flex rounded">자주 묻는 질문</a></li>
 							</ul>
 						</li>
 						<li class="nav-item dropdown"><a
@@ -352,10 +356,10 @@ Kakao.API.request({
 				
 					<c:if test="${empty user}">
 						<button class="btn text-white rounded" data-bs-toggle="modal" data-bs-target="#loginModal" 
-						style="background-color:#e65962; margin-left:320px;">로그인 | 회원가입</button>
+						style="background-color:#e65962;  margin:10px 0 0 320px;">로그인 | 회원가입</button>
 					</c:if>
 					<c:if test="${!empty user}">
-						<button class="btn text-white rounded logout-btn" style="background-color:#E65962; margin-left:380px;"
+						<button class="btn text-white rounded logout-btn" style="background-color:#E65962; margin:10px 0 0 380px;"
 						onclick="location.href='https://kauth.kakao.com/oauth/logout?client_id=29a4ee7bbc4eb20216c3708400363a9a&logout_redirect_uri=http://localhost:8001/main/main.do';location.href='${pageContext.request.contextPath}/member/logout.do';">
 						로그아웃</button>
 					</c:if>

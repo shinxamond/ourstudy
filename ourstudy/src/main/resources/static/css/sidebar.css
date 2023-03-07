@@ -355,10 +355,11 @@ ul{
 }
 .dropdown-menu>li{
 	font-size:12pt;
+	text-align:center;
 }
 
 .dropdown-menu{
-	width:150px;
+	width:450px;
 }
 
 
