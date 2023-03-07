@@ -168,8 +168,8 @@ div#main_footer .footer-sns {
 /*정보수정, 좌석선택 위치 설정*/
 .element:nth-child(1) p{
 	position : relative;
-	top : 65px;
-	left : 285px;
+	top : 29px;
+	left : 288px;
 	width : 72px;
 }
 .element:nth-child(4) span a{
@@ -205,6 +205,7 @@ div#main_footer .footer-sns {
 	border-radius : 55px;
 	padding : 5px;
 	background : #FFF;
+	font-size : 10pt;
 }
 /*
 모달창 버튼*/
