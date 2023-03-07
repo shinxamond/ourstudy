@@ -122,11 +122,13 @@ public class SeatController {
       String mem_name = memberService.getMem_name(mem_num);  
       
       int mem_status = seatService.getMem_status(mem_num);
-      int seat_num = seatService.getOutMemberSeat(mem_num);
       
-      if(mem_status != 2) {
+      if(mem_status == 0) {
     	  return "redirect:/seat/selectForm.do";
       }
+      
+      int seat_num = seatService.getOutMemberSeat(mem_num);
+      
       
       logger.debug("<<<<회원정보 >>>>: " + mem_num + "<<<<<<<좌석번호>>>>: " + seat_num + "<<<<회원이름>>>>:" + mem_name);
       
