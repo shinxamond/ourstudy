@@ -42,7 +42,6 @@ $(function(){
 		$('#insert_content_info').remove();
 		$('#insert_content_time').remove();
 		$('#insert_content_point').remove();
-		location.reload();
 		}else{
 			if(localStorage.getItem("status") == "showMem_info" ){
 				mem_info.appendTo($('#insert_content_info'));
@@ -75,7 +74,7 @@ $(function(){
 		var windowWidth = $( window ).width();
 		if(windowWidth < 992){
 			localStorage.setItem("status", "showMain");
-			location.reload();
+
 		}else{
 			$('#insert_content_info').remove();
 			$('#insert_content_time').remove();

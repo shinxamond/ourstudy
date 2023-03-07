@@ -43,6 +43,32 @@
 				    	$('#get3').hide(); $('#lost3').show(); 
 				    }
 				  });
+				  //날짜 현재시간 이상으로 선택 못하게 max 설정하기
+				  var today = new Date();
+				  var dd = today.getDate(); //오늘날짜
+				  var mm = today.getMonth() + 1; // 달
+				  var yyyy = today.getFullYear(); //년도
+				  var hh = today.getHours(); //시간
+				  var m = today.getMinutes(); //분
+
+				  if (dd < 10)
+				  {
+				      dd = '0' + dd; //날짜 10보다 작으면 앞에 0 붙이기
+				  } 
+				  if (mm < 10)
+				  {
+				      mm = '0' + mm; //달 10보다 작으면 앞에 0 붙이기
+				  }
+				  if (hh < 10)
+				  {
+				      hh = '0' + hh; //시간 10보다 작으면 앞에 0 붙이기
+				  }
+				  if (m < 10)
+				  {
+				      m = '0' + m; //분 10보다 작으면 앞에 0 붙이기
+				  }
+				  time_max = yyyy + '-' + mm + '-' + dd + 'T' + hh + ':' + m;
+				  $('#lf_time').attr('max', time_max);	  
 			});
 			</script>
 		</li>	
@@ -71,7 +97,7 @@
 		</li>
 		<li>
 			<label for="lf_time"><span id="lost3">분실</span><span id="get3" style="display:none">습득</span> 날짜</label>
-			<input type="datetime-local" id="lf_time" name="lf_time"  max=sysdate value = "${lostVO.lf_time}">
+			<input type="datetime-local" id="lf_time" name="lf_time" value = "${lostVO.lf_time}">
 			<form:errors path="lf_time" cssClass="error-color"/>
 			<%-- <form:input path="lf_time"/> --%>
 		</li>  
