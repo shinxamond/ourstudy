@@ -99,6 +99,7 @@ $(function(){
 		choice_id += '<input type="hidden" name="members" value="'+mem_num+'">';
 		choice_id += id + ' </span>';
 		$('#talk_member').append(choice_id);
+		$('#talk_member2').append(choice_id);
 		//초기화
 		$('#member_search').val('');
 		$('#search_area1').empty();
@@ -141,6 +142,20 @@ $(function(){
 			$('#name_span').text('');//채팅방 이름 표시 텍스트 초기화
 		}
 	});
+	//반
+	$('#name_checked2').click(function(){
+		if($('#name_checked2').is(':checked')){
+			//채팅방 이름 자동 생성
+			$('#talkroom_name').attr('type','hidden');
+			if(member_list.length>1){
+				makeTalkroom_name();
+			}
+		}else{
+			//채팅방 이름 수동 생성
+			$('#talkroom_name').attr('type','text');
+			$('#name_span').text('');//채팅방 이름 표시 텍스트 초기화
+		}
+	});
 	
 	//채팅방 이름 생성
 	function makeTalkroom_name(){
@@ -154,6 +169,7 @@ $(function(){
 		}
 		$('#talkroom_name').val(name);
 		$('#name_span').text(name);
+		$('#name_span2').text(name);
 	}
 	
 	//채팅방 생성 전송

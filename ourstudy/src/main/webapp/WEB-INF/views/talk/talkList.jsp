@@ -20,22 +20,24 @@
 		
 
 </script>
-<div class="page-main" id="pageList">
-	<h2 class="align-center">채팅목록</h2>
-	<br><br>
-	<form action="talkList.do" id="search_form" method="get">
-		<ul class="search align-center">
-			<li>
-				<input type="search" name="keyword" id="keyword" value="${param.keyword}">
-			</li>
-			<li>
-				<input type="submit" value="찾기">
-				<input type="button" value="목록" onclick="location.href='talkList.do'">
-			</li>
-		</ul>
-	</form>
+<div class="page-main">	
+		<div class="content-main"><!-- 전체 화면의 87% -->
+			<!-- 사이드바 오른쪽 화면 시작 -->
+			<div class="content-right">
+				<h3 style="text-align:center"><b>채팅목록</b></h3>
+				<!-- 검색폼 시작 -->
+				<div class="section" style="text-align:center"> 
+					<div class="search-bar">
+						<form class="search-form d-flex align-items-center" action="talkList.do" method="get"><!-- 자동 인코딩 처리를 위해 -->
+							<input type="text" name="keyword" value="${param.keyword}" placeholder="채팅방 이름">
+							<button type="submit" title="Search"><i class="bi bi-search"></i></button>
+						</form>
+					</div>
+				</div>
+				<!-- 검색폼 끝 -->
 	<div class="align-right">
 		<input type="button" value="채팅방 생성" onclick="location.href='talkRoomWrite.do'">
+		<input type="button" value="목록" onclick="location.href='talkList.do'">
 	</div>
 	<br>
 	
@@ -44,7 +46,7 @@
 	</c:if>
 	
 	<c:if test="${!empty list}">
-	<table class="striped-talk-table" id="talkroom_list">
+	<table class="table table-hover align-center tt1" id="talkroom_list">
 		<c:forEach var="talk" items="${list}">
 		
 		<tr>
@@ -73,6 +75,37 @@
 		</tr>
 		</c:forEach>
 	</table>
+	
+	<table class="table table-hover table-group-divider tt2" id="talkroom_list"><!-- 반응형 줄었을 때 등장 -->
+		<c:forEach var="talk" items="${list}">
+		
+		<tr>
+			<td style="text-align:left">
+				<%-- <a href="talkDetail.do?talkroom_num=${talk.talkroom_num}"> --%>
+				<a href="#" data-toggle="modal" data-target="#${user.mem_num}" id="10"  data-id="${talk.talkroom_num}">
+					<span>${talk.talkroom_name}</span>
+				</a>
+					<br>
+					<span class="m${talk.talkroom_num}">${fn:substring(talk.talkVO.message,0,45)}</span><!-- fn : 함수 사용 -->
+					<br>
+			
+				<c:if test="${!empty talk.talkVO.chat_date}">
+					<span class="t${talk.talkroom_num}">${talk.talkVO.chat_date}</span>
+					<br>
+					<c:if test="${talk.room_cnt!=0}">
+					<span class="c${talk.talkroom_num}" id="talk_inform">${talk.room_cnt}</span>
+					</c:if>
+					<c:if test="${talk.room_cnt==0}">
+					<span class="c${talk.talkroom_num}"></span>
+					</c:if>
+					
+				</c:if>
+				<c:if test="${empty talk.talkVO.chat_date}">${talk.talkroom_date}</c:if>
+			</td>	
+		</tr>
+		</c:forEach>
+	</table>
+	
 	
 		<!-- ------------------------------------------ 모달 --------------------------------------------------- -->
 	
@@ -489,4 +522,6 @@ function alarm_connect2(){
 		});
 		</script>
 	</c:if>
+		</div>
+	</div>
 </div>
