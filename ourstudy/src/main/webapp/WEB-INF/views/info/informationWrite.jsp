@@ -50,6 +50,7 @@
 			<li>
 				<label for="upload">파일 첨부</label>
 				<input type="file" name="upload" id="upload">
+				<form:errors element="div" cssClass="error-color"/>
 			</li> 
 		</ul>
 		<div class="align-right">

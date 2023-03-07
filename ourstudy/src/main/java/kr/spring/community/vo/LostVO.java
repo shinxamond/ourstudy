@@ -2,16 +2,23 @@ package kr.spring.community.vo;
 
 import java.sql.Date;
 
+import javax.validation.constraints.NotEmpty;
+
 public class LostVO {
 	private int lf_num;
 	private int lf_type;
+	@NotEmpty
 	private String lf_title;
+	@NotEmpty
 	private String lf_content;
 	private int f_condition;
 	private int mem_num;
 	private Date lf_date;
+	@NotEmpty
 	private String lf_time;
+	@NotEmpty
     private String lf_item;
+	@NotEmpty
 	private String lf_loc;
 	private Date lf_modify_date;
 	private String mem_name;

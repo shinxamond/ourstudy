@@ -22,6 +22,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import kr.spring.community.service.LostService;
 import kr.spring.community.vo.LostReplyVO;
@@ -36,17 +37,21 @@ public class LostController {
 	private static final Logger logger =
 			LoggerFactory.getLogger(InformationController.class);
 	
-	private int rowCount = 10;
+	private int rowCount = 3;
 	
 	@Autowired
 	private LostService lostService;
 	
 	//자바빈(VO) 초기화
 		@ModelAttribute
-		public LostVO initCommand() {
+		public LostVO initCommand1() {
 			return new LostVO();
 		}
-	
+		@ModelAttribute
+		public LostReplyVO initCommand2() {
+			return new LostReplyVO();			
+		}
+		
 	//==분실물 게시판 글목록
 		@RequestMapping("/community/lostList.do")
 		public ModelAndView process(
@@ -97,9 +102,10 @@ public class LostController {
 	//등록 폼에서 전송된 데이터 처리
 	@PostMapping("/community/lostWrite.do")
 		public String submit(@Valid LostVO lostVO, BindingResult result, Model model,
-				HttpServletRequest request,
-				HttpSession session) {
+				HttpServletRequest request, RedirectAttributes redirect, HttpSession session) {
+			
 		logger.debug("<<분실물 글쓰기>> : " + lostVO);
+				
 		//유효성 체크 결과 오류가 있으면 폼을 호출
 		if(result.hasErrors()) {
 					return form();
@@ -112,8 +118,7 @@ public class LostController {
 		lostService.insertLost(lostVO);
 		
 		model.addAttribute("message", "등록 되었습니다.");
-		model.addAttribute("url",
-				request.getContextPath()+"/community/lostList.do");
+		model.addAttribute("url", request.getContextPath()+"/community/lostList.do");
 		return "common/resultView";
 	}
 	

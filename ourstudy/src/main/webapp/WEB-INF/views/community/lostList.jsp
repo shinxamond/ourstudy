@@ -49,6 +49,10 @@
 			</c:if>
 			
 			<td>
+				<c:if test="${lost.lf_type==1}">
+					<c:if test="${lost.f_condition==0}"><span style="color:#e32930">[보관중] </span></c:if>
+					<c:if test="${lost.f_condition==1}"><span style="color:#097bd9">[수령완료] </span></c:if>
+				</c:if>
 				<a href="lostDetail.do?lf_num=${lost.lf_num}">${lost.lf_title}</a>
 			</td>
 			<td>${lost.lf_date}</td> 

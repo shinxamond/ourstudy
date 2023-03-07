@@ -44,7 +44,7 @@ public interface LostMapper {
 	
 	//댓글
 	public List<LostReplyVO> selectListLostReply(Map<String,Object> map);
-	@Select("SELECT COUNT(*) FROM reply_lost JOIN WHERE lf_num=#{lf_num}")
+	@Select("SELECT COUNT(*) FROM reply_lost WHERE lf_num=#{lf_num}")
 	public int selectRowCountLostReply(Map<String,Object> map);
 	@Select("SELECT * FROM reply_lost WHERE re_num=#{re_num}")
 	public LostReplyVO selectLostReply(Integer re_num);
