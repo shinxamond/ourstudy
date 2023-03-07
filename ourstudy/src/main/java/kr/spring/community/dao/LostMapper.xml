@@ -89,9 +89,10 @@
   		            lf_num,
   		            d.mem_num,
   		            d.mem_name
-  		          FROM reply_lost r JOIN member_detail d 
+  		          FROM reply_lost r JOIN member_detail d
   		          ON r.mem_num = d.mem_num
-  		           ORDER BY re_num DESC)a)
+  		          WHERE lf_num = #{lf_num}
+  		          ORDER BY re_num DESC)a)
   		    <![CDATA[
   		    WHERE rnum >= #{start} AND rnum <= #{end}
   		    ]]>          

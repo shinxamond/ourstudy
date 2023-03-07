@@ -223,6 +223,7 @@ public class LostController {
 			
 			//총 글의 개수
 			int count = lostService.selectRowCountLostReply(map);
+			logger.debug("<<총 댓글의 갯수>> : " + count);
 			
 			//페이지 처리
 			PagingUtil page = new PagingUtil(currentPage,count,rowCount,1,null);

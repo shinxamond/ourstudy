@@ -82,7 +82,8 @@
 			</form>  
 			<form:errors path="lf_time" cssClass="error-color"/>  --%>
 			<label for="lf_time"><span id="lost3">분실</span><span id="get3" style="display:none">습득</span> 날짜</label>
-			<input type="datetime-local" id="lf_time" name="lf_time"  max=sysdate>
+			<!-- <input type="datetime-local" id="lf_time" name="lf_time"  max=sysdate> -->
+			<input type="datetime-local" id="lf_time" name="lf_time"  max=sysdate value = "${param.lf_time}">
 			<form:errors path="lf_time" cssClass="error-color"/>
 			<%--  <form:input path="lf_time"/>
 			<form:errors path="lf_time" cssClass="error-color"/>--%>
