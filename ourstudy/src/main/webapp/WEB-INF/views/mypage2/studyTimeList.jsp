@@ -3,10 +3,14 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix = "fmt" uri = "http://java.sun.com/jsp/jstl/fmt" %> 
 <!-- 마이페이지 공부시간 내역 시작 -->
-<div class = "mypage_mem_studyTime">
+<div id = "mypage_mem_info">
 	<div class = "wrap-meminfo">
 		<div class ="mypage-title">
 			<h3>입/퇴실 내역</h3>
+			<form method = "post" action = "/mypage/deleteSometing.do">
+			<input type = "text" name = "delnum">
+			<input type = "submit" value = "지울사람번호입력(그냥 누르면 로그인한 사람꺼 지워짐)">
+			</form>
 		</div>
 		<hr class = "horizontal-line">
 		<div class = "point-content">

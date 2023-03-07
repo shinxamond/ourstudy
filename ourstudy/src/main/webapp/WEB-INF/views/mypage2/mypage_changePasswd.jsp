@@ -2,7 +2,7 @@
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>    
 <!-- 마이페이지 비밀번호 변경 시작 -->
-<div class = "mypage_mem_changePasswd">
+<div id = "mypage_mem_info">
 	<div class = "wrap-meminfo">
 		<div class ="mypage-title">
 			<h3>비밀번호변경</h3>

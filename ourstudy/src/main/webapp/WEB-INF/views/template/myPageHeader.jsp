@@ -10,25 +10,40 @@
 		<div class = "element">
 			<a href="#profile-change" data-bs-toggle="modal"><img src = "${pageContext.request.contextPath}/mypage/photoView.do" class = "profile-photo"></a>
 			<a href="#profile-change" data-bs-toggle="modal"><img src = "${pageContext.request.contextPath}/image_bundle/settings.png" class = "settings-img"></a>
-				<span class = "span-align">안녕하세요, <strong><a href = "${pageContext.request.contextPath}/mypage/myPageMemInfo.do">${member.mem_name}</a></strong>님</span>
+				<span class = "span-align">안녕하세요, <strong><a href = "${pageContext.request.contextPath}/mypage/myPageMemInfo.do" id = "mem_info_btn">${member.mem_name}</a></strong>님</span>
 				<br>
 				<span class = "welcome-msg">오늘도 아워스터디를 이용해주셔서 감사합니다.</span>
 				<c:if test="${locker_num == 0}">
 				<button class = "locker-btn" onclick = "location.href = '${pageContext.request.contextPath}/ticket/locker_ticketList.do'">사물함 등록</button>
 				</c:if>
 				<c:if test="${locker_num != 0}">
-				<button class = "locker-btn" onclick = "location.href = '${pageContext.request.contextPath}/ticket/locker_ticketList.do?locker_num=${locker_num}'">사물함 연장: <b>${locker_num}</b>번</button>
+				<button class = "locker-btn" onclick = "location.href = '${pageContext.request.contextPath}/ticket/locker_ticketList.do?locker_num=${locker_num}'">사물함 연장: <b>${locker_num}30</b>번</button>
 				</c:if>
-				<p><a href = "${pageContext.request.contextPath}/mypage/myPageModify.do"  class = "link-font small">정보수정 ></a></p>
+				<p class = "firstclass-p"><a href = "${pageContext.request.contextPath}/mypage/myPageModify.do" id = "mem_modify_btn" class = "link-font small">정보수정 ></a></p>
 		</div>
+		
+		<div id = "insert_content_info">
+		
+		</div>
+		
 		<div class = "element">
-			<p><a href = "${pageContext.request.contextPath}/mypage/studyTimeList.do" class = "link-font big">누적 공부시간 ></a></p>
+			<p><a href = "${pageContext.request.contextPath}/mypage/studyTimeList.do" id ="mem_studyTime_btn" class = "link-font big">누적 공부시간 ></a></p>
 			<span class = "data-align top"><fmt:parseNumber value = "${member.mem_study / 3600}"  integerOnly="true"/> 시간</span>
 		</div>
+		
+		<div id = "insert_content_time">
+		
+		</div>		
+		
 		<div class = "element">
-			<p><a href = "${pageContext.request.contextPath}/mypage/pointList.do" class = "link-font big">포인트 ></a></p>
+			<p><a href = "${pageContext.request.contextPath}/mypage/pointList.do" id = "mem_point_btn" class = "link-font big">포인트 ></a></p>
 			<span class = "data-align top"><fmt:formatNumber value = "${pointSum}"/>P</span>
 		</div>
+				
+		<div id = "insert_content_point">
+		
+		</div>		
+		
 		<div class = "element">
 			<c:if test="${empty seat.seat_name}"><span>이용중인 좌석이 없습니다.</span></c:if>
 			<c:if test="${!empty seat.seat_name}"><span>NO. <b>${seat.seat_name}</b>번 자리</span></c:if>
@@ -45,8 +60,13 @@
 				<button class = "seatcheck-button" onclick="location.href='${pageContext.request.contextPath}/seat/out.do?'">퇴실</button>			
 			</div>
 
-			<span><a href = "${pageContext.request.contextPath}/mypage/myPageselectSeat.do" class = "link-font small">좌석선택 ></a></span>
+			<span class = "lastchild-span"><a href = "${pageContext.request.contextPath}/mypage/myPageselectSeat.do" class = "link-font small">좌석선택 ></a></span>
 		</div>
+						
+		<div id = "insert_content_seat">
+		
+		</div>		
+		
 	</div>
 </div>
 <div id="profile-change" class="modal fade" tabindex="-1" data-bs-backdrop="static" class="modal-dialog modal-dialog-centered">
@@ -71,17 +91,4 @@
     </div>
   </div>
 </div>
-<%-- <div id="profile-change" class="modal" style = "text-align : center;">
-	<h4>프로필사진 변경</h4>
-	<br><br>
-  	<img src = "${pageContext.request.contextPath}/mypage/photoView.do" class = "profile-photo" width = "150" height = "150">
-  	<br>
-  	<br>
-  	<input type = "file" id = "upload" accept = "image/gif, image/png, image/jpeg" style = "margin-left : 70px;">
- 	<br>
- 	<br>
- 	<a href="#" rel="modal:close" id = "photo_submit">변경</a>&nbsp;
- 	<a href="#" rel="modal:close" id = "photo_reset">닫기</a>
-</div> --%>
-
 <!-- 마이페이지 헤더 끝 -->

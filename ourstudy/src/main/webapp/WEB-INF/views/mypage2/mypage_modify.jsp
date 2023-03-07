@@ -14,7 +14,7 @@ function numberphone(e){
 }
 </script>
 <!-- 마이페이지 회원정보 수정 시작 -->
-<div class = "mypage_mem_info_modify">
+<div id = "mypage_mem_info">
 	<div class = "wrap-meminfo">
 		<div class ="mypage-title">
 			<h3>회원정보수정</h3>
@@ -88,8 +88,8 @@ function numberphone(e){
 			</table>
 		</div>
 		<div style = "text-align : right;">
-			<span><a href = "${pageContext.request.contextPath}/mypage/myPagechangePasswd.do" id = "mem_changePw_btn"  class = "link-font small">비밀번호변경 ></a></span>&nbsp;
-			<span><a href = "${pageContext.request.contextPath}/mypage/myPagedeleteMember.do" id = "mem_delete_btn"  class = "link-font small">회원탈퇴 ></a></span>
+			<span><a href = "${pageContext.request.contextPath}/mypage/myPagechangePasswd.do"  class = "link-font small">비밀번호변경 ></a></span>&nbsp;
+			<span><a href = "${pageContext.request.contextPath}/mypage/myPagedeleteMember.do"  class = "link-font small">회원탈퇴 ></a></span>
 		</div>
 		<div style = "text-align : center;">
 			<form:button>수정</form:button>

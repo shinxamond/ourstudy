@@ -2,7 +2,7 @@
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>    
 <!-- 마이페이지 회원탈퇴 시작 -->
-<div id = "mypage_mem_info">
+<div class = "mypage_mem_delete">
 	<div class = "wrap-meminfo">
 		<div class ="mypage-title">
 			<h3>회원탈퇴</h3>

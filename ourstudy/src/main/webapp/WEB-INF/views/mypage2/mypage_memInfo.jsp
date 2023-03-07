@@ -2,7 +2,7 @@
     pageEncoding="UTF-8"%>
 <%@ taglib prefix = "c" uri = "http://java.sun.com/jsp/jstl/core" %>
 <!-- 마이페이지 메인 회원정보 시작 -->
-<div class = "mypage_mem_info">
+<div id = "mypage_mem_info">
 	<div class = "wrap-meminfo">
 		<div class ="mypage-title">
 			<h3>회원정보</h3>
