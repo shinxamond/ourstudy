@@ -10,7 +10,7 @@
 <script src="https://cdn.iamport.kr/v1/iamport.js"></script>
 <div class="container">
 	<h4>이용권 목록</h4>
-	<div class="container d-flex justify-content-center">
+	<div class="container">
 		<div class="row">
 			<c:if test="${count == 0}">
 				<table class="table table-group-divider align-center">
@@ -23,8 +23,23 @@
 				<c:forEach var="ticket" items="${ticket}">
 					<c:if test="${ticket.ticket_kind == 2}">
 						<div class="card-group" style="margin-top: 30px;">
-							<div class="card" style="width: 20rem;">
-								<input type="hidden" value="${ticket.ticket_num}">
+							<div class="card" style="width: 15rem;">
+							<form action="/ticket/locker_check.do" method = "post">
+							<input type = "hidden" name = "ticket_num" value ="${ticket.ticket_num}">
+							<c:if test="${!empty param.locker_num}">
+							<input type = "hidden" name = "locker_num" value = "${param.locker_num}">
+							</c:if>
+							<div class="card-body">
+									${ticket.ticket_name}
+									<div style="float: right;">
+										<fmt:formatNumber value="${ticket.ticket_price}" />
+										원
+									</div>
+								</div>
+							
+							<input type = "submit" id="buy_btn" value = "구매하기" class="btn btn-primary" style="float: right;">
+							</form>
+<%-- 								<input type="hidden" value="${ticket.ticket_num}">
 								<div class="card-body">
 									${ticket.ticket_name}
 									<div style="float: right;">
@@ -34,12 +49,11 @@
 									<div style="margin-top: 5px;">
 										<button id="buy_btn" type="button" class="btn btn-primary"
 											style="float: right;"
-											onclick="location.href='${pageContext.request.contextPath}/locker/section.do?ticket_num=${ticket.ticket_num}'">구매하기</button>
+											onclick="location.href='locker_check.do?ticket_num=${ticket.ticket_num}&&locker_num=${param.locker_num}'">구매하기</button>
 									</div>
-								</div>
+								</div> --%>
 							</div>
 						</div>
-
 					</c:if>
 				</c:forEach>
 			</c:if>
@@ -47,4 +61,3 @@
 	</div>
 </div>
 <!-- 중앙 컨텐츠 끝 -->
-

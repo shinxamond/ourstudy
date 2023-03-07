@@ -13,6 +13,8 @@ public class TicketVO {
 	private int ticket_type;
 	@NotNull
 	private int ticket_price;
+	
+	private int locker_num;
 
 	public int getTicket_num() {
 		return ticket_num;
@@ -53,6 +55,15 @@ public class TicketVO {
 	public void setTicket_price(int ticket_price) {
 		this.ticket_price = ticket_price;
 	}
+	
+	public int getLocker_num() {
+		return locker_num;
+	}
+
+	public void setLocker_num(int locker_num) {
+		this.locker_num = locker_num;
+	}
+
 	@Override
 	public String toString() {
 		return "TicketVO [ticket_num=" + ticket_num + ", ticket_kind=" + ticket_kind + ", ticket_name=" + ticket_name
