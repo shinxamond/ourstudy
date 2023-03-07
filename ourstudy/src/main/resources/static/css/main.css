@@ -16,9 +16,7 @@ body{
 #main_content_body{
 	position:relative;
 }
-.row.yu{
-	position:relative;
-}
+
 .card{
 	min-width: 200px;
 	border-radius: 1rem;
@@ -34,7 +32,7 @@ body{
 	margin-top:10px;
 }
 .newbanner1{
-	width:850px;
+	max-width:850px;
 	height:270px;
 	font-family: 'KOTRAHOPE';
 	font-size:17pt;
@@ -42,11 +40,10 @@ body{
 	box-shadow: 2px 4px 8px #babebc;
 }
 #cal_card{
+	position:relative;
 	width:330px;
 	height:330px;
 	top:-12px;
-	left:63px;
-	
 }
 #study_time{
 	min-width: 450px;
@@ -66,12 +63,16 @@ body{
 	margin:0;
 }
 #study_clock{
+	margin:0 0 0 9px;
 	width:328px;
 	height:143px;
+	background-color:#384048;
+	opacity:0.9;
 }
 #study_maxim{
 	width:328px;
 	height:160px;
+	margin:15px 0 0 10px;
 }
 .main-title{
 	font-family: 'Pretendard-Regular';
@@ -79,10 +80,7 @@ body{
 }
 .digital-clock{
 	width:260px;
-	padding-left:40px;
-}
-.gcse-search{
-	padding:0;
+	padding:30px 0 0 40px;
 }
 
 /*======================
@@ -234,3 +232,169 @@ div#main_footer .footer-sns{
 .footer-sns a:hover{
 	color: #F3F1F1;
 }
+
+
+/*====================
+		 반응형
+=====================*/
+
+
+@media screen and (min-width:1520px) {
+
+	   .main_card{
+		box-shadow: 2px 4px 8px #babebc;
+		display:flex;
+		}
+		.main_banner{
+			margin-top:10px;
+		}
+		.newbanner1{
+			max-width:850px;
+			height:270px;
+			font-family: 'KOTRAHOPE';
+			font-size:17pt;
+			border-radius:3rem;
+			box-shadow: 2px 4px 8px #babebc;
+		}
+		#cal_card{
+			position:relative;
+			width:330px;
+			height:330px;
+			top:-12px;
+			left:63px;
+		}
+		#study_time{
+			width:450px;
+			height:400px;
+			top:-75px;
+		}
+		#all_todo{
+			width:382px;
+			height:400px;
+			top:-75px;
+		}
+		.guitar{
+			width:330px;
+			height:300px;
+			padding:0;
+			margin:0;
+		}
+		#study_clock{
+			width:328px;
+			height:150px;
+		}
+		#study_maxim{
+			width:328px;
+			height:177px;
+		}
+		.main-title{
+			font-family: 'Pretendard-Regular';
+			font-size:12pt;
+		}
+		.digital-clock{
+			width:260px;
+			padding-left:40px;
+		}
+		#main_info_title{
+			width:250px;
+		}
+}
+
+
+
+@media screen and (max-width:1519px){
+	.main_banner{
+		width:750px;
+	}
+	.newbanner1{
+			max-width:710px;
+			
+	}
+	#cal_card{
+			width:260px;
+			height:270px;
+	}
+	.sec_cal {
+    	width: 230px;
+	}
+	.sec_cal .cal_wrap .dates {
+    	height: 150px;
+	}
+	#study_time{
+		top:-10px;
+		width:715px;
+	}
+	#columnchart_values{
+		margin-left:140px;
+	}
+	#all_todo{
+		width:260px;
+		height:397px;
+		top:-10px;
+		left:15px;
+	}
+	#main_info_title{
+		width:130px;
+	}
+	.guitar{
+		display:none;	
+	}
+	
+	
+}
+
+@media screen and (max-width:1320px){
+	#main_content_body{
+		left:0px;
+	}
+	.main_banner{
+		width:750px;
+	}
+	.newbanner1{
+		max-width:710px;
+		height:270px;
+		font-family: 'KOTRAHOPE';
+		border-radius:3rem;
+		box-shadow: 2px 4px 8px #babebc;
+		}
+	#cal_card{
+		position:relative;
+		width:710px;
+		min-width:450px;
+		height:350px;
+		top:-12px;
+	}
+	.sec_cal {
+    	width: 500px;
+    	max-width:400px;
+	}
+	.sec_cal .cal_wrap .dates {
+    	height: 240px;
+	}
+	#study_time{
+		min-width:450px;
+		width:710px;
+		height:400px;
+		top:-25px;
+	}
+	#columnchart_values{
+		margin:0 auto;
+	}
+	#all_todo{
+		min-width:450px;
+		width:710px;
+		height:390px;
+		top:-35px;
+		left:0;
+	}
+	#main_info_title{
+		width:250px;
+	}
+	.footer-sns{
+		display:none;
+	}
+	.footer-main{
+		margin-left:0;
+	}
+}
+

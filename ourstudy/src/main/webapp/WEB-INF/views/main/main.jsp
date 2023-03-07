@@ -67,10 +67,10 @@
 
 <div id="main_content_body" class="container">
 	<div class="row">
-		<div class="main_banner col-8">
+		<div class="main_banner col-xxl-8">
 			<img src="${pageContext.request.contextPath}/image_bundle/newbanner4.PNG" class="newbanner1">
 		</div>
-		<div class="card main_card col-4" id="cal_card">
+		<div class="card main_card col-xxl-4" id="cal_card">
 			<div class="sec_cal">
 				<div class="cal_nav">
 			    	<a href="javascript:;" class="nav-btn go-prev">prev</a>
@@ -107,8 +107,8 @@
 			<span class="main-title" style="margin:15px 0 18px 5px;">안내사항 </span>
 			<table class="table table-hover table-group-divider table table-striped">
 				<tr style="background-color:#F4ABB2;">
-					<th width="250" class="align-center" style="color:black;">제목</th>
-					<th class="align-center" style="color:black;">작성일</th>
+					<th width="250" class="align-center" style="color:black;" id="main_info_title">제목</th>
+					<th class="align-center" style="color:black;" id="main_info_date">작성일</th>
 				</tr>
 				<c:forEach var="info" items="${infoList}">
 				<tr>

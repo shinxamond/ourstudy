@@ -49,7 +49,7 @@ public class MainController {
 		//안내사항 최신글 4개
 		Map<String,Object> map = new HashMap<String,Object>();
 		map.put("start", 1);
-		map.put("end", 4);
+		map.put("end", 7);
 		
 		List<InformationVO> infoList = informationService.selectInfoList(map);
 		model.addAttribute("infoList", infoList);
