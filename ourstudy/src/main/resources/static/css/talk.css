@@ -232,9 +232,35 @@ table.striped-talk-table td{
 	margin-top:10px;
 }
 
+.tt1{
+	
+	 padding: 10px;
+     border-bottom: 1px solid #CD5C5C;
+}
+
+.tt2 {
+	 padding: 10px;
+     border-bottom: 1px solid #CD5C5C;
+	display: none;
+}
+
+@media ( max-width : 1199px) {
+	.tt1 {
+		display: none;
+	}
+	.tt2 {
+		display: table;
+	}
+}
+
 
 div#main_footer{
 	background-color:#b4aab1;
 	padding:30px 0 20px 280px;
 	height:220px;
 }
+@media screen and (max-width:1320px){
+   div#main_footer{
+      padding:18px 0 20px 8px;
+   }
+}   
