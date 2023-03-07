@@ -46,7 +46,7 @@ public class MainController {
 	@RequestMapping("/main/main.do")
 	public String main(Model model) {
 
-		//안내사항 최신글 4개
+		//안내사항 최신글 7개
 		Map<String,Object> map = new HashMap<String,Object>();
 		map.put("start", 1);
 		map.put("end", 7);
@@ -70,7 +70,7 @@ public class MainController {
 	   }
 
 		map2.put("start", 1);
-		map2.put("end", 4);
+		map2.put("end", 5);
 	   
 	   List<SeatVO> member_RankStudyTime = mainService.member_Rank(memArray, setThisMonday.toString(), setNextMonday.toString());
 	   

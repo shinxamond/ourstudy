@@ -16,6 +16,7 @@
 <link href="https://fonts.googleapis.com/css2?family=Leckerli+One&display=swap" rel="stylesheet">
 <%--로그인 유효성 체크 --%>
 <script type="text/javascript" src="${pageContext.request.contextPath}/js/logincheck.js"></script>
+<script type="text/javascript" src="${pageContext.request.contextPath}/js/sidebar.js"></script>
 <%--카카오톡 로그아웃 --%>
 <script src="https://developers.kakao.com/sdk/js/kakao.js"></script>
 <script>
@@ -222,8 +223,6 @@ Kakao.API.request({
 	        				</button>
 	        				<div class="collapse" id="admin-collapse1">
 	        				<ul class="btn-toggle-nav fw-normal pb-1 small">
-	        					<li><a href="${pageContext.request.contextPath}/seat/insertForm.do" class="d-inline-flex rounded">좌석추가</a></li>
-            					<li><a href="${pageContext.request.contextPath}/locker/editForm.do" class="d-inline-flex rounded">사물함추가</a></li>
             					<li><a href="${pageContext.request.contextPath}/ticket/admin_ticketList.do" class="d-inline-flex rounded">이용권추가</a></li>
             					<li><a href="${pageContext.request.contextPath}/item/adminList.do" class="d-inline-flex rounded">물품추가</a></li>        					
 	        				</ul>
@@ -295,18 +294,7 @@ Kakao.API.request({
 <%-- 사이드바 끝 --%>
 
 
-
-
-
-
-
-
-
-
-
-
-
-
+<%-- 축소하면 보이는 nav 메뉴 --%>
 <nav class="navbar navbar-expand-lg navbar-light" id="navbar">
 				<a href="${pageContext.request.contextPath}/main/main.do"
 						class="link-dark text-decoration-none">
@@ -321,38 +309,72 @@ Kakao.API.request({
 				</button> 
 				<div class="collapse navbar-collapse" id="navbarSupportedContent">
 					<ul class="navbar-nav">
-						<li class="nav-item dropdown"><a
-							class="nav-link dropdown-toggle" id="navbarDropdown" href="#"
-							role="button" data-bs-toggle="dropdown" aria-expanded="false">이용권구매</a>
+						<li class="nav-item dropdown"><a class="nav-link dropdown-toggle" id="navbarDropdown" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">이용권구매</a>
 							<ul class="dropdown-menu" aria-labelledby="navbarDropdown">
 								<li><a href=<c:if test="${!empty user}">"${pageContext.request.contextPath}/ticket/study_ticketList.do"</c:if> class="d-inline-flex rounded" 
-           					<c:if test="${empty user}">data-bs-toggle="modal" data-bs-target="#loginModal"</c:if> class="rounded">좌석 이용권</a></li>
+           							<c:if test="${empty user}">data-bs-toggle="modal" data-bs-target="#loginModal"</c:if> class="rounded">좌석 이용권</a></li>
 			       				<li><a href=<c:if test="${!empty user}">"${pageContext.request.contextPath}/ticket/locker_ticketList.do"</c:if> class="d-inline-flex rounded"
-							<c:if test="${empty user}">data-bs-toggle="modal" data-bs-target="#loginModal"</c:if> class="rounded">사물함 이용권</a></li>
+									<c:if test="${empty user}">data-bs-toggle="modal" data-bs-target="#loginModal"</c:if> class="rounded">사물함 이용권</a></li>
 							</ul>
 						</li>
+						
 						<li class="nav-item"><a href=<c:if test="${!empty user}">"${pageContext.request.contextPath}/seat/selectForm.do"</c:if> class="side-main-link"
-						<c:if test="${empty user}">data-bs-toggle="modal" data-bs-target="#loginModal"</c:if> class="side-main-link">좌석 선택</a></li>
+							<c:if test="${empty user}">data-bs-toggle="modal" data-bs-target="#loginModal"</c:if> class="side-main-link">좌석 선택</a></li>
+						
 						<li class="nav-item"><a href=<c:if test="${!empty user}">"${pageContext.request.contextPath}/item/userList.do"</c:if> class="side-main-link"
-						<c:if test="${empty user}">data-bs-toggle="modal" data-bs-target="#loginModal"</c:if> class="side-main-link">물품 대여</a></li>
-						<li class="nav-item dropdown"><a
-							class="nav-link dropdown-toggle" id="navbarDropdown" href="#"
-							role="button" data-bs-toggle="dropdown" aria-expanded="false">시설안내</a>
+							<c:if test="${empty user}">data-bs-toggle="modal" data-bs-target="#loginModal"</c:if> class="side-main-link">물품 대여</a></li>
+						
+						<li class="nav-item dropdown"><a class="nav-link dropdown-toggle" id="navbarDropdown" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">시설안내</a>
 							<ul class="dropdown-menu" aria-labelledby="navbarDropdown">
 								<li><a href="${pageContext.request.contextPath}/info/informationList.do" class="d-inline-flex rounded">안내사항</a></li>
 								<li><a href="${pageContext.request.contextPath}/info/faq.do" class="d-inline-flex rounded">자주 묻는 질문</a></li>
 							</ul>
 						</li>
-						<li class="nav-item dropdown"><a
-							class="nav-link dropdown-toggle" id="navbarDropdown" href="#"
-							role="button" data-bs-toggle="dropdown" aria-expanded="false">커뮤니티</a>
+						
+						<li class="nav-item dropdown"><a class="nav-link dropdown-toggle" id="navbarDropdown" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">커뮤니티</a>
 							<ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-								<li><a class="dropdown-item" href="${pageContext.request.contextPath}/jobEmploy/employList.do">분실물찾기</a></li>
-								<li><a class="dropdown-item" href="${pageContext.request.contextPath}/jobReview/reviewList.do">이용후기</a></li>
+								<li><a href=<c:if test="${!empty user}">"${pageContext.request.contextPath}/community/lostList.do"</c:if> class="d-inline-flex rounded"
+           							<c:if test="${empty user}">data-bs-toggle="modal" data-bs-target="#loginModal"</c:if> class="rounded">분실물 찾기</a></li>
+								<li><a href="${pageContext.request.contextPath}/review/list.do" class="d-inline-flex rounded">이용후기</a></li>
 							</ul>
-						</li>	
-					</ul>
-
+						</li>
+						
+					<c:if test="${!empty user && user.mem_auth == 1}">
+						<li class="nav-item"><a href="${pageContext.request.contextPath}/mypage/myPageMain.do" class="side-main-link">마이페이지</a></li>
+					</c:if>
+						
+					<c:if test="${!empty user && user.mem_auth == 9}">
+						<li class="nav-item dropdown"><a class="nav-link dropdown-toggle" id="navbarDropdown" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">관리페이지</a>
+							<ul class="dropdown-menu">
+								<li><h6 class="dropdown-header">관리자추가</h6></li>
+            						<li><a href="${pageContext.request.contextPath}/ticket/admin_ticketList.do" class="d-inline-flex rounded">이용권추가</a></li>
+            						<li><a href="${pageContext.request.contextPath}/item/adminList.do" class="d-inline-flex rounded">물품추가</a></li>
+								<li><hr class="dropdown-divider"></li>
+								
+			       				<li><a href="${pageContext.request.contextPath}/admin/admin_list.do" class="d-inline-flex rounded">회원관리</a></li>
+			       				<li><hr class="dropdown-divider"></li>
+			       				
+			       				<li><h6 class="dropdown-header">이용기록</h6></li>
+			       					<li><a href="${pageContext.request.contextPath}/admin/admin_seathistory.do" class="d-inline-flex rounded">좌석기록</a></li>
+	        						<li><a href="${pageContext.request.contextPath}/admin/admin_lockerhistory.do" class="d-inline-flex rounded">사물함기록</a></li>
+			       				<li><hr class="dropdown-divider"></li>
+			       				
+			       				<li><h6 class="dropdown-header">물품기록</h6></li>
+			       				<li><a href="${pageContext.request.contextPath}/admin/admin_itemhistory.do" class="d-inline-flex rounded">대여히스토리</a></li>
+	        					<li><a href="${pageContext.request.contextPath}/admin/admin_unreturnlist.do" class="d-inline-flex rounded">미반납자</a></li>
+			       				<li><hr class="dropdown-divider"></li>
+			       				
+			       				<li><a href="${pageContext.request.contextPath}/admin/admin_saleslist.do" class="d-inline-flex rounded">판매기록</a></li>
+			       				<li><hr class="dropdown-divider"></li>
+			       				
+			       				<li><h6 class="dropdown-header">채팅기록</h6></li>
+			       				<li><a href="${pageContext.request.contextPath}/talk/talkList.do" class="d-inline-flex rounded">채팅목록</a></li>
+	        					<li><a href="${pageContext.request.contextPath}/admin/admin_receivehistory.do" class="d-inline-flex rounded">수신채팅</a></li>
+	        					<li><a href="${pageContext.request.contextPath}/admin/admin_sendhistory.do" class="d-inline-flex rounded">발신채팅</a></li>
+			       			</ul>	
+						</li>				
+					</c:if>						
+				</ul>
 				
 					<c:if test="${empty user}">
 						<button class="btn text-white rounded" data-bs-toggle="modal" data-bs-target="#loginModal" 

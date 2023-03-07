@@ -13,7 +13,7 @@
 			#{mem}		
 		</foreach>
 		)GROUP BY mem_name
-		ORDER BY total_time DESC) <![CDATA[WHERE ROWNUM <= 5]]>
+		ORDER BY total_time DESC) <![CDATA[WHERE ROWNUM<= 5]]> AND total_time IS NOT NULL
 	</select>
 	<!-- SELECT mem_name, sum(total_time) AS total_time
 FROM (SELECT d.mem_name, d.total_time

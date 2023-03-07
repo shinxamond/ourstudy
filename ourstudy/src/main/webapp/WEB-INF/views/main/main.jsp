@@ -54,7 +54,7 @@
 	  var options = {
 	  	width: 430,
 		height: 350,
-		bar: {groupWidth: "25%"},
+		bar: {groupWidth: "30%"},
 		legend: { position: "none" },
 		vAxis: {textPosition: 'none', viewWindow: {max: 20}},
 			 chartArea:{left:15,top:20,width:"90%",height:"80%"}
