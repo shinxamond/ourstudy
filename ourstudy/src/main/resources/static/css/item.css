@@ -16,6 +16,7 @@
 /*
 유저 물품 리스트---------*/
 div#userList #userList-area{
+	border: solid 1px #d9dee3;
 	margin:2px;
 	width:33%;
 	float:left;
@@ -50,19 +51,20 @@ div#userList #userList-area{
 
 /*
 대여 폼---------*/
-div.item-image{
+
+.item-image{
 	width:380px;
-	margin:0 0 10px 290px;
+	margin:0 0 10px 150px;
 	float:left;
 	position: relative;
 }
-div.item-detail{
+.item-detail{
 	padding:0 0 5px 0;
 	position: relative;
 }
 .item-detail form{
-	border:none;
-	width:400px;
+
+	width:300px;
 	float:left;
 	margin:0;
 }
@@ -74,6 +76,11 @@ div.item-detail ul li{
 select#inum option{
 	width:200px;
 }
+#imgdetail{
+	border: solid 1px black;
+	border-radius: 1rem;
+}
+
 /*
 대여 폼 반응형---------*/
 .item-image2{
@@ -193,7 +200,8 @@ input[type="number"]{
 	text-decoration:none;
 	color:#000000;
 } */
-
+/*
+에러코드---------*/
 .error-color{
 	color:#ff0000;
 }

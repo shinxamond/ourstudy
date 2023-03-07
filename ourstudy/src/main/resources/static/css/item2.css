@@ -1,0 +1,12 @@
+@charset "UTF-8";
+/*
+기본 폼---------*/
+
+a:link{
+	text-decoration:none;
+	color:#000000;
+}
+a:visited {
+	text-decoration:none;
+	color:#000000;
+}
