@@ -7,57 +7,53 @@
 <!-- iamport.payment.js -->
 <script type="text/javascript"
 	src="${pageContext.request.contextPath}/js/jquery-3.6.0.min.js"></script>
+<link rel="stylesheet"
+	href="${pageContext.request.contextPath}/css/ticket.css">
 <script src="https://cdn.iamport.kr/v1/iamport.js"></script>
 <div class="container">
 	<h4>이용권 목록</h4>
-	<div class="container">
-		<div class="row">
-			<c:if test="${count == 0}">
-				<table class="table table-group-divider align-center">
-					<tr>
-						<td>표시할 이용권이 없습니다</td>
-					</tr>
-				</table>
-			</c:if>
-			<c:if test="${count > 0}">
-				<c:forEach var="ticket" items="${ticket}">
-					<c:if test="${ticket.ticket_kind == 2}">
-						<div class="card-group" style="margin-top: 30px;">
-							<div class="card" style="width: 15rem;">
-							<form action="/ticket/locker_check.do" method = "post">
-							<input type = "hidden" name = "ticket_num" value ="${ticket.ticket_num}">
+	<div class="container d-flex justify-content-center">
+		<c:if test="${count == 0}">
+			<table class="table table-group-divider align-center">
+				<tr>
+					<td>표시할 이용권이 없습니다</td>
+				</tr>
+			</table>
+		</c:if>
+		<c:set var="second_kind" value="0" />
+		<c:forEach var="ticket" items="${ticket}">
+			<c:if test="${ticket.ticket_kind == 2}">
+				<div class="card-group" style="margin-top: 30px;">
+					<div class="card" id="ticket_card">
+						<form action="/ticket/locker_check.do" method="post">
+							<input type="hidden" name="ticket_num"
+								value="${ticket.ticket_num}">
 							<c:if test="${!empty param.locker_num}">
-							<input type = "hidden" name = "locker_num" value = "${param.locker_num}">
+								<input type="hidden" name="locker_num"
+									value="${param.locker_num}">
 							</c:if>
 							<div class="card-body">
-									${ticket.ticket_name}
-									<div style="float: right;">
-										<fmt:formatNumber value="${ticket.ticket_price}" />
-										원
-									</div>
+								${ticket.ticket_name}
+								<div style="float: right;">
+									<fmt:formatNumber value="${ticket.ticket_price}" />
+									원
 								</div>
-							
-							<input type = "submit" id="buy_btn" value = "구매하기" class="btn btn-primary" style="float: right;">
-							</form>
-<%-- 								<input type="hidden" value="${ticket.ticket_num}">
-								<div class="card-body">
-									${ticket.ticket_name}
-									<div style="float: right;">
-										<fmt:formatNumber value="${ticket.ticket_price}" />
-										원
-									</div>
-									<div style="margin-top: 5px;">
-										<button id="buy_btn" type="button" class="btn btn-primary"
-											style="float: right;"
-											onclick="location.href='locker_check.do?ticket_num=${ticket.ticket_num}&&locker_num=${param.locker_num}'">구매하기</button>
-									</div>
-								</div> --%>
 							</div>
-						</div>
-					</c:if>
-				</c:forEach>
+							<input type="submit" id="lock_buy_btn" value="구매하기"
+								class="btn btn-primary" style="float: right;">
+						</form>
+					</div>
+				</div>
+				<c:set var="second_kind" value="${second_kind + 1}" />
 			</c:if>
-		</div>
+		</c:forEach>
+		<c:if test="${second_kind == 0}">
+			<table class="table table-group-divider align-center" id="no_ticket">
+				<tr>
+					<td>표시할 이용권이 없습니다</td>
+				</tr>
+			</table>
+		</c:if>
 	</div>
 </div>
 <!-- 중앙 컨텐츠 끝 -->
