@@ -35,7 +35,9 @@ public interface SeatService {
    public int getMem_status(int mem_num);
    //현재 좌석의 입실상태 구하기
    public int getSeat_status(int seat_num);
-   //멤버 히스토리 가져오기(시간권,기간권)
-   public MemberVO getMemberHistoryWhenSelectSeat(int mem_num);
+   //회원 잔여시간 가져오기
+   public Float getMemberHour(int mem_num);
+   //회원 잔여기간 가져오기
+   public Float getMemberTerm(int mem_num);
 }
 
