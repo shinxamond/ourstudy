@@ -12,15 +12,6 @@
     	<put-attribute name="footer" value="/WEB-INF/views/template/footer.jsp"/>         
     </definition>
      
-    <!-- 나리수정중 -->
-    <!-- 기본메인 
-     <definition name="memberHome" template="/WEB-INF/views/template/layout_main.jsp"> 
-    	<put-attribute name="title" value="SpringPage"/>
-    	<put-attribute name="header" value="/WEB-INF/views/template/layout_basic.jsp"/>
-    	<put-attribute name="body" value="/WEB-INF/views/main/main.jsp"/>   
-    </definition>
-    -->
-    
     <!-- 관리자메인 -->        
     <definition name="admin" 
     	template="/WEB-INF/views/template/layout_admin.jsp">

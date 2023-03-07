@@ -57,6 +57,7 @@ Kakao.API.request({
 					</div>
 				</div>
 				
+				<c:if test="${empty user}">
 				<form action="${pageContext.request.contextPath}/member/login.do" method="post" id="login_form">
 						<ul>
 							<li><label for="mem_id"></label>
@@ -73,7 +74,7 @@ Kakao.API.request({
 						text-white rounded submit p-2" style="background-color:#e65962;">Login
 						</button>
 				</form>
-				
+				</c:if>
 				<ul class="find-id my-3">
 					<li><a href="${pageContext.request.contextPath}/member/findId.do">아이디 찾기</a></li>
 					<li>&nbsp;|&nbsp;</li>

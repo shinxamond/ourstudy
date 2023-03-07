@@ -97,13 +97,6 @@ public class MemberController {
 	}
 
 	//========회원로그인=========
-	
-	//로그인 폼 호출
-	@GetMapping("/member/login.do")
-	public String formLogin() {
-		return "memberLogin";
-	}
-
 
 	//로그인 폼에 전송된 데이터 처리
 	@PostMapping("/member/login.do")
