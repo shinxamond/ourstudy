@@ -13,7 +13,7 @@
 				<div class="section" style="text-align:center"> 
 					<div class="search-bar">
 						<form class="search-form d-flex align-items-center" action="adminList.do" method="get"><!-- 자동 인코딩 처리를 위해 -->
-							<select class="form-select" id="form-select1" name="keyfield" aria-label="form-select" style="width:220px;"
+							<select class="form-select" id="form-select1" name="keyfield" aria-label="form-select"
 									onchange="location.href='adminList.do?keyfield='+this.value">
 								<option value="1" <c:if test="${param.keyfield == 1}">selected</c:if>>이름</option>
 								<option value="2" <c:if test="${param.keyfield == 2}">selected</c:if>>물품명 식별 번호</option>
