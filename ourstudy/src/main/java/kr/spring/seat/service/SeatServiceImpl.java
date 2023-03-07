@@ -111,11 +111,17 @@ public class SeatServiceImpl implements SeatService{
 	   return seatMapper.getSeat_status(seat_num);
    }
 
-   //회원 시간권,기간권 남은시간 가져오기
-   @Override
-   public MemberVO getMemberHistoryWhenSelectSeat(int mem_num) {
-	   return seatMapper.getMemberHistory(mem_num);
-   }
+   //회원 잔여시간 가져오기
+	@Override
+	public Float getMemberHour(int mem_num) {
+		return seatMapper.getMemberHour(mem_num);
+	}
+   
+   //회원 잔여기간 가져오기
+	@Override
+	public Float getMemberTerm(int mem_num) {
+		return seatMapper.getMemberTerm(mem_num);
+	}
    
    /*========================================
           			KEEP

@@ -70,8 +70,14 @@ public interface SeatMapper {
    /*========================================
             GET DATA(LIST) - HISTORY
     ======================================= */
-   @Select("SELECT mem_ticket_term, mem_ticket_hour FROM MEMBER_HISTORY WHERE mem_num=#{mem_num}")
-   public MemberVO getMemberHistory(int mem_num);
+   //잔여시간 가져오기
+   @Select("SELECT mem_ticket_hour FROM MEMBER_HISTORY WHERE mem_num=#{mem_num}")
+   public Float getMemberHour(int mem_num);
+   
+   //잔여기간 가져오기
+   @Select("SELECT mem_ticket_term FROM MEMBER_HISTORY WHERE mem_num=#{mem_num}")
+   public Float getMemberTerm(int mem_num);
+   
    /*========================================
                 IN / OUT / HOLD
     ======================================= */

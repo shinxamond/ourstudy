@@ -3,9 +3,7 @@ package kr.spring.seat.controller;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
@@ -15,20 +13,17 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
-import kr.spring.locker.service.LockerService;
-import kr.spring.locker.vo.LockerVO;
 import kr.spring.member.service.MemberService;
 import kr.spring.member.vo.MemberVO;
 import kr.spring.mypage.service.MypageService;
 import kr.spring.seat.service.SeatService;
+import kr.spring.seat.service.SeatServiceImpl;
 import kr.spring.seat.vo.SeatVO;
 
 @Controller
@@ -89,10 +84,22 @@ public class SeatController {
       logger.debug("mem_name = " + mem_name);
       logger.debug("mem_status = " + mem_status);
       
-      member = seatService.getMemberHistoryWhenSelectSeat(mem_num);
+      Float hour = seatService.getMemberHour(mem_num);
+      Float term = seatService.getMemberTerm(mem_num);
       
-      if(member.getMem_ticket_hour() == 0) {
-    	  //수정중
+      logger.debug("HOUR>>>>" + hour);
+      
+      if(hour.floatValue() > 0) {									//잔여시간 있는 경우
+    	  /*if(term.floatValue() <= 0) {									//기간권 없을 때
+    		  //시간권에서 까임
+    	  }*/																//기간권도 있을 때
+      }
+      if(hour.floatValue() <= 0) {									//잔여시간 없는 경우
+    	  if(term.floatValue() <= 0) {									//기간권도 없을 때
+    		  return "redirect:/ticket/study_ticketList.do";
+    	  }/*else if(term.floatValue() > 0) {								//기간권은 있을 때
+    		  //기간권에서 까임
+    	  }*/
       }
       
       SeatVO seatVO = initCommand();
@@ -149,7 +156,6 @@ public class SeatController {
    public String Hold(@RequestParam int seat_num, HttpSession session) {
 	  MemberVO member = (MemberVO)session.getAttribute("user");
       int mem_num = (Integer)session.getAttribute("user_num");      
-      String mem_name = memberService.getMem_name(mem_num);  
       
       logger.debug("user_num ============= " +  mem_num);
       
