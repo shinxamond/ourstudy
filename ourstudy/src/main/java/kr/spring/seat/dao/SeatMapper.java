@@ -7,6 +7,7 @@ import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Select;
 import org.apache.ibatis.annotations.Update;
 
+import kr.spring.member.vo.MemberVO;
 import kr.spring.seat.vo.SeatVO;
 
 @Mapper
@@ -33,7 +34,7 @@ public interface SeatMapper {
    
    
    /*========================================
-                GET DATA(LIST)
+              GET DATA(LIST) - SEAT
     ======================================= */
    //해당 DB에서 정보 가져오기
    @Select("select * FROM SEAT ORDER BY seat_num ASC")
@@ -66,6 +67,11 @@ public interface SeatMapper {
    //입실->퇴실할 경우 현재 입실 상태인 좌석번호 가져오기
    @Select("SELECT sd.seat_num FROM seat_detail sd JOIN member m ON sd.mem_num=m.mem_num WHERE m.mem_num=#{mem_num} AND sd.total_time IS NULL")
    public int getInMemberSeat(int mem_num);
+   /*========================================
+            GET DATA(LIST) - HISTORY
+    ======================================= */
+   @Select("SELECT mem_ticket_term, mem_ticket_hour FROM MEMBER_HISTORY WHERE mem_num=#{mem_num}")
+   public MemberVO getMemberHistory(int mem_num);
    /*========================================
                 IN / OUT / HOLD
     ======================================= */

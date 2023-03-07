@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import kr.spring.member.vo.MemberVO;
 import kr.spring.seat.dao.SeatMapper;
 import kr.spring.seat.vo.SeatVO;
 
@@ -108,6 +109,12 @@ public class SeatServiceImpl implements SeatService{
    @Override
    public int getSeat_status(int seat_num) {
 	   return seatMapper.getSeat_status(seat_num);
+   }
+
+   //회원 시간권,기간권 남은시간 가져오기
+   @Override
+   public MemberVO getMemberHistoryWhenSelectSeat(int mem_num) {
+	   return seatMapper.getMemberHistory(mem_num);
    }
    
    /*========================================

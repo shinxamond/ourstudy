@@ -58,7 +58,7 @@ public class SeatController {
    
    //좌석선택폼으로 이동
    @RequestMapping("/seat/selectForm.do")
-   public ModelAndView drawing(HttpSession session) {
+   public ModelAndView selectForm(HttpSession session) {
 	  int mem_status = seatService.getMem_status((Integer)session.getAttribute("user_num"));
 	  
       ModelAndView mav = new ModelAndView();
@@ -72,7 +72,7 @@ public class SeatController {
       return mav;
    }
    
-   //좌석을 선택한 회원의 정보가 입력됨
+   //좌석을 선택한 회원의 정보가 입력됨(기간권,시간권 잔여시간 없을 경우 결제페이지 호출)
    @RequestMapping("/seat/select.do")
    public String selectSeat(@RequestParam int seat_num,HttpServletRequest request,RedirectAttributes attributes, Model model) {
       HttpSession session = request.getSession();
@@ -88,6 +88,12 @@ public class SeatController {
       logger.debug("mem_num = " + mem_num);
       logger.debug("mem_name = " + mem_name);
       logger.debug("mem_status = " + mem_status);
+      
+      member = seatService.getMemberHistoryWhenSelectSeat(mem_num);
+      
+      if(member.getMem_ticket_hour() == 0) {
+    	  //수정중
+      }
       
       SeatVO seatVO = initCommand();
       if(seatVO == null) {
@@ -149,8 +155,10 @@ public class SeatController {
       seatVO.setMem_num(mem_num);
       seatVO.setSeat_num(seat_num);
       
-      seatService.holdSeat(seatVO);
+      logger.debug(">>> mem_num>>>" + mem_num);
+      logger.debug("<<<seat_num<<<" + seat_num); 
       
+      seatService.holdSeat(seatVO);
       
       seatVO = seatService.getTimes(seat_num);
       
@@ -203,6 +211,7 @@ public class SeatController {
     	  
     	  logger.debug("<<<<<<<<<<<<<<<<<<<seat_num>>>>>>>>>>>>>>>>" + seat_num);
     	  logger.debug("<<<<<<<mem_auth>>>>> --- " + mem_auth);
+    	  logger.debug(">>>mem_num>>>>" + mem_num);
     	  
     	  seatVO.setMem_num(mem_num);
     	  seatVO.setSeat_num(seat_num);
@@ -216,6 +225,7 @@ public class SeatController {
     	  seat_num = seatService.getInMemberSeat(mem_num);
     	  
     	  logger.debug("<<<<<<<<<<<<<<<<<<<seat_num>>>>>>>>>>>>>>>>" + seat_num);
+    	  logger.debug(">>>mem_num<<<<<====" + mem_num);
     	  
     	  seatVO.setMem_num(mem_num);
     	  seatVO.setSeat_num(seat_num);

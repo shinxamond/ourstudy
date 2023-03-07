@@ -2,6 +2,7 @@ package kr.spring.seat.service;
 
 import java.util.List;
 
+import kr.spring.member.vo.MemberVO;
 import kr.spring.seat.vo.SeatVO;
 
 
@@ -34,5 +35,7 @@ public interface SeatService {
    public int getMem_status(int mem_num);
    //현재 좌석의 입실상태 구하기
    public int getSeat_status(int seat_num);
+   //멤버 히스토리 가져오기(시간권,기간권)
+   public MemberVO getMemberHistoryWhenSelectSeat(int mem_num);
 }
 
