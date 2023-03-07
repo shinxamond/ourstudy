@@ -61,7 +61,7 @@ public class LostController {
 				Map<String,Object> map = 
 							new HashMap<String,Object>();
 				map.put("keyfield", keyfield);
-				map.put("keyfield", keyword);
+				map.put("keyword", keyword);
 				
 				//글의 총개수 또는 검색된 글의 개수
 				int count = lostService.selectRowCount(map);
