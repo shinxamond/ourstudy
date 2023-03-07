@@ -5,11 +5,11 @@
 <script type="text/javascript" src="${pageContext.request.contextPath}/js/findIdPw.js"></script>
 
 <!-- 중앙 컨텐츠 시작 -->
-<div>
+<div class="find_all">
 <div class="find_left">
 	<a href="${pageContext.request.contextPath}/main/main.do">
-		<img src="${pageContext.request.contextPath}/image_bundle/writelogo.png" class="find-logo" style="margin-top:165px; height:37px;" >
-		<img src="${pageContext.request.contextPath}/image_bundle/whitelogo.png" class="find-logo" style="margin-top:30px;">
+		<img src="${pageContext.request.contextPath}/image_bundle/writelogo.png" class="find-logo" id="writelogo">
+		<img src="${pageContext.request.contextPath}/image_bundle/whitelogo.png" class="find-logo" id="whitelogo">
 	</a>
 </div>
 	<form:form action="findId.do" class="find_form" modelAttribute="memberVO" method="post">

@@ -143,6 +143,7 @@ button,input[type="button"]{
 			  아이디,비밀번호 찾기
 ======================================*/
 
+@media screen and (min-width:1026px) {
 .find_left{
   background-color: #E65962;
   border-radius:5px;
@@ -162,6 +163,13 @@ button,input[type="button"]{
 	margin:205px 0 0 55px;
 	display:relative;
 	z-index:3;
+}
+#writelogo{
+	margin-top:165px;
+	height:37px;
+}
+#whitelogo{
+	margin-top:25px;
 }
 
 .find_form {
@@ -226,7 +234,44 @@ button,input[type="button"]{
 .find-content ul li input#mem_id{
 	margin-right:152px;
 }
+}
 
+@media screen and (max-width:1026px) {
+
+	.find_left{
+		display:none;
+	}
+   
+    .find_form{
+     	position: relative;
+ 	 	margin:20px 0 5px 50px;
+ 	 	width:340px;
+ 	 	height:480px;
+ 	 	box-shadow: 2px 2px 14px 5px rgba(0,0,0,.1);
+    }
+    .find-text{
+		font-weight:bold;
+		font-size:15pt;
+		padding-left:100px;
+    }
+	.find-content{
+		padding-top:40px;
+	}
+    .mail-check-input{
+    	margin:0;
+    }
+    .find-submit-btn{
+		color:white;
+		background-color:#E65962;
+		width:125px;
+		height:40px;
+		border-radius:10px;
+		border:none;
+		font-size:10pt;
+		margin:35px 0 0 90px;
+	}
+	
+}
 
 /*=====================================
 			  common/notice
