@@ -318,10 +318,10 @@ Kakao.API.request({
 							</ul>
 						</li>
 						
-						<li class="nav-item"><a href=<c:if test="${!empty user}">"${pageContext.request.contextPath}/seat/selectForm.do"</c:if> class="side-main-link"
+						<li class="nav-item py-2"><a href=<c:if test="${!empty user}">"${pageContext.request.contextPath}/seat/selectForm.do"</c:if> class="side-main-link"
 							<c:if test="${empty user}">data-bs-toggle="modal" data-bs-target="#loginModal"</c:if> class="side-main-link">좌석 선택</a></li>
 						
-						<li class="nav-item"><a href=<c:if test="${!empty user}">"${pageContext.request.contextPath}/item/userList.do"</c:if> class="side-main-link"
+						<li class="nav-item py-2"><a href=<c:if test="${!empty user}">"${pageContext.request.contextPath}/item/userList.do"</c:if> class="side-main-link"
 							<c:if test="${empty user}">data-bs-toggle="modal" data-bs-target="#loginModal"</c:if> class="side-main-link">물품 대여</a></li>
 						
 						<li class="nav-item dropdown"><a class="nav-link dropdown-toggle" id="navbarDropdown" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">시설안내</a>
@@ -340,7 +340,7 @@ Kakao.API.request({
 						</li>
 						
 					<c:if test="${!empty user && user.mem_auth == 1}">
-						<li class="nav-item"><a href="${pageContext.request.contextPath}/mypage/myPageMain.do" class="side-main-link">마이페이지</a></li>
+						<li class="nav-item py-2"><a href="${pageContext.request.contextPath}/mypage/myPageMain.do" class="side-main-link">마이페이지</a></li>
 					</c:if>
 						
 					<c:if test="${!empty user && user.mem_auth == 9}">

@@ -344,7 +344,8 @@ ul{
 }
 
 .nav-item{
-	margin-left:20px;
+	font-size:12pt;
+	margin-left:15px;
 }
 
 .dropdown-menu a:hover{
@@ -361,10 +362,6 @@ ul{
 .dropdown-menu{
 	width:450px;
 }
-.nested-menu{
-	width:390px;
-}
-
 
 
 
