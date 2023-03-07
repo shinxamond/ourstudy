@@ -36,8 +36,10 @@ public interface SeatMapper {
                 GET DATA(LIST)
     ======================================= */
    //해당 DB에서 정보 가져오기
+   @Select("select * FROM SEAT ORDER BY seat_num ASC")
    public List<SeatVO> getSeatList();
-   public List<SeatVO> getSeatDetailList(); //*없음*/
+   @Select("SELECT d.seat_detail_num,d.seat_num,s.seat_name,d.mem_name,TO_CHAR(d.in_time, 'yyyy-MM-dd HH24:MI:SS') in_time, TO_CHAR(d.out_time, 'yyyy-MM-dd HH24:MI:SS') out_time,d.total_time FROM SEAT_DETAIL d JOIN SEAT s ON s.seat_num = d.seat_num")
+   public List<SeatVO> getSeatDetailList();
    //좌석이용시간 구하기
    
    //해당 멤버의 좌석 번호 구하기
