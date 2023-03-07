@@ -6,9 +6,13 @@
 <!-- 결제 페이지 시작 -->
 <!-- iamport.payment.js -->
 <script type="text/javascript" 	src="${pageContext.request.contextPath}/js/jquery-3.6.0.min.js"></script>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="${pageContext.request.contextPath}/css/pay.css">
 <script src="https://cdn.iamport.kr/v1/iamport.js"></script>
 <div class="container">
 <h4>이용권 선택내역</h4>
+<div class="d-flex justify-content-center">
+<div class="col col-xl-7">
 <input type="hidden" name="mem_num"
 		 data-memnum="${user.mem_num}" id="mem_num">
 		<input type="hidden" name="ticket_num"
@@ -38,9 +42,8 @@
 				onclick="requestCardPay()" value="카드">
 		</div>
 	</form>
-	
-	
 <script src="${pageContext.request.contextPath}/js/pay.js"></script>
-
+</div>
+</div>
 </div>
 <!-- 결제 페이지 끝 -->

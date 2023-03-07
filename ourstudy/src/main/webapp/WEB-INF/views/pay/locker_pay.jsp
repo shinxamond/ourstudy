@@ -6,6 +6,7 @@
 <!-- 결제 페이지 시작 -->
 <!-- iamport.payment.js -->
 <script type="text/javascript" 	src="${pageContext.request.contextPath}/js/jquery-3.6.0.min.js"></script>
+<link rel="stylesheet" href="${pageContext.request.contextPath}/css/pay.css">
 <script src="https://cdn.iamport.kr/v1/iamport.js"></script>
 <div class="container">
 <h4>이용권 선택내역</h4>

@@ -12,18 +12,23 @@ body{
 	height:100%;
 	position:relative;
 }
-
-.card{ 
+#main_body > div{
+	min-height:580px;
+}
+#main_content_body{
+	position:relative;
+}
+.row.yu{
+	position:relative;
+}
+.card{
 	border-radius: 1rem;
 	border: 0 solid #d9dee3;
 	margin:20px 10px 5px 10px;
 	padding:10px;
 }
 #ticket_card{
-	width:400px;
-}
-#locker_ticket{
-	width: 400px;
+	width:800px;
 }
 form{
 	margin:0;

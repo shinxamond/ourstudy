@@ -10,9 +10,10 @@
 <link rel="stylesheet"
 	href="${pageContext.request.contextPath}/css/ticket.css">
 <script src="https://cdn.iamport.kr/v1/iamport.js"></script>
-<div class="container">
-	<h4>이용권 목록</h4>
+<div id="main_content_body" class="container">
+	<h4>이용권</h4>
 	<div class="container d-flex justify-content-center">
+	<div class="row-md-6">
 		<c:set var="first_kind" value="0" />
 		<c:forEach var="ticket" items="${ticket}">
 			<c:if test="${ticket.ticket_kind == 1}">
@@ -43,6 +44,7 @@
 				</tr>
 			</table>
 		</c:if>
+	</div>
 	</div>
 </div>
 <!-- 중앙 컨텐츠 끝 -->
