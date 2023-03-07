@@ -394,7 +394,12 @@ div#main_footer .footer-sns{
 		display:none;
 	}
 	.footer-main{
-		margin-left:0;
+		margin-left:270px;
 	}
 }
 
+@media screen and (max-width:991px){
+	.footer-main{
+		margin-left:40px;
+	}
+}
