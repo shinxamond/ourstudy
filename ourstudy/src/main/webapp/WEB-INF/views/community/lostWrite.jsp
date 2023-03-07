@@ -11,6 +11,7 @@
 </style>
 <script src="${pageContext.request.contextPath}/js/ckeditor.js"></script>
 <script src="${pageContext.request.contextPath}/js/uploadAdapter.js"></script>
+<script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
 <div class="page-main">
 	<h2>분실물찾기 등록</h2>
 	<form:form action="lostWrite.do" id="lost_write_form"
@@ -20,30 +21,50 @@
 	<ul>
 		<li>
 			<label for="type">카테고리</label>
-			<form:radiobutton path="lf_type" value="0" id="분실"  checked="checked"/>분실
+			<form:radiobutton path="lf_type" value="0" id="분실" checked="checked"/>분실
 			<form:radiobutton path="lf_type" value="1" id="습득" />습득 
-
+			<script type="text/javascript">
+			$(document).ready(function(){
+				  $("input:radio[name=lf_type]").change(function(){
+					//습득
+				    if($("input[name=lf_type]:checked").val() == "1"){
+				    	$('#f_condition').show();
+				    	$('#lost1').hide(); $('#get1').show(); 
+				    	$('#lost2').hide(); $('#get2').show();
+				    	$('#lost3').hide(); $('#get3').show();
+				    }
+				    //분실
+				    else if($("input[name=lf_type]:checked").val() == "0"){
+				    	$('#f_condition').hide();
+				    	$('#get1').hide(); $('#lost1').show();
+				    	$('#get2').hide(); $('#lost2').show(); 
+				    	$('#get3').hide(); $('#lost3').show(); 
+				    }
+				  });
+			});
+			</script>
 		</li>
 		<li>
+		</li>
+		<li id="f_condition" style="display:none">
 			<label for="condition">습득품 상태</label>
 			<%-- <form:radiobutton path="f_condition" value="0" id="보관중" />보관중
 			<form:radiobutton path="f_condition" value="1" id="수령완료" />수령완료--%>
-			<input type="radio" name="f_condition" value="0" id="보관중" />보관중
+			<input type="radio" name="f_condition" value="0" id="보관중" checked="checked"/>보관중
 			<input type="radio" name="f_condition" value="1" id="수령완료"/>수령완료
-			
-		</li> 
+		</li>
 		<li>
 			<label for="lf_title">제목</label>
 			<form:input path="lf_title"/>
 			<form:errors path="lf_title" cssClass="error-color"/>
 		</li>
 		<li>
-			<label for="lf_item">분실/습득 물품</label>
+			<label for="lf_item"><span id="lost1">분실</span><span id="get1" style="display:none">습득</span> 물품</label>
 			<form:input path="lf_item"/>
 			<form:errors path="lf_item" cssClass="error-color"/>
 		</li>
 		<li>
-			<label for="lf_loc">분실/습득 위치</label>
+			<label for="lf_loc"><span id="lost2">분실</span><span id="get2" style="display:none">습득</span> 위치</label>
 			<form:input path="lf_loc"/>
 			<form:errors path="lf_loc" cssClass="error-color"/>
 		</li>
@@ -62,7 +83,7 @@
 			    </label>
 			</form>  
 			<form:errors path="lf_time" cssClass="error-color"/>  --%>
-			<label for="lf_time">분실/습득 날짜</label>
+			<label for="lf_time"><span id="lost3">분실</span><span id="get3" style="display:none">습득</span> 날짜</label>
 			<input type="datetime-local" id="lf_time"
     			   name="lf_time"  max=sysdate>
 			
