@@ -98,9 +98,16 @@ public class SeatServiceImpl implements SeatService{
       seatMapper.insertTotal_time(vo);
    }
 
+   //현재 회원의 입실상태 구하기
    @Override
    public int getMem_status(int mem_num) {
       return seatMapper.getMem_status(mem_num);
+   }
+   
+   //현재 좌석의 입실상태 구하기
+   @Override
+   public int getSeat_status(int seat_num) {
+	   return seatMapper.getSeat_status(seat_num);
    }
    
    /*========================================

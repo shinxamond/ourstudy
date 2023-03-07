@@ -32,5 +32,7 @@ public interface SeatService {
    public void insertTotal_time(SeatVO vo);
    //현재 회원 좌석상태 구하기
    public int getMem_status(int mem_num);
+   //현재 좌석의 입실상태 구하기
+   public int getSeat_status(int seat_num);
 }
 

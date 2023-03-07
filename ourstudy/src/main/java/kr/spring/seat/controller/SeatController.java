@@ -15,6 +15,7 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -188,19 +189,20 @@ public class SeatController {
     
    //회원 퇴실처리 + 관리자 권한 강제 퇴실처리
    @RequestMapping("/seat/out.do")
-   public String Out(HttpSession session) {
+   public String Out(@RequestParam(value="seat_num", required=false, defaultValue="1") int seat_num, HttpSession session) {
       MemberVO member = (MemberVO)session.getAttribute("user");
       
       SeatVO seatVO = initCommand();
       
       int mem_num = (Integer)session.getAttribute("user_num");
       int mem_status = seatService.getMem_status(mem_num);
-      Integer seat_num = null;
+      int mem_auth = member.getMem_auth();
       
-      if(mem_status == 2) {										//현재 회원이 외출 상태일 때
+      if(mem_status == 2 && mem_auth == 1) {										//현재 회원이 외출 상태일 때
     	  seat_num = seatService.getOutMemberSeat(mem_num);
     	  
     	  logger.debug("<<<<<<<<<<<<<<<<<<<seat_num>>>>>>>>>>>>>>>>" + seat_num);
+    	  logger.debug("<<<<<<<mem_auth>>>>> --- " + mem_auth);
     	  
     	  seatVO.setMem_num(mem_num);
     	  seatVO.setSeat_num(seat_num);
@@ -210,7 +212,7 @@ public class SeatController {
     	  member.setMem_status(seatService.getMem_status(mem_num));
     	  
     	  return "redirect:/mypage/myPageMain.do";
-      }else if(mem_status == 1) {								//현재 회원이 입실 상태일 때
+      }else if(mem_status == 1 && mem_auth == 1) {								//현재 회원이 입실 상태일 때
     	  seat_num = seatService.getInMemberSeat(mem_num);
     	  
     	  logger.debug("<<<<<<<<<<<<<<<<<<<seat_num>>>>>>>>>>>>>>>>" + seat_num);
@@ -222,10 +224,11 @@ public class SeatController {
       }
 
       
-       if(member.getMem_auth() == 9) { 
+      if(member.getMem_auth() == 9) { 
     	   mem_num = seatService.getSeatDetail(seat_num).getMem_num();
        
     	   logger.debug("<<타겟 멤넘>> ::::: " + mem_num); 
+    	   logger.debug(">>>>>관리자한테만 보이는 좌석번호>>>>>>" + seat_num);
        }
       
       logger.debug("<<user_auth>> --------------= " + member.getMem_auth());					//관리자 신분 검사
@@ -236,6 +239,12 @@ public class SeatController {
       seatVO.setSeat_num(seat_num);
 
       logger.debug("seat_num = " + seat_num);
+      
+      if(member.getMem_auth() == 9 && seatService.getSeat_status(seat_num) == 0) {
+    	  logger.debug(">>>>>TARGET_NUMBER>>>>===>>>>" + mem_num);
+    	  
+    	  seatService.outSeatWhenIn(seatVO);
+      }
       
       seatVO = seatService.getTimes(seat_num);
       
