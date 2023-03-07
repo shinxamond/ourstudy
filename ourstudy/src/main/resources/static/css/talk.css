@@ -203,19 +203,23 @@ table.striped-talk-table{
 table.striped-talk-table td, table.striped-talk-table th{
 	padding: .7em .5em;
 	vertical-align:middle;
+	 padding: 10px;
+     border-bottom: 1px solid #CD5C5C;
 }
 table.striped-talk-table th{
 	font-weight:bold;
 	text-align:center;
-	background:#E1E1E1;
+	/*background:#E1E1E1;*/
 }
 table.striped-talk-table td{
 	border-bottom:1px solid rgba(0,0,0,.1);
 	text-align:center;
+	 padding: 10px;
+     border-bottom: 1px solid #CD5C5C;
 }
-table.striped-talk-table tr:nth-child(odd){
+/* table.striped-talk-table tr:nth-child(odd){
 	background-color:rgb(250,250,247);
-}
+} */
 .striped-talk-table a:link{
 	text-decoration:none;
 	color:#000000;

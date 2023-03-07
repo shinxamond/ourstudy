@@ -37,7 +37,7 @@
 	<div class="align-right">
 		<input type="button" value="채팅방 생성" onclick="location.href='talkRoomWrite.do'">
 	</div>
-	
+	<br>
 	
 	<c:if test="${empty list}">
 	<div class="result-display">표시할 채팅방이 없습니다.</div>
