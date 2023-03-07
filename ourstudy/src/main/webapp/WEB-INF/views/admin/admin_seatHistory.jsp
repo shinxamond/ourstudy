@@ -53,15 +53,15 @@
 							<c:forEach var="history" items="${adminUseHistoryList}" varStatus="status"><!-- var는 자바빈(VO) -->
 							<tr>
 								<th scope="row">${history.seat_detail_num}</th>
-								<td>${history.seat_num}</td>
 								<c:if test="${history.out_time == null}">
 								<td><a class="open_modal" data-bs-toggle="modal" data-bs-target="#exampleModal${status.count}">
-									${history.mem_num}</a></td>
+									${history.seat_num}</a></td>
 								</c:if>
 								<c:if test="${history.out_time != null}">
 								<td><a class="open_modal" data-bs-toggle="modal" data-bs-target="#">
-									${history.mem_num}</a></td>
+									${history.seat_num}</a></td>
 								</c:if>	
+								<td>${history.mem_num}</td>
 								<td>${history.mem_name}</td>
 								<td>${history.in_time}</td>
 								<td>${history.out_time}</td>
@@ -90,7 +90,7 @@
 							        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">취소</button>
 							        <!-- 추후 퇴실처리 완료 후, 확인버튼 재확인 필요!! -->
 							        <button type="button" class="btn btn-primary" 
-							        	onclick="alert('퇴실처리를 완료했습니다'); location.href='/seat/out.do?mem_num='+${history.mem_num}">확인(퇴실처리)</button>
+							        	onclick="alert('퇴실처리를 완료했습니다'); location.href='/seat/out.do?seat_num='+${history.seat_num}">확인(퇴실처리)</button>
 							      </div>
 							    </div>
 							  </div>
