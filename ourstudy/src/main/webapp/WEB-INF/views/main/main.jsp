@@ -253,7 +253,7 @@ function selectMsg(room_num){//메시지 불러오기
 				alert('로그인 후 사용하세요!');
 				message_socket.close();
 			}else if(param.result == 'success'){
-				$('#chatting_message').empty();
+				$('#chatting_message2').empty();
 				
 				//채팅 날짜 표시
 				let chat_date = '';
@@ -300,11 +300,15 @@ function selectMsg(room_num){//메시지 불러오기
 					}
 					
 					//문서 객체에 추가
-					$('#chatting_message').append(output);
+					$('#chatting_message2').append(output);
+					if($('#chatting_message2')[0].scrollHeight==0){
+						$('#chatting_message2').animate({scrollTop:200*param.list.length},10);//스크롤이 안내려가면 강제로 내리기
+					}
 					//스크롤을 하단에 위치시킴
-					$('#chatting_message').scrollTop($('#chatting_message')[0].scrollHeight);
+					$('#chatting_message2').scrollTop($('#chatting_message2')[0].scrollHeight);
 					
 				});
+				
 				message_socket2.send("arm:");				
 			}else{
 				alert('채팅 메시지 읽기 오류 발생');
@@ -331,7 +335,7 @@ function countmsg(){
 				$(param.clist).each(function(index,item){
 					
 					$('.c'+item.talkroom_num).text(item.room_cnt);
-					$('.c'+item.talkroom_num).css({"background-color":"red","color":"white","border-radius":"15px","display":"inline-block","height":"20px","width":"20px","text-align":"center"});
+					$('.c'+item.talkroom_num).css({"background-color":"red","color":"white","border-radius":"15px","display":"inline-block","height":"20px","width":"20px","text-align":"center","font-size":"15px"});
 				});
 			}else{
 				alert('메시지 등록 오류');
@@ -403,9 +407,9 @@ function countmsg(){
 			
 			$('.emoticon').click(function(){
 				var value = $(this).text();
-				var message_str = $("#message").val();
+				var message_str = $("#message2").val();
 				message_str += value;
-				$('#message').val(message_str);
+				$('#message2').val(message_str);
 			});
 			
 			//============채팅 등록================//
@@ -421,14 +425,14 @@ function countmsg(){
 				
 				//기본 이벤트 제거
 				event.preventDefault();
-				if($('#message').val().trim()==''){
+				if($('#message2').val().trim()==''){
 					alert('메시지를 입력하세요');
-					$('#message').val('').focus();
+					$('#message2').val('').focus();
 					return false;
 				}
 				
 				//글자수 체크
-				if($('#message').val().length>1333){
+				if($('#message2').val().length>1333){
 					alert('메시지는 1333자까지만 입력 가능합니다.');
 					return false;
 				}
@@ -447,7 +451,7 @@ function countmsg(){
 							message_socket.close();
 						}else if(param.result == 'success'){
 							//폼 초기화
-							$('#message').val('').focus();
+							$('#message2').val('').focus();
 							//메시지가 저장되었다고 소켓에 신호를 보냄
 							message_socket.send('msg:');
 							//---------임시 처리 시작---------//
@@ -501,7 +505,7 @@ function countmsg(){
 		});
 		
 		//=========메시지 입력 후 enter 이벤트 처리========//
-		$('#message').keydown(function(event){
+		$('#message2').keydown(function(event){
 			if(event.keyCode == 13 && !event.shiftKey){//엔터를 눌렀을 때
 				$('#detail_form').trigger('submit');
 			}
@@ -511,8 +515,8 @@ function countmsg(){
 		<!-- Modal -->
 <div class="modal fade" id="talkview" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
   <div class="modal-dialog">
-    <div class="modal-content" id="mcontent">
-      <div class="modal-header" id="mheader">
+    <div class="modal-content" id="maincontent">
+      <div class="modal-header" id="mainheader">
 	        <div>
 	        	 <b><span id="roomname"></span></b><br>
 				채팅 멤버 : <span id="name"></span>
@@ -523,13 +527,13 @@ function countmsg(){
         </div>
  
         <!-- Modal body -->
-        <div class="modal-body" id="mbody">
-		<div id="chatting_message" style="width:500px; height:500px; overflow-y:scroll;"></div><!-- 다른 채팅창이 안보여서 나눔 -->
+        <div class="modal-body" id="mainbody">
+		<div id="chatting_message2"></div><!-- 다른 채팅창이 안보여서 나눔 -->
 		<form method="post" id="detail_form">
 			<input type="hidden" name="talkroom_num" id="talkroom_num" value="${room_num}">
 			<input type="hidden" name="mem_num" id="mem_num" value="${user.mem_num}">
 			
-			<textarea rows="5" cols="60" name="message" id="message"></textarea>
+			<textarea rows="5" cols="60" name="message" id="message2"></textarea>
 			<input type="submit" value="전송">
 		</form>
 		&nbsp;
