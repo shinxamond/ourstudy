@@ -98,12 +98,12 @@ public class PayServiceImpl implements PayService{
 	}
 
 	@Override
-	public MemberVO checkTime(Integer mem_num) {
+	public Integer checkTime(Integer mem_num) {
 		return payMapper.checkTime(mem_num);
 	}
 
 	@Override
-	public MemberVO checkTerm(Integer mem_num) {
+	public Integer checkTerm(Integer mem_num) {
 		// TODO Auto-generated method stub
 		return payMapper.checkTerm(mem_num);
 	}

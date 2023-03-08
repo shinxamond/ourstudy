@@ -121,6 +121,31 @@ public class PayController {
 		}
 		return mapAjax;
 	}
+	
+	//시간권,기간권 보유 체크
+	@RequestMapping("/pay/checkTicket.do")
+	@ResponseBody
+	public Map<String, Object> checkTicket(PayVO payVO,
+										   HttpSession session){
+		
+		Map<String, Object> mapAjax = new HashMap<String, Object>();
+		MemberVO user = (MemberVO)session.getAttribute("user");
+		
+		
+		if(user == null) {
+			mapAjax.put("result", "logout");
+		}else {
+			Integer m_time = payService.checkTime(user.getMem_num());
+			Integer m_term = payService.checkTerm(user.getMem_num());
+			
+			if(m_time > 0 || m_term > 0) {
+				mapAjax.put("result", "cantBuy");
+			}else {
+			mapAjax.put("result", "success");		
+			}
+		}
+		return mapAjax;
+	}
 
 	//결제 데이터 받아오기
 	@RequestMapping("/pay/payResult.do")
@@ -134,13 +159,9 @@ public class PayController {
 		Map<String, Object>mapAjax = new HashMap<String, Object>();
 		MemberVO user = (MemberVO)session.getAttribute("user");
 		
-		MemberVO m_time = payService.checkTime(user.getMem_num());
-		MemberVO m_term = payService.checkTerm(user.getMem_num());
-
+	
 		if(user == null) {
 			mapAjax.put("result", "logout");
-		}else if(m_time != null || m_term != null){
-			mapAjax.put("result", "cantBuy");
 		}else {
 			logger.debug("<<카카오 페이 결과 pay>> : " + payVO);
 			payVO.setMem_num(user.getMem_num());

@@ -41,7 +41,7 @@
 	</form>
 	
 	
-<script src="${pageContext.request.contextPath}/js/pay.js"></script>
+<script src="${pageContext.request.contextPath}/js/locker_pay.js"></script>
 
 </div>
 <!-- 결제 페이지 끝 -->

@@ -8,7 +8,8 @@ $(function(){
           dataType:'json',
             success:function(param){
               if(param.result == 'logout'){
-               alert('로그인 후 이용해주세요');   
+               alert('로그인 후 이용해주세요');
+			   location.href='/main/main.do';
            	  }else if(param.result == 'success'){
                   $('#my_point').text(param.mypoint);
               }else{
@@ -82,6 +83,21 @@ $(function(){
    IMP.init("imp36873723"); // 예: imp00000000
    
   function requestKakaoPay() {
+	$.ajax({
+		url:'checkTicket.do',
+		data:{mem_ticket_hour:$('#ticket_hour').attr('data-hournum'),
+			  mem_ticket_term:$('#ticket_term').attr('data-termnum')},
+		dataType:'json',
+		success:function(param){
+			if(param.result=='logout'){
+				alert('로그인 후 이용해주세요');
+				location.href='/main/main.do';
+			}else if(param.result=="cantBuy"){
+				alert('사용중인 이용권을 사용 후 구매 가능합니다.');
+			}
+			else if(param.result=='success'){
+				
+	//==============카카오페이 시작============//
    	var pprice = $('#final_price').text();
 	var useP = document.getElementById('use_point');
 
@@ -122,6 +138,7 @@ $(function(){
                success:function(param){
                   if(param.result == 'logout'){
                      alert('로그인 후 사용하세요');
+					 location.href='/main/main.do';
                   }else if(param.result == 'success'){
                      alert('결제 완료 되었습니다');
 					 location.href='/main/main.do';
@@ -143,50 +160,73 @@ $(function(){
             alert(msg);
          }
       });
-	}
+     //==============카카오페이 끝============//
+			}else{
+				alert('오류 발생');
+			}
+		},
+		error:function(){
+			alert('네트워크 오류');
+		}
+	});
+  }
    
    function requestCardPay() {
-   	var pprice = $('#final_price').text();
-      IMP.request_pay({
-         pg : "html5_inicis.INIpayTest",
-         pay_method : "card",
-         merchant_uid : "ourstudy_" + new Date().getTime(), // 주문번호
-         name : pname,
-         amount : pprice,
-         buyer_email :'',
-         
-      }, function(rsp) { // callback   
-         if (rsp.success) {
-            $.ajax({
-               url:'payResult.do',
-               type:'post',
-               data:{pay_price:$('#final_price').attr('data-pricenum'),
-                    pay_content:$('#ticket_name').attr('data-ticketname'),
-                    ticket_num:$('#ticket_num').attr('data-ticketnum'),
-                    pay_plan:2},
-               dataType:'json',
-               success:function(param){
-                  if(param.result == 'logout'){
-                     alert('로그인 후 사용하세요');
-                  }else if(param.result == 'cantBuy'){
-					alert('이미 보유중인 이용권이 있습니다. 사용 후 이용해주세요!');
-					location.href='/main/main.do';
-				  }else if(param.result == 'success'){
-                     alert('결제 완료 되었습니다');
-                  }else{
-                     alert('오류 발생');
-                  }
-               },
-               error:function(){
-                  alert('네트워크 오류 발생');
-               }
-            });
-            
-         } else {
-            var msg = '결제에 실패하였습니다.';
-            msg += '에러내용 : ' + rsp.error_msg;
-            alert(msg);
-         }
-      });
-   }
-
+   		$.ajax({
+		url:'checkTicket.do',
+		data:{mem_ticket_hour:$('#ticket_hour').attr('data-hournum'),
+			  mem_ticket_term:$('#ticket_term').attr('data-termnum')},
+		dataType:'json',
+		success:function(param){
+			if(param.result=='logout'){
+				alert('로그인 후 이용해주세요');
+				location.href='/main/main.do';
+			}else if(param.result=="cantBuy"){
+				alert('사용중인 이용권을 사용 후 구매 가능합니다.');
+			}
+			else if(param.result=='success'){
+				//============카드 결제=============//
+				var pprice = $('#final_price').text();
+		     	 IMP.request_pay({
+			         pg : "html5_inicis.INIpayTest",
+			         pay_method : "card",
+			         merchant_uid : "ourstudy_" + new Date().getTime(), // 주문번호
+			         name : pname,
+			         amount : pprice,
+			         buyer_email :'',
+			         
+			      }, function(rsp) { // callback   
+			         if (rsp.success) {
+			            $.ajax({
+			               url:'payResult.do',
+			               type:'post',
+			               data:{pay_price:$('#final_price').attr('data-pricenum'),
+			                    pay_content:$('#ticket_name').attr('data-ticketname'),
+			                    ticket_num:$('#ticket_num').attr('data-ticketnum'),
+			                    pay_plan:2},
+			               dataType:'json',
+			               success:function(param){
+			                  if(param.result == 'logout'){
+			                     alert('로그인 후 사용하세요');
+								 location.href='/main/main.do';
+			                  }else if(param.result == 'success'){
+			                     alert('결제 완료 되었습니다');
+								 location.href='/main/main.do';
+			                  }else{
+			                     alert('오류 발생');
+			                  }
+			               },
+			               error:function(){
+			                  alert('네트워크 오류 발생');
+			               }
+			            });
+			         } else {
+			            var msg = '결제에 실패하였습니다.';
+			            msg += '에러내용 : ' + rsp.error_msg;
+			            alert(msg);
+			       }
+			   });
+			} 
+   		}
+	});
+}
