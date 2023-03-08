@@ -55,7 +55,7 @@ html {
   display: block;
   text-transform: uppercase;
   text-decoration: none;
-  color: #384048;
+  color: #5f6b76;
   font-weight: 700;
   font-size: 1rem;
   position: relative;
@@ -88,7 +88,7 @@ html {
   content: "";
   width: 1.25rem;
   height: 0.25rem;
-  background: #384048;
+  background: #5f6b76;
   position: absolute;
   border-radius: 3px;
   left: 50%;
