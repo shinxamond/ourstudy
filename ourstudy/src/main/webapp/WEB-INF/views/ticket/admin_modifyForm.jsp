@@ -1,6 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
+<!-- 이용권 수정 시작 -->
+<link rel="stylesheet" href="${pageContext.request.contextPath}/css/admin_modify.css">
 <div class="container">
 	<h4>이용권 수정</h4>
 	<div class="container">
@@ -101,3 +103,4 @@
 		</form:form>
 	</div>
 </div>
+<!-- 이용권 수정 끝 -->

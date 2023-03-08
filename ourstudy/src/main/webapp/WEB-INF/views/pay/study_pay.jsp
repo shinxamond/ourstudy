@@ -12,7 +12,7 @@
 	href="${pageContext.request.contextPath}/css/pay.css">
 <script src="https://cdn.iamport.kr/v1/iamport.js"></script>
 <div class="container">
-	<h4>이용권 선택내역</h4>
+	<h4 style="margin-top: 15px;">이용권 선택내역</h4>
 	<div class="row d-flex justify-content-center align-items-center">
 		<div class="col-sm-8">
 			<div class="card sm-5">
@@ -22,10 +22,13 @@
 						data-ticketnum="${ticket.ticket_num}" id="ticket_num"> <input
 						type="hidden" id="ticket_total_price"
 						value="${ticket.ticket_price}"> <input type="hidden"
-						id="org_point"> <input type="hidden" name="mem_num"
+						id="org_point">
+						<%-- 중복코드
+						<input type="hidden" name="mem_num"
 						data-memnum="${user.mem_num}" id="mem_num"> <input
 						type="hidden" name="ticket_num"
-						data-ticketnum="${ticket.ticket_num}" id="ticket_num"> <input
+						data-ticketnum="${ticket.ticket_num}" id="ticket_num">  --%>
+						<input
 						type="hidden" id="ticket_hour"
 						data-hournum="${member_history.mem_ticket_hour}"> <input
 						type="hidden" id="ticket_term"
@@ -50,47 +53,49 @@
 					</div>
 				</div>
 			</div>
-			<div class="card sm-5">
-				<div class="card-body p-4">
+			<div class="card sm-5" id="point_pay">
+				<div class="card-body p-8">
 					<div>
 						<p class="lead text-mute mb-4 pb-2">
 							<span>현재 보유 중인 포인트</span> <span class="lead fw-normal mb-0"
 								id="my_point" style="float: right;"></span>
 						</p>
 					</div>
-					<div class="col">
+					<div class="col mb-3 d-flex">
 						<span id="p_point" data-pointnum="${point.point_point}"></span>
-					<form class="row g-6" style="padding:0px;">
-						<div class="col-auto">
-							<span class="lead text-mute mb-6 pb-2" style="margin-right:100px;"> 포인트 사용(1000P 이상 사용 가능)</span>
-						</div>
-						
-							<div class="col-auto">
-								<input type="text" id="use_point"
-									class="form-control form-control-sm"
-									style="float: right; width: 100px;" placeholder="포인트 입력">
+							<div>
+								<span class="lead text-mute mb-6 pb-2"
+									style="margin-right: 100px;"> 포인트 사용(1000P 이상 사용 가능)</span>
 							</div>
-							<div class="col-auto">
-								<button type="button" id="minus_btn"
-									class="btn btn-primary mb-3">포인트 사용</button>
+							<div class="col mb-3 d-flex justify-content-end" id="input_point">
+								<div class="input-group row-mb-3">
+									<input type="text" id="use_point" class="form-control"
+										style="float: right; width: 100px;" placeholder="포인트 입력">
+									<button type="button" id="minus_btn" class="btn btn-primary">포인트
+										사용</button>
+								</div>
 							</div>
-						</form>
 					</div>
-				<hr>
-				<span>결제 금액</span> <span id="final_price" style="float: right;"
-					data-pricenum="${ticket.ticket_price}">${ticket.ticket_price}</span>
-				<input type="image" id="pay_kakao"
-					src="${pageContext.request.contextPath}/image_bundle/payment_icon_yellow_small.png"
-					style="margin-left: 428px; margin-bottom: 3px;"
-					onclick="requestKakaoPay()" name="pay_plan" value="카카오"> <input
-					type="button" id="pay_card" type="button" class="btn btn-primary"
-					style="margin-bottom: 3px;" name="pay_plan"
-					onclick="requestCardPay()" value="카드">
+					<hr>
+					<div>
+					<span class="lead text-mute mb-6 pb-2">결제 금액</span>
+					<span class="lead fw-normal mb-0" id="final_price" style="float: right;"
+						data-pricenum="${ticket.ticket_price}">${ticket.ticket_price}</span>
+					</div>
+					<div class="d-flex justify-content-end" id="payment">
+						<input type="image" id="pay_kakao"
+							src="${pageContext.request.contextPath}/image_bundle/payment_icon_yellow_small.png"
+							style="margin-bottom: 3px;"
+							onclick="requestKakaoPay()" name="pay_plan" value="카카오">
+							<input type="button" id="pay_card" type="button" class="btn btn-primary"
+							style="margin-bottom: 3px;" name="pay_plan"
+							onclick="requestCardPay()" value="카드">
+					</div>
+				</div>
 			</div>
+			<script src="${pageContext.request.contextPath}/js/study_pay.js"></script>
 		</div>
-		<script src="${pageContext.request.contextPath}/js/study_pay.js"></script>
 	</div>
-</div>
 
 </div>
 <!-- 결제 페이지 끝 -->

@@ -6,8 +6,10 @@
 <!-- 중앙 컨텐츠 시작 -->
 <script type="text/javascript"
 	src="${pageContext.request.contextPath}/js/admin.ticketList.js"></script>
+<link rel="stylesheet" href="${pageContext.request.contextPath}/css/admin_ticket.css">
 <div class="container">
 	<h3>이용권 목록</h3>
+<div class="container d-flex justify-content-center">
 	<c:if test="${count == 0}">
 		<table class="table table-group-divider align-center">
 			<tr>
@@ -17,27 +19,30 @@
 	</c:if>
 	<c:if test="${count > 0}">
 	<form id="ticket_list" method="post" style="border:none;">
-	<div class="container" style="margin-bottom: 5px;">
+	<div class="d-flex justify-content-end">
 		<!-- <input type="checkbox" id="chk_all" style="margin-left: 5px;">
 		<button type="button" id="del_btn" class="btn" style="background-color: #E65962;"
 			disabled="disabled" onclick="location.href='deleteTicket.do'">삭제</button> -->
-		<button type="button" class="btn"
+		<button type="button" class="btn" id="ticket_register"
 			style="background-color: #384048; color: #FFF;"
-			onclick="location.href='admin_write.do'">등록</button>
+			onclick="location.href='admin_write.do'">이용권 등록</button>
 	</div>
 		<c:forEach var="ticket" items="${ticket}">
-			<div class="card" style="width: 40rem;">
-				<div class="card-body">
-					<%-- <input type="checkbox" name="ticket_nums" class="choice-btn" style="margin-right: 3px;" value="${ticket.ticket_num}"> --%>
-					<a href="admin_ticketModify.do?ticket_num=${ticket.ticket_num}">${ticket.ticket_name}</a>
-					<div style="float: right;">
+		<div class="card-group">
+					<div class="card" id="ticket_card">
+						<input type="hidden" value="${ticket.ticket_num}">
+						<div class="card-body">
+						<a href="admin_ticketModify.do?ticket_num=${ticket.ticket_num}">${ticket.ticket_name}</a>
+							<div style="float: right;">
 						<fmt:formatNumber value="${ticket.ticket_price}" />
 						원
 					</div>
+						</div>
+					</div>
 				</div>
-			</div>
 		</c:forEach>
 		</form>
 	</c:if>
+	</div>
 </div>
 <!-- 중앙 컨텐츠 끝 -->

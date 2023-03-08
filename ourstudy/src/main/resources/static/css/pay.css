@@ -34,9 +34,7 @@ body{
 	height:100%;
 	position:relative;
 }
-/* #main_body > div{
-	min-height:580px;
-} */
+
 #main_content_body{
 	position:relative;
 }
@@ -49,17 +47,37 @@ body{
 	margin:20px 10px 5px 10px;
 	padding:10px;
 }
-#pay_kakao{
-	border: none;
+#point_pay{
+	margin-top: 25px;
+	margin-bottom:100px;
 }
 #minus_btn{
 	position:relative;
 	float:right;
+	background-color: #E65962;
+	border: none;
+}
+#input_point{
+	position:relative;
+}
+#payment{
+	margin-top: 15px;
+}
+#pay_kakao{
+	border: none;
+}
+#pay_card{
+	width:97px;
+	height:40px;
+	margin-left: 15px;
+	background-color: #E65962;
+	border: none;
 }
 
 /*======================
   		 footer
 ========================*/
+
 #footer-content{
 	line-height:1.7em;
 	font-family: 'Pretendard-Regular';
@@ -89,6 +107,10 @@ div#main_footer .footer-sns{
     font-weight: 400;
     font-style: normal;
 }
+
+/* #main_body > div{
+	min-height:580px;
+} */
 
 /*======================
   	   footer 반응형
