@@ -92,7 +92,7 @@ public class PagingUtil {
 			if (currentPage > pageCount) {
 				page.append("<li class='page-item'>"
 							+ "<a href="+pageUrl+"?pageNum="+ (startPage - 1) + sub_url +" "
-									+ "class='page-link' aria-label='Previous' style='color:#037332;'>");
+									+ "class='page-link' aria-label='Previous' style='color:#E65962;'>");
 				page.append("<span aria-hidden='true'>");
 				page.append("&laquo;");
 				page.append("</span></a></li>");
@@ -104,12 +104,12 @@ public class PagingUtil {
 				}
 				if (i == currentPage) {
 					page.append("<li class='page-item active' aria-current='page'>"
-							+ "<a class='page-link' style='border-color:#037332; background-color: #037332; color:white;'>");
+							+ "<a class='page-link' style='border-color:#E65962; background-color: #E65962; color:white;'>");
 					page.append(i);
 					page.append("</a></li>");
 				} else {
 					page.append("<li class='page-item'>");
-					page.append("<a class='page-link' style='color:#037332;' href='"+pageUrl+"?pageNum=");
+					page.append("<a class='page-link' style='color:#E65962;' href='"+pageUrl+"?pageNum=");
 					page.append(i);
 					page.append(sub_url+"'>");
 					page.append(i);
@@ -120,7 +120,7 @@ public class PagingUtil {
 			if (totalPage - startPage >= pageCount) {
 				page.append("<li class='page-item'>");
 				page.append("<a href='"+pageUrl+"?pageNum="+ (endPage + 1) + sub_url +"' class='page-link' "
-								+"aria-label='Next' style='color:#037332;'>");
+								+"aria-label='Next' style='color:#E65962;'>");
 				page.append("&raquo;");
 				page.append("</a>");
 			}
