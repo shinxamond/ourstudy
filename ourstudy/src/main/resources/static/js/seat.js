@@ -11,7 +11,6 @@
 		
 		if(select == false){
 			alert('좌석 선택이 취소되었습니다');
-			return false;
 		}else if(select == true){
 			alert(seat_name + '번 좌석이 선택되었습니다.');
 			location.href='/seat/select.do?seat_num=' + seat_num;

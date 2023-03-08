@@ -9,7 +9,6 @@
     	
     	if(select == false) {
     		alert('사물함 선택이 취소되었습니다.');
-    		return false;
     	}else if(select == true){
     		alert(locker_num + '번 사물함이 선택되었습니다.');
     		

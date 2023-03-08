@@ -38,7 +38,7 @@
 				data-num="${seat.seat_name}"  data-seatnum="${seat.seat_num}"
 				value="<c:out value="${seat.seat_name}"/>"
 				onclick=<c:if test="${mem_status == 0}">"checkSelect(this);"</c:if>
-						<c:if test="${mem_status != 0}">"alert('이미 입실중입니다. &nbsp;&nbsp;좌석이동을 원하시면 먼저 퇴실해주세요.'); return false;"</c:if> >
+						<c:if test="${mem_status != 0}">"alert('이미 입실중입니다. &nbsp;&nbsp;좌석이동을 원하시면 먼저 퇴실해주세요.');"</c:if> >
 	</c:forEach>
 
 	</div>
