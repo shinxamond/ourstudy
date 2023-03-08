@@ -2,6 +2,8 @@ package kr.spring.seat.service;
 
 import java.util.List;
 
+import org.apache.ibatis.annotations.Param;
+
 import kr.spring.member.vo.MemberVO;
 import kr.spring.seat.vo.SeatVO;
 
@@ -39,5 +41,7 @@ public interface SeatService {
    public Float getMemberHour(int mem_num);
    //회원 잔여기간 가져오기
    public Float getMemberTerm(int mem_num);
+   //시간권 새로운 시간 갱신
+   public void updateMemberHistory_Hour(Float time, Integer mem_num);
 }
 

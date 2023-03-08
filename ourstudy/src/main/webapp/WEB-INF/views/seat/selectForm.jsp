@@ -16,7 +16,7 @@
 					   <c:if test="${seat.seat_status == 2 }">background-color:#F8B1AA;</c:if>"
 				id="${seat.seat_name}" 
 				class="seat-option" <c:if test="${seat.seat_status != 1}">disabled</c:if> 
-				data-num="${seat.seat_name}"  data-seatnum="${seat.seat_num}"
+				data-num="${seat.seat_name}"  data-seatnum="${seat.seat_num}"  data-memnum="${mem_num}"
 				value="<c:out value="${seat.seat_name}"/>"
 				onclick=<c:if test="${mem_status == 0}">"checkSelect(this);"</c:if>
 						<c:if test="${mem_status != 0}">"alert('이미 입실중입니다. &nbsp;&nbsp;좌석이동을 원하시면 먼저 퇴실해주세요.');"</c:if> >

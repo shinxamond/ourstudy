@@ -4,6 +4,7 @@ import java.util.List;
 
 import org.apache.ibatis.annotations.Insert;
 import org.apache.ibatis.annotations.Mapper;
+import org.apache.ibatis.annotations.Param;
 import org.apache.ibatis.annotations.Select;
 import org.apache.ibatis.annotations.Update;
 
@@ -79,6 +80,15 @@ public interface SeatMapper {
    public Float getMemberTerm(int mem_num);
    
    /*========================================
+                ABOUT HISTORY
+    ======================================= */
+   //독서실 시간권 계산
+   @Update("UPDATE member_history SET mem_ticket_hour=#{time} "
+		   + "WHERE mem_num=#{mem_num}")
+   public void updateMemberHistory_Hour(@Param(value="time") Float time, 
+		   @Param(value="mem_num") Integer mem_num);
+   
+   /*========================================
                 IN / OUT / HOLD
     ======================================= */
    //좌석 상태 변경
@@ -105,15 +115,5 @@ public interface SeatMapper {
    //입퇴실날짜 저장
    @Update("UPDATE SEAT_DETAIL SET total_time=#{total_time} WHERE seat_num=#{seat_num} AND total_time IS NULL")
    public void insertTotal_time(SeatVO vo);
-   /*===========================================
-                KEEP
-     ===========================================*/
-   //현재 좌석의 컬럼수
-   @Select("SELECT COUNT(*) FROM SEAT_DETAIL WHERE seat_num=#{seat_num}")
-   public int getSeatCount(SeatVO vo);
-   //좌석 이동시 새로 선택한 좌석에 정보넣기
-   @Insert("INSERT INTO SEAT_DETAIL(mem_num,mem_name,in_time) VALUES(#{mem_num},#{mem_name},#{in_time}) WHERE seat_num=#{seat_num}")
-   public void insertToMoveSeat(int seat_num);
-   
 }
 

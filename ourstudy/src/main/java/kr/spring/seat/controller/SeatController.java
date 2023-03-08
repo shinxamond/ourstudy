@@ -3,7 +3,9 @@ package kr.spring.seat.controller;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
@@ -16,6 +18,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
@@ -56,11 +59,14 @@ public class SeatController {
    public ModelAndView selectForm(HttpSession session) {
 	  int mem_status = seatService.getMem_status((Integer)session.getAttribute("user_num"));
 	  
+	  MemberVO member = (MemberVO)session.getAttribute("user");
+	  
       ModelAndView mav = new ModelAndView();
       
       List<SeatVO> list = seatService.getSeatList();
 
       mav.setViewName("selectForm");
+      mav.addObject("mem_num", member.getMem_num());
       mav.addObject("list", list);
       mav.addObject("mem_status", mem_status);
       
@@ -123,6 +129,56 @@ public class SeatController {
 
    }
 
+   //DB에 저장된 잔여시간 가져오기
+   @RequestMapping("/seat/deadlineCheck.do")
+   @ResponseBody
+   public Map<String, String> deadlineCheck(Integer mem_num){
+	   
+	   Map<String, String> mapAjax = new HashMap<String, String>();
+	   Float hour = seatService.getMemberHour(mem_num);
+	   logger.debug(">>>>>>>====DB에서 가져온 시간 변환 전====>>>>>>>" + hour);
+	   
+	   hour = hour * 3600;
+	   
+	   logger.debug(">>>>>>>====DB에서 가져온 시간 변환 후 ====>>>>>>>" + hour);
+	   
+	   if(hour > 300.0) {
+		   mapAjax.put("time", Float.toString(hour));
+		   mapAjax.put("result", "success");
+	   }else if(hour <= 300.0) {
+		   mapAjax.put("result", "lessThanFive");
+	   }
+	   
+	   return mapAjax;
+   }
+   
+   //DB 1분마다 update
+   @RequestMapping("/seat/updateDeadline.do")
+   @ResponseBody
+   public Map<String, String> updateDeadline(Float newRemain, HttpSession session){
+	   Map<String, String> mapAjax = new HashMap<String, String>();
+	   MemberVO member = (MemberVO)session.getAttribute("user");
+	   
+	   Float hour_prev = seatService.getMemberHour(member.getMem_num());
+	   logger.debug(">>>>>DB 갱신 전 hour>>>>" + hour_prev);
+	   
+	   //String new_remain = String.format("%.3f", newRemain);
+	   //newRemain = Float.valueOf(new_remain);
+	   
+	   seatService.updateMemberHistory_Hour(newRemain / 3600, member.getMem_num());
+	   Float hour_next = seatService.getMemberHour(member.getMem_num());
+	   
+	   logger.debug(">>>DB 갱신 후 HOUR>>>>>>>>>>>>>>>><<<<<===" + hour_next);
+	   
+	   if(!hour_prev.equals(hour_next)) {
+		   mapAjax.put("result", "success");
+	   }else {
+		   mapAjax.put("result", "Fail");
+	   }
+	   
+	   return mapAjax;
+   }
+   
    //외출 상태에서 입실 처리
    @RequestMapping("/seat/in.do")
    public String In(HttpSession session) {

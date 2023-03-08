@@ -122,8 +122,12 @@ public class SeatServiceImpl implements SeatService{
 	public Float getMemberTerm(int mem_num) {
 		return seatMapper.getMemberTerm(mem_num);
 	}
+
+	//잔여시간권 시간 갱신
+	@Override
+	public void updateMemberHistory_Hour(Float time, Integer mem_num) {
+		seatMapper.updateMemberHistory_Hour(time, mem_num);
+	}
    
-   /*========================================
-          			KEEP
-    ======================================= */
+	
 }
