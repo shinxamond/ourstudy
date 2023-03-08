@@ -45,7 +45,8 @@
 		</div>		
 		
 		<div class = "element">
-			<c:if test="${empty seat.seat_name}"><span>이용중인 좌석이 없습니다.</span></c:if>
+			<c:if test="${member.mem_status == 0}"><span>이용중인 좌석이 없습니다.</span></c:if>
+			<c:if test="${member.mem_status == 2}">현재 외출중입니다.</c:if>
 			<c:if test="${!empty seat.seat_name}"><span>NO. <b>${seat.seat_name}</b>번 자리</span></c:if>
 			<span class = "data-time">잔여시간 : <span class = "data-align">
 			<fmt:parseNumber value = "${remainTime / 86400}"  integerOnly="true"/>일 
