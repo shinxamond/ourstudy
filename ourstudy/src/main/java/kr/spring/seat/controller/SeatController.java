@@ -89,18 +89,20 @@ public class SeatController {
       
       logger.debug("HOUR>>>>" + hour);
       
-      if(hour.floatValue() > 0) {									//잔여시간 있는 경우
-    	  /*if(term.floatValue() <= 0) {									//기간권 없을 때
-    		  //시간권에서 까임
-    	  }*/																//기간권도 있을 때
+		/*
+		 * if(hour.floatValue() > 0) { //잔여시간만 있는 경우 //기간권도 있을 때 
+		 * }
+		 */
+		/*
+		 * if(term.floatValue() > 0) { //잔여기간만 있는 경우
+		 * 
+		 * }
+		 */
+      if(hour.floatValue() <= 0 && term.floatValue() <= 0) {		//잔여시간, 잔여기간 둘 다 없는 경우
+    	 return "redirect:/ticket/study_ticketList.do";
+    	  
       }
-      if(hour.floatValue() <= 0) {									//잔여시간 없는 경우
-    	  if(term.floatValue() <= 0) {									//기간권도 없을 때
-    		  return "redirect:/ticket/study_ticketList.do";
-    	  }/*else if(term.floatValue() > 0) {								//기간권은 있을 때
-    		  //기간권에서 까임
-    	  }*/
-      }
+      
       
       SeatVO seatVO = initCommand();
       if(seatVO == null) {
@@ -239,6 +241,8 @@ public class SeatController {
     	  seatVO.setSeat_num(seat_num);
     	  
     	  seatService.outSeatWhenIn(seatVO);
+    	  
+    	  member.setMem_status(seatService.getMem_status(mem_num));
       }
 
       
