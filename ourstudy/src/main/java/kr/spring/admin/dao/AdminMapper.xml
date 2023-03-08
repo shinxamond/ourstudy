@@ -34,7 +34,7 @@
   		            ORDER BY d.mem_regdate DESC NULLS LAST
   		            </if>
   		            <if test="keyfield == 2">
-  		            ORDER BY d.mem_name ASC NULLS LAST
+  		            ORDER BY d.mem_name ASC, d.mem_regdate DESC NULLS LAST
   		            </if>
   		            )a) 				  		
   		<![CDATA[
@@ -229,7 +229,7 @@
   		            ORDER BY b.pay_date DESC NULLS LAST
   		            </if>
   		            <if test="keyfield == 2">
-  		            ORDER BY b.mem_name ASC NULLS LAST
+  		            ORDER BY b.mem_name ASC, b.pay_date DESC NULLS LAST
   		            </if>
   		            )a)
 		<![CDATA[
@@ -269,10 +269,10 @@
       					 b.mem_num LIKE '%' || #{keyword} || '%')
 			  		</if>				            				  		 
   		            <if test="keyfield == 1">	            
-  		            ORDER BY b.chat_date DESC NULLS LAST
+  		            ORDER BY b.chat_date DESC, b.talk_num DESC NULLS LAST
   		            </if>
   		            <if test="keyfield == 2">
-  		            ORDER BY b.mem_name ASC NULLS LAST
+  		            ORDER BY b.mem_name ASC, b.talk_num DESC NULLS LAST
   		            </if>
   		            )a)
 		<![CDATA[
@@ -331,10 +331,10 @@
       					  c.mem_num LIKE '%' || #{keyword} || '%'
 			  		</if>				            				  		 
   		            <if test="keyfield == 1">	            
-  		            ORDER BY d.chat_date DESC NULLS LAST
+  		            ORDER BY d.chat_date DESC, d.talk_num DESC NULLS LAST
   		            </if>
   		            <if test="keyfield == 2">
-  		            ORDER BY c.mem_name ASC NULLS LAST
+  		            ORDER BY c.mem_name ASC, d.talk_num DESC NULLS LAST
   		            </if>
   		            )a)
 		<![CDATA[

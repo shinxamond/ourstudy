@@ -38,7 +38,7 @@ public interface ReviewMapper {
 	
 	/*==== 댓글 ====*/
 	//댓글 개수
-	@Select("SELECT COUNT(*) FROM reply_review JOIN WHERE r_num=#{r_num}")
+	@Select("SELECT COUNT(*) FROM reply_review WHERE r_num=#{r_num}")
 	public int selectRowCountReply(Map<String,Object> map);	
 	//댓글 목록
 	public List<ReviewReplyVO> selectListReply(Map<String,Object> map);

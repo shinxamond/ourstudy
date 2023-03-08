@@ -144,7 +144,7 @@ public class AdminController {
 		logger.debug("<<총 글 갯수>> : " + count);
 		
 		//페이지 처리
-		PagingUtil page = new PagingUtil(keyfield,null,currentPage,count,4,10,"admin_seathistory.do");
+		PagingUtil page = new PagingUtil(keyfield,null,currentPage,count,5,10,"admin_seathistory.do");
 		
 		List<AdminSeatHistoryVO> list = null;
 		if(count > 0) {
@@ -179,7 +179,7 @@ public class AdminController {
 		logger.debug("<<총 글 갯수>> : " + count);
 		
 		//페이지 처리
-		PagingUtil page = new PagingUtil(keyfield,null,currentPage,count,4,10,"admin_lockerhistory.do");
+		PagingUtil page = new PagingUtil(keyfield,null,currentPage,count,5,10,"admin_lockerhistory.do");
 		
 		List<AdminLockerHistoryVO> list = null;
 		if(count > 0) {
@@ -301,7 +301,7 @@ public class AdminController {
 		logger.debug("<<총 판매기록 목록 갯수>> : " + count);
 		
 		//페이지 처리
-		PagingUtil page = new PagingUtil(keyfield,keyword,currentPage,count,4,10,"admin_saleslist.do");
+		PagingUtil page = new PagingUtil(keyfield,keyword,currentPage,count,5,10,"admin_saleslist.do");
 		
 		List<AdminSalesVO> list = null;
 		if(count > 0) {
@@ -343,7 +343,7 @@ public class AdminController {
 		logger.debug("<<총 수신 채팅 갯수>> : " + count);
 		
 		//페이지 처리
-		PagingUtil page = new PagingUtil(keyfield,keyword,currentPage,count,4,10,"admin_receivehistory.do");
+		PagingUtil page = new PagingUtil(keyfield,keyword,currentPage,count,5,10,"admin_receivehistory.do");
 		
 		List<AdminTalkHistoryVO> list = null;
 		if(count > 0) {
@@ -380,7 +380,7 @@ public class AdminController {
 		logger.debug("<<총 수신 채팅 갯수>> : " + count);
 		
 		//페이지 처리
-		PagingUtil page = new PagingUtil(keyfield,keyword,currentPage,count,4,10,"admin_sendhistory.do");
+		PagingUtil page = new PagingUtil(keyfield,keyword,currentPage,count,5,10,"admin_sendhistory.do");
 		
 		List<AdminTalkHistoryVO> list = null;
 		if(count > 0) {

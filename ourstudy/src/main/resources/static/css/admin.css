@@ -74,7 +74,7 @@ div#main_body {
 .content-right {
 	width: 100%; /*원래 85%*/
 	float: right; 
-	padding: 0 30px; /*상하 좌우*/
+	padding: 0 20px; /*상하 좌우*/
 	transition: all 0.3s; /*모든 것에 속도 움직임을 넣음*/
 }
 #container{ 
@@ -1598,33 +1598,43 @@ h6 {
   }
 }
 
-/*--------------------------------------------------------------
-# Footer
---------------------------------------------------------------*/
-.footer {
-  padding: 20px 0;
-  font-size: 14px;
-  transition: all 0.3s;
-  border-top: 1px solid #cddfff;
+/*======================
+		반응형
+=======================*/
+
+@media screen and (max-width:1320px){
+	.footer-sns{
+		display:none;
+	}
+	.footer-main{
+		margin-left:80px;
+	}
 }
-#footer1_container{
-	width:90%;
-	margin:auto;
-}
-.footer1-right{
-	width:77%;
-	margin-right:0;
-}
-#footer1_right{
-	padding-left:24px;
-}
-.footer .copyright {
-  text-align: center;
-  color: #012970;
-}
-.footer .credits {
-  padding-top: 5px;
-  text-align: center;
-  font-size: 13px;
-  color: #012970;
+
+@media screen and (max-width:991px) {
+	div#main_body{
+		left:10px;
+	}
+	.accordion {
+  		width: 120%;
+  		padding-left:10px;
+	}
+	.accordion-item .heading{
+		font-size:12pt;
+	}
+	.accordion-item .content p{
+		margin-left:10px;
+		font-size:10pt;
+		padding-right:20px;
+	}
+	.footer-sns{
+		display:none;
+	}
+	div#main_footer{
+		padding:30px 10px 20px 5px;
+		height:45vh;
+	}
+	.footer-main{
+		margin-left:20px;
+	}
 }
