@@ -73,10 +73,7 @@
   			FROM seat_detail
   			WHERE in_time LIKE #{day}
 			</foreach>
-  	</select> 아니야 이게 아니야!!!!!!!!!!!!!!!!!!!!!map말고 차라리 vo를 만들어서..? 아니며는...
-  	길어봐야 7개밖에 안되니까.. sql에는 날짜값만 주고 sum값 한개 리턴 받는데 그거를 이제.. 임플에서.. 반복문을 배열에 차있는 날짜 수 만큼 돌려가지고 하나씩 꺼내와?
-  	ㄴㅁ음ㄴㅇㅁㄴㄹ아ㅣㅓ람ㄴ어ㅏ럼ㄴ아ㅓ리만어람ㄴ얼;만어리ㅏ
-  	
+  	</select>
   	SELECT in_time, sum(total_time) FROM seat_detail WHERE mem_num = 543 GROUP BY in_time HAVING in_time >= '2023-03-02' and in_time <= '23-03-05'
   	이거쓰면 일단은 날짜별 토탈타임이 구해진다
   	
