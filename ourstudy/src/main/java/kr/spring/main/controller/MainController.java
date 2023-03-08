@@ -7,6 +7,8 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import javax.servlet.http.HttpSession;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -17,6 +19,7 @@ import kr.spring.admin.service.AdminService;
 import kr.spring.info.service.InformationService;
 import kr.spring.info.vo.InformationVO;
 import kr.spring.main.service.MainService;
+import kr.spring.member.kakao.NaverService;
 import kr.spring.member.vo.MemberVO;
 import kr.spring.seat.vo.SeatVO;
 
@@ -32,6 +35,9 @@ public class MainController {
 	@Autowired
 	private MainService mainService;
 	
+	@Autowired
+	private NaverService naver;
+	
 	//자바빈(VO) 초기화
 	@ModelAttribute
 	public MemberVO initCommand() {
@@ -44,7 +50,7 @@ public class MainController {
 	}
 	
 	@RequestMapping("/main/main.do")
-	public String main(Model model) {
+	public String main(Model model,HttpSession session) {
 
 		//안내사항 최신글 7개
 		Map<String,Object> map = new HashMap<String,Object>();
@@ -75,7 +81,11 @@ public class MainController {
 	   List<SeatVO> member_RankStudyTime = mainService.member_Rank(memArray, setThisMonday.toString(), setNextMonday.toString());
 	   
 		   model.addAttribute("studyTime", member_RankStudyTime);
-	   
+			
+		   String naverAuthUrl = naver.getAuthorizationUrl(session);
+			
+			model.addAttribute("urlNaver", naverAuthUrl);
+			
 	   return "main";//타일스 설정값
 	}
 	

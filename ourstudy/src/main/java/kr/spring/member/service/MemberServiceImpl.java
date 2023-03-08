@@ -58,6 +58,7 @@ public class MemberServiceImpl implements MemberService {
 		return memberMapper.find_pw(mem_id, mem_email);
 	}
 
+	//카카오톡
 	@Override
 	public MemberVO selectKakaoCheck(String kakao_email) {
 		return memberMapper.selectKakaoCheck(kakao_email);
@@ -69,6 +70,21 @@ public class MemberServiceImpl implements MemberService {
 		memberMapper.insertKMember(member);
 		memberMapper.insertKMember_detail(member);
 		memberMapper.insertKMember_history(member);
+		
+	}
+
+	//네이버
+	@Override
+	public MemberVO selectNaverCheck(String naver_email) {
+		return memberMapper.selectNaverCheck(naver_email);
+	}
+
+	@Override
+	public void insertNMember(MemberVO member) {
+		member.setMem_num(memberMapper.selectMem_num());
+		memberMapper.insertNMember(member);
+		memberMapper.insertNMember_detail(member);
+		memberMapper.insertNMember_history(member);
 		
 	}
 

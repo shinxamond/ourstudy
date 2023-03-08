@@ -12,17 +12,16 @@ public interface MemberService {
 	//아이디 중복 체크
 	public MemberVO selectCheckMember(String mem_id);
 	
-	
-	
-	
-	
 	//카카오톡으로 우리 사이트에 회원가입했는지 체크
 	public MemberVO selectKakaoCheck(String kakao_email);
 	//카카오톡을 통한 회원가입
 	public void insertKMember(MemberVO member);
 
 	
-	
+	//네이버로 우리 사이트에 회원가입했는지 체크
+	public MemberVO selectNaverCheck(String naver_email);
+	//네이버를 통한 회원가입
+	public void insertNMember(MemberVO member);
 
 
 	//자동로그인

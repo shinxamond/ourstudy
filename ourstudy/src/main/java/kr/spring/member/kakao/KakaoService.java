@@ -137,11 +137,7 @@ public class KakaoService {
 	}
 	
 	
-	
-	
-	
-	
-	//테스트 중 카카오톡 로그아웃
+	//카카오톡 로그아웃
 	public void kakaoLogout(String access_Token) {
         String reqURL = "https://kapi.kakao.com/v1/user/logout";
         try {
@@ -165,9 +161,7 @@ public class KakaoService {
         } catch (IOException e) {
             e.printStackTrace();
         }
+        
     }
 	
-	
-	
-
 }

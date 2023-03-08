@@ -187,6 +187,7 @@ public class MemberController {
 	@RequestMapping("/member/logout.do")
 	public String processLogout(HttpSession session, HttpServletResponse response) {
 
+		
 		String access_Token = (String)session.getAttribute("access_Token");
         
 		if(access_Token != null && !"".equals(access_Token)){
@@ -197,7 +198,7 @@ public class MemberController {
         	//세션 만료가 안 되는 문제
             System.out.println("###카카오톡 로그아웃###");
             System.out.println(access_Token);
-        }				
+        }
 		
 		//로그아웃
 		session.invalidate();

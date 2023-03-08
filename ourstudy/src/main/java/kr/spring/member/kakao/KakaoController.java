@@ -123,9 +123,6 @@ public class KakaoController {
 		session.setAttribute("user_num", member.getMem_num());
 		
 		model.addAttribute("accessMsg", "회원가입이 완료되었습니다.");
-		
-		
-		
 
 		return "common/notice"; // 이렇게 경로/타일명으로 명시하면 jsp 호출
 		

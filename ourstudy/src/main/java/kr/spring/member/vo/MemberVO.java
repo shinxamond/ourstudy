@@ -34,18 +34,7 @@ public class MemberVO {
 	private Date mem_regdate;
 	private Date mem_mdate;
 	private String kakaocheck;
-	
-
-	public String getKakaocheck() {
-		return kakaocheck;
-	}
-
-	public void setKakaocheck(String kakaocheck) {
-		this.kakaocheck = kakaocheck;
-	}
-	
-	
-
+	private String navercheck;
 	private int mem_study;
 	private int mem_ticket_hour;
 	private int mem_ticket_term;
@@ -275,6 +264,22 @@ public class MemberVO {
 	public void setNow_passwd(String now_passwd) {
 		this.now_passwd = now_passwd;
 	}
+	
+	public String getKakaocheck() {
+		return kakaocheck;
+	}
+
+	public void setKakaocheck(String kakaocheck) {
+		this.kakaocheck = kakaocheck;
+	}
+
+	public String getNavercheck() {
+		return navercheck;
+	}
+
+	public void setNavercheck(String navercheck) {
+		this.navercheck = navercheck;
+	}
 
 	@Override
 	public String toString() {
@@ -283,13 +288,11 @@ public class MemberVO {
 				+ mem_pw + ", mem_phone=" + mem_phone + ", mem_email=" + mem_email + ", mem_zipcode=" + mem_zipcode
 				+ ", mem_address1=" + mem_address1 + ", mem_address2=" + mem_address2 + ", mem_photo_name="
 				+ mem_photo_name + ", mem_regdate=" + mem_regdate + ", mem_mdate=" + mem_mdate + ", kakaocheck="
-				+ kakaocheck + ", mem_study=" + mem_study + ", mem_ticket_hour=" + mem_ticket_hour
-				+ ", mem_ticket_term=" + mem_ticket_term + ", mem_all_id=" + Arrays.toString(mem_all_id)
-				+ ", pw_confirm=" + pw_confirm + ", email_code=" + email_code + ", now_passwd=" + now_passwd + "]";
+				+ kakaocheck + ", navercheck=" + navercheck + ", mem_study=" + mem_study + ", mem_ticket_hour="
+				+ mem_ticket_hour + ", mem_ticket_term=" + mem_ticket_term + ", mem_all_id="
+				+ Arrays.toString(mem_all_id) + ", pw_confirm=" + pw_confirm + ", email_code=" + email_code
+				+ ", now_passwd=" + now_passwd + "]";
 	}
 
-	
-	
-	
 
 }

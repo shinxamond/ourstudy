@@ -17,22 +17,29 @@
 <%--로그인 유효성 체크 --%>
 <script type="text/javascript" src="${pageContext.request.contextPath}/js/logincheck.js"></script>
 <script type="text/javascript" src="${pageContext.request.contextPath}/js/sidebar.js"></script>
+
+<%--네이버 --%>
+<script type="text/javascript" src="https://static.nid.naver.com/js/naverLogin_implicit-1.0.2.js"></script>
+
 <%--카카오톡 로그아웃 --%>
 <script src="https://developers.kakao.com/sdk/js/kakao.js"></script>
+
+
 <script>
 Kakao.init('29a4ee7bbc4eb20216c3708400363a9a'); //발급받은 키 중 javascript키를 사용해준다.
 console.log(Kakao.isInitialized()); // sdk초기화여부판단
 
+
 function kakaoLogout() {
-Kakao.API.request({
-	  url: '/v1/user/unlink',
+	Kakao.API.request({
+		  url: '/v1/user/unlink',
 	})
-	  .then(function(response) {
-	    console.log(response);
-	  })
-	  .catch(function(error) {
-	    console.log(error);
-	  });
+		  .then(function(response) {
+		    console.log(response);
+		  })
+		  .catch(function(error) {
+		    console.log(error);
+		  });
 }
 </script>
 
@@ -83,13 +90,19 @@ Kakao.API.request({
 					<li><a href="${pageContext.request.contextPath}/member/registerUser.do">회원가입</a></li>
 				</ul>
 				
-				<%--Rest API --%>
-				<div class="mt-4 mb-5 d-flex justify-content-center">
+				<div class="mt-4 text-center" style="color:gray">――――――― 간편 로그인 ―――――――</div>
+				
+				<%--카카오(Rest API) --%>
+				<div class="mt-3 mb-4 d-flex justify-content-center">
 					<a href="https://kauth.kakao.com/oauth/authorize?client_id=0ed971182cc827fbd73de790073ac06a&redirect_uri=http://localhost:8001/member/kakaoLogin
-&response_type=code">
-   					<img src="${pageContext.request.contextPath}/image_bundle/kakao_login_medium_narrow.png"></a>
+						&response_type=code">
+   					<img src="${pageContext.request.contextPath}/image_bundle/kakao.PNG" class="my-photo" style="width:51px; height:51px;"></a>&nbsp;&nbsp;&nbsp;&nbsp;
+					
+					<%--네이버(네아로 API) --%>
+					<a href="${urlNaver}">
+	   				<img src="${pageContext.request.contextPath}/image_bundle/naver.png" style="width:50px;"></a>
 				</div>
-
+				
 			</div>
 		</div>
 	</div>
@@ -386,7 +399,7 @@ Kakao.API.request({
 						onclick="location.href='https://kauth.kakao.com/oauth/logout?client_id=29a4ee7bbc4eb20216c3708400363a9a&logout_redirect_uri=http://localhost:8001/main/main.do';location.href='${pageContext.request.contextPath}/member/logout.do';">
 						로그아웃</button>
 					</c:if>
-						
+
 				</div>
 			</nav>
 

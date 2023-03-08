@@ -34,17 +34,32 @@ public interface MemberMapper {
 	@Select("SELECT m.mem_num,m.mem_id,d.mem_pw FROM member m LEFT OUTER JOIN member_detail d"
 		  + " ON m.mem_num=d.mem_num WHERE d.kakaocheck=#{kakaocheck}")
 	public MemberVO selectKakaoCheck(String kakao_email);
+	
 	//카카오톡을 통한 회원가입
 	@Insert("INSERT INTO member (mem_num,mem_id) VALUES (#{mem_num},#{mem_id})")
 	public void insertKMember(MemberVO member);
 	@Insert("INSERT INTO member_detail (mem_num,mem_name,mem_pw,mem_email,kakaocheck) VALUES"
-			+ " (#{mem_num},#{mem_name},#{mem_pw},#{mem_email},#{kakaocheck})")
+		+ " (#{mem_num},#{mem_name},#{mem_pw},#{mem_email},#{kakaocheck})")
 	public void insertKMember_detail(MemberVO member);
 	@Insert("INSERT INTO member_history (mem_num,mem_study,mem_ticket_hour,mem_ticket_term) "
 		  + "VALUES (#{mem_num},#{mem_study},#{mem_ticket_hour},#{mem_ticket_term})")
 	public void insertKMember_history(MemberVO member);
 	
 	
+	//네이버로 우리 사이트에 회원가입했는지 체크
+	@Select("SELECT m.mem_num,m.mem_id,d.mem_pw FROM member m LEFT OUTER JOIN member_detail d"
+		 + " ON m.mem_num=d.mem_num WHERE d.navercheck=#{navercheck}")
+	public MemberVO selectNaverCheck(String naver_email);
+		
+	//네이버를 통한 회원가입
+	@Insert("INSERT INTO member (mem_num,mem_id) VALUES (#{mem_num},#{mem_id})")
+	public void insertNMember(MemberVO member);
+	@Insert("INSERT INTO member_detail (mem_num,mem_name,mem_pw,mem_email,navercheck) VALUES"
+		+ " (#{mem_num},#{mem_name},#{mem_pw},#{mem_email},#{navercheck})")
+	public void insertNMember_detail(MemberVO member);
+	@Insert("INSERT INTO member_history (mem_num,mem_study,mem_ticket_hour,mem_ticket_term) "
+		  + "VALUES (#{mem_num},#{mem_study},#{mem_ticket_hour},#{mem_ticket_term})")
+	public void insertNMember_history(MemberVO member);
 	
 	
 	//자동로그인
