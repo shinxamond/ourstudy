@@ -6,7 +6,7 @@
 <head>
 <meta charset="UTF-8">
 <title>안내</title>
-<link rel="stylesheet" href="${pageContext.request.contextPath}/css/memberRegister.css">
+<link rel="stylesheet" href="${pageContext.request.contextPath}/css/notice.css">
 </head>
 
 <div>

@@ -154,7 +154,7 @@ button,input[type="button"]{
   box-shadow: 0 14px 28px rgba(0,0,0,0.25), 5px 8px 10px rgba(0,0,0,0.22);
   position: relative;
   top:70px;
-  left:210px;
+  left:400px;
   width:260px;
   height:585px;
   z-index:2;
@@ -178,7 +178,7 @@ button,input[type="button"]{
 
 .find_form {
   position: relative;
-  margin:-480px 40px -700px 140px;
+  margin:-480px 40px -700px 344px;
   background-color: #fff;
   border-radius: 6px;
   box-shadow: 2px 2px 14px 5px rgba(0,0,0,.1);
@@ -248,9 +248,9 @@ button,input[type="button"]{
    
     .find_form{
      	position: relative;
- 	 	margin:20px 0 5px 50px;
+ 	 	margin:30px 0 20px 50px;
  	 	width:340px;
- 	 	height:480px;
+ 	 	height:300px;
  	 	box-shadow: 2px 2px 14px 5px rgba(0,0,0,.1);
     }
     .find-text{
@@ -260,18 +260,6 @@ button,input[type="button"]{
     }
 	.find-content{
 		padding-top:40px;
-	}
-
-	#message_name{
-		text-align:left; margin-left:3px;
-	}
-	
-    .mail-check-input{
-    	margin:0;
-    }
-    #mail-check-warn{
-		margin-right:130px;
-		margin-left:0;
 	}
     .find-submit-btn{
 		color:white;
@@ -284,4 +272,41 @@ button,input[type="button"]{
 		margin:35px 0 0 90px;
 	}
 	
+}
+
+/*=====================================
+			  common/notice
+======================================*/
+.notice-content{
+	margin:130px 60px 0 390px;
+	text-align:center;
+	margin-right:60px;
+	font-size:12pt;
+	font-weight:bold;
+	padding:10px 0;
+}
+.notice-btn{
+	color:white;
+	background-color:#E65962;
+	width:125px;
+	height:40px;
+	border-radius:10px;
+	border:none;
+	font-size:10pt;
+	margin:15px 0px 5px 7px;
+}
+
+@media screen and (max-width:1025px){
+	.notice-content{
+		margin: 101px 46px 0 45px;
+    	padding: 54px 0;
+	}
+	.notice-btn{
+		position:absolute;
+		left:95px;
+		margin-top:15px;
+	}
+	.find-text{
+		padding-left:0;
+	}
 }
