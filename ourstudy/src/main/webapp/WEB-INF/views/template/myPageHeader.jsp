@@ -55,7 +55,8 @@
 			</span></span>
 			<br>
 			<div class = "seatcheck-buttons">
-				<button class = "seatcheck-button" onclick="location.href='${pageContext.request.contextPath}/seat/in.do'">입실</button>
+				<button class = "seatcheck-button" onclick=<c:if test="${member.mem_status == 1}">"alert('이미 입실중입니다.');"</c:if>
+														   <c:if test="${member.mem_status != 1}">"location.href='${pageContext.request.contextPath}/seat/in.do'"</c:if>>입실</button>
 				<button class = "seatcheck-button" onclick="location.href='${pageContext.request.contextPath}/seat/hold.do?seat_num=${seat.seat_num}'">외출</button>
 				<button class = "seatcheck-button" onclick="location.href='${pageContext.request.contextPath}/seat/out.do?'">퇴실</button>			
 			</div>
