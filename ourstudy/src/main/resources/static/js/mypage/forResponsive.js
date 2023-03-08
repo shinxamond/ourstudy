@@ -36,6 +36,10 @@ $(function(){
 		$('#insert_content_time').remove();
 		$('#insert_content_point').remove();
 	}
+	
+	let delay = 300;
+	let timer = null;
+	
 	$(window).resize(function(){
 		var windowWidth = $( window ).width();
 		if(windowWidth >= 992){
@@ -64,9 +68,17 @@ $(function(){
 			}
 		}
 	});
+	
+	$(window).on('resize', function(){
+	clearTimeout(timer);
+	timer = setTimeout(function(){
+        location.reload();
+	}, delay);
+});
 
-
-
+	setInterval(function() {
+	  
+	}, 60000);
 
 
 	/*마이페이지 메인 호출시*/
@@ -86,77 +98,71 @@ $(function(){
 	}		
 	/*마이페이지 회원정보 호출시*/
 	$('#mem_info_btn').click(function(){
-		var windowWidth = $( window ).width();
-		if(windowWidth < 992){
-			localStorage.setItem("status", "showMem_info");
-		}
+		localStorage.setItem("status", "showMem_info");
 	});
 	if(localStorage.getItem("status") == "showMem_info"){
-		mem_info.appendTo($('#insert_content_info'));
-		$('.mypage_mem_info').eq(1).remove();
+		if($( window ).width() < 992){
+			mem_info.appendTo($('#insert_content_info'));
+			$('.mypage_mem_info').eq(1).remove();
+		}
 	}
 		
 	/*마이페이지 공부시간 호출시*/
 	$('#mem_studyTime_btn').click(function(){
-		var windowWidth = $( window ).width();
-		if(windowWidth < 992){
-			localStorage.setItem("status", "showMem_studyTime");
-		}
+		localStorage.setItem("status", "showMem_studyTime");
 	});
 	if(localStorage.getItem("status") == "showMem_studyTime"){
-		mem_studyTime.appendTo($('#insert_content_time'));
-		$('.mypage_mem_studyTime').eq(1).remove();
+		if($( window ).width() < 992){
+			mem_studyTime.appendTo($('#insert_content_time'));
+			$('.mypage_mem_studyTime').eq(1).remove();
+		}
 	}
 	
 
 	/*마이페이지 포인트 호출시*/
 	$('#mem_point_btn').click(function(){
-		var windowWidth = $( window ).width();
-		if(windowWidth < 992){
-			localStorage.setItem("status", "showMem_point");
-		}
+		localStorage.setItem("status", "showMem_point");
 	});		
 	if(localStorage.getItem("status") == "showMem_point"){
-		mem_pointList.appendTo($('#insert_content_point'));
-		$('.mypage_mem_pointList').eq(1).remove();
+		if($( window ).width() < 992){
+			mem_pointList.appendTo($('#insert_content_point'));
+			$('.mypage_mem_pointList').eq(1).remove();			
+		}
 	}	
 	
 	/*마이페이지 정보수정 호출시*/
 	$('#mem_modify_btn').click(function(){
-		var windowWidth = $( window ).width();
-		if(windowWidth < 992){
-			localStorage.setItem("status", "showMem_modify");
-		}
+		localStorage.setItem("status", "showMem_modify");
 	});
 	if(localStorage.getItem("status") == "showMem_modify"){
-		mem_modify.appendTo($('#insert_content_info'));
-		//$('.mypage_mem_info_modify').eq(1).css('display', 'none');
-		$('.mypage_mem_info_modify').eq(1).remove();
+		if($( window ).width() < 992){
+			mem_modify.appendTo($('#insert_content_info'));
+			//$('.mypage_mem_info_modify').eq(1).css('display', 'none');
+			$('.mypage_mem_info_modify').eq(1).remove();
+		}
 	}	
 	
 	/*마이페이지 비밀번호변경 호출시*/
 	$('#mem_changePw_btn').click(function(){
-		var windowWidth = $( window ).width();
-		if(windowWidth < 992){
-			localStorage.setItem("status", "showMem_changePw");
-		}
+		localStorage.setItem("status", "showMem_changePw");
 	});
 	if(localStorage.getItem("status") == "showMem_changePw"){
-		mem_changePw.appendTo($('#insert_content_info'));
-		//$('.mypage_mem_changePasswd').eq(1).css('display', 'none');
-		$('.mypage_mem_changePasswd').eq(1).remove();
+		if($( window ).width() < 992){
+			mem_changePw.appendTo($('#insert_content_info'));
+			//$('.mypage_mem_changePasswd').eq(1).css('display', 'none');
+			$('.mypage_mem_changePasswd').eq(1).remove();
+		}
 	}
 	
 	/*마이페이지 회원탈퇴 호출시*/
 	$('#mem_delete_btn').click(function(){
-		var windowWidth = $( window ).width();
-		if(windowWidth < 992){
-			localStorage.setItem("status", "showMem_delete");
-		}
+		localStorage.setItem("status", "showMem_delete");
 	});
 	if(localStorage.getItem("status") == "showMem_delete"){
-		mem_delete.appendTo($('#insert_content_info'));
-		//$('.mypage_mem_delete').eq(1).css('display', 'none');
-		$('.mypage_mem_delete').eq(1).remove();
+		if($( window ).width() < 992){
+			mem_delete.appendTo($('#insert_content_info'));
+			//$('.mypage_mem_delete').eq(1).css('display', 'none');
+			$('.mypage_mem_delete').eq(1).remove();
+		}
 	}					
 });
