@@ -1,18 +1,21 @@
 @charset "UTF-8";
+
 /*
 기본 폼---------*/
+div#main_body{
+	padding:5px 0 30px 5px;
+	min-height:500px;
+	width:80%;
+	position:relative;
+	left:260px;
+}
 .item_modify_form, .item_write_form{
 	width:590px;
 	margin:0 auto;
 	border:1px solid #000;
 	padding:10px 10px 10px 30px;
 }
-.item_modify_form2, .item_write_form2{
-	width:70px;
-	margin:0 auto;
-	
-	padding:5px 5px 5px 15px;
-}
+
 /*
 유저 물품 리스트---------*/
 div#userList #userList-area{
@@ -23,31 +26,6 @@ div#userList #userList-area{
 	position: relative;
 	text-align:center;
 } 
-/*
-유저 물품 리스트 반응형---------*/
-.it2 #userlist{
-	border: solid 1px #d9dee3;
-	margin:2px;
-	width:190px;
-	height:170px;
-	float:left;
-	position: relative;
-	text-align:center;
-}
-.it2{
-	display: none;
-}
-
-@media ( max-width : 1199px) {
-	.it1 {
-		display: none;
-	}
-	.it2 {
-		display: block;
-	}
-}
-
- 
 
 /*
 대여 폼---------*/
@@ -79,53 +57,11 @@ select#inum option{
 #imgdetail{
 	border: solid 1px black;
 	border-radius: 1rem;
+	padding:0px;
 }
-
-/*
-대여 폼 반응형---------*/
-.item-image2{
-	width:300px;
-	float:left;
-	position: relative;
+#rental_text{
+	font-size:17px;
 }
-.item-detail2{
-	position: relative;
-}
-.item-detail2 form{
-	border:none;
-	width:450px;
-	float:left;
-	margin:0;
-	font-size:20px;
-}
-
-select#inum option{
-	width:200px;
-}
-/*
-대여 폼 반응형---------*/
-.it2 #userlist{
-	margin:2px;
-	width:190px;
-	height:170px;
-	float:left;
-	position: relative;
-	text-align:center;
-}
-.it2{
-	display: none;
-}
-
-@media ( max-width : 1199px) {
-	.it1 {
-		display: none;
-	}
-	.it2 {
-		display: block;
-	}
-}
-
-
 div#clear{ 
 	clear:both;
 }
@@ -133,51 +69,89 @@ div#clear2{
 	clear:both;
 }
 
-/* form#item_search_form{
-	width:650px;
-	border:none;
+/*
+유저 물품 리스트 반응형---------*/
+.it2 #userlist{/*물품 이미지 이름*/
+	border: solid 1px #d9dee3;
+	margin:2px;
+	width:190px;
+	height:170px;
+	float:left;
+	position: relative;
+	text-align:center;
+	left:130px;
 }
-ul.item_search{
-	width:400px;
-	list-style:none;
-	padding:0;
-	margin:0 auto;
+.it2 #itemlist{/*물품목록*/
+	position: relative;
+	left:165px;
 }
-ul.item_search li{
-	margin:0 0 9px 0;
-	padding:0;
-	display:inline;
-}
-ul.item_search li input[type="search"]{
-	width:120px;
-} */
-#rental_text{
-	font-size:17px;
+.it2{
+	display: none;
 }
 
-/* table.striped-item-table{
-	border:1px solid #FFF;
-	font-size:15px;
-	width:100%;
-	border-collapse:collapse;
-	margin:7px0;
+/*
+대여 폼 반응형---------*/
+#rental{
+	position: relative;
+	left:140px;
 }
-table.striped-item-table td, table.striped-item-table th{
-	padding: .7em .5em;
-	vertical-align:middle;
+#rental_name{
+	position: relative;
+	left:155px;
 }
-table.striped-item-table th{
-	font-weight:bold;
-	text-align:center;
-	background:#E1E1E1;
+.item-image2{
+	width:300px;
+	
+	position: relative;
+	left:100px;
 }
-table.striped-item-table td{
-	border-bottom:1px solid rgba(0,0,0,.1);
-	text-align:center;
+
+.item-detail2 form{
+	border:none;
+	width:450px;
+	margin:0;
+	font-size:20px;
+	position: relative;
+	left:100px;
 }
-table.striped-item-table tr:nth-child(odd){
-	background-color:rgb(250,250,247);
-} */
+
+select#inum option{
+	width:200px;
+}
+
+/*
+물품 생성 수정 반응형---------*/
+.item_modify_form2, .item_write_form2{
+	width:240px;
+	margin:0 auto;
+	border: solid 1px;
+	left:10px;
+	position:relative;
+	padding:5px 5px 5px 15px;
+}
+
+
+@media ( max-width : 991px) {
+	.it1 {
+		display: none;
+	}
+	.it2 {
+		display: block;
+	}
+	div#main_body{
+		left:10px;
+	}
+	div#main_footer{
+		left:10px;
+		padding:30px 10px 20px 5px;
+		height:45vh;
+	}
+	.footer-main{
+		margin-left:20px;
+	}
+	
+}
+
 
 /*
 수정 생성 폼 t2 반응형---------*/
@@ -190,6 +164,9 @@ input[type="number"]{
 #t2 input[type="text"]{
 	width:140px;
 }
+#t2 input[type="file"]{
+	width:210px;
+}
 
 
 /* .striped-item-table a:link{
@@ -200,6 +177,23 @@ input[type="number"]{
 	text-decoration:none;
 	color:#000000;
 } */
+/*
+버튼---------*/
+.itemButton {
+  border: 0;
+  font-size: 15px;
+  margin: 5px;
+  color:white;
+  background-color: #E65962;
+  border:none;
+  padding: 10px;
+  cursor: pointer;
+  border-radius: 10px;
+}
+
+
+
+
 /*
 에러코드---------*/
 .error-color{

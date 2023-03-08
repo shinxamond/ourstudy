@@ -24,7 +24,7 @@
 		<div id="clear"></div>
 	</div>
 	<div class="it2">
-		<h1>물품 목록</h1>
+		<h1 id="itemlist">물품 목록</h1>
 		<c:forEach var="item" items="${list}">
 		<div id="userlist" class="item-card">
 			<a href="userRental.do?item_index=${item.item_index}"><img src="imageView.do?item_num=${item.item_num}" width="150" height="130" class="my-photo">

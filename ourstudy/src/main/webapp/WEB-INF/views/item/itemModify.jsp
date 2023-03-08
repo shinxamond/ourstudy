@@ -75,8 +75,8 @@
 						</li>
 					</ul>
 					<div class="align-center">
-					<form:button>수정</form:button>
-					<input type="button" value="삭제" id="delete_btn">
+					<form:button class="itemButton">수정</form:button>
+					<input type="button" class="itemButton" value="삭제" id="delete_btn">
 					<script type="text/javascript">
 							let delete_btn = document.getElementById('delete_btn');
 							delete_btn.onclick=function(){
@@ -86,7 +86,7 @@
 								}
 							};
 						</script>
-					<input type="button" value="목록" onclick="location.href='adminList.do'">
+					<input type="button" class="itemButton" value="목록" onclick="location.href='adminList.do'">
 					</div>
 				</form:form>
 				
@@ -146,8 +146,9 @@
 							<form:input path="item_time" type="number"/><br>
 							<form:errors path="item_time" cssClass="error-color"/>
 					<br>
-					<form:button>수정</form:button> &nbsp;
-					<input type="button" value="삭제" id="delete_btn"> &nbsp;
+					<div class="align-center">
+					<form:button class="itemButton">수정</form:button>
+					<input type="button" class="itemButton" value="삭제" id="delete_btn"> 
 					<script type="text/javascript">
 							let delete_btn = document.getElementById('delete_btn');
 							delete_btn.onclick=function(){
@@ -157,7 +158,8 @@
 								}
 							};
 						</script>
-					<input type="button" value="목록" onclick="location.href='adminList.do'">
+					<input type="button" value="목록" class="itemButton" onclick="location.href='adminList.do'">
+					</div>
 				</form:form>
 							
 			</div><!-- 사이드바 오른쪽 화면 끝 -->	

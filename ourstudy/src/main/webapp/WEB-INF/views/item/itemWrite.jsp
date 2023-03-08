@@ -41,8 +41,8 @@
 						</li>
 					</ul>
 					<div class="align-center">
-					<form:button>전송</form:button>
-					<input type="button" value="목록" onclick="location.href='adminList.do'">
+					<form:button class="itemButton">전송</form:button>
+					<input type="button" class="itemButton" value="목록" onclick="location.href='adminList.do'">
 					</div>
 				</form:form>
 				
@@ -68,9 +68,10 @@
 					<label for="item_time">대여 기간(일)</label><br>
 					<form:input path="item_time" type="number"/><br>
 					<form:errors path="item_time" cssClass="error-color"/><br>
-					
-				<form:button>전송</form:button> &nbsp;
-				<input type="button" value="목록" onclick="location.href='adminList.do'">
+				<div class="align-center">	
+				<form:button class="itemButton">전송</form:button>
+				<input type="button" class="itemButton" value="목록" onclick="location.href='adminList.do'">
+				</div>
 			</form:form>
 							
 			</div><!-- 사이드바 오른쪽 화면 끝 -->	
