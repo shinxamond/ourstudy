@@ -47,8 +47,11 @@ public class LostServicelmpl implements LostService {
 
 	@Override
 	public void deleteLost(Integer lf_num) {
-		lostMapper.deleteLost(lf_num);
+		//댓글 삭제
+		lostMapper.deleteLostReplyByLostNum(lf_num);
 		
+		//부모글 삭제
+		lostMapper.deleteLost(lf_num);
 	}
 
 
