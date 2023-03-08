@@ -80,14 +80,18 @@ div#main_body {
 #container{ 
    background-color: white;
 }
-#navbar{
+/* #navbar{
 	padding:0px;
-}
+} */
 
 
 @media ( max-width : 959px) {
+	div#main {
+	    width: 100%;
+	    margin: 0 auto;
+	}
 	.content-right {
-		padding : 50px;
+		padding : 0;
 		padding-top: 0;
 	}
 }
