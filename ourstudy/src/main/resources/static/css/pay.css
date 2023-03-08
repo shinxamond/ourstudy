@@ -12,9 +12,9 @@ body{
 	height:100%;
 	position:relative;
 }
-#main_body > div{
+/* #main_body > div{
 	min-height:580px;
-}
+} */
 #main_content_body{
 	position:relative;
 }
@@ -27,26 +27,11 @@ body{
 	margin:20px 10px 5px 10px;
 	padding:10px;
 }
-#ticket_card{
-	width:800px;
+#pay_kakao{
+	border: none;
 }
-form{
-	margin:0;
-	padding:0 15px 15px 0;
-}
-#study_buy_btn{
-	margin-top:10px;
-	background-color: #E65962;
-	border:none;
-}
-#lock_buy_btn{
-	margin-right:15px;
-	background-color: #E65962;
-	border:none;
-}
-#no_ticket{
-	margin-top: 50px;
-}
+
+
 /*======================
   		 footer
 ========================*/
