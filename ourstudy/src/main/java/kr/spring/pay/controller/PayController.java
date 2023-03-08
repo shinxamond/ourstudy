@@ -133,9 +133,14 @@ public class PayController {
 
 		Map<String, Object>mapAjax = new HashMap<String, Object>();
 		MemberVO user = (MemberVO)session.getAttribute("user");
+		
+		MemberVO m_time = payService.checkTime(user.getMem_num());
+		MemberVO m_term = payService.checkTerm(user.getMem_num());
 
 		if(user == null) {
 			mapAjax.put("result", "logout");
+		}else if(m_time != null || m_term != null){
+			mapAjax.put("result", "cantBuy");
 		}else {
 			logger.debug("<<카카오 페이 결과 pay>> : " + payVO);
 			payVO.setMem_num(user.getMem_num());

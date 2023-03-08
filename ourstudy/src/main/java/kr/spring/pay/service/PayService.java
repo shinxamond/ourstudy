@@ -7,6 +7,7 @@ import java.util.Map;
 import org.apache.ibatis.annotations.Param;
 
 import kr.spring.locker.vo.LockerVO;
+import kr.spring.member.vo.MemberVO;
 import kr.spring.pay.vo.PayVO;
 import kr.spring.ticket.vo.TicketVO;
 
@@ -26,4 +27,7 @@ public interface PayService {
 	public void insertNewLockerMember(PayVO payVO);
 	//라커 구매 시 이미 라커 보유중인지 체크
 	public int checkUsingLocker(Integer mem_num);
+	//좌석 시간권, 기간권 보유중인지 확인
+	public MemberVO checkTime(Integer mem_num);
+	public MemberVO checkTerm(Integer mem_num);
 }

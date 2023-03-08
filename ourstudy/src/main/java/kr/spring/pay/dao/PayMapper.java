@@ -11,6 +11,7 @@ import org.apache.ibatis.annotations.Select;
 import org.apache.ibatis.annotations.Update;
 
 import kr.spring.locker.vo.LockerVO;
+import kr.spring.member.vo.MemberVO;
 import kr.spring.pay.vo.PayVO;
 import kr.spring.ticket.vo.TicketVO;
 
@@ -58,5 +59,12 @@ public interface PayMapper {
 	@Select("SELECT mem_num FROM locker_detail WHERE mem_num = #{mem_num}")
 	public int checkUsingLocker(Integer mem_num);
 	
+	//독서실 시간권 보유 여부 체크
+	@Select("SELECT mem_ticket_hour FROM member_history WHERE mem_num=#{mem_num}")
+	public MemberVO checkTime(Integer mem_num);
+	
+	//독서실 시간권 보유 여부 체크
+	@Select("SELECT mem_ticket_term FROM member_history WHERE mem_num=#{mem_num}")
+	public MemberVO checkTerm(Integer mem_num);
 }
 

@@ -10,6 +10,7 @@ import org.springframework.transaction.annotation.Transactional;
 
 import kr.spring.locker.dao.LockerMapper;
 import kr.spring.locker.vo.LockerVO;
+import kr.spring.member.vo.MemberVO;
 import kr.spring.mypage.dao.MypageMapper;
 import kr.spring.pay.dao.PayMapper;
 import kr.spring.pay.vo.PayVO;
@@ -70,8 +71,6 @@ public class PayServiceImpl implements PayService{
 		
 	}
 
-
-
 	@Override
 	public int checkUsingLocker(Integer mem_num) {
 		int result;
@@ -96,6 +95,17 @@ public class PayServiceImpl implements PayService{
 	@Override
 	public void insertNewLockerMember(PayVO payVO) {
 		payMapper.insertNewLockerMember(payVO);
+	}
+
+	@Override
+	public MemberVO checkTime(Integer mem_num) {
+		return payMapper.checkTime(mem_num);
+	}
+
+	@Override
+	public MemberVO checkTerm(Integer mem_num) {
+		// TODO Auto-generated method stub
+		return payMapper.checkTerm(mem_num);
 	}
 
 

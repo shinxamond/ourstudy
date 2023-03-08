@@ -9,7 +9,7 @@ $(function(){
             success:function(param){
               if(param.result == 'logout'){
                alert('로그인 후 이용해주세요');   
-              }else if(param.result == 'success'){
+           	  }else if(param.result == 'success'){
                   $('#my_point').text(param.mypoint);
               }else{
                  alert('오류 발생');
@@ -168,7 +168,10 @@ $(function(){
                success:function(param){
                   if(param.result == 'logout'){
                      alert('로그인 후 사용하세요');
-                  }else if(param.result == 'success'){
+                  }else if(param.result == 'cantBuy'){
+					alert('이미 보유중인 이용권이 있습니다. 사용 후 이용해주세요!');
+					location.href='/main/main.do';
+				  }else if(param.result == 'success'){
                      alert('결제 완료 되었습니다');
                   }else{
                      alert('오류 발생');

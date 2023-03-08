@@ -35,6 +35,42 @@ body{
 /*======================
   		 footer
 ========================*/
+
+@media screen and (max-width:1320px){
+	.footer-sns{
+		display:none;
+	}
+	.footer-main{
+		margin-left:80px;
+	}
+}
+
+@media screen and (max-width:991px) {
+	div#main_body{
+		left:10px;
+	}
+	.accordion {
+  		width: 120%;
+  		padding-left:10px;
+	}
+	.accordion-item .heading{
+		font-size:12pt;
+	}
+	.accordion-item .content p{
+		margin-left:10px;
+		font-size:10pt;
+		padding-right:20px;
+	}
+	.footer-sns{
+		display:none;
+	}
+	div#main_footer{
+		padding:30px 10px 20px 5px;
+		height:45vh;
+	}
+	.footer-main{
+		margin-left:20px;
+	}
 #footer-content{
 	line-height:1.7em;
 	font-family: 'Pretendard-Regular';
@@ -56,4 +92,63 @@ div#main_footer .footer-sns{
 }
 .footer-sns a:hover{
 	color: #F3F1F1;
+}
+
+@font-face {
+    font-family: 'Pretendard-Regular';
+    src: url('https://cdn.jsdelivr.net/gh/Project-Noonnu/noonfonts_2107@1.1/Pretendard-Regular.woff') format('woff');
+    font-weight: 400;
+    font-style: normal;
+}
+
+body{
+	background-color:#F3F1F1!important;
+	height:100%;
+	position:relative;
+}
+/* #main_body > div{
+	min-height:580px;
+} */
+#main_content_body{
+	position:relative;
+}
+.row.yu{
+	position:relative;
+}
+.card{
+	border-radius: 1rem;
+	border: 0 solid #d9dee3;
+	margin:20px 10px 5px 10px;
+	padding:10px;
+}
+#pay_kakao{
+	border: none;
+}
+
+
+/*======================
+  		 footer
+========================*/
+#footer-content{
+	line-height:1.7em;
+	font-family: 'Pretendard-Regular';
+	font-size:11pt;
+}
+#footer-logo{
+	color:#F3F1F1;
+	font-size:12pt;
+	padding:0px;
+}
+div#main_footer .footer-main{
+	float:left;
+}
+div#main_footer .footer-sns{
+	float:right;
+	margin-right:100px;
+	word-spacing:15px;
+	padding-top:40px;
+}
+.footer-sns a:hover{
+	color: #F3F1F1;
+}
 }
