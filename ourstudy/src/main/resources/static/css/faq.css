@@ -6,25 +6,12 @@
 }
 
 html {
-  background-color: #eeeeee;
-}
-
-html {
-  padding-top: 50px;
   font-family: "Raleway", Helvetica, arial, sans-serif;
-  background-color: #eeeeee;
-}
-
-.header {
-  text-align: center;
-}
-.header a {
-  text-decoration: none;
-  color: #a98677;
+  background-color: #fcf4e8;
 }
 
 .accordion {
-  width: 100%;
+  width: 65%;
   max-width: 75rem;
   margin: 0 auto;
   padding: 2rem;
@@ -38,13 +25,13 @@ html {
   display: none;
 }
 .accordion-item .accordion-input:checked + .heading {
-  color: #bfa499;
+  color: #E65962;
 }
 .accordion-item .accordion-input:checked + .heading .icon {
   background: #fefefe;
 }
 .accordion-item .accordion-input:checked + .heading .icon:before {
-  background: #bfa499;
+  background: #E65962;
 }
 .accordion-item .accordion-input:checked + .heading .icon:after {
   width: 0;
@@ -60,23 +47,23 @@ html {
   display: block;
   text-transform: uppercase;
   text-decoration: none;
-  color: #7f6559;
+  color: #384048;
   font-weight: 700;
   font-size: 1rem;
   position: relative;
   padding: 1.5rem 0 1.5rem 4rem;
   transition: 0.3s ease-in-out;
 }
-@media (min-width: 40rem) {
-  .accordion-item .heading {
-    font-size: 1.2rem;
-  }
+
+.accordion-item .heading {
+  font-size: 1.2rem;
 }
+
 .accordion-input:checked + .accordion-item .heading {
-  color: #bfa499;
+  color: #384048;
 }
 .accordion-input:checked + .accordion-item .heading .icon:before, .accordion-input:checked + .accordion-item .heading .icon:after {
-  background: #bfa499;
+  background: #384048;
 }
 .accordion-item .icon {
   display: block;
@@ -93,7 +80,7 @@ html {
   content: "";
   width: 1.25rem;
   height: 0.25rem;
-  background: #7f6559;
+  background: #384048;
   position: absolute;
   border-radius: 3px;
   left: 50%;
@@ -112,5 +99,76 @@ html {
   transform: translateX(10px);
 }
 .accordion-item .content p {
-  margin-top: 0;
+	margin:0 0 20px 70px;
+	font-size:12pt;
+	line-height:1.5em;
 }
+
+/*======================
+		footer
+=======================*/
+#footer-content{
+	line-height:1.7em;
+	font-family: 'Pretendard-Regular';
+	font-size:11pt;
+}
+#footer-logo{
+	color:#F3F1F1;
+	font-size:12pt;
+	padding:0px;
+}
+div#main_footer .footer-main{
+	float:left;
+}
+div#main_footer .footer-sns{
+	float:right;
+	margin-right:100px;
+	word-spacing:15px;
+	padding-top:40px;
+}
+.footer-sns a:hover{
+	color: #F3F1F1;
+}
+
+/*======================
+		반응형
+=======================*/
+
+@media screen and (max-width:1320px){
+	.footer-sns{
+		display:none;
+	}
+	.footer-main{
+		margin-left:80px;
+	}
+}
+
+@media screen and (max-width:991px) {
+	div#main_body{
+		left:10px;
+	}
+	.accordion {
+  		width: 120%;
+  		padding-left:10px;
+	}
+	.accordion-item .heading{
+		font-size:12pt;
+	}
+	.accordion-item .content p{
+		margin-left:10px;
+		font-size:10pt;
+		padding-right:20px;
+	}
+	.footer-sns{
+		display:none;
+	}
+	div#main_footer{
+		padding:30px 10px 20px 5px;
+		height:45vh;
+	}
+	.footer-main{
+		margin-left:20px;
+	}
+}
+
+
