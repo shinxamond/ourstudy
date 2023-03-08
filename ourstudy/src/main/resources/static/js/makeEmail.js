@@ -43,7 +43,7 @@ $(function(){
 		if($('#user_email').val()==''){
 			$('#user_email').val('').focus();
 			$('#mail-check-warn').html('이메일을 입력해주세요');
-			$('#mail-check-warn').css('color','red');
+			$('#mail-check-warn').css('color','#E65962');
 			return;
 		}else{
 			$('#mail-check-warn').html('');
@@ -53,7 +53,7 @@ $(function(){
 				$("#email_direct").show();
 				$('#email_direct').val('').focus();
 				$('#mail-check-warn').html('이메일을 입력해주세요');
-				$('#mail-check-warn').css('color','red');
+				$('#mail-check-warn').css('color','#E65962');
 				return;
 			}
 		}
@@ -86,7 +86,7 @@ $(function(){
 			$resultMsg.css('color','green');
 		}else{
 			$resultMsg.html('인증번호가 불일치 합니다');
-			$resultMsg.css('color','red');
+			$resultMsg.css('color','#E65962');
 			
 		}
 	});
@@ -96,7 +96,7 @@ $(function(){
 		let right_pw = /^[A-Za-z0-9]{8,16}$/;
 		if(!right_pw.test(mem_pw.value)){
      	 	$('#message_pw').text("8~16자의 영문 대소문자, 숫자로 입력하세요.");
-			$('#message_pw').css('color','red');
+			$('#message_pw').css('color','#E65962');
 			return;
 		}else{
 			$('#message_pw').text('');
@@ -118,14 +118,14 @@ $(function(){
 		if($('.mail-check-input').val()==''){
 			$('.mail-check-input').val('');
 			$('#mail-check-warn').html('인증번호를 입력해주세요');
-			$('#mail-check-warn').css('color','red');
+			$('#mail-check-warn').css('color','#E65962');
 			return false;
 		}
 		
 		if($('.mail-check-input').val()!==code){
 			const $resultMsg = $('#mail-check-warn');
 			$resultMsg.html('인증번호가 불일치 합니다');
-			$resultMsg.css('color','red');
+			$resultMsg.css('color','#E65962');
 			return false;
 		}
 		

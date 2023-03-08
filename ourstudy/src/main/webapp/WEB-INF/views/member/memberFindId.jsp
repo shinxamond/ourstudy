@@ -21,7 +21,7 @@
 				<br>
 				<label for="mem_name">이름</label><br><br>
 				<form:input path="mem_name"/>
-				<div id="message_name" style="text-align:left; margin-left:16px;"></div> <!-- js를 위한 태그 -->
+				<div id="message_name"></div> <!-- js를 위한 태그 -->
 				<form:errors path="mem_name" cssClass="error-color"/>
 			</li>
 			<li>
@@ -47,7 +47,7 @@
 					<input class="form-control mail-check-input" placeholder="인증번호 6자리 입력" disabled="disabled" maxlength="6">
 					<button type="button" class="btn btn-primary" id="mail-Check-Btn">본인인증</button>
 				</div>
-				<div id="mail-check-warn" style="margin-right:130px; margin-left:15px; text-align:left;"></div>
+				<div id="mail-check-warn"></div>
 			</li>
 			 <%-- =======================이메일 인증코드 구현 끝========================  --%>
 			

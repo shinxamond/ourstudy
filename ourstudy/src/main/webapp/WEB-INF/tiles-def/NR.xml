@@ -16,12 +16,12 @@
     </definition>
     
     <!-- 아이디 찾기 -->
-    <definition name="memberFindId" extends="memberRegister">
+    <definition name="memberFindId" template="/WEB-INF/views/template/layout_findIdPw.jsp">
     	<put-attribute name="body" value="/WEB-INF/views/member/memberFindId.jsp"/>
     </definition>
     
     <!-- 비밀번호 찾기 -->
-    <definition name="memberFindPw" extends="memberRegister">
+    <definition name="memberFindPw" template="/WEB-INF/views/template/layout_findIdPw.jsp">
     	<put-attribute name="body" value="/WEB-INF/views/member/memberFindPw.jsp"/>
     </definition>
     

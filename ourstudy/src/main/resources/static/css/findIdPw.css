@@ -1,0 +1,308 @@
+@charset "UTF-8";
+/*------------------------------------------------
+# 회원가입
+--------------------------------------------------*/
+@keyframes fadeInUp {
+	0% {
+		opacity: 0;
+        transform: translate3d(0, 5%, 0);
+        
+    }
+    to {
+        opacity: 1;
+        transform: translateZ(0);
+    }
+}
+    
+#register-logo{
+	width:155px;
+	height:150px;
+	margin:35px auto;
+	margin-bottom:0px;
+	display:block;
+}
+
+.register_left{
+  background-color: #E65962;
+  border-radius: 10px;
+  box-shadow: 0 14px 28px rgba(0,0,0,0.25), 0 10px 10px rgba(0,0,0,0.22);
+  position: relative;
+  top:90px;
+  left:230px;
+  width: 550px;
+  height:970px;
+  animation: fadeInUp 1s;
+}
+
+.register-main{
+	width:55%;
+	margin:-890px 40px 50px 225px;
+	position: relative;
+	padding:50px;
+	animation: fadeInUp 1s;
+}
+#register_form {
+  background-color: #fff;
+  border-radius: 10px;
+  box-shadow: 0 14px 28px rgba(0,0,0,0.25), 0 0 10px 10px rgba(0,0,0,0.22);
+  overflow: hidden;
+  width: 768px;
+  max-width: 100%;
+  min-height: 860px;
+}
+
+input:not(input[id="confirmId"],#find-zipcode),select,#email_direct{
+	width:150px;
+	height:40px;
+	border-radius:10px;
+	border:none;
+	box-shadow: inset 2px 2px 5px #babebc, inset -5px -5px 12px #fff;
+	padding:0 10px;
+}
+
+select,#email_direct{
+	width:127px !important;
+}
+#email_direct{
+	width:110px !important;
+	margin:10px 0 0px 320px;
+}
+
+input[id="mem_id"],input[id="mem_pw"],input[id="pw_confirm"],input[id="mem_name"],
+input[id="mem_phone"],input[id="mem_address1"],input[id="mem_address2"]{
+	width:230px;
+	margin-bottom:5px;
+}
+input[id="mem_id"]{
+	width:150px !important;
+}
+input[id="mem_zipcode"]{
+	width:195px;
+}
+
+input[id="user_email"]{
+	width:130px;
+	margin-bottom:5px;
+}
+
+input[id="confirmId"],#mail-Check-Btn,#find-zipcode{
+	color:white;
+	background-color:#E65962;
+	width:125px;
+	height:40px;
+	border-radius:10px;
+	border:none;
+	margin-left:20px;
+	font-size:10pt;
+	margin-bottom:5px;
+}
+#message_name{
+	text-align:left; margin-left:16px;
+}
+#register-submit-btn{
+	color:white;
+	background-color:#E65962;
+	width:125px;
+	height:40px;
+	border-radius:10px;
+	border:none;
+	font-size:10pt;
+	margin-top:10px;
+	margin-bottom:50px;
+}
+.mail-check-input{
+	margin-left:130px;
+	font-size:10pt;
+	display:inline;
+}
+#mail-check-warn{
+	margin-right:130px; margin-left:15px; text-align:left;
+}
+
+.register-content{
+	margin-left:40px;
+	margin-bottom:10px;
+}
+ul li label{
+	margin-top:16px;
+}
+#message_id{
+	margin-top:3px;
+	margin-left:135px;
+}
+#message_pw{
+	margin-left:135px;
+}
+
+label{
+	font-weight:bold;
+	font-size:10pt;
+}
+button,input[type="button"]{
+	cursor:pointer;
+}
+
+
+/*=====================================
+			  아이디,비밀번호 찾기
+======================================*/
+
+@media screen and (min-width:1026px) {
+.find_left{
+  background-color: #E65962;
+  border-radius:5px;
+  box-shadow: 0 14px 28px rgba(0,0,0,0.25), 5px 8px 10px rgba(0,0,0,0.22);
+  position: relative;
+  top:70px;
+  left:210px;
+  width:260px;
+  height:585px;
+  z-index:2;
+  animation: fadeInUp 1s;
+}
+
+.find-logo{
+	width:150px;
+	height:145px;
+	margin:205px 0 0 55px;
+	display:relative;
+	z-index:3;
+}
+#writelogo{
+	margin-top:165px;
+	height:37px;
+}
+#whitelogo{
+	margin-top:25px;
+}
+
+.find_form {
+  position: relative;
+  margin:-480px 40px -700px 140px;
+  background-color: #fff;
+  border-radius: 6px;
+  box-shadow: 2px 2px 14px 5px rgba(0,0,0,.1);
+  overflow: hidden;
+  width:800px;
+  height:490px;
+  z-index:1;
+  animation: fadeInUp 1s;
+}
+
+.find-content{
+	margin:25px 60px 0px 390px;
+	text-align:center;
+	margin-right:60px;
+	font-size:11pt;
+	margin-top:25px;
+	padding:10px 0;
+}
+
+.find-content ul li{
+	margin-bottom:0;
+}
+
+.find-content ul li label{
+	text-align:left;
+	padding-left:15px;
+}
+.find-content ul li input#mem_name{
+	margin-right:152px;
+}
+.find-content ul li #email_direct{
+	margin-left:198px;
+	width:107px !important;
+}
+.find-content ul li .mail-check-input{
+	margin-top:13px;
+	margin-left:0px;
+}
+
+.find-submit-btn{
+	color:white;
+	background-color:#E65962;
+	width:125px;
+	height:40px;
+	border-radius:10px;
+	border:none;
+	font-size:10pt;
+	margin:35px 0 0 490px;
+}
+
+.find-text{
+	margin-top:40px;
+	font-weight:bold;
+	font-size:15pt;
+}
+
+.find-content ul li input#mem_id{
+	margin-right:152px;
+}
+}
+
+@media screen and (max-width:1025px) {
+
+	.find_left{
+		display:none;
+	}
+   
+    .find_form{
+     	position: relative;
+ 	 	margin:20px 0 5px 50px;
+ 	 	width:340px;
+ 	 	height:480px;
+ 	 	box-shadow: 2px 2px 14px 5px rgba(0,0,0,.1);
+    }
+    .find-text{
+		font-weight:bold;
+		font-size:15pt;
+		padding-left:100px;
+    }
+	.find-content{
+		padding-top:40px;
+	}
+
+	#message_name{
+		text-align:left; margin-left:3px;
+	}
+	
+    .mail-check-input{
+    	margin:0;
+    }
+    #mail-check-warn{
+		margin-right:130px;
+	}
+    .find-submit-btn{
+		color:white;
+		background-color:#E65962;
+		width:125px;
+		height:40px;
+		border-radius:10px;
+		border:none;
+		font-size:10pt;
+		margin:35px 0 0 90px;
+	}
+	
+}
+
+/*=====================================
+			  common/notice
+======================================*/
+.notice-content{
+	margin:130px 60px 0 390px;
+	text-align:center;
+	margin-right:60px;
+	font-size:12pt;
+	font-weight:bold;
+	padding:10px 0;
+}
+.notice-btn{
+	color:white;
+	background-color:#E65962;
+	width:125px;
+	height:40px;
+	border-radius:10px;
+	border:none;
+	font-size:10pt;
+	margin:15px 0px 5px 7px;
+}

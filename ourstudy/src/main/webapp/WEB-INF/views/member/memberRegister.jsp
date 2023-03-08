@@ -73,7 +73,7 @@ function numberphone(e){
 					<input class="form-control mail-check-input" placeholder="인증번호 6자리 입력" disabled="disabled" maxlength="6">
 					<button type="button" class="btn btn-primary" id="mail-Check-Btn">본인인증</button>
 				</div>
-				<div id="mail-check-warn" style="margin-left:132px;"></div>
+				<div id="mail-check-warn"></div>
 			</li>
 			 <%-- =======================이메일 인증코드 구현 끝========================  --%>
 			

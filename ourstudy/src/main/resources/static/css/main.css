@@ -402,4 +402,8 @@ div#main_footer .footer-sns{
 	.footer-main{
 		margin-left:40px;
 	}
+	div#main_footer{
+		padding:30px 10px 20px 5px;
+		height:45vh;
+	}
 }
