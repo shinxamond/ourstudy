@@ -142,15 +142,18 @@ public class PayController {
 			mapAjax.put("result", "logout");
 		}else {
 			Integer m_term = payService.checkTerm(user.getMem_num());
-			Integer m_time = payService.checkTime(user.getMem_num());
+			double m_time = Double.parseDouble(payService.checkTime(user.getMem_num()));
 
+			logger.debug("남은 기간"+ m_term);
+			logger.debug("남은 시간"+ m_time);
+			
 			if(m_term > 0) {//기간권 보유중
 				if(type < 7) {//시간권 구매 불가
 					mapAjax.put("result", "cantBuy");
 				}else {//기간권 구매 가능
 					mapAjax.put("result", "success");	
 				}
-			}else if(m_time > 0) {//시간권 보유중
+			}else if(m_time != 0) {//시간권 보유중
 				if(type > 6) {//기간권 구매 불가
 					mapAjax.put("result", "cantBuy");
 				}else {//시간권 구매 가능

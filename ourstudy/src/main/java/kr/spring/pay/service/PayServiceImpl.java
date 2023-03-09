@@ -98,7 +98,7 @@ public class PayServiceImpl implements PayService{
 	}
 
 	@Override
-	public Integer checkTime(Integer mem_num) {
+	public String checkTime(Integer mem_num) {
 		return payMapper.checkTime(mem_num);
 	}
 
