@@ -174,7 +174,7 @@ $(function(){
 	<input type="hidden" name="talkroom_name" id="talkroom_name" value="${user.mem_id}, admin9">
 	
 	<button id="roomcheckB" style="position: fixed; right: 40px; bottom: 43px; font-size:55px; color:#e65962; border:none; background-color:#F6E3CE; border-radius: 80px;">📭</button>
-	<span id="roomc" style="position: fixed; right: 40px; bottom: 30px;">방 확인하기</span>
+	<span  style="position: fixed; right: 40px; bottom: 30px;">채팅방 확인하기</span>
 	
 </form>
 </c:if>
@@ -183,13 +183,13 @@ $(function(){
 	<button type="button" class="btn btn-primary" data-bs-toggle="modal" id="10" data-id="${room_num}" data-bs-target="#talkview" style="position: fixed; right: 40px; bottom: 43px; background-color:#F6E3CE; border-radius: 80px; border:none;  color:#e65962; font-size:55px;">📭</button>
 	<c:forEach var="talk_count" items="${roomList}">
 		<c:if test="${talk_count.room_cnt > 0 }">
-		<span class="c${room_num}" id="talk_inform" style="position: fixed; right: 47px; bottom: 87px;">${talk_count.room_cnt}</span>
+		<span class="c${room_num}" id="talk_inform" style="position: fixed; right: 47px; bottom: 110px;">${talk_count.room_cnt}</span>
 		</c:if>
 		<c:if test="${talk_count.room_cnt == 0 }">
-		<span class="c${room_num}" style="position: fixed; right: 47px; bottom: 87px;"></span>
+		<span class="c${room_num}" style="position: fixed; right: 47px; bottom: 110px;"></span>
 		</c:if>
 	</c:forEach>
-	<span id="roomc" style="position: fixed; right: 40px; bottom: 30px;"></span>
+	<span id="roomc" style="position: fixed; right: 10px; bottom: 30px;"></span>
 </c:if>
 
 <!-- Modal -->
