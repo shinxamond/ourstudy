@@ -10,7 +10,8 @@
 			class="container d-flex justify-content-center">
 			<form:errors element="div" cssClass="error-color" />
 			<div class="col-md-5">
-				<fieldset class="col mb-3">
+			<div style="margin-bottom: 15px;">
+				<fieldset class="col mb-1">
 					<legend class="col-form-label col-sm-3 pt-1.5"
 						style="margin-left: -25px; text-align: center;">이용권 종류</legend>
 					<div class="btn-group" role="group" style="margin-left: 37px;">
@@ -20,9 +21,10 @@
 						<form:radiobutton path="ticket_kind" class="btn-check" name="ticket_kind"
 							   id="ticket_kind2" autocomplete="off" value="2"/>
 						<label class="btn btn-outline-danger" id="ticket_kind2" for="ticket_kind2">사물함 이용권</label>
-						<form:errors path="ticket_kind" cssClass="error-color" style="margin-left: 5px;"/>
 					</div>
 				</fieldset>
+				<form:errors path="ticket_kind" cssClass="error-color" style="margin-left: 150px;"/>
+				</div>
 				<div class="row mb-3">
 					<label for="ticket_name" class="col-sm-3 col-form-label">이용권명</label>
 					<div class="col-sm-9">
@@ -36,7 +38,7 @@
 					<div class="col-sm-9">
 						<form:input path="ticket_price" class="form-control" id="ticket_price"
 							style="margin-left: 5px;"/>
-						<form:errors path="ticket_price" cssClass="error-color"/>
+						<form:errors path="ticket_price" cssClass="error-color" style="margin-left: 5px;"/>
 					</div>
 				</div>
 				<fieldset class="row mb-3">
