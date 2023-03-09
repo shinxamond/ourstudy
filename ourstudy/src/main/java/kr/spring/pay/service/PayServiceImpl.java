@@ -108,7 +108,5 @@ public class PayServiceImpl implements PayService{
 		return payMapper.checkTerm(mem_num);
 	}
 
-
-
 }
 

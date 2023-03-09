@@ -24,6 +24,20 @@ body{
 	margin:20px 10px 5px 10px;
 	padding:10px;
 }
+@media screen and (max-width:1540px) {
+	.main-right-card{
+		box-shadow: 2px 4px 8px #babebc;
+		display:flex;
+	}
+}
+@media screen and (min-width:1541px) {
+	.main-right-card{
+		box-shadow: 2px 4px 8px #babebc;
+		display:flex;
+		margin-left:-5%;
+	}
+}
+
 .main_card{
 	box-shadow: 2px 4px 8px #babebc;
 	display:flex;

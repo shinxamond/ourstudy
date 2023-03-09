@@ -19,14 +19,12 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
-import kr.spring.locker.service.LockerService;
 import kr.spring.locker.vo.LockerVO;
 import kr.spring.member.service.MemberService;
 import kr.spring.member.vo.MemberVO;
 import kr.spring.mypage.service.MypageService;
 import kr.spring.pay.service.PayService;
 import kr.spring.pay.vo.PayVO;
-import kr.spring.seat.service.SeatService;
 import kr.spring.ticket.service.TicketService;
 import kr.spring.ticket.vo.TicketVO;
 
@@ -47,12 +45,6 @@ public class PayController {
 	@Autowired
 	private MypageService myPageService;
 
-	@Autowired
-	private LockerService lockerService;
-	
-	@Autowired
-	private SeatService seatService;
-	
 
 	@ModelAttribute
 	public PayVO initCommand() {

@@ -20,6 +20,7 @@
 						<form:radiobutton path="ticket_kind" class="btn-check" name="ticket_kind"
 							   id="ticket_kind2" autocomplete="off" value="2"/>
 						<label class="btn btn-outline-danger" id="ticket_kind2" for="ticket_kind2">사물함 이용권</label>
+						<form:errors path="ticket_kind" cssClass="error-color" style="margin-left: 5px;"/>
 					</div>
 				</fieldset>
 				<div class="row mb-3">
@@ -92,6 +93,7 @@
 									id="ticket_type6" value="6"/>
 								<label class="form-check-label" for="ticket_type6"> 100시간 </label>
 							</div>
+							<form:errors path="ticket_type" cssClass="error-color"/>
 						</div>
 					</div>
 				</fieldset>

@@ -70,7 +70,7 @@
 		<div class="main_banner col-xxl-8">
 			<img src="${pageContext.request.contextPath}/image_bundle/newbanner4.PNG" class="newbanner1">
 		</div>
-		<div class="card main_card col-xxl-4" id="cal_card">
+		<div class="card main-right-card col-xxl-4" id="cal_card">
 			<div class="sec_cal">
 				<div class="cal_nav">
 			    	<a href="javascript:;" class="nav-btn go-prev">prev</a>

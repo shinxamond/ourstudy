@@ -3,15 +3,17 @@ package kr.spring.ticket.vo;
 import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.NotNull;
 
+import org.hibernate.validator.constraints.Range;
+
 public class TicketVO {
 	private int ticket_num;
-	@NotNull
+	@Range(min=1,max=2)
 	private int ticket_kind;
 	@NotEmpty
 	private String ticket_name;
-	@NotNull
+	@Range(min=1,max=9)
 	private int ticket_type;
-	@NotNull
+	@Range(min=1000)
 	private int ticket_price;
 	
 	private int locker_num;
