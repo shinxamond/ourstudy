@@ -17,11 +17,13 @@ $(function(){
 	//일반
 	for(i=-1; i<$('.btn-toggle-nav a').length-1; i++){
 		if($(location).attr('pathname')==$('.btn-toggle-nav a').eq(i).attr('href')){
-		initcollapse();
-		$('.btn-toggle-nav a').eq(i).closest('div').addClass('show');
-		$('.btn-toggle-nav a').eq(i).css({'background-color':'#f4abb2','color':'white'});
-		console.log("클릭한 링크 : " + $('.btn-toggle-nav a').eq(i).attr('href'));
-		console.log("현재 링크 : " + $(location).attr('pathname'));
+			//initcollapse();
+			$('.btn-toggle-nav a').eq(i).closest('button').attr('aria-expanded','true');
+			if ($('button').attr("aria-expanded") == "true") {
+   				$("button").addClass('clicked');
+  			}
+			$('.btn-toggle-nav a').eq(i).parents('.collapse').addClass('show');
+			$('.btn-toggle-nav a').eq(i).css({'background-color':'#f4abb2','color':'white'});
 		}
 	}
 	

@@ -245,7 +245,7 @@ function kakaoLogout() {
          		 		</li>     		 		         		 	
          		 		<li>
          		 		&nbsp;&nbsp;&nbsp;&nbsp;<i class="bi bi-person-fill-gear" style="font-size:13pt;"></i>
-         		 		<a href="${pageContext.request.contextPath}/admin/admin_list.do" class="link-dark d-inline-flex rounded" style="font-size:12pt; margin-left:2pt; margin-top:0;">회원관리</a>
+         		 		<a href="${pageContext.request.contextPath}/admin/admin_list.do" class="d-inline-flex rounded" style="font-size:12pt; margin-left:0pt; margin-top:0;">회원관리</a>
          		 		</li>
          		 		<li>
 	         		 		<button class="btn btn-toggle  d-inline-flex  align-items-center rounded collapsed border-white" 
@@ -275,7 +275,7 @@ function kakaoLogout() {
          		 		</li>	
          		 		<li>
          		 		&nbsp;&nbsp;&nbsp;&nbsp;<i class="bi bi-piggy-bank-fill" style="font-size:13pt;"></i>
-         		 		<a href="${pageContext.request.contextPath}/admin/admin_saleslist.do" class="d-inline-flex rounded" style="font-size:12pt; margin-left:2pt; margin-top:0;">판매기록</a>
+         		 		<a href="${pageContext.request.contextPath}/admin/admin_saleslist.do" class="d-inline-flex rounded" style="font-size:12pt; margin-left:0pt; margin-top:0;">판매기록</a>
          		 		</li>         		 		 			
            				<li>
 	         		 		<button class="btn btn-toggle  d-inline-flex  align-items-center rounded collapsed border-white" 
