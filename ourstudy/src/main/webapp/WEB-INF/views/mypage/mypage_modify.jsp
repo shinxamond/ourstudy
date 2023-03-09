@@ -63,7 +63,7 @@ function numberphone(e){
 					<th>우편번호</th>
 					<td>
 						<form:input path="mem_zipcode" class = "input-textbox"/>
-						<input type="button" onclick="execDaumPostcode()" value="우편번호찾기" class = "zip-button">
+						<input type="button" onclick="execDaumPostcode()" value="우편번호찾기" class = "btn" id="zip_button">
 						<form:errors path="mem_zipcode" cssClass="error-color"/>
 					</td>
 				</tr>
@@ -87,13 +87,13 @@ function numberphone(e){
 				</tr>
 			</table>
 		</div>
-		<div style = "text-align : right;">
+		<div style = "text-align : right; margin-bottom: 50px;">
 			<span><a href = "${pageContext.request.contextPath}/mypage/myPagechangePasswd.do" id = "mem_changePw_btn"  class = "link-font small">비밀번호변경 ></a></span>&nbsp;
 			<span><a href = "${pageContext.request.contextPath}/mypage/myPagedeleteMember.do" id = "mem_delete_btn"  class = "link-font small">회원탈퇴 ></a></span>
 		</div>
-		<div style = "text-align : center;">
-			<form:button>수정</form:button>
-			<input type="button" value="홈으로" onclick="location.href='${pageContext.request.contextPath}/main/main.do'">
+		<div style = "text-align : center; margin-bottom: 30px;">
+			<form:button class="btn" id="modify_btn">수정</form:button>
+			<input type="button" class="btn" id="list_btn" value="홈으로" onclick="location.href='${pageContext.request.contextPath}/main/main.do'">
 		</div>
 		</form:form>
 	</div>

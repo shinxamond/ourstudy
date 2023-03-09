@@ -1,5 +1,6 @@
 @charset "UTF-8";
 
+/*======= 작은 화면 =======*/
 @media screen and (max-width : 991px){
 	
 	.welcome-msg{
@@ -14,6 +15,8 @@
 		display : grid;
 		grid-template-columns: 1fr;
 		row-gap: 5px;
+		background: #fcf4e8;
+		margin-bottom: 5px;
 
 	}
 	.element{
@@ -21,7 +24,6 @@
 		border-radius : 5px;
 		padding : 0 20px;
 	}
-
 	
 	.element:nth-child(1) .profile-photo{
 		position : relative;
@@ -110,6 +112,123 @@
 		float : right;
 		left : -5px;
 	}
+	
+	/*======== 회원 정보 부분 클릭 가능한 곳 수정 ========*/
+	#mem_info_btn{
+		text-decoration: none;
+		color: #000000;
+		font-weight: bold;
+	}
+	#mem_modify_btn{
+		text-decoration: none;
+		color: #000000;
+	}
+	#mem_studyTime_btn{
+		text-decoration: none;
+		color: #000000;
+	}
+	#mem_point_btn{
+		text-decoration: none;
+		color: #000000;
+	}
+	.link-font{
+		text-decoration: none;
+		color: #000000;
+	}
+	
+	/*======== 회원 정보 수정 ========*/
+	
+	.input-textbox{
+		border : 1px solid #A2A2A2;
+		border-radius : 5px;
+		padding-left : 10px; 
+		height: 35px;
+	}
+	#user_email.input-textbox-email{
+		border : 1px solid #A2A2A2;
+		border-radius : 5px;
+		padding-left : 10px;
+		height: 35px;
+		margin-top: 1.5px;
+	}
+	#email_address.select-email{
+		border : 1px solid #A2A2A2;
+		border-radius : 5px;
+		height: 35px;
+	}
+	#mem_zipcode.input-textbox{
+		margin-bottom: -5px;
+		height: 35px;
+	}
+	#zip_button{
+		background: #384048;
+		color: #FFFFFF;
+		margin-bottom: 4px;
+	}
+	#modify_btn{
+		background-color: #E65962;
+		color: #FFFFFF;
+	}
+	#list_btn{
+		background-color: #384048;
+		color: #FFFFFF;
+	}
+	
+	/*======= 입퇴실 =======*/
+	#home_btn{
+		margin-top: 15px;
+		margin-bottom: 10px;
+		background-color: #384048;
+		color: #FFFFFF;
+	}
+	
+	/*footer*/
+	div#main_footer{
+		background-color:#B4AAB1;
+		padding:30px 0 20px 27px;
+		height:220px;
+	}
+	#footer-content {
+	    line-height: 1.7em;
+	    font-family: 'Pretendard-Regular';
+	    font-size: 11pt;
+	}
+	div#main_footer .footer-main {
+	    float: left;
+	}
+	div#main_footer .footer-sns {
+	    float: right;
+	    margin-right: 80px;
+	    word-spacing: 15px;
+	    padding-top: 40px;
+	}
+	#footer-logo {
+	    color: white;
+	    font-size: 12pt;
+	    padding: 0px;
+	}
+	#footer-content{
+		line-height: 1.7em;
+	    font-family: 'Pretendard-Regular';
+	    font-size: 11pt;
+	}
+	.footer-sns a{
+		color:black;
+	}
+	.footer-sns a:hover{
+		color:#F3F1F1;
+	}
+	.footer-sns{
+		display:none;
+	}
+	div#main_footer{
+		padding:30px 10px 20px 5px;
+		height:45vh;
+	}
+	.footer-main{
+		margin-left:20px;
+	}
+	
 }
 @media screen and (min-width:991px) { 
 	*{
@@ -423,8 +542,9 @@
 		width : 173px;
 		height : 40px;
 	}
-	.zip-button{
-		border : 1px solid #A2A2A2;
+	#zip_button{
+		background: #384048;
+		color: #FFFFFF;
 		border-radius : 5px;
 		width : 120px;
 		height : 40px;
@@ -439,6 +559,23 @@
 	form#myPageModify_form{
 		width : 926px;
 	}
+	#modify_btn{
+		background-color: #E65962;
+		color: #FFFFFF;
+	}
+	#list_btn{
+		background-color: #384048;
+		color: #FFFFFF;
+	}
+	
+	/*======= 입퇴실 =======*/
+	#home_btn{
+		margin-top: 15px;
+		margin-bottom: 10px;
+		background-color: #384048;
+		color: #FFFFFF;
+	}
+	
 	/*========포인트 내역========*/
 	.point-content{
 		margin : 30px 50px;
