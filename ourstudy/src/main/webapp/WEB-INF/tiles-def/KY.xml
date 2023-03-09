@@ -37,11 +37,6 @@
     	<put-attribute name="body"
     	  value="/WEB-INF/views/seat/selectForm.jsp"/>        
     </definition>
-    <definition name="temporary" extends="main">
-    	<put-attribute name="title" value="임시페이지"/>
-    	<put-attribute name="body"
-    	  value="/WEB-INF/views/seat/temporary_page.jsp"/>        
-    </definition>
 </tiles-definitions>
 
 

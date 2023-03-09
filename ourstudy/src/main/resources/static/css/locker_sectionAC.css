@@ -1,0 +1,94 @@
+/*================================
+			FIX MAIN CSS
+  ===============================*/
+div#main_body{
+	margin-top:50px;
+	margin-left:260px;
+	margin-bottom:50px;
+}
+/*================================
+			RESPONSIVE CSS
+  ===============================*/
+@media screen and (max-width : 991px){
+
+	nav#main-sidebar{
+		margin-right:0px;
+	}
+	
+	div#main_body{
+		position:relative;
+		left:10px;
+		margin-left:70px;
+		margin-right:70px;
+	}
+	.locker-option{
+		min-width:170px;
+	}
+}
+	
+/*===========================
+      LOCKER BTNS EFFECTS
+  ===========================*/
+    .locker-option span {         
+    top: 0; left: 0;
+    transition: 0.3s;
+  }
+  .locker-option::before {
+  transition: 0.3s ease-out;
+}
+  .locker-option span {
+  border: none;
+  transition: 0.2s 0.1s;
+}
+.locker-option span:hover {
+  color: rgb(28, 31, 30);
+  transition: 0.3s 0.1s;
+}
+ 
+button.hover-filled-opacity:hover::before {
+  	opacity: 0;
+}
+button.hover-filled-opacity:hover{
+	background-color:#BBFE97;
+	opacity:0.5;
+}
+ button.hover-filled-opacity::before {
+  top:0; bottom: 0; right: 0;
+  height: 100%; width: 100%;
+  opacity: 1;
+}
+
+/*===========================
+      LOCKER DETAIL
+  ===========================*/
+    .locker-box{
+        display: flex;
+    }
+    .locker-option{
+        background-color: #BBFE97;
+        width:175px; height: 90px;
+        margin:2px;
+        border:none;
+    }
+    
+/*===========================
+      STATUS BUTTONS
+  ===========================*/
+  .locker-status{
+  	box-sizing:border-box;
+	width:75px;
+	padding:3px; margin:6px;
+	border:none;
+	box-shadow: 3px 3px 3px #848484;
+	position:relative;
+	left:-4px;
+	bottom:-15px;
+	z-index:50;
+  }
+  button#empty{
+	background-color:#BBFE97;
+  }
+  button#full{
+	background-color:#D7D5D5;
+  }
+  

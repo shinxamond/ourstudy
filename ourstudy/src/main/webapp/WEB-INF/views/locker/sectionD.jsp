@@ -1,12 +1,12 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-<link rel="stylesheet" href="${pageContext.request.contextPath}/css/locker.css">
+<link rel="stylesheet" href="${pageContext.request.contextPath}/css/locker_sectionDB.css">
 <script type="text/javascript" src="${pageContext.request.contextPath}/js/locker.js"></script>
 	<h2>섹션D</h2>
 	
 	<div class="locker-box">
-		<c:forEach var="locker" items="${list}" begin="48" end="52">
+		<c:forEach var="locker" items="${list}" begin="52" end="56">
 		<button id="${locker.locker_num}" class="locker-option btn hover-filled-opacity"
 			onclick= <c:if test="${locker_count < 1}"> "checkSelect(this);" </c:if>
     				 <c:if test="${locker_count == 1 }">"hello();"</c:if>
@@ -15,7 +15,7 @@
 		</c:forEach>
 	</div>
 	<div class="locker-box">
-		<c:forEach var="locker" items="${list}" begin="53" end="57">
+		<c:forEach var="locker" items="${list}" begin="57" end="61">
 		<button id="${locker.locker_num}" class="locker-option btn hover-filled-opacity"
 			onclick= <c:if test="${locker_count < 1}"> "checkSelect(this);" </c:if>
     				 <c:if test="${locker_count == 1 }">"hello();"</c:if>
@@ -24,7 +24,7 @@
 		</c:forEach>
 	</div>
 	<div class="locker-box">
-		<c:forEach var="locker" items="${list}" begin="58" end="62">
+		<c:forEach var="locker" items="${list}" begin="62" end="66">
 		<button id="${locker.locker_num}" class="locker-option btn hover-filled-opacity"
 			onclick= <c:if test="${locker_count < 1}"> "checkSelect(this);" </c:if>
     				 <c:if test="${locker_count == 1 }">"hello();"</c:if>
@@ -33,7 +33,7 @@
 		</c:forEach>
 	</div>
 	<div class="locker-box">
-		<c:forEach var="locker" items="${list}" begin="63" end="67">
+		<c:forEach var="locker" items="${list}" begin="67" end="71">
 		<button id="${locker.locker_num}" class="locker-option btn hover-filled-opacity"
 			onclick= <c:if test="${locker_count < 1}"> "checkSelect(this);" </c:if>
     				 <c:if test="${locker_count == 1 }">"hello();"</c:if>

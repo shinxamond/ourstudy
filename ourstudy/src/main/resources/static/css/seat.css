@@ -1,3 +1,30 @@
+
+/*================================
+			FIX MAIN CSS
+  ===============================*/
+div#main_body{
+	margin-top:50px;
+	margin-left:65px;
+}
+div#container{
+	width:1250px; 
+}
+div#main{
+}
+
+/*================================
+			RESPONSIVE CSS
+  ===============================*/
+@media screen and (max-width : 991px){
+	nav#main-sidebar{
+		margin-right:0px;
+	}
+	
+	div#main_body{
+		left:0px;
+	}
+}
+	
 /* =========================
 		  FRAME
    =========================*/
@@ -21,6 +48,7 @@
 	}
 	#canvas_box{
 		position:relative;
+		width:1000px;
 	}
 	
 	#canvas{
