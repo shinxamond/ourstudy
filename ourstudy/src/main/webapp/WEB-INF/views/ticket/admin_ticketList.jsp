@@ -7,8 +7,7 @@
 <script type="text/javascript"
 	src="${pageContext.request.contextPath}/js/admin.ticketList.js"></script>
 <link rel="stylesheet" href="${pageContext.request.contextPath}/css/admin_ticket.css">
-<div class="container">
-	<h3>이용권 목록</h3>
+<div class="container" style="margin-top: 60px;">
 <div class="container d-flex justify-content-center">
 	<c:if test="${count == 0}">
 		<table class="table table-group-divider align-center">

@@ -10,7 +10,8 @@
 	position:relative;
 }
 #main_content{
-	height: 80vh;
+	margin-top: 50px;
+	height: 75vh;
 }
 
 body{

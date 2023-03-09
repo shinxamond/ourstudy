@@ -3,7 +3,6 @@
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
 <link rel="stylesheet" href="${pageContext.request.contextPath}/css/admin_form.css">
 <div class="container" id="main_content">
-	<h4>이용권 등록</h4>
 	<div>
 		<form:form action="admin_write.do" id="ticket_regi_form"
 			modelAttribute="ticketVO"

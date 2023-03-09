@@ -7,6 +7,11 @@
     font-style: normal;
 }
 
+#main_content_body{
+	margin-top: 30px;
+	margin-bottom: 50px;
+}
+
 body{
 	background-color:#F3F1F1!important;
 	height:100%;

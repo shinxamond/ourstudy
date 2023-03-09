@@ -5,7 +5,6 @@
 <link rel="stylesheet" href="${pageContext.request.contextPath}/css/admin_form.css">
 <div class="container" id="main_content">
 	<div>
-	<h4>이용권 수정</h4>
 		<form:form action="admin_ticketModify.do" id="ticket_modi_form"
 			modelAttribute="ticketVO"
 			class="container d-flex justify-content-center">

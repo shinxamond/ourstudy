@@ -11,7 +11,6 @@
 	href="${pageContext.request.contextPath}/css/ticket.css">
 <script src="https://cdn.iamport.kr/v1/iamport.js"></script>
 <div id="main_content_body" class="container">
-	<h4>이용권</h4>
 	<div class="container d-flex justify-content-center">
 	<div class="row-md-6">
 		<c:set var="first_kind" value="0" />
@@ -23,8 +22,7 @@
 						<div class="card-body">
 							${ticket.ticket_name}
 							<div style="float: right; margin-left:30px;">
-								<fmt:formatNumber value="${ticket.ticket_price}" />
-								원
+								<fmt:formatNumber value="${ticket.ticket_price}" />원
 							</div>
 							<div style="margin-top: 5px;">
 								<button id="study_buy_btn" type="button" class="btn btn-primary"
