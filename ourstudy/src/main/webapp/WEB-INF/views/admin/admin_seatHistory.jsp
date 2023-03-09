@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %><%-- 로그인 된 경우에만 글쓰기버튼 활성화 --%>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <!DOCTYPE html>
 <body> 
 	<div class="page-main">	
@@ -65,12 +66,35 @@
 								<td>${history.mem_name}</td>
 								<td>${history.in_time}</td>
 								<td>${history.out_time}</td>
+								<!-- 총 이용시간이 없을 경우(현재이용중) -->
 								<c:if test="${history.out_time == null}">
 								<td><span style="color:red">현재이용중</span></td>
 								</c:if>
+								<!-- 총 이용시간이 있을 경우(이용완료) -->																
 								<c:if test="${history.out_time != null}">
-								<td>${history.total_time}</td>
-								</c:if>
+									<!-- 시간이 존재하는지에 따라 구분하지 않으면, 3600으로 나눌때 문제 발생!!(ex.2/3600 -> 약 0.00055556) 
+										 이는 정수 표현범위 초과에 의해서, 원하지 않는 값을 얻을 수 있음!!   -->
+									<!-- 시간 존재 -->
+									<c:if test="${history.total_time>=3600}">
+										<fmt:parseNumber var="hour" value="${history.total_time/3600}" integerOnly="true"/>
+										<fmt:parseNumber var="min" value="${(history.total_time%3600)/60}" integerOnly="true"/>
+										<fmt:parseNumber var="sec" value="${(history.total_time%3600)%60}" integerOnly="true"/>
+										<td>
+										<c:if test="${hour > 0}">${hour}시간 </c:if>
+										<c:if test="${min > 0}">${min}분 </c:if>
+										<c:if test="${sec > 0}">${sec}초 </c:if>
+										</td>
+									</c:if>
+									<!-- 시간 존재 x -->
+									<c:if test="${history.total_time<3600}">
+										<fmt:parseNumber var="min" value="${(history.total_time)/60}" integerOnly="true"/>
+										<fmt:parseNumber var="sec" value="${(history.total_time)%60}" integerOnly="true"/>
+										<td>
+										<c:if test="${min > 0}">${min}분 </c:if>
+										<c:if test="${sec > 0}">${sec}초 </c:if>
+										</td>
+									</c:if>									
+								</c:if>																
 							</tr>
 							
 							<!-- Modal -->
