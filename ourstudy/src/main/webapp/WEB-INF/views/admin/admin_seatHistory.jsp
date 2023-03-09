@@ -59,8 +59,7 @@
 									${history.seat_num}</a></td>
 								</c:if>
 								<c:if test="${history.out_time != null}">
-								<td><a class="open_modal" data-bs-toggle="modal" data-bs-target="#">
-									${history.seat_num}</a></td>
+								<td>${history.seat_num}</td>
 								</c:if>	
 								<td>${history.mem_num}</td>
 								<td>${history.mem_name}</td>
@@ -123,11 +122,18 @@
 						</tbody>
 					</table>
 					<table class="table table-hover table-group-divider" id="t2">
-						<c:forEach var="history" items="${adminUseHistoryList}">
+						<c:forEach var="history" items="${adminUseHistoryList}" varStatus="status">
 						<tr>
 							<td>
 								<div>
-								${history.seat_detail_num}번 &nbsp;
+								<c:if test="${history.out_time == null}">
+								<a class="open_modal" data-bs-toggle="modal" data-bs-target="#exampleModal${status.count}">
+									<b>${history.seat_num}번</b></a>&nbsp;
+								</c:if>
+								<c:if test="${history.out_time != null}">
+								<b>${history.seat_num}번</b>&nbsp;
+								</c:if>									
+								
 								${history.mem_name} (${history.mem_num})
 								</div>
 								<span class="t-sub-info">${history.in_time}</span> &nbsp;
@@ -139,7 +145,7 @@
 								<span class="t-sub-info">${history.total_time}</span>
 								</c:if>
 							</td>
-						</tr>
+						</tr>							
 						</c:forEach>
 					</table>
 				</c:if>

@@ -91,13 +91,16 @@
 					</table>
 					<br>
 					<table class="table table-hover table-group-divider" id="t2">
-						<c:forEach var="history" items="${adminReceiveList}">
+						<c:forEach var="history" items="${adminReceiveList}" varStatus="status">
 						<tr>
 							<td>
 								<div>
 								${history.mem_name} (${history.mem_num})
 								</div>							
-								<span class="t-sub-info truncate-text">${history.message}</span> <br>
+								<span class="t-sub-info truncate-text">
+								<a class="open_modal" data-bs-toggle="modal" data-bs-target="#exampleModal${status.count}">
+									<span class="truncate-text">${history.message}</span></a>
+								</span><br>
 								<span class="t-sub-info truncate-text">${history.chat_date}</span>
 							</td>
 						</tr>

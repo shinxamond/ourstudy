@@ -26,9 +26,9 @@
 				</table><br>				
 				<table class="table table-hover table-group-divider" id="t2">
 					<tr>
-						<th scope="col" width="33">이용권 판매 금액</th>
-						<th scope="col" width="33%">사물함 판매 금액</th>
-						<th scope="col" width="34%">총 합계 금액</th>
+						<th scope="col" width="33">이용권 판매</th>
+						<th scope="col" width="33%">사물함 판매</th>
+						<th scope="col" width="34%">총합계 판매</th>
 					</tr>
 					<tr>
 						<td><span class="t-sub-info" style="color:red">${ticketsales}</span>원</td>
