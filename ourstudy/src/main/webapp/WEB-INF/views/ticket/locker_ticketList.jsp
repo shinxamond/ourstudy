@@ -14,7 +14,7 @@
 	href="${pageContext.request.contextPath}/css/ticket.css">
 <!-- iamport.payment.js -->
 <script src="https://cdn.iamport.kr/v1/iamport.js"></script>
-<div id="main_content_body" class="container">
+<div id="main_content_body" class="container" style="height: 80vh;">
 	<h4>이용권</h4>
 	<div class="container d-flex justify-content-center">
 	<div class="row-sm-4">

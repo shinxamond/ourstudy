@@ -85,8 +85,10 @@ $(function(){
   function requestKakaoPay() {
 	$.ajax({
 		url:'checkTicket.do',
-		data:{mem_ticket_hour:$('#ticket_hour').attr('data-hournum'),
-			  mem_ticket_term:$('#ticket_term').attr('data-termnum')},
+		data:{ticket_num:$('#ticket_num').attr('data-ticketnum'),
+			  mem_ticket_hour:$('#ticket_hour').attr('data-hournum'),
+			  mem_ticket_term:$('#ticket_term').attr('data-termnum'),
+			  ticket_type:$('#ticket_type').attr('data-typenum')},
 		dataType:'json',
 		success:function(param){
 			if(param.result=='logout'){

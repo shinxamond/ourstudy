@@ -130,16 +130,32 @@ public class PayController {
 		
 		Map<String, Object> mapAjax = new HashMap<String, Object>();
 		MemberVO user = (MemberVO)session.getAttribute("user");
+		TicketVO ticket = new TicketVO();
+		
+		logger.debug("<<시간제,기간권 보유 체크>> : " + payVO);
+		
+		ticket = ticketService.selectTicket(payVO.getTicket_num());
+		int type = ticket.getTicket_type();
 		
 		
 		if(user == null) {
 			mapAjax.put("result", "logout");
 		}else {
-			Integer m_time = payService.checkTime(user.getMem_num());
 			Integer m_term = payService.checkTerm(user.getMem_num());
-			
-			if(m_time > 0 || m_term > 0) {
-				mapAjax.put("result", "cantBuy");
+			Integer m_time = payService.checkTime(user.getMem_num());
+
+			if(m_term > 0) {//기간권 보유중
+				if(type < 7) {//시간권 구매 불가
+					mapAjax.put("result", "cantBuy");
+				}else {//기간권 구매 가능
+					mapAjax.put("result", "success");	
+				}
+			}else if(m_time > 0) {//시간권 보유중
+				if(type > 6) {//기간권 구매 불가
+					mapAjax.put("result", "cantBuy");
+				}else {//시간권 구매 가능
+					mapAjax.put("result", "success");	
+				}
 			}else {
 			mapAjax.put("result", "success");		
 			}

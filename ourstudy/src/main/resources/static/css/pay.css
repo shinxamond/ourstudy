@@ -12,13 +12,16 @@ body{
 	height:100%;
 	position:relative;
 }
-/* #main_body > div{
-	min-height:580px;
-} */
+
 #main_content_body{
 	position:relative;
 }
-
+.container{
+	height: 80vh;
+}
+#card_top{
+	margin-top: 70px;
+}
 .card{
 	border-radius: 1rem;
 	border: 0 solid #d9dee3;

@@ -6,6 +6,12 @@
     font-weight: 400;
     font-style: normal;
 }
+#main_content_body{
+	position:relative;
+}
+#main_content{
+	height: 80vh;
+}
 
 body{
 	background-color:#F3F1F1!important;
@@ -24,28 +30,36 @@ a, a:link, a:hover, a:visited, a:focus{
 	margin:20px 10px 5px 10px;
 	padding:10px;
 }
-#ticket_card{
-	width:400px;
+#ticket_modi_form{
+	width: 1296px;
+	margin-top: 100px;
+	padding:0px;
 }
-#ticket_register{
-	margin-right: 10px;
-}
-form{
-	margin:0;
-	padding:0 15px 15px 0;
-}
-#study_buy_btn{
+#modify_btn{
 	margin-top:10px;
 	background-color: #E65962;
 	border:none;
+	color: #FFFFFF;
+	margin-right:5px;
 }
-#lock_buy_btn{
+#list_btn{
+	height: 36px;
+	margin-top: 10px;
 	margin-right:15px;
+	background-color: #384048;
+	border:none;
+	color: #FFFFFF;
+}
+#submit_btn{
+	margin-top:10px;
 	background-color: #E65962;
 	border:none;
+	color: #FFFFFF;
+	margin-right:5px;
 }
-#no_ticket{
-	margin-top: 50px;
+input[type='radio']:checked{
+	background-color: #E65962;
+	border: none;
 }
 /*======================
   		 footer

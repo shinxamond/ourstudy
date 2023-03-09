@@ -12,9 +12,8 @@
 	href="${pageContext.request.contextPath}/css/pay.css">
 <script src="https://cdn.iamport.kr/v1/iamport.js"></script>
 <div class="container">
-	<h4 style="margin-top: 15px;">이용권 선택내역</h4>
 	<div class="row d-flex justify-content-center align-items-center">
-		<div class="col-sm-8">
+		<div class="col-sm-8" id="card_top">
 			<div class="card sm-5">
 				<div class="card-body p-4">
 					<input type="hidden" name="mem_num" data-memnum="${user.mem_num}"
@@ -34,7 +33,7 @@
 							<p class="lead fw-normal mb-0" id="ticket_name"
 								data-ticketname="${ticket.ticket_name}">${ticket.ticket_name}</p>
 						</div>
-						<div class="col-sm-6 d-flex justify-content-center">
+						<div class="col-sm-6 d-flex justify-content-end">
 							<div>
 								<p class="lead text-mute mb-4 pb-2">금액</p>
 								<p class="lead fw-normal mb-0">
