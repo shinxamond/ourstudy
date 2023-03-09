@@ -68,12 +68,12 @@
 					</c:forEach>
 				</table>
 				<div class = "page-button">
-				${page }
+				${page}
 				</div>	
 				</c:if>
 		</div>
 		<div style = "text-align : center;">
-			<input type="button" value="홈으로" onclick="location.href='${pageContext.request.contextPath}/main/main.do'">
+			<input type="button" class="btn" id="home_btn" value="홈으로" onclick="location.href='${pageContext.request.contextPath}/main/main.do'">
 		</div>
 	</div>
 	

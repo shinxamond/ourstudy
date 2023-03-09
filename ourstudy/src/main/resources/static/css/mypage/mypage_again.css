@@ -15,7 +15,6 @@
 		display : grid;
 		grid-template-columns: 1fr;
 		row-gap: 5px;
-		background: #fcf4e8;
 		margin-bottom: 5px;
 
 	}
@@ -23,6 +22,7 @@
 		border : 1px solid rgba(64, 64, 64, 0.2);
 		border-radius : 5px;
 		padding : 0 20px;
+		background: #F8E0E6;
 	}
 	
 	.element:nth-child(1) .profile-photo{
@@ -136,6 +136,31 @@
 		color: #000000;
 	}
 	
+	/*======= 회원 정보 ========*/
+	.mem-info-content{
+		margin : 30px 80px;
+	}
+	.info-content table{
+		margin : 0 auto;
+	}
+	.mem-info-content table tr{
+		height : 80px;
+	}
+	.mem-info-content table tr th{
+		width : 190px;
+		text-align : left;
+		padding : 20px 10px;
+	}
+	.mem-info-content table tr th{
+		font-size : 13pt;
+	}
+	.mem-info-content table tr td{
+		font-size : 12pt;
+	}
+	.align-center{
+		text-align : center;
+	}
+	
 	/*======== 회원 정보 수정 ========*/
 	
 	.input-textbox{
@@ -174,15 +199,46 @@
 		color: #FFFFFF;
 	}
 	
-	/*======= 입퇴실 =======*/
+	/*======= 입퇴실내역 =======*/
 	#home_btn{
-		margin-top: 15px;
-		margin-bottom: 10px;
+		margin-bottom: 15px;
 		background-color: #384048;
 		color: #FFFFFF;
 	}
 	
-	/*footer*/
+	/*======== 포인트 내역 ==========*/
+	.point-content{
+		margin : 30px 50px;
+	}
+	.point-table{
+		width : 100%;
+		margin : 0;
+		padding : 0;
+		border-collapse: collapse;
+		text-align : center;
+	}
+	.point-table tr{
+		border-bottom : 1px solid rgba(0, 0, 0, 0.2);
+		height : 40px;
+	}
+	.point-table td{
+		text-align : center;
+	}
+	.page-button{
+		text-align : center;
+		margin-top : 15px;
+	}
+	.align-selectbox{
+		text-align : right;
+	}
+	.align-selectbox select{
+		border-radius : 5px;
+		height : 30px;
+		font-size : 10pt;
+		padding : 5px;
+	}
+	
+	/*======== footer ========*/
 	div#main_footer{
 		background-color:#B4AAB1;
 		padding:30px 0 20px 27px;
@@ -230,6 +286,8 @@
 	}
 	
 }
+
+/*========= 기본 크기 화면 ========= */
 @media screen and (min-width:991px) { 
 	*{
 		text-decoration:none;
@@ -562,6 +620,7 @@
 	#modify_btn{
 		background-color: #E65962;
 		color: #FFFFFF;
+		position: relative;
 	}
 	#list_btn{
 		background-color: #384048;
