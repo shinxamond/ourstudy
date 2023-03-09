@@ -134,17 +134,19 @@ public class AdminController {
 	@RequestMapping("/admin/admin_seathistory.do")
 	public ModelAndView seathistory(
 			@RequestParam(value="pageNum",defaultValue="1") int currentPage,
-			@RequestParam(value="keyfield",defaultValue="1") String keyfield) {
+			@RequestParam(value="keyfield",defaultValue="1") String keyfield,
+			String keyword) {
 		
 		Map<String,Object> map = new HashMap<String,Object>();
 		map.put("keyfield", keyfield);
+		map.put("keyword", keyword);
 		
 		//총 글의 개수 또는 검색된 글의 갯수
 		int count = adminService.selectSeatRowCount(map);
 		logger.debug("<<총 글 갯수>> : " + count);
 		
 		//페이지 처리
-		PagingUtil page = new PagingUtil(keyfield,null,currentPage,count,5,10,"admin_seathistory.do");
+		PagingUtil page = new PagingUtil(keyfield,keyword,currentPage,count,5,10,"admin_seathistory.do");
 		
 		List<AdminSeatHistoryVO> list = null;
 		if(count > 0) {
@@ -169,17 +171,19 @@ public class AdminController {
 	@RequestMapping("/admin/admin_lockerhistory.do")
 	public ModelAndView lockerhistory(
 			@RequestParam(value="pageNum",defaultValue="1") int currentPage,
-			@RequestParam(value="keyfield",defaultValue="1") String keyfield) {
+			@RequestParam(value="keyfield",defaultValue="1") String keyfield,
+			String keyword) {
 		
 		Map<String,Object> map = new HashMap<String,Object>();
 		map.put("keyfield", keyfield);
+		map.put("keyword", keyword);
 		
 		//총 글의 개수 또는 검색된 글의 갯수
 		int count = adminService.selectLockerRowCount(map);
 		logger.debug("<<총 글 갯수>> : " + count);
 		
 		//페이지 처리
-		PagingUtil page = new PagingUtil(keyfield,null,currentPage,count,5,10,"admin_lockerhistory.do");
+		PagingUtil page = new PagingUtil(keyfield,keyword,currentPage,count,5,10,"admin_lockerhistory.do");
 		
 		List<AdminLockerHistoryVO> list = null;
 		if(count > 0) {

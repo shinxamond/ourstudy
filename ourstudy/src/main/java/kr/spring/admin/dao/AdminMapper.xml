@@ -46,7 +46,11 @@
   	<select id="selectSeatRowCount" parameterType="map" resultType="integer">
   		SELECT
   		  COUNT(*)
-  		FROM seat_detail                    
+  		FROM seat_detail s
+  		<if test="keyword != null and keyword != ''">
+  		WHERE s.mem_name LIKE '%' || #{keyword} || '%' OR
+  			  s.mem_num LIKE '%' || #{keyword} || '%'
+  		</if>                       
   	</select>
   	
   	<select id="selectSeatList" parameterType="map" resultType="adminSeatHistoryVO">
@@ -58,15 +62,19 @@
   		      FROM (SELECT
   		      			seat_detail_num, seat_num, mem_num, mem_name, total_time,
   		      			TO_CHAR(in_time, 'yyyy-MM-dd HH24:MI:SS') in_time, TO_CHAR(out_time, 'yyyy-MM-dd HH24:MI:SS') out_time       
-  		            FROM seat_detail s           				  		 
+  		            FROM seat_detail s 
+  		            <if test="keyword != null and keyword != ''">
+				  	WHERE s.mem_name LIKE '%' || #{keyword} || '%' OR
+				  		  s.mem_num LIKE '%' || #{keyword} || '%'
+				  	</if>            				  		 
   		            <if test="keyfield == 1">	            
   		            ORDER BY s.in_time DESC NULLS LAST
   		            </if>
   		            <if test="keyfield == 2">
-  		            ORDER BY s.mem_name ASC NULLS LAST
+  		            ORDER BY s.mem_name ASC, s.in_time DESC NULLS LAST
   		            </if>
   		            <if test="keyfield == 3">
-  		            ORDER BY s.total_time DESC NULLS FIRST
+  		            ORDER BY s.total_time DESC, s.in_time DESC NULLS FIRST
   		            </if>
   		            )a)
 		<![CDATA[
@@ -78,7 +86,11 @@
   	<select id="selectLockerRowCount" parameterType="map" resultType="integer">
   		SELECT
   		  COUNT(*)
-  		FROM locker_detail                     
+  		FROM locker_detail d
+  		<if test="keyword != null and keyword != ''">
+  		WHERE d.mem_name LIKE '%' || #{keyword} || '%' OR
+  			  d.mem_num LIKE '%' || #{keyword} || '%'
+  		</if>   		                    
   	</select>
   	
   	<select id="selectLockerList" parameterType="map" resultType="adminLockerHistoryVO">
@@ -93,15 +105,19 @@
   		      			TO_CHAR(d.locker_end, 'yyyy-MM-dd HH24:MI:SS') locker_end, 
   		      			l.locker_status        
   		            FROM locker_detail d LEFT OUTER JOIN locker_info l 
-  		            ON l.locker_num = d.locker_num          				  		 
+  		            ON l.locker_num = d.locker_num
+			   		<if test="keyword != null and keyword != ''">
+			  		WHERE d.mem_name LIKE '%' || #{keyword} || '%' OR
+			  			  d.mem_num LIKE '%' || #{keyword} || '%'
+			  		</if>  		                      				  		 
   		            <if test="keyfield == 1">	            
   		            ORDER BY d.locker_start DESC NULLS LAST
   		            </if>
   		            <if test="keyfield == 2">
-  		            ORDER BY d.mem_name ASC NULLS LAST
+  		            ORDER BY d.mem_name ASC, d.locker_start DESC NULLS LAST
   		            </if>
   		            <if test="keyfield == 3">
-  		            ORDER BY d.locker_end DESC NULLS FIRST
+  		            ORDER BY d.locker_end DESC, d.locker_start DESC NULLS FIRST
   		            </if>
   		            )a)
 		<![CDATA[
