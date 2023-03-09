@@ -23,7 +23,9 @@ a, a:link, a:hover, a:visited, a:focus{
 	text-decoration: none;
 	color: #000000;
 }
-
+.error-color{
+	color: #E65962;
+}
 .card{ 
 	border-radius: 1rem;
 	border: 0 solid #d9dee3;
