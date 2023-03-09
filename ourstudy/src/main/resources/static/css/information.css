@@ -1,5 +1,4 @@
 @charset "UTF-8";
-/*여기는 추가한거*/
 /*필독 깜박이게 */
 @keyframes blink-effect {
   50% {
@@ -18,7 +17,16 @@
   animation-timing-function:step-end;
   */
 }
-
+/*긴 글씨 자르게*/
+.truncate-text {
+    max-width: 270px; /** 현재 한글 기준 10글자 정도로 설정됨 */
+    display:inline-block;
+    vertical-align: middle;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+}
+/*여기는 추가한거*/
 @font-face {
     font-family: 'Pretendard-Regular';
     src: url('https://cdn.jsdelivr.net/gh/Project-Noonnu/noonfonts_2107@1.1/Pretendard-Regular.woff') format('woff');
@@ -105,6 +113,29 @@ a:visited {
     text-decoration: none;
     color: #000000;
 }
+
+/*테이블*/
+#t2 {
+	display: none;
+}
+
+@media ( max-width : 1199px) {
+	#t1 {
+		display: none;
+	}
+	#t2 {
+		display: table;
+	}
+}
+
+.t-sub-info{
+	color:rgba(0,0,0,0.55);
+	font-size:12px;
+}
+.title-link{
+	color:#000;
+}
+
 /*공통
 ---------------------------*/
 div#main {

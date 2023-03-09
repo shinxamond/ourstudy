@@ -34,7 +34,7 @@
     </definition>
     
     <!-- 분실물찾기 -->
-    <definition name="lostList" extends="main">
+    <definition name="lostList" extends="main2">
     	<put-attribute name="title" value="분실물찾기 목록"/>
     	<put-attribute name="body"
     	  value="/WEB-INF/views/community/lostList.jsp"/>  

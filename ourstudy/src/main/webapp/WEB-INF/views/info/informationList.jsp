@@ -2,15 +2,6 @@
 	pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %><%-- 로그인 된 경우에만 글쓰기버튼 활성화 --%>
 <!DOCTYPE html>
-<!-- Google Fonts -->
-<link href="https://fonts.gstatic.com" rel="preconnect">
-<link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Nunito:300,300i,400,400i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i" rel="stylesheet">
-<!-- Vendor CSS Files -->
-<link rel="stylesheet" href="${pageContext.request.contextPath}/vendor/bootstrap/css/bootstrap.min.css">
-<link rel="stylesheet" href="${pageContext.request.contextPath}/vendor/bootstrap-icons/bootstrap-icons.css">
-<link rel="stylesheet" href="${pageContext.request.contextPath}/css/information.css">
-<script type="text/javascript" src="${pageContext.request.contextPath}/js/jquery-3.6.0.min.js"></script>
-
 <body> 
 	<div class="page-main">	
 		<div class="content-main"><!-- 전체 화면의 87% -->
@@ -49,7 +40,7 @@
 				</table>
 				</c:if>
 				<c:if test="${count>0}">
-					<table class="table table-hover align-center" id="t1">
+					<table class="table table-hover align-center"  id="t1">
 						<thead class="table-head">
 							<tr>
 								<th scope="col" width="20%">번호<br></th>
@@ -69,7 +60,7 @@
 								<th scope="row"class="blink"><span style="color:#ffc400">★★★</span><span style="color:#097bd9">필독</span><span style="color:#ffc400">★★★</span></th>
 								</c:if>	
 								<td>
-									<a href="infoDetail.do?info_num=${importinfo.info_num}">${importinfo.info_title}</a>
+									<a href="infoDetail.do?info_num=${importinfo.info_num}" class="truncate-text">${importinfo.info_title}</a>
 								</td>
 								<td >${importinfo.info_date}</td> 		
 							</tr>
@@ -86,7 +77,7 @@
 								<th scope="row"><span style="color:#ffc400">★★★</span><span style="color:#097bd9">필독</span><span style="color:#ffc400">★★★</span></th>
 								</c:if>
 								<td>
-									<a href="infoDetail.do?info_num=${info.info_num}">${info.info_title}</a>
+									<a href="infoDetail.do?info_num=${info.info_num}" class="truncate-text">${info.info_title}</a>
 								</td>
 								<td>${info.info_date}</td> 																
 							</tr>
@@ -94,27 +85,49 @@
 							<!-- 일반글(필독제외 끝) -->						
 						</tbody>
 					</table>
-<!-- 					<table class="table table-hover table-group-divider" id="t2">
-						<c:forEach var="history" items="${adminItemHistoryList}">
+					
+					<table class="table table-hover table-group-divider" id="t2">
+						<!-- 공지글 시작 -->
+					 	<c:if test="${countimport > 0}">
+						<c:forEach var="importinfo" items="${informationImportList}">
 						<tr>
 							<td>
 								<div>
-								${history.item_title} &nbsp;
-								${history.item_index} &nbsp;
-								${history.mem_name} (${history.mem_num})
-								</div>
-								<span class="t-sub-info">${history.mem_phone}</span> &nbsp;
-								<span class="t-sub-info">${history.item_start}</span> &nbsp;
-								<c:if test="${history.item_end == null}">
-								<span class="t-sub-info" style="color:red">현재대여중</span>
+								<c:if test="${importinfo.info_pin == 1}">
+								<span class="blink">
+									<b><span style="color:#ffc400">★</span>
+									<span style="color:#097bd9">필독</span>
+									<span style="color:#ffc400">★</span></b>
+								</span> &nbsp;
 								</c:if>
-								<c:if test="${history.item_end != null}">
-								<span class="t-sub-info">${history.item_end}</span>
+								<a href="infoDetail.do?info_num=${importinfo.info_num}" class="truncate-text">${importinfo.info_title}</a>									
+								</div>								
+								<span class="t-sub-info">${importinfo.info_date}</span>
+							</td> 		
+						</tr>
+						</c:forEach>			
+						</c:if>
+						<!-- 공지글 끝 -->
+						<!-- 일반글(필독제외 시작) -->					
+						<c:forEach var="info" items="${informationList}">
+						<tr>
+							<td>
+								<div>
+								<c:if test="${info.info_pin == 1}">
+								<span class="blink">
+									<b><span style="color:#ffc400">★</span>
+									<span style="color:#097bd9">필독</span>
+									<span style="color:#ffc400">★</span></b>
+								</span> &nbsp;
 								</c:if>
-							</td>
+								<a href="infoDetail.do?info_num=${info.info_num}" class="truncate-text">${info.info_title}</a>									
+								</div>								
+								<span class="t-sub-info">${info.info_date}</span>
+							</td> 	
 						</tr>
 						</c:forEach>
-					</table> -->
+						<!-- 일반글(필독제외 끝) -->	
+					</table>							
 				</c:if>
 				</div><!-- table 끝 -->
 				
