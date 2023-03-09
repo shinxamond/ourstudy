@@ -49,26 +49,50 @@
 				<c:if test="${study.total_time != 0}">
 				<td>
 				<c:if test="${study.total_time / 3600 >= 1}">
-				<fmt:parseNumber value = "${study.total_time / 3600}"  integerOnly="true"/>시간 				
+				<fmt:parseNumber value = "${study.total_time / 3600}"  integerOnly="true"/>시간
+				<input type = "hidden" value = " ${(member.mem_study / 3600)+(((member.mem_study / 3600)%1>0.5)?(1-((member.mem_study / 3600)%1))%1:-((member.mem_study / 3600)%1))}" id = "study_hour"/>				
 				</c:if>
+				
 				
 				<c:if test="${study.total_time % 3600 / 60 >= 1}">
 				<fmt:parseNumber value = "${study.total_time % 3600 / 60}"  integerOnly="true"/>분
+				<input type = "hidden" value = " ${(member.mem_study % 3600 / 60)+(((member.mem_study % 3600 / 60)%1>0.5)?(1-((member.mem_study % 3600 / 60)%1))%1:-((member.mem_study % 3600 / 60)%1))}" id = "study_min"/>				
 				</c:if>
 				
 				<c:if test="${study.total_time / 3600 < 1 and study.total_time % 3600 / 60 < 1}">
 				<fmt:parseNumber value = "${study.total_time % 3600 % 60}"  integerOnly="true"/>초
+				<input type = "hidden" value = " ${(member.mem_study % 3600 % 60)+(((member.mem_study % 3600 % 60)%1>0.5)?(1-((member.mem_study % 3600 % 60)%1))%1:-((member.mem_study % 3600 % 60)%1))}" id = "study_sec"/>				
 				</c:if>
 				</td>
 				</c:if>
 				</tr>
 				</c:forEach>
 				<tr><th></th><th></th><th>
+				<script type="text/javascript">
+				$(function(){
+					var floor_hour = Math.floor($('#study_hour').val());
+					var floor_min = Math.floor($('#study_min').val());
+					var floor_sec = Math.floor($('#study_sec').val());
+					if(typeof floor_hour == "undefined" || floor_hour == null || floor_hour == "" || isNaN(floor_hour)){
+						floor_hour = 0;
+					}
+					if(typeof floor_min == "undefined" || floor_min == null || floor_min == "" || isNaN(floor_min)){
+						floor_min = 0;
+					}
+					if(typeof floor_sec == "undefined" || floor_sec == null || floor_sec == "" || isNaN(floor_sec)){
+						floor_sec = 0;
+					}
+					$('#ts').attr('data-tg-on', floor_hour +'시간'+floor_min +'분'+floor_sec+'초');
+					console.log(floor_hour);		
+					console.log($('#study_min').val());	
+					console.log($('#study_sec').val());	
+				});
+				</script>
 					<input class="tgl tgl-flip total-study" id="cb5"
-					type="checkbox" /> <label class="tgl-btn total-study" data-tg-off="총 공부시간"
-					data-tg-on="14시간" for="cb5"></label>
+					type="checkbox" /> <label id = "ts" class="tgl-btn total-study" data-tg-off="총 공부시간" data-tg-on = ""
+					 for="cb5"></label>
 				</th></tr>
-				<tr>
+<%-- 				<tr>
 				<td></td>
 				<td></td>
 				<td>
@@ -76,7 +100,7 @@
 				<fmt:parseNumber value = "${member.mem_study % 3600 / 60}"  integerOnly="true"/>분 
 				<fmt:parseNumber value = "${member.mem_study % 3600 % 60}"  integerOnly="true"/>초
 				</td>
-				</tr>
+				</tr> --%>
 				</table>		
 				<div class = "page-button">
 				${page }
