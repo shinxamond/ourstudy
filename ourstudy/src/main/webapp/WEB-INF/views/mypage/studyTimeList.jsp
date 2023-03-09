@@ -63,7 +63,11 @@
 				</c:if>
 				</tr>
 				</c:forEach>
-				<tr><th></th><th></th><th>총 공부시간</th></tr>
+				<tr><th></th><th></th><th>
+					<input class="tgl tgl-flip total-study" id="cb5"
+					type="checkbox" /> <label class="tgl-btn total-study" data-tg-off="총 공부시간"
+					data-tg-on="14시간" for="cb5"></label>
+				</th></tr>
 				<tr>
 				<td></td>
 				<td></td>
