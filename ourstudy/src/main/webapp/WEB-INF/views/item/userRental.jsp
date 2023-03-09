@@ -5,9 +5,9 @@
 <link rel="stylesheet" href="${pageContext.request.contextPath}/css/item.css">
 <div class="page-main">
 	
-	<div class="it1">
-	<h1 class="align-center">물품대여</h1>
-	<h2 class="align-center">${oneitem.item_title}</h2>
+	<div class="it1" style="height:69vh;">
+	<br><h1 class="align-center">물품대여</h1><br>
+	<h2 class="align-center">${oneitem.item_title}</h2><br><br>
 	<div id="imgdetail">
 		<div class="item-image">
 			<img src="imageView.do?item_num=${oneitem.item_num}" width=300" height="300" class="my-photo">
@@ -64,6 +64,7 @@
 			</div>
 			</form:form>
 		</div>
+		<br>
 	<div class="page_clear"></div>
 	</div>
 	</div>

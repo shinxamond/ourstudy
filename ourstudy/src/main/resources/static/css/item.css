@@ -9,6 +9,19 @@ div#main_body{
 	position:relative;
 	left:260px;
 }
+/*
+푸터 설정---------*/
+div#main_footer .footer-main{
+	float:left;
+}
+div#main_footer .footer-sns{
+	float:right;
+	margin-right:100px;
+	word-spacing:15px;
+	padding-top:40px;
+}
+/*
+물품 생성 수정 폼---------*/
 .item_modify_form, .item_write_form{
 	width:590px;
 	margin:0 auto;
@@ -20,9 +33,9 @@ div#main_body{
 유저 물품 리스트---------*/
 div#userList #userList-area{
 	border: solid 1px #d9dee3;
-	margin:2px;
-	width:33%;
-	float:left;
+	margin:10px;
+	width:30%;
+	float:right;
 	position: relative;
 	text-align:center;
 } 
@@ -129,30 +142,6 @@ select#inum option{
 	position:relative;
 	padding:5px 5px 5px 15px;
 }
-
-
-@media ( max-width : 991px) {
-	.it1 {
-		display: none;
-	}
-	.it2 {
-		display: block;
-	}
-	div#main_body{
-		left:10px;
-	}
-	div#main_footer{
-		left:10px;
-		padding:30px 10px 20px 5px;
-		height:45vh;
-	}
-	.footer-main{
-		margin-left:20px;
-	}
-	
-}
-
-
 /*
 수정 생성 폼 t2 반응형---------*/
 input[type="number"]{
@@ -169,14 +158,29 @@ input[type="number"]{
 }
 
 
-/* .striped-item-table a:link{
-	text-decoration:none;
-	color:#000000;
+@media ( max-width : 991px) {
+	.it1 {
+		display: none;
+	}
+	.it2 {
+		display: block;
+	}
+	div#main_body{
+		left:10px;
+	}
+	div#main_footer{
+		left:10px;
+		padding:30px 10px 20px 5px;
+		height:35vh;
+	}
+	.footer-main{
+		margin-left:20px;
+	}
+	.footer-sns{
+		display:none;
+	}
 }
-.striped-item-table a:visited {
-	text-decoration:none;
-	color:#000000;
-} */
+
 /*
 버튼---------*/
 .itemButton {
@@ -191,13 +195,19 @@ input[type="number"]{
   border-radius: 10px;
 }
 
-
-
+.al a:link{
+	text-decoration:none;
+	color:#000000;
+}
+.al a:visited {
+	text-decoration:none;
+	color:#000000;
+}
 
 /*
 에러코드---------*/
 .error-color{
-	color:#ff0000;
+	color:#E65962;
 }
 
 /*

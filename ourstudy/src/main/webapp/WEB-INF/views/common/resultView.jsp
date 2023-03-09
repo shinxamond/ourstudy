@@ -12,7 +12,6 @@
 <script>
 window.onload = function() {
     Swal.fire({
-        title: '완료',
         text: '${message}',
         icon: 'success',
     }).then((result) => {

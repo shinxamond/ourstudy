@@ -2,17 +2,16 @@
 	pageEncoding="UTF-8"%>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %><%-- 로그인 된 경우에만 글쓰기버튼 활성화 --%>
+<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script>
 <!DOCTYPE html>
 <link rel="stylesheet" href="${pageContext.request.contextPath}/css/item.css">
-<body> 
-	<div class="page-main">	
-		<div class="content-main"><!-- 전체 화면의 87% -->
-			<!-- 사이드바 오른쪽 화면 시작 -->
-			<div class="content-right">
-				<h3 style="text-align:center"><b>물품수정</b></h3>
+
+				<div class="it1" style="height:70vh">
+				<br><h3 style="text-align:center"><b>물품수정</b></h3><br><br>
 				<!-- table 시작 -->
-				<div class="content-margin">
-					<form:form action="itemModify.do" id="t1" class="item_modify_form" modelAttribute="itemVO" enctype="multipart/form-data">
+				
+					<form:form action="itemModify.do" class="item_modify_form" modelAttribute="itemVO" enctype="multipart/form-data">
 					<form:hidden path="item_num"/>
 					<ul>
 						<li>
@@ -78,20 +77,32 @@
 					<form:button class="itemButton">수정</form:button>
 					<input type="button" class="itemButton" value="삭제" id="delete_btn">
 					<script type="text/javascript">
-							let delete_btn = document.getElementById('delete_btn');
-							delete_btn.onclick=function(){
-								let choice = confirm('삭제하시겠습니까?');
-								if(choice){
-									location.replace('itemDelete.do?item_num=${itemVO.item_num}');
-								}
-							};
+					$("#delete_btn").click(function () {
+					    Swal.fire({
+					      title: '정말로 삭제 하시겠습니까?',
+					      text: "다시 되돌릴 수 없습니다. 신중하세요.",
+					      icon: 'warning',
+					      showCancelButton: true,
+					      confirmButtonColor: '#3085d6',
+					      cancelButtonColor: '#d33',
+					      confirmButtonText: '삭제',
+					      cancelButtonText: '취소',
+					      reverseButtons: false, // 버튼 순서 거꾸로
+					      
+					    }).then((result) => {
+					      if (result.isConfirmed) {
+					    	  location.replace('itemDelete.do?item_num=${itemVO.item_num}');
+					      }
+					    })
+					  });
 						</script>
 					<input type="button" class="itemButton" value="목록" onclick="location.href='adminList.do'">
 					</div>
 				</form:form>
-				
-				
-				<form:form action="itemModify.do" id="t2" class="item_modify_form2" modelAttribute="itemVO" enctype="multipart/form-data">
+				</div>
+			<div class="it2">
+				<h3 style="text-align:center"><b>물품수정</b></h3>
+				<form:form action="itemModify.do"  class="item_modify_form2" modelAttribute="itemVO" enctype="multipart/form-data">
 					<form:hidden path="item_num"/>
 					
 							<label>상품표시여부</label><br>
@@ -148,21 +159,28 @@
 					<br>
 					<div class="align-center">
 					<form:button class="itemButton">수정</form:button>
-					<input type="button" class="itemButton" value="삭제" id="delete_btn"> 
+					<input type="button" class="itemButton" value="삭제" id="delete_btn2"> 
 					<script type="text/javascript">
-							let delete_btn = document.getElementById('delete_btn');
-							delete_btn.onclick=function(){
-								let choice = confirm('삭제하시겠습니까?');
-								if(choice){
-									location.replace('itemDelete.do?item_num=${itemVO.item_num}');
-								}
-							};
+					$("#delete_btn2").click(function () {
+					    Swal.fire({
+					      title: '정말로 삭제 하시겠습니까?',
+					      text: "다시 되돌릴 수 없습니다. 신중하세요.",
+					      icon: 'warning',
+					      showCancelButton: true,
+					      confirmButtonColor: '#3085d6',
+					      cancelButtonColor: '#d33',
+					      confirmButtonText: '삭제',
+					      cancelButtonText: '취소',
+					      reverseButtons: false, // 버튼 순서 거꾸로
+					      
+					    }).then((result) => {
+					      if (result.isConfirmed) {
+					    	  location.replace('itemDelete.do?item_num=${itemVO.item_num}');
+					      }
+					    })
+					  });
 						</script>
 					<input type="button" value="목록" class="itemButton" onclick="location.href='adminList.do'">
 					</div>
 				</form:form>
-							
-			</div><!-- 사이드바 오른쪽 화면 끝 -->	
-		</div><!-- 컨텐트 메인 끝 -->
-	</div><!-- 페이지 메인 끝 -->
-</body>
+			</div>

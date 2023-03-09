@@ -12,7 +12,7 @@
 	</c:if>
 	<c:if test="${count > 0}">
 	<div id="userList" class="it1">
-		<h1 class="align-center">물품 목록</h1>
+		<br><h1 class="align-center">물품 목록</h1><br><br>
 		<c:forEach var="item" items="${list}">
 		<div id="userList-area" class="item-card">
 			<a href="userRental.do?item_index=${item.item_index}"><img src="imageView.do?item_num=${item.item_num}" width="250" height="250" class="my-photo">

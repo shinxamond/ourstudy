@@ -4,15 +4,11 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %><%-- 로그인 된 경우에만 글쓰기버튼 활성화 --%>
 <!DOCTYPE html>
 <link rel="stylesheet" href="${pageContext.request.contextPath}/css/item.css">
-<body> 
-	<div class="page-main">	
-		<div class="content-main"><!-- 전체 화면의 87% -->
-			<!-- 사이드바 오른쪽 화면 시작 -->
-			<div class="content-right">
-				<h3 style="text-align:center"><b>물품생성</b></h3>
+
+				<br><h3 style="text-align:center"><b>물품생성</b></h3><br><br>
 				<!-- table 시작 -->
-				<div class="content-margin">
-					<form:form action="itemWrite.do" id="t1" class="item_write_form" modelAttribute="itemVO" enctype="multipart/form-data">
+					<div class="it1" style="height:66vh;">
+					<form:form action="itemWrite.do" class="item_write_form" modelAttribute="itemVO" enctype="multipart/form-data">
 					<ul>
 						<li>
 							<label>상품표시여부</label>
@@ -41,13 +37,13 @@
 						</li>
 					</ul>
 					<div class="align-center">
-					<form:button class="itemButton">전송</form:button>
+					<form:button class="itemButton">생성</form:button>
 					<input type="button" class="itemButton" value="목록" onclick="location.href='adminList.do'">
 					</div>
 				</form:form>
+				</div>
 				
-				
-				<form:form action="itemWrite.do" id="t2" class="item_write_form2" modelAttribute="itemVO" enctype="multipart/form-data">
+				<form:form action="itemWrite.do" class="item_write_form2 it2" modelAttribute="itemVO" enctype="multipart/form-data">
 				
 					<label>상품표시여부</label><br>
 					<form:radiobutton path="item_p_status" value="1" checked="checked"/>표시
@@ -69,12 +65,9 @@
 					<form:input path="item_time" type="number"/><br>
 					<form:errors path="item_time" cssClass="error-color"/><br>
 				<div class="align-center">	
-				<form:button class="itemButton">전송</form:button>
+				<form:button class="itemButton">생성</form:button>
 				<input type="button" class="itemButton" value="목록" onclick="location.href='adminList.do'">
 				</div>
 			</form:form>
 							
-			</div><!-- 사이드바 오른쪽 화면 끝 -->	
-		</div><!-- 컨텐트 메인 끝 -->
-	</div><!-- 페이지 메인 끝 -->
-</body>
+		

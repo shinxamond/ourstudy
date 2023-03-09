@@ -2,7 +2,7 @@
 	pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %><%-- 로그인 된 경우에만 글쓰기버튼 활성화 --%>
 <!DOCTYPE html>
-<link rel="stylesheet" href="${pageContext.request.contextPath}/css/item2.css">
+<link rel="stylesheet" href="${pageContext.request.contextPath}/css/item.css">
 <body> 
 	<div class="page-main">	
 		<div class="content-main"><!-- 전체 화면의 87% -->
@@ -42,7 +42,7 @@
 				</table>
 				</c:if>
 				<c:if test="${count>0}">
-					<table class="table table-hover align-center" id="t1">
+					<table class="table table-hover align-center al" id="t1">
 						<thead class="table-head">
 							<tr>
 								<th scope="col" width="20%">물품번호<br></th>
@@ -74,7 +74,7 @@
 							</c:forEach>					
 						</tbody>
 					</table>
-					<table class="table table-hover table-group-divider" id="t2">
+					<table class="table table-hover table-group-divider al" id="t2">
 						<c:forEach var="item" items="${list}">
 							<tr>
 								<td>
