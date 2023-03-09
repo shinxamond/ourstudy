@@ -45,7 +45,6 @@ public class NaverController {
 	public String naverLogin(Model model, @RequestParam String code,
 			HttpSession session, @RequestParam String state) throws Exception {
 		 	
-			System.out.println("성공?");
 			OAuth2AccessToken oauthToken;
 		    oauthToken = naver.getAccessToken(session, code, state);
 		    //1. 로그인 사용자 정보를 읽어온다.
@@ -99,7 +98,7 @@ public class NaverController {
 	}
 
 
-	//카카오톡 회원가입 데이터 전송
+	//네이버 회원가입 데이터 전송
 	@PostMapping("/member/registerNaverUser.do")
 	public String submit(@Valid MemberVO memberVO, BindingResult result,
 			HttpSession session, Model model) {

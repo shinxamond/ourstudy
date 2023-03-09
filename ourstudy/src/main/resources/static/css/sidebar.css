@@ -74,7 +74,7 @@ main {
 }
 
 .btn-toggle-nav a:hover,
-.btn-toggle-nav a:focus {
+.btn-toggle-nav a:focus{
   background-color: #f4abb2;
   color:white;
 }
@@ -192,11 +192,6 @@ main {
 	text-decoration:none;
 	color:black;
 }
-
-
-
-
-
 
 
 

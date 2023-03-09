@@ -154,14 +154,6 @@ public class MemberController {
 
 				logger.debug("<<인증 성공>> : " + member.getMem_id());
 				
-				/*
-				if(member.getMem_auth()==9) {
-					logger.debug("<<관리자 로그인 성공>> : " + member.getMem_auth());
-					return "redirect:/main/admin.do";
-				}else {
-					return "redirect:/main/main.do";
-				}
-				*/
 				return "redirect:/main/main.do";
 			}
 			//인증실패
@@ -187,7 +179,6 @@ public class MemberController {
 	@RequestMapping("/member/logout.do")
 	public String processLogout(HttpSession session, HttpServletResponse response) {
 
-		
 		String access_Token = (String)session.getAttribute("access_Token");
         
 		if(access_Token != null && !"".equals(access_Token)){
@@ -195,7 +186,6 @@ public class MemberController {
             kakao.kakaoLogout(access_Token);
             session.removeAttribute("access_Token");
             
-        	//세션 만료가 안 되는 문제
             System.out.println("###카카오톡 로그아웃###");
             System.out.println(access_Token);
         }

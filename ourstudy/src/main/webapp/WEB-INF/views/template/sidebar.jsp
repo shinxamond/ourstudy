@@ -32,7 +32,7 @@ console.log(Kakao.isInitialized()); // sdk초기화여부판단
 
 function kakaoLogout() {
 	Kakao.API.request({
-		  url: '/v1/user/unlink',
+		  url: '/v1/user/logout',
 	})
 		  .then(function(response) {
 		    console.log(response);
@@ -148,20 +148,21 @@ function kakaoLogout() {
 				</div>
 				
 				<div class="side-bottom">
-       				<button class="btn btn-toggle  d-inline-flex  align-items-center rounded collapsed border-white" 
+       				<button class="btn btn-toggle d-inline-flex  align-items-center rounded collapsed border-white" 
         				data-bs-toggle="collapse" data-bs-target="#item-collapse" aria-expanded="false">
           				&nbsp;<i class="bi bi-ticket-perforated"></i>
           				<span class="innerhome">이용권 구매</span>
         			</button>
         			<div class="collapse" id="item-collapse">
-         		 	<ul class="btn-toggle-nav fw-normal pb-1 small">
+         		 	<ul class="btn-toggle-nav fw-normal pb-1 small collapsed">
            				<li>
-           					<a href=<c:if test="${!empty user}">"${pageContext.request.contextPath}/ticket/study_ticketList.do"</c:if> class="d-inline-flex rounded" 
-           					<c:if test="${empty user}">data-bs-toggle="modal" data-bs-target="#loginModal"</c:if> class="rounded">좌석 이용권</a>
+           					<a href=<c:if test="${!empty user}">"${pageContext.request.contextPath}/ticket/study_ticketList.do"</c:if> class="d-inline-flex rounded"
+           					<c:if test="${empty user}">data-bs-toggle="modal" data-bs-target="#loginModal"</c:if> class="rounded" id="item-collapsed1">좌석 이용권</a>
+           					
            				</li>
             			<li>
 	            			<a href=<c:if test="${!empty user}">"${pageContext.request.contextPath}/ticket/locker_ticketList.do"</c:if> class="d-inline-flex rounded"
-							<c:if test="${empty user}">data-bs-toggle="modal" data-bs-target="#loginModal"</c:if> class="rounded">사물함 이용권</a>
+							<c:if test="${empty user}">data-bs-toggle="modal" data-bs-target="#loginModal"</c:if> class="rounded" id="item-collapsed2">사물함 이용권</a>
             			</li>
           			</ul>
         			</div>

@@ -15,6 +15,8 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 
+import com.github.scribejava.core.model.OAuth2AccessToken;
+
 import kr.spring.admin.service.AdminService;
 import kr.spring.info.service.InformationService;
 import kr.spring.info.vo.InformationVO;
@@ -63,8 +65,6 @@ public class MainController {
 		//누적공부순위 차트
 	    Map<String, Object> map2 = new HashMap<String,Object>();
 	    
-	   //List<MemberVO> member_studyTime = mainService.member_studyTime(map2);  
-	    
 	   LocalDate now = LocalDate.now();
 	   LocalDate setThisMonday = now.with(DayOfWeek.MONDAY);
 	   LocalDate setNextMonday = setThisMonday.plusDays(7);
@@ -84,7 +84,7 @@ public class MainController {
 			
 		   String naverAuthUrl = naver.getAuthorizationUrl(session);
 			
-			model.addAttribute("urlNaver", naverAuthUrl);
+		   model.addAttribute("urlNaver", naverAuthUrl);
 			
 	   return "main";//타일스 설정값
 	}
