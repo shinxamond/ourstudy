@@ -9,6 +9,8 @@ $(function(){
   	//6. 3:24(입실시간) -> 현재시간js 가져와 3:24 32 33- --- 3:25 - setIn = 1분 session.setItem(setIn 입실시간 +60);
   	//7. session에 있는 setIN 제거
 	
+	var reloadDiv = $('#remainTimeZone');
+	
 	if(sessionStorage.getItem('isSelect') == '1') {
 		sessionStorage.setItem('plusSec', '0');
 		
@@ -19,7 +21,7 @@ $(function(){
 	  		
 	  		sessionStorage.setItem('plusSec', updateSec);
 	  		
-	  		if(updateSec >= 60) {
+	  		if(updateSec >= 10) {
 	  			sessionStorage.setItem('plusSec', '0');
 	  			
 	  			let mem_num = sessionStorage.getItem('isSelectMemnum');
@@ -43,7 +45,10 @@ $(function(){
 	  							dataType : 'json',
 	  							success : function(param){
 	  								if(param.result == 'success') {
-	  									alert('처리를 안해도되지만 굳이 껴넣음');
+	  									//alert('처리를 안해도되지만 굳이 껴넣음');
+										if(reloadDiv != ''){
+											$('#remainTimeZone').load(location.href + '#remainTimeZone');
+										}
 	  								}else {
 	  									alert('잔여시간 업데이트 오류 발생');
 	  								}
@@ -58,7 +63,6 @@ $(function(){
 	  							location.href = '../ticket/study_ticketList.do?seat_num=' + seat_num;							
 	  						}else {
 	  							alert('5분 후 자동 퇴실됩니다.');
-	  							location.href='../seat/select.do?seat_num=' + seat_num;
 	  						}
 	  					}else {
 	  						alert('잔여시간 불러오기 오류 발생');
