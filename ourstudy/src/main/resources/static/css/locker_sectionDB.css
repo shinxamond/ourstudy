@@ -9,6 +9,21 @@ div#main_body{
 /*================================
 			RESPONSIVE CSS
   ===============================*/
+@media screen and (max-width : 1100px){
+
+	nav#main-sidebar{
+		margin-right:0px;
+	}
+	
+	div#main_body{
+		margin-top:50px;
+		margin-left:10%;
+		margin-bottom:50px;
+	}
+	.locker-option{
+		min-width:100px;
+	}
+}
 @media screen and (max-width : 991px){
 
 	nav#main-sidebar{
@@ -18,13 +33,15 @@ div#main_body{
 	div#main_body{
 		position:relative;
 		left:10px;
-		margin-left:70px;
+		margin-left:8%;
 		margin-right:70px;
 	}
 	.locker-option{
-		min-width:170px;
+		min-width:10%;
+		min-height:10%;
 	}
 }
+
 	
 /*===========================
       LOCKER BTNS EFFECTS
