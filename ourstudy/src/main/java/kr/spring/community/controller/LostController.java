@@ -56,12 +56,16 @@ public class LostController {
 		@RequestMapping("/community/lostList.do")
 		public ModelAndView process(
 				 @RequestParam(value="pageNum",defaultValue="1") int currentPage,
-				 @RequestParam(value="keyfield",defaultValue="1") String keyfield, String keyword) {
+				 @RequestParam(value="keyfield",defaultValue="1") String keyfield, 
+				 String keyword, 
+				 String cat) {
 					
 				Map<String,Object> map = 
 							new HashMap<String,Object>();
 				map.put("keyfield", keyfield);
 				map.put("keyword", keyword);
+				map.put("cat", cat);
+				logger.debug("<<cat 받기 완료>> : " + cat);
 				
 				//글의 총개수 또는 검색된 글의 개수
 				int count = lostService.selectRowCount(map);
@@ -69,7 +73,7 @@ public class LostController {
 				
 				//페이지 처리
 				PagingUtil page = new PagingUtil(keyfield,keyword,
-						 currentPage,count,10,10,"lostList.do");
+						 currentPage,count,10,10,"lostList.do",cat);
 				
 				map.put("start", page.getStartRow());
 				map.put("end", page.getEndRow());
@@ -81,6 +85,7 @@ public class LostController {
 					map.put("end", page.getEndRow());
 					
 					list = lostService.selectList(map);
+					logger.debug("<<list 처리 완료>> : ");
 				}
 				ModelAndView mav = new ModelAndView();
 				mav.setViewName("lostList");

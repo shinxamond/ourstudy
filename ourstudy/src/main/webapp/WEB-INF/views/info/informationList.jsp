@@ -26,7 +26,7 @@
 				<!-- 검색폼 끝 -->
 				<div class="align-right">
 					<c:if test="${!empty user && user.mem_auth == 9}">
-					<button type="button" class="btn btn-secondary"   
+					<button type="button" class="btn btn-secondary btn-sm"   
 							onclick="location.href='infoWrite.do'">글쓰기</button>
 					</c:if>
 				</div>								

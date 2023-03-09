@@ -3,17 +3,40 @@
     PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"   
     "http://mybatis.org/dtd/mybatis-3-mapper.dtd">  
 <mapper namespace="kr.spring.community.dao.LostMapper">  
-
-<sql id="lostSearch">
+	<sql id="lostSearch">
 		<where>
-			<if test="keyword != null and keyword != ''">
-  				<if test="keyfield == 1">
-  					l.lf_title LIKE '%' || #{keyword} || '%'
-  				</if>
-  				<if test="keyfield == 2">
-  					l.lf_content LIKE '%' || #{keyword} || '%'
-  				</if>
-  			</if>
+			<if test="cat == 1 or cat == null">
+				<if test="keyword != null and keyword != ''">
+	  				<if test="keyfield == 1">
+	  					l.lf_title LIKE '%' || #{keyword} || '%'
+	  				</if>
+	  				<if test="keyfield == 2">
+	  					l.lf_content LIKE '%' || #{keyword} || '%'
+	  				</if>
+	  			</if>			
+			</if> 
+			<if test="cat == 2">
+				l.lf_type = 0  
+				<if test="keyword != null and keyword != ''">
+	  				<if test="keyfield == 1">	  					
+	  					AND l.lf_title LIKE '%' || #{keyword} || '%'
+	  				</if>
+	  				<if test="keyfield == 2">
+	  					AND l.lf_content LIKE '%' || #{keyword} || '%'
+	  				</if>
+	  			</if>				
+			</if>
+			<if test="cat == 3">
+				l.lf_type = 1 
+				<if test="keyword != null and keyword != ''">
+	  				<if test="keyfield == 1">
+	  					AND l.lf_title LIKE '%' || #{keyword} || '%'
+	  				</if>
+	  				<if test="keyfield == 2">
+	  					AND l.lf_content LIKE '%' || #{keyword} || '%'
+	  				</if>
+	  			</if>				
+			</if>						
 		</where>
 	</sql>
 	<select id="selectRowCount" parameterType="map"
@@ -22,14 +45,7 @@
   		  COUNT(*)
   	FROM lost_found l JOIN member_detail d
   		ON l.mem_num = d.mem_num
-  	<if test="keyword != null and keyword != ''">
-		<if test="keyfield == 1">
-		WHERE l.lf_title LIKE '%' || #{keyword} || '%'
-		</if>
-		<if test="keyfield == 2">
-		WHERE l.lf_content LIKE '%' || #{keyword} || '%'
-		</if>
-	</if>   		
+  	<include refid="lostSearch"></include>		
   	</select>                     
 	<select id="selectList" parameterType="map"
   	                         resultType="lostVO">

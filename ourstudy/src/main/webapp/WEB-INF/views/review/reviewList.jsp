@@ -44,7 +44,7 @@
 				<!-- 검색폼 끝 -->
 				<div class="align-right">
 					<c:if test="${!empty user}">
-					<button type="button" class="btn btn-secondary"   
+					<button type="button" class="btn btn-secondary btn-sm"   
 							onclick="location.href='write.do'">글쓰기</button>
 					</c:if>
 				</div>								

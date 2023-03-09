@@ -32,7 +32,7 @@ public class PagingUtil {
 		if(keyword != null) sub_url = "&keyfield="+keyfield+"&keyword="+keyword;
 		else if(keyword == null) sub_url = "&keyfield="+keyfield; //서지현 - 관리자페이지 추가
 		
-		if(addKey != null) sub_url += addKey;
+		if(addKey != null) sub_url += "&cat="+addKey; //분실물 페이지 추가
 		
 		// 전체 페이지 수
 		int totalPage = (int) Math.ceil((double) count / rowCount);

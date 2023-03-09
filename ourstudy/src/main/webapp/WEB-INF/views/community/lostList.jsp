@@ -9,9 +9,10 @@
 			<div class="content-right">
 				<h3 style="text-align:center"><b>분실물찾기</b></h3>
 				<!-- 검색폼 시작 -->
+				<form  class="search-form" action="lostList.do" method="get"><!-- 자동 인코딩 처리를 위해 -->
 				<div class="section" style="text-align:center"> 
 					<div class="search-bar">
-						<form class="search-form d-flex align-items-center" action="lostList.do" method="get"><!-- 자동 인코딩 처리를 위해 -->
+						<span class="d-flex align-items-center">
 							<select class="form-select" id="form-select1" name="keyfield" aria-label="form-select">
 								<option value="1" <c:if test="${param.keyfield==1}">selected</c:if>>제목</option>
 								<option value="2" <c:if test="${param.keyfield==2}">selected</c:if>>내용</option>
@@ -20,13 +21,30 @@
 							<!--                            //자기자신에게 값을 보내기 때문에 param 이용 -->
 							<input type="text" name="keyword" value="${param.keyword}" placeholder="제목 또는 내용 검색">
 							<button type="submit" title="Search"><i class="bi bi-search"></i></button>
-						</form>
+						</span>
 					</div>
 				</div>
+				<div class="btn-group align-left" role="group" aria-label="Basic radio toggle button group" style="float:left;">
+					<input type="radio" class="btn-check" name="cat" id="btnradio1" autocomplete="off" value=1
+							onclick="location.href='lostList.do?cat=1'" 
+							<c:if test="${param.cat==1 || param.cat==null}">checked</c:if>>
+					<label class="btn btn-outline-secondary btn-sm" for="btnradio1">전체</label>
+								
+					<input type="radio" class="btn-check" name="cat" id="btnradio2" autocomplete="off" value=2
+							onclick="location.href='lostList.do?cat=2'" 
+							<c:if test="${param.cat==2}">checked</c:if>>
+					<label class="btn btn-outline-secondary btn-sm" for="btnradio2">분실</label>
+								
+					<input type="radio" class="btn-check" name="cat" id="btnradio3" autocomplete="off" value=3
+							onclick="location.href='lostList.do?cat=3'" 
+							<c:if test="${param.cat==3}">checked</c:if>>
+					<label class="btn btn-outline-secondary btn-sm" for="btnradio3">습득</label>
+				</div>
+				</form>					
 				<!-- 검색폼 끝 -->
-				<div class="align-right">
+				<div class="align-right" style="float:right;">
 					<c:if test="${!empty user && user.mem_auth == 9}">
-					<button type="button" class="btn btn-secondary"   
+					<button type="button" class="btn btn-secondary btn-sm"   
 							onclick="location.href='lostWrite.do'">글쓰기</button>
 					</c:if>
 				</div>								
