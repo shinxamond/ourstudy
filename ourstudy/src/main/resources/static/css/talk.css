@@ -124,6 +124,7 @@ input[type="number"]{
 	text-align:center;
 }
 .date-position span{
+	color:black;
 	display:inline-block;
 	width:300px;
 	height:20px;
@@ -137,16 +138,17 @@ input[type="number"]{
 	margin:10px 0 10px 360px;
 }
 .form-position .item{
+	color:black;
 	float:right;
 	background-color:#F4ABB2;
-	padding:5px;
-	min-height:50px;
-	border-radius:20px;
+	padding:8px;
+	min-height:33px;
+	border-radius:13px;
 	border-top-right-radius:0;
 	max-height: 400px;
 	overflow: auto;
 }
-/* 상대
+/* 상대 #f3ede7
 ------------------*/
 .to-position{
 	
@@ -154,12 +156,13 @@ input[type="number"]{
 	margin:10px 0 10px 0;
 }
 .to-position .item{
+	color:black;
 	float:left;
 	margin-left:20px;
-	background-color:white;
+	background-color:#f3ede7;
 	padding:8px;
-	min-height:50px;
-	border-radius:20px;
+	min-height:33px;
+	border-radius:13px;
 	border-top-left-radius:0;
 	max-height: 400px;
 	overflow: auto;
@@ -216,10 +219,12 @@ input[type="number"]{
 	width:520px;
 }
 #mheader{
-	background-color:#babebc ;
+	color:white;
+	background-color:#384048 ;
 }
 #mbody{
-	background-color:#babebc ;
+	color:white;
+	background-color:#384048 ;
 	height:700px;
 }
 /* 메인 채팅 모달 배경부분 
@@ -228,10 +233,12 @@ input[type="number"]{
 	width:520px;
 }
 #mainheader{
-	background-color:#babebc ;
+	color:white;
+	background-color:#384048  ;
 }
 #mainbody{
-	background-color:#babebc ;
+	color:white;
+	background-color:#384048  ;
 	height:700px;
 }
 /*

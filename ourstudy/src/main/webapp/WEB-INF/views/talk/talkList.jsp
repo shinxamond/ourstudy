@@ -124,7 +124,7 @@
 			<div class="align-right">
 				<input type="button" value="채팅방 나가기" id="delete_talkroom">
 			</div>
-			 <button type="button" class="close" data-dismiss="modal" onclick="start();">&times;</button>
+			 <button type="button" class="close" data-dismiss="modal" style="background-color:white"onclick="start();">&times;</button>
         </div>
  
         <!-- Modal body -->
