@@ -32,10 +32,65 @@ $(function(){
 	}
 	alarm_connect();*/
 	
+			//========채팅회원검색=======//
+	$('#member_search2').keyup(function(){
+		if($('#member_search2').val().trim()==''){
+			$('#search_area2').empty();
+			return;
+		}
+		
+		$.ajax({
+			url:'memberSearchAjax.do',
+			type:'post',
+			data:{id:$('#member_search2').val()},
+			dataType:'json',
+			success:function(param){
+				if(param.result == 'logout'){
+					$('#member_search2').attr('disabled',true);
+					$('#member_search2').val('로그인해야 회원검색이 가능합니다.');
+				}else if(param.result == 'success'){
+					
+					$('#search_area2').empty();//초기화
+					let output1 = '';
+					output1 += '<tr>';
+					output1 += '<th>회원번호</th>';
+					output1 += '<th>이름</th>';
+					output1 += '<th>아이디</th>';
+					output1 += '</tr>';
+					let output2 = '';
+					
+					$(param.member).each(function(index,item){
+						if(!member_list.includes(item.id)){
+							//채팅회원배열에 포함되어있지 않는 id만 표시
+							output2 += '<tr class="choice" id="'+item.mem_num+'" data-num="'+item.mem_num+'" name="c'+item.mem_id+'">';
+							output2 += '<td class="c1">'+item.mem_num+'</td>';
+							output2 += '<td class="c2">'+item.mem_name+'</td>';
+							output2 += '<td class="c3">'+item.mem_id+'</td>';
+							output2 += '</tr>';
+							//output += '<li data-num="'+item.mem_num+'">';
+							//output += item.id;
+							//output += '</li>';
+						}
+					});
+					
+					
+					
+					$('#search_area2').append(output2);
+				}else{
+					alert('채팅회원검색시 오류 발생');
+				}
+			},
+			error:function(){
+				alert('네트워크 오류 발생');
+			}
+		});
+	});
+		
+	
 	//========채팅회원검색=======//
 	$('#member_search').keyup(function(){
 		if($('#member_search').val().trim()==''){
-			$('#search_area').empty();
+			$('#search_area1').empty();
 			return;
 		}
 		
@@ -49,6 +104,7 @@ $(function(){
 					$('#member_search').attr('disabled',true);
 					$('#member_search').val('로그인해야 회원검색이 가능합니다.');
 				}else if(param.result == 'success'){
+					
 					$('#search_area1').empty();//초기화
 					let output1 = '';
 					output1 += '<tr>';
@@ -58,9 +114,9 @@ $(function(){
 					output1 += '</tr>';
 					let output2 = '';
 					$(param.member).each(function(index,item){
-						if(!member_list.includes(item.id)){
+						if(!member_list.includes(item.id)){ 
 							//채팅회원배열에 포함되어있지 않는 id만 표시
-							output2 += '<tr class="choice" id="'+item.mem_num+'" data-num="'+item.mem_num+'">';
+							output2 += '<tr class="choice" id="'+item.mem_num+'" data-num="'+item.mem_num+'" name="c'+item.mem_id+'">';
 							output2 += '<td class="c1">'+item.mem_num+'</td>';
 							output2 += '<td class="c2">'+item.mem_name+'</td>';
 							output2 += '<td class="c3">'+item.mem_id+'</td>';
@@ -70,6 +126,7 @@ $(function(){
 							//output += '</li>';
 						}
 					});
+					
 					$('#search_area1').append(output1);
 					$('#search_area1').append(output2);
 				}else{
@@ -95,15 +152,16 @@ $(function(){
 		member_list.push(id);
 		//alert(member_list[0]);
 		//선택한 id를 화면에 표시
-		let choice_id = '<span class="member-span" data-id="'+id+'">';
+		let choice_id = '<span class="member-span c'+id+'" data-id="'+id+'" name="c'+id+'">';
 		choice_id += '<input type="hidden" name="members" value="'+mem_num+'">';
 		choice_id += id + ' </span>';
 		$('#talk_member').append(choice_id);
 		$('#talk_member2').append(choice_id);
 		//초기화
 		$('#member_search').val('');
+		$('#member_search2').val('');
 		$('#search_area1').empty();
-		
+		$('#search_area2').empty();
 		if($('#name_checked').is(':checked')){
 			//이름 자동 생성
 			makeTalkroom_name();
@@ -113,10 +171,13 @@ $(function(){
 	//선택한 ID 삭제
 	$(document).on('click','.member-span',function(){
 		let id = $(this).attr('data-id');
+		let cid = $(this).attr('name');
 		//배열에서 ID 삭제
 		member_list.splice(member_list.indexOf(id),1);//찾기 시작할 위치와 찾을 id값
 		//화면상에서 span 태그 제거
-		$(this).remove();
+		
+		$('span[name='+cid+']').remove();
+		//$('#talk_member2').childern('span[name=cid]').remove();
 		
 		if($('#name_checked').is(':checked')){
 			//이름 자동 생성
@@ -125,6 +186,8 @@ $(function(){
 		if($('#talk_member span').length == 0){//추가한 아이디가 없으면
 			$('#name_span').text('');
 			$('#talkroom_name').val('');
+			$('#name_span2').text('');
+			$('#talkroom_name2').val('');
 		}
 	});
 	
@@ -142,17 +205,17 @@ $(function(){
 			$('#name_span').text('');//채팅방 이름 표시 텍스트 초기화
 		}
 	});
-	//반
+	//반응형
 	$('#name_checked2').click(function(){
 		if($('#name_checked2').is(':checked')){
 			//채팅방 이름 자동 생성
-			$('#talkroom_name').attr('type','hidden');
+			$('#talkroom_name2').attr('type','hidden');
 			if(member_list.length>1){
 				makeTalkroom_name();
 			}
 		}else{
 			//채팅방 이름 수동 생성
-			$('#talkroom_name').attr('type','text');
+			$('#talkroom_name2').attr('type','text');
 			$('#name_span').text('');//채팅방 이름 표시 텍스트 초기화
 		}
 	});
@@ -168,6 +231,7 @@ $(function(){
 			name = name.substring(0,55) + '...';
 		}
 		$('#talkroom_name').val(name);
+		$('#talkroom_name2').val(name);
 		$('#name_span').text(name);
 		$('#name_span2').text(name);
 	}

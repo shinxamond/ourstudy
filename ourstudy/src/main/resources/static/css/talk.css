@@ -1,8 +1,8 @@
 @charset "UTF-8";
 /*
-기본 폼---------*/
+읽지 않은 메시지 ---------*/
 #talk_inform {
-   
+   	
     height: 20px;
     width: 20px;
     color:white;
@@ -10,12 +10,6 @@
     background-color: red;
     border-radius: 15px;
     display: inline-block;
-}
-#talk_form{
-	width:605px;
-	margin:0 auto;
-	border:1px solid #000;
-	padding:10px 10px 10px 30px;
 }
 /*
 반응형 talk_form---------*/
@@ -31,7 +25,14 @@
   overflow: auto;
 }
 
-
+/* 채팅방생성 설정
+---------------------------*/
+#talk_form{
+	width:605px;
+	margin:0 auto;
+	border:1px solid #000;
+	padding:10px 10px 10px 30px;
+}
 .member-span{
 	border:1px solid;
 	border-radius:15px;
@@ -80,9 +81,13 @@ table.striped-talk-table tr:nth-child(odd){
   overflow: auto;
 
 }
+
+
+/* 채팅방생성 동적생성
+---------------------------*/
 table.striped-talk-search-table{
 	border:1px solid #FFF;
-	font-size:15px;
+	font-size:13px;
 	width: 100%;
 	border-collapse:collapse;
 	margin:7px0;
@@ -110,7 +115,7 @@ input[type="number"]{
 
 /* 채팅하기
 ---------------------------*/
-#chatting_message{
+#chatting_message, #chatting_message2{
 	width:500px;
 	height:500px;
 	overflow-y:scroll;
@@ -125,13 +130,15 @@ input[type="number"]{
 	border-radius:10px;
 	background-color:#f2efef;
 }
+/* 본인
+----------------*/
 .form-position{
 	width:fit-content;
 	margin:10px 0 10px 360px;
 }
 .form-position .item{
 	float:right;
-	background-color:yellow;
+	background-color:#F4ABB2;
 	padding:5px;
 	min-height:50px;
 	border-radius:20px;
@@ -139,6 +146,8 @@ input[type="number"]{
 	max-height: 400px;
 	overflow: auto;
 }
+/* 상대
+------------------*/
 .to-position{
 	
 	max-width: 200px;
@@ -147,7 +156,7 @@ input[type="number"]{
 .to-position .item{
 	float:left;
 	margin-left:20px;
-	background-color:#ffffff;
+	background-color:white;
 	padding:8px;
 	min-height:50px;
 	border-radius:20px;
@@ -155,6 +164,8 @@ input[type="number"]{
 	max-height: 400px;
 	overflow: auto;
 }
+
+
 .yname{
 	padding-left:10px;
 	padding-bottom:9px;
@@ -198,17 +209,38 @@ input[type="number"]{
 .main_modal-content{
 	width:530px;
 }
+
+/* 채팅 모달 배경부분 
+---------------------------*/
 #mcontent{
 	width:520px;
 }
 #mheader{
-	background-color:#9bbbd4;
+	background-color:#babebc ;
 }
 #mbody{
-	background-color:#9bbbd4;
+	background-color:#babebc ;
 	height:700px;
 }
-table.striped-talk-table{
+/* 메인 채팅 모달 배경부분 
+---------------------------*/
+#maincontent{
+	width:520px;
+}
+#mainheader{
+	background-color:#babebc ;
+}
+#mainbody{
+	background-color:#babebc ;
+	height:700px;
+}
+/*
+#babebc  밑으로 진해짐
+#BDBDBD
+#A4A4A4
+*/
+
+/* table.striped-talk-table{
 	border:1px solid #FFF;
 	font-size:15px;
 	width:100%;
@@ -224,7 +256,7 @@ table.striped-talk-table td, table.striped-talk-table th{
 table.striped-talk-table th{
 	font-weight:bold;
 	text-align:center;
-	/*background:#E1E1E1;*/
+	background:#E1E1E1;
 }
 table.striped-talk-table td{
 	border-bottom:1px solid rgba(0,0,0,.1);
@@ -232,22 +264,32 @@ table.striped-talk-table td{
 	 padding: 10px;
      border-bottom: 1px solid #CD5C5C;
 }
-/* table.striped-talk-table tr:nth-child(odd){
+table.striped-talk-table tr:nth-child(odd){
 	background-color:rgb(250,250,247);
-} */
-.striped-talk-table a:link{
+}*/
+/* a태그 색
+---------------------------*/
+.tt1 a:link{
 	text-decoration:none;
 	color:#000000;
 }
-.striped-talk-table a:visited {
+.tt1 a:visited {
 	text-decoration:none;
 	color:#000000;
 }
+.tt2 a:link{
+	text-decoration:none;
+	color:#000000;
+}
+.tt2 a:visited {
+	text-decoration:none;
+	color:#000000;
+}  
 #RoomWrite li{
 	margin-top:10px;
 }
 
-/* 반응형 tt1 talkList room_t1 talkroom
+/* 반응형 talkList 
 ---------------------------*/
 .tt1{
 	
@@ -260,7 +302,9 @@ table.striped-talk-table td{
      border-bottom: 1px solid #CD5C5C;
 	display: none;
 }
-
+.room_t2 input[type="text"]{
+	width:140px;
+}
 @media ( max-width : 1199px) {
 	.tt1 {
 		display: none;
@@ -268,7 +312,37 @@ table.striped-talk-table td{
 	.tt2 {
 		display: table;
 	}
+	#mcontent{
+	width:470px;
+	}
+	.form-position{
+	width:fit-content;
+	margin:10px 0 10px 310px;
+	}
+	#chatting_message{
+	width:445px;
+	height:500px;
+	overflow-y:scroll;
+	}
+	#message{
+	 width: 398px;
+	}
+	/* 반응형 main 채팅방 부분
+---------------------------*/
+	#maincontent{
+	width:470px;
+	}
+	#chatting_message2{
+	width:450px;
+	height:500px;
+	overflow-y:scroll;
+	}
+	#message2{
+	 width: 360px;
+	}
 }
+/* 반응형 talkRoomWrite 
+---------------------------*/
 .room_t1{
 	
 	 padding: 10px;
@@ -289,6 +363,22 @@ table.striped-talk-table td{
 		display: table;
 	}
 }
+/*
+버튼---------*/
+.talkButton {
+  border: 0;
+  font-size: 15px;
+  margin: 5px;
+  color:white;
+  background-color: #E65962;
+  border:none;
+  padding: 10px;
+  cursor: pointer;
+  border-radius: 10px;
+}
+
+
+
 /* 푸터
 ---------------------------*/
 div#main_footer{

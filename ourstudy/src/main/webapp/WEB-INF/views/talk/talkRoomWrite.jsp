@@ -58,8 +58,8 @@
 				</div>
 				<br>
 				<div class="align-center">
-					<input type="submit" value="전송">
-					<input type="button" value="목록" onclick="location.href='talkList.do'">
+					<input type="submit" class="talkButton" value="전송">
+					<input type="button" class="talkButton" value="목록" onclick="location.href='talkList.do'">
 				</div>
 			</form>
 			<!-- -----------------------------------반응형------------------------- -->
@@ -67,17 +67,17 @@
 				<input type="hidden" name="members" id="user" data-id="${user.mem_id}" value="${user.mem_num}">
 				
 						<label style="font-size:15px;">채팅방 이름</label><br>
-						<input type="hidden" name="talkroom_name" id="talkroom_name"><br>
+						<input type="hidden" name="talkroom_name" id="talkroom_name2"><br>
 						<span id="name_span2"></span>
-						<!-- <input type="checkbox" checked id="name_checked2">(자동생성) <br> -->
+						<input type="checkbox" checked id="name_checked2">(자동생성) <br>
 					
 						<div id="talk_member2"></div><br>
-						<!-- <label style="font-size:20px;">채팅회원검색</label><br>
-						<input type="text" id="member_search" autocomplete="off" placeholder="아이디 검색">
-						<div class="table-wrapper-search">
-						<table class="striped-talk-search-table" id="search_area1">
+						<label style="font-size:20px;">채팅회원검색</label><br>
+						<input type="text" id="member_search2" autocomplete="off" placeholder="아이디 검색">
+						
+						<table class="striped-talk-search-table" id="search_area2">
 						</table>
-						</div> -->
+						
 				
 				<br>
 				<hr size="1" noshade="noshade" width="100%">
@@ -100,8 +100,8 @@
 				</div>
 				<br>
 				<div class="align-center">
-					<input type="submit" value="전송">
-					<input type="button" value="목록" onclick="location.href='talkList.do'">
+					<input type="submit" class="talkButton" value="전송">
+					<input type="button" class="talkButton" value="목록" onclick="location.href='talkList.do'">
 				</div>
 			</form>
 			

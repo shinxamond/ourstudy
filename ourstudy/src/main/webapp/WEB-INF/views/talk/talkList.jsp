@@ -36,8 +36,8 @@
 				</div>
 				<!-- 검색폼 끝 -->
 	<div class="align-right">
-		<input type="button" value="채팅방 생성" onclick="location.href='talkRoomWrite.do'">
-		<input type="button" value="목록" onclick="location.href='talkList.do'">
+		<input type="button" class="talkButton" value="채팅방 생성" onclick="location.href='talkRoomWrite.do'">
+		<input type="button" class="talkButton" value="목록" onclick="location.href='talkList.do'">
 	</div>
 	<br>
 	
@@ -46,7 +46,8 @@
 	</c:if>
 	
 	<c:if test="${!empty list}">
-	<table class="table table-hover align-center tt1" id="talkroom_list">
+	<table class="table table-hover align-center tt1">
+		<tbody id="talkroom_list">
 		<c:forEach var="talk" items="${list}">
 		
 		<tr>
@@ -65,18 +66,18 @@
 					<c:if test="${talk.room_cnt!=0}">
 					<span class="c${talk.talkroom_num}" id="talk_inform">${talk.room_cnt}</span>
 					</c:if>
-					<c:if test="${talk.room_cnt==0}">
-					<span class="c${talk.talkroom_num}"></span>
-					</c:if>
+					
 					
 				</c:if>
 				<c:if test="${empty talk.talkVO.chat_date}">${talk.talkroom_date}</c:if>
 			</td>	
 		</tr>
 		</c:forEach>
+		</tbody>
 	</table>
 	
-	<table class="table table-hover table-group-divider tt2" id="talkroom_list"><!-- 반응형 줄었을 때 등장 -->
+	<table class="table table-hover table-group-divider tt2"><!-- 반응형 줄었을 때 등장 -->
+		<tbody id="talkroom_list2">
 		<c:forEach var="talk" items="${list}">
 		
 		<tr>
@@ -104,6 +105,7 @@
 			</td>	
 		</tr>
 		</c:forEach>
+		</tbody>
 	</table>
 	
 	
@@ -127,7 +129,7 @@
  
         <!-- Modal body -->
         <div class="modal-body" id="mbody">
-		<div id="chatting_message" style="width:500px; height:500px; overflow-y:scroll;"></div><!-- 다른 채팅창이 안보여서 나눔 -->
+		<div id="chatting_message"></div><!-- 다른 채팅창이 안보여서 나눔 -->
 		<form method="post" id="detail_form" style="border:none;">
 			<input type="hidden" name="talkroom_num" id="talkroom_num">
 			<input type="hidden" name="mem_num" id="mem_num" value="${user.mem_num}">
@@ -217,8 +219,12 @@ function alarm_connect2(){
 		message_socket2.onmessage=function(evt){
 			
 			let data = evt.data;
+			
 			if(data.substring(0,4) == 'arm:'){
-				countmsg();
+				
+					countmsg();
+					countmsg2();
+				
 			}
 			
 		};
@@ -245,7 +251,6 @@ function alarm_connect2(){
 					
 					//채팅 날짜 표시
 					let chat_date = '';
-					
 					$(param.list).each(function(index,item){
 						let output = '';
 						
@@ -289,6 +294,9 @@ function alarm_connect2(){
 						
 						//문서 객체에 추가
 						$('#chatting_message').append(output);
+						if($('#chatting_message')[0].scrollHeight==0){
+							$('#chatting_message').animate({scrollTop:200*param.list.length},10);//스크롤이 안내려가면 강제로 내리기
+						}
 						//스크롤을 하단에 위치시킴
 						$('#chatting_message').scrollTop($('#chatting_message')[0].scrollHeight);
 					});				
@@ -338,8 +346,8 @@ function alarm_connect2(){
 									output += '<span class="c'+item.talkroom_num+'" id="talk_inform">'+item.room_cnt+'</span>';
 								}
 							}
-							if(item.talkVO.cht_date == ''){
-								item.talkroom_date
+							if(item.talkVO.chat_date == ''){
+								output += item.talkroom_date
 							}
 						}
 						output += '</td>';
@@ -358,7 +366,58 @@ function alarm_connect2(){
 			}
 		});
 	}
-	
+	function countmsg2(){
+		$.ajax({
+			url:'../talk/talkCountAjax.do',
+			type:'post',
+			dataType:'json',
+			success:function(param){
+				if(param.result == 'logout'){
+					alert('로그인해야 작성할 수 있습니다');
+					message_socket.close();
+				}else if(param.result == 'success'){
+					$('#talkroom_list2').empty();
+					$(param.clist).each(function(index,item){
+						let output = '';
+						output += '<tr>';
+						output += '<td style="text-align:left">';
+						output += '<a href="#" data-toggle="modal" data-target="#${user.mem_num}" id="10"  data-id="'+item.talkroom_num+'">';
+						output += '<span>'+item.talkroom_name+'</span></a>';
+						output += '<br>';
+						if(item.talkVO!=null){
+							let message1 = item.talkVO.message;
+							message1 = message1.substr(0,45);
+							output += '<span class="m'+item.talkroom_num+'">'+message1+'</span><br>';
+						}
+						
+						if(item.talkVO!=null){
+							if(item.talkVO.chat_date != ''){
+								output += '<span class="t'+item.talkroom_num+'">'+item.talkVO.chat_date+'</span>';
+								output += '<br>';
+								if(item.room_cnt!=0){
+									output += '<span class="c'+item.talkroom_num+'" id="talk_inform">'+item.room_cnt+'</span>';
+								}
+							}
+							if(item.talkVO.chat_date == ''){
+								output += item.talkroom_date
+							}
+						}
+						output += '</td>';
+						output += '</tr>';
+						
+						$('#talkroom_list2').append(output);
+					});
+				}else{
+					alert('메시지 등록 오류');
+					message_socket.close();
+				}
+			},
+			error:function(){
+				alert('채팅 카운트 네트워크 오류');
+				message_socket.close();
+			}
+		});
+	}
 		
 		$(document).on('click','#10',function(){//목록 클릭
 			
