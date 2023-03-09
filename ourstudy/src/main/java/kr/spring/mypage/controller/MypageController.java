@@ -26,6 +26,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
+import org.springframework.web.servlet.support.RequestContextUtils;
 
 import kr.spring.util.AuthCheckException;
 import kr.spring.util.FileUtil;
@@ -65,7 +66,7 @@ public class MypageController {
 	
 	//마이페이지 메인 호출
 	@RequestMapping("/mypage/myPageMain.do")
-	public String form(@RequestParam(value="pageNum", defaultValue="1")int currentPage, HttpSession session, Model model) {
+	public String form(@RequestParam(value="pageNum", defaultValue="1")int currentPage, HttpSession session, Model model, HttpServletRequest request) {
 		
 		//회원 기본 정보 세팅
 		MemberVO user = (MemberVO)session.getAttribute("user");
@@ -134,6 +135,15 @@ public class MypageController {
 			
 			list = itemService.rentalItemList(map);
 		}
+		Map<String, ?> flashMap = (Map<String, ?>) RequestContextUtils.getInputFlashMap(request);
+		
+		if(flashMap!=null) {
+			System.out.println("111"+ flashMap.get("mem_statusForCheckIn"));
+            model.addAttribute("mem_statusForCheckIn", flashMap.get("mem_statusForCheckIn"));
+            if(flashMap.get("mem_numForCheckIn") != null || flashMap.get("mem_numForCheckIn") != "") {
+            	model.addAttribute("mem_numForCheckIn", flashMap.get("mem_numForCheckIn"));
+            }
+        }
 		
 		model.addAttribute("locker_num", locker_num);
 		model.addAttribute("count", count);

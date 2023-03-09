@@ -1,6 +1,30 @@
 var status = 0;
 $(function(){
-	//localStorage.setItem("status", 0);
+	let mem_statusForCheckIn = $('.setCheckInStatus').attr('id');
+	let mem_numForCheckIn = $('.setCheckInMemnum').attr('id');
+	let seat_numForCheckIn = $('.setCheckSeatNum').attr('id');
+	
+	if((mem_statusForCheckIn != '' || mem_statusForCheckIn != null)){
+		sessionStorage.setItem("isSelect", mem_statusForCheckIn);
+	}
+	if((mem_numForCheckIn != '' || mem_numForCheckIn != null)) {
+		sessionStorage.setItem("isSelectMemnum", mem_numForCheckIn);
+	}
+	if((seat_numForCheckIn != '' || seat_numForCheckIn != null)) {
+		sessionStorage.setItem("isSelectSeatnum", seat_numForCheckIn);
+	}
+
+
+	
+	
+	
+	
+	
+	
+	///////////////////////////////////////////////////////////////
+	
+	
+	
 	var mem_main = $('.mypage_mem_info_main').clone();
 	var mem_info = $('.mypage_mem_info').clone();
 	var mem_modify = $('.mypage_mem_info_modify').clone();

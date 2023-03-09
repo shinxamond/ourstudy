@@ -7,7 +7,6 @@ import org.apache.ibatis.annotations.Param;
 import kr.spring.member.vo.MemberVO;
 import kr.spring.seat.vo.SeatVO;
 
-
 public interface SeatService {
 
    //좌석등록

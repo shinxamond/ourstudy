@@ -106,7 +106,6 @@ public class SeatController {
 		 */
       if(hour.floatValue() <= 0 && term.floatValue() <= 0) {		//잔여시간, 잔여기간 둘 다 없는 경우
     	 return "redirect:/ticket/study_ticketList.do";
-    	  
       }
       
       
@@ -124,7 +123,8 @@ public class SeatController {
       member.setMem_status(seatService.getMem_status(mem_num));
       
       model.addAttribute("seat_num",seat_num);
-      
+      attributes.addFlashAttribute("mem_statusForCheckIn", member.getMem_status());
+      attributes.addFlashAttribute("mem_numForCheckIn", member.getMem_num());
       return "redirect:/mypage/myPageMain.do";
 
    }
@@ -263,7 +263,7 @@ public class SeatController {
     
    //회원 퇴실처리 + 관리자 권한 강제 퇴실처리
    @RequestMapping("/seat/out.do")
-   public String Out(@RequestParam(value="seat_num", required=false, defaultValue="1") int seat_num, HttpSession session) {
+   public String Out(@RequestParam(value="seat_num", required=false, defaultValue="1") int seat_num, HttpSession session, RedirectAttributes attributes) {
       MemberVO member = (MemberVO)session.getAttribute("user");
       
       SeatVO seatVO = initCommand();
@@ -285,6 +285,8 @@ public class SeatController {
     	  seatService.outSeatWhenHold(seatVO);
     	  
     	  member.setMem_status(seatService.getMem_status(mem_num));
+    	  
+    	  attributes.addFlashAttribute("mem_statusForCheckIn", member.getMem_status());
     	  
     	  return "redirect:/mypage/myPageMain.do";
       }else if(mem_status == 1 && mem_auth == 1) {								//현재 회원이 입실 상태일 때
@@ -366,6 +368,7 @@ public class SeatController {
     	  return "redirect:/admin/admin_seathistory.do"; 
       }
 		
+      attributes.addFlashAttribute("mem_statusForCheckIn", member.getMem_status());
       
       return "redirect:/mypage/myPageMain.do";
    }

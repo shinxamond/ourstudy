@@ -17,6 +17,7 @@
 <%--로그인 유효성 체크 --%>
 <script type="text/javascript" src="${pageContext.request.contextPath}/js/logincheck.js"></script>
 <script type="text/javascript" src="${pageContext.request.contextPath}/js/sidebar.js"></script>
+<script type="text/javascript" src="${pageContext.request.contextPath}/js/checkDeadlineTime.js"></script>
 
 <%--네이버 --%>
 <script type="text/javascript" src="https://static.nid.naver.com/js/naverLogin_implicit-1.0.2.js"></script>

@@ -93,4 +93,7 @@
     </div>
   </div>
 </div>
+<span id="${mem_statusForCheckIn}" class = "setCheckInStatus"></span>
+<span id="${mem_numForCheckIn}" class = "setCheckInMemnum"></span>
+<span id="${seat.seat_num}" class = "setCheckSeatNum"></span>
 <!-- 마이페이지 헤더 끝 -->
