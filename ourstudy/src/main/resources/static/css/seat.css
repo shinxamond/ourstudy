@@ -18,7 +18,6 @@
 		width:1243px;
 		position:relative;
 		top:-150px; left:220px;
-		z-index:100;
 	}
 	#canvas_box{
 		position:relative;
@@ -26,7 +25,6 @@
 	
 	#canvas{
 		position:relative;
-		z-index:1;
 	}
 /*===========================
 		GUIDE LETTER
@@ -278,7 +276,7 @@ input[data-num="G12"]{
 	position:relative;
 	left:46px;
 	bottom:406px;
-	z-index:50;
+	z-index:-999;
 }
 button#empty{
 	background-color:#BBFE97;
@@ -288,4 +286,13 @@ button#full{
 }
 button#hold{
 	background-color:#F8B1AA;
+}
+/*===========================
+		MEDIA  QUERY
+  ===========================*/
+  @media screen and (max-width:1200px) {
+
+    #navbar{
+    	display:none;
+    }
 }
