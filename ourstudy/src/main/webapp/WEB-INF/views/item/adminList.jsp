@@ -29,8 +29,8 @@
 				</div>
 				<!-- 검색폼 끝 -->
 				<div class="align-right">
-				<input type="button" value="물품생성" onclick="location.href='itemWrite.do'">
-				<input type="button" value="목록" onclick="location.href='adminList.do'">
+				<input type="button" class="itemButton" value="물품생성" onclick="location.href='itemWrite.do'">
+				<input type="button" class="itemButton" value="목록" onclick="location.href='adminList.do'">
 				</div>
 				<!-- table 시작 -->
 				<div class="content-margin">
