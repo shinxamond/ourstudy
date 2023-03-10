@@ -23,12 +23,12 @@
 			</li>
 			<li>
 				<b>${lost.mem_name}</b> 
-				<%-- <c:if test="${mem_num.mem_auth == 9}">
+				<%-- <c:if test="${lost.mem_auth == 9}">
 				<b>${lost.mem_name}</b> <img src="/images/favicon.ico">
 				</c:if>
-				<c:if test="${mem_num.mem_auth == 1}">
+				<c:if test="${lost.mem_auth == 1}">
 				<b>${lost.mem_name}</b> 
-				</c:if>  --%>
+				</c:if>   --%>
 			</li>
 			<li style="color : #868E96; font-size:10pt;"> 
 			<c:if test="${!empty lost.lf_modify_date}">
