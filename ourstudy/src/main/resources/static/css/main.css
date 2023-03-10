@@ -431,4 +431,7 @@ div#main_footer .footer-sns{
 		padding:30px 10px 20px 5px;
 		height:45vh;
 	}
+	#all_todo td{
+		max-width: 250px;
+	}
 }
