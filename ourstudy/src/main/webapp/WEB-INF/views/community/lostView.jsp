@@ -10,7 +10,7 @@
 <div class="page-main">
 <div class="content-main">
 <div class="content-right"> 
-		<h3 style="text-align:center"><b>분실물찾기</b></h3>
+		<h3 style="text-align:center"><b>분실물찾기</b></h3><br>
 		<div class="card d-flex justify-content-center" id="card-view" >
 		<ul class="card-head">
 		
@@ -80,40 +80,47 @@
 		</li>
 	</ul>
 	
-	<br>
-	<!-- 댓글 -->
-	<div id="reply_div">
-		<span class="re-title"><b>댓글</b></span>
-			<form id="re_form">
-			<input type="hidden" name="lf_num" value="${lost.lf_num}" id="lf_num">
-			<textarea rows="3" cols="30" name="re_content" id="re_content" class="rep-content"<c:if test="${empty user}">disabled="disabled"</c:if>
-			><c:if test="${empty user}">로그인해야 작성할 수 있습니다.</c:if></textarea>    	
-			<c:if test="${!empty user}">
-			<div id="re_first">
-				<span class="letter-count">300/300</span>
-			</div>
-			<div class="align-right" id="re_second" style="padding:0 50px;">
-				<input type="submit" value="전송">
-			</div>
-			</c:if>
-		</form>
-	</div>
-	<!-- 댓글 목록 출력 -->
-	<div class="card-content">
+	<hr size="1" width="90%" style="margin: 10px auto;">
+	
+	<!-- 댓글 UI 시작-->
+	<!-- 댓글 목록 출력 시작 -->
 	<div id="output"></div>
 	<div class="paging-button" style="display:none;">
-		<input type="button" value="댓글 더보기" class="btn btn-secondary btn-sm">
+		<input type="button" value="댓글 더보기" class="btn btn-outline-secondary mt2"  style="margin-right:395px;">
 	</div>
 	<div id="loading" style="display:none;">
 		<img src="${pageContext.request.contextPath}/images/loading.gif" width="50" height="50">
 	</div>
+	<!-- 댓글 목록 출력 끝 -->
+	
+	<div id="reply_div">
+		<span class="re-title" style="font-size: 15pt">댓글</span>&nbsp;
+		<span id="re_first">
+			<span class="letter-count">300/300</span>
+		</span>
+		<form id="re_form">
+			<input type="hidden" name="lf_num" value="${lost.lf_num}" id="lf_num">
+			<div class="inner-text">
+			<textarea class="content form-control rep-content inner-text"
+				name="re_content" id="re_content"
+				<c:if test="${empty user}">disabled="disabled"</c:if>><c:if
+					test="${empty user}">로그인해야 작성할 수 있습니다.</c:if></textarea>    	
+			<c:if test="${!empty user}">
+				<button type="submit" class="btn" id="inner-submit">
+					<i class="fas fa-solid fa-paper-plane"></i>
+				</button>
+			</c:if>
+			</div>
+		</form>
 	</div>
+	
 	<div class="card-foot">
 		<div class="align-center"> 
-			<input type="button" value="목록" id="list_btn" class="btn btn-secondary btn-sm"
+			<input type="button" value="목록" id="list_btn" class="btn btn-secondary mb-5"
 			           onclick="location.href='lostList.do'">
 		 </div> 
 	</div>
+	<!-- 댓글 UI 끝 -->
 	</div>
 </div>
 </div>

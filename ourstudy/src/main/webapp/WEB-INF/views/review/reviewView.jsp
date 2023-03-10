@@ -5,13 +5,13 @@
 <link rel="stylesheet" href="${pageContext.request.contextPath}/css/information.css">
 <!-- 중앙 컨텐츠 시작 -->
 <script src="${pageContext.request.contextPath}/js/videoAdapter.js"></script>
-<script src="${pageContext.request.contextPath}/js/review.reply2.js"></script>
+<script src="${pageContext.request.contextPath}/js/review.reply.js"></script>
 <!DOCTYPE html>
 <body> 
 <div class="page-main">
 <div class="content-main">
 <div class="content-right"> 
-		<h3 style="text-align:center"><b>이용후기</b></h3>
+		<h3 style="text-align:center"><b>이용후기</b></h3><br>
 		<div class="card d-flex justify-content-center" id="card-view" >
 	<ul class="card-head">
 		<li>
@@ -92,7 +92,7 @@
 					<div id="output"></div>
 					<div class="paging-button" style="display: none;">
 						<input type="button" class="btn btn-outline-secondary mt-2"
-							value="댓글 더보기" style="margin-right:400px;">
+							value="댓글 더보기" style="margin-right:395px;">
 					</div>
 					<div id="loading" style="display: none;">
 						<img src="${pageContext.request.contextPath}/images/loading.gif"
@@ -101,8 +101,9 @@
 					<!-- 댓글 목록 출력 끝 -->
 	
 					<div id="reply_div">
-						<span class="re-title" style="font-size: 15pt">댓글</span>&nbsp; <span
-							id="re_first"> <span class="letter-count">300/300</span>
+						<span class="re-title" style="font-size: 15pt">댓글</span>&nbsp;
+						<span id="re_first">
+							<span class="letter-count">300/300</span>
 						</span>
 						<form id="re_form">
 							<input type="hidden" name="r_num" value="${review.r_num}"
@@ -128,13 +129,9 @@
 								onclick="location.href='list.do'">
 						</div>
 					</div>
+					<!-- 댓글 UI 끝 -->	
 				</div>
-	<!-- 댓글 UI 끝 -->	
 		</div>
 </div>
 </div>
-</div>
-
-
-
 

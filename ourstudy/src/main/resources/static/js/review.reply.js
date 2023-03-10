@@ -92,22 +92,22 @@ $(function(){
 					output += '<ul class="detail-info">';
 					output += '<li>';
 					if(item.mem_name){
-						output += '<b>' + item.mem_name + '</b>' + '<br>';
+						output += '<b>' + item.mem_name + '</b>';
 					}
 					if(item.revw_mdate){
-						output += '<span class="modify-date">최근 수정일 : ' + item.revw_mdate + '</span>';
+						output += '<span class="modify-date">&nbsp;&nbsp;&nbsp;&nbsp;최근 수정일 : ' + item.revw_mdate + '</span>';
 					}else{
-						output += '<span class="modify-date">등록일 : ' + item.revw_date + '</span>';
+						output += '<span class="modify-date">&nbsp;&nbsp;&nbsp;&nbsp;등록일 : ' + item.revw_date + '</span>';
 					}
 					output += '</li>';
 					output += '</ul>';
 					output += '<div class="sub-item">';
 					output += '<p>' + item.revw_content.replace(/\r\n/g,'<br>') + '</p>';
 					if(param.user_num == item.mem_num){
-						output += ' <input type="button" data-num="'+item.revw_num+'" value="수정" class="modify-btn">';
-						output += ' <input type="button" data-num="'+item.revw_num+'" value="삭제" class="delete-btn">';
+						output += '<button type="button" class="modify-btn btn btn-outline-pink" data-num="'+item.revw_num+'">수정</button>';
+						output += '<button type="button" class="delete-btn btn btn-outline-pink" data-num="'+item.revw_num+'">삭제</button>';
 					}
-					output += '<hr size="1" noshade>'
+					output += '<hr size="1" width="90%" style="margin: 10px auto;" noshade>';
 					output += '</div>';
 					output += '</div>';
 					
@@ -124,7 +124,7 @@ $(function(){
 					$('.paging-button').show();
 				}
 			},
-			errror:function(){
+			error:function(){
 				//로딩 이미지 감추기
 				$('#loading').hide();
 				alert('네트워크 오류 발생');
@@ -149,15 +149,19 @@ $(function(){
 		//댓글수정 폼 UI
 		let modifyUI = '<form id="mre_form">';
 		modifyUI += '<input type="hidden" name="revw_num" id="mre_num" value="'+revw_num+'">';
-		modifyUI += '<textarea rows="3" cols="50" name="revw_content" id="mre_content" class="rep-content">'+content+'</textarea>';
 		modifyUI += '<div id="mre_first"><span class="letter-count">300/300</span></div>';
-		modifyUI += '<div id="mre_second" class="align-right">';
-		modifyUI += '<input type="submit" value="수정">';
-		modifyUI += ' <input type="button" value="취소" class="re-reset">';
-		modifyUI += '</div>';
-		modifyUI += '<hr size="1" noshade width="96%">';
-		modifyUI += '</form>';
 		
+		modifyUI += '<div class="inner-text">';
+		modifyUI += '<textarea class="form-control rep-content inner-text" name="revw_content" id="mre_content">'+content+'</textarea>';
+		modifyUI += '</div>';
+		
+		modifyUI += '<div id="mre_second">';
+		modifyUI += '<button type="submit" class="btn btn-outline-pink">수정</button>';
+		modifyUI += '<button type="button" class="re-reset btn btn-outline-pink">취소</button>';
+		modifyUI += '</div>';
+		modifyUI += '</div>';
+		modifyUI += '</form>';
+
 		//이전에 이미 수정하는 댓글이 있을 경우 수정버튼을 클릭하면
 		//숨김 sub-item을 환원시키고 수정 폼을 초기화함
 		initModifyForm();
@@ -222,7 +226,7 @@ $(function(){
                            .replace(/\n/g,'<br>'));
 					//최근 수정일 표시
 					$('#mre_form').parent().find('.modify-date')
-					                       .text('최근 수정일 : 5초미만');
+					                       .text('&nbsp;&nbsp;&nbsp;&nbsp;최근 수정일 : 5초 미만');
 					//수정 폼 초기화
 					initModifyForm();
 				}else if(param.result == 'wrongAccess'){

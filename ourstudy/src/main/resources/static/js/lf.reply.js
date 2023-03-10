@@ -33,26 +33,24 @@ $(function(){
 					output += '<li>';
 					output += '<img src="../member/viewProfile.do?mem_num='+item.mem_num+'" width="40" height="40" class="my-photo">';
 					output += '</li>';
-					output += '<li>';
+					output += '<li id="reply_name">';
 					if(item.mem_name){
-						output += item.mem_name + '<br>';
+						output += '<b>' + item.mem_name + '</b>';
 					}
 					if(item.re_modify_date){
-						output += '<span class="modify-date">최근 수정일 : ' + item.re_modify_date + '</span>';
+						output += '<span class="modify-date">&nbsp;&nbsp;&nbsp;&nbsp;최근 수정일 : ' + item.re_modify_date + '</span>';
 					}else{
-						output += '<span class="modify-date">등록일 : ' + item.re_date + '</span>';
+						output += '<span class="modify-date">&nbsp;&nbsp;&nbsp;&nbsp;등록일 : ' + item.re_date + '</span>';
 					}
 					output += '</li>';
 					output += '</ul>';
 					output += '<div class="sub-item">';
-					output += '<p>' + 
-					item.re_content.replace(/\r\n/g,'<br>') 
-					+ '</p>';
+					output += '<p>' + item.re_content.replace(/\r\n/g,'<br>') + '</p>';
 					if(param.user_num == item.mem_num){
-						output += ' <input type="button" data-num="'+item.re_num+'" value="수정" class="modify-btn">';
-						output += ' <input type="button" data-num="'+item.re_num+'" value="삭제" class="delete-btn">';
+						output += '<button type="button" class="modify-btn btn btn-outline-pink" data-num="'+item.re_num+'">수정</button>';
+						output += '<button type="button" class="delete-btn btn btn-outline-pink" data-num="'+item.re_num+'">삭제</button>';
 					}
-					output += '<hr size="1" noshade>'
+					output += '<hr size="1" width="90%" style="margin: 10px auto;" noshade>';
 					output += '</div>';
 					output += '</div>';
 					
@@ -158,13 +156,17 @@ $(function(){
 		//댓글수정 폼 UI
 		let modifyUI = '<form id="mre_form">';
 		modifyUI += '<input type="hidden" name="re_num" id="mre_num" value="'+re_num+'">';
-		modifyUI += '<textarea rows="3" cols="50" name="re_content" id="mre_content" class="rep-content">'+content+'</textarea>';
 		modifyUI += '<div id="mre_first"><span class="letter-count">300/300</span></div>';
-		modifyUI += '<div id="mre_second" class="align-right">';
-		modifyUI += '<input type="submit" value="수정">';
-		modifyUI += ' <input type="button" value="취소" class="re-reset">';
+		
+		modifyUI += '<div class="inner-text">';
+		modifyUI += '<textarea class="form-control rep-content inner-text" name="re_content" id="mre_content" >'+content+'</textarea>';
 		modifyUI += '</div>';
-		modifyUI += '<hr size="1" noshade width="96%">';
+		
+		modifyUI += '<div id="mre_second">';
+		modifyUI += '<button type="submit" class="btn btn-outline-pink">수정</button>';
+		modifyUI += '<button type="button" class="re-reset btn btn-outline-pink">취소</button>';
+		modifyUI += '</div>';
+		modifyUI += '</div>';
 		modifyUI += '</form>';
 		
 		//이전에 이미 수정하는 댓글이 있을 경우 수정버튼을 클릭하면
