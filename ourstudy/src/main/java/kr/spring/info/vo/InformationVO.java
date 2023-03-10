@@ -4,6 +4,7 @@ import java.io.IOException;
 import java.sql.Date;
 
 import javax.validation.constraints.NotEmpty;
+import javax.validation.constraints.Size;
 
 import org.springframework.web.multipart.MultipartFile;
 
@@ -12,6 +13,7 @@ public class InformationVO {
 	private int info_num;
 	private Date info_date; 
 	@NotEmpty
+	@Size(max=30)
 	private String info_title;
 	@NotEmpty
 	private String info_content;

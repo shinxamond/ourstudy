@@ -5,12 +5,14 @@ import java.sql.Date;
 import java.util.Arrays;
 
 import javax.validation.constraints.NotEmpty;
+import javax.validation.constraints.Size;
 
 import org.springframework.web.multipart.MultipartFile;
 
 public class ReviewVO {	
 	private int r_num;
 	@NotEmpty
+	@Size(max=30)
 	private String r_title;
 	@NotEmpty
 	private String r_content;

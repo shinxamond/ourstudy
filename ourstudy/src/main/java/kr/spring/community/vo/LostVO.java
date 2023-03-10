@@ -3,11 +3,13 @@ package kr.spring.community.vo;
 import java.sql.Date;
 
 import javax.validation.constraints.NotEmpty;
+import javax.validation.constraints.Size;
 
 public class LostVO {
 	private int lf_num;
 	private int lf_type;
 	@NotEmpty
+	@Size(max=30)
 	private String lf_title;
 	@NotEmpty
 	private String lf_content;
@@ -17,8 +19,10 @@ public class LostVO {
 	@NotEmpty
 	private String lf_time;
 	@NotEmpty
+	@Size(max=30)
     private String lf_item;
 	@NotEmpty
+	@Size(max=30)
 	private String lf_loc;
 	private Date lf_modify_date;
 	private String mem_name;
