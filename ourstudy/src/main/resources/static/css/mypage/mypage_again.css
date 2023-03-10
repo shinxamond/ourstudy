@@ -199,9 +199,12 @@
 		color: #FFFFFF;
 	}
 	
+	/*======== 비밀번호 변경 ========*/
+	
+	
+	
 	/*======= 입퇴실내역 =======*/
 	#home_btn{
-		margin-bottom: 15px;
 		background-color: #384048;
 		color: #FFFFFF;
 	}

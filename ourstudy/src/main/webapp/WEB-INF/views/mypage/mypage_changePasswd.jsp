@@ -35,9 +35,9 @@
 				</tr>
 			</table>
 		</div>
-		<div style = "text-align : center;">
-			<form:button>변경</form:button>
-			<input type="button" value="홈으로" onclick="location.href='${pageContext.request.contextPath}/main/main.do'">
+		<div style = "text-align : center; margin-bottom: 30px;">
+			<form:button class="btn" id="modify_btn">변경</form:button>
+			<input type="button" class="btn" id="home_btn" value="홈으로" onclick="location.href='${pageContext.request.contextPath}/main/main.do'">
 		</div>
 		</form:form>
 	</div>
