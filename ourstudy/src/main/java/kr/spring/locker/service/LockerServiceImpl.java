@@ -8,6 +8,7 @@ import org.springframework.transaction.annotation.Transactional;
 
 import kr.spring.locker.dao.LockerMapper;
 import kr.spring.locker.vo.LockerVO;
+import kr.spring.pay.vo.PayVO;
 
 @Service
 @Transactional
@@ -33,7 +34,7 @@ public class LockerServiceImpl implements LockerService{
 	@Override
 	public void selectLocker(LockerVO vo) {
 		lockerMapper.insertToSelectLocker(vo);
-		lockerMapper.lockerStatusIn(vo);
+//		lockerMapper.lockerStatusIn(vo);
 	}
 	
 	/*==================================
@@ -67,7 +68,7 @@ public class LockerServiceImpl implements LockerService{
 
 	//사물함 이용불가 상태로 변경
 	@Override
-	public void lockerStatusIn(LockerVO vo) {
+	public void lockerStatusIn(PayVO vo) {
 		lockerMapper.lockerStatusIn(vo);
 	}
 

@@ -3,6 +3,7 @@ package kr.spring.locker.service;
 import java.util.List;
 
 import kr.spring.locker.vo.LockerVO;
+import kr.spring.pay.vo.PayVO;
 
 public interface LockerService {
 	//사물함 등록
@@ -23,7 +24,7 @@ public interface LockerService {
 	public int getMyLockerCount(int mem_num);
 	
 	//사물함 이용불가 상태로 변경
-	public void lockerStatusIn(LockerVO vo);
+	public void lockerStatusIn(PayVO vo);
 	//사물함 이용가능 상태로 변경
 	public void lockerStatusOut(LockerVO vo);
 }

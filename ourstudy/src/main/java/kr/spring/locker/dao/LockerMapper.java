@@ -8,6 +8,7 @@ import org.apache.ibatis.annotations.Select;
 import org.apache.ibatis.annotations.Update;
 
 import kr.spring.locker.vo.LockerVO;
+import kr.spring.pay.vo.PayVO;
 
 @Mapper
 public interface LockerMapper {
@@ -41,7 +42,7 @@ public interface LockerMapper {
 	public void insertEndAndDiff(LockerVO vo);
 	//사용불가상태
 	@Update("UPDATE LOCKER_INFO SET locker_status=0 WHERE locker_num=#{locker_num}")
-	public void lockerStatusIn(LockerVO vo);
+	public void lockerStatusIn(PayVO vo);
 	//사용가능상태
 	@Update("UPDATE LOCKER_INFO SET locker_status=1 WHERE locker_num=#{locker_num}")
 	public void lockerStatusOut(LockerVO vo);
