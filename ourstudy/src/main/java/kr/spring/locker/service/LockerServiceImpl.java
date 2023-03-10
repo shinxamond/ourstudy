@@ -28,28 +28,40 @@ public class LockerServiceImpl implements LockerService{
    }
 
 
-	/*=================================
-					MEMBER
-	  =================================*/
-	//사물함 선택
-	@Override
-	public void selectLocker(LockerVO vo) {
-		lockerMapper.insertToSelectLocker(vo);
-//		lockerMapper.lockerStatusIn(vo);
-	}
-	
-	/*==================================
-     			GET DATA
-	==================================*/
-	//사물함 정보 불러오기
-	@Override
-	public List<LockerVO> getLockerList() {
-		return lockerMapper.getLockerList();
-	}
+   /*=================================
+               MEMBER
+     =================================*/
+   //사물함 선택
+   @Override
+   public void selectLocker(LockerVO vo) {
+      lockerMapper.insertToSelectLocker(vo);
+//      lockerMapper.lockerStatusIn(vo);
+   }
+   
+   /*==================================
+              GET DATA
+   ==================================*/
+   //사물함 정보 불러오기
+   @Override
+   public List<LockerVO> getLockerList() {
+      return lockerMapper.getLockerList();
+   }
 
    @Override
    public int getMyLockerCount(int mem_num) {
       return lockerMapper.getMyLockerCount(mem_num);
+   }
+   
+   //내가 지금 사용하는 사물함 종료일자 가져오기
+   @Override
+   public String getLockerEnd(int mem_num) {
+      return lockerMapper.getLockerEnd(mem_num);
+   }
+   
+   //내가 썼던 사물함 중에서 지금 쓰고 있는 사물함 번호 가져오기
+   @Override
+   public Integer getLockerNum(Integer mem_num) {
+      return lockerMapper.getLockerNum(mem_num);
    }
    
    /*=================================
@@ -68,17 +80,19 @@ public class LockerServiceImpl implements LockerService{
    }
 
 
-	//사물함 이용불가 상태로 변경
-	@Override
-	public void lockerStatusIn(PayVO vo) {
-		lockerMapper.lockerStatusIn(vo);
-	}
+   //사물함 이용불가 상태로 변경
+   @Override
+   public void lockerStatusIn(PayVO vo) {
+      lockerMapper.lockerStatusIn(vo);
+   }
 
    //사물함 이용가능 상태로 변경
    @Override
-   public void lockerStatusOut(LockerVO vo) {
-      lockerMapper.lockerStatusOut(vo);
+   public void lockerStatusOut(Integer locker_num) {
+      lockerMapper.lockerStatusOut(locker_num);
    }
+
+
 
 
    
