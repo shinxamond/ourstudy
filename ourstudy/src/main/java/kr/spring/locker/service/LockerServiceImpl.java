@@ -27,24 +27,25 @@ public class LockerServiceImpl implements LockerService{
       lockerMapper.insertLocker(vo);
    }
 
-   /*=================================
-               MEMBER
-     =================================*/
-   //사물함 선택
-   @Override
-   public void selectLocker(LockerVO vo) {
-      lockerMapper.insertToSelectLocker(vo);
-//      lockerMapper.lockerStatusIn(vo);
-   }
-   
-   /*==================================
-              GET DATA
-   ==================================*/
-   //사물함 정보 불러오기
-   @Override
-   public List<LockerVO> getLockerList() {
-      return lockerMapper.getLockerList();
-   }
+
+	/*=================================
+					MEMBER
+	  =================================*/
+	//사물함 선택
+	@Override
+	public void selectLocker(LockerVO vo) {
+		lockerMapper.insertToSelectLocker(vo);
+//		lockerMapper.lockerStatusIn(vo);
+	}
+	
+	/*==================================
+     			GET DATA
+	==================================*/
+	//사물함 정보 불러오기
+	@Override
+	public List<LockerVO> getLockerList() {
+		return lockerMapper.getLockerList();
+	}
 
    @Override
    public int getMyLockerCount(int mem_num) {
@@ -66,11 +67,12 @@ public class LockerServiceImpl implements LockerService{
       lockerMapper.insertEndAndDiff(vo);
    }
 
-   //사물함 이용불가 상태로 변경
-   @Override
-   public void lockerStatusIn(PayVO vo) {
-      lockerMapper.lockerStatusIn(vo);
-   }
+
+	//사물함 이용불가 상태로 변경
+	@Override
+	public void lockerStatusIn(PayVO vo) {
+		lockerMapper.lockerStatusIn(vo);
+	}
 
    //사물함 이용가능 상태로 변경
    @Override
