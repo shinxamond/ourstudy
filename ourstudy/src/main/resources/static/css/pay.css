@@ -115,9 +115,9 @@ div#main_footer .footer-sns{
 	min-height:580px;
 } */
 
-/*======================
-  	   footer 반응형
-========================*/
+/*==================================
+  	  RESPONSIVE FOOTER SETTING
+  ==================================*/
 
 @media screen and (max-width:1320px){
 	.footer-sns{
@@ -137,8 +137,28 @@ div#main_footer .footer-sns{
 	div#main_footer{
 		padding:30px 10px 20px 5px;
 		height:45vh;
+		width:1540px;
+		margin-top:300px;
 	}
 	.footer-main{
 		margin-left:20px;
 	}
+}
+
+/*======================
+  		 responsive
+========================*/
+@media screen and (max-width : 991px){
+	nav#main-sidebar{
+		margin-right:0px;
+	}
+	
+	div#main_body{
+		margin-left:100px;
+	}
+	
+	div#card_top{
+		z-index:-999999;
+	}
+	
 }
