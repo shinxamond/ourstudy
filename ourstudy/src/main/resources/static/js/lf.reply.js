@@ -31,6 +31,8 @@ $(function(){
 					let output = '<div class="item">';
 					output += '<ul class="detail-info">';
 					output += '<li>';
+					output += '<img src="../member/viewProfile.do?mem_num='+item.mem_num+'" width="40" height="40" class="my-photo">';
+					output += '</li>';
 					output += '<li>';
 					if(item.mem_name){
 						output += item.mem_name + '<br>';
