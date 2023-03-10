@@ -306,9 +306,8 @@ ul.detail-info li:last-child{
 	display:inline-block;
 }
 div#reply_div{
-	padding:5px 10px 40px 10px;
+	padding:5px 0px 40px 10px;
 	margin-top:10px;
-	background-color:#eee;
 }
 form#re_form{
 	width:650px;

@@ -46,6 +46,107 @@ div#main_footer{
 	padding:30px 0 20px 280px;
 	height:220px;
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/*====================
+		 댓글
+======================*/
+form#re_form{
+	width:100%;
+	margin-left:15px;
+	margin-top:-10px;
+}
+span.re-title{
+	margin-left:60px;
+}
+span.letter-count{
+	font-size:10pt;
+	color:#999;
+}
+div.inner-text{
+  display:inline-block;
+  position:relative;
+}
+.inner-text,#mre_content{
+	display:block;
+	height:130px;
+	width:101%;
+}
+#inner-submit{
+	  position:absolute;
+	  bottom:0px;
+	  right:85px;
+	  border:none;
+	  color:#E65962;
+	  font-size:18pt;
+}
+#inner-submit:hover{
+	color:white;
+	background-color:#E65962;
+}
+div#reply_div {
+    padding: 5px 0px 0px 10px;
+    margin-top: 10px;
+}
+.btn-outline-pink{
+	color:white;
+	background-color:#F4ABB2;
+	border:none;
+	margin-left:5px;
+}
+.btn-outline-pink:hover,.btn-outline-pink:active{
+	color:#F4ABB2;
+	border:#F4ABB2;
+}
+ul.detail-info li {
+    margin-left: 70px;
+}
+#mre_content{
+	margin-left:30px;
+}
+div#re_first, div#mre_first{
+	margin-bottom:0;
+}
+div#re_second, div#mre_second {
+    float: right;
+    width: 19%;
+    margin-bottom: 10px;
+    margin-right:-70px;
+}
+div#mre_first{
+	text-align:left;
+	padding-left:35px;
+}
+div.sub-item p{
+	margin:10px 0 10px 72px;
+}
+div.sub-item button.modify-btn{
+	margin-left:726px;
+}
+.card-head{
+	margin:30px 0;
+}
+
+
+
+
+
+
+
+
 /*======================
 		반응형
 =======================*/
@@ -537,8 +638,8 @@ h6 {
 	padding:40px 60px 0;
 }
 textarea.content{
-	width:710px;
-	height:70px;
+	width:90%;
+	height:130px;
 	padding:3px 5px 0;
 	resize: none;
 }

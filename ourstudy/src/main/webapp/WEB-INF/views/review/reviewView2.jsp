@@ -5,7 +5,7 @@
 <link rel="stylesheet" href="${pageContext.request.contextPath}/css/information.css">
 <!-- 중앙 컨텐츠 시작 -->
 <script src="${pageContext.request.contextPath}/js/videoAdapter.js"></script>
-<script src="${pageContext.request.contextPath}/js/review.reply.js"></script>
+<script src="${pageContext.request.contextPath}/js/review.reply2.js"></script>
 <!DOCTYPE html>
 <body> 
 <div class="page-main">
@@ -85,40 +85,50 @@
 	</c:if>	
 	</ul>
 	
+	<hr size="1" width="90%" style="margin: 10px auto;">
+	
 	<!-- 댓글 UI 시작 -->
-	<div id="reply_div">
-		<form id="re_form">
-			<input type="hidden" name="r_num" value="${review.r_num}" id="r_num">
-			<div class="inner-text">
-				<textarea rows="3" cols="50" name="revw_content" id="revw_content" class="content"<c:if test="${empty user}">disabled="disabled"</c:if>>
-				<c:if test="${empty user}">로그인해야 작성할 수 있습니다.</c:if></textarea>    		
-				<c:if test="${!empty user}">
-				<div id="re_first">
-					<span class="letter-count">300/300</span>
+	<!-- 댓글 목록 출력 시작-->
+					<div id="output"></div>
+					<div class="paging-button" style="display: none;">
+						<input type="button" class="btn btn-outline-secondary mt-2"
+							value="댓글 더보기" style="margin-right:400px;">
+					</div>
+					<div id="loading" style="display: none;">
+						<img src="${pageContext.request.contextPath}/images/loading.gif"
+							width="50" height="50">
+					</div>
+					<!-- 댓글 목록 출력 끝 -->
+	
+					<div id="reply_div">
+						<span class="re-title" style="font-size: 15pt">댓글</span>&nbsp; <span
+							id="re_first"> <span class="letter-count">300/300</span>
+						</span>
+						<form id="re_form">
+							<input type="hidden" name="r_num" value="${review.r_num}"
+								id="r_num">
+							<div class="inner-text">
+								<textarea class="content form-control rep-content inner-text"
+									name="revw_content" id="revw_content"
+									<c:if test="${empty user}">disabled="disabled"</c:if>><c:if
+										test="${empty user}">로그인해야 작성할 수 있습니다.</c:if></textarea>
+								<c:if test="${!empty user}">
+									<button type="submit" class="btn" id="inner-submit">
+										<i class="fas fa-solid fa-paper-plane"></i>
+									</button>
+								</c:if>
+							</div>
+						</form>
+					</div>
+
+					<div class="card-foot">
+						<div class="align-center">
+							<input type="button" value="목록" id="list_btn"
+								class="btn btn-secondary mb-5"
+								onclick="location.href='list.do'">
+						</div>
+					</div>
 				</div>
-				<div id="re_second">
-					<input type="submit" value="전송" id="inner-submit" class="btn btn-outline-primary">
-				</div>
-				</c:if>
-			</div>
-		</form>
-	</div>
-	<!-- 댓글 목록 출력 -->
-	<div class="card-content">
-		<div id="output"></div>
-			<div class="paging-button" style="display:none;">
-				<input type="button" class="btn btn-secondary btn-sm" value="댓글 더보기">
-			</div>
-			<div id="loading" style="display:none;">
-				<img src="${pageContext.request.contextPath}/images/loading.gif" width="50" height="50">
-			</div>
-			<div class="card-foot">
-			<div class="align-center"> 
-				<input type="button" value="목록" id="list_btn" class="btn btn-secondary btn-sm"
-				onclick="location.href='list.do'">
-			</div>
-		</div>
-	</div>
 	<!-- 댓글 UI 끝 -->	
 		</div>
 </div>
