@@ -73,3 +73,45 @@ div#main_footer .footer-sns{
 .footer-sns a:hover{
 	color: #F3F1F1;
 }
+
+/*==================================
+  	  RESPONSIVE FOOTER SETTING
+  ==================================*/
+
+@media screen and (max-width:1320px){
+	.footer-sns{
+		display:none;
+	}
+	.footer-main{
+		margin-left:80px;
+	}
+}
+@media screen and (max-width:991px) {
+	div#main_body{
+		left:10px;
+	}
+	.footer-sns{
+		display:none;
+	}
+	div#main_footer{
+		padding:30px 10px 20px 5px;
+		height:45vh;
+		width:1540px;
+	}
+	.footer-main{
+		margin-left:20px;
+	}
+}
+
+/*======================
+  		 responsive
+========================*/
+@media screen and (max-width : 991px){
+	nav#main-sidebar{
+		margin-right:0px;
+	}
+	
+	div#main_body{
+		margin-left:300px;
+	}
+}
