@@ -26,7 +26,14 @@ public class LostVO {
 	private String lf_loc;
 	private Date lf_modify_date;
 	private String mem_name;
+	private int mem_auth;
 	
+	public int getMem_auth() {
+		return mem_auth;
+	}
+	public void setMem_auth(int mem_auth) {
+		this.mem_auth = mem_auth;
+	}
 	public int getLf_num() {
 		return lf_num;
 	}
@@ -110,7 +117,7 @@ public class LostVO {
 				", lf_content=" + lf_content + ", f_condition=" + f_condition + 
 				", lf_date=" + lf_date + ", lf_item=" + lf_item + ", lf_time=" + lf_time + 
 				", lf_loc=" + lf_loc + ", lf_modify_date=" + lf_modify_date + 
-				", mem_name=" + mem_name + ", mem_num=" + mem_num + "]";
+				", mem_name=" + mem_name + ", mem_num=" + mem_num + ", mem_auth=" + mem_auth + "]";
 	}
 	
 	

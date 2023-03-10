@@ -13,6 +13,7 @@
 		<h3 style="text-align:center"><b>분실물찾기</b></h3>
 		<div class="card d-flex justify-content-center" id="card-view" >
 		<ul class="card-head">
+		
 			<li>
 				<c:if test="${lost.lf_type==1}">
 					<c:if test="${lost.f_condition==0}"><span style="color:#e32930">[보관중] </span></c:if>
@@ -21,12 +22,13 @@
 				<h3><b>${lost.lf_title}</b></h3>
 			</li>
 			<li>
-				<c:if test="${lost.mem_num == 9}">
+				<b>${lost.mem_name}</b> 
+				<%-- <c:if test="${mem_num.mem_auth == 9}">
 				<b>${lost.mem_name}</b> <img src="/images/favicon.ico">
 				</c:if>
-				<c:if test="${lost.mem_num != 9}">
+				<c:if test="${mem_num.mem_auth == 1}">
 				<b>${lost.mem_name}</b> 
-				</c:if>
+				</c:if>  --%>
 			</li>
 			<li style="color : #868E96; font-size:10pt;"> 
 			<c:if test="${!empty lost.lf_modify_date}">
@@ -56,7 +58,7 @@
 									</script>
 								
 						</div>
-						
+				</li>		
 		</ul>
 	<hr size="1" width="90%" style="margin: 0px auto;">
 	<ul class="card-content">

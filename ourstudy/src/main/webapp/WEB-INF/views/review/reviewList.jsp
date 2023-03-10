@@ -49,7 +49,7 @@
 					</c:if>
 				</div>								
 				<!-- table 시작 -->
-				<div class="content-margin">
+				<div class="content-margin my-5">
 				<c:if test="${count == 0}">
 				<table class="table table-group-divider align-center">
 					<tr>
@@ -73,7 +73,7 @@
 							<c:forEach var="review" items="${list}">
 							<tr>
 								<th scope="row">${review.r_num}</th>
-								<td><span class="truncate-text">
+								<td class="text-left"><span class="truncate-text">
 								<a href="detail.do?r_num=${review.r_num}">${review.r_title}</a>
 								</span></td>
 								<td>${review.mem_name}</td>

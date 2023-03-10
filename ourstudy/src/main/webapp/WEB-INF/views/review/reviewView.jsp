@@ -46,7 +46,7 @@
 			<c:if test="${!empty user && user.mem_num == review.mem_num}">
 			<input type="button" value="수정" class="btn btn-secondary btn-sm"
 				onclick="location.href='update.do?r_num=${review.r_num}'">
-			<input type="button" value="삭제" class="btn btn-secondary btn-sm" id="delete_btn"> 
+			<input type="button" value="삭제" class="btn btn-outline-secondary btn-sm" id="delete_btn"> 
 			<script type="text/javascript">
 				let delete_btn = document.getElementById('delete_btn');
 				delete_btn.onclick=function(){

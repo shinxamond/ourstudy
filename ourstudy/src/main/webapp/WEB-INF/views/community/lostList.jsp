@@ -76,7 +76,7 @@
 								<c:if test="${lost.lf_type == 1}">
 								<th scope="row">습득</th>
 								</c:if>		
-								<td>
+								<td class="text-left">
 									<c:if test="${lost.lf_type==1}">
 										<c:if test="${lost.f_condition==0}"><span style="color:#e32930">[보관중] </span></c:if>
 										<c:if test="${lost.f_condition==1}"><span style="color:#097bd9">[수령완료] </span></c:if>

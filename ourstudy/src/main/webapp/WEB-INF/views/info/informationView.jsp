@@ -27,6 +27,24 @@
 			<c:if test="${empty information.info_modify_date}">
 			작성일 : ${information.info_date}
 			</c:if>
+			<div style="display:inline-block; float:right;">
+				<c:if test="${!empty user && user.mem_auth == 9}">
+					<input type="button" value="수정"  class="btn btn-secondary btn-sm"
+						onclick="location.href='infoUpdate.do?info_num=${information.info_num}'">
+					<input type="button" value="삭제" 
+						class="btn btn-outline-secondary btn-sm"  id="delete_btn"> 
+					
+					<script type="text/javascript">
+						let delete_btn = document.getElementById('delete_btn');
+						delete_btn.onclick=function(){
+							let choice = confirm('삭제하시겠습니까?');
+							if(choice){
+								location.replace('infoDelete.do?info_num=${information.info_num}');
+							}
+						};
+					</script>
+				</c:if>
+			</div>
 		</li>
 	</ul> 
 	<hr size="1" width="90%" style="margin: 0px auto;">
@@ -40,28 +58,9 @@
 		</li>
 	</ul>
 	<hr size="1" width="90%" style="margin: 0px auto;">
-	<ul class="card-foot" >
-		<div class="align-center">
+	<ul class="card-foot align-center" >
 		<input type="button" value="목록" id="list_btn" class="btn btn-secondary btn-sm"
 		           onclick="location.href='informationList.do'">
-			<div style="float:right;">
-			<c:if test="${!empty user && user.mem_auth == 9}">
-			<input type="button" value="수정"  class="btn btn-secondary btn-sm"
-				onclick="location.href='infoUpdate.do?info_num=${information.info_num}'">
-			<input type="button" value="삭제"  id="delete_btn"> 
-			
-			<script type="text/javascript">
-				let delete_btn = document.getElementById('delete_btn');
-				delete_btn.onclick=function(){
-					let choice = confirm('삭제하시겠습니까?');
-					if(choice){
-						location.replace('infoDelete.do?info_num=${information.info_num}');
-					}
-				};
-			</script>
-			</c:if>
-			</div>
-		</div>
 	</ul>
 	</div> <!-- 카드 끝 -->	
 </div>

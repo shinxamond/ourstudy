@@ -12,6 +12,14 @@ public class LostReplyVO {
 	private String re_modify_date;
 	private int mem_num;
 	private String mem_name;
+	private int mem_auth;
+	
+	public int getMem_auth() {
+		return mem_auth;
+	}
+	public void setMem_auth(int mem_auth) {
+		this.mem_auth = mem_auth;
+	}
 	
 	public String getMem_name() {
 		return mem_name;
@@ -61,7 +69,7 @@ public class LostReplyVO {
 	public String toString() {
 		return "LostReplyVO [re_num=" + re_num +", re_date" + re_date + 
 				", re_content" + re_content + ", re_modify_date" + re_modify_date +
-				", lf_num" + lf_num + ", mem_num" + mem_num + ", mem_name" + mem_name +"]";
+				", lf_num" + lf_num + ", mem_num" + mem_num + ", mem_name" + mem_name + ", mem_auth=" + mem_auth +"]";
 	}
 	
 }

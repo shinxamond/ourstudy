@@ -64,9 +64,10 @@
   		              l.lf_item,l.lf_loc,
   		              lf_time,
   		              d.mem_name,
+  		              m.mem_auth,
   		              d.mem_num
-  		             FROM lost_found l JOIN member_detail d
-  		    		 ON l.mem_num = d.mem_num
+  		             FROM (lost_found l JOIN member_detail d ON l.mem_num = d.mem_num)
+					 		    INNER JOIN member m ON d.mem_num= m.mem_num
   		    		<include refid="lostSearch"></include> 
   		      		ORDER BY l.lf_num DESC 
   		      		)a)

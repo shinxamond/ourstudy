@@ -31,7 +31,7 @@
 					</c:if>
 				</div>								
 				<!-- table 시작 -->
-				<div class="content-margin">
+				<div class="content-margin my-5">
 				<c:if test="${count == 0}">
 				<table class="table table-group-divider align-center">
 					<tr>
@@ -57,7 +57,8 @@
 								<th scope="row">${importinfo.info_num}</th>
 								</c:if>	
 								<c:if test="${importinfo.info_pin == 1}">
-								<th scope="row"class="blink"><span style="color:#ffc400">★★★</span><span style="color:#097bd9">필독</span><span style="color:#ffc400">★★★</span></th>
+								<!-- <th scope="row"class="blink"><span style="color:#ffc400">★★★</span><span style="color:#097bd9">필독</span><span style="color:#ffc400">★★★</span></th> -->
+								<th scope="row"class="blink"><span style="color:#097bd9">필독</span></th>
 								</c:if>	
 								<td class="text-left">
 									<a href="infoDetail.do?info_num=${importinfo.info_num}" class="truncate-text">${importinfo.info_title}</a>
