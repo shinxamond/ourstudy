@@ -6,18 +6,21 @@
             canvas.width = 1100;
             canvas.height = 650;
 /*=======================================================
-                       Frame
-  ========================================================*/           
+                       Frame / LINE COLOR
+  ========================================================*/    
         context.beginPath();         
-        context.moveTo(50,50);       
-        context.lineTo(660,50);      //위
-        context.moveTo(50,50); 
-        context.lineTo(50,600);      //왼쪽
-        context.lineTo(1050,600);     //아래
         
-        context.moveTo(730,50);      //위
+        context.strokeStyle = "#f4f3ef" ;		//라인 컬런
+        
+        context.moveTo(50,50);       
+        context.lineTo(660,50);      			//위
+        context.moveTo(50,50); 
+        context.lineTo(50,600);     			//왼쪽
+        context.lineTo(1050,600);     			//아래
+        
+        context.moveTo(730,50);      			//위
         context.lineTo(1050,50);
-        context.lineTo(1050,288);     //오른쪽2
+        context.lineTo(1050,288);     			//오른쪽2
         context.moveTo(1050,372);
         context.lineTo(1050,600);
 
