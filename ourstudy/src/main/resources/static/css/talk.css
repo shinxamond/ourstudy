@@ -389,6 +389,20 @@ table.striped-talk-table tr:nth-child(odd){
   border-radius: 10px;
 }
 
+.message{
+	margin-top: 20px;
+    animation: motion 1.5s /* 속도 */
+               linear 0s   /* 처음부터 끝까지 일정 속도로 진행 */
+               infinite alternate; /* 무한 반복 */
+}
+@keyframes motion {
+  from{
+    transform: translatey(0px);
+  }
+  to{
+    transform: translatey(-60px);
+  }
+}
 
 
 /* 푸터

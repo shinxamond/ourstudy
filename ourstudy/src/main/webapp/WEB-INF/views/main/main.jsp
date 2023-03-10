@@ -175,7 +175,7 @@ $(function(){
 	
 	<button id="roomcheckB" style="position: fixed; right: 40px; bottom: 43px; font-size:55px; color:#e65962; border:none; background-color:#F6E3CE; border-radius: 80px;">📭</button>
 	<span  style="position: fixed; right: 40px; bottom: 30px;">채팅방 확인하기</span>
-	
+	<span class="message" style="position: fixed; right: 100px; bottom: 75px; color:#E65962; font-size:40px">✉</span>
 </form>
 </c:if>
 
@@ -190,6 +190,7 @@ $(function(){
 		</c:if>
 	</c:forEach>
 	<span id="roomc" style="position: fixed; right: 10px; bottom: 30px;"></span>
+	<span class="message" style="position: fixed; right: 100px; bottom: 75px; color:#E65962; font-size:40px">✉</span>
 </c:if>
 
 <!-- Modal -->
