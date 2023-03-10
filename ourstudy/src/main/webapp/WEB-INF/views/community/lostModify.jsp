@@ -2,20 +2,30 @@
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>    
+<link rel="stylesheet" href="${pageContext.request.contextPath}/css/information.css">        
+<style>
+.ck-editor__editable_inline{
+	min-height:250px;
+}
+</style>
 <!-- 중앙 컨텐츠 시작 -->
-
-
+<!DOCTYPE html>
+<body>
+<div class="page-main">
+<div class="content-main">
+<div class="content-right">
 <script src="${pageContext.request.contextPath}/js/ckeditor.js"></script>
 <script src="${pageContext.request.contextPath}/js/uploadAdapter.js"></script>
-<div class="page-main">
-	<h2>분실물찾기 수정</h2>
+	<h3 style="text-align:center"><b>분실물찾기 수정</b></h3>
+	<br>
+	<div class="card d-flex justify-content-center" id="card-view" >
 	<form:form action="lostUpdate.do" id="lost_update_form"
 			modelAttribute="lostVO"  enctype="multipart/form-data">
 	<form:hidden path="lf_num"/>
 		<form:errors element="div" cssClass="error-color"/>
 	<ul>
 		<li>
-			<label for="type">카테고리</label>
+			<label for="type"><b>카테고리</b></label>
 			<form:radiobutton path="lf_type" value="0" id="분실" />분실
 			<form:radiobutton path="lf_type" value="1" id="습득" />습득
 			<script type="text/javascript">
@@ -73,7 +83,7 @@
 			</script>
 		</li>	
 		<li id="f_condition" style="display:none">
-			<label for="condition">습득품 상태</label>
+			<label for="condition"><b>습득품 상태</b></label>
 			<%-- <form:radiobutton path="f_condition" value="0" id="보관중" />보관중
 			<form:radiobutton path="f_condition" value="1" id="수령완료" />수령완료--%>
 			<form:radiobutton path="f_condition" value="0" id="보관중"/>보관중
@@ -81,28 +91,28 @@
 			
 		</li>
 		<li>
-			<label for="lf_title">제목</label>
+			<label for="lf_title"><b>제목</b></label>
 			<form:input path="lf_title"/>
 			<form:errors path="lf_title" cssClass="error-color"/>
 		</li>
 		<li>
-			<label for="lf_item"><span id="lost1">분실</span><span id="get1" style="display:none">습득</span> 물품</label>
+			<label for="lf_item"><b><span id="lost1">분실</span><span id="get1" style="display:none">습득</span> 물품</b></label>
 			<form:input path="lf_item"/>
 			<form:errors path="lf_item" cssClass="error-color"/>
 		</li>
 		<li>
-			<label for="lf_loc"><span id="lost2">분실</span><span id="get2" style="display:none">습득</span> 위치</label>
+			<label for="lf_loc"><b><span id="lost2">분실</span><span id="get2" style="display:none">습득</span> 위치</b></label>
 			<form:input path="lf_loc"/>
 			<form:errors path="lf_loc" cssClass="error-color"/>
 		</li>
 		<li>
-			<label for="lf_time"><span id="lost3">분실</span><span id="get3" style="display:none">습득</span> 날짜</label>
+			<label for="lf_time"><b><span id="lost3">분실</span><span id="get3" style="display:none">습득</span> 날짜</b></label>
 			<input type="datetime-local" id="lf_time" name="lf_time" value = "${lostVO.lf_time}">
 			<form:errors path="lf_time" cssClass="error-color"/>
 			<%-- <form:input path="lf_time"/> --%>
 		</li>  
 		<li>
-				<label for="lf_content">내용</label>
+				<label for="lf_content"><b>내용</b></label>
 				<form:textarea path="lf_content"/>
 				<form:errors path="lf_content" 
 				                  cssClass="error-color"/>
@@ -127,11 +137,13 @@
 			</li>
 	</ul>
 		<div class="align-right">
-			<form:button>수정</form:button>	
-			<input type="button" value="목록" 
+			<form:button id="list_btn" class="btn btn-secondary btn-sm">수정</form:button>	
+			<input type="button" value="목록" class="btn btn-secondary btn-sm"
 			            onclick="location.href='/community/lostList.do'">
 	</div>
 	
 	</form:form>
-	
+	</div>
+</div>
+</div>
 </div>

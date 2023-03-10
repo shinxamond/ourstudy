@@ -1,31 +1,38 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
-<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>    
-<!-- 중앙 컨텐츠 시작 -->
+<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
+<link rel="stylesheet" href="${pageContext.request.contextPath}/css/information.css">    
 <style>
 .ck-editor__editable_inline{
 	min-height:250px;
 }
 </style>
+<!-- 중앙 컨텐츠 시작 -->
+<!DOCTYPE html>
+<body>
+<div class="page-main">
+<div class="content-main">
+<div class="content-right">
 <script src="${pageContext.request.contextPath}/js/ckeditor.js"></script>
 <script src="${pageContext.request.contextPath}/js/uploadAdapter.js"></script>
-<div class="page-main">
-	<h2>안내사항 글 쓰기</h2>
+	<h3 style="text-align:center"><b>안내사항 글쓰기</b></h3>
+	<br>
+	<div class="card d-flex justify-content-center" id="card-view" >
 	<form:form action="infoWrite.do" id="info_write_form"
 			modelAttribute="informationVO"  enctype="multipart/form-data">
 		
 		<ul>
 			<li>
-				<label for="info_title">제목</label>
-				<form:input path="info_title"/>
+				<label for="info_title"><b>제목</b></label>
+				<form:input path="info_title" />
 				<form:errors path="info_title" 
 				                  cssClass="error-color"/>
 			
 			</li>
 			<li>
-				<label for="info_content">내용</label>
-				<form:textarea path="info_content"/>
+				<label for="info_content"><b>내용</b></label>
+				<form:textarea path="info_content" />
 				<form:errors path="info_content" 
 				                  cssClass="error-color"/>
 				<script>
@@ -48,8 +55,8 @@
 			    </script>
 			</li>
 			<li>
-				<label for="upload">파일 첨부</label>
-				<input type="file" name="upload" id="upload">
+				<label for="upload"><b>파일 첨부</b></label>
+				<input type="file" name="upload" id="upload"  >
 				<form:errors element="div" cssClass="error-color"/>
 			</li> 
 		</ul>
@@ -59,9 +66,12 @@
 			   문제점 수정할 때 체크 풀려있음 --%>
 			<form:checkbox path="info_pin" value="1" label="상단에 고정하기" />
 			<form:hidden path="info_pin" value="0" />		
-			<form:button onclick="">등록</form:button>			
-			<input type="button" value="목록" 
+			<form:button onclick="" id="list_btn" class="btn btn-secondary btn-sm">등록</form:button>			
+			<input type="button" value="목록"  class="btn btn-secondary btn-sm"
 			             onclick="location.href='/info/informationList.do'">
 		</div>
 	</form:form>
+	</div>
+</div>
+</div>
 </div>

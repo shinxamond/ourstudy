@@ -487,11 +487,63 @@ h6 {
 .job-card{
 	margin-bottom:30px;
 }
-.card {
+/* .card {
   border: none;
   border-radius: 5px;
   box-shadow: 0px 0 30px rgba(1, 41, 112, 0.1);
+} */
+
+.card {
+	width: 900px;
+	border-radius: 1rem;
+	display: inline-block;
+	padding:20px 0 10px;
+	position: relative;
+	box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 15px 0 rgba(0, 0, 0, 0.19);
+	overflow: hidden;
+	min-width: 200px;
+	
+	margin:0 auto;
 }
+.card-head {
+	padding:10px 60px 0;
+}
+.card-content {
+	padding:40px 60px 0;
+}
+.card-foot {
+	padding:20px 60px 0;
+}
+
+#list_btn{
+	background-color: #E65962;
+	border:none;
+}
+.re-write {
+	padding:40px 60px 0;
+}
+textarea.content{
+	width:710px;
+	height:70px;
+	padding:10px 60px 0;
+	resize: none;
+}
+div#re_div{
+	padding:20px 60px 10px;
+	background-color:#eee;
+}
+div#re_reply{
+	padding:20px 60px 10px;
+	
+}
+.textbox{
+	border : 1px solid #A2A2A2;
+	border-radius : 5px;
+	width : 500px;
+	height : 40px;
+	padding-left : 10px; 
+}
+
 
 .card-header,
 .card-footer {
@@ -525,6 +577,11 @@ h6 {
 .card-img-overlay {
   background-color: rgba(255, 255, 255, 0.6);
 }
+
+
+
+
+
 
 /* Alerts */
 .alert-heading {
@@ -1522,6 +1579,10 @@ h6 {
 
 .error-404 .btn:hover {
   background: #3e4f6f;
+}
+
+.error-color {
+  color: #E65962;
 }
 
 @media (min-width: 992px) {
