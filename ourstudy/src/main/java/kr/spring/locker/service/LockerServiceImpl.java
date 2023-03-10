@@ -65,5 +65,21 @@ public class LockerServiceImpl implements LockerService{
 		lockerMapper.insertEndAndDiff(vo);
 	}
 
+	//사물함 이용불가 상태로 변경
+	@Override
+	public void lockerStatusIn(LockerVO vo) {
+		lockerMapper.lockerStatusIn(vo);
+	}
+
+	//사물함 이용가능 상태로 변경
+	@Override
+	public void lockerStatusOut(LockerVO vo) {
+		lockerMapper.lockerStatusOut(vo);
+	}
+
+
+	
+	
+
 
 }

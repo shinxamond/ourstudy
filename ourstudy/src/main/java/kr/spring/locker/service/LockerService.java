@@ -21,4 +21,9 @@ public interface LockerService {
 	
 	//기존에 등록된 사물함 갯수 검사 불러오기
 	public int getMyLockerCount(int mem_num);
+	
+	//사물함 이용불가 상태로 변경
+	public void lockerStatusIn(LockerVO vo);
+	//사물함 이용가능 상태로 변경
+	public void lockerStatusOut(LockerVO vo);
 }
