@@ -408,10 +408,10 @@ table.striped-talk-table tr:nth-child(odd){
 
 /*
 우체통 마우스 올리면 커진다!!---------*/
-.btn {
+.btnC {
   transition: all 0.2s linear;
 }
-.btn:hover {
+.btnC:hover {
   transform: scale(1.2);
 }
 

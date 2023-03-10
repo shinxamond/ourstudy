@@ -173,14 +173,14 @@ $(function(){
 	<input type="hidden" name="members" value="527">
 	<input type="hidden" name="talkroom_name" id="talkroom_name" value="${user.mem_id}, admin9">
 	
-	<button id="roomcheckB" class="btn" style="position: fixed; right: 40px; bottom: 43px; font-size:55px; color:#e65962; border:none; background-color:#F6E3CE; border-radius: 80px;">📭</button>
+	<button id="roomcheckB" class="btnC" style="position: fixed; right: 40px; bottom: 43px; font-size:55px; color:#e65962; border:none; background-color:#F6E3CE; border-radius: 80px;">📭</button>
 	<span  style="position: fixed; right: 40px; bottom: 30px;">채팅방 확인하기</span>
 	<span class="message" style="position: fixed; right: 100px; bottom: 75px; color:#E65962; font-size:40px">✉</span>
 </form>
 </c:if>
 
 <c:if test="${!empty check}">
-	<button type="button" class="btn btn-primary" data-bs-toggle="modal" id="10" data-id="${room_num}" data-bs-target="#talkview" style="position: fixed; right: 40px; bottom: 43px; background-color:#F6E3CE; border-radius: 80px; border:none;  color:#e65962; font-size:55px;">📭</button>
+	<button type="button" class="btn btn-primary btnC" data-bs-toggle="modal" id="10" data-id="${room_num}" data-bs-target="#talkview" style="position: fixed; right: 40px; bottom: 43px; background-color:#F6E3CE; border-radius: 80px; border:none;  color:#e65962; font-size:55px;">📭</button>
 	<c:forEach var="talk_count" items="${roomList}">
 		<c:if test="${talk_count.room_cnt > 0 }">
 		<span class="c${room_num}" id="talk_inform" style="position: fixed; right: 47px; bottom: 110px;">${talk_count.room_cnt}</span>
