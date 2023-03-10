@@ -1,5 +1,10 @@
 @charset "UTF-8";
 /*
+기본 설정--------------------*/
+a:link {
+  text-decoration: none;
+}
+/*
 읽지 않은 메시지 ---------*/
 #talk_inform {
    	
