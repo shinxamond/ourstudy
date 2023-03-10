@@ -123,11 +123,11 @@
 							<c:if test="${!empty itemVO.item_imgsrc}">
 								<div id="filedel">
 								[${itemVO.item_imgsrc}가 등록되어 있습니다.]
-								<input type="button" value="파일삭제" id="delete">
+								<input type="button" value="파일삭제" id="delete2">
 								</div>
 							 	<script type="text/javascript">
 							 	$(function(){
-							 		$('#delete').click(function(){
+							 		$('#delete2').click(function(){
 							 			let choice = confirm('삭제하시겠습니까?');
 							 			if(choice){
 							 				$.ajax({
