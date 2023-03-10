@@ -17,7 +17,7 @@
 				<button class = "locker-btn" onclick = "location.href = '${pageContext.request.contextPath}/ticket/locker_ticketList.do'">사물함 등록</button>
 				</c:if>
 				<c:if test="${locker_num != 0}">
-				<button class = "locker-btn" onclick = "location.href = '${pageContext.request.contextPath}/ticket/locker_ticketList.do?locker_num=${locker_num}'">사물함 연장: <b>${locker_num}30</b>번</button>
+				<button class = "locker-btn" onclick = "location.href = '${pageContext.request.contextPath}/ticket/locker_ticketList.do?locker_num=${locker_num}'">사물함 연장: <b>${locker_num}</b>번</button>
 				</c:if>
 				<p class = "firstclass-p"><a href = "${pageContext.request.contextPath}/mypage/myPageModify.do" id = "mem_modify_btn" class = "link-font small">정보수정 ></a></p>
 		</div>
@@ -48,11 +48,10 @@
 			<c:if test="${member.mem_status == 0}"><span>이용중인 좌석이 없습니다.</span></c:if>
 			<c:if test="${member.mem_status == 2}">현재 외출중입니다.</c:if>
 			<c:if test="${!empty seat.seat_name}"><span>NO. <b>${seat.seat_name}</b>번 자리</span></c:if>
-			<span class = "data-time" id = "remainTimeZone">잔여시간 : <span class = "data-align">
+			<span class = "data-time" id = "remainTimeZone"><span class = "data-align">
 			<fmt:parseNumber value = "${remainTime / 86400}"  integerOnly="true"/>일 
 			<fmt:parseNumber value = "${((remainTime / 3600) % 3600) % 24}"  integerOnly="true"/>시간
 			<fmt:parseNumber value = "${(remainTime / 60 % 60)+(((remainTime / 60 % 60)%1>0.5)?(1-((remainTime / 60 % 60)%1))%1:-((remainTime / 60 % 60)%1))}" integerOnly="true"/>분
-			
 			</span></span>
 			<br>
 			<div class = "seatcheck-buttons">

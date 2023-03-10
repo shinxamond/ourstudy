@@ -61,7 +61,7 @@
  	 	top: 20%;
   		transform: translateY(-50%);
 		float : right;
-		left : 140px;
+		left : 95px;
 	}
 	.element:nth-child(3) .data-align{
 		position : relative;
@@ -122,18 +122,25 @@
 	#mem_modify_btn{
 		text-decoration: none;
 		color: #000000;
+		font-weight: bold;
 	}
 	#mem_studyTime_btn{
 		text-decoration: none;
 		color: #000000;
+		font-weight: bold;
 	}
 	#mem_point_btn{
 		text-decoration: none;
 		color: #000000;
+		font-weight: bold;
 	}
 	.link-font{
 		text-decoration: none;
 		color: #000000;
+		font-weight: bold;
+	}
+	.mypage-title, .mypage-title .sum-title{
+		text-align: center;
 	}
 	
 	/*========== 물품대여목록 ==========*/

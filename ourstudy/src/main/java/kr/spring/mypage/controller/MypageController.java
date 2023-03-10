@@ -171,11 +171,14 @@ public class MypageController {
 		
 		Float remainTime = mypageService.selectRemainTime(user.getMem_num());
 		
+		int locker_num = mypageService.selectLockerNumByMem_num(user.getMem_num());
+		
 		if(pointSum == null) {
 			pointSum = 0;
 		}
 		logger.debug("<<마이페이지 멤버 정보>> : " + member);
 		
+		model.addAttribute("locker_num", locker_num);
 		model.addAttribute("member", member);
 		model.addAttribute("seat", seat);
 		model.addAttribute("pointSum", pointSum);
@@ -198,9 +201,12 @@ public class MypageController {
 		
 		Float remainTime = mypageService.selectRemainTime(user.getMem_num());
 		
+		int locker_num = mypageService.selectLockerNumByMem_num(user.getMem_num());
 		if(pointSum == null) {
 			pointSum = 0;
 		}
+		
+		model.addAttribute("locker_num", locker_num);
 		model.addAttribute("member", member);
 		model.addAttribute("seat", seat);
 		model.addAttribute("pointSum", pointSum);
@@ -242,9 +248,13 @@ public class MypageController {
 		
 		Float remainTime = mypageService.selectRemainTime(user.getMem_num());
 		
+		int locker_num = mypageService.selectLockerNumByMem_num(user.getMem_num());
+		
 		if(pointSum == null) {
 			pointSum = 0;
 		}
+		
+		model.addAttribute("locker_num", locker_num);
 		model.addAttribute("member", member);
 		model.addAttribute("seat", seat);
 		model.addAttribute("pointSum", pointSum);
@@ -315,9 +325,12 @@ public class MypageController {
 		
 		Float remainTime = mypageService.selectRemainTime(user.getMem_num());
 		
+		int locker_num = mypageService.selectLockerNumByMem_num(user.getMem_num());
 		if(pointSum == null) {
 			pointSum = 0;
 		}
+		
+		model.addAttribute("locker_num", locker_num);
 		model.addAttribute("member", member);
 		model.addAttribute("seat", seat);
 		model.addAttribute("pointSum", pointSum);
@@ -379,9 +392,13 @@ public class MypageController {
 		
 		Float remainTime = mypageService.selectRemainTime(user.getMem_num());
 		
+		int locker_num = mypageService.selectLockerNumByMem_num(user.getMem_num());
+		
 		if(pointSum == null) {
 			pointSum = 0;
 		}
+		
+		mav.addObject("locker_num", locker_num);
 		mav.addObject("member", member);
 		mav.addObject("seat", seat);
 		mav.addObject("pointSum", pointSum);
@@ -429,9 +446,12 @@ public class MypageController {
 		
 		Float remainTime = mypageService.selectRemainTime(user.getMem_num());
 		
+		int locker_num = mypageService.selectLockerNumByMem_num(user.getMem_num());
+		
 		if(pointSum == null) {
 			pointSum = 0;
 		}
+		mav.addObject("locker_num", locker_num);
 		mav.addObject("member", member);
 		mav.addObject("seat", seat);
 		mav.addObject("pointSum", pointSum);
