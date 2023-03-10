@@ -81,6 +81,10 @@ public class MypageController {
 		
 		Float remainTime = mypageService.selectRemainTime(user.getMem_num());
 		
+		System.out.println("리메인 가져오자마자 : " + remainTime);
+
+		System.out.println("리메인 가져오자마자 : " + remainTime * 3600);
+		
 		int locker_num = mypageService.selectLockerNumByMem_num(user.getMem_num());
 		
 		if(pointSum == null) {
@@ -138,8 +142,8 @@ public class MypageController {
 		Map<String, ?> flashMap = (Map<String, ?>) RequestContextUtils.getInputFlashMap(request);
 		
 		if(flashMap!=null) {
-			System.out.println("111"+ flashMap.get("mem_statusForCheckIn"));
             model.addAttribute("mem_statusForCheckIn", flashMap.get("mem_statusForCheckIn"));
+            //String stat = (String) flashMap.get("mem_statusForCheckIn");
             if(flashMap.get("mem_numForCheckIn") != null || flashMap.get("mem_numForCheckIn") != "") {
             	model.addAttribute("mem_numForCheckIn", flashMap.get("mem_numForCheckIn"));
             }

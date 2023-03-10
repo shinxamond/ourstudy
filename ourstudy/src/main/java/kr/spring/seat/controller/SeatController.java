@@ -7,6 +7,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import javax.mail.Session;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
@@ -132,7 +133,7 @@ public class SeatController {
    //DB에 저장된 잔여시간 가져오기
    @RequestMapping("/seat/deadlineCheck.do")
    @ResponseBody
-   public Map<String, String> deadlineCheck(Integer mem_num){
+   public Map<String, String> deadlineCheck(Integer mem_num, HttpSession session){
 	   
 	   Map<String, String> mapAjax = new HashMap<String, String>();
 	   Float hour = seatService.getMemberHour(mem_num);
@@ -142,13 +143,18 @@ public class SeatController {
 	   
 	   logger.debug(">>>>>>>====DB에서 가져온 시간 변환 후 ====>>>>>>>" + hour);
 	   
-	   if(hour > 300.0) {
-		   mapAjax.put("time", Float.toString(hour));
-		   mapAjax.put("result", "success");
-	   }else if(hour <= 300.0) {
-		   mapAjax.put("result", "lessThanFive");
-	   }
 	   
+	   
+	   if(hour <= 61.0) {
+		   mapAjax.put("result", "setLogout");
+	   }else if(hour >= 300.0 && hour <= 360.0) {
+		   mapAjax.put("time", Float.toString(hour));
+		   mapAjax.put("result", "lessThanFive");
+	   }else {
+		   mapAjax.put("time", Float.toString(hour));
+		   mapAjax.put("result", "success");		   
+	   }
+
 	   return mapAjax;
    }
    
@@ -211,7 +217,7 @@ public class SeatController {
    
    //외출처리
    @RequestMapping("/seat/hold.do")
-   public String Hold(@RequestParam int seat_num, HttpSession session) {
+   public String Hold(@RequestParam int seat_num, HttpSession session, RedirectAttributes attributes) {
 	  MemberVO member = (MemberVO)session.getAttribute("user");
       int mem_num = (Integer)session.getAttribute("user_num");      
       
@@ -257,6 +263,8 @@ public class SeatController {
       seatService.insertTotal_time(seatVO);
       
       member.setMem_status(seatService.getMem_status(mem_num));
+      
+      attributes.addFlashAttribute("mem_statusForCheckIn", member.getMem_status());
       
       return "redirect:/mypage/myPageMain.do";
    }

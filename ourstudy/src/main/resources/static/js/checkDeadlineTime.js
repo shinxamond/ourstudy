@@ -12,7 +12,10 @@ $(function(){
 	var reloadDiv = $('#remainTimeZone');
 	
 	if(sessionStorage.getItem('isSelect') == '1') {
-		sessionStorage.setItem('plusSec', '0');
+		
+		if(sessionStorage.getItem('plusSec') == null){
+			sessionStorage.setItem('plusSec', '0');	
+		}
 		
 	  	setInterval(function(){
 	  		var updateSec = sessionStorage.getItem('plusSec');
@@ -21,13 +24,15 @@ $(function(){
 	  		
 	  		sessionStorage.setItem('plusSec', updateSec);
 	  		
+			console.log(updateSec);
+	
 	  		if(updateSec >= 10) {
 	  			sessionStorage.setItem('plusSec', '0');
 	  			
 	  			let mem_num = sessionStorage.getItem('isSelectMemnum');
 	  			let seat_num = sessionStorage.getItem('isSelectSeatnum');
 	  			let newRemain = 0;
-	  			
+	  			let remainTime;
 	  			//컨트롤러에 mem_num 보내서 mem_ticket_hour값 가져오기
 	  			$.ajax({
 	  				url : '../seat/deadlineCheck.do',
@@ -36,7 +41,7 @@ $(function(){
 	  				dataType : 'json',
 	  				success : function(param){
 	  					if(param.result == 'success') {
-	  						let remainTime = parseFloat(param.time);
+	  						remainTime = parseFloat(param.time);
 	  						newRemain =	parseFloat(remainTime) - parseFloat(60.0);	
 	  						$.ajax({ 
 	  							url : '../seat/updateDeadline.do',
@@ -45,9 +50,8 @@ $(function(){
 	  							dataType : 'json',
 	  							success : function(param){
 	  								if(param.result == 'success') {
-	  									//alert('처리를 안해도되지만 굳이 껴넣음');
 										if(reloadDiv != ''){
-											$('#remainTimeZone').load(location.href + '#remainTimeZone');
+											$('#remainTimeZone').load('../mypage/myPageMain.do #remainTimeZone');
 										}
 	  								}else {
 	  									alert('잔여시간 업데이트 오류 발생');
@@ -60,11 +64,74 @@ $(function(){
 	  					}else if(param.result == 'lessThanFive') {
 	  						let check = confirm('잔여시간이 5분 남았습니다. 이용권을 추가로 결제할까요?');
 	  						if(check) {
+	  						remainTime = parseFloat(param.time);
+	  						newRemain =	parseFloat(remainTime) - parseFloat(60.0);			
+	  						$.ajax({ 
+	  							url : '../seat/updateDeadline.do',
+	  							data : {newRemain : newRemain},
+	  							type : 'post',
+	  							dataType : 'json',
+	  							success : function(param){
+	  								if(param.result == 'success') {
+										if(reloadDiv != ''){
+											$('#remainTimeZone').load('../mypage/myPageMain.do #remainTimeZone');
+										}
+	  								}else {
+	  									alert('잔여시간 업데이트 오류 발생');
+	  								}
+	  							},
+	  							error : function(){
+	  								alert('NETWORK ERROR(updateTime)');
+	  							}
+	  						});								
 	  							location.href = '../ticket/study_ticketList.do?seat_num=' + seat_num;							
 	  						}else {
+	  						remainTime = parseFloat(param.time);
+	  						newRemain =	parseFloat(remainTime) - parseFloat(60.0);		
+	  						$.ajax({ 
+	  							url : '../seat/updateDeadline.do',
+	  							data : {newRemain : newRemain},
+	  							type : 'post',
+	  							dataType : 'json',
+	  							success : function(param){
+	  								if(param.result == 'success') {
+										if(reloadDiv != ''){
+											$('#remainTimeZone').load('../mypage/myPageMain.do #remainTimeZone');
+										}
+	  								}else {
+	  									alert('잔여시간 업데이트 오류 발생');
+	  								}
+	  							},
+	  							error : function(){
+	  								alert('NETWORK ERROR(updateTime)');
+	  							}
+	  						});
 	  							alert('5분 후 자동 퇴실됩니다.');
 	  						}
-	  					}else {
+	  					}else if(param.result == 'setLogout'){
+	  						$.ajax({ 
+	  							url : '../seat/updateDeadline.do',
+	  							data : {newRemain : 0.0},
+	  							type : 'post',
+	  							dataType : 'json',
+	  							success : function(param){
+	  								if(param.result == 'success') {
+										if(reloadDiv != ''){
+
+										}
+	  								}else {
+	  									alert('종료 후 잔여시간 업데이트 오류 발생');
+	  								}
+	  							},
+	  							error : function(){
+	  								alert('NETWORK ERROR(updateTimeWhenLogout)');
+	  							}
+	  						});
+							location.href="../seat/out.do?seat_num="+seat_num;
+							alert('잔여시간이 모두 소진되었습니다.');
+							sessionStorage.setItem("isSelect", '0');
+							location.href = "../seat/selectForm.do";
+						}else {
 	  						alert('잔여시간 불러오기 오류 발생');
 	  					}
 	  				},

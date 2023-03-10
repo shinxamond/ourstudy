@@ -170,7 +170,7 @@
 	
 	/*======= 회원 정보 ========*/
 	.mem-info-content{
-		margin : 30px 80px;
+		margin : 30px auto;
 	}
 	.info-content table{
 		margin : 0 auto;
@@ -235,6 +235,15 @@
 	#home_btn{
 		background-color: #384048;
 		color: #FFFFFF;
+	}
+	form#myPageModify_form{
+		width : 100%;
+	}
+	.mem-info-content table{
+		margin : 0 auto;
+	}
+	form#myPageModify_form th{
+		width : 130px;
 	}
 	
 	/*======== 포인트 내역 ==========*/
@@ -318,6 +327,13 @@
 	
 }
 
+
+
+
+
+
+
+
 /*========= 기본 크기 화면 ========= */
 @media screen and (min-width:991px) { 
 	*{
@@ -337,6 +353,9 @@
 		text-decoration: none !important;
 	    color: #000;
 	}
+	div#main{
+		padding-left:240px;
+	}
 	.btn-toggle-nav a{
 		color:black;
 	}
@@ -348,7 +367,7 @@
 	
 	div#main_footer{
 		background-color:#B4AAB1;
-		padding:30px 0 20px 27px;
+		padding:30px 0 20px 270px;
 		height:220px;
 	}
 	#footer-content {
