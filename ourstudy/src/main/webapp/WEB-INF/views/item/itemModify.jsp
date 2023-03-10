@@ -39,11 +39,22 @@
 								<input type="button" value="파일삭제" id="delete">
 								</div>
 							 	<script type="text/javascript">
-							 	$(function(){
-							 		$('#delete').click(function(){
-							 			let choice = confirm('삭제하시겠습니까?');
-							 			if(choice){
-							 				$.ajax({
+							 	$("#delete").click(function () {
+								    Swal.fire({
+								      title: '정말로 삭제 하시겠습니까?',
+								      text: "다시 되돌릴 수 없습니다. 신중하세요.",
+								      icon: 'warning',
+								      showCancelButton: true,
+								      confirmButtonColor: '#3085d6',
+								      cancelButtonColor: '#d33',
+								      confirmButtonText: '삭제',
+								      cancelButtonText: '취소',
+								      reverseButtons: false, // 버튼 순서 거꾸로
+								      
+								    }).then((result) => {
+								      if (result.isConfirmed) {
+								    	  
+								    	  $.ajax({
 							 					url:'deleteFile.do',
 							 					data:{item_num:${itemVO.item_num}},
 							 					type:'post',
@@ -59,9 +70,9 @@
 							 						alert('네트워크 오류 발생');
 							 					}
 							 				});
-							 			}
-							 		})
-							 	});
+								      }
+								    })
+								  });
 							 	</script>
 							</c:if>
 							
@@ -121,23 +132,34 @@
 							<input type="file" name="upload" id="upload"><br>
 							<form:errors path="item_ufile" cssClass="error-color"/><br>
 							<c:if test="${!empty itemVO.item_imgsrc}">
-								<div id="filedel">
+								<div id="filedel2">
 								[${itemVO.item_imgsrc}가 등록되어 있습니다.]
 								<input type="button" value="파일삭제" id="delete2">
 								</div>
 							 	<script type="text/javascript">
-							 	$(function(){
-							 		$('#delete2').click(function(){
-							 			let choice = confirm('삭제하시겠습니까?');
-							 			if(choice){
-							 				$.ajax({
+							 	$("#delete2").click(function () {
+								    Swal.fire({
+								      title: '정말로 삭제 하시겠습니까?',
+								      text: "다시 되돌릴 수 없습니다. 신중하세요.",
+								      icon: 'warning',
+								      showCancelButton: true,
+								      confirmButtonColor: '#3085d6',
+								      cancelButtonColor: '#d33',
+								      confirmButtonText: '삭제',
+								      cancelButtonText: '취소',
+								      reverseButtons: false, // 버튼 순서 거꾸로
+								      
+								    }).then((result) => {
+								      if (result.isConfirmed) {
+								    	  
+								    	  $.ajax({
 							 					url:'deleteFile.do',
 							 					data:{item_num:${itemVO.item_num}},
 							 					type:'post',
 							 					dataType:'json',
 							 					success:function(param){
 							 						if(param.result=="success"){
-							 							$('#filedel').hide();
+							 							$('#filedel2').hide();
 							 						}else{
 							 							alert('파일 삭제 오류 발생');
 							 						}
@@ -146,9 +168,9 @@
 							 						alert('네트워크 오류 발생');
 							 					}
 							 				});
-							 			}
-							 		})
-							 	});
+								      }
+								    })
+								  });
 							 	</script>
 							</c:if>
 							
