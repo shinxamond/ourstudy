@@ -12,15 +12,15 @@
 		<div class = "point-content">
 		<c:if test="${count > 0}">
 			<div class = 'align-selectbox'>
-				<select name="keyfield" id="keyfield">
+				<select name="keyfield" class="keyfield">
 					<option value = "1"<c:if test="${param.keyfield == 1}">selected</c:if>>전체내역</option>
 					<option value = "2" <c:if test="${param.keyfield == 2}">selected</c:if>>적립내역</option>
 					<option value = "3" <c:if test="${param.keyfield == 3}">selected</c:if>>사용내역</option>
 				</select>
-				<script type="text/javascript">
-					$('#keyfield').change(function(){
-						location.href = "/mypage/pointList.do?keyfield=" + $(this).val();
-					});
+ 				<script type="text/javascript">
+ 					$(document).on('change','.keyfield', function(){
+ 						location.href = "/mypage/pointList.do?keyfield=" + $(this).val();
+ 					});
 				</script>
 			</div>
 		</c:if>		
