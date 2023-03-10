@@ -17,7 +17,7 @@
 		<div id="userList-area" class="card">
 			<a href="userRental.do?item_index=${item.item_index}"><img src="imageView.do?item_num=${item.item_num}" width="250" height="250" class="my-photo">
 			<br>
-			<span id="item_name"> ${item.item_title}</span>
+			<span id="item_name" style="font-size:17px;"> ${item.item_title}</span>
 			</a>
 		</div>
 		</c:forEach>
@@ -29,7 +29,7 @@
 		<div id="userlist" class="card">
 			<a href="userRental.do?item_index=${item.item_index}"><img src="imageView.do?item_num=${item.item_num}" width="150" height="130" class="my-photo">
 			<br>
-			<span id="item_name"> ${item.item_title}</span>
+			<span id="item_name" style="font-size:17px;"> ${item.item_title}</span>
 			</a>
 		</div>
 		</c:forEach>

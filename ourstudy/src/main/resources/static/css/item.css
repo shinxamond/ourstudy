@@ -39,6 +39,14 @@ div#userList #userList-area{
 	position: relative;
 	text-align:center;
 } 
+.it1 a:link{
+	text-decoration:none;
+	color:#000000;
+}
+.it1 a:visited {
+	text-decoration:none;
+	color:#000000;
+}
 
 /*
 대여 폼---------*/
