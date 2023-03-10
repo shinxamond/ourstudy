@@ -8,13 +8,13 @@
     pageEncoding="UTF-8"%>
 	
 <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
-
 <script>
 window.onload = function() {
     Swal.fire({
     	imageUrl: '${pageContext.request.contextPath}/images/main.png',
-    	imageWidth: 250,
-    	imageHeight: 250,
+    	confirmButtonColor: '#E65962 ',
+    	imageWidth: 150,
+    	imageHeight: 150,
         title: '${message}',
         
     }).then((result) => {

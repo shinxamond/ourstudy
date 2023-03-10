@@ -24,12 +24,7 @@ body{
 	margin:20px 10px 5px 10px;
 	padding:10px;
 }
-@media screen and (max-width:1540px) {
-	.main-right-card{
-		box-shadow: 2px 4px 8px #babebc;
-		display:flex;
-	}
-}
+
 @media screen and (min-width:1541px) {
 	.main-right-card{
 		box-shadow: 2px 4px 8px #babebc;
@@ -69,6 +64,17 @@ body{
 	width:382px;
 	height:400px;
 	top:-75px;
+}
+#all_todo td{
+	max-width: 250px;
+	margin-left:5px;
+	white-space: nowrap;
+	text-overflow: ellipsis;
+	overflow:hidden;
+}
+#all_todo td a:hover{
+	text-decoration:none;
+	color:black;
 }
 .guitar{
 	width:330px;
@@ -252,7 +258,12 @@ div#main_footer .footer-sns{
 		 반응형
 =====================*/
 
-
+@media screen and (max-width:1540px) {
+	.main-right-card{
+		box-shadow: 2px 4px 8px #babebc;
+		display:flex;
+	}
+}
 @media screen and (min-width:1520px) {
 
 	   .main_card{
@@ -279,11 +290,6 @@ div#main_footer .footer-sns{
 		}
 		#study_time{
 			width:450px;
-			height:400px;
-			top:-75px;
-		}
-		#all_todo{
-			width:382px;
 			height:400px;
 			top:-75px;
 		}
@@ -347,14 +353,14 @@ div#main_footer .footer-sns{
 		top:-10px;
 		left:15px;
 	}
-	#main_info_title{
-		width:130px;
+	#all_todo td{
+		max-width: 150px;
+		max-height:1px;
+		margin-left:5px;
 	}
 	.guitar{
 		display:none;	
 	}
-	
-	
 }
 
 @media screen and (max-width:1320px){
@@ -400,6 +406,11 @@ div#main_footer .footer-sns{
 		height:390px;
 		top:-35px;
 		left:0;
+	}
+	#all_todo td{
+		max-width: 400px;
+		max-height:1px;
+		margin-left:5px;
 	}
 	#main_info_title{
 		width:250px;

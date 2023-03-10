@@ -105,15 +105,15 @@
 		</div>
 		<div class="card main_card" id="all_todo">
 			<span class="main-title" style="margin:15px 0 18px 5px;">안내사항 </span>
-			<table class="table table-hover table-group-divider table table-striped">
+			<table class="table table-hover table-group-divider table table-striped" id="info-table">
 				<tr style="background-color:#F4ABB2;">
-					<th width="250" class="align-center" style="color:black;" id="main_info_title">제목</th>
+					<th class="align-center" id="main_info_title">제목</th>
 					<th class="align-center" style="color:black;" id="main_info_date">작성일</th>
 				</tr>
 				<c:forEach var="info" items="${infoList}">
 				<tr>
 					<td>
-						<a href="${pageContext.request.contextPath}/info/infoDetail.do?info_num=${info.info_num}" style="margin-left:5px;">${info.info_title}</a>
+						<a href="${pageContext.request.contextPath}/info/infoDetail.do?info_num=${info.info_num}">${info.info_title}</a>
 					</td>
 					<td class="align-center">	
 						${info.info_date}
