@@ -121,9 +121,9 @@
 	        	 <b><span id="roomname"></span></b><br>
 				채팅 멤버 : <span id="name"></span>
 	        </div>
-			<div class="align-right">
+			<!-- <div class="align-right">
 				<input type="button" value="채팅방 나가기" id="delete_talkroom">
-			</div>
+			</div> -->
 			 <button type="button" class="close" data-dismiss="modal" style="background-color:white"onclick="start();">&times;</button>
         </div>
  
