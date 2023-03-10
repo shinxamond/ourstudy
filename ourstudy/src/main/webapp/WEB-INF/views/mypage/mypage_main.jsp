@@ -75,7 +75,7 @@
 			<c:forEach var = "item" items = "${list }">
 			<tr class = "main-item-tr">
 				<td>
-					<img src="${pageContext.request.contextPath}/item/imageView.do?item_num=${item.item_num}" width="50" height="50" class="my-photo"><span>  &nbsp;<a href = "${pageContext.request.contextPath}/item/userRental.do?item_index=${item.item_index}">${item.item_title}</a></span>
+					<img src="${pageContext.request.contextPath}/item/imageView.do?item_num=${item.item_num}" width="50" height="50" class="my-photo"><span>  &nbsp;<a href = "${pageContext.request.contextPath}/item/userRental.do?item_index=${item.item_index}" id="item_name">${item.item_title}</a></span>
 				</td>
 				<td>${item.item_start}~${item.item_utime}</td>
 				
@@ -101,7 +101,7 @@
 				</script>
 				<c:if test="${item.item_r_status==2}">
 				<span style = "font-weight : bold;">대여중</span>
-				<td><input type="button" value="반납" onclick="location.href='${pageContext.request.contextPath}/item/userItemReturn.do?item_num=${item.item_num}'"></td>
+				<td><input type="button" class="btn" id="modify_btn" value="반납" onclick="location.href='${pageContext.request.contextPath}/item/userItemReturn.do?item_num=${item.item_num}'"></td>
 				</c:if>
 				
 				<c:if test="${item.item_r_status==3}">

@@ -136,6 +136,27 @@
 		color: #000000;
 	}
 	
+	/*========== 물품대여목록 ==========*/
+	.sum-title{
+		text-align : left;
+		font-weight : bold;
+	}
+	.main-item-tr:hover{
+		background : rgba(0,102,51, 0.3);
+	}
+	#main_item_table{
+		margin : 0 auto;
+		width : 100%;
+	}
+	#main_item_table tr th, #main_item_table tr td{
+		text-align : center;
+		height : 50px;
+	}
+	#item_name{
+		text-decoration: none;
+		color: #000000;
+	}
+	
 	/*======= 회원 정보 ========*/
 	.mem-info-content{
 		margin : 30px 80px;
@@ -198,10 +219,6 @@
 		background-color: #384048;
 		color: #FFFFFF;
 	}
-	
-	/*======== 비밀번호 변경 ========*/
-	
-	
 	
 	/*======= 입퇴실내역 =======*/
 	#home_btn{
@@ -534,12 +551,11 @@
 		text-align : center;
 		height : 50px;
 	}
-	#main_item_table input[type="button"]{
-		border : 1px solid #A2A2A2;
-		border-radius : 5px;
-		padding : 2px 5px;
-		background-color : white;
+	#item_name{
+		text-decoration: none;
+		color: #000000;
 	}
+
 	/*========마이페이지 회원정보관련========*/
 	/*
 	기본*/
