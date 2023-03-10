@@ -389,6 +389,8 @@ table.striped-talk-table tr:nth-child(odd){
   border-radius: 10px;
 }
 
+/*
+움직이는 메시지 이모티콘---------*/
 .message{
 	margin-top: 20px;
     animation: motion 1.5s /* 속도 */
@@ -404,6 +406,14 @@ table.striped-talk-table tr:nth-child(odd){
   }
 }
 
+/*
+우체통 마우스 올리면 커진다!!---------*/
+.btn {
+  transition: all 0.2s linear;
+}
+.btn:hover {
+  transform: scale(1.2);
+}
 
 /* 푸터
 ---------------------------*/
