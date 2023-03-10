@@ -11,13 +11,13 @@
 	href="${pageContext.request.contextPath}/css/ticket.css">
 <script src="https://cdn.iamport.kr/v1/iamport.js"></script>
 <div id="main_content_body" class="container">
-	<div class="container d-flex justify-content-center">
+	<div class="container" id="ticket_card">
 	<div class="row-md-6">
 		<c:set var="first_kind" value="0" />
 		<c:forEach var="ticket" items="${ticket}">
 			<c:if test="${ticket.ticket_kind == 1}">
 				<div class="card-group" style="margin-top: 30px;">
-					<div class="card" id="ticket_card">
+					<div class="card" >
 						<input type="hidden" value="${ticket.ticket_num}">
 						<div class="card-body">
 							${ticket.ticket_name}

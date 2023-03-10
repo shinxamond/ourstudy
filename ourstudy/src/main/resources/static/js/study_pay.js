@@ -172,11 +172,12 @@ $(function(){
 		}
 	});
   }
-   
+
    function requestCardPay() {
    		$.ajax({
 		url:'checkTicket.do',
-		data:{mem_ticket_hour:$('#ticket_hour').attr('data-hournum'),
+		data:{ticket_num:$('#ticket_num').attr('data-ticketnum'),
+			  mem_ticket_hour:$('#ticket_hour').attr('data-hournum'),
 			  mem_ticket_term:$('#ticket_term').attr('data-termnum')},
 		dataType:'json',
 		success:function(param){
@@ -189,12 +190,14 @@ $(function(){
 			else if(param.result=='success'){
 				//============카드 결제=============//
 				var pprice = $('#final_price').text();
+				var name = $('#mem_name').attr('user.mem_name');
 		     	 IMP.request_pay({
 			         pg : "html5_inicis.INIpayTest",
 			         pay_method : "card",
 			         merchant_uid : "ourstudy_" + new Date().getTime(), // 주문번호
 			         name : pname,
 			         amount : pprice,
+					 buyer_name : name,
 			         buyer_email :'',
 			         
 			      }, function(rsp) { // callback   
