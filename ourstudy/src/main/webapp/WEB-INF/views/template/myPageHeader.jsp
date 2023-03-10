@@ -49,7 +49,7 @@
 			<c:if test="${member.mem_status == 2}">현재 외출중입니다.</c:if>
 			<c:if test="${!empty seat.seat_name}"><span>NO. <b>${seat.seat_name}</b>번 자리</span></c:if>
 			<span class = "data-time">잔여시간 : <span class = "data-align" id = "remainTimeZone">
-			<fmt:parseNumber value = "${remainTime / 86400}"  integerOnly="true"/>일 
+			<fmt:parseNumber value = "${remainTime < 120 ? 0 : remainTime / 86400}"  integerOnly="true"/>일 
 			<fmt:parseNumber value = "${((remainTime / 3600) % 3600) % 24}"  integerOnly="true"/>시간
 			<fmt:parseNumber value = "${(remainTime / 60 % 60)+(((remainTime / 60 % 60)%1>0.5)?(1-((remainTime / 60 % 60)%1))%1:-((remainTime / 60 % 60)%1))}" integerOnly="true"/>분
 			</span></span>
