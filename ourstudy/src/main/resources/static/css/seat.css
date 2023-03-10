@@ -1,5 +1,78 @@
 
 /*================================
+			BASIC  SETTING
+  ===============================*/
+@font-face {
+    font-family: 'Pretendard-Regular';
+    src: url('https://cdn.jsdelivr.net/gh/Project-Noonnu/noonfonts_2107@1.1/Pretendard-Regular.woff') format('woff');
+    font-weight: 400;
+    font-style: normal;
+}
+
+body{
+	background-color:#3d3f46 !important;
+	height:100%;
+	position:relative;
+}
+#main_content_body{
+	position:relative;
+}
+
+/*================================
+			FOOTER SETTING
+  ===============================*/
+#footer-content{
+	line-height:1.7em;
+	font-family: 'Pretendard-Regular';
+	font-size:11pt;
+}
+#footer-logo{
+	color:#F3F1F1;
+	font-size:12pt;
+	padding:0px;
+}
+div#main_footer .footer-main{
+	float:left;
+}
+div#main_footer .footer-sns{
+	float:right;
+	margin-right:100px;
+	word-spacing:15px;
+	padding-top:40px;
+}
+.footer-sns a:hover{
+	color: #F3F1F1;
+}
+/*==================================
+  	  RESPONSIVE FOOTER SETTING
+  ==================================*/
+
+@media screen and (max-width:1320px){
+	.footer-sns{
+		display:none;
+	}
+	.footer-main{
+		margin-left:80px;
+	}
+}
+@media screen and (max-width:991px) {
+	div#main_body{
+		left:10px;
+	}
+	.footer-sns{
+		display:none;
+	}
+	div#main_footer{
+		padding:30px 10px 20px 5px;
+		height:45vh;
+		width:1540px;
+	}
+	.footer-main{
+		margin-left:20px;
+	}
+}
+
+/*================================
 			FIX MAIN CSS
   ===============================*/
 div#main_body{
@@ -25,9 +98,9 @@ div#main{
 	}
 }
 	
-/* =========================
-		  FRAME
-   =========================*/
+/* ==============================
+		  		FRAME
+   ==============================*/
 	.seat-option{
 		font-size:12px;
 		padding:5px; margin:5px;
@@ -54,9 +127,9 @@ div#main{
 	#canvas{
 		position:relative;
 	}
-/*===========================
-		GUIDE LETTER
-  ===========================*/
+/*================================
+			GUIDE LETTER
+  ================================*/
   .guide-letter{
   	font-weight:900;
   	font-size:16px;
@@ -70,9 +143,9 @@ div#main{
   #info{left:970px; bottom:468px;}
   #toilet{left:672px; bottom:943px;}
   
-/*===========================
-		SEAT BLOCKS
-  ===========================*/
+/*=================================			
+			SEAT BLOCKS
+  ================================*/
 input[data-num="A1"]{
 	bottom:445px; right:155px;
 }
@@ -316,11 +389,11 @@ button#hold{
 	background-color:#F8B1AA;
 }
 /*===========================
-		MEDIA  QUERY
+		RESPONSIVE NAV
   ===========================*/
-  @media screen and (max-width:1200px) {
+  @media screen and (max-width:991px) {
 
     #navbar{
-    	display:none;
+    	width:1540px;
     }
 }
