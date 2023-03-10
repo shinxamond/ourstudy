@@ -17,6 +17,7 @@ body{
 	position:relative;
 }
 .container{
+	display:flex;
 	height: 80vh;
 }
 #card_top{
@@ -126,6 +127,9 @@ div#main_footer .footer-sns{
 	.footer-main{
 		margin-left:80px;
 	}
+	.container{
+	display:flex;
+}
 }
 @media screen and (max-width:991px) {
 	div#main_body{

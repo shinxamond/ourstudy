@@ -11,8 +11,7 @@
 <link rel="stylesheet"
 	href="${pageContext.request.contextPath}/css/pay.css">
 <script src="https://cdn.iamport.kr/v1/iamport.js"></script>
-<div class="container">
-	<div class="row d-flex justify-content-center align-items-center">
+<div class="container" id="main_content_body">
 		<div class="col-sm-8" id="card_top">
 			<div class="card sm-5">
 				<div class="card-body p-4">
@@ -36,14 +35,14 @@
 						<input type="hidden" id="ticket_type" data-typenum="${ticket.ticket_type}" >
 					<div class="row align-items-center">
 						<div class="col-sm-6" style="margin-right:">
-							<p class="lead text-mute mb-4 pb-2">선택한 이용권</p>
-							<p class="lead fw-normal mb-0" id="ticket_name"
+							<p class="lead fw-normal mb-4 pb-2" id="title">선택한 이용권</p>
+							<p class="lead mb-0" id="ticket_name"
 								data-ticketname="${ticket.ticket_name}">${ticket.ticket_name}</p>
 						</div>
 						<div class="col-sm-6 d-flex justify-content-end">
 							<div>
-								<p class="lead text-mute mb-4 pb-2">금액</p>
-								<p class="lead fw-normal mb-0">
+								<p class="lead fw-normal mb-4 pb-2" id="title">금액</p>
+								<p class="lead mb-0">
 									<input type="hidden" id="ticket_total_price"
 										value="${ticket.ticket_price}">
 									<fmt:formatNumber value="${ticket.ticket_price}" />
@@ -57,16 +56,16 @@
 			<div class="card sm-5" id="point_pay">
 				<div class="card-body p-8">
 					<div>
-						<p class="lead text-mute mb-4 pb-2">
-							<span>현재 보유 중인 포인트</span> <span class="lead fw-normal mb-0"
+						<p class="lead fw-normal mb-4 pb-2" id="title">
+							<span>현재 보유 중인 포인트</span> <span class="lead mb-0"
 								id="my_point" style="float: right;"></span>
 						</p>
 					</div>
 					<div class="col mb-3 d-flex">
 						<span id="p_point" data-pointnum="${point.point_point}"></span>
 							<div>
-								<span class="lead text-mute mb-6 pb-2"
-									style="margin-right: 100px;"> 포인트 사용(1000P 이상 사용 가능)</span>
+								<span class="lead fw-normal mb-6 pb-2"
+									style="margin-right: 100px;" id="title"> 포인트 사용(1000P 이상 사용 가능)</span>
 							</div>
 							<div class="col mb-3 d-flex justify-content-end" id="input_point">
 								<div class="input-group row-mb-3">
@@ -79,8 +78,8 @@
 					</div>
 					<hr>
 					<div>
-					<span class="lead text-mute mb-6 pb-2">결제 금액</span>
-					<span class="lead fw-normal mb-0" id="final_price" style="float: right;"
+					<span class="lead fw-normal mb-6 pb-2" id="title">결제 금액</span>
+					<span class="lead mb-0" id="final_price" style="float: right;"
 						data-pricenum="${ticket.ticket_price}">${ticket.ticket_price}</span>
 					</div>
 					<div class="d-flex justify-content-end" id="payment">
@@ -97,6 +96,4 @@
 			<script src="${pageContext.request.contextPath}/js/study_pay.js"></script>
 		</div>
 	</div>
-
-</div>
 <!-- 결제 페이지 끝 -->

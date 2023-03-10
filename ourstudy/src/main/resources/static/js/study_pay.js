@@ -191,6 +191,7 @@ $(function(){
 				//============카드 결제=============//
 				var pprice = $('#final_price').text();
 				var name = $('#mem_name').attr('user.mem_name');
+				console.log("이름?" + name);
 		     	 IMP.request_pay({
 			         pg : "html5_inicis.INIpayTest",
 			         pay_method : "card",
