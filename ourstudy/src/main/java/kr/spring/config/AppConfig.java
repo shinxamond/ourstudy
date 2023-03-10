@@ -57,7 +57,9 @@ public class AppConfig implements WebMvcConfigurer{
 											   .addPathPatterns("/community/writelfReply.do")
 											   .addPathPatterns("/community/listlfReply.do")
 											   .addPathPatterns("/community/updatelfReply.do")
-											   .addPathPatterns("/community/deletelfReply.do");
+											   .addPathPatterns("/community/deletelfReply.do")
+											   .addPathPatterns("/item/userList.do")
+											   .addPathPatterns("/item/userRental.do");
 			//AdminCheckInterceptor 설정
 			registry.addInterceptor(adminCheck).addPathPatterns("/admin/admin_list.do")
 											   .addPathPatterns("/admin/admin_seathistory.do")
@@ -70,7 +72,12 @@ public class AppConfig implements WebMvcConfigurer{
 											   .addPathPatterns("/info/infoWrite.do")
 											   .addPathPatterns("/info/infoUpdate.do")
 											   .addPathPatterns("/info/infoDelete.do")
-											   .addPathPatterns("/info/deleteFile.do");
+											   .addPathPatterns("/info/deleteFile.do")
+											   .addPathPatterns("/talk/talkList.do")
+											   .addPathPatterns("/talk/talkRoomWrite.do")
+											   .addPathPatterns("/item/adminList.do")
+											   .addPathPatterns("/item/itemWrite.do")
+											   .addPathPatterns("/item/itemModify.do");
 			//WriterCheckInterceptor 설정
 		}
 	
