@@ -21,7 +21,12 @@
 				<h3><b>${lost.lf_title}</b></h3>
 			</li>
 			<li>
-				<b>${lost.mem_name}</b>
+				<c:if test="${lost.mem_num == 9}">
+				<b>${lost.mem_name}</b> <img src="/images/favicon.ico">
+				</c:if>
+				<c:if test="${lost.mem_num != 9}">
+				<b>${lost.mem_name}</b> 
+				</c:if>
 			</li>
 			<li style="color : #868E96; font-size:10pt;"> 
 			<c:if test="${!empty lost.lf_modify_date}">
@@ -30,7 +35,28 @@
 			<c:if test="${empty lost.lf_modify_date}">
 			작성일 : ${lost.lf_date}
 			</c:if>
-		</li>
+				<div style="display:inline-block; float:right;">
+				<c:if test="${!empty user && user.mem_num == lost.mem_num}">
+					<input type="button" value="수정"
+							class="btn btn-secondary btn-sm"
+								onclick="location.href='lostUpdate.do?lf_num=${lost.lf_num}'">
+									<input type="button" value="삭제"
+										class="btn btn-outline-secondary btn-sm" id="delete_btn">
+									</c:if>
+									<script type="text/javascript">
+										let delete_btn = document
+												.getElementById('delete_btn');
+										delete_btn.onclick = function() {
+											let choice = confirm('삭제하시겠습니까?');
+											if (choice) {
+												location
+														.replace('lostDelete.do?lf_num=${lost.lf_num}');
+											}
+										};
+									</script>
+								
+						</div>
+						
 		</ul>
 	<hr size="1" width="90%" style="margin: 0px auto;">
 	<ul class="card-content">
@@ -51,39 +77,20 @@
 			${lost.lf_content}
 		</li>
 	</ul>
-	<div class="align-center" style="padding:15px 0 0 30px;">
-		<div style="float:right; padding:0 50px">     
-		<c:if test="${!empty user && user.mem_num == lost.mem_num}">
-		<input type="button" value="수정" class="btn btn-secondary btn-sm"
-			onclick="location.href='lostUpdate.do?lf_num=${lost.lf_num}'">
-		<input type="button" value="삭제" class="delete_btn"> 
-		</c:if>
-		<script type="text/javascript">
-			let delete_btn = document.getElementById('delete_btn');
-			delete_btn.onclick=function(){
-				let choice = confirm('삭제하시겠습니까?');
-				if(choice){
-					location.replace('lostDelete.do?lf_num=${lost.lf_num}');
-				}
-			};
-		</script>
-		</div>
-	</div>
+	
 	<br>
 	<!-- 댓글 -->
 	<div id="re_div">
 		<span class="re-title"><b>댓글</b></span>
 			<form >
 			<input type="hidden" name="lf_num" value="${lost.lf_num}" id="lf_num">
-			<textarea rows="3" cols="150" name="re_content" class="content" 
-			  		<c:if test="${empty user}">disabled="disabled"</c:if>>
-			<c:if test="${empty user}">로그인해야 작성할 수 있습니다.</c:if></textarea>    	
+			<textarea rows="3" cols="150" name="re_content" class="content"<c:if test="${empty user}">disabled="disabled"</c:if>><c:if test="${empty user}">로그인해야 작성할 수 있습니다.</c:if></textarea>    	
 			<c:if test="${!empty user}">
 			<div id="re_first">
 				<span class="letter-count">300/300</span>
 			</div>
 			<div class="align-right" style="padding:0 50px;">
-				<input type="submit" value="전송" id="list_btn" class="btn btn-secondary btn-sm">
+				<input type="submit" value="전송">
 			</div>
 			</c:if>
 		</form>

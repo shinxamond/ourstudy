@@ -59,7 +59,7 @@
 								<c:if test="${importinfo.info_pin == 1}">
 								<th scope="row"class="blink"><span style="color:#ffc400">★★★</span><span style="color:#097bd9">필독</span><span style="color:#ffc400">★★★</span></th>
 								</c:if>	
-								<td>
+								<td class="text-left">
 									<a href="infoDetail.do?info_num=${importinfo.info_num}" class="truncate-text">${importinfo.info_title}</a>
 								</td>
 								<td >${importinfo.info_date}</td> 		
@@ -76,7 +76,7 @@
 								<c:if test="${info.info_pin == 1}">
 								<th scope="row"><span style="color:#ffc400">★★★</span><span style="color:#097bd9">필독</span><span style="color:#ffc400">★★★</span></th>
 								</c:if>
-								<td>
+								<td class="text-left">
 									<a href="infoDetail.do?info_num=${info.info_num}" class="truncate-text">${info.info_title}</a>
 								</td>
 								<td>${info.info_date}</td> 																

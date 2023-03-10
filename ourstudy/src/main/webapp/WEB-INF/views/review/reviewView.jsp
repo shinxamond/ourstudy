@@ -11,7 +11,7 @@
 <div class="page-main">
 <div class="content-main">
 <div class="content-right"> 
-		<h3 style="text-align:center"><b>분실물찾기</b></h3>
+		<h3 style="text-align:center"><b>이용후기</b></h3>
 		<div class="card d-flex justify-content-center" id="card-view" >
 	<ul class="card-head">
 		<li>
@@ -42,15 +42,26 @@
 			<c:if test="${empty review.r_mdate}">
 			작성일 : ${review.r_date}
 			</c:if>
+			<div style="display:inline-block; float:right;">
+			<c:if test="${!empty user && user.mem_num == review.mem_num}">
+			<input type="button" value="수정" class="btn btn-secondary btn-sm"
+				onclick="location.href='update.do?r_num=${review.r_num}'">
+			<input type="button" value="삭제" class="btn btn-secondary btn-sm" id="delete_btn"> 
+			<script type="text/javascript">
+				let delete_btn = document.getElementById('delete_btn');
+				delete_btn.onclick=function(){
+					let choice = confirm('삭제하시겠습니까?');
+					if(choice){
+						location.replace('delete.do?r_num=${review.r_num}');
+					}
+				};
+			</script> 
+			</c:if> 
+			</div>
 		</li>
 	</ul>
 	<hr size="1" width="90%" style="margin: 0px auto;">
 	<ul class="card-content"> 	 
-	<c:if test="${!empty review.r_imgname}">
-		<li>
-			첨부파일 : <a href="file.do?r_num=${review.r_num}">${review.r_imgname}</a>
-		</li>	
-	</c:if>	 	
 	<c:if test="${fn:endsWith(review.r_imgname,'.jpg') || 
 	              fn:endsWith(review.r_imgname,'.JPG') ||
 				  fn:endsWith(review.r_imgname,'.jpeg') ||
@@ -61,30 +72,19 @@
 				  fn:endsWith(review.r_imgname,'.PNG')}">
 	<div class="align-center">
 		<img src="imageView.do?r_num=${review.r_num}&review_type=2" class="detail-img">
-	</div>	
+	</div><br>	
 	</c:if>	
 	<li>
 		${review.r_content}
 	</li>
+	<c:if test="${!empty review.r_imgname}">
+		<br><br>
+		<li>
+			<b>[첨부파일]</b> : <a href="file.do?r_num=${review.r_num}">${review.r_imgname}</a>
+		</li>	
+	</c:if>	
 	</ul>
-	<div class="align-center" style="padding:15px 0 0 30px;">
-		<div style="float:right; padding:0 50px">
-		<c:if test="${!empty user && user.mem_num == review.mem_num}">
-		<input type="button" value="수정" class="btn btn-secondary btn-sm"
-			onclick="location.href='update.do?r_num=${review.r_num}'">
-		<input type="button" value="삭제" id="delete_btn"> 
-		<script type="text/javascript">
-			let delete_btn = document.getElementById('delete_btn');
-			delete_btn.onclick=function(){
-				let choice = confirm('삭제하시겠습니까?');
-				if(choice){
-					location.replace('delete.do?r_num=${review.r_num}');
-				}
-			};
-		</script> 
-		</c:if> 
-		</div>
-	</div>
+	
 	<!-- 댓글 UI 시작 -->
 	<div id="re_div">
 		<span class="re-title"><b>댓글</b></span>
@@ -98,27 +98,29 @@
 				<span class="letter-count">300/300</span>
 			</div>
 			<div class="align-right" style="padding:0 50px;">
-				<input type="submit" value="전송" id="list_btn" class="btn btn-secondary btn-sm">
+				<input type="submit" value="전송">
 			</div>
 			</c:if>
 		</form>
 	</div>
 	<!-- 댓글 목록 출력 -->
 	<div class="card-content">
-	<div id="output"></div>
-	<div class="paging-button" style="display:none;">
-		<input type="button" class="btn btn-secondary btn-sm" value="댓글 더보기">
-	</div>
-	<div id="loading" style="display:none;">
-		<img src="${pageContext.request.contextPath}/images/loading.gif" width="50" height="50">
-	</div>
-	<div class="card-foot">
-	<div class="align-center"> 
-	<input type="button" value="목록" onclick="location.href='list.do'">
-	</div>
+		<div id="output"></div>
+			<div class="paging-button" style="display:none;">
+				<input type="button" class="btn btn-secondary btn-sm" value="댓글 더보기">
+			</div>
+			<div id="loading" style="display:none;">
+				<img src="${pageContext.request.contextPath}/images/loading.gif" width="50" height="50">
+			</div>
+			<div class="card-foot">
+			<div class="align-center"> 
+				<input type="button" value="목록" id="list_btn" class="btn btn-secondary btn-sm"
+				onclick="location.href='list.do'">
+			</div>
+		</div>
 	</div>
 	<!-- 댓글 UI 끝 -->	
-  </div>
+		</div>
 </div>
 </div>
 </div>

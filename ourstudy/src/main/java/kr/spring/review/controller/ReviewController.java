@@ -69,7 +69,7 @@ public class ReviewController {
 		logger.debug("<<count>> : " + count);
 		
 		//페이지 처리
-		PagingUtil page = new PagingUtil(keyfield,keyword,currentPage,count,5,10,"list.do");
+		PagingUtil page = new PagingUtil(keyfield,keyword,currentPage,count,10,10,"list.do");
 				
 		List<ReviewVO> list = null;
 		if(count > 0) {

@@ -26,6 +26,9 @@
     white-space: nowrap;
     text-overflow: ellipsis;
 }
+.text-left{
+	text-align:left;
+}
 /*여기는 추가한거*/
 @font-face {
     font-family: 'Pretendard-Regular';
@@ -38,7 +41,7 @@ body{
 	height:100%;
 }
 div#main_footer{
-	width:100%!important;
+	width:100vw;
 	background-color:#b4aab1;
 	padding:30px 0 20px 280px;
 	height:220px;
@@ -76,8 +79,8 @@ div#main_footer{
 		display:none;
 	}
 	div#main_footer{
-		padding:30px 10px 20px 5px;
-		height:45vh;
+		padding:30px 30px 20px 5px;
+		height:30vh;
 	}
 	.footer-main{
 		margin-left:20px;
@@ -100,19 +103,27 @@ div#main_footer{
 div#main_footer .footer-main{
 	float:left;
 }
-div#main_footer .footer-sns{
+.footer-main{
+	padding-left:15px;
+}
+.footer-sns{
 	float:right;
-	margin-right:100px;
 	word-spacing:15px;
+	margin-right:100px;
 	padding-top:40px;
+}
+div#main_footer{
+	margin-right:100px;
+	padding-top:40px;
+}
+.footer-sns a:visited {
+    text-decoration: none;
+    color: #000000;
 }
 .footer-sns a:hover{
 	color: #F3F1F1;
 }
-a:visited {
-    text-decoration: none;
-    color: #000000;
-}
+
 
 /*테이블*/
 #t2 {
@@ -143,8 +154,8 @@ div#main {
     margin: 0 auto;
 }
 div#main_body {
-    padding: 5px 5px 5px 5px;
-    min-height: 500px;
+    padding: 5px 5px 40px 5px;
+    min-height: 703px;
     width: 100%;    
     position: relative;
     left: 130px;
@@ -156,7 +167,7 @@ div#main_body {
 	margin-top:20px;
 }
 .content-main {
-	width: 100%; /*원래 87%*/
+	width: 87%; /*원래 87%*/
 	margin: 5px auto;
 	overflow:hidden;
 	padding: 0 20px;
@@ -261,6 +272,9 @@ a:hover {
   color: #717ff5;
   text-decoration: none;
 }
+ul.find-id a{
+  font-size:10pt;
+}
 
 h1,
 h2,
@@ -276,7 +290,7 @@ h6 {
 --------------------------------------------------------------*/
 #main {
   margin-top: 60px;
-  padding: 20px 30px;
+  padding: 20px 0 0 0;
   transition: all 0.3s;
 }
 
@@ -510,6 +524,7 @@ h6 {
 }
 .card-content {
 	padding:40px 60px 0;
+	min-height:300px;
 }
 .card-foot {
 	padding:20px 60px 0;
@@ -525,7 +540,7 @@ h6 {
 textarea.content{
 	width:710px;
 	height:70px;
-	padding:10px 60px 0;
+	padding:3px 5px 0;
 	resize: none;
 }
 div#re_div{

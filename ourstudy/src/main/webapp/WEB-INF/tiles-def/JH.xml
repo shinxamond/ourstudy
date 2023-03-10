@@ -62,7 +62,6 @@
     
     <!-- 이용후기 -->
     <definition name="reviewList" extends="main2">
-    	<put-attribute name="title" value="이용후기목록"/>
     	<put-attribute name="body"
     	  value="/WEB-INF/views/review/reviewList.jsp"/>        
     </definition>
@@ -71,7 +70,7 @@
     	<put-attribute name="body"
     	  value="/WEB-INF/views/review/reviewWrite.jsp"/>        
     </definition>
-    <definition name="reviewView" extends="main">
+    <definition name="reviewView" extends="main2">
     	<put-attribute name="title" value="이용후기상세"/>
     	<put-attribute name="body"
     	  value="/WEB-INF/views/review/reviewView.jsp"/>        

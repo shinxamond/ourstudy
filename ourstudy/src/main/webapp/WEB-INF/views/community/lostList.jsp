@@ -43,13 +43,13 @@
 				</form>					
 				<!-- 검색폼 끝 -->
 				<div class="align-right" style="float:right;">
-					<c:if test="${!empty user && user.mem_auth == 9}">
+					<c:if test="${!empty user}">
 					<button type="button" class="btn btn-secondary btn-sm"   
 							onclick="location.href='lostWrite.do'">글쓰기</button>
 					</c:if>
 				</div>								
 				<!-- table 시작 -->
-				<div class="content-margin">
+				<div class="content-margin my-5">
 				<c:if test="${count == 0}">
 				<table class="table table-group-divider align-center">
 					<tr>

@@ -16,7 +16,7 @@
     	<put-attribute name="body"
     	  value="/WEB-INF/views/info/informationModify.jsp"/>        
     </definition>
-    <definition name="informationView" extends="main">
+    <definition name="informationView" extends="main2">
     	<put-attribute name="title" value="안내사항 상세정보"/>
     	<put-attribute name="body"
     	  value="/WEB-INF/views/info/informationView.jsp"/>        
@@ -44,7 +44,7 @@
     	<put-attribute name="body"
     	  value="/WEB-INF/views/community/lostModify.jsp"/>  
      </definition>
-      <definition name="lostView" extends="main">
+      <definition name="lostView" extends="main2">
     	<put-attribute name="title" value="분실물찾기 상세정보"/>
     	<put-attribute name="body"
     	  value="/WEB-INF/views/community/lostView.jsp"/>  
