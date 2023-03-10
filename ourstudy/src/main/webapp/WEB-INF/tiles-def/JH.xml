@@ -79,6 +79,12 @@
     	<put-attribute name="title" value="이용후기수정"/>
     	<put-attribute name="body"
     	  value="/WEB-INF/views/review/reviewModify.jsp"/>        
+    </definition>   
+    
+    <!-- 오시는길 --> 
+    <definition name="showMap" extends="main2">
+    	<put-attribute name="body"
+    	  value="/WEB-INF/views/map/showMap.jsp"/>        
     </definition>                            
 </tiles-definitions>
 

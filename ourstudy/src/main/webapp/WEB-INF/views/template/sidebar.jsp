@@ -196,6 +196,7 @@ function kakaoLogout() {
 	         		 	<ul class="btn-toggle-nav fw-normal pb-1 small">
 	           				<li><a href="${pageContext.request.contextPath}/info/informationList.do" class="d-inline-flex rounded">안내사항</a></li>
 	            			<li><a href="${pageContext.request.contextPath}/info/faq.do" class="d-inline-flex rounded">자주 묻는 질문</a></li>
+	            			<li><a href="${pageContext.request.contextPath}/map/showmap.do" class="d-inline-flex rounded">오시는길</a></li>
 	          			</ul>
         			</div>
         		</div>
