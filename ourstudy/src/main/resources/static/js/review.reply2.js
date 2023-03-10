@@ -92,12 +92,12 @@ $(function(){
 					output += '<ul class="detail-info">';
 					output += '<li>';
 					if(item.mem_name){
-						output += '<b>' + item.mem_name + '</b>' + '<br>';
+						output += '<b>' + item.mem_name + '</b>';
 					}
 					if(item.revw_mdate){
-						output += '<span class="modify-date">최근 수정일 : ' + item.revw_mdate + '</span>';
+						output += '<span class="modify-date">&nbsp;&nbsp;&nbsp;&nbsp;최근 수정일 : ' + item.revw_mdate + '</span>';
 					}else{
-						output += '<span class="modify-date">등록일 : ' + item.revw_date + '</span>';
+						output += '<span class="modify-date">&nbsp;&nbsp;&nbsp;&nbsp;등록일 : ' + item.revw_date + '</span>';
 					}
 					output += '</li>';
 					output += '</ul>';
@@ -124,7 +124,7 @@ $(function(){
 					$('.paging-button').show();
 				}
 			},
-			errror:function(){
+			error:function(){
 				//로딩 이미지 감추기
 				$('#loading').hide();
 				alert('네트워크 오류 발생');
@@ -226,7 +226,7 @@ $(function(){
                            .replace(/\n/g,'<br>'));
 					//최근 수정일 표시
 					$('#mre_form').parent().find('.modify-date')
-					                       .text('최근 수정일 : 5초 미만');
+					                       .text('&nbsp;&nbsp;&nbsp;&nbsp;최근 수정일 : 5초 미만');
 					//수정 폼 초기화
 					initModifyForm();
 				}else if(param.result == 'wrongAccess'){

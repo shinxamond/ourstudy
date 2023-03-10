@@ -31,7 +31,7 @@
 						<form class="search-form d-flex align-items-center" action="list.do" method="get"><!-- 자동 인코딩 처리를 위해 -->
 							<select class="form-select" id="form-select1" name="keyfield" aria-label="form-select"
 									onchange="location.href='list.do?keyfield='+this.value">
-								<option value="1" <c:if test="${param.keyfield==1}">selected</c:if>>최근작성일순</option>
+								<option value="1" <c:if test="${param.keyfield==1}">selected</c:if>>최근 작성일순</option>
 								<option value="2" <c:if test="${param.keyfield==2}">selected</c:if>>가나다순(이름)</option>
 							</select> 
 							<!--                            //검색했을 때 값이 남아있게 하기 위해서 -->
