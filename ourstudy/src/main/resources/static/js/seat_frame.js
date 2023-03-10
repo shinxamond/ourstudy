@@ -10,8 +10,6 @@
   ========================================================*/    
         context.beginPath();         
         
-        context.strokeStyle = "#f4f3ef" ;		//라인 컬런
-        
         context.moveTo(50,50);       
         context.lineTo(660,50);      			//위
         context.moveTo(50,50); 
