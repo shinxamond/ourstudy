@@ -4,7 +4,7 @@
 <link rel="stylesheet" href="${pageContext.request.contextPath}/css/item.css">
 <script type="text/javascript" src="${pageContext.request.contextPath}/js/snow.js"></script>
 
-<div class="page-main">
+<div class="container">
 	<c:if test="${count == 0}">
 	<div class="result-display">
 		표시할 물품이 없습니다
@@ -14,10 +14,10 @@
 	<div id="userList" class="it1">
 		<br><h1 class="align-center">물품 목록</h1><br><br>
 		<c:forEach var="item" items="${list}">
-		<div id="userList-area" class="item-card">
+		<div id="userList-area" class="card">
 			<a href="userRental.do?item_index=${item.item_index}"><img src="imageView.do?item_num=${item.item_num}" width="250" height="250" class="my-photo">
 			<br>
-			<h4> ${item.item_title}</h4>
+			<span id="item_name"> ${item.item_title}</span>
 			</a>
 		</div>
 		</c:forEach>
@@ -26,10 +26,10 @@
 	<div class="it2">
 		<h1 id="itemlist">물품 목록</h1>
 		<c:forEach var="item" items="${list}">
-		<div id="userlist" class="item-card">
+		<div id="userlist" class="card">
 			<a href="userRental.do?item_index=${item.item_index}"><img src="imageView.do?item_num=${item.item_num}" width="150" height="130" class="my-photo">
 			<br>
-			<h4> ${item.item_title}</h4>
+			<span id="item_name"> ${item.item_title}</span>
 			</a>
 		</div>
 		</c:forEach>
