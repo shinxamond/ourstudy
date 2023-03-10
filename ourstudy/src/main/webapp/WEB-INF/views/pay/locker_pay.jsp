@@ -80,10 +80,10 @@
 						<input type="image" id="pay_kakao"
 							src="${pageContext.request.contextPath}/image_bundle/payment_icon_yellow_small.png"
 							style="margin-bottom: 3px;"
-							onclick="requestKakaoPay()" name="pay_plan" value="카카오">
+							onclick="requestKakaoPay()" name="pay_plan" value="카카오" data-lockernum = "${locker_num}">
 							<input type="button" id="pay_card" type="button" class="btn btn-primary"
 							style="margin-bottom: 3px;" name="pay_plan"
-							onclick="requestCardPay()" value="카드">
+							onclick="requestCardPay()" value="카드" data-lockernum = "${locker_num}">
 					</div>
 				</div>
 			</div>
