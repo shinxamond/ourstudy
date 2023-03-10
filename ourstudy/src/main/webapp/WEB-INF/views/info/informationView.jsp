@@ -48,8 +48,8 @@
 			<c:if test="${!empty user && user.mem_auth == 9}">
 			<input type="button" value="수정"  class="btn btn-secondary btn-sm"
 				onclick="location.href='infoUpdate.do?info_num=${information.info_num}'">
-			<input type="button" value="삭제"  class="btn btn-secondary btn-sm"> 
-			</c:if>
+			<input type="button" value="삭제"  id="delete_btn"> 
+			
 			<script type="text/javascript">
 				let delete_btn = document.getElementById('delete_btn');
 				delete_btn.onclick=function(){
@@ -59,6 +59,7 @@
 					}
 				};
 			</script>
+			</c:if>
 			</div>
 		</div>
 	</ul>

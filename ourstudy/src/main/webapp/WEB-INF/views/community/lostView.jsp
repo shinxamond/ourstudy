@@ -56,7 +56,7 @@
 		<c:if test="${!empty user && user.mem_num == lost.mem_num}">
 		<input type="button" value="수정" class="btn btn-secondary btn-sm"
 			onclick="location.href='lostUpdate.do?lf_num=${lost.lf_num}'">
-		<input type="button" value="삭제" class="btn btn-secondary btn-sm"> 
+		<input type="button" value="삭제" class="delete_btn"> 
 		</c:if>
 		<script type="text/javascript">
 			let delete_btn = document.getElementById('delete_btn');
@@ -89,7 +89,7 @@
 		</form>
 	</div>
 	<!-- 댓글 목록 출력 -->
-	<ul class="card-content">
+	<div class="card-content">
 	<div id="output"></div>
 	<div class="paging-button" style="display:none;">
 		<input type="button" value="댓글 더보기" class="btn btn-secondary btn-sm">
@@ -97,13 +97,13 @@
 	<div id="loading" style="display:none;">
 		<img src="${pageContext.request.contextPath}/images/loading.gif" width="50" height="50">
 	</div>
-	</ul>
-	<ul class="card-foot">
+	</div>
+	<div class="card-foot">
 		<div class="align-center"> 
 			<input type="button" value="목록" id="list_btn" class="btn btn-secondary btn-sm"
 			           onclick="location.href='lostList.do'">
 		 </div> 
-	</ul>
+	</div>
 	</div>
 </div>
 </div>

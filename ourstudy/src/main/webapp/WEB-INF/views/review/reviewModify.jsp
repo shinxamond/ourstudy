@@ -2,27 +2,34 @@
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>    
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-<!-- 중앙 컨텐츠 시작 -->
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+<link rel="stylesheet" href="${pageContext.request.contextPath}/css/information.css">        
 <style>
 .ck-editor__editable_inline{
 	min-height:250px;
 }
 </style>
+<!DOCTYPE html>
+<body>
+<!-- 중앙 컨텐츠 시작 -->
+<div class="page-main">
+<div class="content-main">
+<div class="content-right">
 <script src="${pageContext.request.contextPath}/js/ckeditor.js"></script>
 <script src="${pageContext.request.contextPath}/js/uploadAdapter.js"></script>
-<div class="page-main">
-	<h2>글수정</h2>
+	<h3 style="text-align:center"><b>이용후기 수정</b></h3>
+	<br>
+	<div class="card d-flex justify-content-center" id="card-view" >
 	<form:form action="update.do" id="update_form" modelAttribute="reviewVO" enctype="multipart/form-data">
 	    <form:hidden path="r_num"/>               
 		<ul>
 			<li>
-				<label for="title">제목</label>
+				<label for="title"><b>제목</b></label>
 				<form:input path="r_title"/>
 				<form:errors path="r_title" cssClass="error-color"/>
 			</li>
 			<li>
-				<label for="rate">별점</label>
+				<label for="rate"><b>별점</b></label>
 				<form:radiobutton path="r_rate" value="5" id="status5"/>★★★★★
 				<form:radiobutton path="r_rate" value="4" id="status4"/>★★★★
 				<form:radiobutton path="r_rate" value="3" id="status3"/>★★★
@@ -30,7 +37,7 @@
 				<form:radiobutton path="r_rate" value="1" id="status1"/>★
 			</li>
 			<li>
-				<label for="content">내용</label>
+				<label for="content"><b>내용</b></label>
 				<form:textarea path="r_content"/>
 				<form:errors path="r_content" cssClass="error-color"/>
 				<script>
@@ -53,7 +60,7 @@
 			    </script>
 			</li>
 			<li>
-				<label for="upload">파일업로드</label>
+				<label for="upload"><b>파일업로드</b></label>
 				<input type="file" name="upload" id="upload">
 				<form:errors element="div" cssClass="error-color"/>
 				<c:if test="${!empty reviewVO.r_imgname}">
@@ -92,9 +99,11 @@
 			</li>
 		</ul>
 		<div class="align-center">
-			<form:button>전송</form:button>
-			<input type="button" value="상세정보" onclick="location.href='detail.do?r_num=${reviewVO.r_num}'">
+			<form:button id="list_btn" class="btn btn-secondary btn-sm">등록</form:button>
+			<input type="button" value="목록" class="btn btn-secondary btn-sm" onclick="location.href='detail.do?r_num=${reviewVO.r_num}'">
 		</div>	                   
 	</form:form>
+	</div>
 </div>
-<!-- 중앙 컨텐츠 끝 -->
+</div>
+</div>

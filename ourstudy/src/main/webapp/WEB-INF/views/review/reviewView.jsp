@@ -2,46 +2,55 @@
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>    
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
+<link rel="stylesheet" href="${pageContext.request.contextPath}/css/information.css">
 <!-- 중앙 컨텐츠 시작 -->
 <script src="${pageContext.request.contextPath}/js/videoAdapter.js"></script>
 <script src="${pageContext.request.contextPath}/js/review.reply.js"></script>
-
+<!DOCTYPE html>
+<body> 
 <div class="page-main">
-	<h3>제목 : ${review.r_title}</h3>
-	<ul class="detail-info">
+<div class="content-main">
+<div class="content-right"> 
+		<h3 style="text-align:center"><b>분실물찾기</b></h3>
+		<div class="card d-flex justify-content-center" id="card-view" >
+	<ul class="card-head">
 		<li>
-			<c:if test="${!empty review.mem_name}">${review.mem_name}</c:if> |  
+			<h3><b>${review.r_title}</b></h3>
+		</li>
+		<li>
+			<c:if test="${!empty review.mem_name}"><b>${review.mem_name}</b></c:if> ·  
 			<c:if test="${review.r_rate == 1}">
-			<span style="color:#ffc400">★</span> |  
+			<span style="color:#ffc400">★</span>  
 			</c:if>
 			<c:if test="${review.r_rate == 2}">
-			<span style="color:#ffc400">★★</span> |  
+			<span style="color:#ffc400">★★</span>  
 			</c:if>
 			<c:if test="${review.r_rate == 3}">
-			<span style="color:#ffc400">★★★</span> |  
+			<span style="color:#ffc400">★★★</span>  
 			</c:if>
 			<c:if test="${review.r_rate == 4}">
-			<span style="color:#ffc400">★★★★</span> | 
+			<span style="color:#ffc400">★★★★</span> 
 			</c:if>
 			<c:if test="${review.r_rate == 5}">
-			<span style="color:#ffc400">★★★★★</span> | 
-			</c:if>				
+			<span style="color:#ffc400">★★★★★</span> 
+			</c:if>	
+		</li>
+		<li style="color : #868E96; font-size:10pt;"> 			
 			<c:if test="${!empty review.r_mdate}">
-			최근 수정일 : ${review.r_mdate}
+			작성일 : ${review.r_date} · 최근 수정일 : ${review.r_mdate}
 			</c:if>
 			<c:if test="${empty review.r_mdate}">
 			작성일 : ${review.r_date}
 			</c:if>
 		</li>
-	</ul> 	 
+	</ul>
+	<hr size="1" width="90%" style="margin: 0px auto;">
+	<ul class="card-content"> 	 
 	<c:if test="${!empty review.r_imgname}">
-	<ul style="padding-left:0; margin-top:10px;">
 		<li>
 			첨부파일 : <a href="file.do?r_num=${review.r_num}">${review.r_imgname}</a>
 		</li>	
-	</ul>
-	</c:if>	
-	<hr size="1" width="100%"> 	
+	</c:if>	 	
 	<c:if test="${fn:endsWith(review.r_imgname,'.jpg') || 
 	              fn:endsWith(review.r_imgname,'.JPG') ||
 				  fn:endsWith(review.r_imgname,'.jpeg') ||
@@ -54,14 +63,15 @@
 		<img src="imageView.do?r_num=${review.r_num}&review_type=2" class="detail-img">
 	</div>	
 	</c:if>	
-	<p>
+	<li>
 		${review.r_content}
-	</p>
-	<hr size="1" width="100%">
-	
-	<div class="align-right">
+	</li>
+	</ul>
+	<div class="align-center" style="padding:15px 0 0 30px;">
+		<div style="float:right; padding:0 50px">
 		<c:if test="${!empty user && user.mem_num == review.mem_num}">
-		<input type="button" value="수정" onclick="location.href='update.do?r_num=${review.r_num}'">
+		<input type="button" value="수정" class="btn btn-secondary btn-sm"
+			onclick="location.href='update.do?r_num=${review.r_num}'">
 		<input type="button" value="삭제" id="delete_btn"> 
 		<script type="text/javascript">
 			let delete_btn = document.getElementById('delete_btn');
@@ -73,37 +83,45 @@
 			};
 		</script> 
 		</c:if> 
-		<input type="button" value="목록" onclick="location.href='list.do'">
+		</div>
 	</div>
 	<!-- 댓글 UI 시작 -->
-	<div id="reply_div">
-		<span class="re-title">댓글 달기</span>
-		<form id="re_form">
+	<div id="re_div">
+		<span class="re-title"><b>댓글</b></span>
+		<form>
 			<input type="hidden" name="r_num" value="${review.r_num}" id="r_num">
-			<textarea rows="3" cols="50" name="revw_content" id="revw_content" class="rep-content"
+			<textarea rows="3" cols="150" name="revw_content" id="revw_content" class="content"
 					  <c:if test="${empty user}">disabled="disabled"</c:if>>
 			<c:if test="${empty user}">로그인해야 작성할 수 있습니다.</c:if></textarea>    		
 			<c:if test="${!empty user}">
 			<div id="re_first">
 				<span class="letter-count">300/300</span>
 			</div>
-			<div id="re_second">
-				<input type="submit" value="전송">
+			<div class="align-right" style="padding:0 50px;">
+				<input type="submit" value="전송" id="list_btn" class="btn btn-secondary btn-sm">
 			</div>
 			</c:if>
 		</form>
 	</div>
 	<!-- 댓글 목록 출력 -->
+	<div class="card-content">
 	<div id="output"></div>
 	<div class="paging-button" style="display:none;">
-		<input type="button" value="더보기">
+		<input type="button" class="btn btn-secondary btn-sm" value="댓글 더보기">
 	</div>
 	<div id="loading" style="display:none;">
 		<img src="${pageContext.request.contextPath}/images/loading.gif" width="50" height="50">
 	</div>
+	<div class="card-foot">
+	<div class="align-center"> 
+	<input type="button" value="목록" onclick="location.href='list.do'">
+	</div>
+	</div>
 	<!-- 댓글 UI 끝 -->	
+  </div>
 </div>
-<!-- 중앙 컨텐츠 끝 -->
+</div>
+</div>
 
 
 
