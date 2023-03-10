@@ -193,10 +193,10 @@ function kakaoLogout() {
           				<span class="notice-span">시설 안내</span>
         			</button>
         			<div class="collapse" id="notice-collapse">
-         		 	<ul class="btn-toggle-nav fw-normal pb-1 small">
-           				<li><a href="${pageContext.request.contextPath}/info/informationList.do" class="d-inline-flex rounded">안내사항</a></li>
-            			<li><a href="${pageContext.request.contextPath}/info/faq.do" class="d-inline-flex rounded">자주 묻는 질문</a></li>
-          			</ul>
+	         		 	<ul class="btn-toggle-nav fw-normal pb-1 small">
+	           				<li><a href="${pageContext.request.contextPath}/info/informationList.do" class="d-inline-flex rounded">안내사항</a></li>
+	            			<li><a href="${pageContext.request.contextPath}/info/faq.do" class="d-inline-flex rounded">자주 묻는 질문</a></li>
+	          			</ul>
         			</div>
         		</div>
 				
