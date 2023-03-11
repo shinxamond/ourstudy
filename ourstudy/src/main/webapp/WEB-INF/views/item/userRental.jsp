@@ -7,8 +7,9 @@
 	
 	<div class="it1" style="height:69vh;">
 	<br><h1 class="align-center">물품대여</h1><br>
-	<h2 class="align-center">${oneitem.item_title}</h2><br><br>
-	<div id="imgdetail">
+	<h2 class="align-center">${oneitem.item_title}</h2><br>
+	<div class="rcard1 d-flex justify-content-center" id="card-view" >
+	
 		<div class="item-image">
 			<img src="imageView.do?item_num=${oneitem.item_num}" width="250" height="300" class="my-photo">
 		</div>
@@ -21,8 +22,8 @@
 				<label>물품 선택 : </label>
 				
 				<form:select path="item_num">
-				<c:forEach var="item" items="${list}">
-			    	<form:option value="${item.item_num}">${item.item_title}</form:option>
+				<c:forEach var="item" items="${list}" varStatus="status">
+			    	<form:option value="${item.item_num}">${item.item_title} ${status.index+1}</form:option>
 				</c:forEach>
 				</form:select>
 				</li>
@@ -37,14 +38,15 @@
 		</div>
 	
 	<div class="page_clear"></div>
+	
 	</div>
 	</div>
 	
 	<div class="it2">
 	<br>
 	<h1 id="rental">물품대여</h1><br>
-	<div id="imgdetail2"><br>
-	<h2 id="rental_name">${oneitem.item_title}</h2>
+	<h2 id="rental_name">${oneitem.item_title}</h2><br>
+	<div class="rcard2 d-flex justify-content-center" id="card-view" >
 		<div class="item-image2">
 			<img src="imageView.do?item_num=${oneitem.item_num}" width=170" height="170" class="my-photo">
 		</div>
@@ -53,8 +55,8 @@
 				재고 : ${count}<br>
 				대여시간 : ${oneitem.item_time}일<br>
 				<form:select path="item_num">
-				<c:forEach var="item" items="${list}">
-			    	<form:option value="${item.item_num}">${item.item_title}</form:option>
+				<c:forEach var="item" items="${list}" varStatus="status">
+			    	<form:option value="${item.item_num}">${item.item_title} ${status.index+1}</form:option>
 				</c:forEach><br>
 				</form:select>
 			<div>
