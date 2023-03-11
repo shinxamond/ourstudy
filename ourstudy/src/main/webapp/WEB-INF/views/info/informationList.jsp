@@ -58,7 +58,9 @@
 								</c:if>	
 								<c:if test="${importinfo.info_pin == 1}">
 								<!-- <th scope="row"class="blink"><span style="color:#ffc400">★★★</span><span style="color:#097bd9">필독</span><span style="color:#ffc400">★★★</span></th> -->
-								<th scope="row"class="blink"><span style="color:#097bd9">필독</span></th>
+								<th scope="row"class="blink"><b><span style="color:#ffc400">★</span>
+									<span style="color:#097bd9">필독</span>
+									<span style="color:#ffc400">★</span></b></th>
 								</c:if>	
 								<td class="text-left">
 									<a href="infoDetail.do?info_num=${importinfo.info_num}" class="truncate-text">${importinfo.info_title}</a>
@@ -75,7 +77,9 @@
 								<th scope="row">${info.info_num}</th>
 								</c:if>	
 								<c:if test="${info.info_pin == 1}">
-								<th scope="row"><span style="color:#ffc400">★★★</span><span style="color:#097bd9">필독</span><span style="color:#ffc400">★★★</span></th>
+								<th scope="row"><b><span style="color:#ffc400">★</span>
+									<span style="color:#097bd9">필독</span>
+									<span style="color:#ffc400">★</span></b></th>
 								</c:if>
 								<td class="text-left">
 									<a href="infoDetail.do?info_num=${info.info_num}" class="truncate-text">${info.info_title}</a>
