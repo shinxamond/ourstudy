@@ -5,9 +5,11 @@
 <!DOCTYPE html>
 <link rel="stylesheet" href="${pageContext.request.contextPath}/css/item.css">
 
-				<br><h3 style="text-align:center"><b>물품생성</b></h3><br><br>
+				
 				<!-- table 시작 -->
 					<div class="it1" style="height:66vh;">
+					<br><h3 style="text-align:center"><b>물품생성</b></h3><br><br>
+					<div class="acard d-flex justify-content-center" id="card-view" >
 					<form:form action="itemWrite.do" class="item_write_form" modelAttribute="itemVO" enctype="multipart/form-data">
 					<ul>
 						<li>
@@ -42,8 +44,13 @@
 					</div>
 				</form:form>
 				</div>
+				</div>
 				
-				<form:form action="itemWrite.do" class="item_write_form2 it2" modelAttribute="itemVO" enctype="multipart/form-data">
+				
+			<div class="it2">
+				<h3 style="left:150px; position: relative;"><b>물품생성</b></h3><br>
+				<div class="acard2 d-flex justify-content-center" id="card-view" >
+				<form:form action="itemWrite.do" class="item_write_form2" modelAttribute="itemVO" enctype="multipart/form-data">
 				
 					<label>상품표시여부</label><br>
 					<form:radiobutton path="item_p_status" value="1" checked="checked"/>표시
@@ -69,5 +76,5 @@
 				<input type="button" class="itemButton" value="목록" onclick="location.href='adminList.do'">
 				</div>
 			</form:form>
-							
-		
+				</div>			
+		</div>

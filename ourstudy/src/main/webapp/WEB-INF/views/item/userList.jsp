@@ -14,7 +14,7 @@
 	<div id="userList" class="it1">
 		<br><h1 class="align-center">물품 목록</h1><br><br>
 		<c:forEach var="item" items="${list}">
-		<div id="userList-area" class="card">
+		<div id="userList-area" class="ucard1">
 			<a href="userRental.do?item_index=${item.item_index}"><img src="imageView.do?item_num=${item.item_num}" width="250" height="250" class="my-photo">
 			<br>
 			<span id="item_name" style="font-size:17px;"> ${item.item_title}</span>
@@ -26,7 +26,7 @@
 	<div class="it2">
 		<br><h1 id="itemlist">물품 목록</h1><br>
 		<c:forEach var="item" items="${list}">
-		<div id="userlist" class="card">
+		<div id="userlist" class="ucard2">
 			<a href="userRental.do?item_index=${item.item_index}"><img src="imageView.do?item_num=${item.item_num}" width="150" height="130" class="my-photo">
 			<br>
 			<span id="item_name" style="font-size:17px;"> ${item.item_title}</span>

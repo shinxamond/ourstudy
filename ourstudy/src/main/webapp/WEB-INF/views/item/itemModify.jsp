@@ -9,9 +9,11 @@
 
 				<div class="it1" style="height:70vh">
 				<br><h3 style="text-align:center"><b>물품수정</b></h3><br><br>
-				<!-- table 시작 -->
 				
+				<!-- table 시작 -->
+					<div class="acard d-flex justify-content-center" id="card-view" >
 					<form:form action="itemModify.do" class="item_modify_form" modelAttribute="itemVO" enctype="multipart/form-data">
+					
 					<form:hidden path="item_num"/>
 					<ul>
 						<li>
@@ -110,10 +112,13 @@
 						</script>
 					<input type="button" class="itemButton" value="목록" onclick="location.href='adminList.do'">
 					</div>
+					
 				</form:form>
 				</div>
+			</div>
 			<div class="it2">
-				<h3 style="text-align:center"><b>물품수정</b></h3>
+				<h3 style="left:150px; position: relative;"><b>물품수정</b></h3>
+				<div class="acard2 d-flex justify-content-center" id="card-view" >
 				<form:form action="itemModify.do"  class="item_modify_form2" modelAttribute="itemVO" enctype="multipart/form-data">
 					<form:hidden path="item_num"/>
 					
@@ -206,4 +211,5 @@
 					<input type="button" value="목록" class="itemButton" onclick="location.href='adminList.do'">
 					</div>
 				</form:form>
+				</div>
 			</div>
