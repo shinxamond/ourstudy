@@ -85,9 +85,11 @@
 						<input type="image" id="pay_kakao"
 							src="${pageContext.request.contextPath}/image_bundle/payment_icon_yellow_small.png"
 							style="margin-bottom: 3px;"
+							data-seatnum = "${seat_num}"
 							onclick="requestKakaoPay()" name="pay_plan" value="카카오">
 							<input type="button" id="pay_card" type="button" class="btn btn-primary"
 							style="margin-bottom: 3px;" name="pay_plan"
+							data-seatnum = "${seat_num}"
 							onclick="requestCardPay()" value="카드">
 					</div>
 				</div>

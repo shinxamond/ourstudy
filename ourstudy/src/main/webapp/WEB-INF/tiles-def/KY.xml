@@ -7,33 +7,33 @@
 <tiles-definitions>
 	<!-- LOCKER -->
     <definition name="sectionForm" extends="main">
-    	<put-attribute name="title" value="사물함 섹션 배치도"/>
+    	<put-attribute name="title" value="OurStudy::사물함 섹션 배치도"/>
     	<put-attribute name="body"
     	  value="/WEB-INF/views/locker/sectionForm.jsp"/>        
     </definition>
     <definition name="sectionA" extends="main">
-    	<put-attribute name="title" value="섹션A"/>
+    	<put-attribute name="title" value="OurStudy::섹션A"/>
     	<put-attribute name="body"
     	  value="/WEB-INF/views/locker/sectionA.jsp"/>        
     </definition>
     <definition name="sectionB" extends="main">
-    	<put-attribute name="title" value="섹션B"/>
+    	<put-attribute name="title" value="OurStudy::섹션B"/>
     	<put-attribute name="body"
     	  value="/WEB-INF/views/locker/sectionB.jsp"/>        
     </definition>
     <definition name="sectionC" extends="main">
-    	<put-attribute name="title" value="섹션C"/>
+    	<put-attribute name="title" value="OurStudy::섹션C"/>
     	<put-attribute name="body"
     	  value="/WEB-INF/views/locker/sectionC.jsp"/>        
     </definition>
     <definition name="sectionD" extends="main">
-    	<put-attribute name="title" value="섹션D"/>
+    	<put-attribute name="title" value="OurStudy::섹션D"/>
     	<put-attribute name="body"
     	  value="/WEB-INF/views/locker/sectionD.jsp"/>        
     </definition>
     <!-- SEAT -->
     <definition name="selectForm" extends="main">
-    	<put-attribute name="title" value="좌석 배치도"/>
+    	<put-attribute name="title" value="OurStudy::좌석 배치도"/>
     	<put-attribute name="body"
     	  value="/WEB-INF/views/seat/selectForm.jsp"/>        
     </definition>

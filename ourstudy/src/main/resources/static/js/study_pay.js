@@ -2,6 +2,7 @@ var upoint;
 var check_useP = 0;
 
 $(function(){
+	
    $.ajax({
             url:'payPagePoint.do',
             type:'post',
@@ -83,6 +84,7 @@ $(function(){
    IMP.init("imp36873723"); // 예: imp00000000
    
   function requestKakaoPay() {
+	let seat_num = $('#pay_kakao').attr('data-seatnum');
 	$.ajax({
 		url:'checkTicket.do',
 		data:{ticket_num:$('#ticket_num').attr('data-ticketnum'),
@@ -143,7 +145,7 @@ $(function(){
 					 location.href='/main/main.do';
                   }else if(param.result == 'success'){
                      alert('결제 완료 되었습니다');
-					 location.href='/main/main.do';
+					 location.href='../seat/select.do?seat_num=' + seat_num;
                   }else if(param.result == 'inUse'){
 					alert('사물함 기간이 연장되었습니다.');
 					location.href='/main/main.do';
@@ -174,6 +176,7 @@ $(function(){
   }
 
    function requestCardPay() {
+	   let seat_num = $('#pay_card').attr('data-seatnum');
    		$.ajax({
 		url:'checkTicket.do',
 		data:{ticket_num:$('#ticket_num').attr('data-ticketnum'),
@@ -214,7 +217,7 @@ $(function(){
 			               success:function(param){
 			                  if(param.result == 'logout'){
 			                     alert('로그인 후 사용하세요');
-								 location.href='/main/main.do';
+			                     location.href='../seat/select.do?seat_num=' + seat_num;
 			                  }else if(param.result == 'success'){
 			                     alert('결제 완료 되었습니다');
 								 location.href='/main/main.do';

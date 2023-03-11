@@ -25,9 +25,16 @@
 								<fmt:formatNumber value="${ticket.ticket_price}" />원
 							</div>
 							<div style="margin-top: 5px;">
-								<button id="study_buy_btn" type="button" class="btn btn-primary"
+							<form action="/pay/study_pay.do" id = "study_pay_form" method = "post">
+								<input type = "hidden" name = "ticket_num" value = "${ticket.ticket_num}">
+								<input type = "hidden" name = "seat_num" value= "${seat_num}">
+								${ticket.ticket_num} ${seat_num}
+								<input type = "submit" id = "study_buy_btn" value = "구매하기" class = "btn btn-primary" style="float: right;">
+							</form>
+								<%-- <button id="study_buy_btn" type="button" class="btn btn-primary"
+									data-seatnum = "${seat_num}"
 									style="float: right;"
-									onclick="location.href='${pageContext.request.contextPath}/pay/study_pay.do?ticket_num=${ticket.ticket_num}'">구매하기</button>
+									onclick="location.href='${pageContext.request.contextPath}/pay/study_pay.do?ticket_num=${ticket.ticket_num}&&seat_num=${seat_num}'">구매하기</button> --%>
 							</div>
 						</div>
 					</div>
