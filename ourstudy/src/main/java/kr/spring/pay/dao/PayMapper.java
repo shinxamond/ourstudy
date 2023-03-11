@@ -1,6 +1,5 @@
 package kr.spring.pay.dao;
 
-import java.time.LocalDateTime;
 import java.util.List;
 import java.util.Map;
 
@@ -11,7 +10,6 @@ import org.apache.ibatis.annotations.Select;
 import org.apache.ibatis.annotations.Update;
 
 import kr.spring.locker.vo.LockerVO;
-import kr.spring.member.vo.MemberVO;
 import kr.spring.pay.vo.PayVO;
 import kr.spring.ticket.vo.TicketVO;
 

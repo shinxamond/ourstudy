@@ -2,7 +2,6 @@ package kr.spring.pay.vo;
 
 import java.sql.Date;
 
-import kr.spring.point.vo.PointVO;
 import kr.spring.ticket.vo.TicketVO;
 
 public class PayVO {

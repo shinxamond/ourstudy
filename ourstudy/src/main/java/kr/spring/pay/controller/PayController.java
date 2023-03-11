@@ -284,6 +284,8 @@ public class PayController {
 		            System.out.println(newEnd);
 					payVOForLocker.setLocker_end(newEnd);
 					
+					logger.debug(">>>>>>>>>>>>>." + payVO.getLocker_num());
+					
 					lockerService.lockerStatusIn(payVO);
 					payService.insertNewLockerMember(payVOForLocker);
 				}

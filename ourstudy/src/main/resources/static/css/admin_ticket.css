@@ -17,6 +17,9 @@ a, a:link, a:hover, a:visited, a:focus{
 	text-decoration: none;
 	color: #000000;
 }
+.container{
+	width: 75%;
+}
 
 .card{ 
 	border-radius: 1rem;
@@ -28,7 +31,7 @@ a, a:link, a:hover, a:visited, a:focus{
 	width:400px;
 }
 #ticket_register{
-	margin-right: 10px;
+	margin-right: 165px;
 }
 form{
 	margin:0;
