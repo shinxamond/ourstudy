@@ -171,7 +171,7 @@ $(function(){
 <form action="/talk/maintalkRoomWrite.do" method="post" id="check_talk_form">
 	<input type="hidden" name="members" value="${user.mem_num}">
 	<input type="hidden" name="members" value="842">
-	<input type="hidden" name="talkroom_name" id="talkroom_name" value="${user.mem_id}, admin">
+	<input type="hidden" name="talkroom_name" id="talkroom_name" value="admin, ${user.mem_id}">
 	
 	<button id="roomcheckB" class="btnC" style="position: fixed; right: 40px; bottom: 43px; font-size:55px; color:#e65962; border:none; background-color:#F6E3CE; border-radius: 80px;">📭</button>
 	<span  style="position: fixed; right: 40px; bottom: 30px;">채팅방 확인하기</span>

@@ -144,7 +144,7 @@ public class TalkController {
 		int count = talkService.talkRoomCheck(tmem_num[0],tmem_num[1]);
 
 		Map<String, Object> map = new HashMap<String, Object>();
-		map.put("keyword", user.getMem_id() +", admin");
+		map.put("keyword", "admin, " + user.getMem_id());
 		map.put("mem_num", user.getMem_num());
 
 		List<TalkRoomVO> roomList = talkService.selectTalkRoomList(map);
