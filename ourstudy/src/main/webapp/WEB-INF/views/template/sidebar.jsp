@@ -16,7 +16,7 @@
 <link href="https://fonts.googleapis.com/css2?family=Leckerli+One&display=swap" rel="stylesheet">
 <%--로그인 유효성 체크 --%>
 <script type="text/javascript" src="${pageContext.request.contextPath}/js/logincheck.js"></script>
-<script type="text/javascript" src="${pageContext.request.contextPath}/js/sidebar.js"></script>
+<script type="text/javascript" src="${pageContext.request.contextPath}/js/sidebar2.js"></script>
 <script type="text/javascript" src="${pageContext.request.contextPath}/js/checkDeadlineTime.js"></script>
 
 <%--네이버 --%>
@@ -247,7 +247,7 @@ function kakaoLogout() {
          		 		</li>     		 		         		 	
          		 		<li>
          		 		&nbsp;&nbsp;&nbsp;&nbsp;<i class="bi bi-person-fill-gear" style="font-size:13pt;"></i>
-         		 		<a href="${pageContext.request.contextPath}/admin/admin_list.do" class="d-inline-flex rounded" style="font-size:12pt; margin-left:0pt; margin-top:0;">회원관리</a>
+         		 		<a href="${pageContext.request.contextPath}/admin/admin_list.do" class="d-inline-flex rounded" style="font-size:12pt; margin-left:0pt; margin-top:0;" data-ad-num="8">회원관리</a>
          		 		</li>
          		 		<li>
 	         		 		<button class="btn btn-toggle  d-inline-flex  align-items-center rounded collapsed border-white" 
@@ -277,7 +277,7 @@ function kakaoLogout() {
          		 		</li>	
          		 		<li>
          		 		&nbsp;&nbsp;&nbsp;&nbsp;<i class="bi bi-piggy-bank-fill" style="font-size:13pt;"></i>
-         		 		<a href="${pageContext.request.contextPath}/admin/admin_saleslist.do" class="d-inline-flex rounded" style="font-size:12pt; margin-left:0pt; margin-top:0;">판매기록</a>
+         		 		<a href="${pageContext.request.contextPath}/admin/admin_saleslist.do" class="d-inline-flex rounded" style="font-size:12pt; margin-left:0pt; margin-top:0;" data-ad-num="9">판매기록</a>
          		 		</li>         		 		 			
            				<li>
 	         		 		<button class="btn btn-toggle  d-inline-flex  align-items-center rounded collapsed border-white" 
