@@ -93,7 +93,7 @@ $(function(){
 					output += '<li>';
 					output += '<img src="../mypage/viewProfile.do?mem_num='+item.mem_num+'" width="40" height="40" class="my-photo">';
 					output += '</li>';					
-					output += '<li style="margin-left:10px;">';
+					output += '<li style="margin-left:10px;"  id="reply_name">';
 					if(item.mem_name){
 						output += '<b>' + item.mem_name + '</b>';
 					}
@@ -229,7 +229,7 @@ $(function(){
                            .replace(/\n/g,'<br>'));
 					//최근 수정일 표시
 					$('#mre_form').parent().find('.modify-date')
-					                       .text('최근 수정일 : 5초 미만');
+					                       .text('\u00A0'+'\u00A0'+'\u00A0'+'\u00A0'+'최근 수정일 : 5초 미만');
 					//수정 폼 초기화
 					initModifyForm();
 				}else if(param.result == 'wrongAccess'){
