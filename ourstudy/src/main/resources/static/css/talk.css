@@ -306,12 +306,12 @@ table.striped-talk-table tr:nth-child(odd){
 .tt1{
 	
 	 padding: 10px;
-     border-bottom: 1px solid #CD5C5C;
+     border-bottom: 1px solid #BDBDBD;
 }
 
 .tt2 {
 	 padding: 10px;
-     border-bottom: 1px solid #CD5C5C;
+     border-bottom: 1px solid #BDBDBD;
 	display: none;
 }
 .room_t2 input[type="text"]{
