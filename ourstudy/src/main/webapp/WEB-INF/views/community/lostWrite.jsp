@@ -149,7 +149,7 @@
 			</li>
 	
 	</ul>
-	<div class="align-right">
+	<div class="align-right" style="margin:0 20px;">
 			<form:button id="list_btn" class="btn btn-secondary btn-sm">등록</form:button>	
 			<input type="button" value="목록" class="btn btn-secondary btn-sm"
 			            onclick="location.href='/community/lostList.do'">

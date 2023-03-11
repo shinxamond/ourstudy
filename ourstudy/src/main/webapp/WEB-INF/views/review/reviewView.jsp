@@ -25,16 +25,16 @@
 				<b>${review.mem_name}</b> ·
 			</c:if>   
 			<c:if test="${review.r_rate == 1}">
-			<span style="color:#ffc400">★</span>  
+			<span style="color:#ffc400">★☆☆☆☆</span>  
 			</c:if>
 			<c:if test="${review.r_rate == 2}">
-			<span style="color:#ffc400">★★</span>  
+			<span style="color:#ffc400">★★☆☆☆</span>  
 			</c:if>
 			<c:if test="${review.r_rate == 3}">
-			<span style="color:#ffc400">★★★</span>  
+			<span style="color:#ffc400">★★★☆☆</span>  
 			</c:if>
 			<c:if test="${review.r_rate == 4}">
-			<span style="color:#ffc400">★★★★</span> 
+			<span style="color:#ffc400">★★★★☆</span> 
 			</c:if>
 			<c:if test="${review.r_rate == 5}">
 			<span style="color:#ffc400">★★★★★</span> 

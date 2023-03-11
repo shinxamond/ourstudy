@@ -25,7 +25,6 @@
 		<ul>
 			<li>
 				<label for="info_title" ><b>제목</b></label>
-				<br>
 				<form:input path="info_title" />
 				<form:errors path="info_title" 
 				                  cssClass="error-color"/>
@@ -57,7 +56,6 @@
 			</li>
 			<li>
 				<label for="upload"><b>파일 첨부</b></label>
-				<br>
 				<input type="file" name="upload" id="upload"  >
 				<form:errors element="div" cssClass="error-color"/>
 			</li> 

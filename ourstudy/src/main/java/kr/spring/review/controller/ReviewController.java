@@ -97,7 +97,7 @@ public class ReviewController {
 
 	//등록 폼에서 전송된 데이터 처리
 	@PostMapping("/review/write.do")
-	public String submit(@Valid ReviewVO reviewVO, BindingResult result,
+	public String submit(@Valid ReviewVO reviewVO, BindingResult result, Model model,
 			      HttpServletRequest request, RedirectAttributes redirect, HttpSession session) {
 		
 		logger.debug("<<업로드 파일 용량>> : " + reviewVO.getR_img().length);
@@ -114,15 +114,14 @@ public class ReviewController {
 		//회원번호 셋팅
 		reviewVO.setMem_num(
 			((MemberVO)session.getAttribute("user")).getMem_num());
+		
 
 		//글쓰기
 		reviewService.insertReview(reviewVO);
 		
-		//RedirectAttributes 객체는 리다이렉트 시점에 한 번만 사용되는 데이터를 전송.
-		//브라우저에 데이터를 전송하지만 URL상에 보이지 않는 숨겨진 데이터의 형태로 전달
-		redirect.addFlashAttribute("result","success");
-		
-		return "redirect:/review/list.do";
+		model.addAttribute("message", "등록 되었습니다.");
+		model.addAttribute("url", request.getContextPath()+"/review/list.do");
+		return "common/resultView";
 	}
 	
 	//========이용후기 글상세=======//

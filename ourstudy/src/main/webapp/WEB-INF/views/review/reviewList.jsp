@@ -78,16 +78,16 @@
 								</span></td>
 								<td>${review.mem_name}</td>
 								<c:if test="${review.r_rate == 1}">
-								<td><span style="color:#ffc400">★</span></td>
+								<td><span style="color:#ffc400">★☆☆☆☆</span></td>
 								</c:if>
 								<c:if test="${review.r_rate == 2}">
-								<td><span style="color:#ffc400">★★</span></td>
+								<td><span style="color:#ffc400">★★☆☆☆</span></td>
 								</c:if>
 								<c:if test="${review.r_rate == 3}">
-								<td><span style="color:#ffc400">★★★</span></td>
+								<td><span style="color:#ffc400">★★★☆☆</span></td>
 								</c:if>
 								<c:if test="${review.r_rate == 4}">
-								<td><span style="color:#ffc400">★★★★</span></td>
+								<td><span style="color:#ffc400">★★★★☆</span></td>
 								</c:if>
 								<c:if test="${review.r_rate == 5}">
 								<td><span style="color:#ffc400">★★★★★</span></td>
@@ -108,16 +108,16 @@
 								<span class="t-sub-info">${review.mem_name}</span> &nbsp;
 								<span class="t-sub-info" style="color:#ffc400">
 								<c:if test="${review.r_rate == 1}">
-								★
+								★☆☆☆☆
 								</c:if>
 								<c:if test="${review.r_rate == 2}">
-								★★
+								★★☆☆☆
 								</c:if>
 								<c:if test="${review.r_rate == 3}">
-								★★★
+								★★★☆☆
 								</c:if>
 								<c:if test="${review.r_rate == 4}">
-								★★★★
+								★★★★☆
 								</c:if>
 								<c:if test="${review.r_rate == 5}">
 								★★★★★
