@@ -170,7 +170,7 @@ public class MemberController {
                boolean compareDate = lockerEnd.isBefore(now);      
             
                if(compareDate || lockerEnd.isEqual(now)) {
-                  int current_locker_num = lockerService.getLockerNum(member.getMem_num());
+                  Integer current_locker_num = lockerService.getLockerNum(member.getMem_num());
                   lockerService.lockerStatusOut(current_locker_num);
                }
             }

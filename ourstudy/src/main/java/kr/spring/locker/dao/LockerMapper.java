@@ -65,5 +65,5 @@ public interface LockerMapper {
    
    //현재 쓰고 있는 사물함 번호 불러오기
    @Select("SELECT d.locker_num FROM (SELECT * FROM LOCKER_DETAIL WHERE mem_num=#{mem_num})d JOIN LOCKER_INFO i ON d.locker_num = i.locker_num WHERE i.locker_status = 0")
-   public int getLockerNum(int mem_num);
+   public Integer getLockerNum(int mem_num);
 }
