@@ -46,7 +46,6 @@ public class TicketController {
    @RequestMapping("/ticket/study_ticketList.do")
    public ModelAndView study_process(
          @RequestParam(value="pageNum",defaultValue="1") int currentPage,
-         @RequestParam int seat_num,
          String keyfield,
          String keyword) {
 
@@ -71,7 +70,6 @@ public class TicketController {
       }
 
       ModelAndView mav = new ModelAndView();
-      mav.addObject("seat_num", seat_num);
       mav.setViewName("study_ticketList");
       mav.addObject("count", count);
       mav.addObject("ticket", ticket);
