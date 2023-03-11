@@ -150,7 +150,7 @@ function kakaoLogout() {
 				
 				<div class="side-bottom">
        				<button class="btn btn-toggle d-inline-flex  align-items-center rounded collapsed border-white" 
-        				data-bs-toggle="collapse" data-bs-target="#item-collapse" aria-expanded="false">
+        				data-bs-toggle="collapse" data-bs-target="#item-collapse" aria-expanded="false" data-ad-num="1">
           				&nbsp;<i class="bi bi-ticket-perforated"></i>
           				<span class="innerhome">이용권 구매</span>
         			</button>
@@ -158,12 +158,12 @@ function kakaoLogout() {
          		 	<ul class="btn-toggle-nav fw-normal pb-1 small collapsed">
            				<li>
            					<a href=<c:if test="${!empty user}">"${pageContext.request.contextPath}/ticket/study_ticketList.do"</c:if> class="d-inline-flex rounded"
-           					<c:if test="${empty user}">data-bs-toggle="modal" data-bs-target="#loginModal"</c:if> class="rounded" id="item-collapsed1">좌석 이용권</a>
+           					<c:if test="${empty user}">data-bs-toggle="modal" data-bs-target="#loginModal"</c:if> class="rounded" id="item-collapsed1" data-ad-num="1">좌석 이용권</a>
            					
            				</li>
             			<li>
 	            			<a href=<c:if test="${!empty user}">"${pageContext.request.contextPath}/ticket/locker_ticketList.do"</c:if> class="d-inline-flex rounded"
-							<c:if test="${empty user}">data-bs-toggle="modal" data-bs-target="#loginModal"</c:if> class="rounded" id="item-collapsed2">사물함 이용권</a>
+							<c:if test="${empty user}">data-bs-toggle="modal" data-bs-target="#loginModal"</c:if> class="rounded" id="item-collapsed2" data-ad-num="1">사물함 이용권</a>
             			</li>
           			</ul>
         			</div>
@@ -188,30 +188,30 @@ function kakaoLogout() {
 				
 				<div class="side-bottom">
        				<button class="btn btn-toggle  d-inline-flex  align-items-center rounded collapsed border-white" 
-        				data-bs-toggle="collapse" data-bs-target="#notice-collapse" aria-expanded="false">
+        				data-bs-toggle="collapse" data-bs-target="#notice-collapse" aria-expanded="false" data-ad-num="2">
           				&nbsp;<i class="fas fa-regular fa-bullhorn equal-left"></i>
           				<span class="notice-span">시설 안내</span>
         			</button>
         			<div class="collapse" id="notice-collapse">
 	         		 	<ul class="btn-toggle-nav fw-normal pb-1 small">
-	           				<li><a href="${pageContext.request.contextPath}/info/informationList.do" class="d-inline-flex rounded">안내사항</a></li>
-	            			<li><a href="${pageContext.request.contextPath}/info/faq.do" class="d-inline-flex rounded">자주 묻는 질문</a></li>
-	            			<li><a href="${pageContext.request.contextPath}/map/showmap.do" class="d-inline-flex rounded">오시는길</a></li>
+	           				<li><a href="${pageContext.request.contextPath}/info/informationList.do" class="d-inline-flex rounded" data-ad-num="2">안내사항</a></li>
+	            			<li><a href="${pageContext.request.contextPath}/info/faq.do" class="d-inline-flex rounded" data-ad-num="2">자주 묻는 질문</a></li>
+	            			<li><a href="${pageContext.request.contextPath}/map/showmap.do" class="d-inline-flex rounded" data-ad-num="2">오시는길</a></li>
 	          			</ul>
         			</div>
         		</div>
 				
 				<div class="side-bottom">
        				<button class="btn btn-toggle  d-inline-flex  align-items-center rounded collapsed border-white" 
-        				data-bs-toggle="collapse" data-bs-target="#comm-collapse" aria-expanded="false">
+        				data-bs-toggle="collapse" data-bs-target="#comm-collapse" aria-expanded="false" data-ad-num="3">
           				&nbsp;<i class="bi bi-people-fill equal-left"></i>
           				<span class="comm-span">커뮤니티</span>
         			</button>
         			<div class="collapse" id="comm-collapse">
          		 	<ul class="btn-toggle-nav fw-normal pb-1 small">
            				<li><a href=<c:if test="${!empty user}">"${pageContext.request.contextPath}/community/lostList.do"</c:if> class="d-inline-flex rounded"
-           				<c:if test="${empty user}">data-bs-toggle="modal" data-bs-target="#loginModal"</c:if> class="rounded">분실물 찾기</a></li>
-            			<li><a href="${pageContext.request.contextPath}/review/list.do" class="d-inline-flex rounded">이용후기</a></li>
+           				<c:if test="${empty user}">data-bs-toggle="modal" data-bs-target="#loginModal"</c:if> class="rounded" data-ad-num="3">분실물 찾기</a></li>
+            			<li><a href="${pageContext.request.contextPath}/review/list.do" class="d-inline-flex rounded" data-ad-num="3">이용후기</a></li>
           			</ul>
         			</div>
         		</div>
@@ -226,7 +226,7 @@ function kakaoLogout() {
         		<c:if test="${!empty user && user.mem_auth == 9}">
 				<div class="side-bottom">
        				<button class="btn btn-toggle  d-inline-flex  align-items-center rounded collapsed border-white" 
-        				data-bs-toggle="collapse" data-bs-target="#admin-collapse" aria-expanded="false">
+        				data-bs-toggle="collapse" data-bs-target="#admin-collapse" aria-expanded="false" data-type="ad">
           				&nbsp;<i class="fas fa-light fa-id-card"></i>
           				<span class="comm-span side-main-link">관리페이지</span>
         			</button>
@@ -234,14 +234,14 @@ function kakaoLogout() {
          		 	<ul class="btn-toggle-nav fw-normal pb-1 small">
          		 		<li>
 	         		 		<button class="btn btn-toggle  d-inline-flex  align-items-center rounded collapsed border-white" 
-	        					data-bs-toggle="collapse" data-bs-target="#admin-collapse1" aria-expanded="false">
+	        					data-bs-toggle="collapse" data-bs-target="#admin-collapse1" aria-expanded="false" data-ad-num="4">
 	        					<i class="bi bi-plus-circle-fill"></i>
 	          					<span class="comm-span side-main-link">관리자추가</span>
 	        				</button>
 	        				<div class="collapse" id="admin-collapse1">
 	        				<ul class="btn-toggle-nav fw-normal pb-1 small">
-            					<li><a href="${pageContext.request.contextPath}/ticket/admin_ticketList.do" class="d-inline-flex rounded">이용권추가</a></li>
-            					<li><a href="${pageContext.request.contextPath}/item/adminList.do" class="d-inline-flex rounded">물품추가</a></li>        					
+            					<li><a href="${pageContext.request.contextPath}/ticket/admin_ticketList.do" class="d-inline-flex rounded" data-ad-num="4">이용권추가</a></li>
+            					<li><a href="${pageContext.request.contextPath}/item/adminList.do" class="d-inline-flex rounded" data-ad-num="4">물품추가</a></li>        					
 	        				</ul>
 	        				</div>
          		 		</li>     		 		         		 	
@@ -251,27 +251,27 @@ function kakaoLogout() {
          		 		</li>
          		 		<li>
 	         		 		<button class="btn btn-toggle  d-inline-flex  align-items-center rounded collapsed border-white" 
-	        					data-bs-toggle="collapse" data-bs-target="#admin-collapse2" aria-expanded="false">
+	        					data-bs-toggle="collapse" data-bs-target="#admin-collapse2" aria-expanded="false" data-ad-num="5">
 	        					<i class="bi bi-database-fill"></i>
 	          					<span class="comm-span side-main-link">이용기록</span>
 	        				</button>
 	        				<div class="collapse" id="admin-collapse2">
 	        				<ul class="btn-toggle-nav fw-normal pb-1 small">
-	        					<li><a href="${pageContext.request.contextPath}/admin/admin_seathistory.do" class="d-inline-flex rounded">좌석기록</a></li>
-	        					<li><a href="${pageContext.request.contextPath}/admin/admin_lockerhistory.do" class="d-inline-flex rounded">사물함기록</a></li>
+	        					<li><a href="${pageContext.request.contextPath}/admin/admin_seathistory.do" class="d-inline-flex rounded" data-ad-num="5">좌석기록</a></li>
+	        					<li><a href="${pageContext.request.contextPath}/admin/admin_lockerhistory.do" class="d-inline-flex rounded" data-ad-num="5">사물함기록</a></li>
 	        				</ul>
 	        				</div>
          		 		</li>     		 		
          		 		<li>
 	         		 		<button class="btn btn-toggle  d-inline-flex  align-items-center rounded collapsed border-white" 
-	        					data-bs-toggle="collapse" data-bs-target="#admin-collapse3" aria-expanded="false">
+	        					data-bs-toggle="collapse" data-bs-target="#admin-collapse3" aria-expanded="false" data-ad-num="6">
 	        					<i class="bi bi-inboxes-fill"></i>  
 	          					<span class="comm-span side-main-link">물품기록</span>
 	        				</button>
 	        				<div class="collapse" id="admin-collapse3">
 	        				<ul class="btn-toggle-nav fw-normal pb-1 small">
-	        					<li><a href="${pageContext.request.contextPath}/admin/admin_itemhistory.do" class="d-inline-flex rounded">대여히스토리</a></li>
-	        					<li><a href="${pageContext.request.contextPath}/admin/admin_unreturnlist.do" class="d-inline-flex rounded">미반납자</a></li>	        					
+	        					<li><a href="${pageContext.request.contextPath}/admin/admin_itemhistory.do" class="d-inline-flex rounded" data-ad-num="6">대여히스토리</a></li>
+	        					<li><a href="${pageContext.request.contextPath}/admin/admin_unreturnlist.do" class="d-inline-flex rounded" data-ad-num="6">미반납자</a></li>	        					
 	        				</ul>
 	        				</div>
          		 		</li>	
@@ -281,15 +281,15 @@ function kakaoLogout() {
          		 		</li>         		 		 			
            				<li>
 	         		 		<button class="btn btn-toggle  d-inline-flex  align-items-center rounded collapsed border-white" 
-	        					data-bs-toggle="collapse" data-bs-target="#admin-collapse4" aria-expanded="false">
+	        					data-bs-toggle="collapse" data-bs-target="#admin-collapse4" aria-expanded="false" data-ad-num="7">
           						<i class="bi bi-chat-left-dots-fill"></i>	        					
 	          					<span class="comm-span side-main-link">채팅기록</span>
 	        				</button>
 	        				<div class="collapse" id="admin-collapse4">
 	        				<ul class="btn-toggle-nav fw-normal pb-1 small">
-	        					<li><a href="${pageContext.request.contextPath}/talk/talkList.do" class="d-inline-flex rounded">채팅목록</a></li>
-	        					<li><a href="${pageContext.request.contextPath}/admin/admin_receivehistory.do" class="d-inline-flex rounded">수신채팅</a></li>
-	        					<li><a href="${pageContext.request.contextPath}/admin/admin_sendhistory.do" class="d-inline-flex rounded">발신채팅</a></li>	        					
+	        					<li><a href="${pageContext.request.contextPath}/talk/talkList.do" class="d-inline-flex rounded" data-ad-num="7">채팅목록</a></li>
+	        					<li><a href="${pageContext.request.contextPath}/admin/admin_receivehistory.do" class="d-inline-flex rounded" data-ad-num="7">수신채팅</a></li>
+	        					<li><a href="${pageContext.request.contextPath}/admin/admin_sendhistory.do" class="d-inline-flex rounded" data-ad-num="7">발신채팅</a></li>	        					
 	        				</ul>
 	        				</div>
          		 		</li>           		 		         		 		

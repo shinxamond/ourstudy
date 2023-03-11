@@ -19,7 +19,7 @@
 }
 /*긴 글씨 자르게*/
 .truncate-text {
-    max-width: 270px; /** 현재 한글 기준 10글자 정도로 설정됨 */
+    max-width: 400px;
     display:inline-block;
     vertical-align: middle;
     overflow: hidden;
