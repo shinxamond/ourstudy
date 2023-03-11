@@ -631,6 +631,10 @@ h6 {
 .card-content {
 	padding:40px 60px 0;
 }
+.card-content-info {
+	padding:40px 60px 0;
+	min-height:300px;
+}
 .card-foot {
 	padding:20px 60px 0;
 }

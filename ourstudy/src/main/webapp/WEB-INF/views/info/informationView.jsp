@@ -10,7 +10,7 @@
 <div class="content-main">
 <div class="content-right">
 <script src="${pageContext.request.contextPath}/js/videoAdapter.js"></script>
-	<h3 style="text-align:center"><b>안내사항</b></h3>
+	<h3 style="text-align:center"><b>안내사항</b></h3><br>
 
 	<div class="card d-flex justify-content-center" id="card-view" >
 	<ul class="card-head">
@@ -33,16 +33,26 @@
 						onclick="location.href='infoUpdate.do?info_num=${information.info_num}'">
 					<input type="button" value="삭제" 
 						class="btn btn-outline-secondary btn-sm"  id="delete_btn"> 
-					
 					<script type="text/javascript">
-						let delete_btn = document.getElementById('delete_btn');
-						delete_btn.onclick=function(){
-							let choice = confirm('삭제하시겠습니까?');
-							if(choice){
-								location.replace('infoDelete.do?info_num=${information.info_num}');
-							}
-						};
-					</script>
+                         $("#delete_btn").click(function () {
+                            Swal.fire({
+                              title: '정말로 삭제 하시겠습니까?',
+                              text: "다시 되돌릴 수 없습니다. 신중하세요.",
+                              icon: 'warning',
+                              showCancelButton: true,
+                              confirmButtonColor: '#3085d6',
+                              cancelButtonColor: '#d33',
+                              confirmButtonText: '삭제',
+                              cancelButtonText: '취소',
+                              reverseButtons: false, // 버튼 순서 거꾸로
+                              
+                            }).then((result) => {
+      					      if (result.isConfirmed) {
+    					    	  location.replace('infoDelete.do?info_num=${information.info_num}');
+    					      }
+    					    })
+    					  });
+    				</script>
 				</c:if>
 			</div>
 		</li>
