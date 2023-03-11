@@ -10,33 +10,29 @@
 <link rel="stylesheet"
 	href="${pageContext.request.contextPath}/css/ticket.css">
 <script src="https://cdn.iamport.kr/v1/iamport.js"></script>
-<div id="main_content_body" class="container">
-	<div class="container" id="ticket_card">
-	<div class="row-md-6">
+<div id="main_content_body" class="container" style="height: 80vh;">
+	<div class="container d-flex justify-content-center">
+	<div class="row-sm-4">
 		<c:set var="first_kind" value="0" />
 		<c:forEach var="ticket" items="${ticket}">
 			<c:if test="${ticket.ticket_kind == 1}">
 				<div class="card-group" style="margin-top: 30px;">
-					<div class="card" >
-						<input type="hidden" value="${ticket.ticket_num}">
-						<div class="card-body">
-							${ticket.ticket_name}
-							<div style="float: right; margin-left:30px;">
-								<fmt:formatNumber value="${ticket.ticket_price}" />원
+					<div class="card" id="ticket_card">
+						<form action="/pay/study_pay.do" id="study_ticket" method="post" class="form-inline">
+							<input type="hidden" name="ticket_num"
+								value="${ticket.ticket_num}">		
+								<input type="hidden" name="seat_num"
+									value="${seat_num}">
+							<div class="card-body">
+								${ticket.ticket_name}
+								<div style="float: right;">
+									<fmt:formatNumber value="${ticket.ticket_price}" />
+									원
+								</div>
 							</div>
-							<div style="margin-top: 5px;">
-							<form action="/pay/study_pay.do" id = "study_pay_form" method = "post">
-								<input type = "hidden" name = "ticket_num" value = "${ticket.ticket_num}">
-								<input type = "hidden" name = "seat_num" value= "${seat_num}">
-								${ticket.ticket_num} ${seat_num}
-								<input type = "submit" id = "study_buy_btn" value = "구매하기" class = "btn btn-primary" style="float: right;">
-							</form>
-								<%-- <button id="study_buy_btn" type="button" class="btn btn-primary"
-									data-seatnum = "${seat_num}"
-									style="float: right;"
-									onclick="location.href='${pageContext.request.contextPath}/pay/study_pay.do?ticket_num=${ticket.ticket_num}&&seat_num=${seat_num}'">구매하기</button> --%>
-							</div>
-						</div>
+							<input type="submit" id="study_buy_btn" value="구매하기"
+								class="btn btn-primary" style="float: right;">
+						</form>
 					</div>
 				</div>
 				<c:set var="first_kind" value="${first_kind + 1}" />

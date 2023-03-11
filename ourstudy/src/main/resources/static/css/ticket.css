@@ -30,13 +30,16 @@ body{
 #locker_ticket{
 	width: 400px;
 }
+#study_ticket{
+	width: 400px;
+}
 
 form{
 	margin:0;
 	padding:0 15px 15px 0;
 }
 #study_buy_btn{
-	margin-top:10px;
+	margin-right:15px;
 	background-color: #E65962;
 	border:none;
 }
