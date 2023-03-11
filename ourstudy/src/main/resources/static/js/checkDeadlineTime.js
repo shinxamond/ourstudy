@@ -35,7 +35,7 @@ $(function(){
 	  		
 			console.log(updateSec);
 	
-	  		if(updateSec >= 10) {
+	  		if(updateSec >= 1) {
 	  			sessionStorage.setItem('plusSec', '0');
 	  			
 	  			let mem_num = sessionStorage.getItem('isSelectMemnum');
@@ -86,7 +86,7 @@ $(function(){
 											$('#remainTimeZone').load('../mypage/myPageMain.do #remainTimeZone');
 										}
 	  								}else {
-	  									alert('잔여시간 업데이트 오류 발생');
+	  									alert('잔여시간 업데이트 오류 발생(5분이하일때)');
 	  								}
 	  							},
 	  							error : function(){
@@ -108,7 +108,7 @@ $(function(){
 											$('#remainTimeZone').load('../mypage/myPageMain.do #remainTimeZone');
 										}
 	  								}else {
-	  									alert('잔여시간 업데이트 오류 발생');
+	  									alert('잔여시간 업데이트 오류 발생(5분이하인데 연장안할때)');
 	  								}
 	  							},
 	  							error : function(){
@@ -128,7 +128,13 @@ $(function(){
 										if(reloadDiv != ''){
 
 										}
-	  								}else {
+	  								}else if(param.result == 'end'){
+										location.href="../seat/out.do?seat_num="+seat_num;
+										alert('잔여시간이 모두 소진되었습니다.');
+										sessionStorage.setItem("isSelect", '0');
+										location.href = "../seat/selectForm.do";										
+									}
+									else {
 	  									alert('종료 후 잔여시간 업데이트 오류 발생');
 	  								}
 	  							},
@@ -136,10 +142,7 @@ $(function(){
 	  								alert('NETWORK ERROR(updateTimeWhenLogout)');
 	  							}
 	  						});
-							location.href="../seat/out.do?seat_num="+seat_num;
-							alert('잔여시간이 모두 소진되었습니다.');
-							sessionStorage.setItem("isSelect", '0');
-							location.href = "../seat/selectForm.do";
+
 						}else {
 	  						alert('잔여시간 불러오기 오류 발생');
 	  					}

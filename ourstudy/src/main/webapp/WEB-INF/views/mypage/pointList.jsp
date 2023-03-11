@@ -28,7 +28,7 @@
 				<div style = "text-align :center;">포인트 적립 내역이 없습니다.</div>
 				</c:if>
 				<c:if test="${count > 0 }">
-				<table class = "point-table">
+				<table class = "point-table mb-5">
 					<tr>
 						<th>날짜</th>
 						<th>결제내역</th>
@@ -72,8 +72,8 @@
 				</div>	
 				</c:if>
 		</div>
-		<div style = "text-align : center;">
-			<input type="button" class="btn" id="home_btn" value="홈으로" onclick="location.href='${pageContext.request.contextPath}/main/main.do'">
+		<div style = "text-align : center; margin-bottom : 15px;">
+			<input type="button" class="btn" id="home_btn" value="홈으로" onclick="location.href='${pageContext.request.contextPath}/mypage/myPageMain.do'">
 		</div>
 	</div>
 	

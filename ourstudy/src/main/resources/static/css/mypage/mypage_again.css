@@ -169,7 +169,22 @@
 		text-decoration: none;
 		color: #000000;
 	}
-	
+	 #write_name{
+		text-decoration: none;
+		color: #000000;
+	}
+	#main_write_table{
+		margin : 0 auto;
+		width : 100%;
+	}
+	#main_write_table tr th, #main_write_table tr td{
+		text-align : center;
+		height : 50px;
+	}
+	#write_name{
+		text-decoration: none;
+		color: #000000;
+	}
 	/*======= 회원 정보 ========*/
 	.mem-info-content{
 		margin : 30px auto;
@@ -354,6 +369,9 @@
 		margin : 0;
 		padding : 0;
 	}
+	body{
+		width : 100%;
+	}
 	@font-face {
 	    font-family: 'Pretendard-Regular';
 	    src: url('https://cdn.jsdelivr.net/gh/Project-Noonnu/noonfonts_2107@1.1/Pretendard-Regular.woff') format('woff');
@@ -365,6 +383,7 @@
 	    color: #000;
 	}
 	div#main{
+		width : 100%;
 		padding-left:240px;
 	}
 	.btn-toggle-nav a{
@@ -419,6 +438,7 @@
 	/*
 	헤더 기본*/
 	#mypage-header{
+		width: 100%;
 		background-color : #F8E0E6;
 	}
 	.mypage-title{
@@ -581,9 +601,10 @@
 		text-align : left;
 		font-weight : bold;
 	}
-	.main-item-tr:hover{
-		background : rgba(0,102,51, 0.3);
+	.main-item-tr:hover, .main-write-tr:hover{
+		background : rgba(244, 171, 178, 0.3);
 	}
+	
 	#main_item_table{
 		margin : 0 auto;
 		width : 1040px;
@@ -593,6 +614,18 @@
 		height : 50px;
 	}
 	#item_name{
+		text-decoration: none;
+		color: #000000;
+	}
+	#main_write_table{
+		margin : 0 auto;
+		width : 1040px;
+	}
+	#main_write_table tr th, #main_write_table tr td{
+		text-align : center;
+		height : 50px;
+	}
+	#write_name{
 		text-decoration: none;
 		color: #000000;
 	}
@@ -689,8 +722,7 @@
 	
 	/*======= 입퇴실 =======*/
 	#home_btn{
-		margin-top: 15px;
-		margin-bottom: 10px;
+
 		background-color: #384048;
 		color: #FFFFFF;
 	}
@@ -725,7 +757,7 @@
 		font-size : 10pt;
 		padding : 5px;
 	}
-
+	
 /*==================
 	완전 맘에 드는 UI
   ==================*/

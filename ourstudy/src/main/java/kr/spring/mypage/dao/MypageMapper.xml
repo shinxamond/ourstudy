@@ -3,6 +3,45 @@
     PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"   
     "http://mybatis.org/dtd/mybatis-3-mapper.dtd">  
 <mapper namespace="kr.spring.mypage.dao.MypageMapper">  
+	
+	<sql id = "paging">
+		<where>
+			<if test="keyfield == 1">
+			</if>
+			<if test="keyfield == 2">
+	  		   	<![CDATA[
+	  		   		AND p.point_point > 0
+	  		   	]]>
+			</if>
+			<if test="keyfield == 3">
+	  		   	<![CDATA[
+	  		   		AND p.point_point < 0
+	  		   	]]>
+			</if>
+		</where>
+	</sql>
+	
+	<select id="selectPointListCountByMemNum" parameterType="map" resultType="integer">
+		SELECT 
+		  COUNT(*) 
+		 FROM point 
+		 WHERE mem_num = #{mem_num}
+		 <if test="keyfield == 1">
+  		   				
+  		 </if>
+  		 <if test="keyfield == 2">
+  		  		<![CDATA[
+  		   		AND point_point > 0
+  		   		]]>
+  		 </if>
+  		 <if test="keyfield == 3">
+  		   		<![CDATA[
+  		   			AND point_point < 0
+  		   		]]>
+  		 </if>
+		
+	</select>
+	
   	<select id="selectSeatDetailListByMem_num" parameterType="map"
   	                           resultType="seatVO">
   		SELECT

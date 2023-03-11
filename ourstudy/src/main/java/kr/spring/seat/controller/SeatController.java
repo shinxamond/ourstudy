@@ -176,13 +176,18 @@ public class SeatController {
 	   
 	   logger.debug(">>>DB 갱신 후 HOUR>>>>>>>>>>>>>>>><<<<<===" + hour_next);
 	   
-	   if(!hour_prev.equals(hour_next)) {
+	   if(hour_prev == 0.0 || hour_next == 0.0) {
+		   mapAjax.put("result", "end");
+		   return mapAjax;
+	   }else if(!hour_prev.equals(hour_next)) {
 		   mapAjax.put("result", "success");
+		   return mapAjax;
 	   }else {
 		   mapAjax.put("result", "Fail");
+		   return mapAjax;
 	   }
 	   
-	   return mapAjax;
+	   
    }
    
    //외출 상태에서 입실 처리

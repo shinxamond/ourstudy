@@ -8,6 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import kr.spring.community.vo.LostVO;
 import kr.spring.member.vo.MemberVO;
 import kr.spring.mypage.dao.MypageMapper;
 import kr.spring.pay.vo.PayVO;
@@ -48,8 +49,8 @@ public class MypageServiceImpl implements MypageService{
 	}
 
 	@Override
-	public int selectPointListCountByMemNum(Integer mem_num) {
-		return mypageMapper.selectPointListCountByMemNum(mem_num);
+	public int selectPointListCountByMemNum(Map<String, Object> map) {
+		return mypageMapper.selectPointListCountByMemNum(map);
 	}
 	
 	@Override
@@ -133,6 +134,11 @@ public class MypageServiceImpl implements MypageService{
 		}catch(Exception e) {
 			return 0;
 		}
+	}
+
+	@Override
+	public List<LostVO> getLostFoundList(Integer mem_num) {
+		return mypageMapper.getLostFoundList(mem_num);
 	}
 
 

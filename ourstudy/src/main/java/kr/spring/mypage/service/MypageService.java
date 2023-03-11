@@ -4,6 +4,7 @@ import java.sql.Date;
 import java.util.List;
 import java.util.Map;
 
+import kr.spring.community.vo.LostVO;
 import kr.spring.member.vo.MemberVO;
 import kr.spring.pay.vo.PayVO;
 import kr.spring.point.vo.PointVO;
@@ -32,7 +33,7 @@ public interface MypageService {
 					포인트
 	====================================*/		
 	
-	public int selectPointListCountByMemNum(Integer mem_num);
+	public int selectPointListCountByMemNum(Map<String, Object> map);
 	
 	public List<PayVO> selectPointListByMemNum(Map<String, Object> map);
 	
@@ -72,6 +73,9 @@ public interface MypageService {
 	
 	
 	public int selectLockerNumByMem_num(Integer mem_num);
+	
+	
+	public List<LostVO> getLostFoundList(Integer mem_num);
 	
 
 }

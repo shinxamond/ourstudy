@@ -11,6 +11,7 @@ import org.apache.ibatis.annotations.Param;
 import org.apache.ibatis.annotations.Select;
 import org.apache.ibatis.annotations.Update;
 
+import kr.spring.community.vo.LostVO;
 import kr.spring.member.vo.MemberVO;
 import kr.spring.pay.vo.PayVO;
 import kr.spring.point.vo.PointVO;
@@ -69,8 +70,8 @@ public interface MypageMapper {
 	//개인별 포인트 내역 확인
 	//@Select("SELECT s.in_time, s.out_time, s.total_time, p.point_point, p.point_accrue FROM seat_detail s JOIN point p WHERE mem_num = #{mem_num}")
 	//public List<PointVO> selectPointListByMemNum(Map<String, Object> map); - 나중에 페이징 처리 해야됨 xml에 작성
-	@Select("SELECT COUNT(*) FROM point WHERE mem_num = #{mem_num}")
-	public int selectPointListCountByMemNum(Integer mem_num);
+	//@Select("SELECT COUNT(*) FROM point WHERE mem_num = #{mem_num}")
+	public int selectPointListCountByMemNum(Map<String, Object> map);
 	
 	public List<PayVO> selectPointListByMemNum(Map<String, Object> map);
 	
@@ -146,5 +147,12 @@ public interface MypageMapper {
 	====================================*/		
 	@Select("SELECT locker_num FROM locker_detail WHERE mem_num = #{mem_num}")
 	public int selectLockerNumByMem_num(Integer mem_num);
+	
+	
+	/*==================================
+				최근 작성한 글
+	====================================*/		
+	@Select("SELECT * FROM lost_found WHERE mem_num = #{mem_num} AND ROWNUM <= 3 ORDER BY lf_date DESC")
+	public List<LostVO> getLostFoundList(Integer mem_num);
 	
 }

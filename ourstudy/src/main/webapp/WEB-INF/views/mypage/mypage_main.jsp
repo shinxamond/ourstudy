@@ -37,9 +37,11 @@
 						scales :{
 							y :{
 								ticks :{
+									
 									display : true,
-									stepSize : 0.5,
+									stepSize : 2,
 								},
+								max : 24,
 								min : 0,
 								suggestedMin : 0
 							},
@@ -65,7 +67,7 @@
 			</c:if>
 				
 			<c:if test="${count > 0}">
-			<table id = "main_item_table">
+			<table id = "main_item_table" class = "mb-5">
 			<tr>
 				<th>물품명</th>
 				<th>대여기간</th>
@@ -115,6 +117,41 @@
 			<div class = "page-button">
 				${page }
 			</div>	
+			</c:if>
+		</div>
+		
+		<div class ="mypage-title">
+			<h4 class = "sum-title">최근작성글</h4>
+		</div>
+		<hr class = "horizontal-line">
+		<div>
+			<c:if test="${empty list2}">
+				<div
+					style="text-align: center; margin-top: 35px; margin-bottom: 35px;">최근에 작성한 글이 없습니다.</div>
+			</c:if>
+			<c:if test="${!empty list2}">
+			<table id = "main_write_table" class = "mb-5">
+			<colgroup>
+				<col width="25%" />
+				<col width="50%" />
+				<col width="25%" />
+			</colgroup>
+			<tr>
+				<th>분류</th>
+				<th style = "text-align : left; padding-left : 60px;">제목</th>
+				<th>작성일</th>
+			</tr>
+			<c:forEach var = "write" items = "${list2 }">
+			<tr class = "main-write-tr">
+				<td>
+				<c:if test="${write.lf_type ==0}"><span>분실</span></c:if>
+				<c:if test="${write.lf_type ==1}"><span>습득</span></c:if>
+				</td>
+				<td style = "text-align : left; padding-left : 60px;"><a id = "write_name" href = "${pageContext.request.contextPath}/community/lostDetail.do?lf_num=${lost.lf_num}">${write.lf_title}</a></td>
+				<td>${write.lf_date}</td>
+			</tr>
+			</c:forEach>
+			</table>
 			</c:if>
 		</div>
 	</div>

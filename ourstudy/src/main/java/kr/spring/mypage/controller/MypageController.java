@@ -32,6 +32,7 @@ import kr.spring.util.AuthCheckException;
 import kr.spring.util.FileUtil;
 import kr.spring.util.PagingUtil;
 import kr.spring.community.service.LostService;
+import kr.spring.community.vo.LostVO;
 import kr.spring.item.service.ItemService;
 import kr.spring.item.vo.ItemVO;
 import kr.spring.locker.service.LockerService;
@@ -126,9 +127,6 @@ public class MypageController {
 
 		
 		
-		
-		
-		
 		Map<String, Object> map = new HashMap<String, Object>();
 		
 		int count = itemService.rentalItemCount(2, user.getMem_num());
@@ -146,10 +144,8 @@ public class MypageController {
 			list = itemService.rentalItemList(map);
 		}
 		
-		
-		
-		
-		
+		List<LostVO> list2 = mypageService.getLostFoundList(user.getMem_num());
+				
 		Map<String, ?> flashMap = (Map<String, ?>) RequestContextUtils.getInputFlashMap(request);
 		
 		if(flashMap!=null) {
@@ -162,9 +158,11 @@ public class MypageController {
 		if(locker_num != null) {
 			model.addAttribute("locker_num", locker_num);			
 		}
-
+		
+		
 		model.addAttribute("count", count);
 		model.addAttribute("list", list);
+		model.addAttribute("list2",list2);
 		model.addAttribute("member", member);
 		model.addAttribute("seat", seat);
 		model.addAttribute("pointSum", pointSum);
@@ -432,8 +430,9 @@ public class MypageController {
 		mav.addObject("remainTime", remainTime * 3600);
 		
 		Map<String, Object> map = new HashMap<String, Object>();
-		
-		int count = mypageService.selectPointListCountByMemNum(user.getMem_num());
+		map.put("keyfield", keyfield);
+		map.put("mem_num", user.getMem_num());
+		int count = mypageService.selectPointListCountByMemNum(map);
 		
 		PagingUtil page = new PagingUtil(keyfield, null, currentPage, count, 5, 5, "pointList.do");
 		
@@ -443,7 +442,7 @@ public class MypageController {
 			map.put("start", page.getStartRow());
 			map.put("end", page.getEndRow());
 			map.put("keyfield", keyfield);
-			map.put("mem_num", user.getMem_num());
+			
 			
 			list = mypageService.selectPointListByMemNum(map);
 		}

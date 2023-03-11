@@ -28,7 +28,7 @@
 					<div style = "text-align :center;">입/퇴실 내역이 없습니다.</div>
 				</c:if>
 				<c:if test="${count > 0}">
-				<table class = "point-table">
+				<table class = "point-table  mb-5">
 				<tr>
 					<th>입실시간</th>
 					<th>퇴실시간</th>
@@ -50,24 +50,29 @@
 				<td>
 				<c:if test="${study.total_time / 3600 >= 1}">
 				<fmt:parseNumber value = "${study.total_time / 3600}"  integerOnly="true"/>시간
-				<input type = "hidden" value = " ${(member.mem_study / 3600)+(((member.mem_study / 3600)%1>0.5)?(1-((member.mem_study / 3600)%1))%1:-((member.mem_study / 3600)%1))}" id = "study_hour"/>				
 				</c:if>
 				
 				
 				<c:if test="${study.total_time % 3600 / 60 >= 1}">
 				<fmt:parseNumber value = "${study.total_time % 3600 / 60}"  integerOnly="true"/>분
-				<input type = "hidden" value = " ${(member.mem_study % 3600 / 60)+(((member.mem_study % 3600 / 60)%1>0.5)?(1-((member.mem_study % 3600 / 60)%1))%1:-((member.mem_study % 3600 / 60)%1))}" id = "study_min"/>				
 				</c:if>
 				
-				<c:if test="${study.total_time / 3600 < 1 and study.total_time % 3600 / 60 < 1}">
+				<c:if test="${study.total_time / 3600 < 1 or study.total_time % 3600 / 60 < 1}">
 				<fmt:parseNumber value = "${study.total_time % 3600 % 60}"  integerOnly="true"/>초
-				<input type = "hidden" value = " ${(member.mem_study % 3600 % 60)+(((member.mem_study % 3600 % 60)%1>0.5)?(1-((member.mem_study % 3600 % 60)%1))%1:-((member.mem_study % 3600 % 60)%1))}" id = "study_sec"/>				
 				</c:if>
+				
 				</td>
 				</c:if>
 				</tr>
 				</c:forEach>
-				<tr><th></th><th></th><th>
+				
+				<tr>
+					<th>
+						<input type = "hidden" value = " ${(member.mem_study / 3600)+(((member.mem_study / 3600)%1>0.5)?(1-((member.mem_study / 3600)%1))%1:-((member.mem_study / 3600)%1))}" id = "study_hour"/>				
+						<input type = "hidden" value = " ${(member.mem_study % 3600 / 60)+(((member.mem_study % 3600 / 60)%1>0.5)?(1-((member.mem_study % 3600 / 60)%1))%1:-((member.mem_study % 3600 / 60)%1))}" id = "study_min"/>				
+						<input type = "hidden" value = " ${(member.mem_study % 3600 % 60)+(((member.mem_study % 3600 % 60)%1>0.5)?(1-((member.mem_study % 3600 % 60)%1))%1:-((member.mem_study % 3600 % 60)%1))}" id = "study_sec"/>				
+						
+				</th><th></th><th>
 				<script type="text/javascript">
 				$(function(){
 					var floor_hour = Math.floor($('#study_hour').val());
