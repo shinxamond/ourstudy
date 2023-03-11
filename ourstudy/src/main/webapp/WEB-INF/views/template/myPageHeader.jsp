@@ -49,9 +49,16 @@
 			<c:if test="${member.mem_status == 2}">현재 외출중입니다.</c:if>
 			<c:if test="${!empty seat.seat_name}"><span>NO. <b>${seat.seat_name}</b>번 자리</span></c:if>
 			<span class = "data-time">잔여시간 : <span class = "data-align" id = "remainTimeZone">
+			<c:if test="${remainTime != 0}">
 			<fmt:parseNumber value = "${remainTime < 120 ? 0 : remainTime / 86400}"  integerOnly="true"/>일 
 			<fmt:parseNumber value = "${((remainTime / 3600) % 3600) % 24}"  integerOnly="true"/>시간
 			<fmt:parseNumber value = "${(remainTime / 60 % 60)+(((remainTime / 60 % 60)%1>0.5)?(1-((remainTime / 60 % 60)%1))%1:-((remainTime / 60 % 60)%1))}" integerOnly="true"/>분
+			</c:if>
+			<c:if test="${remainTerm != 0}">
+			<fmt:parseNumber value = "${remainTerm < 120 ? 0 : remainTerm / 86400}"  integerOnly="true"/>일 
+			<fmt:parseNumber value = "${((remainTerm / 3600) % 3600) % 24}"  integerOnly="true"/>시간
+			<fmt:parseNumber value = "${(remainTerm / 60 % 60)+(((remainTerm / 60 % 60)%1>0.5)?(1-((remainTerm / 60 % 60)%1))%1:-((remainTerm / 60 % 60)%1))}" integerOnly="true"/>분
+			</c:if>
 			</span></span>
 			<br>
 			<div class = "seatcheck-buttons">

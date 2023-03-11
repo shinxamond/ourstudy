@@ -141,6 +141,11 @@ public class MypageServiceImpl implements MypageService{
 		return mypageMapper.getLostFoundList(mem_num);
 	}
 
+	@Override
+	public int selectRemainTimeTerm(Integer mem_num) {
+		return mypageMapper.selectRemainTimeTerm(mem_num);
+	}
+
 
 
 

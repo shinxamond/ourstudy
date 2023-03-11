@@ -57,7 +57,7 @@ public interface MypageService {
 	
 	public float selectRemainTime(Integer mem_num);
 	
-	
+	public int selectRemainTimeTerm(Integer mem_num);
 	
 	
 	
