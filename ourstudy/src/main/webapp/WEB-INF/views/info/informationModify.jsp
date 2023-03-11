@@ -31,7 +31,7 @@
 			</li>	
 			<li>
 				<label for="info_content"><b>내용</b></label>
-				<br>
+				<br><br>
 				<form:textarea path="info_content"/>
 				<form:errors path="info_content" cssClass="error-color"/>
 				<script>
@@ -55,7 +55,6 @@
 			</li>
 			<li>
 				<label for="upload"><b>파일 첨부</b></label>
-				<br>
 				<input type="file" name="upload" id="upload">
 				<c:if test="${!empty informationVO.filename}">
 				<div id="file_detail">
@@ -94,7 +93,7 @@
 			</li>
 		</ul>
 		<div class="align-right" style="margin:0 20px;">
-			<form:checkbox path="info_pin" value="1" label="상단에 고정하기" />
+			<span style="vertical-align:-1px;"><form:checkbox path="info_pin" value="1" />상단에 고정하기</span>
 			<form:hidden path="info_pin" value="0" />		
 			<form:button id="list_btn" class="btn btn-secondary btn-sm">수정</form:button>
 			<button type="button" class="btn btn-secondary btn-sm" onclick="location.href='informationList.do'">목록</button>

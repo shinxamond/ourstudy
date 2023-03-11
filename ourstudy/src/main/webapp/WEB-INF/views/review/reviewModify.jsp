@@ -30,15 +30,15 @@
 			</li>
 			<li>
 				<label for="rate"><b>별점</b></label>
-				<form:radiobutton path="r_rate" value="5" id="status5" style="text-align:center;"/>★★★★★
-				<form:radiobutton path="r_rate" value="4" id="status4"/>★★★★
-				<form:radiobutton path="r_rate" value="3" id="status3"/>★★★
-				<form:radiobutton path="r_rate" value="2" id="status2"/>★★
-				<form:radiobutton path="r_rate" value="1" id="status1"/>★
+				<form:radiobutton path="r_rate" value="5" id="status5" style="text-align:center;"/><span style="vertical-align:2px;">★★★★★</span>
+				<form:radiobutton path="r_rate" value="4" id="status4"/><span style="vertical-align:2px;">★★★★</span>
+				<form:radiobutton path="r_rate" value="3" id="status3"/><span style="vertical-align:2px;">★★★</span>
+				<form:radiobutton path="r_rate" value="2" id="status2"/><span style="vertical-align:2px;">★★</span>
+				<form:radiobutton path="r_rate" value="1" id="status1"/><span style="vertical-align:2px;">★</span>
 			</li>
 			<li>
 				<label for="content"><b>내용</b></label>
-				<br>
+				<br><br>
 				<form:textarea path="r_content"/>
 				<form:errors path="r_content" cssClass="error-color"/>
 				<script>

@@ -165,6 +165,7 @@ div.sub-item button.modify-btn{
 }
 div#main_footer .footer-main{
 	float:left;
+	padding: 0 0 -400px 0;
 }
 .footer-main{
 	padding-left:15px;

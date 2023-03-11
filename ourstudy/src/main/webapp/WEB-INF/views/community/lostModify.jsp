@@ -113,6 +113,7 @@
 		</li>  
 		<li>
 				<label for="lf_content"><b>내용</b></label>
+				<br><br>
 				<form:textarea path="lf_content"/>
 				<form:errors path="lf_content" 
 				                  cssClass="error-color"/>

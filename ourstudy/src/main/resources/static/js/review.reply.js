@@ -229,7 +229,7 @@ $(function(){
                            .replace(/\n/g,'<br>'));
 					//최근 수정일 표시
 					$('#mre_form').parent().find('.modify-date')
-					                       .text('&nbsp;&nbsp;&nbsp;&nbsp;최근 수정일 : 5초 미만');
+					                       .text('최근 수정일 : 5초 미만');
 					//수정 폼 초기화
 					initModifyForm();
 				}else if(param.result == 'wrongAccess'){
