@@ -23,7 +23,9 @@ public class ReviewVO {
 	private String r_imgname;
 	private int mem_num;
 	private String mem_name;
-
+	private int mem_auth;
+	
+	
 	//====이미지 BLOB 처리====//
 	//(주의)폼에서 파일업로드 파라미터네임은 반드시 upload로 지정해야 함(img로 하면 안 됨! upload로 받은 걸 photo로 바꿀 거라서)
 	public void setUpload(MultipartFile upload) throws IOException{
@@ -34,6 +36,13 @@ public class ReviewVO {
 		setR_imgname(upload.getOriginalFilename());
 	}
 	
+	public int getMem_auth() {
+		return mem_auth;
+	}
+	public void setMem_auth(int mem_auth) {
+		this.mem_auth = mem_auth;
+	}
+
 	public int getR_num() {
 		return r_num;
 	}
@@ -99,6 +108,6 @@ public class ReviewVO {
 	public String toString() {
 		return "ReviewVO [r_num=" + r_num + ", r_title=" + r_title + ", r_content=" + r_content + ", r_date=" + r_date
 				+ ", r_mdate=" + r_mdate + ", r_rate=" + r_rate + ", r_img=" + Arrays.toString(r_img) + ", r_imgname="
-				+ r_imgname + ", mem_num=" + mem_num + ", mem_name=" + mem_name + "]";
+				+ r_imgname + ", mem_num=" + mem_num + ", mem_name=" + mem_name + ", mem_auth=" + mem_auth + "]";
 	}
 }
