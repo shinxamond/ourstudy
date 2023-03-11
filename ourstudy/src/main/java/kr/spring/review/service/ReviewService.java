@@ -13,15 +13,15 @@ public interface ReviewService {
 	//이용후기 글목록
 	public int selectRowCount(Map<String,Object> map);	
 	//이용후기 글쓰기
-	public void insertReview(ReviewVO board);
+	public void insertReview(ReviewVO review);
 	//이용후기 글상세
-	public ReviewVO selectReview(Integer board_num);
+	public ReviewVO selectReview(Integer review_num);
 	//이용후기 글수정
-	public void updateReview(ReviewVO board);
+	public void updateReview(ReviewVO review);
 	//이용후기 글삭제
-	public void deleteReview(Integer board_num);
+	public void deleteReview(Integer review_num);
 	//이용후기 이미지 삭제
-	public void deleteFile(Integer board_num);
+	public void deleteFile(Integer review_num);
 		
 	/*==== 댓글 ====*/
 	//댓글 목록

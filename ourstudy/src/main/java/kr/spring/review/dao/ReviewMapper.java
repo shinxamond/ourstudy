@@ -24,8 +24,11 @@ public interface ReviewMapper {
 		  + "VALUES (review_seq.nextval, #{r_title}, #{r_content}, #{r_rate}, #{mem_num}, #{r_img}, #{r_imgname})")
 	public void insertReview(ReviewVO review);	
 	//이용후기 글상세
-	@Select("SELECT r.*, mem_name FROM review r JOIN member_detail d ON r.mem_num=d.mem_num "
-		  + "WHERE r.r_num=#{r_num}") 
+	//@Select("SELECT r.*, mem_name FROM review r JOIN member_detail d ON r.mem_num=d.mem_num "
+	//	  + "WHERE r.r_num=#{r_num}") 
+	@Select("SELECT * FROM review r JOIN member m "
+			  + "USING(mem_num) JOIN member_detail d "
+			  + "USING(mem_num) WHERE r.r_num=#{r_num}")
 	public ReviewVO selectReview(Integer review_num);	
 	//이용후기 글수정
 	public void updateReview(ReviewVO review);	

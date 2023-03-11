@@ -18,11 +18,11 @@
 			<h3><b>${review.r_title}</b></h3>
 		</li>
 		<li>
-			<c:if test="${lost.mem_auth == 9}">
-				<b>${lost.mem_name}</b> <img src="/images/favicon.ico"> ·
+			<c:if test="${review.mem_auth == 9}">
+				<b>${review.mem_name}</b> <img src="/images/favicon.ico"> ·
 			</c:if>
-			<c:if test="${lost.mem_auth != 9}">
-				<b>${lost.mem_name}</b> ·
+			<c:if test="${review.mem_auth != 9}">
+				<b>${review.mem_name}</b> ·
 			</c:if>   
 			<c:if test="${review.r_rate == 1}">
 			<span style="color:#ffc400">★</span>  
