@@ -15,7 +15,7 @@
 				<div class="inner">
 					<div class="sub_tit">
 						<h3>오시는길</h3>
-						<h4 class="mont"><b>WAY</b> TO COME</h4>
+						<h4 class="mont"><b>D</b>irections</h4>
 					</div><br>
 					<div class="sub_map" id="map" style="width:70%;height:400px;"></div>
 					<dl>
