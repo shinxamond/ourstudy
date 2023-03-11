@@ -12,7 +12,7 @@
 	href="${pageContext.request.contextPath}/css/pay.css">
 <script src="https://cdn.iamport.kr/v1/iamport.js"></script>
 <div class="container">
-	<div class="row d-flex justify-content-center align-items-center">
+	<div class="row">
 		<div class="col-sm-8" id="card_top">
 			<div class="card sm-5">
 				<div class="card-body p-4">
