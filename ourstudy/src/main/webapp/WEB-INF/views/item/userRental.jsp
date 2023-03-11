@@ -41,8 +41,9 @@
 	</div>
 	
 	<div class="it2">
-	<h1 id="rental">물품대여</h1>
-	<div id="imgdetail">
+	<br>
+	<h1 id="rental">물품대여</h1><br>
+	<div id="imgdetail"><br>
 	<h2 id="rental_name">${oneitem.item_title}</h2>
 		<div class="item-image2">
 			<img src="imageView.do?item_num=${oneitem.item_num}" width=170" height="170" class="my-photo">
