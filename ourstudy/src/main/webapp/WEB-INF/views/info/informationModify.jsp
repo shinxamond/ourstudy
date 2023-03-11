@@ -31,6 +31,7 @@
 			</li>	
 			<li>
 				<label for="info_content"><b>내용</b></label>
+				<br>
 				<form:textarea path="info_content"/>
 				<form:errors path="info_content" cssClass="error-color"/>
 				<script>
@@ -54,11 +55,12 @@
 			</li>
 			<li>
 				<label for="upload"><b>파일 첨부</b></label>
+				<br>
 				<input type="file" name="upload" id="upload">
 				<c:if test="${!empty informationVO.filename}">
-				<div id="file_detail" style="padding:5px 0 0 130px;">
-					<input type="button" value="파일삭제"
-					                 class="btn btn-secondary btn-sm"    id="file_del">
+				<div id="file_detail">
+					<input type="button" value="파일 삭제"
+					                 class="btn btn-outline-secondary btn-sm"    id="file_del">
 					[${informationVO.filename}] 파일이 등록되어 있습니다.
 				</div>
 				<script type="text/javascript">
@@ -91,7 +93,7 @@
 				</c:if>
 			</li>
 		</ul>
-		<div class="align-right">
+		<div class="align-right" style="margin:0 20px;">
 			<form:checkbox path="info_pin" value="1" label="상단에 고정하기" />
 			<form:hidden path="info_pin" value="0" />		
 			<form:button id="list_btn" class="btn btn-secondary btn-sm">수정</form:button>

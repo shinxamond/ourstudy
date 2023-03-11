@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>    
 <link rel="stylesheet" href="${pageContext.request.contextPath}/css/information.css">   
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
@@ -39,6 +40,7 @@
 			</li>						
 			<li>
 				<label for="content"><b>내용</b></label>
+				<br>
 				<form:textarea path="r_content"/>
 				<form:errors path="r_content" cssClass="error-color"/>
 				<script>

@@ -96,7 +96,7 @@
 		</li>
 		<li>
 			<label for="lf_loc"><b><span id="lost2">분실</span><span id="get2" style="display:none">습득</span> 위치</b></label>
-			<form:input path="lf_loc"/>
+			<form:input path="lf_loc" />
 			<form:errors path="lf_loc" cssClass="error-color"/>
 		</li>
 		<li>
@@ -124,6 +124,7 @@
 		</li>  
 		<li>
 				<label for="lf_content"><b>내용</b></label>
+				<br>
 				<form:textarea path="lf_content"/>
 				<form:errors path="lf_content" 
 				                  cssClass="error-color"/>

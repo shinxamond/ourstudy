@@ -65,7 +65,7 @@
   		              lf_time,
   		              d.mem_name,
   		              d.mem_num
-  		             FROM (ost_found l JOIN member_detail d 
+  		             FROM lost_found l JOIN member_detail d 
   		             ON l.mem_num = d.mem_num
   		    		<include refid="lostSearch"></include> 
   		      		ORDER BY l.lf_num DESC 

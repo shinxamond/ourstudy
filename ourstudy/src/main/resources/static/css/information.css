@@ -667,7 +667,26 @@ div#re_reply{
 	height : 40px;
 	padding-left : 10px; 
 }
-
+.input-textbox{
+	border : 1px solid #A2A2A2;
+	border-radius : 5px;
+	padding-left : 10px; 
+	height: 35px;
+}
+.write-title input {
+  border : 1px solid #A2A2A2;
+	border-radius : 5px;
+	padding-left : 10px; 
+	height: 35px;
+	width: 300px;
+}
+.card input[type="text"]{
+	width: 630px;
+}
+.card checkbox[id="pin"]{
+	position: relative;
+    top: 1.5px;
+}
 
 .card-header,
 .card-footer {

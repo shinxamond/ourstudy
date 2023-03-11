@@ -24,14 +24,15 @@
 		
 		<ul>
 			<li>
-				<label for="info_title"><b>제목</b></label>
+				<label for="info_title" ><b>제목</b></label>
+				<br>
 				<form:input path="info_title" />
 				<form:errors path="info_title" 
 				                  cssClass="error-color"/>
-			
 			</li>
 			<li>
 				<label for="info_content"><b>내용</b></label>
+				<br>
 				<form:textarea path="info_content" />
 				<form:errors path="info_content" 
 				                  cssClass="error-color"/>
@@ -56,15 +57,16 @@
 			</li>
 			<li>
 				<label for="upload"><b>파일 첨부</b></label>
+				<br>
 				<input type="file" name="upload" id="upload"  >
 				<form:errors element="div" cssClass="error-color"/>
 			</li> 
 		</ul>
-		<div class="align-right">
+		<div class="align-right" style="margin:0 20px;">
 			<%-- <input type="checkbox" name="info_pin" value="1" id="info_pin"/>상단에 고정하기
 			<input type="hidden" name="info_pin" value="0" id="info_pin_hidden"/> 
 			   문제점 수정할 때 체크 풀려있음 --%>
-			<form:checkbox path="info_pin" value="1" label="상단에 고정하기" />
+			<form:checkbox path="info_pin" value="1" style="text-align:center;" label="상단에 고정하기" />
 			<form:hidden path="info_pin" value="0" />		
 			<form:button onclick="" id="list_btn" class="btn btn-secondary btn-sm">등록</form:button>			
 			<input type="button" value="목록"  class="btn btn-secondary btn-sm"
