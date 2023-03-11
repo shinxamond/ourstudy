@@ -104,9 +104,10 @@
   		            re_modify_date,
   		            lf_num,
   		            d.mem_num,
+  		            m.mem_auth,
   		            d.mem_name
-  		          FROM reply_lost r JOIN member_detail d
-  		          ON r.mem_num = d.mem_num
+  		          FROM ( reply_lost r JOIN member_detail d ON r.mem_num = d.mem_num)
+					INNER JOIN member m ON  d.mem_num= m.mem_num
   		          WHERE lf_num = #{lf_num}
   		          ORDER BY re_num DESC)a)
   		    <![CDATA[

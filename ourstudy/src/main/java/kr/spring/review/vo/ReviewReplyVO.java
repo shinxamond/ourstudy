@@ -13,7 +13,15 @@ public class ReviewReplyVO {
 	private int r_num;
 	private int mem_num;
 	private String mem_name;
+	private int mem_auth;
 
+	public int getMem_auth() {
+		return mem_auth;
+	}
+	public void setMem_auth(int mem_auth) {
+		this.mem_auth = mem_auth;
+	}
+	
 	public int getRevw_num() {
 		return revw_num;
 	}
@@ -61,6 +69,6 @@ public class ReviewReplyVO {
 	public String toString() {
 		return "ReviewReplyVO [revw_num=" + revw_num + ", revw_date=" + revw_date + ", revw_mdate=" + revw_mdate
 				+ ", revw_content=" + revw_content + ", r_num=" + r_num + ", mem_num=" + mem_num + ", mem_name="
-				+ mem_name + "]";
+				+ mem_name + ", mem_auth=" + mem_auth + "]";
 	}
 }

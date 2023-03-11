@@ -2,7 +2,7 @@
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
-<link rel="stylesheet" href="${pageContext.request.contextPath}/css/information.css">        
+<link rel="stylesheet" href="${pageContext.request.contextPath}/css/information2.css">        
 <style>
 .ck-editor__editable_inline{
 	min-height:250px;

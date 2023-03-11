@@ -165,7 +165,7 @@ div.sub-item button.modify-btn{
 }
 div#main_footer .footer-main{
 	float:left;
-	padding: 0 0 -400px 0;
+	
 }
 .footer-main{
 	padding-left:15px;
@@ -178,7 +178,8 @@ div#main_footer .footer-main{
 }
 div#main_footer{
 	margin-right:100px;
-	padding-top:40px;
+	margin:0 0 0 -120px;
+	height:220px;
 }
 .footer-sns a:visited {
     text-decoration: none;
@@ -274,7 +275,7 @@ div#main_body {
 	margin-top:20px;
 }
 .content-main {
-	width: 87%; /*원래 87%*/
+	width:87%; /*원래 87%*/
 	margin: 5px auto;
 	overflow:hidden;
 	padding: 0 20px;

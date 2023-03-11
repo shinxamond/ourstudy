@@ -3,7 +3,7 @@
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>    
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
-<link rel="stylesheet" href="${pageContext.request.contextPath}/css/information.css">    
+<link rel="stylesheet" href="${pageContext.request.contextPath}/css/information2.css">    
 <style>
 .ck-editor__editable_inline{
 	min-height:250px;

@@ -46,7 +46,9 @@ public interface LostMapper {
 	public List<LostReplyVO> selectListLostReply(Map<String,Object> map);
 	@Select("SELECT COUNT(*) FROM reply_lost WHERE lf_num=#{lf_num}")
 	public int selectRowCountLostReply(Map<String,Object> map);
-	@Select("SELECT * FROM reply_lost WHERE re_num=#{re_num}")
+	@Select("SELECT * FROM reply_lost r JOIN member m "
+			  + "USING(mem_num) JOIN member_detail d "
+			  + "USING(mem_num) WHERE r.re_num=#{re_num}")
 	public LostReplyVO selectLostReply(Integer re_num);
 	@Insert("INSERT INTO reply_lost (re_num,re_content,"
 			  + "lf_num,mem_num) VALUES (reply_lost_seq.nextval,#{re_content},"
