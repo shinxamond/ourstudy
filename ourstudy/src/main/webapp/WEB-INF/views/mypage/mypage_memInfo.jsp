@@ -27,8 +27,11 @@
 					<td>${member.mem_address1} ${member.mem_address2}</td>
 				</tr>
 				<tr>
-					<th>이용권<sub style = "font-size : 4pt;">(최근구매)</sub></th>
-					<td>기간권(2주)</td>
+					<th>사물함</th>
+					<td>
+					<c:if test="${!empty locker_num}">${locker_num}번</c:if>
+					<c:if test="${empty locker_num}">이용중인 사물함이 없습니다.</c:if>
+					</td>
 				</tr>
 			</table>
 			

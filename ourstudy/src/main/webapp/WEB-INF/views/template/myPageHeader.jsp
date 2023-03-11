@@ -13,11 +13,11 @@
 				<span class = "span-align">안녕하세요, <strong><a href = "${pageContext.request.contextPath}/mypage/myPageMemInfo.do" id = "mem_info_btn">${member.mem_name}</a></strong>님</span>
 				<br>
 				<span class = "welcome-msg">오늘도 아워스터디를 이용해주셔서 감사합니다.</span>
-				<c:if test="${locker_num == 0}">
+				<c:if test="${empty locker_num}">
 				<button class = "locker-btn" onclick = "location.href = '${pageContext.request.contextPath}/ticket/locker_ticketList.do'">사물함 등록</button>
 				</c:if>
-				<c:if test="${locker_num != 0}">
-				<button class = "locker-btn" onclick = "location.href = '${pageContext.request.contextPath}/ticket/locker_ticketList.do?locker_num=${locker_num}'">사물함 연장: <b>${locker_num}</b>번</button>
+				<c:if test="${!empty locker_num}">
+				<button class = "locker-btn" onclick = "location.href = '${pageContext.request.contextPath}/ticket/locker_ticketList.do?locker_num=${locker_num}'">사물함 연장</button>
 				</c:if>
 				<p class = "firstclass-p"><a href = "${pageContext.request.contextPath}/mypage/myPageModify.do" id = "mem_modify_btn" class = "link-font small">정보수정 ></a></p>
 		</div>
@@ -55,13 +55,13 @@
 			</span></span>
 			<br>
 			<div class = "seatcheck-buttons">
-				<button class = "seatcheck-button" onclick=<c:if test="${member.mem_status == 1}">"alert('이미 입실중입니다.');"</c:if>
+				<button class = "seatcheck-button"<c:if test="${member.mem_status == 1}">style = "background : #e65962; border : none; color : white;"</c:if> onclick=<c:if test="${member.mem_status == 1}">"alert('이미 입실중입니다.');"</c:if>
 														   <c:if test="${member.mem_status != 1}">"location.href='${pageContext.request.contextPath}/seat/in.do'"</c:if>>입실</button>
-				<button class = "seatcheck-button" onclick="location.href='${pageContext.request.contextPath}/seat/hold.do?seat_num=${seat.seat_num}'">외출</button>
-				<button class = "seatcheck-button" onclick="location.href='${pageContext.request.contextPath}/seat/out.do?'">퇴실</button>			
+				<button class = "seatcheck-button"<c:if test="${member.mem_status == 2}">style = "background : #384048;border : none; color : white;"</c:if> onclick="location.href='${pageContext.request.contextPath}/seat/hold.do?seat_num=${seat.seat_num}'">외출</button>
+				<button class = "seatcheck-button"<c:if test="${member.mem_status == 0}">style = "background : #b4aab1;border : none; color : white;"</c:if> onclick="location.href='${pageContext.request.contextPath}/seat/out.do?'">퇴실</button>			
 			</div>
 
-			<span class = "lastchild-span"><a href = "${pageContext.request.contextPath}/mypage/myPageselectSeat.do" class = "link-font small">좌석선택 ></a></span>
+			<span class = "lastchild-span"><a href = "${pageContext.request.contextPath}/seat/selectForm.do" class = "link-font small">좌석선택 ></a></span>
 		</div>
 						
 		<div id = "insert_content_seat">

@@ -9,6 +9,15 @@ $(function(){
   	//6. 3:24(입실시간) -> 현재시간js 가져와 3:24 32 33- --- 3:25 - setIn = 1분 session.setItem(setIn 입실시간 +60);
   	//7. session에 있는 setIN 제거
 	
+	var logoutBtn = $('.logout-btn').length;
+	
+	if(logoutBtn < 1){
+		sessionStorage.removeItem("isSelect");
+		sessionStorage.removeItem("plusSec");
+		sessionStorage.removeItem("isSelectMemnum");
+		sessionStorage.removeItem("isSelectSeatnum");
+	}
+	
 	var reloadDiv = $('#remainTimeZone');
 	
 	if(sessionStorage.getItem('isSelect') == '1') {

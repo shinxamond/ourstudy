@@ -147,7 +147,7 @@ public class SeatController {
 	   
 	   if(hour <= 61.0) {
 		   mapAjax.put("result", "setLogout");
-	   }else if(hour >= 300.0 && hour <= 360.0) {
+	   }else if(hour >= 280.0 && hour <= 330.0) {
 		   mapAjax.put("time", Float.toString(hour));
 		   mapAjax.put("result", "lessThanFive");
 	   }else {
@@ -187,7 +187,7 @@ public class SeatController {
    
    //외출 상태에서 입실 처리
    @RequestMapping("/seat/in.do")
-   public String In(HttpSession session) {
+   public String In(HttpSession session, RedirectAttributes attributes) {
 	  MemberVO member = (MemberVO)session.getAttribute("user");
       int mem_num = (Integer)session.getAttribute("user_num");
       String mem_name = memberService.getMem_name(mem_num);  
@@ -211,7 +211,7 @@ public class SeatController {
       seatService.inSeatWhenHold(seatVO);
       
       member.setMem_status(seatService.getMem_status(mem_num));
-         
+      attributes.addFlashAttribute("mem_statusForCheckIn", member.getMem_status());   
       return "redirect:/mypage/myPageMain.do";
    }
    
