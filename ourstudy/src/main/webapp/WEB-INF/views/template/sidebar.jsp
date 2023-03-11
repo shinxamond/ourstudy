@@ -16,7 +16,7 @@
 <link href="https://fonts.googleapis.com/css2?family=Leckerli+One&display=swap" rel="stylesheet">
 <%--로그인 유효성 체크 --%>
 <script type="text/javascript" src="${pageContext.request.contextPath}/js/logincheck.js"></script>
-<script type="text/javascript" src="${pageContext.request.contextPath}/js/sidebar2.js"></script>
+<script type="text/javascript" src="${pageContext.request.contextPath}/js/sidebar.js"></script>
 <script type="text/javascript" src="${pageContext.request.contextPath}/js/checkDeadlineTime.js"></script>
 
 <%--네이버 --%>

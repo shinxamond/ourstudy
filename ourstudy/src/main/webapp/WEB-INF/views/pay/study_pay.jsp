@@ -11,7 +11,7 @@
 <link rel="stylesheet"
 	href="${pageContext.request.contextPath}/css/pay.css">
 <script src="https://cdn.iamport.kr/v1/iamport.js"></script>
-		<div class="col-sm-8" id="card_top">
+		<div class="col-sm-8" id="card_top" style="margin-top: 80px;">
 			<div class="card sm-6">
 				<div class="card-body p-4">
 					<input type="hidden" name="mem_num" data-memnum="${user.mem_num}"
