@@ -8,7 +8,7 @@
 			modelAttribute="ticketVO"
 			class="container d-flex justify-content-center">
 			<form:errors element="div" cssClass="error-color" />
-			<div class="col-md-5">
+			<div class="card col-md-5">
 			<div style="margin-bottom: 15px;">
 				<fieldset class="col mb-1">
 					<legend class="col-form-label col-sm-3 pt-1.5"
