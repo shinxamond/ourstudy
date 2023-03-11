@@ -60,8 +60,8 @@ public class PayController {
       return new LockerVO();
    }
 
-   @PostMapping("/pay/study_pay.do")
-   public ModelAndView study_pay(int ticket_num, int seat_num) {
+   @RequestMapping("/pay/study_pay.do")
+   public ModelAndView study_pay(Integer ticket_num, Integer seat_num) {
 
       ModelAndView mav = new ModelAndView();
       mav.setViewName("study_pay");
@@ -70,8 +70,10 @@ public class PayController {
 
       TicketVO ticketVO = ticketService.selectTicket(ticket_num);
       
-      mav.addObject("ticket",ticketVO);
-      mav.addObject("seat_num", seat_num);
+      mav.addObject("ticket", ticketVO);
+      if(seat_num != null) {
+    	  mav.addObject("seat_num", seat_num);
+      }
       
       logger.debug("<<<<<<<<<<<<<<<<좌석>>>>>>>>>>>>>>>.>> : " + seat_num);
       

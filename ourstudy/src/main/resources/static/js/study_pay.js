@@ -145,7 +145,11 @@ $(function(){
 					 location.href='/main/main.do';
                   }else if(param.result == 'success'){
                      alert('결제 완료 되었습니다');
-					 location.href='../seat/select.do?seat_num=' + seat_num;
+					 if(seat_num == ''){
+						location.href = '../main/main.do';
+					}else{
+						location.href='../seat/select.do?seat_num=' + seat_num;
+					}
                   }else if(param.result == 'inUse'){
 					alert('사물함 기간이 연장되었습니다.');
 					location.href='/main/main.do';
@@ -181,7 +185,8 @@ $(function(){
 		url:'checkTicket.do',
 		data:{ticket_num:$('#ticket_num').attr('data-ticketnum'),
 			  mem_ticket_hour:$('#ticket_hour').attr('data-hournum'),
-			  mem_ticket_term:$('#ticket_term').attr('data-termnum')},
+			  mem_ticket_term:$('#ticket_term').attr('data-termnum'),
+			  ticket_type:$('#ticket_type').attr('data-typenum')},
 		dataType:'json',
 		success:function(param){
 			if(param.result=='logout'){
@@ -217,10 +222,14 @@ $(function(){
 			               success:function(param){
 			                  if(param.result == 'logout'){
 			                     alert('로그인 후 사용하세요');
-			                     location.href='../seat/select.do?seat_num=' + seat_num;
+			                     location.href='/main/main.do';
 			                  }else if(param.result == 'success'){
 			                     alert('결제 완료 되었습니다');
-								 location.href='/main/main.do';
+								if(seat_num == ''){
+									location.href = '../main/main.do';
+								}else{
+									location.href='../seat/select.do?seat_num=' + seat_num;
+								}
 			                  }else{
 			                     alert('오류 발생');
 			                  }

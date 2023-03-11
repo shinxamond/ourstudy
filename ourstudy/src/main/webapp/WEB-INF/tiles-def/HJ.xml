@@ -7,45 +7,45 @@
 <tiles-definitions>
 
 	<definition name="study_ticketList" extends="main">
-		<put-attribute name="title" value="OurStudy::독서실 이용권" />
+		<put-attribute name="title" value="OurStudy : : 독서실 이용권" />
 		<put-attribute name="body"
 			value="/WEB-INF/views/ticket/study_ticketList.jsp" />
 	</definition>
 	
 	<definition name="locker_ticketList" extends="main">
-		<put-attribute name="title" value="OurStudy::사물함 이용권" />
+		<put-attribute name="title" value="OurStudy : : 사물함 이용권" />
 		<put-attribute name="body"
 			value="/WEB-INF/views/ticket/locker_ticketList.jsp" />
 	</definition>
 	
 	<!-- 결제 -->
 	<definition name="study_pay" extends="main">
-		<put-attribute name="title" value="OurStudy::독서실 이용권 결제" />
+		<put-attribute name="title" value="OurStudy : : 독서실 이용권 결제" />
 		<put-attribute name="body"
 			value="/WEB-INF/views/pay/study_pay.jsp" />
 	</definition>
 	
 	<definition name="locker_pay" extends="main">
-		<put-attribute name="title" value="OurStudy::사물함 이용권 결제" />
+		<put-attribute name="title" value="OurStudy : : 사물함 이용권 결제" />
 		<put-attribute name="body"
 			value="/WEB-INF/views/pay/locker_pay.jsp" />
 	</definition>
 
 	<!-- 관리자 -->
 	<definition name="adminTicketList" extends="admin">
-		<put-attribute name="title" value="OurStudy::관리자 이용권 목록" />
+		<put-attribute name="title" value="OurStudy : : 관리자 이용권 목록" />
 		<put-attribute name="body"
 			value="/WEB-INF/views/ticket/admin_ticketList.jsp" />
 	</definition>
 
 	<definition name="ticketAdminWrite" extends="admin">
-		<put-attribute name="title" value="OurStudy::관리자 이용권 등록" />
+		<put-attribute name="title" value="OurStudy : : 관리자 이용권 등록" />
 		<put-attribute name="body"
 			value="/WEB-INF/views/ticket/admin_writeForm.jsp" />
 	</definition>
 
 	<definition name="ticketAdminModify" extends="admin">
-		<put-attribute name="title" value="OurStudy::관리자 이용권 수정" />
+		<put-attribute name="title" value="OurStudy : : 관리자 이용권 수정" />
 		<put-attribute name="body"
 			value="/WEB-INF/views/ticket/admin_modifyForm.jsp" />
 	</definition>

@@ -20,9 +20,9 @@
 					<div class="card" id="ticket_card">
 						<form action="/pay/study_pay.do" id="study_ticket" method="post" class="form-inline">
 							<input type="hidden" name="ticket_num"
-								value="${ticket.ticket_num}">		
+								value="${ticket.ticket_num}">${ticket.ticket_num}		
 								<input type="hidden" name="seat_num"
-									value="${seat_num}">
+									value="${seat_num}">${seat_num}
 							<div class="card-body">
 								${ticket.ticket_name}
 								<div style="float: right;">

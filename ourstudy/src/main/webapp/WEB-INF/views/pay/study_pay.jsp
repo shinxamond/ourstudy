@@ -66,7 +66,7 @@
 								<span class="lead fw-normal mb-6 pb-2"
 									style="margin-right: 100px;" id="title"> 포인트 사용(1000P 이상 사용 가능)</span>
 							</div>
-							<div class="col mb-3 d-flex justify-content-end" id="input_point">
+							<div class="col-sm-4 mb-3 d-flex justify-content-end" id="input_point">
 								<div class="input-group row-mb-3">
 									<input type="text" id="use_point" class="form-control"
 										style="float: right; width: 100px;" placeholder="포인트 입력">

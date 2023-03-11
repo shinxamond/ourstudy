@@ -106,6 +106,7 @@ public class SeatController {
 		 * }
 		 */
       if(hour.floatValue() <= 0 && term.floatValue() <= 0) {		//잔여시간, 잔여기간 둘 다 없는 경우
+    	 attributes.addAttribute("seat_num", seat_num);
     	 return "redirect:/ticket/study_ticketList.do";
       }
       
