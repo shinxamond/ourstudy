@@ -21,13 +21,13 @@
 
 </script>
 <div class="page-main">	
-		<div class="content-main"><!-- 전체 화면의 87% -->
+		<div class="content-main" style="height:70vh;"><!-- 전체 화면의 87% -->
 			<!-- 사이드바 오른쪽 화면 시작 -->
 			<div class="content-right">
 				<h3 style="text-align:center"><b>채팅목록</b></h3>
 				<!-- 검색폼 시작 -->
-				<div class="section" style="text-align:center"> 
-					<div class="search-bar">
+				<div class="section" style="position: relative;	left:40px;"> 
+					<div class="search-bar" style="left:10px;">
 						<form class="search-form d-flex align-items-center" action="talkList.do" method="get"><!-- 자동 인코딩 처리를 위해 -->
 							<input type="text" name="keyword" value="${param.keyword}" placeholder="채팅방 이름">
 							<button type="submit" title="Search"><i class="bi bi-search"></i></button>

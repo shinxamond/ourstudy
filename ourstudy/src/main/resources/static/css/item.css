@@ -68,7 +68,7 @@ div#userList #userList-area{
 
 .item-image{
 	width:380px;
-	margin:0 0 10px 20px;
+	margin:0 0 10px 35px;
 	float:left;
 	position: relative;
 }
@@ -148,7 +148,7 @@ div#clear2{
 	left:180px;
 }
 .item-image2{
-	margin-left:20px;
+	margin-left:60px;
 	width:300px;
 	position: relative;
 	left:100px;
