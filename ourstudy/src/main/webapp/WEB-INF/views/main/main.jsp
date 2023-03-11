@@ -154,6 +154,7 @@ if(${user.mem_auth == 1}){
 
 
 $(function(){
+	
 	if(${check==0}){
 		$('#talkCheck').hide();
 		$('#roomc').text('채팅방 생성 완료(↑ 클릭)');
@@ -167,7 +168,7 @@ $(function(){
 	});
 });
 </script>
-<c:if test="${!empty user && user.mem_auth==1 && check==null}">
+<c:if test="${!empty user && user.mem_auth==1 && empty check}">
 <form action="/talk/maintalkRoomWrite.do" method="post" id="check_talk_form">
 	<input type="hidden" name="members" value="${user.mem_num}">
 	<input type="hidden" name="members" value="842">

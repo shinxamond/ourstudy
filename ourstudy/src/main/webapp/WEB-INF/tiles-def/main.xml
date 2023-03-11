@@ -10,6 +10,7 @@
     	<put-attribute name="title" value="OurStudy::내 손 안의 독서실"/>
         <put-attribute name="sidebar" value="/WEB-INF/views/template/sidebar.jsp"/>
     	<put-attribute name="body" value="/WEB-INF/views/main/main.jsp"/>
+    	<put-attribute name="chat" value="/WEB-INF/views/template/chat.jsp"/> 
     	<put-attribute name="footer" value="/WEB-INF/views/template/footer.jsp"/>         
     </definition>
     

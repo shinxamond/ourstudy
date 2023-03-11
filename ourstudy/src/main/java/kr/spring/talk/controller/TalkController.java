@@ -20,6 +20,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import kr.spring.member.vo.MemberVO;
 import kr.spring.seat.vo.SeatVO;
@@ -101,9 +102,9 @@ public class TalkController {
 	
 	// 메인에서 보낸 데이터
 	@PostMapping("/talk/maintalkRoomWrite.do")
-	public String mainsubmitTalkRoom(TalkRoomVO vo, Model model, HttpSession session) {
+	public String mainsubmitTalkRoom(TalkRoomVO vo, Model model, HttpSession session, HttpServletRequest request, RedirectAttributes redirectAttributes) {
 		logger.debug("<<채팅방 생성>> : " + vo);
-
+		String referer = request.getHeader("Referer");
 		//안내사항 부분=========================================
 		Map<String,Object> map2 = new HashMap<String,Object>();
 		map2.put("start", 1);
@@ -150,18 +151,19 @@ public class TalkController {
 		List<TalkRoomVO> roomList = talkService.selectTalkRoomList(map);
 		if (count == 0) {// 채팅방이 없다
 			talkService.insertTalkRoom(vo);
-			model.addAttribute("check", 0);
+			redirectAttributes.addFlashAttribute("check", 0);
 			room_num = talkService.selectTalkRoomNumMain(vo.getTalkroom_name());
 		} else {// 있다
-			model.addAttribute("check", 1);
+			redirectAttributes.addFlashAttribute("check", 1);
 			room_num = talkService.selectTalkRoomNumMain(vo.getTalkroom_name());
 		}
-		model.addAttribute("user", user);
-		model.addAttribute("room_num", room_num);
-		model.addAttribute("roomList", roomList);
+		logger.debug("<<count>> : " + count);
+		redirectAttributes.addFlashAttribute("user", user);
+		redirectAttributes.addFlashAttribute("room_num", room_num);
+		redirectAttributes.addFlashAttribute("roomList", roomList);
 		
 		logger.debug("<<메인 채팅방 리스트>> : " + roomList);
-		return "main";
+		return "redirect:" + referer;
 	}
 
 	// ========채팅 목록===========//
