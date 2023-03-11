@@ -10,7 +10,7 @@ $(function(){
   	//7. session에 있는 setIN 제거
 	
 	var logoutBtn = $('.logout-btn').length;
-	
+	var cnt = 0;
 	if(logoutBtn < 1){
 		sessionStorage.removeItem("isSelect");
 		sessionStorage.removeItem("plusSec");
@@ -129,10 +129,13 @@ $(function(){
 
 										}
 	  								}else if(param.result == 'end'){
-										location.href="../seat/out.do?seat_num="+seat_num;
-										alert('잔여시간이 모두 소진되었습니다.');
-										sessionStorage.setItem("isSelect", '0');
-										location.href = "../seat/selectForm.do";										
+										cnt = cnt + 1;
+										if(cnt <= 1){
+											location.href="../seat/out.do?seat_num="+seat_num;
+											alert('잔여시간이 모두 소진되었습니다.');
+											sessionStorage.setItem("isSelect", '0');
+											location.href = "../seat/selectForm.do";				
+										}
 									}
 									else {
 	  									alert('종료 후 잔여시간 업데이트 오류 발생');
