@@ -3,8 +3,7 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <link rel="stylesheet" href="${pageContext.request.contextPath}/css/locker_sectionDB.css">
 <script type="text/javascript" src="${pageContext.request.contextPath}/js/locker.js"></script>
-	<h2>섹션D</h2>
-	
+	<h2>&nbsp;Section D</h2>
 	<div class="locker-box">
 		<c:forEach var="locker" items="${list}" begin="52" end="56">
 		<button id="${locker.locker_num}" class="locker-option btn hover-filled-opacity"
