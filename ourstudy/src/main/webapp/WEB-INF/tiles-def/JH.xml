@@ -7,84 +7,75 @@
 <tiles-definitions>
    <definition name="" extends="main">
     	<put-attribute name="title" value="채팅방 생성"/>
-    	<put-attribute name="body"
-    	  value="/WEB-INF/views/talk/talkRoomWrite.jsp"/>       
+    	<put-attribute name="body" value="/WEB-INF/views/talk/talkRoomWrite.jsp"/>       
     </definition>
     
     <!-- 관리자 -->
     <definition name="adminMemberList" extends="admin">
-    	<put-attribute name="title" value="회원목록(관리자전용)"/>
-    	<put-attribute name="body"
-    	  value="/WEB-INF/views/admin/admin_memberList.jsp"/>        
+    	<put-attribute name="title" value="OurStudy::회원목록"/>
+    	<put-attribute name="body" value="/WEB-INF/views/admin/admin_memberList.jsp"/>        
     </definition>
     
     <definition name="adminSeatHistory" extends="admin">
-    	<put-attribute name="title" value="이용기록(좌석 히스토리)"/>
-    	<put-attribute name="body" 
-    	  value="/WEB-INF/views/admin/admin_seatHistory.jsp"/>        
+    	<put-attribute name="title" value="OurStudy::좌석이용기록"/>
+    	<put-attribute name="body" value="/WEB-INF/views/admin/admin_seatHistory.jsp"/>        
     </definition>    
 
     <definition name="adminLockerHistory" extends="admin">
-    	<put-attribute name="title" value="이용기록(사물함 히스토리)"/>
-    	<put-attribute name="body" 
-    	  value="/WEB-INF/views/admin/admin_lockerHistory.jsp"/>        
+    	<put-attribute name="title" value="OurStudy::사물함이용기록"/>
+    	<put-attribute name="body" value="/WEB-INF/views/admin/admin_lockerHistory.jsp"/>        
     </definition>  
     
     <definition name="adminItemHistory" extends="admin">
-    	<put-attribute name="title" value="물품대여히스토리목록"/>
-    	<put-attribute name="body" 
-    	  value="/WEB-INF/views/admin/admin_itemHistory.jsp"/>        
+    	<put-attribute name="title" value="OurStudy::물품대여기록"/>
+    	<put-attribute name="body" value="/WEB-INF/views/admin/admin_itemHistory.jsp"/>        
     </definition>
     
     <definition name="adminUnreturnList" extends="admin">
-    	<put-attribute name="title" value="미반납자목록"/>
-    	<put-attribute name="body" 
-    	  value="/WEB-INF/views/admin/admin_unreturnList.jsp"/>        
+    	<put-attribute name="title" value="OurStudy::미반납자목록"/>
+    	<put-attribute name="body" value="/WEB-INF/views/admin/admin_unreturnList.jsp"/>        
     </definition> 
     
     <definition name="adminSalesList" extends="admin">
-    	<put-attribute name="title" value="판매기록"/>
-    	<put-attribute name="body" 
-    	  value="/WEB-INF/views/admin/admin_salesList.jsp"/>        
+    	<put-attribute name="title" value="OurStudy::판매기록"/>
+    	<put-attribute name="body" value="/WEB-INF/views/admin/admin_salesList.jsp"/>        
     </definition>    
     
     <definition name="adminReceiveHistory" extends="admin">
-    	<put-attribute name="title" value="수신채팅기록"/>
-    	<put-attribute name="body" 
-    	  value="/WEB-INF/views/admin/admin_receiveHistory.jsp"/>        
+    	<put-attribute name="title" value="OurStudy::수신채팅기록"/>
+    	<put-attribute name="body" value="/WEB-INF/views/admin/admin_receiveHistory.jsp"/>        
     </definition> 
     
     <definition name="adminSendHistory" extends="admin">
-    	<put-attribute name="title" value="발신채팅기록"/>
-    	<put-attribute name="body" 
-    	  value="/WEB-INF/views/admin/admin_sendHistory.jsp"/>        
+    	<put-attribute name="title" value="OurStudy::발신채팅기록"/>
+    	<put-attribute name="body" value="/WEB-INF/views/admin/admin_sendHistory.jsp"/>        
     </definition>
     
     <!-- 이용후기 -->
     <definition name="reviewList" extends="main2">
-    	<put-attribute name="body"
-    	  value="/WEB-INF/views/review/reviewList.jsp"/>        
+    	<put-attribute name="title" value="OurStudy::이용후기목록"/>
+    	<put-attribute name="body" value="/WEB-INF/views/review/reviewList.jsp"/>        
     </definition>
     <definition name="reviewWrite" extends="main">
-    	<put-attribute name="title" value="이용후기글쓰기"/>
+    	<put-attribute name="title" value="OurStudy::이용후기글쓰기"/>
     	<put-attribute name="body"
     	  value="/WEB-INF/views/review/reviewWrite.jsp"/>        
     </definition>
     <definition name="reviewView" extends="main2">
-    	<put-attribute name="title" value="이용후기상세"/>
+    	<put-attribute name="title" value="OurStudy::이용후기글"/>
     	<put-attribute name="body"
     	  value="/WEB-INF/views/review/reviewView.jsp"/>        
     </definition> 
     <definition name="reviewModify" extends="main">
-    	<put-attribute name="title" value="이용후기수정"/>
+    	<put-attribute name="title" value="OurStudy::이용후기수정"/>
     	<put-attribute name="body"
     	  value="/WEB-INF/views/review/reviewModify.jsp"/>        
     </definition>   
     
     <!-- 오시는길 --> 
     <definition name="showMap" extends="main2">
-    	<put-attribute name="body"
-    	  value="/WEB-INF/views/map/showMap.jsp"/>        
+    	<put-attribute name="title" value="OurStudy::오시는길"/>
+    	<put-attribute name="body" value="/WEB-INF/views/map/showMap.jsp"/>        
     </definition>                            
 </tiles-definitions>
 

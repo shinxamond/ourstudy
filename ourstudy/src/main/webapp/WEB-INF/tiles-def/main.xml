@@ -15,6 +15,7 @@
     
     <!-- 메인2 -->
     <definition name="main2" template="/WEB-INF/views/template/layout_basic2.jsp">
+    	<put-attribute name="title" value="OurStudy::내 손 안의 독서실"/>
         <put-attribute name="sidebar" value="/WEB-INF/views/template/sidebar.jsp"/>
     	<put-attribute name="body" value="/WEB-INF/views/main/main.jsp"/>
     	<put-attribute name="footer" value="/WEB-INF/views/template/footer.jsp"/>         
