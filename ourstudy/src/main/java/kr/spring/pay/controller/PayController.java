@@ -190,7 +190,7 @@ public class PayController {
 
 			if(kind == 1) {//독서실 이용권
 				if(type == 1) {
-					time = 2;
+					time = 1;
 				}else if(type == 2) {
 					time = 4;
 				}else if(type == 3) {
