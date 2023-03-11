@@ -11,14 +11,28 @@ div#main_body{
 }
 /*
 푸터 설정---------*/
+#footer-content{
+	line-height:1.7em;
+	font-family: 'Pretendard-Regular';
+	font-size:11pt;
+}
+#footer-logo{
+	color:#F3F1F1;
+	font-size:12pt;
+	padding:0px;
+}
 div#main_footer .footer-main{
 	float:left;
+	
 }
 div#main_footer .footer-sns{
 	float:right;
 	margin-right:100px;
 	word-spacing:15px;
 	padding-top:40px;
+}
+.footer-sns a:hover{
+	color: #F3F1F1;
 }
 /*
 물품 생성 수정 폼---------*/
@@ -65,7 +79,6 @@ div#userList #userList-area{
 
 /*
 대여 폼---------*/
-
 .item-image{
 	width:380px;
 	margin:0 0 10px 35px;
@@ -193,7 +206,11 @@ input[type="number"]{
 #t2 input[type="file"]{
 	width:210px;
 }
-
+@media (max-width : 1420px){
+	.footer-sns{
+		display:none;
+	}
+}
 
 @media ( max-width : 991px) {
 	.it1 {
@@ -208,13 +225,10 @@ input[type="number"]{
 	div#main_footer{
 		left:10px;
 		padding:30px 10px 20px 5px;
-		height:35vh;
+		height:49vh;
 	}
 	.footer-main{
 		margin-left:20px;
-	}
-	.footer-sns{
-		display:none;
 	}
 }
 
