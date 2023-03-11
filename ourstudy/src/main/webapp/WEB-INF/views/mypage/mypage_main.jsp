@@ -147,7 +147,7 @@
 				<c:if test="${write.lf_type ==0}"><span>분실</span></c:if>
 				<c:if test="${write.lf_type ==1}"><span>습득</span></c:if>
 				</td>
-				<td style = "text-align : left; padding-left : 60px;"><a id = "write_name" href = "${pageContext.request.contextPath}/community/lostDetail.do?lf_num=${lost.lf_num}">${write.lf_title}</a></td>
+				<td style = "text-align : left; padding-left : 60px;"><a id = "write_name" href = "${pageContext.request.contextPath}/community/lostDetail.do?lf_num=${write.lf_num}">${write.lf_title}</a></td>
 				<td>${write.lf_date}</td>
 			</tr>
 			</c:forEach>
