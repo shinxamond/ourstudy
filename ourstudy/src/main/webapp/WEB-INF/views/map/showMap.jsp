@@ -13,7 +13,7 @@
 			<div class="location_con01">
 				<div class="inner">
 					<div class="sub_tit">
-						<h3>오시는길</h3>
+						<h3>오시는 길</h3>
 						<h4 class="mont"><b>D</b>irections</h4>
 					</div><br>
 					<div class="sub_map" id="map" style="width:70%;height:400px;"></div>
@@ -22,7 +22,7 @@
 							<div class="bot" style="display:inline;">
 								<h5>
 									<img src="${pageContext.request.contextPath}/image_bundle/location_con01_icon01.png" alt="icon" />
-									지하철 이용시
+									지하철 이용 시
 								</h5>
 								<ul>
 									<li>
@@ -30,19 +30,19 @@
 											<span class="col01">2호선</span>
 											역삼역
 										</h6>
-										<p>3번출구 도보3분 거리</p>
+										<p>3번 출구 도보 3분 거리</p>
 									</li>
 									<li>
 										<h6>
 											<span class="col01">2호선</span>
 											강남역
 										</h6>
-										<p>1번출구 도보5분 거리</p>
+										<p>1번 출구 도보 5분 거리</p>
 									</li>
 								</ul>
 								<h5>
 									<img src="${pageContext.request.contextPath}/image_bundle/location_con01_icon02.png" alt="icon" />
-									버스 이용시
+									버스 이용 시
 								</h5>
 								<ul>
 									<li class="w85">

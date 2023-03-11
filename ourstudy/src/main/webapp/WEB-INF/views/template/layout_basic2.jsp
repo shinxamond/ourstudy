@@ -7,6 +7,7 @@
 <link rel="icon" href="${pageContext.request.contextPath}/images/favicon.ico" type="image/x-icon" sizes="16x16" />
 <meta charset="UTF-8">
 <meta content="width=device-width, initial-scale=1.0" name="viewport">
+<title><tiles:getAsString name="title"/></title>
 <link rel="stylesheet" href="${pageContext.request.contextPath}/css/layout.css">
 <link rel="stylesheet" href="${pageContext.request.contextPath}/css/sidebar.css">
 
