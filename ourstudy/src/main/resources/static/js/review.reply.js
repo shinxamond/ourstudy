@@ -93,7 +93,7 @@ $(function(){
 					output += '<li>';
 					output += '<img src="../mypage/viewProfile.do?mem_num='+item.mem_num+'" width="40" height="40" class="my-photo">';
 					output += '</li>';					
-					output += '<li style="margin-left:15px;">';
+					output += '<li style="margin-left:10px;">';
 					if(item.mem_name){
 						output += '<b>' + item.mem_name + '</b>';
 					}
