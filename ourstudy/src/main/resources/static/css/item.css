@@ -281,10 +281,10 @@ input[type="number"]{
 .rcard1{
 	background-color:white;
 	width: 800px;
-	height:380px;
+	height:290px;
     border-radius: 1rem;
     display: inline-block;
-    padding: 33px 0 10px;
+    padding: 3px 0 10px;
     margin:10px;
     left:30px;
     position: relative;
