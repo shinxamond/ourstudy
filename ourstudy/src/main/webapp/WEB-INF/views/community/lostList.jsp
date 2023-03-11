@@ -63,8 +63,8 @@
 							<tr>
 								<th scope="col" width="15%">카테고리<br></th>
 								<th scope="col" width="35%">제목</th>
-								<th scope="col" width="30%">작성일</th>
 								<th scope="col" width="20%">작성자</th>
+								<th scope="col" width="30%">작성일</th>						
 							</tr>							
 						</thead>
 						<tbody class="table-body table-group-divider">			
@@ -83,8 +83,8 @@
 									</c:if>
 									<a href="lostDetail.do?lf_num=${lost.lf_num}" class="truncate-text">${lost.lf_title}</a>
 								</td>
-								<td>${lost.lf_date}</td> 
-								<td>${lost.mem_name}</td> 
+								<td>${lost.mem_name}</td>
+								<td>${lost.lf_date}</td> 								 
 							</tr>							
 							</c:forEach>					
 						</tbody>
