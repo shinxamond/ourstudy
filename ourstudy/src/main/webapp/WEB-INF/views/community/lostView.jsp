@@ -10,7 +10,7 @@
 <div class="page-main">
 <div class="content-main">
 <div class="content-right"> 
-		<h3 style="text-align:center"><b>분실물찾기</b></h3><br>
+		<h3 style="text-align:center"><b>분실물 찾기</b></h3><br>
 		<div class="card d-flex justify-content-center" id="card-view" >
 		<ul class="card-head">
 		

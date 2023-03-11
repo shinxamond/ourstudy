@@ -7,7 +7,7 @@
 		<div class="content-main"><!-- 전체 화면의 87% -->
 			<!-- 사이드바 오른쪽 화면 시작 -->
 			<div class="content-right">
-				<h3 style="text-align:center"><b>분실물찾기</b></h3>
+				<h3 style="text-align:center"><b>분실물 찾기</b></h3>
 				<!-- 검색폼 시작 -->
 				<form  class="search-form" action="lostList.do" method="get"><!-- 자동 인코딩 처리를 위해 -->
 				<div class="section" style="text-align:center"> 
