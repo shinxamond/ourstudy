@@ -13,7 +13,7 @@
 <script src="https://cdn.iamport.kr/v1/iamport.js"></script>
 <div class="container" id="main_content_body">
 		<div class="col-sm-8" id="card_top">
-			<div class="card sm-5">
+			<div class="card sm-6">
 				<div class="card-body p-4">
 					<input type="hidden" name="mem_num" data-memnum="${user.mem_num}"
 						id="mem_num"> <input type="hidden" name="ticket_num"

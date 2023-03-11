@@ -17,7 +17,8 @@ body{
 	position:relative;
 }
 .container{
-	display:flex;
+	display: flex;
+	justify-content: center;
 	height: 80vh;
 }
 #card_top{
@@ -39,9 +40,6 @@ body{
 	position:relative;
 }
 
-#main_content_body{
-	position:relative;
-}
 .row.yu{
 	position:relative;
 }
