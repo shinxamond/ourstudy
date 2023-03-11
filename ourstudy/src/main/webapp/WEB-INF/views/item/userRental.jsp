@@ -10,7 +10,7 @@
 	<h2 class="align-center">${oneitem.item_title}</h2><br><br>
 	<div id="imgdetail">
 		<div class="item-image">
-			<img src="imageView.do?item_num=${oneitem.item_num}" width=300" height="300" class="my-photo">
+			<img src="imageView.do?item_num=${oneitem.item_num}" width="250" height="300" class="my-photo">
 		</div>
 		<div class="item-detail">
 			<form:form action="userItemRental.do" id="rental_form" modelAttribute="itemVO">
@@ -43,7 +43,7 @@
 	<div class="it2">
 	<br>
 	<h1 id="rental">물품대여</h1><br>
-	<div id="imgdetail"><br>
+	<div id="imgdetail2"><br>
 	<h2 id="rental_name">${oneitem.item_title}</h2>
 		<div class="item-image2">
 			<img src="imageView.do?item_num=${oneitem.item_num}" width=170" height="170" class="my-photo">

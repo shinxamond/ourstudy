@@ -75,7 +75,7 @@ div.item-detail ul li{
 select#inum option{
 	width:200px;
 }
-#imgdetail{
+#imgdetail, #imgdetail2{
 	border: solid 1px black;
 	border-radius: 1rem;
 	padding:0px;
@@ -109,7 +109,10 @@ div#clear2{
 .it2{
 	display: none;
 }
-
+.it2 #imgdetail2{
+	position: relative;
+	left:30px;
+}
 /*
 대여 폼 반응형---------*/
 #rental{
