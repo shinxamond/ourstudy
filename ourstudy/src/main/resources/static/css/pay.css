@@ -13,16 +13,13 @@ body{
 	position:relative;
 }
 
-#main_content_body{
-	position:relative;
-}
+
 .container{
-	display: flex;
-	justify-content: center;
-	height: 80vh;
+	height: 100vh;
 }
 #card_top{
-	margin-top: 70px;
+	width: 80%;
+	margin: auto;
 }
 .card{
 	border-radius: 1rem;
@@ -127,7 +124,8 @@ div#main_footer .footer-sns{
 	}
 	.container{
 	display:flex;
-}
+	}
+	
 }
 @media screen and (max-width:991px) {
 	div#main_body{
@@ -145,6 +143,7 @@ div#main_footer .footer-sns{
 	.footer-main{
 		margin-left:20px;
 	}
+	
 }
 
 /*======================
