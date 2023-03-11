@@ -72,11 +72,6 @@ $(function(){
 	}, delay);
 });
 
-	setInterval(function() {
-	  
-	}, 60000);
-
-
 	/*마이페이지 메인 호출시*/
 	if($('#mypage_mem_info_main').val() > 0){
 		var windowWidth = $( window ).width();

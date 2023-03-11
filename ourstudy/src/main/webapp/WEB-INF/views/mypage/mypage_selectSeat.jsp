@@ -9,6 +9,5 @@
 		</div>
 		<hr class = "horizontal-line">
 	</div>
-	
 </div>
 <!-- 마이페이지 좌석선택 끝 -->

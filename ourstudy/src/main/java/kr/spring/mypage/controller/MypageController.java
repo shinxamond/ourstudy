@@ -31,6 +31,7 @@ import org.springframework.web.servlet.support.RequestContextUtils;
 import kr.spring.util.AuthCheckException;
 import kr.spring.util.FileUtil;
 import kr.spring.util.PagingUtil;
+import kr.spring.community.service.LostService;
 import kr.spring.item.service.ItemService;
 import kr.spring.item.vo.ItemVO;
 import kr.spring.member.service.MemberService;
@@ -62,6 +63,8 @@ public class MypageController {
 	private ItemService itemService;
 	@Autowired
 	private SeatService seatService;
+	@Autowired
+	private LostService lostService;
 	
 	
 	//마이페이지 메인 호출

@@ -524,7 +524,7 @@
 	}
 	.element:nth-child(4) .data-time{
 		position: relative;
-	    left: 146px;
+		float : right;
 	}
 	/*입퇴실 버튼 체크*/
 	.seatcheck-buttons{
