@@ -19,6 +19,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
+import kr.spring.locker.service.LockerService;
 import kr.spring.locker.vo.LockerVO;
 import kr.spring.member.service.MemberService;
 import kr.spring.member.vo.MemberVO;
@@ -45,6 +46,8 @@ public class PayController {
 	@Autowired
 	private MypageService myPageService;
 
+	@Autowired
+	private LockerService lockerService;
 
 	@ModelAttribute
 	public PayVO initCommand() {
@@ -281,6 +284,7 @@ public class PayController {
 		            System.out.println(newEnd);
 					payVOForLocker.setLocker_end(newEnd);
 					
+					lockerService.lockerStatusIn(payVO);
 					payService.insertNewLockerMember(payVOForLocker);
 				}
 			}
