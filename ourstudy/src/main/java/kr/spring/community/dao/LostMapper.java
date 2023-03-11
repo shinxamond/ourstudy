@@ -18,7 +18,7 @@ public interface LostMapper {
 	
 	@Select("SELECT lost_found_seq.nextval FROM dual")
 	public int selectLost_num();
-	@Select("SELECT * FROM lost_found l JOIN member_detail d "
+	@Select("SELECT * FROM lost_found l JOIN member m "
 			  + "USING(mem_num) JOIN member_detail d "
 			  + "USING(mem_num) WHERE l.lf_num=#{lf_num}")
 	public LostVO selectLost(Integer lf_num);

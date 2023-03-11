@@ -129,15 +129,16 @@ public class LostController {
 	
 	//==글상세
 	 @GetMapping("/community/lostDetail.do")
-	 public ModelAndView process(@RequestParam int lf_num) {
+	 public ModelAndView process(@RequestParam int lf_num, HttpSession session) {
 		 
 		 logger.debug("<<lf_num>> : " + lf_num);
 		 
 		 LostVO lost =
 				 lostService.selectLost(lf_num);
+		
+		 logger.debug("<<LostVO>> : " + lost);
 		 
 		lost.setLf_title(StringUtil.useNoHtml(lost.getLf_title()));
-
 		 
 		 return new ModelAndView("lostView","lost",lost); 
 	 }
