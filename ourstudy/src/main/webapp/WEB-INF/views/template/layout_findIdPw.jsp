@@ -4,6 +4,7 @@
 <!DOCTYPE html>
 <html>
 <head>
+<title><tiles:getAsString name="title"/></title>
 <link rel="icon" href="${pageContext.request.contextPath}/images/favicon.ico" type="image/x-icon" sizes="16x16" />
 <meta charset="UTF-8">
 <link rel="stylesheet" href="${pageContext.request.contextPath}/css/member.css">

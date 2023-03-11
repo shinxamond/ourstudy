@@ -6,11 +6,11 @@
 <script type="text/javascript" src="${pageContext.request.contextPath}/js/makeEmail.js"></script>
 <script>
 $(document).on("keyup", ".mem_phone", function() {
-	$(this).val($(this).val().replace(/[^0-9]/g, "").replace(/(^02|^0505|^1[0-9]{3}|^0[0-9]{2})([0-9]+)?([0-9]{4})$/,"$1-$2-$3").replace("--", "-") ); 
+	$(this).val($(this).val().replace(/[^0-9]/g, "").replace(/(^02|^0505|^1[0-9]{3}|^0[0-9]{2})([0-9]+)?([0-9]{4})$/, "$1-$2-$3" ).replace("--", "-")); 
 });
 function numberphone(e){
-	if(e.value.length>11){
-		e.value=e.value.slice(0,11);
+	if(e.value.length>13){
+		e.value=e.value.slice(0,13);
 	}
 }
 </script>
@@ -56,7 +56,7 @@ function numberphone(e){
 				<tr>
 					<th>전화번호</th>
 					<td>
-						<form:input path="mem_phone"  class = "input-textbox" oninput="numberphone(this)" maxlength="13" placeholder=" 숫자만 입력하세요"/>
+						<form:input path="mem_phone" oninput="numberphone(this)" class = "mem_phone input-textbox"  maxlength="13" placeholder=" 숫자만 입력하세요"/>
 						<form:errors path="mem_phone" cssClass="error-color"/>
 					</td>
 				</tr>
