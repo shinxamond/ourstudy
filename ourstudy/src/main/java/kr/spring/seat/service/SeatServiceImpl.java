@@ -119,7 +119,7 @@ public class SeatServiceImpl implements SeatService{
    
    //회원 잔여기간 가져오기
 	@Override
-	public Float getMemberTerm(int mem_num) {
+	public String getMemberTerm(int mem_num) {
 		return seatMapper.getMemberTerm(mem_num);
 	}
 

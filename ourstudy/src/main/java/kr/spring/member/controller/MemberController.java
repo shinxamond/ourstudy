@@ -1,6 +1,7 @@
 package kr.spring.member.controller;
 
 import java.time.LocalDate;
+import java.time.Period;
 import java.time.format.DateTimeFormatter;
 import java.util.Arrays;
 import java.util.HashMap;
@@ -14,6 +15,7 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import javax.validation.Valid;
 
+import org.apache.catalina.User;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -31,6 +33,8 @@ import kr.spring.locker.service.LockerService;
 import kr.spring.member.kakao.KakaoService;
 import kr.spring.member.service.MemberService;
 import kr.spring.member.vo.MemberVO;
+import kr.spring.pay.service.PayService;
+import kr.spring.seat.service.SeatService;
 import kr.spring.util.AuthCheckException;
 
 @Controller
@@ -43,7 +47,11 @@ public class MemberController {
    private KakaoService kakao;
    @Autowired
    private LockerService lockerService;
-
+   @Autowired
+   private SeatService seatService;
+   @Autowired
+   private PayService payService;
+   
    //자바빈(VO) 초기화
    @ModelAttribute
    public MemberVO initCommand() {
@@ -162,6 +170,17 @@ public class MemberController {
             ///////////////로그인하면서 사물함 종료시각 체크//////////////////
             String locker_end = lockerService.getLockerEnd(member.getMem_num());
             //오늘날짜 >= locker_end ---> 자동으로 사물함 statusd == 0
+            String term_end = seatService.getMemberTerm(member.getMem_num());
+            if(term_end != null) {
+            	LocalDate now = LocalDate.now();
+            	LocalDate termEnd = LocalDate.parse(term_end, DateTimeFormatter.ISO_DATE);
+            	
+            	//시작값 - 끝값 = 양수이면 기간남은거 음수이면 지난거 0이면 당일
+            	Period remainPeriod = Period.between(now, termEnd);
+            	if(remainPeriod.getDays() <= 0) {//당일이거나 지난경우
+            		payService.updateTerm("", member.getMem_num());
+            	}
+            }
             
             if(locker_end != null) {
                LocalDate now = LocalDate.now();

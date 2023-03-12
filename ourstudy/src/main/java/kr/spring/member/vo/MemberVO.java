@@ -37,7 +37,7 @@ public class MemberVO {
 	private String navercheck;
 	private int mem_study;
 	private int mem_ticket_hour;
-	private int mem_ticket_term;
+	private String mem_ticket_term;
 	
 	//아이디 찾기 시 전체 아이디
 	private String[] mem_all_id;
@@ -232,11 +232,11 @@ public class MemberVO {
 		this.mem_ticket_hour = mem_ticket_hour;
 	}
 
-	public int getMem_ticket_term() {
+	public String getMem_ticket_term() {
 		return mem_ticket_term;
 	}
 
-	public void setMem_ticket_term(int mem_ticket_term) {
+	public void setMem_ticket_term(String mem_ticket_term) {
 		this.mem_ticket_term = mem_ticket_term;
 	}
 

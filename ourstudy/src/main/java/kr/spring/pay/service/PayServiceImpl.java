@@ -107,5 +107,10 @@ public class PayServiceImpl implements PayService{
 		return payMapper.checkTerm(mem_num);
 	}
 
+	@Override
+	public void updateTerm(String mem_ticket_term, Integer mem_num) {
+		payMapper.updateTerm(mem_ticket_term, mem_num);
+	}
+
 }
 

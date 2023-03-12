@@ -234,21 +234,30 @@ public class PayController {
             	//변환한 String 값을 찍어보고 뒤에 시분초가 있으면 split 한다
             	//최종으로 나온 String YYYY-MM-DD를 db에 업데이트 해준다
             	String m_term = payService.checkTerm(user.getMem_num());
-            	LocalDateTime now;
-            	if(m_term != null) {
-            		//String db_end = m_term.format(DateTimeFormatter.ofPattern("yyyy-MM-dd"));
-            		
-            	}else {
-            		
+            	System.out.println("m_term : "+m_term);
+            	if(m_term != null) { //db에 이미 기간권 시간이 있는 경우
+            		//db에 저장된 기간권 가져와서 localdatetime으로 변환
+            		DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd");
+            		LocalDateTime parsingMterm = LocalDate.parse(m_term, formatter).atStartOfDay();
+            		//LocalDateTime parsingMterm = LocalDateTime.parse(m_term, DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss"));
+            		System.out.println("parsingMterm" + parsingMterm);
+            		//위에서 계산된 기간권 시간만큼 더주기
+            		parsingMterm = parsingMterm.plusHours(time);
+            		System.out.println("parsingMter After plushours" + parsingMterm);
+            		//더해주고 생긴 localdatetime 다시 String으로 변환
+            		m_term = parsingMterm.format(DateTimeFormatter.ofPattern("yyyy-MM-dd"));
+            		System.out.println("parsed m_term" + m_term);
+            		//변환한 String 날짜 db에 업데이트
+            		payService.updateTerm(m_term, user.getMem_num());
+            	}else {//db에 기간권 시간이 없는 경우
+            		LocalDateTime now = LocalDateTime.now();
+            		System.out.println("오늘 날짜" + now);
+            		LocalDateTime end_date = now.plusHours(time);
+            		System.out.println("오늘날짜 + 결제한 기간권" + end_date);
+            		String parsingEnd = end_date.format(DateTimeFormatter.ofPattern("yyyy-MM-dd"));
+            		System.out.println("기간권 날짜 스트링변환" + parsingEnd);
+            		payService.updateTerm(parsingEnd, user.getMem_num());
             	}
-            	
-//            	LocalDateTime now = LocalDateTime.now();
-//            	System.out.println("오늘 날짜" + now);
-//            	LocalDateTime end_date = now.plusHours(time);
-//            	System.out.println("오늘날짜 + 결제한 기간권" + now.plusHours(time););
-            	
-            	
-            	
                //payService.updateMemberHistory_Term(time, user.getMem_num());
             }else {//시간권
                payService.updateMemberHistory_Hour(time, user.getMem_num());

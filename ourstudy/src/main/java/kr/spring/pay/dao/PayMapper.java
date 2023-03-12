@@ -64,5 +64,9 @@ public interface PayMapper {
 	//독서실 기간권 보유 여부 체크
 	@Select("SELECT mem_ticket_term FROM member_history WHERE mem_num=#{mem_num}")
 	public String checkTerm(Integer mem_num);
+	
+	//독서실 기간권 업데이트
+	@Update("Update member_history SET mem_ticket_term = #{mem_ticket_term} WHERE mem_num = #{mem_num}")
+	public void updateTerm(@Param(value = "mem_ticket_term") String mem_ticket_term, @Param(value = "mem_num") Integer mem_num);
 }
 

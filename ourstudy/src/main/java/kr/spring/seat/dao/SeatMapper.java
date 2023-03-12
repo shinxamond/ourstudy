@@ -77,7 +77,7 @@ public interface SeatMapper {
    
    //잔여기간 가져오기
    @Select("SELECT mem_ticket_term FROM MEMBER_HISTORY WHERE mem_num=#{mem_num}")
-   public Float getMemberTerm(int mem_num);
+   public String getMemberTerm(int mem_num);
    
    /*========================================
                 ABOUT HISTORY

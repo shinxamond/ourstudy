@@ -54,11 +54,10 @@
 			<fmt:parseNumber value = "${((remainTime / 3600) % 3600) % 24}"  integerOnly="true"/>시간
 			<fmt:parseNumber value = "${(remainTime / 60 % 60)+(((remainTime / 60 % 60)%1>0.5)?(1-((remainTime / 60 % 60)%1))%1:-((remainTime / 60 % 60)%1))}" integerOnly="true"/>분
 			</c:if>
+			<c:if test="${empty remainTerm and remainTime == 0}">0일 0시간 0분</c:if>
+			
 			<c:if test="${!empty remainTerm}">
-			<fmt:parseNumber value = "${remainTerm < 120 ? 0 : remainTerm / 86400}"  integerOnly="true"/>일 
-			<fmt:parseNumber value = "${((remainTerm / 3600) % 3600) % 24}"  integerOnly="true"/>시간
-			<fmt:parseNumber value = "${(remainTerm / 60 % 60)+(((remainTerm / 60 % 60)%1>0.5)?(1-((remainTerm / 60 % 60)%1))%1:-((remainTerm / 60 % 60)%1))}" integerOnly="true"/>분
-			</c:if>
+			<fmt:parseNumber value = "${remainTerm}"  integerOnly="true"/>일 0시간 0분</c:if>
 			</span></span>
 			<br>
 			<div class = "seatcheck-buttons">
@@ -99,7 +98,7 @@
     </div>
   </div>
 </div>
-<c:if test = "${remainTerm == 0}">
+<c:if test = "${empty remainTerm}">
 <span id="${mem_statusForCheckIn}" class = "setCheckInStatus"></span>
 <span id="${mem_numForCheckIn}" class = "setCheckInMemnum"></span>
 <span id="${seat.seat_num}" class = "setCheckSeatNum"></span>

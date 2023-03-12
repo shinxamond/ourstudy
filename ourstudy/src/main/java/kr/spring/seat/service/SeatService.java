@@ -39,7 +39,7 @@ public interface SeatService {
    //회원 잔여시간 가져오기
    public Float getMemberHour(int mem_num);
    //회원 잔여기간 가져오기
-   public Float getMemberTerm(int mem_num);
+   public String getMemberTerm(int mem_num);
    //시간권 새로운 시간 갱신
    public void updateMemberHistory_Hour(Float time, Integer mem_num);
 }

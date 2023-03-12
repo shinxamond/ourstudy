@@ -30,4 +30,7 @@ public interface PayService {
 	//좌석 시간권, 기간권 보유중인지 확인
 	public String checkTime(Integer mem_num);
 	public String checkTerm(Integer mem_num);
+	
+	//기간권 시간 날짜로 업데이트
+	public void updateTerm(String mem_ticket_term, Integer mem_num);
 }

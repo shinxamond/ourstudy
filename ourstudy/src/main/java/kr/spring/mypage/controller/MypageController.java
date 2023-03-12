@@ -106,11 +106,11 @@ public class MypageController {
 			
 			LocalDate now = LocalDate.now();
 
-			Duration remainTermDuration = Duration.between(now, end_date);
-			logger.debug("seconds : {}", remainTermDuration.getSeconds());
+			Period remainTermDuration = Period.between(now, end_date);
+			logger.debug("seconds : {}", remainTermDuration.getDays());
 			
 			
-			model.addAttribute("remainTerm", remainTermDuration);
+			model.addAttribute("remainTerm", remainTermDuration.getDays());
 		}
 		
 		logger.debug("<<마이페이지 멤버 정보>> : " + member);
