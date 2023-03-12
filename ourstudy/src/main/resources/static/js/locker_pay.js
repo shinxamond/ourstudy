@@ -30,15 +30,14 @@ $(function(){
    $('#minus_btn').on('click',function(){
       //보유중인 포인트
 	  var parsingPoint = $('#my_point').text().replace(/\D/g,'');
-      mpoint = parseInt(parsingPoint);  
+      mpoint = parseInt(parsingPoint); 
+	  //사용할 포인트
+      upoint = parseInt($('#use_point').val()); 
       
       if(mpoint >= 1000){//내 포인트가 1000 이상 있을 경우
 
 		 check_useP = 1;
 	
-         //사용할 포인트
-         upoint = parseInt($('#use_point').val());
-			console.log("upoint1"+upoint);
             if(upoint >= 1000){
                //남은 포인트
                fpoint = mpoint - upoint;
@@ -69,7 +68,13 @@ $(function(){
                alert('1000P 부터 사용 가능합니다.');
                $('#use_point').val('').focus();
             }   
-         }
+         }else if(mpoint < upoint){
+			alert('보유하신 포인트보다 큰 숫자를 입력하셨습니다.');
+			$('#use_point').val('').focus();
+		 }else{
+			alert('1000P 이상 보유 후 사용해주세요.');
+			$('#use_point').val('').focus();
+		}
    });
 });
 
@@ -123,14 +128,10 @@ $(function(){
                data: (check_useP == 1) ? ajaxParam1 : ajaxParam2,
                dataType:'json',
                success:function(param){
-                  if(param.result == 'logout'){
+                 if(param.result == 'logout'){
                      alert('로그인 후 사용하세요');
 					 location.href='/main/main.do';
-                  }else if(param.result == 'inUse'){
-					alert('사물함 기간이 연장되었습니다.');
-					location.href='/main/main.do';
-				  }
-				  else if(param.result == 'success'){
+				 }else if(param.result == 'success'){
                      alert('결제 완료 되었습니다');
 					 location.href='/main/main.do';
 				}else{

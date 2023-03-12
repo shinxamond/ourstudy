@@ -31,15 +31,14 @@ $(function(){
    $('#minus_btn').on('click',function(){
       //보유중인 포인트
 	  var parsingPoint = $('#my_point').text().replace(/\D/g,'');
-      mpoint = parseInt(parsingPoint);  
+      mpoint = parseInt(parsingPoint);
+	  //사용할 포인트
+      upoint = parseInt($('#use_point').val());
       
       if(mpoint >= 1000){//내 포인트가 1000 이상 있을 경우
 
 		 check_useP = 1;
 	
-         //사용할 포인트
-         upoint = parseInt($('#use_point').val());
-			console.log("upoint1"+upoint);
             if(upoint >= 1000){
                //남은 포인트
                fpoint = mpoint - upoint;
@@ -60,8 +59,7 @@ $(function(){
 						alert('결제 금액의 절반 이상 사용 불가합니다.');
                			$('#use_point').val('').focus();
 				}
-               
-            }else if(upoint == 0){
+			}else if(upoint == 0){
 				check_useP = 0;
                	$('#final_price').text($('#ticket_total_price').val());   
                	$('#my_point').text(mpoint.toLocaleString() + "P");
@@ -70,7 +68,13 @@ $(function(){
                alert('1000P 부터 사용 가능합니다.');
                $('#use_point').val('').focus();
             }   
-         }
+         }else if(mpoint < upoint){
+			alert('보유하신 포인트보다 큰 숫자를 입력하셨습니다.');
+			$('#use_point').val('').focus();
+		 }else{
+			alert('1000P 이상 보유 후 사용해주세요.');
+			$('#use_point').val('').focus();
+		}
    });
 });
 
