@@ -15,6 +15,8 @@ import kr.spring.interceptor.AdminCheckInterceptor;
 import kr.spring.interceptor.AutoLoginCheckInterceptor;
 import kr.spring.interceptor.LoginCheckInterceptor;
 import kr.spring.interceptor.WriterCheckInterceptor;
+import kr.spring.interceptor.WriterCheckInterceptor2;
+import kr.spring.interceptor.WriterCheckInterceptor3;
 
 //자바코드 기반 설정 클래스
 @Configuration
@@ -24,6 +26,8 @@ public class AppConfig implements WebMvcConfigurer{
 	private LoginCheckInterceptor loginCheck;
 	private AdminCheckInterceptor adminCheck;
 	private WriterCheckInterceptor writerCheck;
+	private WriterCheckInterceptor2 writerCheck2;
+	private WriterCheckInterceptor3 writerCheck3;
 
 	
 	@Bean
@@ -48,6 +52,18 @@ public class AppConfig implements WebMvcConfigurer{
 	public WriterCheckInterceptor interceptor4() {
 		writerCheck = new WriterCheckInterceptor();
 		return writerCheck;
+	}
+	
+	@Bean
+	public WriterCheckInterceptor2 interceptor5() {
+		writerCheck2 = new WriterCheckInterceptor2();
+		return writerCheck2;
+	}
+	
+	@Bean
+	public WriterCheckInterceptor3 interceptor6() {
+		writerCheck3 = new WriterCheckInterceptor3();
+		return writerCheck3;
 	}
 	
 	
@@ -125,11 +141,11 @@ public class AppConfig implements WebMvcConfigurer{
 											   .addPathPatterns("/talk/talkRoomWrite.do");
 			//WriterCheckInterceptor 설정
 			registry.addInterceptor(writerCheck).addPathPatterns("/info/infoUpdate.do")
-												.addPathPatterns("/info/infoDelete.do")
-												.addPathPatterns("/community/lostUpdate.do") 
-				 								.addPathPatterns("/community/lostDelete.do")
-												.addPathPatterns("/review/update.do")
-												.addPathPatterns("/review/delete.do");
+												.addPathPatterns("/info/infoDelete.do");
+			registry.addInterceptor(writerCheck2).addPathPatterns("/community/lostUpdate.do") 
+				 							   	 .addPathPatterns("/community/lostDelete.do");
+			registry.addInterceptor(writerCheck3).addPathPatterns("/review/update.do")
+												 .addPathPatterns("/review/delete.do");
 								
 		}
 
