@@ -45,7 +45,7 @@
 				<div class="align-right" style="float:right;">
 					<c:if test="${!empty user}">
 					<button type="button" class="btn btn-secondary btn-sm"   
-							onclick="location.href='lostWrite.do'">글쓰기</button>
+							onclick="location.href='lostWrite.do'">글작성</button>
 					</c:if>
 				</div>								
 				<!-- table 시작 -->

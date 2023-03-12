@@ -18,7 +18,7 @@
 <script src="${pageContext.request.contextPath}/js/ckeditor.js"></script>
 <script src="${pageContext.request.contextPath}/js/uploadAdapter.js"></script>
 <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
-	<h3 style="text-align:center"><b>분실물 찾기 글쓰기</b></h3>
+	<h3 style="text-align:center"><b>분실물 찾기 작성</b></h3>
 	<br>
 	<div class="card d-flex justify-content-center" id="card-view" >
 	<form:form action="lostWrite.do" id="lost_write_form"

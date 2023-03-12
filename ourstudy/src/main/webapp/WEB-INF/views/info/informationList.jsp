@@ -27,7 +27,7 @@
             <div class="align-right">
                <c:if test="${!empty user && user.mem_auth == 9}">
                <button type="button" class="btn btn-secondary btn-sm"   
-                     onclick="location.href='infoWrite.do'">글쓰기</button>
+                     onclick="location.href='infoWrite.do'">글작성</button>
                </c:if>
             </div>                        
             <!-- table 시작 -->

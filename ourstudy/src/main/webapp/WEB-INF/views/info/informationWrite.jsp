@@ -16,7 +16,7 @@
 <div class="content-right">
 <script src="${pageContext.request.contextPath}/js/ckeditor2.js"></script>
 <script src="${pageContext.request.contextPath}/js/uploadAdapter.js"></script>
-	<h3 style="text-align:center"><b>안내사항 글쓰기</b></h3>
+	<h3 style="text-align:center"><b>안내사항 작성</b></h3>
 	<br>
 	<!-- 기본 카드 시작 -->
 	<div class="card d-flex justify-content-center card-hover" id="card1" >
