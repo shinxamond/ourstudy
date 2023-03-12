@@ -262,6 +262,7 @@ public class PayController {
             }else {//시간권
                payService.updateMemberHistory_Hour(time, user.getMem_num());
             }
+            mapAjax.put("result", "success");
          }else {//사물함 이용권
             
             int checkUser = payService.checkUsingLocker(user.getMem_num());
@@ -287,6 +288,8 @@ public class PayController {
                LockerVO locker = new LockerVO();
                locker.setMem_num(user.getMem_num());
                locker.setLocker_end(originEnd_split[0]);
+               
+               mapAjax.put("result", "inUse");
                
                payService.updateLocker_end(locker);
             }else {
@@ -331,9 +334,10 @@ public class PayController {
                
                lockerService.lockerStatusIn(payVO);
                payService.insertNewLockerMember(payVOForLocker);
-            }
-         }
-         mapAjax.put("result", "success");
+               
+               mapAjax.put("result", "success");
+            }     
+         }         
          mapAjax.put("payVO", payVO);
       }
       return mapAjax;

@@ -90,12 +90,23 @@ div#main_footer .footer-sns{
 	}
 }
 @media screen and (max-width:991px) {
+	nav#main-sidebar{
+		margin-right:0px;
+	}
+	
+	div#main_body{
+		margin-left:300px;
+	}
+	.container{
+	display:flex;
+	}
 	div#main_body{
 		left:10px;
 	}
 	.footer-sns{
 		display:none;
 	}
+	
 	div#main_footer{
 		padding:30px 10px 20px 5px;
 		height:45vh;
@@ -104,17 +115,6 @@ div#main_footer .footer-sns{
 	.footer-main{
 		margin-left:20px;
 	}
+	
 }
 
-/*======================
-  		 responsive
-========================*/
-@media screen and (max-width : 991px){
-	nav#main-sidebar{
-		margin-right:0px;
-	}
-	
-	div#main_body{
-		margin-left:300px;
-	}
-}

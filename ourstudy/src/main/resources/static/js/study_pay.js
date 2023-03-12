@@ -97,10 +97,9 @@ $(function(){
 			if(param.result=='logout'){
 				alert('로그인 후 이용해주세요');
 				location.href='/main/main.do';
-			}else if(param.result=="cantBuy"){
+			}else if(param.result=='cantBuy'){
 				alert('사용중인 이용권을 사용 후 구매 가능합니다.');
-			}
-			else if(param.result=='success'){
+			}else if(param.result=='success'){
 				
 	//==============카카오페이 시작============//
    	var pprice = parseInt($('#final_price').attr('data-pricenum'));
@@ -152,9 +151,6 @@ $(function(){
 					}else{
 						location.href='../seat/select.do?seat_num=' + seat_num;
 					}
-                  }else if(param.result == 'inUse'){
-					alert('사물함 기간이 연장되었습니다.');
-					location.href='/main/main.do';
 				}else{
                      alert('오류 발생');
                   }
@@ -194,10 +190,9 @@ $(function(){
 			if(param.result=='logout'){
 				alert('로그인 후 이용해주세요');
 				location.href='/main/main.do';
-			}else if(param.result=="cantBuy"){
+			}else if(param.result=='cantBuy'){
 				alert('사용중인 이용권을 사용 후 구매 가능합니다.');
-			}
-			else if(param.result=='success'){
+			}else if(param.result=='success'){
 				//============카드 결제=============//
 				var pprice = $('#final_price').attr('data-pricenum');
 				var useP = document.getElementById('use_point');
@@ -246,7 +241,10 @@ $(function(){
 			                  if(param.result == 'logout'){
 			                     alert('로그인 후 사용하세요');
 			                     location.href='/main/main.do';
-			                  }else if(param.result == 'success'){
+			                  }else if(param.result == 'inUse'){
+									alert('사물함 기간이 연장되었습니다.');
+									location.href='/main/main.do';
+								  }else if(param.result == 'success'){
 			                     alert('결제 완료 되었습니다');
 								if(seat_num == ''){
 									location.href = '../main/main.do';
