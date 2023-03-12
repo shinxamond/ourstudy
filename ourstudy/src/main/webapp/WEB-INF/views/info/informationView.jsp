@@ -50,11 +50,14 @@
 	<ul class="card-content">
 		<li>
 			${information.info_content}
-			<c:if test="${!empty information.filename}">
-			<br><br>
-			<b>[첨부파일]</b> : <a href="file.do?info_num=${information.info_num}">${information.filename}</a>
-			</c:if>
 		</li>
+		<c:if test="${!empty information.filename}">
+			<br><br>
+			<li>
+			<b>[첨부파일]</b> : <a href="file.do?info_num=${information.info_num}">${information.filename}</a>
+			</li>
+		</c:if>
+		
 	</ul>
 	<hr size="1" width="90%" style="margin: 0px auto;">
 	<ul class="card-foot align-center" >

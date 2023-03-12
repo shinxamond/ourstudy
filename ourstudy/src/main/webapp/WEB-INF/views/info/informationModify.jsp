@@ -58,9 +58,10 @@
 				<input type="file" name="upload" id="upload">
 				<c:if test="${!empty informationVO.filename}">
 				<div id="file_detail">
+				<label for="file_del"><b>파일 삭제</b></label>
 					<input type="button" value="파일 삭제"
-					                 class="btn btn-outline-secondary btn-sm"    id="file_del">
-					[${informationVO.filename}] 파일이 등록되어 있습니다.
+					                id="file_del">
+					[${informationVO.filename}]이 등록되어 있습니다.
 				</div>
 				<script type="text/javascript">
 					$(function(){

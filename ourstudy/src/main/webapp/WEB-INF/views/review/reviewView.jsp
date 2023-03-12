@@ -85,7 +85,7 @@
 	<c:if test="${!empty review.r_imgname}">
 		<br><br>
 		<li>
-			<b>[첨부파일]</b> : <a href="file.do?r_num=${review.r_num}">${review.r_imgname}</a>
+			<b>[사진 파일]</b> : <a href="file.do?r_num=${review.r_num}">${review.r_imgname}</a>
 		</li>	
 	</c:if>	
 	</ul>

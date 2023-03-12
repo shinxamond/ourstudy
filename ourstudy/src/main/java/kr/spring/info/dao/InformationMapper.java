@@ -30,9 +30,9 @@ public interface InformationMapper {
 	
 	//글등록
 	@Insert("INSERT INTO information (info_num,info_date,info_title,"
-			+ "info_content,info_pin,mem_num)" 
+			+ "info_content,info_pin,uploadfile,filename,mem_num)" 
 			+ "VALUES (information_seq.nextval,sysdate,#{info_title},"
-			+ "#{info_content},#{info_pin},#{mem_num})")
+			+ "#{info_content},#{info_pin},#{uploadfile},#{filename},#{mem_num})")
 	public void insertInformation(InformationVO info);
 
 	//글수정

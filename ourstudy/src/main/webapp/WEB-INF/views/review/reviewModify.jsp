@@ -61,13 +61,14 @@
 			    </script>
 			</li>
 			<li>
-				<label for="upload"><b>파일업로드</b></label>
-				<input type="file" name="upload" id="upload">
+				<label for="upload"><b>사진 업로드</b></label>
+				<input type="file" name="upload" id="upload" accept="image/*">
 				<form:errors element="div" cssClass="error-color"/>
 				<c:if test="${!empty reviewVO.r_imgname}">
 				<div id="file_detail">
-					(${reviewVO.r_imgname})파일이 등록되어 있습니다.
-					<input type="button" value="파일삭제" id="file_del">
+					<label for="file_del"><b>사진 삭제</b></label>
+					<input type="button" value="파일 삭제" id="file_del">
+					[]${reviewVO.r_imgname}]이 등록되어 있습니다.
 				</div>
 				<script type="text/javascript">
 					$(function(){
