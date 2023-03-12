@@ -335,8 +335,8 @@ public class PayController {
                lockerService.lockerStatusIn(payVO);
                payService.insertNewLockerMember(payVOForLocker);
                
-               mapAjax.put("result", "success");
-            }     
+            } 
+            mapAjax.put("result", "success");
          }         
          mapAjax.put("payVO", payVO);
       }
