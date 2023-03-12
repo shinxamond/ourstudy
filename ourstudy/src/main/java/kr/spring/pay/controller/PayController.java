@@ -62,10 +62,19 @@ public class PayController {
    }
 
    @RequestMapping("/pay/study_pay.do")
-   public ModelAndView study_pay(Integer ticket_num, Integer seat_num) {
+   public ModelAndView study_pay(Integer ticket_num, Integer seat_num, HttpSession session) {
 
+	  MemberVO user = (MemberVO)session.getAttribute("user");
+	      
+	  String mem_name = memberService.getMem_name(user.getMem_num());
+	   
+      
+      user.setMem_num(user.getMem_num());
+      user.setMem_name(mem_name);
+	  
       ModelAndView mav = new ModelAndView();
       mav.setViewName("study_pay");
+	  mav.addObject("mem_name", mem_name);
       
       logger.debug("<<이용권 정보>> : " + ticket_num);
 
@@ -74,6 +83,7 @@ public class PayController {
       mav.addObject("ticket", ticketVO);
       if(seat_num != null) {
     	  mav.addObject("seat_num", seat_num);
+    	  mav.addObject("mem_name", mem_name);
       }
       
       logger.debug("<<<<<<<<<<<<<<<<좌석>>>>>>>>>>>>>>>.>> : " + seat_num);
@@ -85,6 +95,12 @@ public class PayController {
    @GetMapping("/pay/locker_pay.do")
    public ModelAndView locker_pay(Integer locker_num, Integer ticket_num, HttpSession session, Model model) {
       Integer ticket_numFromSession = (Integer)session.getAttribute("ticket_num");//Session에서 이용권 번호 가져오기
+      MemberVO user = (MemberVO)session.getAttribute("user");
+      
+	  String mem_name = memberService.getMem_name(user.getMem_num());
+	   
+      user.setMem_num(user.getMem_num());
+      user.setMem_name(mem_name);
       
       if(ticket_numFromSession != null) {
          logger.debug("<<이용권 정보>> : " + ticket_numFromSession);
@@ -94,12 +110,14 @@ public class PayController {
          session.removeAttribute("ticket_num");//정보 삭제
          
          model.addAttribute("locker_num", locker_num);
+         model.addAttribute("mem_name", mem_name);
          
          return new ModelAndView("locker_pay","ticket", ticketVO);
       }else {
          TicketVO ticketVO = ticketService.selectTicket(ticket_num);
          
          model.addAttribute("locker_num", locker_num);
+         model.addAttribute("mem_name", mem_name);
          
          return new ModelAndView("locker_pay","ticket", ticketVO);
       }

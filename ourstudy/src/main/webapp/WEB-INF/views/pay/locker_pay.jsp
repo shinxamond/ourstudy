@@ -20,6 +20,7 @@
 						type="hidden" id="ticket_total_price"
 						value="${ticket.ticket_price}"> <input type="hidden"
 						id="org_point">
+						<input type="hidden" id="mem_name" data-memname="${user.mem_name}">
 						<%--중복코드
 						<input type="hidden" name="mem_num"
 						data-memnum="${user.mem_num}" id="mem_num"> <input

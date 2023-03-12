@@ -80,7 +80,7 @@ $(function(){
 
    var pname = $('#ticket_name').text();
    var pprice = $('#final_price').text();
-
+   var uname = $('#mem_name').attr('data-memname');   
 
    console.log("이름" + pname);
    console.log("금액" + pprice);
@@ -182,6 +182,7 @@ $(function(){
 	         merchant_uid : "ourstudy_" + new Date().getTime(), // 주문번호
 	         name : pname,
 	         amount : f_price,
+			 buyer_name : uname,
 	         buyer_email :'',
 	         
 	      }, function(rsp) { // callback   

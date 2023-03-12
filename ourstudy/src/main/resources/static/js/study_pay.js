@@ -80,9 +80,9 @@ $(function(){
 
    var pname = $('#ticket_name').text();
    var pprice = $('#final_price').text();
+   var uname = $('#mem_name').attr('data-memname');   
 
-
-   console.log("이름" + pname);
+   console.log("이름" + uname);
    console.log("금액" + pprice);
    console.log($('#p_point').text());
 
@@ -223,15 +223,13 @@ $(function(){
 			     console.log(useP.value);
 	
 				
-				var name = $('#mem_name').attr('user.mem_name');
-				console.log("이름?" + name);
 		     	 IMP.request_pay({
 			         pg : "html5_inicis.INIpayTest",
 			         pay_method : "card",
 			         merchant_uid : "ourstudy_" + new Date().getTime(), // 주문번호
 			         name : pname,
 			         amount : f_price,
-					 buyer_name : name,
+					 buyer_name : uname,
 			         buyer_email :'',
 			         
 			      }, function(rsp) { // callback   
