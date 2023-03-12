@@ -242,18 +242,15 @@ $(function(){
 			               success:function(param){
 			                  if(param.result == 'logout'){
 			                     alert('로그인 후 사용하세요');
-			                     location.href='/main/main.do';
-			                  }else if(param.result == 'inUse'){
-									alert('사물함 기간이 연장되었습니다.');
-									location.href='/main/main.do';
-								  }else if(param.result == 'success'){
+								 location.href='/main/main.do';
+			                  }else if(param.result == 'success'){
 			                     alert('결제 완료 되었습니다');
-								if(seat_num == ''){
+								 if(seat_num == ''){
 									location.href = '../main/main.do';
 								}else{
 									location.href='../seat/select.do?seat_num=' + seat_num;
 								}
-			                  }else{
+							}else{
 			                     alert('오류 발생');
 			                  }
 			               },
