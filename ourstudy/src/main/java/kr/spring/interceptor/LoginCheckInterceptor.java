@@ -22,9 +22,10 @@ public class LoginCheckInterceptor implements HandlerInterceptor {
 		HttpSession session = request.getSession();
 
 		//로그인여부 검사
-		if(session.getAttribute("user")==null) { 
+		if(session.getAttribute("user")==null) {
+			
 			//로그인 안 된 상태
-			response.sendRedirect(request.getContextPath()+"/member/login.do");
+			response.sendRedirect(request.getContextPath()+"/main/main.do?msg=Login-Check");
 			return false; //리다이렉트한 페이지가 동작되게 하기 위해 return false
 		}
 
