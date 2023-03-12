@@ -1,6 +1,7 @@
 package kr.spring.pay.controller;
 
 
+import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.util.HashMap;
@@ -225,7 +226,30 @@ public class PayController {
             }
             //time 설정 끝
             if(type > 6) {//기간권
-               payService.updateMemberHistory_Term(time, user.getMem_num());
+            	//여기서 받는 시간은 시간단위 int
+            	//db에 이미 기간권 end_date가 있으면 그걸 가져와서.plushours(time)
+            	//없으면 이 int값을 로컬데이트 타입 변수 오늘.plushours(여기) 에 넣어준다
+            	//그럼 localdate타입으로 날짜가 나옴
+            	//이렇게 나온 로컬데이트 타입 변수를 String으로 변환
+            	//변환한 String 값을 찍어보고 뒤에 시분초가 있으면 split 한다
+            	//최종으로 나온 String YYYY-MM-DD를 db에 업데이트 해준다
+            	String m_term = payService.checkTerm(user.getMem_num());
+            	LocalDateTime now;
+            	if(m_term != null) {
+            		//String db_end = m_term.format(DateTimeFormatter.ofPattern("yyyy-MM-dd"));
+            		
+            	}else {
+            		
+            	}
+            	
+//            	LocalDateTime now = LocalDateTime.now();
+//            	System.out.println("오늘 날짜" + now);
+//            	LocalDateTime end_date = now.plusHours(time);
+//            	System.out.println("오늘날짜 + 결제한 기간권" + now.plusHours(time););
+            	
+            	
+            	
+               //payService.updateMemberHistory_Term(time, user.getMem_num());
             }else {//시간권
                payService.updateMemberHistory_Hour(time, user.getMem_num());
             }
