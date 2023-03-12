@@ -46,10 +46,16 @@ div#main_footer{
 	padding:30px 0 20px 280px;
 	height:220px;
 }
-
-
-
-
+input.btn.btn-outline-secondary.mt-2{
+	margin-right:0;
+	margin:0 auto;
+}
+div.paging-button {
+    text-align: center !important;
+}
+.morebtn{
+	margin-right:0 !important;
+}
 
 
 
@@ -198,6 +204,13 @@ div#main_footer{
 	.footer-main{
 		margin-left:80px;
 	}
+	div.sub-item button.modify-btn {
+		margin-left:0;
+	}		
+	.reply_btn{
+		text-align:right;
+		margin-right:50px;
+	}	
 }
 
 @media screen and (max-width:991px) {
@@ -234,7 +247,36 @@ div#main_footer{
 	    overflow: hidden;
 	    white-space: nowrap;
 	    text-overflow: ellipsis;
-	}			
+	}	
+	div.sub-item button.modify-btn {
+		margin-left:0;
+	}		
+	.reply_btn{
+		text-align:right;
+		margin-right:20px;
+	}
+	form#re_form {
+	    width: 100%;
+	    margin-left: -10px;
+	    margin-top: -10px;
+	}	
+	span.re-title {
+    margin-left: 30px;
+	}
+	#inner-submit{
+		  position:absolute;
+		  bottom:-15px;
+		  right:25px;
+		  border:none;
+		  color:#E65962;
+		  font-size:18pt;
+	}
+	ul.detail-info {
+	    margin-left:-40px;
+	}		
+	div.sub-item p {
+    margin: 10px 72px 10px 30px;
+	}
 }
 
 

@@ -89,7 +89,7 @@
 	<!-- 댓글 목록 출력 시작 -->
 	<div id="output"></div>
 	<div class="paging-button" style="display:none;">
-		<input type="button" value="댓글 더보기" class="btn btn-outline-secondary mt2"  style="margin-right:395px;">
+		<input type="button" value="댓글 더보기" class="btn btn-outline-secondary mt2 morebtn"  style="margin-right:395px;">
 	</div>
 	<div id="loading" style="display:none;">
 		<img src="${pageContext.request.contextPath}/images/loading.gif" width="50" height="50">

@@ -47,8 +47,8 @@ $(function(){
 					output += '<div class="sub-item">';
 					output += '<p>' + item.re_content.replace(/\r\n/g,'<br>') + '</p>';
 					if(param.user_num == item.mem_num){
-						output += '<button type="button" class="modify-btn btn btn-outline-pink" data-num="'+item.re_num+'">수정</button>';
-						output += '<button type="button" class="delete-btn btn btn-outline-pink" data-num="'+item.re_num+'">삭제</button>';
+						output += '<div class="reply_btn"><button type="button" class="modify-btn btn btn-outline-pink" data-num="'+item.re_num+'">수정</button>';
+						output += '<button type="button" class="delete-btn btn btn-outline-pink" data-num="'+item.re_num+'">삭제</button></div>';
 					}
 					output += '<hr size="1" width="90%" style="margin: 10px auto;" noshade>';
 					output += '</div>';
