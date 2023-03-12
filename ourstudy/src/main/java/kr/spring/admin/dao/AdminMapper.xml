@@ -117,7 +117,7 @@
   		            ORDER BY d.mem_name ASC, d.locker_start DESC NULLS LAST
   		            </if>
   		            <if test="keyfield == 3">
-  		            ORDER BY d.locker_end ASC, d.locker_start DESC NULLS FIRST
+  		            ORDER BY l.locker_status ASC, d.locker_end ASC, d.locker_start DESC NULLS FIRST
   		            </if>
   		            )a)
 		<![CDATA[
