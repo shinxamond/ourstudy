@@ -17,7 +17,7 @@
 					<form:hidden path="item_num"/>
 					<ul>
 						<li>
-							<label>상품표시여부</label>
+							<label>물품 표시여부</label>
 							<form:radiobutton path="item_p_status" value="1" checked="checked"/>표시
 							<form:radiobutton path="item_p_status" value="2"/>미표시
 						</li>
