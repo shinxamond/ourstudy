@@ -35,7 +35,7 @@ $(function(){
 	  		
 			console.log(updateSec);
 	
-	  		if(updateSec >= 1) {
+	  		if(updateSec >= 60) {
 	  			sessionStorage.setItem('plusSec', '0');
 	  			
 	  			let mem_num = sessionStorage.getItem('isSelectMemnum');

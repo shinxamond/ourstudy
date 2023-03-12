@@ -10,7 +10,6 @@
 		</div>
 		<hr class = "horizontal-line">
 		<div class = "point-content">
-		<c:if test="${count > 0}">
 			<div class = 'align-selectbox'>
 				<select name="keyfield" class="keyfield">
 					<option value = "1"<c:if test="${param.keyfield == 1}">selected</c:if>>전체내역</option>
@@ -23,7 +22,6 @@
  					});
 				</script>
 			</div>
-		</c:if>		
 				<c:if test="${count == 0}">
 				<div style = "text-align :center;">포인트 적립 내역이 없습니다.</div>
 				</c:if>
