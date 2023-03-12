@@ -26,7 +26,7 @@ public interface AdminMapper {
 	@Select("SELECT COUNT(*) FROM seat WHERE SEAT_STATUS=2")
 	public int countGoOutNum(); //외출중인 회원수	
 		
-	@Select("SELECT COUNT(*) FROM member_history WHERE MEM_TICKET_TERM>0")
+	@Select("SELECT COUNT(*) FROM member_history WHERE MEM_TICKET_TERM IS NOT NULL")
 	public int countTermNum(); //기간권 회원수
 	
 	@Select("SELECT COUNT(*) FROM member_history WHERE MEM_TICKET_HOUR>0")
