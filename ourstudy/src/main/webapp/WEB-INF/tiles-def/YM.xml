@@ -7,44 +7,44 @@
 <tiles-definitions>
 	<definition name="myPageMain" 
         template="/WEB-INF/views/template/layout_mypage.jsp">
-    	<put-attribute name="title" value="마이페이지메인"/>
+    	<put-attribute name="title" value="OurStudy : : 마이페이지메인"/>
     	<put-attribute name="sidebar" value="/WEB-INF/views/template/sidebar.jsp"/>
     	 <put-attribute name="myPageHeader" value="/WEB-INF/views/template/myPageHeader.jsp"/>
     	<put-attribute name="body" value="/WEB-INF/views/mypage/mypage_main.jsp"/> 
     	<put-attribute name="footer" value="/WEB-INF/views/template/footer.jsp"/>         
     </definition>
     <definition name="myPageMemInfo" extends="myPageMain">
-    	<put-attribute name="title" value="OurStudy::마이페이지 회원정보"/>
+    	<put-attribute name="title" value="OurStudy : : 마이페이지 회원정보"/>
     	<put-attribute name="body"
     	  value="/WEB-INF/views/mypage/mypage_memInfo.jsp"/>        
     </definition>
     <definition name="myPageModify" extends="myPageMain">
-    	<put-attribute name="title" value="OurStudy::마이페이지 회원정보 수정"/>
+    	<put-attribute name="title" value="OurStudy : : 마이페이지 회원정보 수정"/>
     	<put-attribute name="body"
     	  value="/WEB-INF/views/mypage/mypage_modify.jsp"/>        
     </definition>
     <definition name="myPagechangePasswd" extends="myPageMain">
-    	<put-attribute name="title" value="OurStudy::마이페이지 비밀번호 변경"/>
+    	<put-attribute name="title" value="OurStudy : : 마이페이지 비밀번호 변경"/>
     	<put-attribute name="body"
     	  value="/WEB-INF/views/mypage/mypage_changePasswd.jsp"/>        
     </definition>
     <definition name="myPagedeleteMember" extends="myPageMain">
-    	<put-attribute name="title" value="OurStudy::마이페이지 회원탈퇴"/>
+    	<put-attribute name="title" value="OurStudy : : 마이페이지 회원탈퇴"/>
     	<put-attribute name="body"
     	  value="/WEB-INF/views/mypage/mypage_deleteMember.jsp"/>        
     </definition>
     <definition name="pointList" extends="myPageMain">
-    	<put-attribute name="title" value="OurStudy::포인트 내역 조회"/>
+    	<put-attribute name="title" value="OurStudy : : 포인트 내역 조회"/>
     	<put-attribute name="body"
     	  value="/WEB-INF/views/mypage/pointList.jsp"/>        
     </definition>
     <definition name="studyTimeList" extends="myPageMain">
-    	<put-attribute name="title" value="OurStudy::공부시간 내역 조회"/>
+    	<put-attribute name="title" value="OurStudy : : 공부시간 내역 조회"/>
     	<put-attribute name="body"
     	  value="/WEB-INF/views/mypage/studyTimeList.jsp"/>        
     </definition>
     <definition name="myPageselectSeat" extends="myPageMain">
-    	<put-attribute name="title" value="OurStudy::좌석선택"/>
+    	<put-attribute name="title" value="OurStudy : : 좌석선택"/>
     	<put-attribute name="body"
     	  value="/WEB-INF/views/mypage/mypage_selectSeat.jsp"/>        
     </definition>
