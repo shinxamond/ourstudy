@@ -15,6 +15,7 @@
 <body>
 <div id="main">
 	<tiles:insertAttribute name="sidebar"/>
+	<tiles:insertAttribute name="chat"/>
 	<div id="main_body">
 		<tiles:insertAttribute name="body"/>
 	</div>
