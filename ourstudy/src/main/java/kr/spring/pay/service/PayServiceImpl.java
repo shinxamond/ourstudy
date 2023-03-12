@@ -103,8 +103,7 @@ public class PayServiceImpl implements PayService{
 	}
 
 	@Override
-	public Integer checkTerm(Integer mem_num) {
-		// TODO Auto-generated method stub
+	public String checkTerm(Integer mem_num) {
 		return payMapper.checkTerm(mem_num);
 	}
 

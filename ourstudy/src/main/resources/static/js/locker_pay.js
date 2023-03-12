@@ -150,6 +150,28 @@ $(function(){
    
    function requestCardPay() {
 		var pprice = $('#final_price').attr('data-pricenum');
+		var useP = document.getElementById('use_point');
+
+			    var ajaxParam1 = {
+			      pay_price:$('#final_price').attr('data-pricenum'),
+			      pay_content:$('#ticket_name').attr('data-ticketname'),
+			      ticket_num:$('#ticket_num').attr('data-ticketnum'),
+			      locker_num:$('#pay_kakao').attr('data-lockernum'),
+			      pay_plan:2,
+				  check_useP:1,
+			      point_point : -useP.value
+			   }
+			    var ajaxParam2 = {
+			      pay_price:$('#final_price').attr('data-pricenum'),
+			      pay_content:$('#ticket_name').attr('data-ticketname'),
+			      ticket_num:$('#ticket_num').attr('data-ticketnum'),
+			      locker_num:$('#pay_kakao').attr('data-lockernum'),
+			      pay_plan:2,
+				  check_useP:0,
+			      point_point : pprice * 0.05
+			   }	
+			     console.log(useP.value);
+	
 	 	 IMP.request_pay({
 	         pg : "html5_inicis.INIpayTest",
 	         pay_method : "card",
@@ -163,10 +185,7 @@ $(function(){
 	            $.ajax({
 	               url:'payResult.do',
 	               type:'post',
-	               data:{pay_price:$('#final_price').attr('data-pricenum'),
-	                    pay_content:$('#ticket_name').attr('data-ticketname'),
-	                    ticket_num:$('#ticket_num').attr('data-ticketnum'),
-	                    pay_plan:2},
+	               data:(check_useP == 1) ? ajaxParam1 : ajaxParam2,
 	               dataType:'json',
 	               success:function(param){
 	                  if(param.result == 'logout'){

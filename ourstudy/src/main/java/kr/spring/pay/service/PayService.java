@@ -29,5 +29,5 @@ public interface PayService {
 	public int checkUsingLocker(Integer mem_num);
 	//좌석 시간권, 기간권 보유중인지 확인
 	public String checkTime(Integer mem_num);
-	public Integer checkTerm(Integer mem_num);
+	public String checkTerm(Integer mem_num);
 }

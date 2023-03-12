@@ -103,7 +103,7 @@ $(function(){
 			else if(param.result=='success'){
 				
 	//==============카카오페이 시작============//
-   	var pprice = $('#final_price').attr('data-pricenum');
+   var pprice = $('#final_price').attr('data-pricenum');
 	var useP = document.getElementById('use_point');
 
    var ajaxParam1 = {
@@ -198,7 +198,30 @@ $(function(){
 			}
 			else if(param.result=='success'){
 				//============카드 결제=============//
-				var pprice = $('#final_price').attr('data-pricenum');
+			   	var pprice = $('#final_price').attr('data-pricenum');
+				var useP = document.getElementById('use_point');
+
+			    var ajaxParam1 = {
+			      pay_price:$('#final_price').attr('data-pricenum'),
+			      pay_content:$('#ticket_name').attr('data-ticketname'),
+			      ticket_num:$('#ticket_num').attr('data-ticketnum'),
+			      locker_num:$('#pay_kakao').attr('data-lockernum'),
+			      pay_plan:2,
+				  check_useP:1,
+			      point_point : -useP.value
+			   }
+			    var ajaxParam2 = {
+			      pay_price:$('#final_price').attr('data-pricenum'),
+			      pay_content:$('#ticket_name').attr('data-ticketname'),
+			      ticket_num:$('#ticket_num').attr('data-ticketnum'),
+			      locker_num:$('#pay_kakao').attr('data-lockernum'),
+			      pay_plan:2,
+				  check_useP:0,
+			      point_point : pprice * 0.05
+			   }	
+			     console.log(useP.value);
+	
+				
 				var name = $('#mem_name').attr('user.mem_name');
 				console.log("이름?" + name);
 		     	 IMP.request_pay({
@@ -206,7 +229,7 @@ $(function(){
 			         pay_method : "card",
 			         merchant_uid : "ourstudy_" + new Date().getTime(), // 주문번호
 			         name : pname,
-			         amount : pprice,
+			         amount : f_price,
 					 buyer_name : name,
 			         buyer_email :'',
 			         
@@ -215,10 +238,7 @@ $(function(){
 			            $.ajax({
 			               url:'payResult.do',
 			               type:'post',
-			               data:{pay_price:$('#final_price').attr('data-pricenum'),
-			                    pay_content:$('#ticket_name').attr('data-ticketname'),
-			                    ticket_num:$('#ticket_num').attr('data-ticketnum'),
-			                    pay_plan:2},
+			               data:(check_useP == 1) ? ajaxParam1 : ajaxParam2,
 			               dataType:'json',
 			               success:function(param){
 			                  if(param.result == 'logout'){

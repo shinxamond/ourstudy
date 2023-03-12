@@ -12,8 +12,8 @@
 			<div style="margin-bottom: 15px;">
 				<fieldset class="col mb-1">
 					<legend class="col-form-label col-sm-3 pt-1.5"
-						style="margin-left: -25px; text-align: center;">이용권 종류</legend>
-					<div class="btn-group" role="group" style="margin-left: 37px;">
+						style="margin-left: -20px; text-align: center;">이용권 종류</legend>
+					<div class="btn-group" role="group" style="margin-left: 32px;">
 						<form:radiobutton path="ticket_kind" class="btn-check" name="ticket_kind"
 							   id="ticket_kind1" autocomplete="off" value="1"/>
 						<label class="btn btn-outline-danger" id="ticket_kind1" for="ticket_kind1">독서실 이용권</label>
