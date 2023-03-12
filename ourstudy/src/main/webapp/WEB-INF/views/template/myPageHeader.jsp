@@ -14,10 +14,10 @@
 				<br>
 				<span class = "welcome-msg">오늘도 아워스터디를 이용해주셔서 감사합니다.</span>
 				<c:if test="${empty locker_num}">
-				<button class = "locker-btn" onclick = "location.href = '${pageContext.request.contextPath}/ticket/locker_ticketList.do'">사물함 등록</button>
+				<button class = "locker-btn" onclick = "location.href = '${pageContext.request.contextPath}/ticket/locker_ticketList.do'">사물함 <b>등록</b></button>
 				</c:if>
 				<c:if test="${!empty locker_num}">
-				<button class = "locker-btn" onclick = "location.href = '${pageContext.request.contextPath}/ticket/locker_ticketList.do?locker_num=${locker_num}'">사물함 연장</button>
+				<button class = "locker-btn" onclick = "location.href = '${pageContext.request.contextPath}/ticket/locker_ticketList.do?locker_num=${locker_num}'">사물함 <b>연장</b></button>
 				</c:if>
 				<p class = "firstclass-p"><a href = "${pageContext.request.contextPath}/mypage/myPageModify.do" id = "mem_modify_btn" class = "link-font small">정보수정 ></a></p>
 		</div>
@@ -54,7 +54,7 @@
 			<fmt:parseNumber value = "${((remainTime / 3600) % 3600) % 24}"  integerOnly="true"/>시간
 			<fmt:parseNumber value = "${(remainTime / 60 % 60)+(((remainTime / 60 % 60)%1>0.5)?(1-((remainTime / 60 % 60)%1))%1:-((remainTime / 60 % 60)%1))}" integerOnly="true"/>분
 			</c:if>
-			<c:if test="${remainTerm != 0}">
+			<c:if test="${!empty remainTerm}">
 			<fmt:parseNumber value = "${remainTerm < 120 ? 0 : remainTerm / 86400}"  integerOnly="true"/>일 
 			<fmt:parseNumber value = "${((remainTerm / 3600) % 3600) % 24}"  integerOnly="true"/>시간
 			<fmt:parseNumber value = "${(remainTerm / 60 % 60)+(((remainTerm / 60 % 60)%1>0.5)?(1-((remainTerm / 60 % 60)%1))%1:-((remainTerm / 60 % 60)%1))}" integerOnly="true"/>분
@@ -99,7 +99,9 @@
     </div>
   </div>
 </div>
+<c:if test = "${remainTerm == 0}">
 <span id="${mem_statusForCheckIn}" class = "setCheckInStatus"></span>
 <span id="${mem_numForCheckIn}" class = "setCheckInMemnum"></span>
 <span id="${seat.seat_num}" class = "setCheckSeatNum"></span>
+</c:if>
 <!-- 마이페이지 헤더 끝 -->

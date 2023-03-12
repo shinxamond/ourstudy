@@ -1,6 +1,7 @@
 package kr.spring.mypage.controller;
 
 import java.time.DayOfWeek;
+import java.time.Duration;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.time.Period;
@@ -88,12 +89,28 @@ public class MypageController {
 		
 		Float remainTime = mypageService.selectRemainTime(user.getMem_num());
 		
-		Integer remainTerm = mypageService.selectRemainTimeTerm(user.getMem_num());
+		String remainTerm = mypageService.selectRemainTimeTerm(user.getMem_num());
 		
 		Integer locker_num = lockerService.getLockerNum(user.getMem_num());
 		
 		if(pointSum == null) {
 			pointSum = 0;
+		}
+		
+		if(remainTerm != null) {
+			//remainTime 은 2023-03-12 이렇게 들어올거임
+			//이 날짜를 로컬 데이트 타입으로 변환해준뒤 현재 시간과 비교한다
+			//비교해서 나온 값을 시간단위 or 초단위로 변환해서 메인으로 넘겨준다.
+			remainTerm = mypageService.selectRemainTimeTerm(user.getMem_num());;
+	        LocalDate end_date = LocalDate.parse(remainTerm, DateTimeFormatter.ISO_DATE);
+			
+			LocalDate now = LocalDate.now();
+
+			Duration remainTermDuration = Duration.between(now, end_date);
+			logger.debug("seconds : {}", remainTermDuration.getSeconds());
+			
+			
+			model.addAttribute("remainTerm", remainTermDuration);
 		}
 		
 		logger.debug("<<마이페이지 멤버 정보>> : " + member);
@@ -157,6 +174,8 @@ public class MypageController {
 			model.addAttribute("locker_num", locker_num);			
 		}
 		
+
+		
 		
 		model.addAttribute("count", count);
 		model.addAttribute("list", list);
@@ -164,7 +183,7 @@ public class MypageController {
 		model.addAttribute("member", member);
 		model.addAttribute("seat", seat);
 		model.addAttribute("pointSum", pointSum);
-		model.addAttribute("remainTerm", remainTerm * 3600);
+		
 		model.addAttribute("remainTime", remainTime * 3600);
 		model.addAttribute("page", page.getPage());
 		
@@ -185,7 +204,7 @@ public class MypageController {
 		
 		Float remainTime = mypageService.selectRemainTime(user.getMem_num());
 		
-		Integer remainTerm = mypageService.selectRemainTimeTerm(user.getMem_num());
+		//String remainTerm = mypageService.selectRemainTimeTerm(user.getMem_num());
 		
 		Integer locker_num = lockerService.getLockerNum(user.getMem_num());
 		
@@ -200,7 +219,7 @@ public class MypageController {
 		model.addAttribute("member", member);
 		model.addAttribute("seat", seat);
 		model.addAttribute("pointSum", pointSum);
-		model.addAttribute("remainTerm", remainTerm * 3600);
+		//model.addAttribute("remainTerm", remainTerm * 3600);
 		model.addAttribute("remainTime", remainTime * 3600);
 		
 		return "myPageMemInfo";
@@ -220,7 +239,7 @@ public class MypageController {
 		
 		Float remainTime = mypageService.selectRemainTime(user.getMem_num());
 		
-		Integer remainTerm = mypageService.selectRemainTimeTerm(user.getMem_num());
+		//Integer remainTerm = mypageService.selectRemainTimeTerm(user.getMem_num());
 		
 		Integer locker_num = lockerService.getLockerNum(user.getMem_num());
 		
@@ -233,7 +252,7 @@ public class MypageController {
 		model.addAttribute("member", member);
 		model.addAttribute("seat", seat);
 		model.addAttribute("pointSum", pointSum);
-		model.addAttribute("remainTerm", remainTerm * 3600);
+		//model.addAttribute("remainTerm", remainTerm * 3600);
 		model.addAttribute("remainTime", remainTime * 3600);
 		
 		return "myPageModify";
@@ -272,7 +291,7 @@ public class MypageController {
 		
 		Float remainTime = mypageService.selectRemainTime(user.getMem_num());
 		
-		Integer remainTerm = mypageService.selectRemainTimeTerm(user.getMem_num());
+		//Integer remainTerm = mypageService.selectRemainTimeTerm(user.getMem_num());
 		
 		Integer locker_num = lockerService.getLockerNum(user.getMem_num());
 		
@@ -286,7 +305,7 @@ public class MypageController {
 		model.addAttribute("member", member);
 		model.addAttribute("seat", seat);
 		model.addAttribute("pointSum", pointSum);
-		model.addAttribute("remainTerm", remainTerm * 3600);
+		//model.addAttribute("remainTerm", remainTerm * 3600);
 		model.addAttribute("remainTime", remainTime * 3600);
 		
 		return "myPagechangePasswd";
@@ -354,7 +373,7 @@ public class MypageController {
 		
 		Float remainTime = mypageService.selectRemainTime(user.getMem_num());
 		
-		Integer remainTerm = mypageService.selectRemainTimeTerm(user.getMem_num());
+		//Integer remainTerm = mypageService.selectRemainTimeTerm(user.getMem_num());
 		
 		Integer locker_num = lockerService.getLockerNum(user.getMem_num());
 		if(pointSum == null) {
@@ -367,7 +386,7 @@ public class MypageController {
 		model.addAttribute("member", member);
 		model.addAttribute("seat", seat);
 		model.addAttribute("pointSum", pointSum);
-		model.addAttribute("remainTerm", remainTerm * 3600);
+		//model.addAttribute("remainTerm", remainTerm * 3600);
 		model.addAttribute("remainTime", remainTime * 3600);
 		
 		return "myPagedeleteMember";
@@ -426,7 +445,7 @@ public class MypageController {
 		
 		Float remainTime = mypageService.selectRemainTime(user.getMem_num());
 		
-		Integer remainTerm = mypageService.selectRemainTimeTerm(user.getMem_num());
+		//Integer remainTerm = mypageService.selectRemainTimeTerm(user.getMem_num());
 		
 		Integer locker_num = lockerService.getLockerNum(user.getMem_num());
 		
@@ -440,7 +459,7 @@ public class MypageController {
 		mav.addObject("member", member);
 		mav.addObject("seat", seat);
 		mav.addObject("pointSum", pointSum);
-		mav.addObject("remainTerm", remainTerm * 3600);
+		//mav.addObject("remainTerm", remainTerm * 3600);
 		mav.addObject("remainTime", remainTime * 3600);
 		
 		Map<String, Object> map = new HashMap<String, Object>();
@@ -486,7 +505,7 @@ public class MypageController {
 		
 		Float remainTime = mypageService.selectRemainTime(user.getMem_num());
 		
-		Integer remainTerm = mypageService.selectRemainTimeTerm(user.getMem_num());
+		//Integer remainTerm = mypageService.selectRemainTimeTerm(user.getMem_num());
 		
 		Integer locker_num = lockerService.getLockerNum(user.getMem_num());
 		
@@ -499,7 +518,7 @@ public class MypageController {
 		mav.addObject("member", member);
 		mav.addObject("seat", seat);
 		mav.addObject("pointSum", pointSum);
-		mav.addObject("remainTerm", remainTerm * 3600);
+		//mav.addObject("remainTerm", remainTerm * 3600);
 		mav.addObject("remainTime", remainTime * 3600);
 		
 		//공부시간 리스트

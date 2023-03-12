@@ -122,7 +122,7 @@ public interface MypageMapper {
 	public float selectRemainTime(Integer mem_num);
 	
 	@Select("SELECT mem_ticket_term FROM member_history WHERE mem_num = #{mem_num}")
-	public int selectRemainTimeTerm(Integer mem_num);
+	public String selectRemainTimeTerm(Integer mem_num);
 	//잔여 시간 업데이트
 	//@Update("UPDATE member_history SET mem_ticket_hour = mem_ticket_hour + #{total_time} WHERE mem_num = #{mem_num}") //마찬가지
 	//public void updateRemainTime(MemberVO member);

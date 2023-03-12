@@ -69,7 +69,8 @@
 				<tr>
 					<th>
 						<input type = "hidden" value = " ${(member.mem_study / 3600)+(((member.mem_study / 3600)%1>0.5)?(1-((member.mem_study / 3600)%1))%1:-((member.mem_study / 3600)%1))}" id = "study_hour"/>				
-						<input type = "hidden" value = " ${(member.mem_study % 3600 / 60)+(((member.mem_study % 3600 / 60)%1>0.5)?(1-((member.mem_study % 3600 / 60)%1))%1:-((member.mem_study % 3600 / 60)%1))}" id = "study_min"/>				
+						<input type = "hidden" value = " ${study.total_time % 3600 / 60}" id = "study_min"/>				
+						
 						<input type = "hidden" value = " ${(member.mem_study % 3600 % 60)+(((member.mem_study % 3600 % 60)%1>0.5)?(1-((member.mem_study % 3600 % 60)%1))%1:-((member.mem_study % 3600 % 60)%1))}" id = "study_sec"/>				
 						
 				</th><th></th><th>

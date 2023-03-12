@@ -142,7 +142,7 @@ public class MypageServiceImpl implements MypageService{
 	}
 
 	@Override
-	public int selectRemainTimeTerm(Integer mem_num) {
+	public String selectRemainTimeTerm(Integer mem_num) {
 		return mypageMapper.selectRemainTimeTerm(mem_num);
 	}
 
