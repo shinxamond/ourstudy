@@ -84,7 +84,7 @@ $(function(){
    IMP.init("imp36873723"); // 예: imp00000000
    
   function requestKakaoPay() {
-   	var pprice = $('#final_price').text();
+   	var pprice = $('#final_price').attr('data-pricenum');
 	var useP = document.getElementById('use_point');
 
    var ajaxParam1 = {
@@ -149,7 +149,7 @@ $(function(){
   }
    
    function requestCardPay() {
-		var pprice = $('#final_price').text();
+		var pprice = $('#final_price').attr('data-pricenum');
 	 	 IMP.request_pay({
 	         pg : "html5_inicis.INIpayTest",
 	         pay_method : "card",

@@ -103,7 +103,7 @@ $(function(){
 			else if(param.result=='success'){
 				
 	//==============카카오페이 시작============//
-   	var pprice = $('#final_price').text();
+   	var pprice = $('#final_price').attr('data-pricenum');
 	var useP = document.getElementById('use_point');
 
    var ajaxParam1 = {
@@ -198,7 +198,7 @@ $(function(){
 			}
 			else if(param.result=='success'){
 				//============카드 결제=============//
-				var pprice = $('#final_price').text();
+				var pprice = $('#final_price').attr('data-pricenum');
 				var name = $('#mem_name').attr('user.mem_name');
 				console.log("이름?" + name);
 		     	 IMP.request_pay({
