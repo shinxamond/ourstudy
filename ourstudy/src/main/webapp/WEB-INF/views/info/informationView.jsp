@@ -12,7 +12,7 @@
 <script src="${pageContext.request.contextPath}/js/videoAdapter.js"></script>
 	<h3 style="text-align:center"><b>안내사항</b></h3><br>
 	<!-- 기본 카드 끝 -->
-	<div class="card d-flex justify-content-center" id="card1" >
+	<div class="card d-flex justify-content-center" id="card-view" >
 	<ul class="card-head">
 		<li>
 			<h3><b>${information.info_title}</b></h3>

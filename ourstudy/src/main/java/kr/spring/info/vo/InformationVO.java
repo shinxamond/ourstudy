@@ -2,6 +2,7 @@ package kr.spring.info.vo;
 
 import java.io.IOException;
 import java.sql.Date;
+import java.util.Arrays;
 
 import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.Size;
@@ -93,7 +94,7 @@ public class InformationVO {
 	public String toString() {
 		return "InformationVO [info_num=" + info_num +", info_date=" + info_date + ", info_title=" + info_title +
 				", info_content=" + info_content + ", info_pin=" + info_pin + ", mem_num=" + mem_num + 
-				", info_modify_date=" + info_modify_date + ", filename=" + filename +"]";
+				", info_modify_date=" + info_modify_date + ", uploadfile=" + Arrays.toString(uploadfile) +", filename=" + filename +"]";
 	}
 	
 }

@@ -625,7 +625,6 @@ h6 {
 	overflow: hidden;
 	min-width: 300px;
 	margin:0 auto;
-	z-index: -10; /*우체통 보이게*/
 }
 .card-head {
 	padding:10px 60px 0;
@@ -684,10 +683,6 @@ div#re_reply{
 }
 .card input[type="text"]{
 	width: 630px;
-}
-.ver-line{
-	border-left : medium solid #e0dede;
- 	height :100px;
 }
 
 
