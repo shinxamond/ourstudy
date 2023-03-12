@@ -1,5 +1,6 @@
 package kr.spring.interceptor;
 
+import javax.servlet.RequestDispatcher;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
@@ -25,7 +26,11 @@ public class LoginCheckInterceptor implements HandlerInterceptor {
 		if(session.getAttribute("user")==null) {
 			
 			//로그인 안 된 상태
-			response.sendRedirect(request.getContextPath()+"/main/main.do?msg=Login-Check");
+			request.setAttribute("message", "로그인 후 이용 가능합니다.");
+			request.setAttribute("url", request.getContextPath() + "/main/main.do");
+			RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/views/common/resultView.jsp");
+			dispatcher.forward(request, response);
+			//response.sendRedirect(request.getContextPath()+"/main/main.do?msg=Login-Check");
 			return false; //리다이렉트한 페이지가 동작되게 하기 위해 return false
 		}
 
