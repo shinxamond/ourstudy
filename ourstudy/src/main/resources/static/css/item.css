@@ -1,5 +1,12 @@
 @charset "UTF-8";
 
+@font-face {
+    font-family: 'Pretendard-Regular';
+    src: url('https://cdn.jsdelivr.net/gh/Project-Noonnu/noonfonts_2107@1.1/Pretendard-Regular.woff') format('woff');
+    font-weight: 400;
+    font-style: normal;
+}
+
 /*
 기본 폼---------*/
 div#main_body{
@@ -53,7 +60,7 @@ div#userList #userList-area{
 	float:right;
 	position: relative;
 	text-align:center;
-} 
+} /*
 .ucard1{
 	width: 500px;
 	height:300px;
@@ -66,7 +73,8 @@ div#userList #userList-area{
     overflow: hidden;
     min-width: 200px;
     margin: 0 auto;
-}
+}*/
+
 .it1 a:link{
 	text-decoration:none;
 	color:#000000;
@@ -98,6 +106,7 @@ div#userList #userList-area{
 div.item-detail ul li{
 	margin-top:20px;
 	font-size:20px;
+	font-family: 'Pretendard-Regular';
 }
 
 select#inum option{
@@ -125,7 +134,7 @@ div#clear2{
 }
 .ucard2{
 	width:190px;
-	height:190px;
+	height:220px;
     border-radius: 1rem;
     display: inline-block;
     padding: 20px 0 10px;
@@ -138,6 +147,7 @@ div#clear2{
 .it2 #itemlist{/*물품목록*/
 	position: relative;
 	left:165px;
+	font-weight:bold;
 }
 .it2{
 	display: none;
@@ -155,10 +165,12 @@ div#clear2{
 #rental{
 	position: relative;
 	left:170px;
+	font-weight:bold;
 }
 #rental_name{
 	position: relative;
 	left:180px;
+	font-weight:bold;
 }
 .item-image2{
 	margin-left:60px;
@@ -176,6 +188,7 @@ div#clear2{
 	position: relative;
 	left:100px;
 	float:left;
+	font-family: 'Pretendard-Regular';
 }
 
 select#inum option{

@@ -27,19 +27,19 @@
 	  var data = google.visualization.arrayToDataTable([
 		['이름', '공부시간', {role: 'style'}],
 	    <c:forEach var="studyTime" items="${studyTime}" begin="0" end="0">
-	    ['${studyTime.mem_name}', Math.floor(${studyTime.total_time}/3600), 'fill-color:#384048;'],
+	    ['${studyTime.mem_name}', Math.floor(${studyTime.total_time}/35), 'fill-color:#384048;'],
 	    </c:forEach>
 	    <c:forEach var="studyTime" items="${studyTime}" begin="1" end="1">
-	    ['${studyTime.mem_name}', Math.floor(${studyTime.total_time}/3600), 'fill-color:#fcf4e8;'],
+	    ['${studyTime.mem_name}', Math.floor(${studyTime.total_time}/35), 'fill-color:#fcf4e8;'],
 	    </c:forEach>
 	    <c:forEach var="studyTime" items="${studyTime}" begin="2" end="2">
-	    ['${studyTime.mem_name}', Math.floor(${studyTime.total_time}/3600), 'fill-color:#E65962;'],
+	    ['${studyTime.mem_name}', Math.floor(${studyTime.total_time}/35), 'fill-color:#E65962;'],
 	    </c:forEach>
 	    <c:forEach var="studyTime" items="${studyTime}" begin="3" end="3">
-	    ['${studyTime.mem_name}', Math.floor(${studyTime.total_time}/3600), 'fill-color:#384048;'],
+	    ['${studyTime.mem_name}', Math.floor(${studyTime.total_time}/35), 'fill-color:#384048;'],
 	    </c:forEach>
 	    <c:forEach var="studyTime" items="${studyTime}" begin="4" end="4">
-	    ['${studyTime.mem_name}', Math.floor(${studyTime.total_time}/3600), 'fill-color:#F4ABB2;'],
+	    ['${studyTime.mem_name}', Math.floor(${studyTime.total_time}/35), 'fill-color:#F4ABB2;'],
 	    </c:forEach>
 	  ]);
 	

@@ -6,8 +6,8 @@
 <div class="page-main">
 	
 	<div class="it1" style="height:69vh;">
-	<br><h1 class="align-center">물품대여</h1><br>
-	<h2 class="align-center">${oneitem.item_title}</h2><br>
+	<br><h1 class="align-center" style="font-weight:bold; padding-left:40px;">물품대여</h1><br>
+	<h2 class="align-center" style="font-weight:bold; padding-left:40px;">${oneitem.item_title}</h2><br>
 	<div class="rcard1 d-flex justify-content-center" id="card-view" >
 	
 		<div class="item-image">
