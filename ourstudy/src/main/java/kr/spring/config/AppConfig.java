@@ -14,6 +14,7 @@ import org.springframework.web.servlet.view.tiles3.TilesViewResolver;
 import kr.spring.interceptor.AdminCheckInterceptor;
 import kr.spring.interceptor.AutoLoginCheckInterceptor;
 import kr.spring.interceptor.LoginCheckInterceptor;
+import kr.spring.interceptor.WriterCheckInterceptor;
 
 //자바코드 기반 설정 클래스
 @Configuration
@@ -22,6 +23,8 @@ public class AppConfig implements WebMvcConfigurer{
 	private AutoLoginCheckInterceptor autoLogin;
 	private LoginCheckInterceptor loginCheck;
 	private AdminCheckInterceptor adminCheck;
+	private WriterCheckInterceptor writerCheck;
+
 	
 	@Bean
 	public AutoLoginCheckInterceptor interceptor() {
@@ -40,6 +43,13 @@ public class AppConfig implements WebMvcConfigurer{
 		adminCheck = new AdminCheckInterceptor();
 		return adminCheck;
 	}
+	
+	@Bean
+	public WriterCheckInterceptor interceptor4() {
+		writerCheck = new WriterCheckInterceptor();
+		return writerCheck;
+	}
+	
 	
 	//인터셉터 등록
 		@Override
@@ -114,8 +124,15 @@ public class AppConfig implements WebMvcConfigurer{
 											   .addPathPatterns("/talk/talkList.do")
 											   .addPathPatterns("/talk/talkRoomWrite.do");
 			//WriterCheckInterceptor 설정
+			registry.addInterceptor(writerCheck).addPathPatterns("/info/infoUpdate.do")
+												.addPathPatterns("/info/infoDelete.do")
+												.addPathPatterns("/community/lostUpdate.do") 
+				 								.addPathPatterns("/community/lostDelete.do")
+												.addPathPatterns("/review/update.do")
+												.addPathPatterns("/review/delete.do");
+								
 		}
-	
+
 	//타일스 설정
 	@Bean
 	public TilesConfigurer tilesConfigurer() {
