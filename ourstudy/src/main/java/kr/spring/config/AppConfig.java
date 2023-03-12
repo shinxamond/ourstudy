@@ -106,7 +106,13 @@ public class AppConfig implements WebMvcConfigurer{
 											   .addPathPatterns("/info/deleteFile.do")
 											   .addPathPatterns("/ticket/admin_ticketList.do")
 											   .addPathPatterns("/ticket/admin_write.do")
-											   .addPathPatterns("/ticket/admin_ticketModify.do");
+											   .addPathPatterns("/ticket/admin_ticketModify.do")
+											   .addPathPatterns("/ticket/admin_ticketModify.do")
+											   .addPathPatterns("/item/adminList.do")
+											   .addPathPatterns("/item/itemModify.do")
+											   .addPathPatterns("/item/itemWrite.do")
+											   .addPathPatterns("/talk/talkList.do")
+											   .addPathPatterns("/talk/talkRoomWrite.do");
 			//WriterCheckInterceptor 설정
 		}
 	
