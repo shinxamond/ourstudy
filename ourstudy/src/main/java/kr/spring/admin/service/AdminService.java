@@ -19,6 +19,7 @@ public interface AdminService {
 	public int countGoOutNum();
 	public int countTermNum();
 	public int countTimeNum();
+	public int countTotalNum();
 
 	//회원목록
 	public List<AdminMemberVO> selectList(Map<String,Object> map);

@@ -32,6 +32,9 @@ public interface AdminMapper {
 	@Select("SELECT COUNT(*) FROM member_history WHERE MEM_TICKET_HOUR>0")
 	public int countTimeNum(); //시간권 회원수
 	
+	@Select("SELECT COUNT(*) FROM member")
+	public int countTotalNum(); //전체 회원수
+	
 	//회원목록
 	public int selectRowCount(Map<String,Object> map);
 	public List<AdminMemberVO> selectList(Map<String,Object> map);

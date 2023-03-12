@@ -15,7 +15,7 @@
 						<th scope="col" width="20%">현재 외출중인 회원수</th>
 						<th scope="col" width="20%">기간권 회원수</th>
 						<th scope="col" width="20%">시간권 회원수</th>
-						<th scope="col" width="20%">전체 회원수</th>
+						<th scope="col" width="20%">누적 회원수</th>
 					</tr>
 					</thead>
 					<tbody class="table-body table-group-divider">
@@ -34,7 +34,7 @@
 						<th scope="col" width="20%">외출중</th>
 						<th scope="col" width="20%">기간권</th>
 						<th scope="col" width="20%">시간권</th>
-						<th scope="col" width="20%">전체</th>
+						<th scope="col" width="20%">누적</th>
 					</tr>
 					<tr>
 						<td><span class="t-sub-info" style="color:red">${usingnum}</span>명</td>

@@ -42,6 +42,11 @@ public class AdminServiceImpl implements AdminService{
 	public int countTimeNum() {
 		return adminMapper.countTimeNum();
 	}
+
+	@Override
+	public int countTotalNum() {
+		return adminMapper.countTotalNum();
+	}
 	
 	//회원목록
 	@Override

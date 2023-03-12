@@ -90,8 +90,8 @@ public class AdminController {
 		int total4 = adminService.countTimeNum();	
 		String timenum = df.format(total4);
 		
-		
-		String totalnum = df.format(total3+total4);
+		int total5 = adminService.countTotalNum();
+		String totalnum = df.format(total5);
 		
 		Map<String,Object> map = new HashMap<String,Object>();
 		map.put("keyfield", keyfield);
