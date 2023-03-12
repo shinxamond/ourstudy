@@ -67,9 +67,7 @@ public class PayController {
 	  MemberVO user = (MemberVO)session.getAttribute("user");
 	      
 	  String mem_name = memberService.getMem_name(user.getMem_num());
-	   
-      
-      user.setMem_num(user.getMem_num());
+	  
       user.setMem_name(mem_name);
 	  
       ModelAndView mav = new ModelAndView();
@@ -98,8 +96,7 @@ public class PayController {
       MemberVO user = (MemberVO)session.getAttribute("user");
       
 	  String mem_name = memberService.getMem_name(user.getMem_num());
-	   
-      user.setMem_num(user.getMem_num());
+	  
       user.setMem_name(mem_name);
       
       if(ticket_numFromSession != null) {
