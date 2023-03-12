@@ -1,7 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-<link rel="stylesheet" href="${pageContext.request.contextPath}/css/talk.css">
+<link rel="stylesheet" href="${pageContext.request.contextPath}/css/talk.css?after">
 <script type="text/javascript">
 var reload;
 if(${user.mem_auth == 1}){
@@ -37,24 +37,24 @@ $(function(){
 	<input type="hidden" name="members" value="842">
 	<input type="hidden" name="talkroom_name" id="talkroom_name" value="admin, ${user.mem_id}">
 	
-	<button id="roomcheckB" class="btnC" style="position: fixed; right: 40px; bottom: 43px; font-size:55px; color:#e65962; border:none; background-color:#F6E3CE; border-radius: 80px;">📭</button>
-	<span  style="position: fixed; right: 40px; bottom: 30px;">채팅방 확인하기</span>
-	<span class="message" style="position: fixed; right: 100px; bottom: 75px; color:#E65962; font-size:40px">✉</span>
+	<button id="roomcheckB" class="btnC" style="position: fixed; right: 40px; bottom: 43px; font-size:55px; color:#e65962; border:none; background-color:#F6E3CE; border-radius: 80px; z-index:998">📭</button>
+	<span  style="position: fixed; right: 40px; bottom: 30px; z-index:998">채팅방 확인하기</span>
+	<span class="emessage">✉</span>
 </form>
 </c:if>
 
 <c:if test="${!empty check}">
-	<button type="button" class="btn btn-primary btnC" data-bs-toggle="modal" id="10" data-id="${room_num}" data-bs-target="#talkview" style="position: fixed; right: 40px; bottom: 43px; background-color:#F6E3CE; border-radius: 80px; border:none;  color:#e65962; font-size:55px;">📭</button>
+	<button type="button" class="btn btn-primary btnC" data-bs-toggle="modal" id="10" data-id="${room_num}" data-bs-target="#talkview" style="position: fixed; right: 40px; bottom: 43px; background-color:#F6E3CE; border-radius: 80px; border:none;  color:#e65962; font-size:55px; z-index:998">📭</button>
 	<c:forEach var="talk_count" items="${roomList}">
 		<c:if test="${talk_count.room_cnt > 0 }">
-		<span class="c${room_num}" id="talk_inform" style="position: fixed; right: 47px; bottom: 110px;">${talk_count.room_cnt}</span>
+		<span class="c${room_num}" id="talk_inform" style="position: fixed; right: 47px; bottom: 110px; z-index:999">${talk_count.room_cnt}</span>
 		</c:if>
 		<c:if test="${talk_count.room_cnt == 0 }">
-		<span class="c${room_num}" style="position: fixed; right: 47px; bottom: 110px;"></span>
+		<span class="c${room_num}" style="position: fixed; right: 47px; bottom: 110px; z-index:999"></span>
 		</c:if>
 	</c:forEach>
-	<span id="roomc" style="position: fixed; right: 10px; bottom: 30px;"></span>
-	<span class="message" style="position: fixed; right: 100px; bottom: 75px; color:#E65962; font-size:40px">✉</span>
+	<span id="roomc" style="position: fixed; right: 10px; bottom: 30px; z-index:998"></span>
+	<span class="emessage">✉</span>
 </c:if>
 
 <!-- Modal -->

@@ -391,7 +391,7 @@ table.striped-talk-table tr:nth-child(odd){
 
 /*
 움직이는 메시지 이모티콘---------*/
-.message{
+.message, .emessage{
 	margin-top: 20px;
     animation: motion 1.5s /* 속도 */
                linear 0s   /* 처음부터 끝까지 일정 속도로 진행 */
@@ -413,6 +413,15 @@ table.striped-talk-table tr:nth-child(odd){
 }
 .btnC:hover {
   transform: scale(1.2);
+}
+
+.emessage{
+	position: fixed;
+    right: 100px;
+    bottom: 75px; 
+	color:#E65962; 
+	font-size:40px;
+	z-index:999;
 }
 
 /* 푸터
