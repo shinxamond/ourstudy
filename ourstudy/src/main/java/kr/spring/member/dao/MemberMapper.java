@@ -41,8 +41,8 @@ public interface MemberMapper {
 	@Insert("INSERT INTO member_detail (mem_num,mem_name,mem_pw,mem_email,kakaocheck) VALUES"
 		+ " (#{mem_num},#{mem_name},#{mem_pw},#{mem_email},#{kakaocheck})")
 	public void insertKMember_detail(MemberVO member);
-	@Insert("INSERT INTO member_history (mem_num,mem_study,mem_ticket_hour,mem_ticket_term) "
-		  + "VALUES (#{mem_num},#{mem_study},#{mem_ticket_hour},#{mem_ticket_term})")
+	@Insert("INSERT INTO member_history (mem_num,mem_study,mem_ticket_hour) "
+		  + "VALUES (#{mem_num},#{mem_study},#{mem_ticket_hour})")
 	public void insertKMember_history(MemberVO member);
 	
 	
@@ -57,8 +57,8 @@ public interface MemberMapper {
 	@Insert("INSERT INTO member_detail (mem_num,mem_name,mem_pw,mem_email,navercheck) VALUES"
 		+ " (#{mem_num},#{mem_name},#{mem_pw},#{mem_email},#{navercheck})")
 	public void insertNMember_detail(MemberVO member);
-	@Insert("INSERT INTO member_history (mem_num,mem_study,mem_ticket_hour,mem_ticket_term) "
-		  + "VALUES (#{mem_num},#{mem_study},#{mem_ticket_hour},#{mem_ticket_term})")
+	@Insert("INSERT INTO member_history (mem_num,mem_study,mem_ticket_hour) "
+		  + "VALUES (#{mem_num},#{mem_study},#{mem_ticket_hour})")
 	public void insertNMember_history(MemberVO member);
 	
 	
