@@ -82,7 +82,15 @@ public class AppConfig implements WebMvcConfigurer{
 											   .addPathPatterns("/mypage/photoView.do")
 											   .addPathPatterns("/mypage/updateProfileImg.do")
 											   .addPathPatterns("/item/userList.do")
-											   .addPathPatterns("/item/userRental.do");
+											   .addPathPatterns("/item/userRental.do")
+											   .addPathPatterns("/ticket/study_ticketList.do")
+											   .addPathPatterns("/ticket/locker_ticketList.do")
+											   .addPathPatterns("/ticket/locker_check.do")
+											   .addPathPatterns("/pay/study_pay.do")
+											   .addPathPatterns("/pay/locker_pay.do")
+											   .addPathPatterns("/pay/payPagePoint.do")
+											   .addPathPatterns("/pay/checkTicket.do")
+											   .addPathPatterns("/pay/payResult.do");
 			//AdminCheckInterceptor 설정
 			registry.addInterceptor(adminCheck).addPathPatterns("/admin/admin_list.do")
 											   .addPathPatterns("/admin/admin_seathistory.do")
@@ -95,7 +103,10 @@ public class AppConfig implements WebMvcConfigurer{
 											   .addPathPatterns("/info/infoWrite.do")
 											   .addPathPatterns("/info/infoUpdate.do")
 											   .addPathPatterns("/info/infoDelete.do")
-											   .addPathPatterns("/info/deleteFile.do");
+											   .addPathPatterns("/info/deleteFile.do")
+											   .addPathPatterns("/ticket/admin_ticketList.do")
+											   .addPathPatterns("/ticket/admin_write.do")
+											   .addPathPatterns("/ticket/admin_ticketModify.do");
 			//WriterCheckInterceptor 설정
 		}
 	
