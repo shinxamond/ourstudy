@@ -14,7 +14,7 @@
 <div class="page-main">
 <div class="content-main">
 <div class="content-right">
-<script src="${pageContext.request.contextPath}/js/ckeditor.js"></script>
+<script src="${pageContext.request.contextPath}/js/ckeditor2.js"></script>
 <script src="${pageContext.request.contextPath}/js/uploadAdapter.js"></script>
 	<h3 style="text-align:center"><b>안내사항 글쓰기</b></h3>
 	<br>

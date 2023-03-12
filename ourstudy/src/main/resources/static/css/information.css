@@ -630,7 +630,7 @@ h6 {
 	padding:10px 60px 0;
 }
 .card-content {
-	padding:40px 60px 0;
+	padding:40px 60px 0 ;
 }
 .card-content-info {
 	padding:40px 60px 0;
@@ -684,6 +684,12 @@ div#re_reply{
 .card input[type="text"]{
 	width: 630px;
 }
+
+div#card img { 
+	max-width: 80%; 
+	height: auto; 
+}
+
 
 
 

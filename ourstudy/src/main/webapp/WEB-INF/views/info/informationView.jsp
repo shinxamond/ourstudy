@@ -48,7 +48,7 @@
 	</ul> 
 	<hr size="1" width="90%" style="margin: 0px auto;">
 	<ul class="card-content">
-		<li>
+	<li>
 			${information.info_content}
 		</li>
 		<c:if test="${!empty information.filename}">
