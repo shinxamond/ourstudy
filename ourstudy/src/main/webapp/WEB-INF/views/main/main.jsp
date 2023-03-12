@@ -18,23 +18,7 @@
 <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
 <script>
-	const queryString = window.location.search;
-	const urlParams = new URLSearchParams(queryString);
-	var message = urlParams.get('msg');
-	message = encodeURIComponent(message);
 	
-	if(message!='null'){
-	window.onload = function() {
-	    Swal.fire({
-	    	imageUrl: '${pageContext.request.contextPath}/images/main.png',
-	    	confirmButtonColor: '#E65962 ',
-	    	imageWidth: 150,
-	    	imageHeight: 150,
-	        title: message,
-	    })
-	};
-	
-	}
 	//막대 차트(구글차트 API)
 	google.charts.load("current", {packages:['corechart']});
 	google.charts.setOnLoadCallback(drawChart);
