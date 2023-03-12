@@ -103,8 +103,9 @@ $(function(){
 			else if(param.result=='success'){
 				
 	//==============카카오페이 시작============//
-   var pprice = $('#final_price').attr('data-pricenum');
+   	var pprice = parseInt($('#final_price').attr('data-pricenum'));
 	var useP = document.getElementById('use_point');
+	var f_price = pprice - useP.value;
 
    var ajaxParam1 = {
       pay_price:$('#final_price').attr('data-pricenum'),
@@ -131,7 +132,7 @@ $(function(){
          pay_method : "card",
          merchant_uid : "ourstudy_" + new Date().getTime(), // 주문번호
          name : pname,
-         amount : pprice,
+         amount : f_price,
       }, function(rsp) { // callback
          console.log(rsp);
          if (rsp.success) {            
@@ -198,8 +199,9 @@ $(function(){
 			}
 			else if(param.result=='success'){
 				//============카드 결제=============//
-			   	var pprice = $('#final_price').attr('data-pricenum');
+				var pprice = $('#final_price').attr('data-pricenum');
 				var useP = document.getElementById('use_point');
+				var f_price = pprice - useP.value;
 
 			    var ajaxParam1 = {
 			      pay_price:$('#final_price').attr('data-pricenum'),

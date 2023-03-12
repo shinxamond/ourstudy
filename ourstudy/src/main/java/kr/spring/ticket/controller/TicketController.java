@@ -54,7 +54,6 @@ public class TicketController {
       map.put("keyfield", keyfield);
       map.put("keyword", keyword);
 
-
       //상품의 총 개수 또는 검색된 상품의 개수
       int count = ticketService.selectTicketCount(map);
 
@@ -79,7 +78,6 @@ public class TicketController {
       mav.addObject("count", count);
       mav.addObject("ticket", ticket);
       mav.addObject("page", page.getPage());
-
 
       return mav;
 

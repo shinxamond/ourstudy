@@ -86,6 +86,7 @@ $(function(){
   function requestKakaoPay() {
    	var pprice = $('#final_price').attr('data-pricenum');
 	var useP = document.getElementById('use_point');
+	var f_price = pprice - useP.value;
 
    var ajaxParam1 = {
       pay_price:$('#final_price').attr('data-pricenum'),
@@ -112,7 +113,7 @@ $(function(){
          pay_method : "card",
          merchant_uid : "ourstudy_" + new Date().getTime(), // 주문번호
          name : pname,
-         amount : pprice,
+         amount : f_price,
       }, function(rsp) { // callback
          console.log(rsp);
          if (rsp.success) {            
@@ -151,6 +152,7 @@ $(function(){
    function requestCardPay() {
 		var pprice = $('#final_price').attr('data-pricenum');
 		var useP = document.getElementById('use_point');
+		var f_price = pprice - useP.value;
 
 			    var ajaxParam1 = {
 			      pay_price:$('#final_price').attr('data-pricenum'),
@@ -177,7 +179,7 @@ $(function(){
 	         pay_method : "card",
 	         merchant_uid : "ourstudy_" + new Date().getTime(), // 주문번호
 	         name : pname,
-	         amount : pprice,
+	         amount : f_price,
 	         buyer_email :'',
 	         
 	      }, function(rsp) { // callback   
