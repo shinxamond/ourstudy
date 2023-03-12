@@ -58,9 +58,9 @@ public class SeatController {
    //좌석선택폼으로 이동
    @RequestMapping("/seat/selectForm.do")
    public ModelAndView selectForm(HttpSession session) {
-	  int mem_status = seatService.getMem_status((Integer)session.getAttribute("user_num"));
-	  
 	  MemberVO member = (MemberVO)session.getAttribute("user");
+	  
+	  int mem_status = seatService.getMem_status(member.getMem_num());
 	  
       ModelAndView mav = new ModelAndView();
       
