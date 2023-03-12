@@ -385,7 +385,7 @@ public class MypageController {
 		
 		memberService.deleteAuto_id(member.getMem_num());
 		
-		model.addAttribute("message", "비밀번호가 변경되었습니다(재접속 시 설정되어 있는 자동 로그인 기능이 해제됩니다).");
+		model.addAttribute("message", "비밀번호가 변경되었습니다.");
 		model.addAttribute("url", request.getContextPath() + "/mypage/myPageMain.do");
 		
 		return "common/resultView";
