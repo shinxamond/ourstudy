@@ -26,15 +26,15 @@
 						type="hidden" name="ticket_num"
 						data-ticketnum="${ticket.ticket_num}" id="ticket_num"> --%>
 					<div class="row align-items-center">
-						<div class="col-sm-6" style="margin-right:">
-							<p class="lead text-mute mb-4 pb-2">선택한 이용권</p>
-							<p class="lead fw-normal mb-0" id="ticket_name"
+						<div class="col-sm-6">
+							<p class="lead fw-normal mb-4 pb-2">선택한 이용권</p>
+							<p class="lead mb-0" id="ticket_name"
 								data-ticketname="${ticket.ticket_name}">${ticket.ticket_name}</p>
 						</div>
 						<div class="col-sm-6 d-flex justify-content-end">
 							<div>
-								<p class="lead text-mute mb-4 pb-2">금액</p>
-								<p class="lead fw-normal mb-0">
+								<p class="lead fw-normal mb-4 pb-2">금액</p>
+								<p class="lead mb-0">
 									<input type="hidden" id="ticket_total_price"
 										value="${ticket.ticket_price}">
 									<fmt:formatNumber value="${ticket.ticket_price}" />
@@ -48,15 +48,15 @@
 			<div class="card sm-5" id="point_pay">
 				<div class="card-body p-8">
 					<div>
-						<p class="lead text-mute mb-4 pb-2">
-							<span>현재 보유 중인 포인트</span> <span class="lead fw-normal mb-0"
+						<p class="lead fw-normal mb-4 pb-2">
+							<span>현재 보유 중인 포인트</span> <span class="lead mb-0"
 								id="my_point" style="float: right;"></span>
 						</p>
 					</div>
 					<div class="col mb-3 d-flex">
 						<span id="p_point" data-pointnum="${point.point_point}"></span>
 							<div>
-								<span class="lead text-mute mb-6 pb-2"
+								<span class="lead fw-normal mb-6 pb-2"
 									style="margin-right: 100px;"> 포인트 사용(1000P 이상 사용 가능)</span>
 							</div>
 							<div class="col mb-3 d-flex justify-content-end" id="input_point">
@@ -70,11 +70,11 @@
 					</div>
 					<hr>
 					<div>
-					<span class="lead text-mute mb-6 pb-2">결제 금액</span>
-					<span class="lead fw-normal mb-0" id="final_price" style="float: right;"
-						data-pricenum="${ticket.ticket_price}">${ticket.ticket_price}</span>
+					<span class="lead fw-normal mb-6 pb-2">결제 금액</span>
+					<span class="lead mb-0" id="final_price" style="float: right;"
+						data-pricenum="${ticket.ticket_price}"><fmt:formatNumber value="${ticket.ticket_price}"/>원</span>
 					</div>
-					<div class="d-flex justify-content-end" id="payment">
+					<div class="d-flex justify-content-end" id="payment" style="margin-top: 15px;">
 						<input type="image" id="pay_kakao"
 							src="${pageContext.request.contextPath}/image_bundle/payment_icon_yellow_small.png"
 							style="margin-bottom: 3px;"

@@ -55,7 +55,7 @@
 			<div class="card sm-5" id="point_pay">
 				<div class="card-body p-8">
 					<div>
-						<p class="lead fw-normal mb-4 pb-2" id="title">
+						<p class="lead fw-normal mb-4 pb-2">
 							<span>현재 보유 중인 포인트</span> <span class="lead mb-0"
 								id="my_point" style="float: right;"></span>
 						</p>
@@ -64,12 +64,12 @@
 						<span id="p_point" data-pointnum="${point.point_point}"></span>
 							<div>
 								<span class="lead fw-normal mb-6 pb-2"
-									style="margin-right: 100px;" id="title"> 포인트 사용(1000P 이상 사용 가능)</span>
+									style="margin-right: 100px;"> 포인트 사용(1000P 이상 사용 가능)</span>
 							</div>
-							<div class="col-sm-4 mb-3 d-flex justify-content-end" id="input_point">
+							<div class="col mb-3 d-flex justify-content-end" id="input_point">
 								<div class="input-group row-mb-3">
-									<input type="text" id="use_point" class="form-control"
-										style="float: right; width: 100px;" placeholder="포인트 입력">
+									<input type="text" id="use_point" class="form-control md-3"
+										style="float: right;" placeholder="포인트 입력">
 									<button type="button" id="minus_btn" class="btn btn-primary">포인트
 										사용</button>
 								</div>
@@ -79,9 +79,9 @@
 					<div>
 					<span class="lead fw-normal mb-6 pb-2" id="title">결제 금액</span>
 					<span class="lead mb-0" id="final_price" style="float: right;"
-						data-pricenum="${ticket.ticket_price}">${ticket.ticket_price}</span>
+						data-pricenum="${ticket.ticket_price}"><fmt:formatNumber value="${ticket.ticket_price}"/>원</span>
 					</div>
-					<div class="d-flex justify-content-end" id="payment">
+					<div class="d-flex justify-content-end" id="payment" style="margin-top: 15px;">
 						<input type="image" id="pay_kakao"
 							src="${pageContext.request.contextPath}/image_bundle/payment_icon_yellow_small.png"
 							style="margin-bottom: 3px;"

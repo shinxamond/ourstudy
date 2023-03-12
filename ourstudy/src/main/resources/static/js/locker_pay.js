@@ -11,7 +11,7 @@ $(function(){
                alert('로그인 후 이용해주세요');
 			   location.href='/main/main.do';
            	  }else if(param.result == 'success'){
-                  $('#my_point').text(param.mypoint);
+                  $('#my_point').text(param.mypoint.toLocaleString() + "P");
               }else{
                  alert('오류 발생');
               }
@@ -29,7 +29,8 @@ $(function(){
 
    $('#minus_btn').on('click',function(){
       //보유중인 포인트
-      mpoint = parseInt($('#my_point').text());  
+	  var parsingPoint = $('#my_point').text().replace(/\D/g,'');
+      mpoint = parseInt(parsingPoint);  
       
       if(mpoint >= 1000){//내 포인트가 1000 이상 있을 경우
 
@@ -43,13 +44,13 @@ $(function(){
                fpoint = mpoint - upoint;
             
                //지불할 금액
-               tprice = parseInt($('#final_price').text());
+               tprice = $('#final_price').attr('data-pricenum');
                
                if((tprice / 2) >= upoint){
 					//총 합계 금액
                		total = tprice - upoint;
                
-               		$('#final_price').text(total);      
+               		$('#final_price').text(total.toLocaleString()+"원");         
                		$('#my_point').text(fpoint.toLocaleString() + "P");
 
 				

@@ -10,7 +10,7 @@
 <link rel="stylesheet"
 	href="${pageContext.request.contextPath}/css/ticket.css">
 <script src="https://cdn.iamport.kr/v1/iamport.js"></script>
-<div id="main_content_body" class="container" style="height: 80vh;">
+<div id="main_content_body" class="container">
 	<div class="container d-flex justify-content-center">
 	<div class="row-sm-4">
 		<c:set var="first_kind" value="0" />
@@ -20,9 +20,9 @@
 					<div class="card" id="ticket_card">
 						<form action="/pay/study_pay.do" id="study_ticket" method="post" class="form-inline">
 							<input type="hidden" name="ticket_num"
-								value="${ticket.ticket_num}">${ticket.ticket_num}		
+								value="${ticket.ticket_num}">	
 								<input type="hidden" name="seat_num"
-									value="${seat_num}">${seat_num}
+									value="${seat_num}">
 							<div class="card-body">
 								${ticket.ticket_name}
 								<div style="float: right;">

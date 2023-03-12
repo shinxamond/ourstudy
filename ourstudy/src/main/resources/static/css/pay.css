@@ -56,12 +56,10 @@ body{
 	background-color: #E65962;
 	border: none;
 }
-#input_point{
-	position:relative;
-}
-#payment{
-	margin-top: 15px;
-}
+.input-group{
+    width: 60%;
+  }
+
 #pay_kakao{
 	border: none;
 }
