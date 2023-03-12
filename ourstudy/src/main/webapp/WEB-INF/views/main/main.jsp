@@ -73,7 +73,7 @@
 		height: 350,
 		bar: {groupWidth: "30%"},
 		legend: { position: "none" },
-		vAxis: {textPosition: 'none', viewWindow: {max: 20}},
+		vAxis: {textPosition: 'none', viewWindow: {max: 100}},
 			 chartArea:{left:15,top:20,width:"90%",height:"80%"}
 		};
 	var chart = new google.visualization.ColumnChart(document.getElementById("columnchart_values"));
