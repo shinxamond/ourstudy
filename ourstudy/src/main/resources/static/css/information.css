@@ -964,7 +964,7 @@ div#card img {
 		padding: 20px 0px;
 	}	
 	#form-select1 {
-		width: 20px;
+		width: 80px;
 		margin-right: 5px;
 	}
 	#form-select2 {
@@ -972,8 +972,11 @@ div#card img {
 		margin-right: 5px;
 	}
 	.btn {
-	 margin-bottom:10px;
+	 	margin-bottom:10px;
 	}	
+	.search-form input{
+		width: 68% !important;
+	}
 }
 
 
