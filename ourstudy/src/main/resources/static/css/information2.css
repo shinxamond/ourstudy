@@ -616,7 +616,7 @@ h6 {
 } */
 
 .card {
-	width: 900px;
+	width: 80%;
 	border-radius: 1rem;
 	display: inline-block;
 	padding:20px 0 10px;
@@ -624,7 +624,6 @@ h6 {
 	box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 15px 0 rgba(0, 0, 0, 0.19);
 	overflow: hidden;
 	min-width: 200px;
-	
 	margin:0 auto;
 }
 .card-head {
@@ -684,6 +683,15 @@ div#re_reply{
 }
 .card input[type="text"]{
 	width: 630px;
+}
+input[type="file"]::file-upload-button {
+	background: #fff;
+	border: 1px solid #a2a2a2;
+	cursor: pointer;
+}
+input[type="file"]::file-upload-button:hover {
+	background: #a2a2a2;
+	color: #fff;
 }
 
 

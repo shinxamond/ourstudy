@@ -253,6 +253,8 @@ div#main_footer{
 	color:#000;
 }
 
+
+
 /*공통
 ---------------------------*/
 div#main {
@@ -614,14 +616,14 @@ h6 {
 } */
 
 .card {
-	width: 900px;
+	width: 80%;
 	border-radius: 1rem;
 	display: inline-block;
 	padding:20px 0 10px;
 	position: relative;
 	box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 15px 0 rgba(0, 0, 0, 0.19);
 	overflow: hidden;
-	min-width: 200px;
+	min-width: 300px;
 	
 	margin:0 auto;
 }

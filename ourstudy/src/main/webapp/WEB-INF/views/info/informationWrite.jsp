@@ -18,7 +18,8 @@
 <script src="${pageContext.request.contextPath}/js/uploadAdapter.js"></script>
 	<h3 style="text-align:center"><b>안내사항 글쓰기</b></h3>
 	<br>
-	<div class="card d-flex justify-content-center" id="card-view" >
+	<!-- 기본 카드 시작 -->
+	<div class="card d-flex justify-content-center card-hover" id="card1" >
 	<form:form action="infoWrite.do" id="info_write_form"
 			modelAttribute="informationVO"  enctype="multipart/form-data">
 		
@@ -67,11 +68,15 @@
 			<form:checkbox path="info_pin" value="1" style="text-align:center;" label="상단에 고정하기" />
 			<form:hidden path="info_pin" value="0" />		
 			<form:button onclick="" id="list_btn" class="btn btn-secondary btn-sm">등록</form:button>			
-			<input type="button" value="목록"  class="btn btn-secondary btn-sm"
+			<input type="button" value="목록"  class="btn btn-outline-secondary btn-sm"
 			             onclick="location.href='/info/informationList.do'">
 		</div>
 	</form:form>
 	</div>
+	<!-- 기본 카드 끝 -->
+	<!-- 작은 카드 시작 -->
+	
+	<!-- 작은 카드 끝 -->
 </div>
 </div>
 </div>
