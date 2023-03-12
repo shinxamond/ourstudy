@@ -68,8 +68,10 @@
 				
 				<tr>
 					<th>
-						<input type = "hidden" value = " ${(member.mem_study / 3600)+(((member.mem_study / 3600)%1>0.5)?(1-((member.mem_study / 3600)%1))%1:-((member.mem_study / 3600)%1))}" id = "study_hour"/>				
-						<input type = "hidden" value = " ${study.total_time % 3600 / 60}" id = "study_min"/>				
+<%-- 						<input type = "hidden" value = " ${(member.mem_study / 3600)+(((member.mem_study / 3600)%1>0.5)?(1-((member.mem_study / 3600)%1))%1:-((member.mem_study / 3600)%1))}" id = "study_hour"/>				
+ --%>					<input type = "hidden" value = " ${member.mem_study / 3600}" id = "study_hour"/>				
+						
+						<input type = "hidden" value = " ${member.mem_study % 3600 / 60}" id = "study_min"/>				
 						
 						<input type = "hidden" value = " ${(member.mem_study % 3600 % 60)+(((member.mem_study % 3600 % 60)%1>0.5)?(1-((member.mem_study % 3600 % 60)%1))%1:-((member.mem_study % 3600 % 60)%1))}" id = "study_sec"/>				
 						
@@ -77,8 +79,11 @@
 				<script type="text/javascript">
 				$(function(){
 					var floor_hour = Math.floor($('#study_hour').val());
+					console.log('시간' +floor_hour);
 					var floor_min = Math.floor($('#study_min').val());
+					console.log('분' +floor_min);
 					var floor_sec = Math.floor($('#study_sec').val());
+					console.log('초' +floor_sec);
 					if(typeof floor_hour == "undefined" || floor_hour == null || floor_hour == "" || isNaN(floor_hour)){
 						floor_hour = 0;
 					}
@@ -89,7 +94,7 @@
 						floor_sec = 0;
 					}
 					$('#ts').attr('data-tg-on', floor_hour +'시간'+floor_min +'분'+floor_sec+'초');
-					console.log(floor_hour);		
+					console.log($('#study_hour').val());		
 					console.log($('#study_min').val());	
 					console.log($('#study_sec').val());	
 				});

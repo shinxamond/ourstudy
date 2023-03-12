@@ -204,7 +204,7 @@ public class MypageController {
 		
 		Float remainTime = mypageService.selectRemainTime(user.getMem_num());
 		
-		//String remainTerm = mypageService.selectRemainTimeTerm(user.getMem_num());
+		String remainTerm = mypageService.selectRemainTimeTerm(user.getMem_num());
 		
 		Integer locker_num = lockerService.getLockerNum(user.getMem_num());
 		
@@ -212,14 +212,24 @@ public class MypageController {
 			pointSum = 0;
 		}
 		logger.debug("<<마이페이지 멤버 정보>> : " + member);
-		
+		if(remainTerm != null) {
+			remainTerm = mypageService.selectRemainTimeTerm(user.getMem_num());;
+	        LocalDate end_date = LocalDate.parse(remainTerm, DateTimeFormatter.ISO_DATE);
+			
+			LocalDate now = LocalDate.now();
+
+			Period remainTermDuration = Period.between(now, end_date);
+			logger.debug("seconds : {}", remainTermDuration.getDays());
+			
+			
+			model.addAttribute("remainTerm", remainTermDuration.getDays());
+		}
 		if(locker_num != null) {
 			model.addAttribute("locker_num", locker_num);			
 		}
 		model.addAttribute("member", member);
 		model.addAttribute("seat", seat);
 		model.addAttribute("pointSum", pointSum);
-		//model.addAttribute("remainTerm", remainTerm * 3600);
 		model.addAttribute("remainTime", remainTime * 3600);
 		
 		return "myPageMemInfo";
@@ -239,7 +249,7 @@ public class MypageController {
 		
 		Float remainTime = mypageService.selectRemainTime(user.getMem_num());
 		
-		//Integer remainTerm = mypageService.selectRemainTimeTerm(user.getMem_num());
+		String remainTerm = mypageService.selectRemainTimeTerm(user.getMem_num());
 		
 		Integer locker_num = lockerService.getLockerNum(user.getMem_num());
 		
@@ -249,10 +259,21 @@ public class MypageController {
 		if(locker_num != null) {
 			model.addAttribute("locker_num", locker_num);			
 		}
+		if(remainTerm != null) {
+			remainTerm = mypageService.selectRemainTimeTerm(user.getMem_num());;
+	        LocalDate end_date = LocalDate.parse(remainTerm, DateTimeFormatter.ISO_DATE);
+			
+			LocalDate now = LocalDate.now();
+
+			Period remainTermDuration = Period.between(now, end_date);
+			logger.debug("seconds : {}", remainTermDuration.getDays());
+			
+			
+			model.addAttribute("remainTerm", remainTermDuration.getDays());
+		}
 		model.addAttribute("member", member);
 		model.addAttribute("seat", seat);
 		model.addAttribute("pointSum", pointSum);
-		//model.addAttribute("remainTerm", remainTerm * 3600);
 		model.addAttribute("remainTime", remainTime * 3600);
 		
 		return "myPageModify";
@@ -291,7 +312,7 @@ public class MypageController {
 		
 		Float remainTime = mypageService.selectRemainTime(user.getMem_num());
 		
-		//Integer remainTerm = mypageService.selectRemainTimeTerm(user.getMem_num());
+		String remainTerm = mypageService.selectRemainTimeTerm(user.getMem_num());
 		
 		Integer locker_num = lockerService.getLockerNum(user.getMem_num());
 		
@@ -302,10 +323,21 @@ public class MypageController {
 		if(locker_num != null) {
 			model.addAttribute("locker_num", locker_num);			
 		}
+		if(remainTerm != null) {
+			remainTerm = mypageService.selectRemainTimeTerm(user.getMem_num());;
+	        LocalDate end_date = LocalDate.parse(remainTerm, DateTimeFormatter.ISO_DATE);
+			
+			LocalDate now = LocalDate.now();
+
+			Period remainTermDuration = Period.between(now, end_date);
+			logger.debug("seconds : {}", remainTermDuration.getDays());
+			
+			
+			model.addAttribute("remainTerm", remainTermDuration.getDays());
+		}
 		model.addAttribute("member", member);
 		model.addAttribute("seat", seat);
 		model.addAttribute("pointSum", pointSum);
-		//model.addAttribute("remainTerm", remainTerm * 3600);
 		model.addAttribute("remainTime", remainTime * 3600);
 		
 		return "myPagechangePasswd";
@@ -373,7 +405,7 @@ public class MypageController {
 		
 		Float remainTime = mypageService.selectRemainTime(user.getMem_num());
 		
-		//Integer remainTerm = mypageService.selectRemainTimeTerm(user.getMem_num());
+		String remainTerm = mypageService.selectRemainTimeTerm(user.getMem_num());
 		
 		Integer locker_num = lockerService.getLockerNum(user.getMem_num());
 		if(pointSum == null) {
@@ -383,10 +415,21 @@ public class MypageController {
 		if(locker_num != null) {
 			model.addAttribute("locker_num", locker_num);			
 		}
+		if(remainTerm != null) {
+			remainTerm = mypageService.selectRemainTimeTerm(user.getMem_num());;
+	        LocalDate end_date = LocalDate.parse(remainTerm, DateTimeFormatter.ISO_DATE);
+			
+			LocalDate now = LocalDate.now();
+
+			Period remainTermDuration = Period.between(now, end_date);
+			logger.debug("seconds : {}", remainTermDuration.getDays());
+			
+			
+			model.addAttribute("remainTerm", remainTermDuration.getDays());
+		}
 		model.addAttribute("member", member);
 		model.addAttribute("seat", seat);
 		model.addAttribute("pointSum", pointSum);
-		//model.addAttribute("remainTerm", remainTerm * 3600);
 		model.addAttribute("remainTime", remainTime * 3600);
 		
 		return "myPagedeleteMember";
@@ -445,7 +488,7 @@ public class MypageController {
 		
 		Float remainTime = mypageService.selectRemainTime(user.getMem_num());
 		
-		//Integer remainTerm = mypageService.selectRemainTimeTerm(user.getMem_num());
+		String remainTerm = mypageService.selectRemainTimeTerm(user.getMem_num());
 		
 		Integer locker_num = lockerService.getLockerNum(user.getMem_num());
 		
@@ -455,7 +498,18 @@ public class MypageController {
 		if(locker_num != null) {
 			mav.addObject("locker_num", locker_num);
 		}
+		if(remainTerm != null) {
+			remainTerm = mypageService.selectRemainTimeTerm(user.getMem_num());;
+	        LocalDate end_date = LocalDate.parse(remainTerm, DateTimeFormatter.ISO_DATE);
+			
+			LocalDate now = LocalDate.now();
 
+			Period remainTermDuration = Period.between(now, end_date);
+			logger.debug("seconds : {}", remainTermDuration.getDays());
+			
+			
+			mav.addObject("remainTerm", remainTermDuration.getDays());
+		}
 		mav.addObject("member", member);
 		mav.addObject("seat", seat);
 		mav.addObject("pointSum", pointSum);
@@ -505,7 +559,7 @@ public class MypageController {
 		
 		Float remainTime = mypageService.selectRemainTime(user.getMem_num());
 		
-		//Integer remainTerm = mypageService.selectRemainTimeTerm(user.getMem_num());
+		String remainTerm = mypageService.selectRemainTimeTerm(user.getMem_num());
 		
 		Integer locker_num = lockerService.getLockerNum(user.getMem_num());
 		
@@ -514,6 +568,18 @@ public class MypageController {
 		}
 		if(locker_num != null) {
 			mav.addObject("locker_num", locker_num);
+		}
+		if(remainTerm != null) {
+			remainTerm = mypageService.selectRemainTimeTerm(user.getMem_num());;
+	        LocalDate end_date = LocalDate.parse(remainTerm, DateTimeFormatter.ISO_DATE);
+			
+			LocalDate now = LocalDate.now();
+
+			Period remainTermDuration = Period.between(now, end_date);
+			logger.debug("seconds : {}", remainTermDuration.getDays());
+			
+			
+			mav.addObject("remainTerm", remainTermDuration.getDays());
 		}
 		mav.addObject("member", member);
 		mav.addObject("seat", seat);
