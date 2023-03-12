@@ -17,7 +17,7 @@ if(${user.mem_auth == 1}){
 
 
 $(function(){
-	
+	alert(${check});
 	if(${check==0}){
 		$('#talkCheck').hide();
 		$('#roomc').text('채팅방 생성 완료(↑ 클릭)');
@@ -156,7 +156,7 @@ function alarm_connect2(){
 	};
 	//서버로부터 메시지를 받으면 호출되는 함수 지정 
 	message_socket2.onmessage=function(evt){
-		
+		alert('ㅁㅁ');
 		let data = evt.data;
 		if(data.substring(0,4) == 'arm:'){
 			countmsg();

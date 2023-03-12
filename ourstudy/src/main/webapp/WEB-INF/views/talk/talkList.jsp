@@ -21,7 +21,7 @@
 
 </script>
 <div class="page-main">	
-		<div class="content-main" style="height:70vh;"><!-- 전체 화면의 87% -->
+		<div class="content-main" style="height:800px;"><!-- 전체 화면의 87% -->
 			<!-- 사이드바 오른쪽 화면 시작 -->
 			<div class="content-right">
 				<h3 style="text-align:center"><b>채팅목록</b></h3>

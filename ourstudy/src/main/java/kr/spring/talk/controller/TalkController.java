@@ -102,7 +102,8 @@ public class TalkController {
 	
 	// 메인에서 보낸 데이터
 	@PostMapping("/talk/maintalkRoomWrite.do")
-	public String mainsubmitTalkRoom(TalkRoomVO vo, Model model, HttpSession session, HttpServletRequest request, RedirectAttributes redirectAttributes) {
+	public String mainsubmitTalkRoom(TalkRoomVO vo, Model model, HttpSession session, 
+								HttpServletRequest request, RedirectAttributes redirectAttributes) {
 		logger.debug("<<채팅방 생성>> : " + vo);
 		String referer = request.getHeader("Referer");
 		//안내사항 부분=========================================
@@ -143,7 +144,7 @@ public class TalkController {
 		}
 		//중복 체크
 		int count = talkService.talkRoomCheck(tmem_num[0],tmem_num[1]);
-
+		
 		Map<String, Object> map = new HashMap<String, Object>();
 		map.put("keyword", "admin, " + user.getMem_id());
 		map.put("mem_num", user.getMem_num());
@@ -157,6 +158,9 @@ public class TalkController {
 			redirectAttributes.addFlashAttribute("check", 1);
 			room_num = talkService.selectTalkRoomNumMain(vo.getTalkroom_name());
 		}
+		session.setAttribute("check", 1);
+		session.setAttribute("room_num", room_num);
+		session.setAttribute("roomList", roomList);
 		logger.debug("<<count>> : " + count);
 		redirectAttributes.addFlashAttribute("user", user);
 		redirectAttributes.addFlashAttribute("room_num", room_num);
@@ -282,10 +286,11 @@ public class TalkController {
 		Map<String, Object> map = new HashMap<String, Object>();
 		map.put("keyword", keyword);
 		map.put("mem_num", user.getMem_num());
-
+		
 		List<TalkRoomVO> clist = talkService.selectTalkRoomList(map);
 		logger.debug("<<채팅개수>> : " + clist);
 		
+		session.setAttribute("roomList", clist);
 		mapAjax.put("result", "success");
 		mapAjax.put("clist", clist);
 		
