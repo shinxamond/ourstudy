@@ -102,7 +102,7 @@
 		</ul>
 		<div class="align-center">
 			<form:button id="list_btn" class="btn btn-secondary btn-sm">등록</form:button>
-			<input type="button" value="목록" class="btn btn-secondary btn-sm" onclick="location.href='detail.do?r_num=${reviewVO.r_num}'">
+			<input type="button" value="목록" class="btn btn-outline-secondary btn-sm" onclick="location.href='detail.do?r_num=${reviewVO.r_num}'">
 		</div>	                   
 	</form:form>
 	</div>

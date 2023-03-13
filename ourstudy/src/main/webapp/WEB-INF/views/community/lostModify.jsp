@@ -139,7 +139,7 @@
 	</ul>
 		<div class="align-right">
 			<form:button id="list_btn" class="btn btn-secondary btn-sm">수정</form:button>	
-			<input type="button" value="목록" class="btn btn-secondary btn-sm"
+			<input type="button" value="목록" class="btn btn-outline-secondary btn-sm"
 			            onclick="location.href='/community/lostList.do'">
 	</div>
 	
