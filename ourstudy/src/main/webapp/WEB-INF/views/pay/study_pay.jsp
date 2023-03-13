@@ -70,7 +70,7 @@
 								<div class="input-group row-mb-3">
 									<input type="text" id="use_point" class="form-control md-3"
 										style="float: right;" placeholder="포인트 입력">
-									<button type="button" id="minus_btn" class="btn btn-primary">포인트
+									<button type="button" id="minus_btn" onclick="minus(); this.onclick=null;" class="btn btn-primary">포인트
 										사용</button>
 								</div>
 							</div>
