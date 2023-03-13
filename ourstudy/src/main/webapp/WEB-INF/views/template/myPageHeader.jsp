@@ -70,7 +70,7 @@
 				<button class = "seatcheck-button"
 				<c:if test="${member.mem_status == 0}">style = "background : #b4aab1;border : none; color : white;"</c:if> 
 				onclick=<c:if test="${member.mem_status == 0}">"alert('입실 상태가 아닙니다.');"</c:if>
-				<c:if test = "${member.mem_status == 1}">"location.href='${pageContext.request.contextPath}/seat/out.do?'"</c:if>>퇴실</button>			
+				<c:if test = "${member.mem_status == 1 or member.mem_status == 2}">"location.href='${pageContext.request.contextPath}/seat/out.do?seat_num=${seat.seat_num}'"</c:if>>퇴실</button>			
 			</div>
 
 			<span class = "lastchild-span"><a href = "${pageContext.request.contextPath}/seat/selectForm.do" class = "link-font small">좌석선택 ></a></span>
