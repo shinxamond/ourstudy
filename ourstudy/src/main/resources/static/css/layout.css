@@ -203,7 +203,7 @@ li.paging-current{
 /* MY페이지
 ---------------------------*/
 .my-photo{
- 	/* object-fit:cover; */ 
+ 	object-fit:cover; 
 	object-position:top;
 	border-radius:50%;
 }
