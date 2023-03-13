@@ -35,7 +35,7 @@ $(function(){
 	  		
 			console.log(updateSec);
 	
-	  		if(updateSec >= 60) {
+	  		if(updateSec >= 10) {
 	  			sessionStorage.setItem('plusSec', '0');
 	  			
 	  			let mem_num = sessionStorage.getItem('isSelectMemnum');
@@ -85,6 +85,7 @@ $(function(){
 										if(reloadDiv != ''){
 											$('#remainTimeZone').load('../mypage/myPageMain.do #remainTimeZone');
 											location.href="../seat/out.do?seat_num="+seat_num;
+											location.href = '../ticket/study_ticketList.do?seat_num=' + seat_num;
 										}
 	  								}else {
 	  									alert('잔여시간 업데이트 오류 발생(5분이하일때)');
@@ -94,7 +95,7 @@ $(function(){
 	  								alert('NETWORK ERROR(updateTime)');
 	  							}
 	  						});								
-	  							location.href = '../ticket/study_ticketList.do?seat_num=' + seat_num;							
+	  														
 	  						}else {
 	  						remainTime = parseFloat(param.time);
 	  						newRemain =	parseFloat(remainTime) - parseFloat(60.0);		
