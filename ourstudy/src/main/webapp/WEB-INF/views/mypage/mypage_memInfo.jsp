@@ -1,6 +1,26 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib prefix = "c" uri = "http://java.sun.com/jsp/jstl/core" %>
+<style>
+/*필독 깜박이게 */
+@keyframes blink-effect {
+  50% {
+    opacity: 0;
+  }
+}
+
+.blink {
+  animation: blink-effect 1s step-end infinite;
+  animation-iteration-count:infinite;
+  animation-duration: 0.8s;
+  /*
+  animation-name: blink-effect;
+  animation-duration: 1s;
+  animation-iteration-count:infinite;
+  animation-timing-function:step-end;
+  */
+}
+</style>
 <!-- 마이페이지 메인 회원정보 시작 -->
 <div class = "mypage_mem_info">
 	<div class = "wrap-meminfo">
@@ -29,7 +49,7 @@
 				<tr>
 					<th>사물함</th>
 					<td>
-					<c:if test="${!empty locker_num}">${locker_num}번(${locker_end} 종료)</c:if>
+					<c:if test="${!empty locker_num}"><span class="blink" style="color:blue">${locker_num}번 (${locker_end} 종료)</span></c:if>
 					<c:if test="${empty locker_num}">이용중인 사물함이 없습니다.</c:if>
 					</td>
 				</tr>
