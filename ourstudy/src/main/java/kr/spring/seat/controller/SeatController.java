@@ -148,7 +148,7 @@ public class SeatController {
 	   
 	   if(hour <= 61.0) {
 		   mapAjax.put("result", "setLogout");
-	   }else if(hour > 300 && hour <= 361.0) {
+	   }else if(hour > 301 && hour <= 361.0) {
 		   mapAjax.put("time", Float.toString(hour));
 		   mapAjax.put("result", "lessThanFive");
 	   }else {

@@ -84,6 +84,7 @@ $(function(){
 	  								if(param.result == 'success') {
 										if(reloadDiv != ''){
 											$('#remainTimeZone').load('../mypage/myPageMain.do #remainTimeZone');
+											location.href="../seat/out.do?seat_num="+seat_num;
 										}
 	  								}else {
 	  									alert('잔여시간 업데이트 오류 발생(5분이하일때)');
