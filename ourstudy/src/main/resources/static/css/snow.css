@@ -1,0 +1,28 @@
+@charset "UTF-8";
+/*
+눈---------*/
+.snowflake{
+	width : 10px;
+	height : 10px;
+	border-radius:12px 1px;
+	background: -webkit-linear-gradient(120deg, rgba(255, 102, 255, 0.9), rgba(255, 102, 255, 0.9));
+	position:absolute;
+	top:-8px;
+	
+}
+.snowflake2{
+	width : 12px;
+	height : 12px;
+	border-radius:1px 12px;
+	background: -webkit-linear-gradient(120deg, rgba(255, 102, 255, 0.9), rgba(255, 102, 255, 0.9));
+	position:absolute;
+	top:-8px;
+	
+}
+@keyframes fall{
+	form{}
+	to{
+		transform:translatey(100vh);
+		opacity :0;
+	}
+}
