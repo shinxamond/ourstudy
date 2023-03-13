@@ -170,7 +170,7 @@ $(function(){
 		initModifyForm();
 		//지금 클릭해서 수정하고자 하는 데이터는 감추기
 		//수정버튼을 감싸고 있는 div
-		$(this).parent().hide();
+		$(this).parent().parent().hide();
 		
 		//수정폼을 수정하고자 하는 데이터가 있는 div에 노출
 		$(this).parents('.item').append(modifyUI);
