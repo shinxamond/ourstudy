@@ -1,35 +1,9 @@
 @charset "UTF-8";
-/*필독 깜박이게 */
-@keyframes blink-effect {
-  50% {
-    opacity: 0;
-  }
-}
-
-.blink {
-  animation: blink-effect 1s step-end infinite;
-  animation-iteration-count:2;
-  animation-duration: 0.8s;
-  /*
-  animation-name: blink-effect;
-  animation-duration: 1s;
-  animation-iteration-count:infinite;
-  animation-timing-function:step-end;
-  */
-}
-/*긴 글씨 자르게*/
-.truncate-text {
-    max-width: 400px;
-    display:inline-block;
-    vertical-align: middle;
-    overflow: hidden;
-    white-space: nowrap;
-    text-overflow: ellipsis;
-}
-.text-left{
-	text-align:left;
-}
 /*여기는 추가한거*/
+/*페이지 반응형에 맞게 크기 줄인거*/
+.pagination{
+	--bs-pagination-padding-x: 0.55rem !important;
+}
 @font-face {
     font-family: 'Pretendard-Regular';
     src: url('https://cdn.jsdelivr.net/gh/Project-Noonnu/noonfonts_2107@1.1/Pretendard-Regular.woff') format('woff');
@@ -41,115 +15,11 @@ body{
 	height:100%;
 }
 div#main_footer{
-	width:100vw;
+	width:100%!important;
 	background-color:#b4aab1;
 	padding:30px 0 20px 280px;
 	height:220px;
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-/*====================
-		 댓글
-======================*/
-form#re_form{
-	width:100%;
-	margin-left:15px;
-	margin-top:-10px;
-}
-span.re-title{
-	margin-left:60px;
-}
-span.letter-count{
-	font-size:10pt;
-	color:#999;
-}
-div.inner-text{
-  display:inline-block;
-  position:relative;
-}
-.inner-text,#mre_content{
-	display:block;
-	height:130px;
-	width:101%;
-}
-#inner-submit{
-	  position:absolute;
-	  bottom:0px;
-	  right:85px;
-	  border:none;
-	  color:#E65962;
-	  font-size:18pt;
-}
-#inner-submit:hover{
-	color:white;
-	background-color:#E65962;
-}
-div#reply_div {
-    padding: 5px 0px 0px 10px;
-    margin-top: 10px;
-}
-.btn-outline-pink{
-	color:white;
-	background-color:#F4ABB2;
-	border:none;
-	margin-left:5px;
-}
-.btn-outline-pink:hover,.btn-outline-pink:active{
-	color:#F4ABB2;
-	border:#F4ABB2;
-}
-ul.detail-info li {
-    margin-left: 70px;
-}
-#mre_content{
-	margin-left:30px;
-}
-div#re_first, div#mre_first{
-	margin-bottom:0;
-}
-div#re_second, div#mre_second {
-    float: right;
-    width: 19%;
-    margin-bottom: 10px;
-    margin-right:-70px;
-}
-div#mre_first{
-	text-align:left;
-	padding-left:35px;
-}
-div.sub-item p{
-	margin:10px 72px 10px 72px;
-}
-div.sub-item button.modify-btn{
-	margin-left:726px;
-}
-.card-head{
-	margin:20px 0;
-}
-.card-head h3{
-	margin-bottom:30px;
-}
-#reply_name{
-	margin-left:10px;
-}
-
-
-
-
-
 /*======================
   		 footer
 ========================*/
@@ -165,102 +35,24 @@ div.sub-item button.modify-btn{
 }
 div#main_footer .footer-main{
 	float:left;
-	
 }
-.footer-main{
-	padding-left:15px;
-}
-.footer-sns{
+div#main_footer .footer-sns{
 	float:right;
+	margin-right:100px;
 	word-spacing:15px;
-	margin-right:100px;
 	padding-top:40px;
-}
-div#main_footer{
-	margin-right:100px;
-	margin:0 0 0 -120px;
-	height:220px;
-}
-.footer-sns a:visited {
-    text-decoration: none;
-    color: #000000;
 }
 .footer-sns a:hover{
 	color: #F3F1F1;
 }
-
-/*======================
-		반응형
-=======================*/
-
-@media screen and (max-width:1320px){
-	.footer-sns{
-		display:none;
-	}
-	.footer-main{
-		margin-left:80px;
-	}
+a:visited {
+    text-decoration: none;
+    color: #000000;
 }
-
-@media screen and (max-width:991px) {
-	div#main_body{
-		left:10px;
-	}
-	.accordion {
-  		width: 120%;
-  		padding-left:10px;
-	}
-	.accordion-item .heading{
-		font-size:12pt;
-	}
-	.accordion-item .content p{
-		margin-left:10px;
-		font-size:10pt;
-		padding-right:20px;
-	}
-	.footer-sns{
-		display:none;
-	}
-	div#main_footer{
-		padding:30px 30px 20px 5px;
-		height:45vh;
-	}
-	.footer-main{
-		margin-left:20px;
-	}
-	
-	#navbar{
-	margin:-5px -5px 0 0;
-	width:200%
-	}
-	
+a:link {
+    text-decoration: none;
+    color: #000000;
 }
-
-
-
-
-/*테이블*/
-#t2 {
-	display: none;
-}
-
-@media ( max-width : 1199px) {
-	#t1 {
-		display: none;
-	}
-	#t2 {
-		display: table;
-	}
-}
-
-.t-sub-info{
-	color:rgba(0,0,0,0.55);
-	font-size:12px;
-}
-.title-link{
-	color:#000;
-}
-
 /*공통
 ---------------------------*/
 div#main {
@@ -268,8 +60,8 @@ div#main {
     margin: 0 auto;
 }
 div#main_body {
-    padding: 5px 5px 40px 5px;
-    min-height: 703px;
+    padding: 5px 5px 5px 5px;
+    min-height: 500px;
     width: 100%;    
     position: relative;
     left: 130px;
@@ -281,7 +73,7 @@ div#main_body {
 	margin-top:20px;
 }
 .content-main {
-	width:87%; /*원래 87%*/
+	width: 100%; /*원래 87%*/
 	margin: 5px auto;
 	overflow:hidden;
 	padding: 0 20px;
@@ -306,15 +98,6 @@ div#main_body {
 	    width: 100%;
 	    margin: 0 auto;
 	}
-	div#main_body {
-	    padding: 5px 5px 5px 5px;
-	    min-height: 500px;
-	    width: 100%;    
-	    position: relative;
-	    left: 0;
-	    font-size: 12pt;
-	    font-family: "Open Sans", sans-serif;
-	}	
 	.content-right {
 		padding : 0;
 		padding-top: 0;
@@ -337,25 +120,201 @@ div#main_body {
 	text-align: right;
 }
 
-/* 게시판 폼
+/*취업현황 메인페이지
 ---------------------------*/
-/*CKEditor 사용시 등록, 수정폼*/
-form#info_write_form, form#info_update_form{
-	padding:0 0 10px 0;
-	width:800px;
+
+/*취업현황 메인페이지 - 테이블
+---------------------------*/
+.content-margin{
+	margin:10px auto;
 }
-form#info_write_form ul, form#info_update_form ul{
-	padding:20px;
+#t2 {
+	display: none;
 }
 
-form#lost_write_form{
-	padding:0 0 10px 0;
-	width:800px;
-}
-form#lost_write_form ul{
-	padding:20px;
+@media ( max-width : 1199px) {
+	#t1 {
+		display: none;
+	}
+	#t2 {
+		display: table;
+	}
 }
 
+.t-sub-info{
+	color:rgba(0,0,0,0.55);
+	font-size:12px;
+}
+.title-link{
+	color:#000;
+}
+/*취업현황 글등록 폼
+----------------*/
+#id_check{
+	height:100%;
+	border-color:lightgray;
+	border-radius: 5px;
+	padding:0 10px;
+}
+
+/*취업 글상세
+----------------*/
+.detail-top {
+	display:flex;
+	align-content: baseline;
+	padding-left:10px;
+}
+.top-button{
+	margin-left:auto;
+}
+.my-photo{
+	border-radius: 50%;
+}
+
+.detail-info1, .detail-info2{
+	list-style: none;
+	display:flex;
+	align-items: center;
+	padding-left:10px;
+	margin-bottom: 0;
+	color:rgba(0,0,0,0.55);
+}
+.detail-info1 li, .detail-info2 li{
+	margin-right:15px;
+}
+.hr-style{color:black;margin:10px 0;}
+.detail-content{
+	margin-top:30px;
+	padding-left:10px;
+	width:100%;
+	padding-bottom:20px;
+}
+.detail-img{
+	max-width:500px;
+}
+.bottom-btn{
+	display:flex;
+	margin:0 10px;
+}
+.bottom-btn .list-btn{
+	margin-left:auto;
+}
+
+
+/*이전글 다음글*/
+.bottom-prevNext{
+	list-style:none;
+	margin-top:15px;
+	padding-left:0;
+}
+/*취업현황 목록
+----------------*/
+.employ-card-body{
+	height:120px; 
+	padding:0 20px 20px 20px;
+}
+.card-text{
+	font-size:10pt;
+	color:rgba(0,0,0,0.55);
+}
+
+/*취업 글수정
+----------------*/
+#photo_detail{
+	margin-top:15px;	
+}
+#photo_del{
+	margin-right:10px;
+} 
+
+
+
+
+/*메인 페이지 스타일 적용되게 넣음
+----------------*/
+#main_logo {
+	padding-top: 20px;
+}
+
+#main_nav {
+	padding: 2px 10px 20px 10px;
+	height: 20px;
+	background-color: #C1BFBF;
+}
+
+#main_nav ul {
+	list-style: none;
+	margin: 0;
+	padding: 0;
+}
+
+#main_nav ul li {
+	display: inline-block;
+	width: 100px;
+	text-align: center;
+	vertical-align: middle;
+	padding-top: 8px;
+}
+
+#main_nav ul li img.my-photo {
+	vertical-align: middle;
+}
+
+#main_nav ul li.menu-profile {
+	padding-top: 5px;
+	width: 25px;
+}
+
+#main_nav ul li.menu-logout {
+	width: 150px;
+	text-align: left;
+}
+
+/*댓글
+----------------------*/
+div#comment_div{
+	padding:5px 10px 40px 10px;
+	margin-top:30px;
+}
+#com_title{
+	margin-bottom:10px;
+}
+span.com-title{
+	color:#000;
+	font-size:12pt;
+	line-height:20px;
+}
+span.letter-count{
+	font-size:10pt;
+	color:#999;
+}
+div.paging-button{
+	text-align:right;
+}
+
+div#loading{
+	text-align:center;
+}
+div.inner-text{
+  position:relative;
+}
+.inner-text{
+	height:130px;
+}
+#inner-submit{
+  position:absolute;
+  bottom:0px;
+  right:0px;
+  border:none;
+}
+
+.comment-btn{
+	float:right;
+	margin:10px 0;
+}
+#output .item{
+	padding:10px 15px;
+}
 
 /**
 * Template Name: NiceAdmin - v2.5.0
@@ -374,20 +333,18 @@ form#lost_write_form ul{
 body {
   font-family: "Open Sans", sans-serif;
   background: white;
-  /*color: #444444;*/
+  color: #444444;
 }
 
 a {
   color: #4154f1;
-  text-decoration: none;
+  text-decoration: none !important;
+  cursor:pointer
 }
 
 a:hover {
   color: #717ff5;
   text-decoration: none;
-}
-ul.find-id a{
-  font-size:10pt;
 }
 
 h1,
@@ -404,14 +361,13 @@ h6 {
 --------------------------------------------------------------*/
 #main {
   margin-top: 60px;
-  padding: 20px 0 0 0;
+  padding: 20px 30px;
   transition: all 0.3s;
 }
 
 @media (max-width: 1199px) {
   #main {
     padding: 20px;
-    padding-top: 5px;
   }
 }
 
@@ -636,7 +592,7 @@ h6 {
 	padding:10px 60px 0;
 }
 .card-content {
-	padding:40px 60px 0;
+	padding:40px 60px 0 ;
 }
 .card-content-info {
 	padding:40px 60px 0;
@@ -691,8 +647,10 @@ div#re_reply{
 	width: 630px;
 }
 
-
-
+div#card img { 
+	max-width: 80%; 
+	height: auto; 
+}
 
 .card-header,
 .card-footer {
@@ -726,11 +684,6 @@ div#re_reply{
 .card-img-overlay {
   background-color: rgba(255, 255, 255, 0.6);
 }
-
-
-
-
-
 
 /* Alerts */
 .alert-heading {
@@ -875,7 +828,7 @@ div#re_reply{
 .search-bar {
   max-width: 400px;
   margin:auto;
-  padding: 5px 0px;
+  padding: 20px 0px;
 }
 .search-bar2 {
   max-width: 440px;
@@ -906,7 +859,7 @@ div#re_reply{
 	.search-bar {
 		min-width: 85%;
 		margin: auto;
-		padding: 5px 0px;
+		padding: 20px 0px;
 	}
 	.search-bar2 {
 		min-width: 85%;
@@ -920,9 +873,6 @@ div#re_reply{
 	#form-select2 {
 		width: 20px;
 		margin-right: 5px;
-	}
-	.btn {
-	 margin-bottom:10px;
 	}	
 }
 
@@ -1730,12 +1680,49 @@ div#re_reply{
   background: #3e4f6f;
 }
 
-.error-color {
-  color: #E65962;
-}
-
 @media (min-width: 992px) {
   .error-404 img {
     max-width: 50%;
   }
+}
+
+/*======================
+		반응형
+=======================*/
+
+@media screen and (max-width:1320px){
+	.footer-sns{
+		display:none;
+	}
+	.footer-main{
+		margin-left:80px;
+	}
+}
+
+@media screen and (max-width:991px) {
+	div#main_body{
+		left:10px;
+	}
+	.accordion {
+  		width: 120%;
+  		padding-left:10px;
+	}
+	.accordion-item .heading{
+		font-size:12pt;
+	}
+	.accordion-item .content p{
+		margin-left:10px;
+		font-size:10pt;
+		padding-right:20px;
+	}
+	.footer-sns{
+		display:none;
+	}
+	div#main_footer{
+		padding:30px 10px 20px 5px;
+		height:45vh;
+	}
+	.footer-main{
+		margin-left:20px;
+	}
 }
