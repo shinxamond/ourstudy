@@ -232,7 +232,7 @@ a:link {
 	
 	/*긴 글씨 자르게*/
 	.truncate-text {
-	    max-width: 300px;
+	    max-width: 200px;
 	    display:inline-block;
 	    vertical-align: middle;
 	    overflow: hidden;
