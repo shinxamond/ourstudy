@@ -28,7 +28,7 @@
 		
 		<div class = "element">
 			<p><a href = "${pageContext.request.contextPath}/mypage/studyTimeList.do" id ="mem_studyTime_btn" class = "link-font big">누적 공부시간 ></a></p>
-			<span class = "data-align top"><fmt:parseNumber value = "${member.mem_study / 3600}"  integerOnly="true"/> 시간</span>
+			<span class = "data-align top"><fmt:parseNumber value = "${member.mem_study < 120 ? 0 : member.mem_study / 3600}"  integerOnly="true"/> 시간</span>
 		</div>
 		
 		<div id = "insert_content_time">
