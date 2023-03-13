@@ -55,7 +55,6 @@
     	<put-attribute name="body"
     	  value="/WEB-INF/views/community/lostWrite.jsp"/>  
      </definition>
-    <!-- 이용후기 -->
     
     
 </tiles-definitions>
