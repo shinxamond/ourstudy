@@ -208,6 +208,12 @@ public class MypageController {
 		
 		Integer locker_num = lockerService.getLockerNum(user.getMem_num());
 		
+		String locker_end = mypageService.getLockerEnd(user.getMem_num());
+		
+		if(locker_end != null) {
+			model.addAttribute("locker_end", locker_end.split(" ")[0]);
+		}
+		
 		if(pointSum == null) {
 			pointSum = 0;
 		}
@@ -253,8 +259,12 @@ public class MypageController {
 		
 		Integer locker_num = lockerService.getLockerNum(user.getMem_num());
 		
+		String locker_end = mypageService.getLockerEnd(user.getMem_num());
 		if(pointSum == null) {
 			pointSum = 0;
+		}
+		if(locker_end != null) {
+			model.addAttribute("locker_end", locker_end.split(" ")[0]);
 		}
 		if(locker_num != null) {
 			model.addAttribute("locker_num", locker_num);			

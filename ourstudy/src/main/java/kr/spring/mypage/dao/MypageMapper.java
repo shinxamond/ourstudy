@@ -157,4 +157,8 @@ public interface MypageMapper {
 	@Select("SELECT * FROM lost_found WHERE mem_num = #{mem_num} AND ROWNUM <= 3 ORDER BY lf_date DESC")
 	public List<LostVO> getLostFoundList(Integer mem_num);
 	
+	
+	//사물함
+	@Select("SELECT locker_end FROM member_detail m JOIN locker_detail l ON m.mem_num = l.mem_num WHERE l.mem_num = #{mem_num}")
+	public String getLockerEnd(Integer mem_num);
 }

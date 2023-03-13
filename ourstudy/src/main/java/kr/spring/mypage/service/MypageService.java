@@ -77,5 +77,8 @@ public interface MypageService {
 	
 	public List<LostVO> getLostFoundList(Integer mem_num);
 	
+	
+	public String getLockerEnd(Integer mem_num);
+	
 
 }

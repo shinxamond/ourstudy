@@ -146,6 +146,11 @@ public class MypageServiceImpl implements MypageService{
 		return mypageMapper.selectRemainTimeTerm(mem_num);
 	}
 
+	@Override
+	public String getLockerEnd(Integer mem_num) {
+		return mypageMapper.getLockerEnd(mem_num);
+	}
+
 
 
 
