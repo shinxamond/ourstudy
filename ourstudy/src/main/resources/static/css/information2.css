@@ -178,7 +178,7 @@ div#main_footer .footer-main{
 }
 div#main_footer{
 	margin-right:100px;
-	margin:0 0 0 -120px;
+	/* margin:0 0 0 -120px; */
 	height:220px;
 }
 .footer-sns a:visited {
