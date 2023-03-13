@@ -147,7 +147,7 @@ $(function(){
 		//댓글 글번호 
 		let revw_num = $(this).attr('data-num');
 		//댓글 내용
-		let content = $(this).parent().find('p').html().replace(/<br>/g,'\r\n');
+		let content = $(this).parent().parent().find('p').html().replace(/<br>/g,'\r\n');
 		
 		//댓글수정 폼 UI
 		let modifyUI = '<form id="mre_form">';
