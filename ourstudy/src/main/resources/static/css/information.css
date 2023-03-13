@@ -64,9 +64,6 @@ div.paging-button {
 
 
 
-
-
-
 /*====================
 		 댓글
 ======================*/
@@ -210,7 +207,7 @@ div#main_footer{
 	.reply_btn{
 		text-align:right;
 		margin-right:50px;
-	}	
+	}  	
 }
 
 @media screen and (max-width:991px) {
@@ -276,9 +273,14 @@ div#main_footer{
 	}		
 	div.sub-item p {
     margin: 10px 72px 10px 30px;
-	}
+	}	
 }
 
+@media screen and (max-width:800px){
+	.image img {
+		max-width:100%;
+	}	
+}
 
 
 
@@ -458,6 +460,7 @@ h6 {
     padding: 20px;
     padding-top: 5px;
   }
+  
 }
 
 #register-main {

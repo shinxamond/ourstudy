@@ -41,15 +41,21 @@ body{
 	height:100%;
 }
 div#main_footer{
-	width:100vw;
+	width:100%!important;
 	background-color:#b4aab1;
 	padding:30px 0 20px 280px;
 	height:220px;
 }
-
-
-
-
+input.btn.btn-outline-secondary.mt-2{
+	margin-right:0;
+	margin:0 auto;
+}
+div.paging-button {
+    text-align: center !important;
+}
+.morebtn{
+	margin-right:0 !important;
+}
 
 
 
@@ -165,28 +171,23 @@ div.sub-item button.modify-btn{
 }
 div#main_footer .footer-main{
 	float:left;
-	
 }
-.footer-main{
-	padding-left:15px;
-}
-.footer-sns{
+div#main_footer .footer-sns{
 	float:right;
+	margin-right:100px;
 	word-spacing:15px;
-	margin-right:100px;
 	padding-top:40px;
-}
-div#main_footer{
-	margin-right:100px;
-	margin:0 0 0 -120px;
-	height:220px;
-}
-.footer-sns a:visited {
-    text-decoration: none;
-    color: #000000;
 }
 .footer-sns a:hover{
 	color: #F3F1F1;
+}
+a:visited {
+    text-decoration: none;
+    color: #000000;
+}
+a:link {
+    text-decoration: none;
+    color: #000000;
 }
 
 /*======================
@@ -196,45 +197,77 @@ div#main_footer{
 @media screen and (max-width:1320px){
 	.footer-sns{
 		display:none;
-	}
+}
 	.footer-main{
 		margin-left:80px;
-	}
+}
 }
 
 @media screen and (max-width:991px) {
 	div#main_body{
 		left:10px;
-		padding:0 0 0 0;
-	}
+}
 	.accordion {
   		width: 120%;
   		padding-left:10px;
-	}
+}
 	.accordion-item .heading{
 		font-size:12pt;
-	}
+}
 	.accordion-item .content p{
 		margin-left:10px;
 		font-size:10pt;
 		padding-right:20px;
-	}
+}
 	.footer-sns{
 		display:none;
-	}
+}
 	div#main_footer{
-		padding:30px 30px 20px 5px;
+		padding:30px 10px 20px 5px;
 		height:45vh;
-	}
+}
 	.footer-main{
 		margin-left:20px;
-	}
+}
 	
-	#navbar{
-	margin:-5px 0 0 0;
-	width:200%
-	}
-	
+	/*긴 글씨 자르게*/
+	.truncate-text {
+	    max-width: 260px;
+	    display:inline-block;
+	    vertical-align: middle;
+	    overflow: hidden;
+	    white-space: nowrap;
+	    text-overflow: ellipsis;
+}	
+	div.sub-item button.modify-btn {
+		margin-left:0;
+}		
+	.reply_btn{
+		text-align:right;
+		margin-right:20px;
+}
+	form#re_form {
+	    width: 100%;
+	    margin-left: -10px;
+	    margin-top: -10px;
+}	
+	span.re-title {
+    margin-left: 30px;
+}
+	#inner-submit{
+		  position:absolute;
+		  bottom:-15px;
+		  right:25px;
+		  border:none;
+		  color:#E65962;
+		  font-size:18pt;
+}
+	ul.detail-info {
+	    margin-left:-40px;
+}		
+	div.sub-item p {
+    margin: 10px 72px 10px 30px;
+}
 }
 
 
@@ -262,6 +295,8 @@ div#main_footer{
 	color:#000;
 }
 
+
+
 /*공통
 ---------------------------*/
 div#main {
@@ -282,7 +317,7 @@ div#main_body {
 	margin-top:20px;
 }
 .content-main {
-	width:87%; /*원래 87%*/
+	width: 87%; /*원래 87%*/
 	margin: 5px auto;
 	overflow:hidden;
 	padding: 0 20px;
@@ -297,17 +332,15 @@ div#main_body {
 #container{ 
    background-color: white;
 }
-#navbar{
-	margin:-5px -50px 0 0;
-	width:200%
-} 
+/* #navbar{
+	padding:0px;
+} */
 
 
 @media ( max-width : 959px) {
 	div#main {
 	    width: 100%;
 	    margin: 0 auto;
-	    padding:5px 1px 0 5px;
 	}
 	div#main_body {
 	    padding: 5px 5px 5px 5px;
@@ -639,7 +672,7 @@ h6 {
 	padding:10px 60px 0;
 }
 .card-content {
-	padding:40px 60px 0;
+	padding:40px 60px 0 ;
 }
 .card-content-info {
 	padding:40px 60px 0;
@@ -692,6 +725,11 @@ div#re_reply{
 }
 .card input[type="text"]{
 	width: 630px;
+}
+
+div#card img { 
+	max-width: 80%; 
+	height: auto; 
 }
 
 
@@ -917,7 +955,7 @@ div#re_reply{
 		padding: 20px 0px;
 	}	
 	#form-select1 {
-		width: 20px;
+		width: 80px;
 		margin-right: 5px;
 	}
 	#form-select2 {
@@ -925,8 +963,11 @@ div#re_reply{
 		margin-right: 5px;
 	}
 	.btn {
-	 margin-bottom:10px;
+	 	margin-bottom:10px;
 	}	
+	.search-form input{
+		width: 68% !important;
+	}
 }
 
 
