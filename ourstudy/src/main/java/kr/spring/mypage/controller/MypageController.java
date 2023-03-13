@@ -468,11 +468,10 @@ public class MypageController {
 				
 				session.invalidate();
 				
-				//model.addAttribute("accessMsg", "들어주셔서 감사합니다!");
-				model.addAttribute("message", "회원탈퇴");
+				model.addAttribute("accessMsg", "들어주셔서 감사합니다!");
 				//model.addAttribute("url", request.getContextPath() + "/mypage/myPageMain.do");
 				//return "common/notice";
-				return "common/resultView";
+				return "common/resultViewEnd";
 			}
 			
 			throw new AuthCheckException();
