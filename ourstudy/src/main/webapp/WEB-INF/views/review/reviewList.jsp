@@ -3,6 +3,7 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %> <%-- 로그인 된 경우에만 글쓰기버튼 활성화 --%>
 <!DOCTYPE html>   
 <!-- 중앙 컨텐츠 시작 -->
+<link rel="stylesheet" href="${pageContext.request.contextPath}/css/information3.css">  
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
 <script type="text/javascript">
 	/*

@@ -2,6 +2,7 @@
    pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %><%-- 로그인 된 경우에만 글쓰기버튼 활성화 --%>
 <!DOCTYPE html>
+<link rel="stylesheet" href="${pageContext.request.contextPath}/css/information3.css">  
 <body> 
    <div class="page-main">   
       <div class="content-main"><!-- 전체 화면의 87% -->
