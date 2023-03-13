@@ -54,7 +54,7 @@
 				  var mm = today.getMonth() + 1; // 달
 				  var yyyy = today.getFullYear(); //년도
 				  var hh = today.getHours(); //시간
-				  var m = today.getMinutes(); //분
+				  var m = today.getMinutes()+1; //분
 
 				  if (dd < 10)
 				  {
