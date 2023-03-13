@@ -215,14 +215,14 @@ function kakaoLogout() {
           			</ul>
         			</div>
         		</div>
-        		
+        		<c:if test="${!empty user}">
 				<div>
 					<ul	class="side-inline" style="cursor: pointer;" onclick="location.href='${pageContext.request.contextPath}/mypage/myPageMain.do'">
-						<li><i class="fas fa-light fa-id-card"></i></li>
-						<li class="myp side-main-link">마이페이지</li>
+						<li><i class="fas fa-light fa-id-card" style="font-size:12pt;"></i></li>
+						<li class="myp side-main-link" style="margin-left:2px;">마이페이지</li>
 					</ul>
 				</div>
-			
+				</c:if>
         		<c:if test="${!empty user && user.mem_auth == 9}">
 				<div class="side-bottom">
        				<button class="btn btn-toggle  d-inline-flex  align-items-center rounded collapsed border-white" 
