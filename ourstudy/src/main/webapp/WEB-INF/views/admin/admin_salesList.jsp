@@ -37,7 +37,7 @@
 					</tr>
 				</table>
 									
-				<h3 style="text-align:center"><b>판매기록목록</b></h3>
+				<h3 style="text-align:center"><b>판매기록 목록</b></h3>
 				<!-- 검색폼 시작 -->
 				<div class="section" style="text-align:center"> 
 					<div class="search-bar2">

@@ -7,7 +7,7 @@
 		<div class="content-main"><!-- 전체 화면의 87% -->
 			<!-- 사이드바 오른쪽 화면 시작 -->
 			<div class="content-right">
-				<h3 style="text-align:center"><b>현재고객현황판</b></h3><br>
+				<h3 style="text-align:center"><b>현재 고객 현황판</b></h3><br>
 				<table class="table table-hover align-center" id="t1">
 					<thead class="table-head">
 					<tr>

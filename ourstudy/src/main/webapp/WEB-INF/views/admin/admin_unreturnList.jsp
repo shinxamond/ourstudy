@@ -7,7 +7,7 @@
 		<div class="content-main"><!-- 전체 화면의 87% -->
 			<!-- 사이드바 오른쪽 화면 시작 -->
 			<div class="content-right">
-				<h3 style="text-align:center"><b>미반납자목록</b></h3>
+				<h3 style="text-align:center"><b>미반납자 목록</b></h3>
 				<!-- 검색폼 시작 -->
 				<div class="section" style="text-align:center"> 
 					<div class="search-bar2">
