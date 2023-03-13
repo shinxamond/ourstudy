@@ -1,3 +1,5 @@
+
+
 $(function(){
 	
 	//사이드바가 모든 페이지에 적용되니까 여기다가 함수 정의하자
@@ -9,6 +11,14 @@ $(function(){
   	//6. 3:24(입실시간) -> 현재시간js 가져와 3:24 32 33- --- 3:25 - setIn = 1분 session.setItem(setIn 입실시간 +60);
   	//7. session에 있는 setIN 제거
 	
+	setTimeout(function() {
+  	if(sessionStorage.getItem('buyTicket') == 'buy' && $('.setCheckInStatus').length > 0){
+		sessionStorage.removeItem("buyTicket");
+		location.reload();
+	}
+	}, 100);
+
+	
 	var logoutBtn = $('.logout-btn').length;
 	var cnt = 0;
 	if(logoutBtn < 1){
@@ -17,6 +27,11 @@ $(function(){
 		sessionStorage.removeItem("isSelectMemnum");
 		sessionStorage.removeItem("isSelectSeatnum");
 	}
+	
+	//console.log("status=" + sessionStorage.getItem('isSelect'));
+	
+	//console.log("mem_num=" + sessionStorage.getItem('isSelectMemnum'));
+	//console.log("seat_num=" + sessionStorage.getItem('isSelectSeatnum'));
 	
 	var reloadDiv = $('#remainTimeZone');
 	
@@ -83,9 +98,13 @@ $(function(){
 	  							success : function(param){
 	  								if(param.result == 'success') {
 										if(reloadDiv != ''){
+											sessionStorage.setItem('buyTicket', 'buy');
 											$('#remainTimeZone').load('../mypage/myPageMain.do #remainTimeZone');
+											
 											location.href="../seat/out.do?seat_num="+seat_num;
+											
 											location.href = '../ticket/study_ticketList.do?seat_num=' + seat_num;
+											
 										}
 	  								}else {
 	  									alert('잔여시간 업데이트 오류 발생(5분이하일때)');
