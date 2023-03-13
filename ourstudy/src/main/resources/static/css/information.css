@@ -269,10 +269,34 @@ div#main_footer{
 		  font-size:18pt;
 	}
 	ul.detail-info {
-	    margin-left:-40px;
+	    margin-left:-43px;
 	}		
 	div.sub-item p {
     margin: 10px 72px 10px 30px;
+	}	
+	.mre_second{
+		text-align:right;
+		margin-right:20px;
+	}
+	form#mre_form {
+	    border: none;
+	    margin-left: -15px;
+	    width: 80%;
+	}
+	div#mre_second {
+	    float: right;
+	    width: 100%;
+	    margin-bottom: 10px;
+	    margin-right: -40px;
+	    text-align:right;
+	}	
+	ul.detail-info {
+    margin-top: 10px;
+	}
+	.inner-text, #mre_content {
+	    display: block;
+	    height: 130px;
+	    width: 106%;
 	}	
 }
 
