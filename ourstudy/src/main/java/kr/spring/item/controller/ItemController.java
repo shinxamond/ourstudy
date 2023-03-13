@@ -182,7 +182,7 @@ public class ItemController {
 		int count = itemService.selectAdminCount(map);
 		logger.debug("<<관리자 - count>> : " + count);
 
-		PagingUtil page = new PagingUtil(keyfield, keyword, currentPage, count, 20, 10, "adminList.do");
+		PagingUtil page = new PagingUtil(keyfield, keyword, currentPage, count, 25, 10, "adminList.do");
 
 		List <ItemVO> list = null;
 		if(count > 0) {
