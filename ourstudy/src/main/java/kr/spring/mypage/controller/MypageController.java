@@ -447,7 +447,7 @@ public class MypageController {
 	
 	//회원탈퇴 폼에서 전송받은 데이터 처리
 	@PostMapping("/mypage/myPagedeleteMember.do")
-	public String submitMypageDeleteMember(@Valid MemberVO member, BindingResult result, HttpSession session, Model model) {
+	public String submitMypageDeleteMember(@Valid MemberVO member, BindingResult result, HttpSession session, Model model, HttpServletRequest request) {
 		
 		if(result.hasFieldErrors("mem_id") || result.hasFieldErrors("mem_pw")) {
 			return myPageDeleteMemberForm(session, model);
@@ -468,9 +468,11 @@ public class MypageController {
 				
 				session.invalidate();
 				
-				model.addAttribute("accessMsg", "회원탈퇴가 완료되었습니다.");
-				
-				return "common/notice";
+				//model.addAttribute("accessMsg", "들어주셔서 감사합니다!");
+				model.addAttribute("message", "회원탈퇴");
+				//model.addAttribute("url", request.getContextPath() + "/mypage/myPageMain.do");
+				//return "common/notice";
+				return "common/resultView";
 			}
 			
 			throw new AuthCheckException();
