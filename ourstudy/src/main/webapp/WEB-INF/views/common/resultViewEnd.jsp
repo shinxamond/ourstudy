@@ -19,7 +19,7 @@ window.onload = function() {
 	let timerInterval;
 	var a=5;
 	Swal.fire({
-	  title: '회원 탈퇴 완료',
+	  title: '들어주셔서 감사합니다!',
 	  imageUrl: '${pageContext.request.contextPath}/images/boom.png',
 	  html: '------<h3></h3>------',
 	  timer: 5000,
