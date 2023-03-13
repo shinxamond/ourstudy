@@ -149,9 +149,11 @@ $(function(){
 	//댓글 수정 버튼 클릭시 수정폼 노출
 	$(document).on('click','.modify-btn',function(){
 		//댓글 글번호 
+		
 		let re_num = $(this).attr('data-num');
+		
 		//댓글 내용
-		let content = $(this).parent().find('p').html().replace(/<br>/g,'\r\n');
+		let content = $(this).parent().parent().find('p').html().replace(/<br>/g,'\r\n');
 		
 		//댓글수정 폼 UI
 		let modifyUI = '<form id="mre_form">';
